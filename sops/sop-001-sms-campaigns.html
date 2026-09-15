@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ABA Trades  -  SOP 001 | SMS Campaigns</title>
+<style>
+:root {
+  --brand-primary: #1D3B6D;
+  --brand-primary-rgb: 29, 59, 109;
+  --brand-secondary: #2E528E;
+  --brand-slate: #7789A7;
+  --brand-dark-navy: #0B1D3B;
+  --brand-footer-navy: #172F57;
+  --brand-surface: #EBEDF2;
+  --brand-field: #F5F6F8;
+  --brand-border: #D3D4DA;
+  --brand-bg: #FFFFFF;
+  --brand-text: #1D3B6D;
+  --brand-success: #8FAE1B;
+  --brand-notice: #1E85BE;
+  --brand-error: #B81C23;
+  --font-heading: 'Futura PT', 'futura-pt', Helvetica, Arial, sans-serif;
+  --font-body: 'Futura PT', 'futura-pt', Helvetica, Arial, sans-serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--font-body); background: var(--brand-bg); color: var(--brand-text); line-height: 1.6; }
+
+/* Header */
+.hero { background: var(--brand-primary); color: #fff; padding: 56px 24px 48px; }
+.hero .kicker { text-transform: uppercase; letter-spacing: 0.12em; font-size: 13px; font-weight: 700; color: rgba(255,255,255,0.75); }
+.hero h1 { font-family: var(--font-heading); font-weight: 700; font-size: 2.4rem; line-height: 1.2; margin: 10px 0 6px; }
+.hero p { opacity: 0.85; max-width: 860px; }
+
+.wrap { max-width: 900px; margin: 0 auto; padding: 0 20px; }
+
+/* Meta strip */
+.meta { display: flex; flex-wrap: wrap; gap: 18px 34px; padding: 22px 0; border-bottom: 1px solid var(--brand-border); }
+.meta .m { font-size: 13px; color: var(--brand-slate); }
+.meta .m strong { display: block; color: var(--brand-primary); font-size: 15px; }
+
+/* Section structure */
+section { padding: 34px 0; border-bottom: 1px solid var(--brand-border); }
+section:last-of-type { border-bottom: none; }
+h2 { font-family: var(--font-heading); font-weight: 700; font-size: 1.5rem; margin-bottom: 14px; color: var(--brand-primary); }
+h3 { font-family: var(--font-heading); font-weight: 700; font-size: 1.15rem; margin: 20px 0 8px; }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0 10px 22px; }
+li { margin: 6px 0; }
+
+/* Code / terminal steps */
+.step { background: var(--brand-field); border-left: 4px solid var(--brand-primary); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.step .num { font-weight: 700; color: var(--brand-primary); }
+code { background: var(--brand-surface); padding: 2px 6px; border-radius: 4px; font-size: 0.92em; color: var(--brand-dark-navy); }
+.step code { background: #eef0f5; }
+
+/* Callout boxes */
+.callout { border-radius: 10px; padding: 16px 18px 16px 20px; margin: 16px 0; border-left: 5px solid; }
+.callout.success { background: #f4f8e8; border-color: var(--brand-success); }
+.callout.notice { background: #eaf4fb; border-color: var(--brand-notice); }
+.callout.error { background: #fbeeee; border-color: var(--brand-error); }
+.callout .title { font-weight: 700; margin-bottom: 4px; }
+
+/* Tables */
+table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 0.95em; }
+th { text-align: left; background: var(--brand-primary); color: #fff; padding: 10px 12px; font-weight: 700; }
+td { padding: 10px 12px; border-bottom: 1px solid var(--brand-border); }
+tr:nth-child(even) td { background: var(--brand-field); }
+
+/* Tag / chip */
+.chip { display: inline-block; background: var(--brand-surface); border-radius: 100px; padding: 3px 12px; font-size: 12px; font-weight: 700; margin: 2px 4px 2px 0; }
+.chip.gold { background: #f5e9c8; color: #7a5d00; }
+.chip.plat { background: #e6e8f0; color: #3a4660; }
+
+/* Footer */
+.footer { background: var(--brand-footer-navy); color: rgba(255,255,255,0.85); padding: 30px 20px; text-align: center; font-size: 14px; }
+.footer strong { color: #fff; }
+
+@media (max-width: 700px) {
+  .hero h1 { font-size: 1.7rem; }
+  .wrap { padding: 0 14px; }
+  .hero { padding: 40px 16px 36px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     ABA TRADES SOP TEMPLATE  |  v1.0 (2026-09-15)
+     This document is the house template for all ABA Trades SOPs.
+     Copy this file to a new <sop-number>-<topic>.html, update the
+     header block + meta strip, then fill the standard sections.
+     ============================================================ -->
+
+<header class="hero">
+  <div class="wrap">
+    <div class="kicker">aba Trades &nbsp;|&nbsp; Standard Operating Procedure</div>
+    <h1>SOP 001  -  SMS Campaigns</h1>
+    <p>How to identify, validate and export the SMS campaign audience from ServiceTitan. This is a living document: procedure, learnings and pitfalls are appended as campaigns ship.</p>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <!-- Meta strip: update per SOP -->
+  <div class="meta">
+    <div class="m"><strong>SOP</strong>001</div>
+    <div class="m"><strong>Owner</strong>Harley (AI operations)</div>
+    <div class="m"><strong>Applies to</strong>All business units</div>
+    <div class="m"><strong>Version</strong>1.0</div>
+    <div class="m"><strong>Last reviewed</strong>15 Sep 2026</div>
+    <div class="m"><strong>Status</strong>Living / in use</div>
+  </div>
+
+  <!-- 1. Purpose -->
+  <section>
+    <h2>1. Purpose</h2>
+    <p>Define the repeatable, cross-checked way to pull the <strong>audience for an SMS campaign</strong> out of ServiceTitan: who is a current member, which business units those members sit in, and what job types they have had. The same numbers must be reproducible by anyone at any time, and every headline figure carries a two-way validation so the team can trust the count before a send.</p>
+  </section>
+
+  <!-- 2. Scope -->
+  <section>
+    <h2>2. Scope</h2>
+    <p>In scope:</p>
+    <ul>
+      <li>Membership audience definition and export (name, phone, email)</li>
+      <li>Segmenting members by business unit and prior job type</li>
+      <li>Validating the membership count two independent ways</li>
+    </ul>
+    <p>Out of scope for this SOP (see future revisions):</p>
+    <ul>
+      <li>Drafting campaign copy</li>
+      <li>Podium send mechanics and opt-out handling</li>
+      <li>Call-code setup and response tracking</li>
+    </ul>
+  </section>
+
+  <!-- 3. Source of truth -->
+  <section>
+    <h2>3. Source of truth</h2>
+    <p>All membership data is read from the <strong>ServiceTitan production API</strong>, tenant <code>3306271893</code> (read-only scopes only). Two independent API surfaces return the numbers below, and both agree.</p>
+    <p>Contact points: <span class="chip">SMS</span> <span class="chip">Email</span> <span class="chip">Podium</span> <span class="chip">Direct mail</span></p>
+  </section>
+
+  <!-- 4. THE CORE: how we derived the numbers -->
+  <section>
+    <h2>4. How we derived the membership numbers</h2>
+    <p>Two completely independent API pulls produced the same result. This is intentional: no single query is trusted until a second, structurally different one confirms it.</p>
+
+    <div class="callout success">
+      <div class="title">Headline numbers (verified 15 Sep 2026)</div>
+      <strong>1,315 active member customers</strong> across <strong>1,368 active memberships</strong> (some customers hold two membership rows). Gold 1,357 &middot; Platinum 11. Total membership records in ServiceTitan: <strong>2,615</strong> (Active 1,368 &middot; Expired 1,194 &middot; Canceled 53).
+    </div>
+
+    <h3>Method A  -  Direct API pull (memberships/v2)</h3>
+    <div class="step">
+      <span class="num">A1.</span> Request a read token from <code>auth.servicetitan.io</code> (client-credentials, 15-minute expiry). Every call also carries the <code>ST-App-Key</code> header.
+    </div>
+    <div class="step">
+      <span class="num">A2.</span> Pull all memberships:
+      <br><code>GET /memberships/v2/tenant/3306271893/memberships</code> (loop <code>page</code> + <code>hasMore</code>; totalCount is often null)
+    </div>
+    <div class="step">
+      <span class="num">A3.</span> Pull membership types to label the tiers:<br>
+      <code>GET /memberships/v2/tenant/3306271893/membership-types</code>
+    </div>
+    <div class="step">
+      <span class="num">A4.</span> Count by status: <code>Active / Expired / Canceled</code>. Result: <strong>Active = 1,368</strong>.
+    </div>
+    <p>Note: the membership module slug is <code>memberships/v2</code>, not <code>membership/v2</code> (the singular form returns 404).</p>
+
+    <h3>Method B  -  Reporting API (Active Memberships report)</h3>
+    <div class="step">
+      <span class="num">B1.</span> List report categories, then reports within <code>marketing</code>:<br>
+      <code>GET /reporting/v2/tenant/3306271893/report-categories</code><br>
+      <code>GET /reporting/v2/tenant/3306271893/report-category/marketing/reports</code>
+    </div>
+    <div class="step">
+      <span class="num">B2.</span> The <strong>Active Memberships</strong> report is id <code>2263</code>. Pull its full data with a POST body of <code>{"parameters": []}</code>:<br>
+      <code>POST /reporting/v2/tenant/3306271893/report-category/marketing/reports/2263/data</code>
+    </div>
+    <div class="step">
+      <span class="num">B3.</span> Rows come back with a header list (<code>fields</code>) and array rows. Count by <code>MembershipStatus</code>: <strong>Active = 1,368</strong>. Total rows = 2,615.
+    </div>
+    <div class="callout notice">
+      <div class="title">Reporting API rate limit</div>
+      The Reporting API allows <strong>1 run of the same report per minute per tenant</strong>. Large exports page through with ~65-second waits between pages. Plan big pulls accordingly.
+    </div>
+  </section>
+
+  <!-- 5. Validation note -->
+  <section>
+    <h2>5. Why we trust these numbers (two-way validation)</h2>
+    <p>Method A (raw record API) and Method B (reporting API) are built on entirely different code paths, so an error in one would not be echoed by the other. They returned identical results on 15 Sep 2026:</p>
+    <table>
+      <thead><tr><th>Statistic</th><th>Method A (memberships/v2)</th><th>Method B (report 2263)</th><th>Match</th></tr></thead>
+      <tbody>
+        <tr><td>Total membership records</td><td>2,615</td><td>2,615</td><td>&#10003;</td></tr>
+        <tr><td>Active</td><td>1,368</td><td>1,368</td><td>&#10003;</td></tr>
+        <tr><td>Expired</td><td>1,194</td><td>1,194</td><td>&#10003;</td></tr>
+        <tr><td>Canceled</td><td>53</td><td>53</td><td>&#10003;</td></tr>
+        <tr><td>Unique active member customers</td><td>1,315</td><td> - </td><td> - </td></tr>
+      </tbody>
+    </table>
+    <div class="callout success">
+      <div class="title">Rule</div>
+      A membership figure is only quoted as final after <strong>both methods agree</strong>. If they ever disagree, investigate the gap before any audience is sent or money is committed.
+    </div>
+  </section>
+
+  <!-- 6. Segments -->
+  <section>
+    <h2>6. Members by business unit and job type</h2>
+    <p>Members map to the aba Trades operating units via their membership's <code>businessUnitId</code>. The <code>aba-Membership</code> unit (id <code>263517915</code>, listed as inactive, trade Plumbing &amp; Gas) holds the largest single block (866 members). Alternative: use the <code>Active Memberships</code> report, which already ships <code>CustomerName / CustomerEmail / CustomerPhone / MembershipType / MembershipStatus / SoldBy</code>.</p>
+
+    <h3>Members by trade (deduped per customer)</h3>
+    <table>
+      <thead><tr><th>Trade</th><th>Members</th></tr></thead>
+      <tbody>
+        <tr><td>Plumbing &amp; Gas</td><td>1,028</td></tr>
+        <tr><td>Air Conditioning</td><td>205</td></tr>
+        <tr><td>Roofing</td><td>38</td></tr>
+        <tr><td>Electrical</td><td>14</td></tr>
+        <tr><td>Renovation</td><td>13</td></tr>
+        <tr><td>Cross-trade</td><td>17</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Members with relevant job history (campaign segments)</h3>
+    <table>
+      <thead><tr><th>Segment</th><th>Members*</th></tr></thead>
+      <tbody>
+        <tr><td>Air-con (install/service/fault)</td><td>678</td></tr>
+        <tr><td>Hot water systems</td><td>230</td></tr>
+        <tr><td>Drain</td><td>97</td></tr>
+        <tr><td>Gas heater</td><td>61</td></tr>
+      </tbody>
+    </table>
+    <p><small>*Any active member customer who has had at least one job of that class, from the full 35,847-job history pulled on 15 Sep 2026.</small></p>
+  </section>
+
+  <!-- 7. Learnings -->
+  <section>
+    <h2>7. Learnings &amp; pitfalls (append as discovered)</h2>
+    <ul>
+      <li><strong>Membership slug is <code>memberships/v2</code></strong>  -  the singular <code>membership/v2</code> returns 404. (2026-09-15)</li>
+      <li><strong>Contacts are per-customer.</strong> The tenant-level contact list is forbidden (403); phones pull one customer at a time. The Active Memberships report avoids this bypass by returning phone/email inline. (2026-09-15)</li>
+      <li><strong>First name is combined.</strong> ServiceTitan stores a single <code>CustomerName</code> (no native first/last split). Derive first name by splitting on the last space; label it derived in any export. (2026-09-15)</li>
+      <li><strong>Reporting rate cap</strong> of 1/min per tenant per report. (2026-09-15)</li>
+      <li><em>Placeholder  -  populate post-first-campaign KPIs, response rate by A/B branch, what landed / what missed.</em></li>
+    </ul>
+  </section>
+
+  <!-- 8. Reference -->
+  <section>
+    <h2>8. Reference</h2>
+    <ul>
+      <li>ServiceTitan reporting API paths, scopes and traps: vault <code>integrations/servicetitan.md</code></li>
+      <li>First segmentation pull (full data): vault <code>knowledge/sms-segmentation-2026-09-15.md</code></li>
+      <li>Campaign card (the one that started this SOP): aba TRADES Marketing Calendar &gt; "SMS campaign | 15 Sep 2026"</li>
+    </ul>
+  </section>
+
+</div>
+
+<footer class="footer">
+  <strong>aba Trades</strong> &nbsp;&middot;&nbsp; Standard Operating Procedure 001 &nbsp;&middot;&nbsp; v1.0
+  <br><span style="opacity:0.7">Prepared by Harley, AI operations team. Living document  -  contributions and corrections welcome.
+</footer>
+
+</body>
+</html>
