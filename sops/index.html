@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>aba Trades SOP Library</title>
+<style>
+:root {
+  --brand-primary: #1D3B6D;
+  --brand-secondary: #2E528E;
+  --brand-slate: #7789A7;
+  --brand-dark-navy: #0B1D3B;
+  --brand-footer-navy: #172F57;
+  --brand-surface: #EBEDF2;
+  --brand-field: #F5F6F8;
+  --brand-border: #D3D4DA;
+  --brand-bg: #FFFFFF;
+  --brand-text: #1D3B6D;
+  --brand-success: #8FAE1B;
+  --font-heading: 'Futura PT', 'futura-pt', Helvetica, Arial, sans-serif;
+  --font-body: 'Futura PT', 'futura-pt', Helvetica, Arial, sans-serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--font-body); background: var(--brand-bg); color: var(--brand-text); line-height: 1.6; }
+.hero { background: var(--brand-primary); color: #fff; padding: 56px 24px 48px; }
+.hero .kicker { text-transform: uppercase; letter-spacing: 0.12em; font-size: 13px; font-weight: 700; color: rgba(255,255,255,0.75); }
+.hero h1 { font-family: var(--font-heading); font-weight: 700; font-size: 2.2rem; margin: 10px 0 6px; }
+.hero p { opacity: 0.85; max-width: 860px; }
+.wrap { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
+h2 { font-family: var(--font-heading); font-weight: 700; font-size: 1.4rem; margin-bottom: 18px; }
+.sop-list { list-style: none; }
+.sop-list li { border: 1px solid var(--brand-border); border-radius: 10px; padding: 18px 20px; margin: 12px 0; }
+.sop-list a { text-decoration: none; color: var(--brand-primary); font-weight: 700; font-size: 1.1rem; }
+.sop-list .sub { color: var(--brand-slate); font-size: 0.9rem; margin-top: 4px; }
+.empty { color: var(--brand-slate); font-style: italic; }
+.footer { background: var(--brand-footer-navy); color: rgba(255,255,255,0.85); padding: 24px 20px; text-align: center; font-size: 14px; }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="kicker">aba Trades &nbsp;|&nbsp; Operations Library</div>
+    <h1>Standard Operating Procedures</h1>
+    <p>The living playbook for aba Trades operations: every step documented, validated, and repeatable by anyone on the team.</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <h2>Published SOPs</h2>
+  <ul class="sop-list">
+    <li>
+      <a href="sop-001-sms-campaigns.html">SOP 001 - SMS Campaigns</a>
+      <div class="sub">Audience identification, two-way validation and export from ServiceTitan. v1.0, last reviewed 15 Sep 2026. Living document.</div>
+    </li>
+  </ul>
+  <p style="color:var(--brand-slate);margin-top:16px">New SOPs appear here as they are written. Each SOP follows the same branded template and records how numbers were validated so the team can trust them.</p>
+</div>
+
+<footer class="footer">
+  <strong>aba Trades</strong> &nbsp;&middot;&nbsp; Standard Operating Procedures &nbsp;&middot;&nbsp; Living library
+</footer>
+
+</body>
+</html>
