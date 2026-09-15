@@ -244,6 +244,7 @@ tr:nth-child(even) td { background: var(--brand-field); }
   <section>
     <h2>7. Learnings &amp; pitfalls (append as discovered)</h2>
     <ul>
+      <li><strong>SMS sender number:</strong> all SMS blasts appear to send from the <strong>ABA Plumbing and Gas</strong> phone number to the recipient's location. Confirm the sender line when reviewing a test send. (2026-09-15)</li>
       <li><strong>Membership slug is <code>memberships/v2</code></strong>  -  the singular <code>membership/v2</code> returns 404. (2026-09-15)</li>
       <li><strong>Contacts are per-customer.</strong> The tenant-level contact list is forbidden (403); phones pull one customer at a time. The Active Memberships report avoids this bypass by returning phone/email inline. (2026-09-15)</li>
       <li><strong>First name is combined.</strong> ServiceTitan stores a single <code>CustomerName</code> (no native first/last split). Derive first name by splitting on the last space; label it derived in any export. (2026-09-15)</li>
