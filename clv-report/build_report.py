@@ -221,15 +221,15 @@ SECTIONS.append(f"""
     <div class="kpi"><div class="kn">Member freq</div><div class="kv">{m_freq:.2f}</div><div class="ku">orders/cust · non-memb. {n_freq:.2f}</div></div>
     <div class="kpi"><div class="kn">Non-members</div><div class="kv">{money(n_total_rev)}</div><div class="ku">revenue · {n_total_cust} customers</div></div>
   </div>
-  <table><thead><tr><th>Business unit</th><th>Members</th><th>Member revenue</th><th>Member AOV</th><th>Memb. freq</th><th>Non-memb.</th><th>Non-memb. rev</th><th>Non-memb. AOV</th><th>Non-memb. freq</th></tr></thead>
-  <tbody>{member_rows}</tbody></table>
+  <div class="tbl-wrap"><table><thead><tr><th>Business unit</th><th>Members</th><th>Member revenue</th><th>Member AOV</th><th>Memb. freq</th><th>Non-memb.</th><th>Non-memb. rev</th><th>Non-memb. AOV</th><th>Non-memb. freq</th></tr></thead>
+  <tbody>{member_rows}</tbody></table></div>
 </section>""")
 
 SECTIONS.append(f"""
 <section class="card">
   <h2>Revenue trend by business unit</h2>
   <p class="note">Invoiced revenue (ServiceTitan report 295) by brand, {months[0][2:] if months else '—'}/{months[0][:2] if months else ''} onwards. <strong>Data begins Oct 2024</strong> (ServiceTitan migration); revenue prior to that is not available in the system. FY24 shown as no-data, not zero.</p>
-  {svg_line_chart(trend_all, BRANDS, "Monthly invoiced revenue by brand", color_by=ACCENT) if trend_all else '<p>Monthly data still pulling</p>'}
+  <div class="chart-scroll">{svg_line_chart(trend_all, BRANDS, "Monthly invoiced revenue by brand", color_by=ACCENT) if trend_all else '<p>Monthly data still pulling</p>'}</div>
 </section>""")
 
 # KPI total by brand (from FY26 window in rev_by_bu)
@@ -248,7 +248,7 @@ SECTIONS.append(f"""
 <section class="card">
   <h2>New vs repeat customers</h2>
   <p class="note">Over the 5-year window (FY22–FY26). <em>New</em> = customer's first-ever job in the window; <em>repeat</em> = had a prior job in the window. Includes the Oct-2024 migration, so earlier history may under-count repeat customers.</p>
-  <table><thead><tr><th>Business unit</th><th>Customers</th><th>New</th><th>Repeat</th><th>Repeat %</th></tr></thead><tbody>{rows}</tbody></table>
+  <div class="tbl-wrap"><table><thead><tr><th>Business unit</th><th>Customers</th><th>New</th><th>Repeat</th><th>Repeat %</th></tr></thead><tbody>{rows}</tbody></table></div>
 </section>""")
 
 # Bubble charts
@@ -256,19 +256,74 @@ for metric,label in [("rev","Total revenue per customer"),("aov","Average order 
     bubbles=""
     for b in BRANDS:
         cl = cust_rev.get(b, [])
-        bubbles += f'<details><summary>Show {b} — {label}</summary>{svg_bubble(cl,b,metric)}</details>'
+        bubbles += f'<details><summary>Show {b} — {label}</summary><div class="chart-scroll">{svg_bubble(cl,b,metric)}</div></details>'
     SECTIONS.append(f'<section class="card"><h2>{label}</h2>{bubbles}</section>')
 
+# ---------------------------------------------------------------------------
+# Power of One — 1% calculator (interactive, grounded in real FY26 data)
+# ---------------------------------------------------------------------------
+base = load("powerofone_baseline.json", {})
+P1_BASELINE_JSON = json.dumps(base) if base else "{}"
+LEVERS = [
+    ("price", "Price", "Rise paid on the same jobs; flows ~100% to gross profit (volume unchanged).", "profit", False),
+    ("volume", "Volume", "More jobs at the same ticket; you keep the margin on the extra work.", "profit", False),
+    ("cogs", "Cost of goods (direct costs)", "Cut material, equipment, PO and direct-labour costs on the cost base.", "profit", False),
+    ("opex", "Operating expenses", "Cut overheads (wages, rent, IT, marketing, insurance). Basis = annual opex, enter below.", "profit", True),
+    ("ar", "Accounts receivable", "Collect from debtors faster; frees cash, not reported profit.", "cash", False),
+    ("inv", "Inventory / work-in-progress", "Reduce stock and WIP; frees cash, not reported profit.", "cash", True),
+    ("ap", "Accounts payable", "Hold supplier payments a touch longer; retains cash, not reported profit.", "cash", True),
+]
+p1_rows = []
+for key, name, desc, typ, needs_basis in LEVERS:
+    basis = f'<input class="p1basisinp" type="number" step="1000" value="0" inputmode="numeric" aria-label="{esc.escape(name)} annual basis $">' if needs_basis else ""
+    p1_rows.append(
+        f'<div class="p1row" data-key="{key}" data-type="{typ}">'
+        f'<div class="p1lab"><span class="p1name">{esc.escape(name)}</span>'
+        f'<span class="p1desc">{esc.escape(desc)}</span></div>'
+        f'<div class="p1ctl">'
+        f'<input class="p1pct" type="number" step="0.1" value="1" inputmode="decimal" aria-label="{esc.escape(name)} % change">'
+        f'<span class="p1pc">%</span></div>'
+        f'<div class="p1ctl basis">{basis}</div>'
+        f'<div class="p1out"><span class="p1sign"></span><span class="p1amt">—</span>'
+        f'<span class="p1basis"></span></div></div>')
+P1_SECTION = f"""
+<section class="card" id="powerofone">
+  <h2>Power of One — 1% calculator</h2>
+  <p class="note">What a 1% improvement in each of the seven financial levers does to gross
+  profit or cash, from live FY26 ServiceTitan data. Pick a business unit, dial each lever's %,
+  and the effect updates instantly. <strong>Profit</strong> levers move gross profit;
+  <strong>Cash</strong> levers move working capital, not reported profit. For Operating
+  expenses, Inventory/WIP and Accounts payable (grey basis box), enter the annual $ basis first
+  — those three are not yet fed from Xero/QB.</p>
+  <label class="p1brandlbl">Business unit:
+    <select id="p1brand"></select></label>
+  <div class="p1grid" id="p1grid">{''.join(p1_rows)}</div>
+  <div class="p1totals">
+    <div class="p1total" id="p1profit"><span class="p1tl">Gross-profit effect (annual, pre-tax)</span><span class="p1tv">—</span></div>
+    <div class="p1total" id="p1cash"><span class="p1tl">Cash / working-capital effect</span><span class="p1tv">—</span></div>
+  </div>
+  <p class="note" style="margin-top:12px">
+    <strong>Basis:</strong> Price, Volume, COGS and Accounts receivable use live FY26 actuals from
+    ServiceTitan (revenue report 295, gross margin from the job P&amp;L report, open invoice
+    balances). The three grey-basis levers need the company P&amp;L and supplier ledger
+    (Xero/QB) and return $0 until you type a basis. Default change is 1%; adjust any lever.
+  </p>
+</section>
+"""
+SECTIONS.insert(len(SECTIONS) - 1, P1_SECTION)  # before caveats
+
+# ---------------------------------------------------------------------------
 # Caveats
 SECTIONS.append(f"""
 <section class="card caveat">
   <h2>Method & caveats</h2>
   <ul>
     <li><strong>Revenue data availability:</strong> ServiceTitan financial data begins late Oct 2024. FY24 revenue is <em>not zero</em> — it is not recorded in the system. A true 3-year (FY24–26) trend requires FY24 actuals from Xero.</li>
-    <li><strong>Cost to serve / gross profit per BU:</strong> flagged as a known gap. Job costing &amp; GL (Journal Entries) reports do exist in ServiceTitan, but their data-call parameter format is not yet resolved (v2).</li>
+    <li><strong>Cost to serve / gross profit:</strong> gross-margin figures in the Power of One calculator come from ServiceTitan's job P&amp;L report (452866873) over FY26 — real costed jobs, not an assumption. Operating-expense, inventory and payables bases are not yet fed from Xero/QB and must be typed in.</li>
     <li><strong>Invoice-based figures</strong> above are GST-inclusive totals and use the live window (Nov 2024+) where business-unit attribution is reliable.</li>
     <li><strong>Member vs non-member</strong> is based on ServiceTitan active Gold/Platinum memberships (1,316 active customers).</li>
     <li><strong>Migration blob:</strong> 3,559 jobs dated 1990-01-01 (created 2024-10-28, default business unit) are an import artefact and excluded from dated views.</li>
+    <li><strong>Power of One method:</strong> the 1% calculator measures what a 1% change in each of seven financial levers does to gross profit or cash, from the Scaling Up 'Power of One' framework. <em>Price</em> rises flow ~100% to gross profit; <em>volume</em> only keeps the gross-margin % of the extra revenue; <em>COGS</em> and <em>operating expenses</em> save directly against their cost bases; <em>receivables</em>, <em>inventory/WIP</em> and <em>payables</em> move cash (working capital), not reported profit. Effects shown are annual, pre-tax, at the lever % you enter, and assume only that one lever moves (the others hold steady).</li>
     <li>Report generated {datetime.datetime.now().strftime('%Y-%m-%d %H:%M')} ACST from ServiceTitan pulls.</li>
   </ul>
 </section>""")
@@ -277,40 +332,161 @@ html = f"""<!DOCTYPE html>
 <html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>aba TRADES — Customer Lifetime Value Financial Report</title>
 <style>
-:root{{--brand-primary:#1D3B6D;--brand-secondary:#2E528E;--brand-slate:#7789A7;--brand-dark-navy:#0B1D3B;
+/*
+ * aba TRADES CLV report — MOBILE-FIRST.
+ * Base rules target small screens; min-width queries add structure.
+ */
+:root{{
+--brand-primary:#1D3B6D;--brand-secondary:#2E528E;--brand-slate:#7789A7;--brand-dark-navy:#0B1D3B;
 --brand-footer-navy:#172F57;--brand-surface:#EBEDF2;--brand-field:#F5F6F8;--brand-border:#D3D4DA;
 --brand-bg:#FFFFFF;--brand-text:#1D3B6D;--font-body:'Futura PT','futura-pt',Helvetica,Arial,sans-serif;}}
 *,*::before,*::after{{box-sizing:border-box;margin:0;padding:0}}
-body{{font-family:var(--font-body);background:var(--brand-bg);color:var(--brand-text);line-height:1.55;}}
-.header{{background:var(--brand-primary);color:#fff;padding:44px 20px;text-align:center}}
-.header .logo{{border-radius:50%;margin-bottom:10px}}
-.header h1{{font-size:1.9rem;font-weight:700}} .header p{{opacity:.85;margin-top:6px;font-size:1rem}}
-.container{{max-width:1180px;margin:0 auto;padding:8px 16px}}
-.card{{background:#fff;border:1px solid var(--brand-border);border-radius:10px;padding:26px 22px;margin:22px 8px}}
-.card h2{{font-size:1.35rem;font-weight:700;color:var(--brand-primary);margin-bottom:8px}}
-.note{{font-size:.9rem;color:#5a6577;margin-bottom:16px}}
-svg{{display:block;max-width:100%;height:auto}}
-.kpi{{display:inline-block;background:var(--brand-field);border:1px solid var(--brand-border);border-radius:10px;padding:14px 18px;margin:8px;vertical-align:top}}
-.kpi-row{{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:14px}}
-.kn{{font-weight:700;font-size:.9rem}} .kv{{font-size:1.35rem;font-weight:700;color:var(--brand-primary)}} .ku{{font-size:.72rem;color:#5a6577}}
-table{{width:100%;border-collapse:collapse;font-size:.92rem}}
-th,td{{padding:9px 12px;border-bottom:1px solid var(--brand-border);text-align:right}}
+html{{-webkit-text-size-adjust:100%;scroll-behavior:smooth}}
+body{{font-family:var(--font-body);background:var(--brand-bg);color:var(--brand-text);line-height:1.55;
+  overflow-x:hidden;-webkit-font-smoothing:antialiased}}
+img{{max-width:100%;height:auto}}
+
+/* Header — compact by default, grows on wide screens */
+.header{{background:var(--brand-primary);color:#fff;padding:26px 14px;text-align:center}}
+.header .logo{{border-radius:50%;margin-bottom:8px;height:56px;width:56px}}
+.header h1{{font-size:1.25rem;font-weight:700;line-height:1.25}}
+.header p{{opacity:.85;margin-top:6px;font-size:.82rem;line-height:1.45}}
+
+.container{{max-width:1180px;margin:0 auto;padding:12px 12px}}
+.card{{background:#fff;border:1px solid var(--brand-border);border-radius:10px;padding:18px 14px;margin:14px 0}}
+.card h2{{font-size:1.08rem;font-weight:700;color:var(--brand-primary);margin-bottom:8px}}
+.note{{font-size:.84rem;color:#5a6577;margin-bottom:14px;line-height:1.5}}
+
+/* KPI — stack full-width on phones */
+.kpi-row{{display:flex;flex-direction:column;gap:10px;margin-bottom:14px}}
+.kpi{{background:var(--brand-field);border:1px solid var(--brand-border);border-radius:10px;padding:14px 16px;width:100%}}
+.kn{{font-weight:700;font-size:.85rem}} .kv{{font-size:1.3rem;font-weight:700;color:var(--brand-primary)}}
+.ku{{font-size:.72rem;color:#5a6577}}
+
+/* Tables — horizontal scroll on phones so columns never crush */
+.tbl-wrap{{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:8px;}}
+.tbl-wrap table{{min-width:620px;margin:0}}
+table{{width:100%;border-collapse:collapse;font-size:.88rem}}
+th,td{{padding:10px 12px;border-bottom:1px solid var(--brand-border);text-align:right;white-space:nowrap}}
 th{{background:var(--brand-surface);text-align:left;color:var(--brand-primary);font-weight:700}}
-th:first-child,td:first-child{{text-align:left}}
+th:first-child,td:first-child{{text-align:left;white-space:normal;min-width:110px}}
 tbody tr:nth-child(even){{background:var(--brand-field)}}
-details{{margin:10px 0;background:var(--brand-field);border:1px solid var(--brand-border);border-radius:8px;padding:10px 14px}}
+
+/* Charts — keep readable width, scroll sideways on phones */
+.chart-scroll{{overflow-x:auto;-webkit-overflow-scrolling:touch;width:100%}}
+.chart-scroll svg{{min-width:640px;max-width:none;height:auto;display:block}}
+svg{{display:block;max-width:100%;height:auto}}
+
+details{{margin:10px 0;background:var(--brand-field);border:1px solid var(--brand-border);border-radius:8px;padding:10px 12px}}
 summary{{font-weight:700;color:var(--brand-primary);cursor:pointer}}
-.caveat{{border-left:6px solid var(--brand-notice, #1E85BE)}} .caveat ul{{margin-left:20px}}
+.caveat{{border-left:6px solid var(--brand-notice, #1E85BE)}} .caveat ul{{margin-left:18px}}
 .caveat li{{margin-bottom:8px}}
-.footer{{background:var(--brand-primary);color:#fff;padding:22px 20px;text-align:center;font-size:.85rem}}
-svg{{max-width:100%}}
+.footer{{background:var(--brand-primary);color:#fff;padding:20px 14px;text-align:center;font-size:.78rem;line-height:1.45}}
+
+/* Power of One calculator */
+.p1brandlbl{{font-weight:700;color:var(--brand-primary);display:block;margin-bottom:10px}}
+#p1brand{{font:inherit;padding:8px 10px;border:1px solid var(--brand-border);border-radius:8px;
+  background:#fff;color:var(--brand-text);width:100%;max-width:400px}}
+.p1grid{{display:grid;grid-template-columns:1fr;gap:10px}}
+.p1row{{display:flex;flex-wrap:wrap;gap:10px;align-items:center;background:var(--brand-field);
+  border:1px solid var(--brand-border);border-radius:9px;padding:12px}}
+.p1lab{{flex:1 1 100%}}
+.p1name{{display:block;font-weight:700;color:var(--brand-primary);font-size:.95rem}}
+.p1desc{{display:block;font-size:.78rem;color:#5a6577;margin-top:2px}}
+.p1ctl{{display:flex;align-items:center;gap:4px;flex:0 0 auto}}
+.p1pct{{width:64px;font:inherit;font-weight:700;text-align:right;padding:6px 8px;
+  border:1px solid var(--brand-border);border-radius:8px;background:#fff;color:var(--brand-text)}}
+.p1pc{{color:#5a6577;font-weight:700}}
+.p1basisinp{{width:132px;font:inherit;padding:6px 8px;border:1px dashed var(--brand-border);
+  border-radius:8px;background:#eef0f4;color:var(--brand-text);text-align:right}}
+.p1out{{flex:1 1 auto;min-width:128px;text-align:right}}
+.p1sign{{font-weight:700}}
+.p1amt{{font-weight:700;color:var(--brand-primary)}}
+.p1basis{{display:block;font-size:.7rem;color:#5a6577}}
+.p1row.good .p1sign{{color:#1f7a36}}
+.p1row.bad .p1sign{{color:#b3392f}}
+.p1totals{{display:flex;flex-direction:column;gap:10px;margin-top:14px}}
+.p1total{{width:100%;background:var(--brand-primary);color:#fff;border-radius:9px;padding:14px 16px}}
+.p1tl{{display:block;font-size:.8rem;opacity:.85}}
+.p1tv{{display:block;font-size:1.5rem;font-weight:700}}
+
+/* --- Scale up: tablets --- */
+@media(min-width:600px){{
+  .kpi-row{{flex-direction:row;flex-wrap:wrap}}
+  .kpi{{flex:1 1 210px;width:auto;min-width:170px}}
+  .p1total{{flex:1 1 auto;min-width:200px;width:auto}}
+}}
+
+/* --- Desktop --- */
+@media(min-width:768px){{
+  .header{{padding:44px 20px}}
+  .header h1{{font-size:1.9rem}}
+  .header p{{font-size:1rem}}
+  .container{{padding:8px 16px}}
+  .card{{padding:26px 22px;margin:22px 8px}}
+  .card h2{{font-size:1.35rem}}
+  .note{{font-size:.9rem}}
+  .p1grid{{grid-template-columns:1fr 1fr}}
+  .p1row{{flex-wrap:nowrap;justify-content:space-between}}
+  .p1lab{{flex:1 1 auto}}
+  .p1totals{{flex-direction:row}}
+  .tbl-wrap{{overflow-x:visible}}
+  .tbl-wrap table{{min-width:0}}
+  .chart-scroll{{overflow-x:visible}}
+  .chart-scroll svg{{min-width:0;max-width:100%}}
+}}
 </style></head><body>
 <div class="header">
-  <img src="{LOGO_URI}" alt="aba TRADES" class="logo" height="64">
+  <img src="{LOGO_URI}" alt="aba TRADES" class="logo">
   <h1>Customer Lifetime Value — Financial Report</h1>
   <p>aba TRADES · Revenue, customers &amp; order patterns · ServiceTitan data (Oct 2024 → present)</p></div>
 <div class="container">{''.join(SECTIONS)}</div>
 <div class="footer">aba Trades · Financial report for visual review · Generated {datetime.datetime.now().strftime('%Y-%m-%d %H:%M')} ACST</div>
+<script>
+(function(){{
+var BASELINE = {P1_BASELINE_JSON} || {{}};
+var order = ["Plumbing/Gas","Air Con","AEP","Electrical","Roofing","Renovations","Trades"];
+function money(v){{ var s=v<0?"-$":"$"; v=Math.abs(v); return s+v.toLocaleString("en-US",{{minimumFractionDigits:0,maximumFractionDigits:0}}); }}
+function compBase(key){{
+  if(key==="_all"){{ var c=BASELINE._company||{{}}; return {{rev:c.revenue||0,gm:c.gm_pct||0,ar:c.ar||0,jobs:c.jobs||0}}; }}
+  var b=BASELINE[key]||{{}}; return {{rev:b.revenue||0,gm:b.gm_pct||0,ar:b.ar||0,jobs:b.jobs||0}};
+}}
+var sel=document.getElementById("p1brand");
+var o1=document.createElement("option");o1.value="_all";o1.textContent="All business units";sel.appendChild(o1);
+order.forEach(function(b){{var o=document.createElement("option");o.value=b;o.textContent=b;sel.appendChild(o);}});
+function compute(){{
+  var key=sel.value; var B=compBase(key);
+  var rev=B.rev, gm=B.gm, gms=gm/100, ar=B.ar;
+  var profit={{price:0,volume:0,cogs:0,opex:0,itemized:{{}}}}, cash={{ar:0,inv:0,ap:0}};
+  var totalsP=0, totalsC=0;
+  document.querySelectorAll(".p1row").forEach(function(row){{
+    var k=row.getAttribute("data-key"), typ=row.getAttribute("data-type");
+    var pct=parseFloat(row.querySelector(".p1pct").value)||0;
+    var basisInp=row.querySelector(".p1basisinp");
+    var basisDollar=basisInp ? (parseFloat(basisInp.value)||0) : 0;
+    var amt=0, basis="";
+    if(k==="price"){{amt=rev*(pct/100); basis="on revenue "+money(rev);}}
+    else if(k==="volume"){{amt=rev*(pct/100)*gms; basis=money(rev)+" rev x "+gm.toFixed(0)+"% GM";}}
+    else if(k==="cogs"){{var cogs=rev*(1-gms); amt=cogs*(pct/100); basis="on COGS "+money(cogs);}}
+    else if(k==="opex"){{amt=basisDollar*(pct/100); basis="annual opex "+money(basisDollar); if(!basisDollar)basis="enter annual opex basis";}}
+    else if(k==="ar"){{amt=ar*(pct/100); basis="on open AR "+money(ar)+" (cash)";}}
+    else if(k==="inv"){{amt=basisDollar*(pct/100); basis="annual inv/WIP "+money(basisDollar); if(!basisDollar)basis="enter inventory basis";}}
+    else if(k==="ap"){{amt=basisDollar*(pct/100); basis="annual payables "+money(basisDollar); if(!basisDollar)basis="enter payables basis";}}
+    row.querySelector(".p1sign").textContent=(amt>=0?"+":"-");
+    row.querySelector(".p1amt").textContent=money(amt);
+    row.querySelector(".p1basis").textContent=basis;
+    row.querySelector(".p1basis").title=basis;
+    row.classList.remove("good","bad"); row.classList.add(amt>=0?"good":"bad");
+    if(typ==="profit")totalsP+=amt; else totalsC+=amt;
+  }});
+  document.getElementById("p1profit").querySelector(".p1tv").textContent=(totalsP>=0?"+":"-")+money(totalsP);
+  document.getElementById("p1cash").querySelector(".p1tv").textContent=(totalsC>=0?"+":"-")+money(totalsC);
+}}
+sel.addEventListener("change",compute);
+document.querySelectorAll(".p1pct, .p1basisinp").forEach(function(i){{i.addEventListener("input",compute);}});
+compute();
+}})();
+</script>
 </body></html>"""
 
 out = os.path.join(D, "index.html")
