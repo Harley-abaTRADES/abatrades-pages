@@ -108,8 +108,8 @@ tr:nth-child(even) td { background: var(--brand-field); }
     <div class="m"><strong>SOP</strong>001</div>
     <div class="m"><strong>Owner</strong>Harley (AI operations)</div>
     <div class="m"><strong>Applies to</strong>All business units</div>
-    <div class="m"><strong>Version</strong>1.1</div>
-    <div class="m"><strong>Last reviewed</strong>16 Sep 2026</div>
+    <div class="m"><strong>Version</strong>1.2</div>
+    <div class="m"><strong>Last reviewed</strong>22 Sep 2026</div>
     <div class="m"><strong>Status</strong>Living / in use</div>
   </div>
 
@@ -126,6 +126,7 @@ tr:nth-child(even) td { background: var(--brand-field); }
     <ul>
       <li>Membership audience definition and export (name, phone, email)</li>
       <li>Segmenting members by offer (job type) and send-day A/B split</li>
+      <li>Filtering landline numbers out of the SMS send lists and flagging members whose only number is a landline for outbound call follow-up</li>
       <li>Validating the membership count two independent ways</li>
       <li>Building the Excel workbook (one sheet per send CSV) and sharing it</li>
       <li>Drafting and scheduling the campaign in Podium (copy, credit, opt-out and sender ID rules)</li>
@@ -251,6 +252,7 @@ tr:nth-child(even) td { background: var(--brand-field); }
     <div class="step"><span class="num">1b.</span> Assign each member to <strong>one offer</strong> from ServiceTitan job history (<code>cat()</code>): air-con / drain / hot-water. Members with no matching trade or no valid phone are held out, never guessed into a segment.</div>
     <div class="step"><span class="num">1c.</span> Split each offer <strong>50/50 across send days</strong> (e.g. Wed vs Sun) for a day-of-week A/B. Core rule: every member appears in exactly one CSV = one message, never two offers or two days.</div>
     <div class="callout notice"><div class="title">Recent-install filter (air-con)</div>Members who had an air-con install in the last 6 months are poor service-offer targets (new unit, likely under warranty). Exclude them from the air-con list and redistribute them 50/50 into the other offers so no one is lost from the campaign.</div>
+    <div class="step"><span class="num">1d.</span> Filter out landlines before the CSV export. Australian mobiles start with <code>04</code> (or <code>+61 4</code>); landlines use the <code>02 / 03 / 07 / 08</code> area prefixes. Any record whose send number is not a mobile is excluded from the SMS lists so it does not consume a credit or bounce. Keep those records aside: members whose <strong>only</strong> number on file is a landline go on a separate report (name, number, membership type) for the CSR team to follow up by outbound call. The normal Podium opt-out check still runs before any blast.</div>
 
     <h3>Step 2  -  Build and share the workbook</h3>
     <div class="step"><span class="num">2a.</span> Build one Excel workbook with a sheet per send CSV (build_workbook.py). Freeze the header row and add an auto-filter on each sheet.</div>
@@ -292,6 +294,7 @@ tr:nth-child(even) td { background: var(--brand-field); }
       <li><strong>SMS sender number:</strong> all SMS blasts appear to send from the <strong>ABA Plumbing and Gas</strong> phone number to the recipient's location. Confirm the sender line when reviewing a test send. (2026-09-15)</li>
       <li><strong>CustomerPhone can hold multiple numbers</strong> comma-separated (e.g. "(040) 369-0031, (044) 738-3839"). Naive digit-stripping concatenates them into garbage. <code>dice_memberships.fmt_phone()</code> splits on the first separator and keeps one number, then normalises AU numbers missing their leading zero. Always re-run after a fresh pull. (2026-09-16)</li>
       <li><strong>Recent air-con installs must be filtered out</strong> of an air-con service campaign: someone with an install in the last 6 months is a poor service target. Redistribute them into the other offers rather than dropping them. (2026-09-16)</li>
+      <li><strong>Landlines must be filtered before the SMS export.</strong> AU mobile numbers start with <code>04</code> (or <code>+61 4</code>); landlines use the <code>02/03/07/08</code> area prefixes. Exclude non-mobile records from the SMS lists so they don't consume credits, and route members whose <strong>only</strong> number is a landline into a CSR call-follow-up report (name, number, membership type). Opt-out check still runs first. (2026-09-22, landline filter requested by Anastasia, CSR)</li>
       <li><strong>Emoji + long greeting push credit count up.</strong> A single emoji halves the per-credit limit to 70 chars; a warm first-name greeting can take a message to 4-5 credits. Audit the live count in Podium's composer, it is the authority, and prefer clarity over credit savings (Josh's call). (2026-09-16)</li>
       <li><strong>Membership slug is <code>memberships/v2</code></strong>  -  the singular <code>membership/v2</code> returns 404. (2026-09-15)</li>
       <li><strong>Contacts are per-customer.</strong> The tenant-level contact list is forbidden (403); phones pull one customer at a time. The Active Memberships report avoids this bypass by returning phone/email inline. (2026-09-15)</li>
@@ -316,7 +319,7 @@ tr:nth-child(even) td { background: var(--brand-field); }
 </div>
 
 <footer class="footer">
-  <strong>aba TRADES</strong> &nbsp;&middot;&nbsp; Standard Operating Procedure 001 &nbsp;&middot;&nbsp; v1.1
+  <strong>aba TRADES</strong> &nbsp;&middot;&nbsp; Standard Operating Procedure 001 &nbsp;&middot;&nbsp; v1.2
   <br><span style="opacity:0.7">Harley is customer support. Contributions and corrections: <a href="mailto:harley@abatrades.com.au" style="color:#fff">harley@abatrades.com.au</a>
 </footer>
 
