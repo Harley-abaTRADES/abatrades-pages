@@ -1094,8 +1094,17 @@ window.addEventListener('scroll',()=>{
 // reveal
 const io=new IntersectionObserver((entries)=>{
   entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}});
-},{threshold:.18});
+},{threshold:.05,rootMargin:'0px 0px -5% 0px'});
 document.querySelectorAll('.reveal,.tl-item,.pipe-node,.pipe-arrow').forEach(el=>io.observe(el));
+// safety: anything still hidden 1.2s after entering the viewport region gets shown
+setTimeout(()=>{document.querySelectorAll('.tl-item:not(.visible)').forEach(el=>{
+  const r=el.getBoundingClientRect();
+  if(r.top<innerHeight&&r.bottom>0)el.classList.add('visible');
+});},1200);
+window.addEventListener('scroll',()=>{document.querySelectorAll('.tl-item:not(.visible)').forEach(el=>{
+  const r=el.getBoundingClientRect();
+  if(r.top<innerHeight*0.92&&r.bottom>0)el.classList.add('visible');
+});},{passive:true});
 
 // count-up
 const cio=new IntersectionObserver((entries)=>{
