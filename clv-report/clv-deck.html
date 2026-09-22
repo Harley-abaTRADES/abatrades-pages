@@ -16,33 +16,31 @@ section.dark h2{color:#fff}
 section.light{background:var(--brand-bg)}
 section.light h2{color:var(--brand-primary)}
 section.alt{background:var(--brand-surface)}
-.wrap{max-width:720px;width:100%}
-h2{font-size:2rem;font-weight:700;line-height:1.2;margin-bottom:24px}
-h3{font-size:1.15rem;font-weight:700;margin-bottom:8px;color:var(--brand-primary)}
+.wrap{max-width:760px;width:100%}
+h2{font-size:2rem;font-weight:700;line-height:1.2;margin-bottom:22px}
+h3{font-size:1.05rem;font-weight:700;margin-bottom:6px;color:var(--brand-primary)}
 p{font-size:1.05rem;margin-bottom:16px;opacity:0.9}
 ul{list-style:none;padding:0}
 li{position:relative;padding:6px 0 6px 24px;font-size:1rem;line-height:1.45}
 li::before{content:'';position:absolute;left:0;top:13px;width:6px;height:6px;border-radius:50%;background:var(--brand-primary)}
 .dark li::before{background:#fff}
 .dark p,.dark li{opacity:0.9}
-.stat{font-size:3.2rem;font-weight:700;line-height:1.1;margin-bottom:4px}
-.stat-label{font-size:.95rem;opacity:0.7;text-transform:uppercase;letter-spacing:1px}
-.stat-row{display:flex;flex-wrap:wrap;gap:28px;margin-bottom:20px}
-.stat-block{flex:1 1 180px;min-width:150px}
-.gap{height:8px}
-small{font-size:.8rem;opacity:0.7}
-.cost-row{display:flex;flex-wrap:wrap;gap:16px}
-.cost-item{background:#fff;border:1px solid var(--brand-border);border-radius:9px;padding:14px 16px;flex:1 1 180px;min-width:150px}
-.cost-item .amt{font-weight:700;font-size:1.3rem;color:var(--brand-primary)}
-.cost-item .lbl{font-size:.82rem;color:#5a6577}
-.quote{border-left:4px solid var(--brand-primary);padding:12px 16px;margin:16px 0;font-size:.95rem;font-style:italic;background:rgba(29,59,109,0.04);border-radius:0 8px 8px 0}
-.cta{display:inline-block;background:var(--brand-primary);color:#fff;padding:14px 26px;border-radius:100px;text-decoration:none;font-weight:700;font-size:1rem;border:1px solid var(--brand-primary);margin-top:12px;transition:all .2s}
-.cta:hover{background:var(--brand-secondary)}
-.navbar{position:fixed;bottom:20px;right:20px;z-index:10;display:flex;flex-direction:column;gap:8px}
-.navdot{width:10px;height:10px;border-radius:50%;background:var(--brand-primary);opacity:0.3;cursor:pointer;transition:opacity .2s}
-.navdot.active{opacity:1}
-.dark .navdot{background:#fff}
-@media(max-width:600px){h2{font-size:1.6rem}.stat{font-size:2.4rem}p,li{font-size:.95rem}}
+.stat{font-size:3.2rem;font-weight:700;line-height:1.1;margin-bottom:2px}
+.stat-label{font-size:.9rem;opacity:0.7;text-transform:uppercase;letter-spacing:1px}
+.stat-row{display:flex;flex-wrap:wrap;gap:24px;margin-bottom:18px}
+.stat-block{flex:1 1 200px;min-width:160px}
+.vs{font-size:.85rem;opacity:0.5;margin-bottom:6px}
+small{font-size:.78rem;opacity:0.65}
+.cost-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:10px}
+.cost-item{background:rgba(255,255,255,0.12);border-radius:9px;padding:14px 16px;flex:1 1 170px;min-width:140px}
+.dark .cost-item .lbl,.dark .cost-item .amt{color:#fff}
+.cost-item .amt{font-weight:700;font-size:1.25rem}
+.cost-item .lbl{font-size:.8rem;opacity:0.75}
+.quote{border-left:4px solid var(--brand-primary);padding:12px 16px;margin:16px 0;font-size:.95rem;font-style:italic;background:rgba(29,59,109,0.04);border-radius:0 8px 8px 0;opacity:0.85}
+.disclaimer{margin-top:22px;padding-top:14px;border-top:1px solid var(--brand-border);font-size:.78rem;opacity:0.6;line-height:1.4}
+a{color:var(--brand-primary)}
+.dark a{color:#fff}
+@media(max-width:600px){h2{font-size:1.55rem}.stat{font-size:2.2rem}p,li{font-size:.93rem}}
 </style>
 </head>
 <body>
@@ -51,8 +49,8 @@ small{font-size:.8rem;opacity:0.7}
 <section class="dark" id="s1">
 <div class="wrap" style="text-align:center">
 <h2 style="font-size:2.4rem">Customer Lifetime Value</h2>
-<p style="font-size:1.2rem;opacity:0.9">Member re-engagement initiative</p>
-<p style="opacity:0.6">aba TRADES · September 2026</p>
+<p style="font-size:1.15rem;opacity:0.9">Member re-engagement initiative</p>
+<p style="opacity:0.5;margin-top:4px">aba TRADES · September 2026</p>
 </div>
 </section>
 
@@ -61,10 +59,10 @@ small{font-size:.8rem;opacity:0.7}
 <div class="wrap">
 <h2>What we found</h2>
 <div class="stat-row">
-<div class="stat-block"><div class="stat">13%</div><div class="stat-label">of customers</div><p>but 48% of revenue</p></div>
-<div class="stat-block"><div class="stat">2&times;</div><div class="stat-label">member AOV</div><p>$5,699 vs $2,892 non-member</p></div>
+<div class="stat-block"><div class="stat">13%</div><div class="stat-label">of customers</div><p>Members are 13% of customers but generate <strong>48% of revenue</strong></p></div>
+<div class="stat-block"><div class="stat">2×</div><div class="stat-label">the average order</div><p>Member AOV: $5,699 vs non-member $2,892</p></div>
 </div>
-<p>Members are our highest-value customers by every measure — revenue, ticket size, and return rate. But the headline hides a subtlety: investigation + dispatch jobs inflate the 'orders' count 3.9&times;. The honest picture, using fresh engagements only, is more sobering.</p>
+<p>Members pay more per visit. They book more reliably. By every revenue measure they are our highest-value customers. The question is how often they genuinely come back for something new.</p>
 </div>
 </section>
 
@@ -72,14 +70,14 @@ small{font-size:.8rem;opacity:0.7}
 <section class="alt" id="s3">
 <div class="wrap">
 <h2>Re-engagement reality</h2>
+<div class="vs">Fresh engagements over a 6-month window</div>
 <div class="stat-row">
-<div class="stat-block"><div class="stat">4.2%</div><div class="stat-label">6-month rate</div><p>1 in 24 members starts a new job per half-year</p></div>
-<div class="stat-block"><div class="stat">~200</div><div class="stat-label">days median gap</div><p>between genuine new engagements</p></div>
+<div class="stat-block"><div class="stat">4.2%</div><div class="stat-label">Members</div><p>~1 in 24 members start a genuinely new job per half-year</p></div>
+<div class="stat-block"><div class="stat">7.5%</div><div class="stat-label">Non-members</div><p>Non-members initiate fresh jobs more often than members do</p></div>
 </div>
-<div class="stat-row">
-<div class="stat-block"><div class="stat">8</div><div class="stat-label">true repeats</div><p>members with 2+ fresh jobs in 22 months — out of 1,316</p></div>
-</div>
-<p><strong>Members are our most valuable customers — and they barely come back on their own.</strong></p>
+<p>Across the full 22-month window since Nov 2024, only <strong>8 members</strong> out of 1,316 had a second fresh engagement. The median gap between a member's new engagements is ~200 days.</p>
+<p>On a fresh-engagement basis, membership does not create a re-engagement advantage. Members are worth twice as much — and they don't come back any faster.</p>
+<div class="disclaimer"><strong>What counts as a 'new job' here:</strong> a job is a fresh engagement — a genuinely new call-out — only when it is not a follow-on visit from a prior quote, and not a recall child of an earlier job. This removes the investigation-then-dispatch double-count that inflates raw job counts. The CLV report uses the same definition throughout.</div>
 </div>
 </section>
 
@@ -87,30 +85,31 @@ small{font-size:.8rem;opacity:0.7}
 <section class="light" id="s4">
 <div class="wrap">
 <h2>The opportunity</h2>
-<p>Members are worth roughly double the revenue of non-members, yet they re-engage at just 4.2% over six months. There is no natural cadence pulling them back to us.</p>
-<p>A light, timely email touch — post-purchase, plain text, no hard sell — could pull that forward. Even a small directional lift on a cohort spending $9.7 million a year is worth testing.</p>
-<p>If we can move the needle at all, the path from email to SMS to multi-step nurture is clear. If not, we know before over-investing.</p>
+<p>Members are the business's most valuable customers. They pay more. They return more often on a billing basis. But on the metric that matters — <em>when will they genuinely need us next?</em> — they don't re-engage any faster than non-members.</p>
+<p>That gap is addressable. A light, timely email touch post-purchase could be the difference between a member booking at month 3 vs month 7. Even a small directional lift on a cohort spending $9.7 million a year is worth testing.</p>
+<p>If the email works at all, the path from email to SMS to evergreen nurture flows is clear. If it doesn't — we know before over-investing.</p>
 </div>
 </section>
 
-<!-- 5. THIS WEEK -->
+<!-- 5. THE MVP -->
 <section class="dark" id="s5">
 <div class="wrap">
-<h2 style="font-size:1.8rem">This week</h2>
+<h2 style="font-size:1.8rem">The MVP</h2>
 <ul>
 <li>Plain-text post-purchase email to <strong>1,283 members</strong> with valid email</li>
-<li>50/50 A/B split — flow gets email, control held out</li>
+<li>50/50 A/B split — flow gets email, control held out (attribution, not significance)</li>
 <li>Built on Brevo (free tier) for delivery + unsubscribe handling</li>
-<li>Recipient list from ServiceTitan, consent-gated, Humm excluded</li>
+<li>Recipient list from ServiceTitan, consent-gated</li>
 <li>Measured: booking within 90 days vs control (directional)</li>
 </ul>
-<div class="gap"></div>
-<h3>Costs</h3>
+<div style="margin-top:26px">
+<h3 style="color:#fff;opacity:0.7">Costs</h3>
 <div class="cost-row">
-<div class="cost-item"><div class="amt">$0</div><div class="lbl">Brevo — free tier covers the cohort comfortably</div></div>
-<div class="cost-item"><div class="amt">~$30/mo</div><div class="lbl">n8n — self-hosted workflow automation</div></div>
-<div class="cost-item"><div class="amt">$0</div><div class="lbl">ServiceTitan — already provisioned</div></div>
-<div class="cost-item"><div class="amt"><$100</div><div class="lbl">Total MVP trial cost</div></div>
+<div class="cost-item"><div class="amt">Free</div><div class="lbl">Brevo — covers the cohort comfortably</div></div>
+<div class="cost-item"><div class="amt">~USD 30/mo</div><div class="lbl">n8n — self-hosted workflow automation</div></div>
+<div class="cost-item"><div class="amt">Provisioned</div><div class="lbl">ServiceTitan API — no incremental cost</div></div>
+</div>
+<p style="opacity:0.65;margin-top:10px;font-size:.85rem">Total MVP trial cost: under USD 100</p>
 </div>
 </div>
 </section>
@@ -119,9 +118,10 @@ small{font-size:.8rem;opacity:0.7}
 <section class="alt" id="s6">
 <div class="wrap">
 <h2>How it works</h2>
-<p>One email. Plain text. Post-purchase timing. No upsell, no discount code, no heavy design — just a reminder that they're a member.</p>
-<div class="quote">"Hi {{first_name}}, thanks for choosing aba TRADES for your recent {{service_type}} job. As a Gold member, you get priority service, discounted rates, and peace of mind on every call-out. When you next need us — call or book online and we'll be there. — aba TRADES"</div>
-<p>The email's job is simple: <strong>be the reason they think of us first.</strong> Open and click-through give us a leading indicator in days; booking rate within 90 days tells us whether it worked.</p>
+<p>One email. Plain text. Sent after a member's qualifying job completes — timed to land when the memory of the service is fresh but before the next need arises.</p>
+<p>The email's job is simple: <strong>be the reason they think of us first</strong> next time something breaks. No upsell. No discount. Just a reminder that they're a member and we're here.</p>
+<div class="quote"><em>Copy and flow design in progress — Josh is working on this.</em></div>
+<p>Open and click-through give us a leading indicator in days. Fresh bookings within 90 days — compared to the held-out control group — tell us whether it worked.</p>
 </div>
 </section>
 
@@ -129,21 +129,21 @@ small{font-size:.8rem;opacity:0.7}
 <section class="light" id="s7">
 <div class="wrap">
 <h2>What we'll learn</h2>
-<p>This MVP isn't a revenue commitment — it's <strong>validated learning</strong> on the smallest possible test.</p>
+<p>This MVP isn't a revenue commitment. It's <strong>validated learning</strong> on the smallest possible test.</p>
 <div class="stat-row">
-<div class="stat-block"><div class="stat">&#x2197;</div><div class="stat-label">if it moves</div><p>Scale to SMS, multi-step nurture, service-type targeting, evergreen flows</p></div>
-<div class="stat-block"><div class="stat">&#x2192;</div><div class="stat-label">if it doesn't</div><p>We know before over-investing. The infrastructure — Brevo, n8n, A/B rig — is reusable for the next test</p></div>
+<div class="stat-block"><div class="stat" style="font-size:2.4rem;">If it moves</div><p>Scale to SMS, multi-step nurture flows, service-type targeting, and evergreen sequences — with confidence the channel works</p></div>
+<div class="stat-block"><div class="stat" style="font-size:2.4rem;">If it doesn't</div><p>We know before over-investing. The infrastructure — Brevo, n8n, A/B rig — is built and reusable</p></div>
 </div>
-<p>Either way: we'll have a clean baseline, a directional read, and the plumbing built for whatever comes next.</p>
+<p style="margin-top:12px">Either way: a clean baseline, a directional read, and the plumbing in place for whatever comes next.</p>
 </div>
 </section>
 
-<!-- 8. CLOSING -->
+<!-- 8. THANK YOU -->
 <section class="dark" id="s8">
 <div class="wrap" style="text-align:center">
 <h2 style="font-size:2rem">Thank you</h2>
-<p style="font-size:1.1rem">Customer Lifetime Value · Member re-engagement initiative</p>
-<p style="opacity:0.5;margin-top:24px"><a href="clv-report/" style="color:#fff;text-decoration:underline">View the full CLV report →</a></p>
+<p style="font-size:1.05rem">Customer Lifetime Value · Member re-engagement initiative</p>
+<p style="opacity:0.45;margin-top:24px"><a href="clv-report/" style="color:#fff">View the full CLV report →</a></p>
 </div>
 </section>
 
