@@ -128,7 +128,7 @@ a{color:var(--brand-secondary)}.dark a{color:#fff}
 @keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 
 /* trade chips */
-.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:34px;padding-top:22px;border-top:1px solid var(--brand-border)}
 .chip{font-size:.78rem;font-weight:700;padding:6px 14px;border-radius:100px;border:1px solid var(--brand-border);background:#fff;color:var(--brand-text)}
 .chip i{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:7px;vertical-align:1px}
 .c-plumb i{background:var(--acc-plumbing)}.c-air i{background:var(--acc-aircon)}.c-elec i{background:var(--acc-electrical)}.c-roof i{background:var(--acc-roofing)}.c-reno i{background:var(--acc-reno)}
@@ -1147,11 +1147,13 @@ if(steps.length){
   steps.forEach(s=>sio.observe(s));
 }
 
-// expandable timeline
+// expandable timeline (accordion: one open at a time)
 document.querySelectorAll('.tl-item.interactive').forEach(item=>{
   item.addEventListener('click',e=>{
     if(e.target.closest('.branch-picker')||e.target.closest('.tone-toggle'))return;
-    item.classList.toggle('open');
+    const wasOpen=item.classList.contains('open');
+    document.querySelectorAll('.tl-item.open').forEach(o=>o.classList.remove('open'));
+    if(!wasOpen)item.classList.add('open');
   });
 });
 
