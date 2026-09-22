@@ -150,6 +150,15 @@ a{color:var(--brand-secondary)}.dark a{color:#fff}
 .pipe-arrow{align-self:center;font-size:1.7rem;color:var(--brand-secondary);padding:0 12px;opacity:0;transition:opacity .7s ease .3s}
 .pipe-arrow.visible{opacity:1}
 
+/* metric tiles */
+.metric-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px;margin-top:22px}
+.metric-tile{background:#fff;border:1px solid var(--brand-border);border-radius:14px;padding:24px 22px;box-shadow:0 10px 30px rgba(11,29,59,.07);transition:transform .3s ease,box-shadow .3s ease}
+.metric-tile:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(11,29,59,.12)}
+.mt-icon{font-size:1.9rem;margin-bottom:10px}
+.mt-role{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:1.4px;color:var(--brand-secondary);margin-bottom:6px}
+.mt-name{font-size:1.08rem;font-weight:700;color:var(--brand-primary);margin-bottom:8px;line-height:1.3}
+.metric-tile p{font-size:.88rem;opacity:.8;margin-bottom:0;line-height:1.55}
+
 /* side nav */
 .deck-nav{position:fixed;right:18px;top:50%;transform:translateY(-50%);z-index:50;display:flex;flex-direction:column;gap:9px}
 .deck-nav a{width:10px;height:10px;border-radius:50%;background:rgba(29,59,109,.25);display:block;transition:background .3s,transform .3s}
@@ -313,17 +322,36 @@ a{color:var(--brand-secondary)}.dark a{color:#fff}
 
 <!-- 5b. MEASURES OF SUCCESS -->
 <section class="alt" id="s5b">
-  <div class="wrap">
+  <div class="wrap wide">
     <div class="rule reveal"></div>
     <h2 class="reveal">How we'll know it worked</h2>
-    <p class="reveal d1">The pass/fail is directional, not statistical — the cohort is too small for significance. These are the numbers that decide what happens next:</p>
-    <ul>
-      <li class="reveal d1"><strong>Primary: fresh bookings in 90 days.</strong> Flow cohort books more genuinely-new jobs than the held-out control. That's the go/no-go for turning the full sequence on permanently.</li>
-      <li class="reveal d2"><strong>Leading indicator: opens and clicks.</strong> Read within days of each send — tells us the message is landing long before the 90-day booking curve resolves.</li>
-      <li class="reveal d3"><strong>Hygiene: unsubscribes and complaints.</strong> If opt-outs spike, the cadence or the copy is wrong — we fix that before scaling, no exceptions.</li>
-      <li class="reveal d4"><strong>Trailing: re-engagement rate over time.</strong> The 4.2% six-month baseline is the number this initiative exists to move. Watched open-ended, never the pass/fail gate.</li>
-    </ul>
-    <p class="pull reveal d4" style="margin-top:20px">One email proves the channel. The sequence earns its keep after that.</p>
+    <p class="reveal d1">The pass/fail is directional, not statistical — the cohort is too small for significance. Four numbers decide what happens next:</p>
+    <div class="metric-grid">
+      <div class="metric-tile reveal d1">
+        <div class="mt-icon">🎯</div>
+        <div class="mt-role">Primary</div>
+        <div class="mt-name">Fresh bookings in 90 days</div>
+        <p>Flow cohort books more genuinely-new jobs than the held-out control. That's the go/no-go for turning the full sequence on permanently.</p>
+      </div>
+      <div class="metric-tile reveal d2">
+        <div class="mt-icon">⚡</div>
+        <div class="mt-role">Leading indicator</div>
+        <div class="mt-name">Opens and clicks</div>
+        <p>Read within days of each send — tells us the message is landing long before the 90-day booking curve resolves.</p>
+      </div>
+      <div class="metric-tile reveal d3">
+        <div class="mt-icon">🧹</div>
+        <div class="mt-role">Hygiene</div>
+        <div class="mt-name">Unsubscribes and complaints</div>
+        <p>If opt-outs spike, the cadence or the copy is wrong — we fix that before scaling, no exceptions.</p>
+      </div>
+      <div class="metric-tile reveal d4">
+        <div class="mt-icon">📈</div>
+        <div class="mt-role">Trailing</div>
+        <div class="mt-name">Re-engagement rate</div>
+        <p>The 4.2% six-month baseline is the number this initiative exists to move. Watched open-ended, never the pass/fail gate.</p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -550,20 +578,317 @@ Talk soon,
       </div>
 
       <!-- DAY 21 -->
-      <div class="tl-item">
+      <div class="tl-item interactive" data-tl>
         <span class="tl-day">Day 21</span>
         <h4>Second cross-trade value</h4>
-        <p>A second trade, a second useful guide — e.g. "Top 5 reasons your roof is leaking". Builds the mental model: one membership covers the whole home.</p>
+        <p>A second trade, a second useful guide — builds the mental model: one membership covers the whole home.</p>
         <span class="tl-tag tag-value">Value first</span><span class="tl-tag tag-welcome">Branched</span>
-        <p class="fine" style="margin-top:6px;opacity:.7">Same structure as Day 7 — new trade, new guide, same member-difference close. Full branch copy lives on the flow card.</p>
+        <span class="tl-expand-hint">Read the emails</span>
+        <div class="tl-body">
+          <div class="branch-picker" data-branch-picker>
+            <button class="active" data-branch="aircon">Bought Aircon</button>
+            <button data-branch="plumbing">Bought Plumbing</button>
+            <button data-branch="electrical">Bought Electrical</button>
+            <button data-branch="roofing">Bought Roofing</button>
+          </div>
+          <div class="branch-view active" data-view="aircon"><div class="mini-email">
+            <div class="m-head">
+              <div><div class="m-subject" data-subject-plain="Is your roof trying to tell you something?" data-subject-fun="The 5 leak warnings your roof gives first 🏠">Is your roof trying to tell you something?</div><div class="m-meta">Day 21 · Aircon branch · From: Harley @ aba TRADES</div></div>
+              <div class="tone-toggle"><button class="active" data-tone="plain">Plain</button><button data-tone="fun">Spark ✨</button></div>
+            </div>
+            <div class="email-variant active" data-variant="plain"><div class="m-body">Hi [First Name],
+
+A leaking roof rarely announces itself politely. It shows up as a stain on the ceiling, a drip during a storm, or a musty smell that won't go away.
+
+We put together a guide on the top 5 reasons roofs leak and what Adelaide homeowners can actually do about it. Worth a read even if your roof looks fine from the ground.
+
+<a href="https://abaroofing.com.au/roof/top-5-reasons-your-roof-is-leaking/">Read the 5 leak warnings</a>
+
+As a member, you don't need to climb a ladder or guess. Your free annual whole-house inspection covers roofing, and I'll have our roofing team handle any repairs. One call to 08 7323 1253 and it's booked.
+
+Your home, every trade, one number.
+
+Talk soon,
+<div class="sig-block"><img src="https://harley-abatrades.github.io/abatrades-pages/assets/profile/abatrades-avatar.jpg" alt="Harley"><div><div class="sig-name">Harley — aba TRADES</div><div class="sig-tag">Your member line: 08 7323 1253</div><div class="sig-ff">fixed fast.</div></div></div></div></div></div>
+            <div class="email-variant" data-variant="fun"><div class="m-body">Hi [First Name],
+
+Roofs are quiet right up until they're not 🏠 — a ceiling stain, a drip mid-storm, a smell you can't place.
+
+We wrote a guide on the top 5 reasons Adelaide roofs leak and what you can actually do about each one. Worth five minutes even if everything looks fine from the driveway.
+
+<a href="https://abaroofing.com.au/roof/top-5-reasons-your-roof-is-leaking/">See the 5 warnings</a>
+
+The member bit: no ladders, no guessing. Your free annual inspection covers the roof, and if anything needs fixing I'll get our roofing team onto it. One call to 08 7323 1253 and it's booked.
+
+One number, every trade. That's the membership working.
+
+Talk soon,
+<div class="sig-block"><img src="https://harley-abatrades.github.io/abatrades-pages/assets/profile/abatrades-avatar.jpg" alt="Harley"><div><div class="sig-name">Harley — aba TRADES</div><div class="sig-tag">Your member line: 08 7323 1253</div><div class="sig-ff">fixed fast.</div></div></div></div></div></div>
+            <div class="m-foot">Reply UNSUBSCRIBE to opt out of future emails.</div>
+          </div></div>
+          <div class="branch-view" data-view="plumbing"><div class="mini-email">
+            <div class="m-head">
+              <div><div class="m-subject" data-subject-plain="Never clean your gutters again?" data-subject-fun="The gutter job nobody wants (and how to skip it) 🍂">Never clean your gutters again?</div><div class="m-meta">Day 21 · Plumbing branch · From: Harley @ aba TRADES</div></div>
+              <div class="tone-toggle"><button class="active" data-tone="plain">Plain</button><button data-tone="fun">Spark ✨</button></div>
+            </div>
+            <div class="email-variant active" data-variant="plain"><div class="m-body">Hi [First Name],
+
+Gutters are one of those things you don't think about until they're overflowing, and by then the damage is done.
+
+We put together a guide on leaf guard systems and whether they're worth it for Adelaide homes. It's the kind of upgrade that saves weekends and prevents water damage.
+
+<a href="https://abaroofing.com.au/roof/leaf-guard-systems-why-adelaide-homeowners-are-never-cleaning-gutters-again/">Read the leaf guard guide</a>
+
+As a member, you don't need to research or second-guess. Your free annual whole-house inspection covers roofing and gutters, and I'll have our roofing team handle any work. One call to 08 7323 1253 and it's booked.
+
+Your home, every trade, one number.
+
+Talk soon,
+<div class="sig-block"><img src="https://harley-abatrades.github.io/abatrades-pages/assets/profile/abatrades-avatar.jpg" alt="Harley"><div><div class="sig-name">Harley — aba TRADES</div><div class="sig-tag">Your member line: 08 7323 1253</div><div class="sig-ff">fixed fast.</div></div></div></div></div></div>
+            <div class="email-variant" data-variant="fun"><div class="m-body">Hi [First Name],
+
+Quick question: when did you last clean your gutters? 🍂
+
+Most people can't remember — and that's exactly how water damage starts. We wrote a guide on leaf guard systems and whether they're worth it for Adelaide homes. It's the kind of upgrade that buys your weekends back.
+
+<a href="https://abaroofing.com.au/roof/leaf-guard-systems-why-adelaide-homeowners-are-never-cleaning-gutters-again/">See if it's worth it</a>
+
+And here's the member difference: your free annual inspection covers roofing and gutters, so you'll know before it overflows. One call to 08 7323 1253 and I'll get it booked.
+
+One number, every trade. That's the membership working.
+
+Talk soon,
+<div class="sig-block"><img src="https://harley-abatrades.github.io/abatrades-pages/assets/profile/abatrades-avatar.jpg" alt="Harley"><div><div class="sig-name">Harley — aba TRADES</div><div class="sig-tag">Your member line: 08 7323 1253</div><div class="sig-ff">fixed fast.</div></div></div></div></div></div>
+            <div class="m-foot">Reply UNSUBSCRIBE to opt out of future emails.</div>
+          </div></div>
+          <div class="branch-view" data-view="electrical"><div class="mini-email">
+            <div class="m-head">
+              <div><div class="m-subject" data-subject-plain="Breathe easier this winter" data-subject-fun="The air in your house might need a clean too 🌬️">Breathe easier this winter</div><div class="m-meta">Day 21 · Electrical branch · From: Harley @ aba TRADES</div></div>
+              <div class="tone-toggle"><button class="active" data-tone="plain">Plain</button><button data-tone="fun">Spark ✨</button></div>
+            </div>
+            <div class="email-variant active" data-variant="plain"><div class="m-body">Hi [First Name],
+
+Winter in Adelaide means closed windows, heaters running, and air that doesn't feel quite right. Your air conditioning does more than cool; it filters the air you breathe.
+
+We put together a guide on allergen-free winter living and the AC upgrades that actually clear the air.
+
+<a href="https://abaairconditioning.com.au/air-conditioning/allergen-free-winter-living-ac-upgrades-that-clear-the-air/">Read the allergen-free guide</a>
+
+As a member, you don't need to figure out filters or upgrades yourself. Your free annual whole-house inspection covers heating and cooling, and I'll have our air conditioning team handle any work. One call to 08 7323 1253 and it's booked.
+
+Your home, every trade, one number.
+
+Talk soon,
+<div class="sig-block"><img src="https://harley-abatrades.github.io/abatrades-pages/assets/profile/abatrades-avatar.jpg" alt="Harley"><div><div class="sig-name">Harley — aba TRADES</div><div class="sig-tag">Your member line: 08 7323 1253</div><div class="sig-ff">fixed fast.</div></div></div></div></div></div>
+            <div class="email-variant" data-variant="fun"><div class="m-body">Hi [First Name],
+
+Windows shut, heaters on, everyone inside — winter air gets stale fast 🌬️
+
+Your aircon does more than heat and cool; it filters what you breathe. We wrote a guide on allergen-free winter living and the upgrades that genuinely clear the air.
+
+<a href="https://abaairconditioning.com.au/air-conditioning/allergen-free-winter-living-ac-upgrades-that-clear-the-air/">See what clears the air</a>
+
+The member bit: no filter research, no guesswork. Your free annual inspection covers heating and cooling, and I'll get our aircon team onto anything it flags. One call to 08 7323 1253 and it's booked.
+
+One number, every trade. That's the membership working.
+
+Talk soon,
+<div class="sig-block"><img src="https://harley-abatrades.github.io/abatrades-pages/assets/profile/abatrades-avatar.jpg" alt="Harley"><div><div class="sig-name">Harley — aba TRADES</div><div class="sig-tag">Your member line: 08 7323 1253</div><div class="sig-ff">fixed fast.</div></div></div></div></div></div>
+            <div class="m-foot">Reply UNSUBSCRIBE to opt out of future emails.</div>
+          </div></div>
+          <div class="branch-view" data-view="roofing"><div class="mini-email">
+            <div class="m-head">
+              <div><div class="m-subject" data-subject-plain="Is your air conditioner ready for summer?" data-subject-fun="Summer's coming. Is your aircon? ☀️">Is your air conditioner ready for summer?</div><div class="m-meta">Day 21 · Roofing branch · From: Harley @ aba TRADES</div></div>
+              <div class="tone-toggle"><button class="active" data-tone="plain">Plain</button><button data-tone="fun">Spark ✨</button></div>
+            </div>
+            <div class="email-variant active" data-variant="plain"><div class="m-body">Hi [First Name],
+
+Adelaide summers don't wait. The first 40-degree day arrives, and suddenly everyone remembers their air conditioner exists.
+
+We put together a guide on deciding whether to upgrade before summer hits, and what actually matters when comparing systems.
+
+<a href="https://abaairconditioning.com.au/air-conditioning/should-you-upgrade-your-air-conditioner-before-summer-heres-how-to-decide/">Read the upgrade guide</a>
+
+As a member, you don't need to sweat through a breakdown or rush a decision in the heat. Your free annual whole-house inspection covers heating and cooling, and I'll have our air conditioning team handle any work. One call to 08 7323 1253 and it's booked.
+
+Your home, every trade, one number.
+
+Talk soon,
+<div class="sig-block"><img src="https://harley-abatrades.github.io/abatrades-pages/assets/profile/abatrades-avatar.jpg" alt="Harley"><div><div class="sig-name">Harley — aba TRADES</div><div class="sig-tag">Your member line: 08 7323 1253</div><div class="sig-ff">fixed fast.</div></div></div></div></div></div>
+            <div class="email-variant" data-variant="fun"><div class="m-body">Hi [First Name],
+
+The first 40-degree day doesn't knock politely ☀️ — it just arrives, and suddenly everyone's aircon matters.
+
+We wrote a guide on whether to upgrade before summer, and what actually matters when you compare systems (spoiler: it's not the brand sticker).
+
+<a href="https://abaairconditioning.com.au/air-conditioning/should-you-upgrade-your-air-conditioner-before-summer-heres-how-to-decide/">See how to decide</a>
+
+The member bit: no sweating a breakdown in a heatwave. Your free annual inspection covers heating and cooling, and I'll get our aircon team onto anything it flags. One call to 08 7323 1253 and it's booked.
+
+One number, every trade. That's the membership working.
+
+Talk soon,
+<div class="sig-block"><img src="https://harley-abatrades.github.io/abatrades-pages/assets/profile/abatrades-avatar.jpg" alt="Harley"><div><div class="sig-name">Harley — aba TRADES</div><div class="sig-tag">Your member line: 08 7323 1253</div><div class="sig-ff">fixed fast.</div></div></div></div></div></div>
+            <div class="m-foot">Reply UNSUBSCRIBE to opt out of future emails.</div>
+          </div></div>
+        </div>
       </div>
 
       <!-- DAY 45 -->
-      <div class="tl-item">
+      <div class="tl-item interactive" data-tl>
         <span class="tl-day">Day 45</span>
         <h4>Third cross-trade value + soft nudge</h4>
         <p>A third guide, with the reminder that coupons and member pricing are waiting. The first gentle nudge toward using the membership.</p>
         <span class="tl-tag tag-value">Value first</span><span class="tl-tag tag-welcome">Branched</span>
+        <span class="tl-expand-hint">Read the emails</span>
+        <div class="tl-body">
+          <div class="branch-picker" data-branch-picker>
+            <button class="active" data-branch="aircon">Bought Aircon</button>
+            <button data-branch="plumbing">Bought Plumbing</button>
+            <button data-branch="electrical">Bought Electrical</button>
+            <button data-branch="roofing">Bought Roofing</button>
+          </div>
+          <div class="branch-view active" data-view="aircon"><div class="mini-email">
+            <div class="m-head">
+              <div><div class="m-subject" data-subject-plain="A 5-minute fix that saves Adelaide homeowners" data-subject-fun="That dripping tap is costing you more than sleep 🚰">A 5-minute fix that saves Adelaide homeowners</div><div class="m-meta">Day 45 · Aircon branch · From: Harley @ aba TRADES</div></div>
+              <div class="tone-toggle"><button class="active" data-tone="plain">Plain</button><button data-tone="fun">Spark ✨</button></div>
+            </div>
+            <div class="email-variant active" data-variant="plain"><div class="m-body">Hi [First Name],
+
+A dripping tap is easy to ignore. It's also easy to fix, if you know how.
+
+We put together a 5-minute guide to fixing a leaking tap. The kind of quick win that saves water and stops the annoyance.
+
+<a href="https://www.abaplumbing.com.au/the-5-minute-leaking-tap-fix-that-saves-adelaide-homeowners/">Read the 5-minute fix</a>
+
+But here's the member difference: if the fix doesn't hold, or you'd rather not get the spanner out, your membership covers it. One call to 08 7323 1253 and I'll have our plumbing team handle it properly. Member pricing applies, and your coupons are ready to use — $50 off a plumbing service.
+
+Your home, every trade, one number.
+
+Talk soon,
+<div class="sig-block"><img src="https://harley-abatrades.github.io/abatrades-pages/assets/profile/abatrades-avatar.jpg" alt="Harley"><div><div class="sig-name">Harley — aba TRADES</div><div class="sig-tag">Your member line: 08 7323 1253</div><div class="sig-ff">fixed fast.</div></div></div></div></div></div>
+            <div class="email-variant" data-variant="fun"><div class="m-body">Hi [First Name],
+
+Drip. Drip. Drip. 🚰
+
+A leaking tap is the most ignorable problem in the house — until you add up the water it's wasting. We wrote a 5-minute fix guide. Genuinely quick, genuinely works.
+
+<a href="https://www.abaplumbing.com.au/the-5-minute-leaking-tap-fix-that-saves-adelaide-homeowners/">See the 5-minute fix</a>
+
+And if the drip outlasts the spanner? Members call 08 7323 1253 and I'll send our plumbers to sort it properly — with $50 off a plumbing service from your coupons.
+
+One number, every trade. That's the membership working.
+
+Talk soon,
+<div class="sig-block"><img src="https://harley-abatrades.github.io/abatrades-pages/assets/profile/abatrades-avatar.jpg" alt="Harley"><div><div class="sig-name">Harley — aba TRADES</div><div class="sig-tag">Your member line: 08 7323 1253</div><div class="sig-ff">fixed fast.</div></div></div></div></div></div>
+            <div class="m-foot">Reply UNSUBSCRIBE to opt out of future emails.</div>
+          </div></div>
+          <div class="branch-view" data-view="plumbing"><div class="mini-email">
+            <div class="m-head">
+              <div><div class="m-subject" data-subject-plain="Your air conditioner filter could be costing you hundreds" data-subject-fun="The $15 filter that's inflating your power bill 💸">Your air conditioner filter could be costing you hundreds</div><div class="m-meta">Day 45 · Plumbing branch · From: Harley @ aba TRADES</div></div>
+              <div class="tone-toggle"><button class="active" data-tone="plain">Plain</button><button data-tone="fun">Spark ✨</button></div>
+            </div>
+            <div class="email-variant active" data-variant="plain"><div class="m-body">Hi [First Name],
+
+Most Adelaide homeowners don't think about their air conditioner filter until the power bill arrives or the air feels stale.
+
+We put together a guide on why that filter matters more than you think, and how a simple check can save you hundreds in running costs.
+
+<a href="https://abaairconditioning.com.au/air-conditioning/why-your-ac-filter-could-be-costing-you-hundreds-this-winter/">Read why the filter matters</a>
+
+But here's the member difference: if you'd rather not pull the filter or climb into the roof space, your membership covers it. One call to 08 7323 1253 and I'll have our air conditioning team handle it. Member pricing applies, and your coupons are ready to use.
+
+Your home, every trade, one number.
+
+Talk soon,
+<div class="sig-block"><img src="https://harley-abatrades.github.io/abatrades-pages/assets/profile/abatrades-avatar.jpg" alt="Harley"><div><div class="sig-name">Harley — aba TRADES</div><div class="sig-tag">Your member line: 08 7323 1253</div><div class="sig-ff">fixed fast.</div></div></div></div></div></div>
+            <div class="email-variant" data-variant="fun"><div class="m-body">Hi [First Name],
+
+Here's a question that costs people hundreds: when did you last check your aircon filter? 💸
+
+A clogged filter makes the whole system work harder — and you pay for every extra watt. We wrote a guide on why it matters and how to check it yourself.
+
+<a href="https://abaairconditioning.com.au/air-conditioning/why-your-ac-filter-could-be-costing-you-hundreds-this-winter/">See what it's costing you</a>
+
+And if roof-space gymnastics aren't your thing? Members call 08 7323 1253 and I'll get our aircon team to handle it. Member pricing and coupons apply automatically.
+
+One number, every trade. That's the membership working.
+
+Talk soon,
+<div class="sig-block"><img src="https://harley-abatrades.github.io/abatrades-pages/assets/profile/abatrades-avatar.jpg" alt="Harley"><div><div class="sig-name">Harley — aba TRADES</div><div class="sig-tag">Your member line: 08 7323 1253</div><div class="sig-ff">fixed fast.</div></div></div></div></div></div>
+            <div class="m-foot">Reply UNSUBSCRIBE to opt out of future emails.</div>
+          </div></div>
+          <div class="branch-view" data-view="electrical"><div class="mini-email">
+            <div class="m-head">
+              <div><div class="m-subject" data-subject-plain="Is your roof ready for solar?" data-subject-fun="Thinking about solar? Your roof gets a say ☀️">Is your roof ready for solar?</div><div class="m-meta">Day 45 · Electrical branch · From: Harley @ aba TRADES</div></div>
+              <div class="tone-toggle"><button class="active" data-tone="plain">Plain</button><button data-tone="fun">Spark ✨</button></div>
+            </div>
+            <div class="email-variant active" data-variant="plain"><div class="m-body">Hi [First Name],
+
+Solar is on most Adelaide homeowners' minds at some point. Prices, timing, whether the roof can even handle it.
+
+We put together a guide on future-proofing your roof for solar, even if you're not ready to install yet.
+
+<a href="https://abaroofing.com.au/roof/future-proofing-your-roof-how-to-prepare-for-solar/">Read the solar prep guide</a>
+
+But here's the member difference: if you want to know whether your roof is ready, or you'd rather not guess, your membership covers it. One call to 08 7323 1253 and I'll have our roofing team assess it properly. Member pricing applies, and your coupons are ready to use.
+
+Your home, every trade, one number.
+
+Talk soon,
+<div class="sig-block"><img src="https://harley-abatrades.github.io/abatrades-pages/assets/profile/abatrades-avatar.jpg" alt="Harley"><div><div class="sig-name">Harley — aba TRADES</div><div class="sig-tag">Your member line: 08 7323 1253</div><div class="sig-ff">fixed fast.</div></div></div></div></div></div>
+            <div class="email-variant" data-variant="fun"><div class="m-body">Hi [First Name],
+
+Solar's one of those "someday" projects ☀️ — but your roof gets a vote on when someday arrives.
+
+We wrote a guide on future-proofing your roof for solar, even if panels are years away. What matters, what doesn't, and what to sort now so you're not paying twice later.
+
+<a href="https://abaroofing.com.au/roof/future-proofing-your-roof-how-to-prepare-for-solar/">See how to prep</a>
+
+The member bit: if you want a straight answer on whether your roof's ready, I'll get our roofing team to assess it properly. One call to 08 7323 1253, member pricing and coupons included.
+
+One number, every trade. That's the membership working.
+
+Talk soon,
+<div class="sig-block"><img src="https://harley-abatrades.github.io/abatrades-pages/assets/profile/abatrades-avatar.jpg" alt="Harley"><div><div class="sig-name">Harley — aba TRADES</div><div class="sig-tag">Your member line: 08 7323 1253</div><div class="sig-ff">fixed fast.</div></div></div></div></div></div>
+            <div class="m-foot">Reply UNSUBSCRIBE to opt out of future emails.</div>
+          </div></div>
+          <div class="branch-view" data-view="roofing"><div class="mini-email">
+            <div class="m-head">
+              <div><div class="m-subject" data-subject-plain="Adelaide water quality: what you should know" data-subject-fun="Adelaide water is doing something to your house 💧">Adelaide water quality: what you should know</div><div class="m-meta">Day 45 · Roofing branch · From: Harley @ aba TRADES</div></div>
+              <div class="tone-toggle"><button class="active" data-tone="plain">Plain</button><button data-tone="fun">Spark ✨</button></div>
+            </div>
+            <div class="email-variant active" data-variant="plain"><div class="m-body">Hi [First Name],
+
+Adelaide water is different. White marks around taps, scale in kettles, and a taste that changes depending on where you live.
+
+We put together a guide on whole-house water filtration and whether it's right for your home.
+
+<a href="https://www.abaplumbing.com.au/adelaide-water-quality-shock-the-whole-house-filter-thats-changing-how-families-live/">Read the water quality guide</a>
+
+But here's the member difference: if you want to know what your water is actually doing to your pipes and appliances, your membership covers it. One call to 08 7323 1253 and I'll have our plumbing team assess it properly. Member pricing applies, and your coupons are ready to use.
+
+Your home, every trade, one number.
+
+Talk soon,
+<div class="sig-block"><img src="https://harley-abatrades.github.io/abatrades-pages/assets/profile/abatrades-avatar.jpg" alt="Harley"><div><div class="sig-name">Harley — aba TRADES</div><div class="sig-tag">Your member line: 08 7323 1253</div><div class="sig-ff">fixed fast.</div></div></div></div></div></div>
+            <div class="email-variant" data-variant="fun"><div class="m-body">Hi [First Name],
+
+White marks on the taps. Scale in the kettle. That's Adelaide water leaving its signature 💧
+
+We wrote a guide on whole-house water filtration — what it does, what it costs, and whether it's right for your place.
+
+<a href="https://www.abaplumbing.com.au/adelaide-water-quality-shock-the-whole-house-filter-thats-changing-how-families-live/">See what your water's doing</a>
+
+The member bit: if you want to know what your water's doing to your pipes and appliances, I'll get our plumbing team to assess it. One call to 08 7323 1253, member pricing and coupons included.
+
+One number, every trade. That's the membership working.
+
+Talk soon,
+<div class="sig-block"><img src="https://harley-abatrades.github.io/abatrades-pages/assets/profile/abatrades-avatar.jpg" alt="Harley"><div><div class="sig-name">Harley — aba TRADES</div><div class="sig-tag">Your member line: 08 7323 1253</div><div class="sig-ff">fixed fast.</div></div></div></div></div></div>
+            <div class="m-foot">Reply UNSUBSCRIBE to opt out of future emails.</div>
+          </div></div>
+        </div>
       </div>
 
       <!-- DAY 90 -->
