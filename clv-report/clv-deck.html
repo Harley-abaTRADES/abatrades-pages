@@ -996,9 +996,9 @@ Talk soon,
       </div>
       <div class="pipe-arrow">→</div>
       <div class="pipe-node">
-        <h4>n8n</h4>
-        <p>Workflow glue: detects the trigger, maps service type + consent, applies the A/B split, syncs contacts.</p>
-        <div class="cost">~USD 30/mo</div>
+        <h4>Harley crons</h4>
+        <p>Two thin sync jobs: new members in ServiceTitan → pushed into Brevo with service type + consent; unsubscribes → written back to ServiceTitan.</p>
+        <div class="cost">$0 — already running</div>
       </div>
       <div class="pipe-arrow">→</div>
       <div class="pipe-node">
@@ -1009,11 +1009,11 @@ Talk soon,
       <div class="pipe-arrow">→</div>
       <div class="pipe-node">
         <h4>Write-back</h4>
-        <p>Unsubscribe events flow back through n8n to ServiceTitan consent fields. Deterministic, logic-based.</p>
+        <p>Unsubscribe events flow back to ServiceTitan consent fields on a scheduled sync. Deterministic field mapping, logic-based — never AI-judged.</p>
         <div class="cost">Compliance-safe</div>
       </div>
     </div>
-    <p class="fine reveal" style="margin-top:18px">Total trial cost: under USD 100. The infrastructure is reusable for SMS, seasonal blasts, and every future nurture flow.</p>
+    <p class="fine reveal" style="margin-top:18px">Total trial cost: <strong>$0 marginal</strong> — Brevo free tier, existing ServiceTitan access, Harley crons already running. The infrastructure is reusable for SMS, seasonal blasts, and every future nurture flow.</p>
   </div>
 </section>
 
@@ -1035,9 +1035,9 @@ Talk soon,
         <p style="font-size:.95rem;margin-bottom:0"><strong>The others:</strong> ActiveCampaign's cost scales fast at our volume ($79+/mo territory); MailerLite is cheaper but lighter on the branching depth this flow needs. Brevo leaves room to grow into SMS and variant testing later.</p>
       </div>
       <div class="stat-block card reveal d3">
-        <h3>Why n8n over Harley crons?</h3>
-        <p style="font-size:.95rem">Harley could cron the polling and sends — but a 5-step, 90-day evergreen flow is a <strong>state machine</strong>: tracking each member's position, timing from join date, handling unsubscribes mid-sequence. Hand-building that in cron is fragile. n8n provides sequencing, retry logic and a native Brevo Trigger node out of the box.</p>
-        <p style="font-size:.95rem;margin-bottom:0"><strong>The clincher:</strong> the unsubscribe → ServiceTitan consent write-back must be deterministic and auditable, not AI-judged. n8n's visual node mapping is inspectable and testable — cron scripts aren't.</p>
+        <h3>Why Harley crons over n8n?</h3>
+        <p style="font-size:.95rem">Brevo's journey builder already owns the state machine — member position, day offsets, branching, suppression. The glue layer is only two thin, deterministic jobs: <strong>new members in → Brevo</strong>, and <strong>unsubscribes out → ServiceTitan</strong>. Two small scheduled scripts do that for <strong>$0</strong>; n8n's API requires a paid plan (~US$20-24/mo) to even build against.</p>
+        <p style="font-size:.95rem;margin-bottom:0"><strong>Same compliance bar:</strong> consent writes are fixed field-mapping, never AI-judged — identical determinism either way. n8n earns its place later if orchestration grows (SMS write-backs, seasonal campaigns, multi-system syncs); until then it's a cost without a job.</p>
       </div>
     </div>
     <div class="quote reveal d4">Consent and marketing-status changes stay logic-based and foolproof — deterministic automation, never AI judgement, on anything customer-facing.</div>
@@ -1057,7 +1057,7 @@ Talk soon,
       </div>
       <div class="stat-block card reveal d3">
         <div class="stat" style="font-size:2.2rem">If it doesn't</div>
-        <p>We know before over-investing. The infrastructure — Brevo, n8n, A/B rig, consent write-back — is built and reusable.</p>
+        <p>We know before over-investing. The infrastructure — Brevo, the sync crons, A/B rig, consent write-back — is built and reusable.</p>
       </div>
     </div>
     <div class="card reveal d3" style="margin-top:22px">
