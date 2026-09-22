@@ -262,21 +262,21 @@ a{color:var(--brand-secondary)}.dark a{color:#fff}
   <div class="wrap wide">
     <div class="rule reveal"></div>
     <h2 class="reveal">The opportunity — pull the lever, see the money</h2>
-    <p class="reveal d1">Members come back on their own every <strong>~200 days</strong>. Every email in the flow exists to shrink that number. Here's what shrinking it is worth:</p>
+    <p class="reveal d1">Here's the honest picture: in any half-year, only <strong>4.2% of members</strong> book something new — 55 of 1,316. The rest go quiet. Every email in the flow exists to move that percentage. Drag the lever to see what moving it is worth:</p>
 
     <div class="card reveal d2" style="margin-top:26px;padding:34px 34px 26px">
       <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:6px">
-        <div style="font-size:.85rem;text-transform:uppercase;letter-spacing:1.5px;opacity:.65;font-weight:700">The lever: days between a member's fresh jobs</div>
-        <div id="gapReadout" style="font-size:1.6rem;font-weight:700;color:var(--brand-primary)">200 days</div>
+        <div style="font-size:.85rem;text-transform:uppercase;letter-spacing:1.5px;opacity:.65;font-weight:700">The lever: members who book a fresh job each half-year</div>
+        <div id="gapReadout" style="font-size:1.6rem;font-weight:700;color:var(--brand-primary)">4.2%</div>
       </div>
-      <input type="range" id="gapSlider" min="90" max="200" value="200" step="5"
-        style="width:100%;height:8px;-webkit-appearance:none;appearance:none;background:linear-gradient(90deg,var(--brand-primary),var(--brand-border));border-radius:100px;outline:none;margin:14px 0 8px;cursor:pointer">
+      <input type="range" id="gapSlider" min="4.2" max="10" value="4.2" step="0.1"
+        style="width:100%;height:8px;-webkit-appearance:none;appearance:none;background:linear-gradient(90deg,var(--brand-border),var(--brand-primary));border-radius:100px;outline:none;margin:14px 0 8px;cursor:pointer">
       <div style="display:flex;justify-content:space-between;font-size:.75rem;opacity:.55;margin-bottom:22px">
-        <span>90 days — ambitious</span><span>150 days — the target</span><span>200 days — today</span>
+        <span>4.2% — today, no program</span><span>5.7% — a modest lift</span><span>7.5% — matching non-members</span>
       </div>
       <div style="display:flex;flex-wrap:wrap;gap:26px;align-items:flex-end">
         <div style="flex:1 1 180px">
-          <div style="font-size:.8rem;text-transform:uppercase;letter-spacing:1.2px;opacity:.6;margin-bottom:4px">Extra fresh jobs a year</div>
+          <div style="font-size:.8rem;text-transform:uppercase;letter-spacing:1.2px;opacity:.6;margin-bottom:4px">Extra bookings a year</div>
           <div id="jobsOut" style="font-size:2.6rem;font-weight:700;line-height:1;color:var(--brand-text)">0</div>
         </div>
         <div style="flex:1 1 180px">
@@ -284,13 +284,13 @@ a{color:var(--brand-secondary)}.dark a{color:#fff}
           <div id="revOut" style="font-size:2.6rem;font-weight:700;line-height:1;color:var(--brand-primary)">$0</div>
         </div>
         <div style="flex:1 1 220px;font-size:.85rem;opacity:.7;line-height:1.5">
-          <span id="leverNote">That's today — members booking at their natural pace, no program running.</span>
+          <span id="leverNote">Today: 55 of 1,316 members book something new per half-year. Everyone else is silent.</span>
         </div>
       </div>
     </div>
 
-    <p class="fine reveal d3" style="margin-top:16px">The math, kept honest: 1,316 members. Today each books a fresh job every ~200 days (1.8 a year). At a 150-day gap that's 2.4 a year — <strong>+35% more bookings</strong>, worth <strong>~$780K a year</strong> at the $5,699 member average. We won't hit 150 on day one — but the 90-day test tells us which direction the number moves before we scale anything.</p>
-    <p class="pull reveal d4">The lever is a reminder at the right moment. The money is members coming back sooner.</p>
+    <p class="fine reveal d3" style="margin-top:16px">The math, kept honest: 1,316 members, 55 fresh bookings per half-year today (4.2%), at the $5,699 member average job. The lever is NOT shortening a cycle every member follows — most members never book twice in two years. It's <strong>converting some of the 96% who stay silent</strong> into bookers in the window. Every +1pt of engagement ≈ 13 extra bookings a half-year ≈ <strong>~$150K a year</strong>. The 90-day test measures whether the emails convert anyone at all.</p>
+    <p class="pull reveal d4">The lever isn't speeding up members who already return. It's waking up the ones who never do.</p>
   </div>
 </section>
 
@@ -1178,23 +1178,23 @@ document.querySelectorAll('.tone-toggle').forEach(tg=>{
 // opportunity lever slider
 const gapSlider=document.getElementById('gapSlider');
 if(gapSlider){
-  const MEMBERS=1316, AOV=5699;
+  const MEMBERS=1316, AOV=5699, BASE=4.2;
   const gapReadout=document.getElementById('gapReadout'),
         jobsOut=document.getElementById('jobsOut'),
         revOut=document.getElementById('revOut'),
         leverNote=document.getElementById('leverNote');
   const fmt$=n=>'$'+Math.round(n).toLocaleString('en-AU');
   function leverUpdate(){
-    const gap=parseInt(gapSlider.value);
-    const baseJobs=MEMBERS*365/200, newJobs=MEMBERS*365/gap;
-    const extra=Math.max(0,newJobs-baseJobs), rev=extra*AOV;
-    gapReadout.textContent=gap+' days';
-    jobsOut.textContent='+'+Math.round(extra).toLocaleString('en-AU');
+    const rate=parseFloat(gapSlider.value);
+    const extraPerHalf=Math.max(0,(rate-BASE)/100*MEMBERS);
+    const extraYr=extraPerHalf*2, rev=extraYr*AOV;
+    gapReadout.textContent=rate.toFixed(1)+'%';
+    jobsOut.textContent='+'+Math.round(extraYr).toLocaleString('en-AU');
     revOut.textContent=rev>0?fmt$(rev):'$0';
-    if(gap>=200)leverNote.textContent="That's today — members booking at their natural pace, no program running.";
-    else if(gap>=170)leverNote.textContent='A modest nudge. Even landing here pays for the program many times over.';
-    else if(gap>=150)leverNote.textContent='The target. One timely reminder per member, every few months, gets us here.';
-    else leverNote.textContent='Ambitious territory — where the full flow, SMS and seasonal campaigns compound.';
+    if(rate<=4.3)leverNote.textContent='Today: 55 of 1,316 members book something new per half-year. Everyone else is silent.';
+    else if(rate<5.5)leverNote.textContent='A small lift — the realistic first-read target for the 90-day test.';
+    else if(rate<7.5)leverNote.textContent='A strong result. This is where the program pays for itself many times over.';
+    else leverNote.textContent='Matching the non-member rate — the ceiling we know exists, reached via SMS and seasonal layering.';
   }
   gapSlider.addEventListener('input',leverUpdate);
   leverUpdate();
