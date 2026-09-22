@@ -103,20 +103,34 @@ a{color:var(--brand-primary)}
 <li>Recipient list from ServiceTitan, consent-gated</li>
 <li>Measured: booking within 90 days vs control (directional)</li>
 </ul>
-<div style="margin-top:26px">
-<h3 style="color:#fff;opacity:0.7">Costs</h3>
-<div class="cost-row">
-<div class="cost-item"><div class="amt">Free</div><div class="lbl">Brevo — covers the cohort comfortably</div></div>
-<div class="cost-item"><div class="amt">~USD 30/mo</div><div class="lbl">n8n — self-hosted workflow automation</div></div>
-<div class="cost-item"><div class="amt">Provisioned</div><div class="lbl">ServiceTitan API — no incremental cost</div></div>
-</div>
-<p style="opacity:0.65;margin-top:10px;font-size:.85rem">Total MVP trial cost: under USD 100</p>
-</div>
 </div>
 </section>
 
-<!-- 6. HOW IT WORKS -->
-<section class="alt" id="s6">
+<!-- 6. TECH STACK -->
+<section class="light" id="s6">
+<div class="wrap">
+<h2>Tech stack</h2>
+<p style="opacity:0.85">How the pieces connect: ServiceTitan supplies the member list and consent status → n8n handles the workflow logic (who to send to, when, A/B split) → Brevo delivers the email and manages unsubscribes.</p>
+<div class="stat-row" style="margin-top:16px">
+<div class="stat-block" style="background:var(--brand-field);border-radius:9px;padding:16px">
+<div class="stat-label" style="color:var(--brand-primary)">ServiceTitan</div>
+<p style="font-size:.9rem">Member roster, email addresses, consent flags, job-completion trigger. Already provisioned — no new cost.</p>
+</div>
+<div class="stat-block" style="background:var(--brand-field);border-radius:9px;padding:16px">
+<div class="stat-label" style="color:var(--brand-primary)">n8n</div>
+<p style="font-size:.9rem">Self-hosted workflow automation. Listens for completed jobs, checks consent, applies A/B split, triggers Brevo send. ~USD 30/month.</p>
+</div>
+<div class="stat-block" style="background:var(--brand-field);border-radius:9px;padding:16px">
+<div class="stat-label" style="color:var(--brand-primary)">Brevo</div>
+<p style="font-size:.9rem">Transactional email delivery, open/click tracking, unsubscribe handling. Free tier (300 emails/day) — comfortably covers the cohort.</p>
+</div>
+</div>
+<p style="margin-top:22px;font-size:.9rem;opacity:0.7">Total trial cost: under USD 100. Infrastructure is reusable for SMS, multi-step nurture, and evergreen flows if the MVP validates.</p>
+</div>
+</section>
+
+<!-- 7. HOW IT WORKS -->
+<section class="alt" id="s7">
 <div class="wrap">
 <h2>How it works</h2>
 <p>One email. Plain text. Sent after a member's qualifying job completes — timed to land when the memory of the service is fresh but before the next need arises.</p>
