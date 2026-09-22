@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Customer Lifetime Value — Member Re-engagement | aba TRADES</title>
+<title>Project Member Re-engagement | aba TRADES</title>
 <link rel="icon" href="../assets/brand/favicon.ico" type="image/x-icon">
 <style>
 :root{
@@ -181,6 +181,7 @@ a{color:var(--brand-secondary)}.dark a{color:#fff}
   <div class="wrap" style="text-align:center;position:relative">
     <div class="reveal"><span style="display:inline-block;background:#fff;border-radius:18px;padding:16px 26px;margin:0 auto 26px;box-shadow:0 12px 34px rgba(11,29,59,.32)"><img src="https://harley-abatrades.github.io/abatrades-pages/assets/brand/abatrades-logo.png" alt="aba TRADES" style="width:170px;max-width:52vw;display:block"></span></div>
     <div class="reveal d1"><div class="vs" style="opacity:.55">aba TRADES · September 2026</div></div>
+    <div class="vs reveal d1" style="opacity:.55;letter-spacing:2px">Project Member Re-engagement</div>
     <h1 class="reveal d1" style="font-size:3rem">Customer Lifetime Value</h1>
     <p class="lede reveal d2" style="opacity:.92">Our best customers don't come back any faster.<br>Here's how we change that.</p>
     <p class="reveal d3" style="opacity:.5;margin-top:26px;font-size:.85rem">Scroll — this is a story, not a slide deck ↓</p>
@@ -280,22 +281,22 @@ a{color:var(--brand-secondary)}.dark a{color:#fff}
   </div>
 </section>
 
-<!-- 5. THE MVP TEST (moved up, directly after opportunity) -->
+<!-- 5. THE MVP TEST -->
 <section class="dark" id="s5">
   <div class="wrap">
     <div class="rule reveal"></div>
     <h2 class="reveal">So we test it — small, clean, measurable</h2>
-    <p class="reveal d1" style="opacity:.9">Not a revenue commitment. A single email first, to prove the channel moves the number at all.</p>
+    <p class="reveal d1" style="opacity:.9">Two populations, one experiment. New members enter the flow from day one; existing members get backfilled into it.</p>
     <div class="stat-row" style="margin-top:18px">
       <div class="stat-block card reveal d1">
-        <div class="stat" style="font-size:2.6rem">1,283</div>
-        <div class="stat-label">consent-gated members</div>
-        <p>The Day-0 welcome email goes to every member with valid email + consent — the simplest version of the flow, tested first.</p>
+        <div class="stat" style="font-size:2.6rem">~5<span style="font-size:1.4rem">/day</span></div>
+        <div class="stat-label">new members joining</div>
+        <p>Every new membership activation enters the flow automatically — roughly 5 a day, each one split 50/50 into flow vs control. The test keeps filling itself.</p>
       </div>
       <div class="stat-block card reveal d2">
-        <div class="stat" style="font-size:2.6rem">50/50</div>
-        <div class="stat-label">A/B split</div>
-        <p>Flow gets the email, control is held out. The control group is what turns "we sent email and things happened" into "email moved it."</p>
+        <div class="stat" style="font-size:2.6rem">1,283</div>
+        <div class="stat-label">existing members backfilled</div>
+        <p>The current base joins at Email 2 (Day 7) — they've already had their welcome. Consent-gated, same 50/50 split, so the read covers both populations.</p>
       </div>
       <div class="stat-block card reveal d3">
         <div class="stat" style="font-size:2.6rem">90<span style="font-size:1.4rem"> days</span></div>
@@ -303,7 +304,22 @@ a{color:var(--brand-secondary)}.dark a{color:#fff}
         <p>Fresh booking within 90 days vs control — a directional read, with re-engagement tracked open-ended after that.</p>
       </div>
     </div>
-    <p class="reveal d4" style="margin-top:18px;opacity:.9">Validate the channel with one email. Then the full five-email sequence becomes the always-on onboarding every new member receives.</p>
+  </div>
+</section>
+
+<!-- 5b. MEASURES OF SUCCESS -->
+<section class="alt" id="s5b">
+  <div class="wrap">
+    <div class="rule reveal"></div>
+    <h2 class="reveal">How we'll know it worked</h2>
+    <p class="reveal d1">The pass/fail is directional, not statistical — the cohort is too small for significance. These are the numbers that decide what happens next:</p>
+    <ul>
+      <li class="reveal d1"><strong>Primary: fresh bookings in 90 days.</strong> Flow cohort books more genuinely-new jobs than the held-out control. That's the go/no-go for turning the full sequence on permanently.</li>
+      <li class="reveal d2"><strong>Leading indicator: opens and clicks.</strong> Read within days of each send — tells us the message is landing long before the 90-day booking curve resolves.</li>
+      <li class="reveal d3"><strong>Hygiene: unsubscribes and complaints.</strong> If opt-outs spike, the cadence or the copy is wrong — we fix that before scaling, no exceptions.</li>
+      <li class="reveal d4"><strong>Trailing: re-engagement rate over time.</strong> The 4.2% six-month baseline is the number this initiative exists to move. Watched open-ended, never the pass/fail gate.</li>
+    </ul>
+    <p class="pull reveal d4" style="margin-top:20px">One email proves the channel. The sequence earns its keep after that.</p>
   </div>
 </section>
 
@@ -708,12 +724,21 @@ Talk soon,
     <div class="stat-row">
       <div class="stat-block card reveal d2">
         <div class="stat" style="font-size:2.2rem">If it moves</div>
-        <p>Turn on the full five-email sequence. Extend to SMS, seasonal campaigns, and service-type nurture — with confidence the channel works.</p>
+        <p>Turn on the full five-email sequence permanently. Then layer in the next phases.</p>
       </div>
       <div class="stat-block card reveal d3">
         <div class="stat" style="font-size:2.2rem">If it doesn't</div>
         <p>We know before over-investing. The infrastructure — Brevo, n8n, A/B rig, consent write-back — is built and reusable.</p>
       </div>
+    </div>
+    <div class="card reveal d3" style="margin-top:22px">
+      <h3 style="margin-bottom:10px">Future phases — once the channel is proven</h3>
+      <ul>
+        <li><strong>Richer creative:</strong> layer in branded HTML templates — the aba TRADES look, per-trade accent colours, imagery from the blog posts we link to. Plain text earns trust first; the branded layer comes once we know the channel performs.</li>
+        <li><strong>SMS:</strong> same journey logic over text, with Podium's opt-out list respected (ServiceTitan write-back already designed).</li>
+        <li><strong>Seasonal campaigns:</strong> database-wide blasts stay separate from this evergreen flow — the flow onboards, the campaigns activate.</li>
+        <li><strong>Variant testing:</strong> the Plain/Spark drafts in this deck become real A/B tests in Brevo — let the data pick the voice.</li>
+      </ul>
     </div>
     <p class="reveal d4">Either way: a clean baseline, a directional read, and the plumbing in place for whatever comes next.</p>
   </div>
