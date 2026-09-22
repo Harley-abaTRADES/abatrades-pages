@@ -7,10 +7,8 @@
 <link rel="icon" href="../assets/brand/favicon.ico" type="image/x-icon">
 <style>
 :root{
-  --brand-primary:#1D3B6D;--brand-primary-rgb:29,59,109;
-  --brand-secondary:#2E528E;--brand-slate:#7789A7;
-  --brand-dark-navy:#0B1D3B;--brand-footer-navy:#172F57;
-  --brand-surface:#EBEDF2;--brand-field:#F5F6F8;--brand-border:#D3D4DA;
+  --brand-primary:#1D3B6D;--brand-secondary:#2E528E;--brand-slate:#7789A7;
+  --brand-dark-navy:#0B1D3B;--brand-surface:#EBEDF2;--brand-field:#F5F6F8;--brand-border:#D3D4DA;
   --brand-bg:#FFFFFF;--brand-text:#1D3B6D;
   --acc-plumbing:#94BE8C;--acc-aircon:#58A4AE;--acc-electrical:#DC7E49;--acc-roofing:#A0AFD9;--acc-reno:#E57D7D;
   --font-body:'Futura PT','futura-pt',Helvetica,Arial,sans-serif;
@@ -18,56 +16,68 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:var(--font-body);background:var(--brand-bg);color:var(--brand-text);line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-
-/* ---------- layout ---------- */
 section{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:80px 20px;position:relative}
-.wrap{max-width:900px;width:100%}
-.wrap.wide{max-width:1080px}
+.wrap{max-width:900px;width:100%;margin:0 auto}
+.wrap.wide{max-width:1120px}
 section.dark{background:var(--brand-primary);color:#fff}
 section.light{background:var(--brand-bg)}
 section.alt{background:var(--brand-surface)}
-h1{font-size:2.8rem;font-weight:700;line-height:1.15;margin-bottom:18px}
+h1{font-size:2.9rem;font-weight:700;line-height:1.12;margin-bottom:18px}
 h2{font-size:2.1rem;font-weight:700;line-height:1.2;margin-bottom:22px}
 h3{font-size:1.05rem;font-weight:700;margin-bottom:6px;color:var(--brand-primary)}
 .dark h1,.dark h2,.dark h3{color:#fff}
-p{font-size:1.05rem;margin-bottom:16px;opacity:0.92}
-.lede{font-size:1.2rem;opacity:.9}
-ul{list-style:none;padding:0}
-li{position:relative;padding:7px 0 7px 26px;font-size:1rem;line-height:1.5}
-li::before{content:'';position:absolute;left:0;top:15px;width:7px;height:7px;border-radius:50%;background:var(--brand-primary)}
-.dark li::before{background:#fff}
+p{font-size:1.05rem;margin-bottom:16px;opacity:.92}
+.lede{font-size:1.22rem;opacity:.9}
 small,.fine{font-size:.8rem;opacity:.65;line-height:1.45}
-a{color:var(--brand-secondary)}
-.dark a{color:#fff}
+a{color:var(--brand-secondary)}.dark a{color:#fff}
+.rule{height:3px;width:64px;background:var(--brand-primary);border-radius:2px;margin:0 0 26px}
+.dark .rule{background:#fff}
+.pull{font-size:1.45rem;font-weight:700;line-height:1.35;color:var(--brand-primary)}
+.dark .pull{color:#fff}
+.vs{font-size:.9rem;opacity:.55;margin-bottom:8px;text-transform:uppercase;letter-spacing:1.5px}
+.card{background:var(--brand-field);border-radius:12px;padding:20px 22px}
+.dark .card{background:rgba(255,255,255,.10)}
+.quote{border-left:4px solid var(--brand-primary);padding:14px 18px;margin:18px 0;font-size:1rem;font-style:italic;background:rgba(29,59,109,.05);border-radius:0 10px 10px 0}
+.dark .quote{border-left-color:#fff;background:rgba(255,255,255,.08)}
+.disclaimer{margin-top:24px;padding-top:14px;border-top:1px solid var(--brand-border);font-size:.78rem;opacity:.6;line-height:1.45}
 
-/* ---------- scroll reveal ---------- */
+/* progress */
+#progress{position:fixed;top:0;left:0;height:4px;width:0%;background:var(--brand-secondary);z-index:60;transition:width .1s linear}
+
+/* reveal */
 .reveal{opacity:0;transform:translateY(34px);transition:opacity .8s cubic-bezier(.22,.61,.36,1),transform .8s cubic-bezier(.22,.61,.36,1)}
 .reveal.visible{opacity:1;transform:none}
 .reveal.d1{transition-delay:.12s}.reveal.d2{transition-delay:.24s}.reveal.d3{transition-delay:.36s}.reveal.d4{transition-delay:.48s}
 
-/* ---------- progress bar ---------- */
-#progress{position:fixed;top:0;left:0;height:4px;width:0%;background:var(--brand-secondary);z-index:60;transition:width .1s linear}
-
-/* ---------- stats ---------- */
+/* stats */
 .stat-row{display:flex;flex-wrap:wrap;gap:26px;margin:8px 0 22px}
 .stat-block{flex:1 1 220px;min-width:180px}
 .stat{font-size:3.4rem;font-weight:700;line-height:1.05;margin-bottom:4px}
 .stat-label{font-size:.85rem;opacity:.7;text-transform:uppercase;letter-spacing:1.2px}
 .stat-block p{font-size:.98rem}
-.card{background:var(--brand-field);border-radius:12px;padding:20px 22px}
-.dark .card{background:rgba(255,255,255,.10)}
-.vs{font-size:.9rem;opacity:.55;margin-bottom:8px;text-transform:uppercase;letter-spacing:1.5px}
 
-/* count-up */
-.stat .count{display:inline-block}
+/* ---------- HERO animated counter wall ---------- */
+.hero-bg{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.hero-orb{position:absolute;border-radius:50%;filter:blur(80px);opacity:.35;animation:drift 14s ease-in-out infinite alternate}
+.orb1{width:420px;height:420px;background:#2E528E;top:-120px;right:-80px}
+.orb2{width:340px;height:340px;background:#58A4AE;bottom:-100px;left:-60px;animation-delay:-7s}
+@keyframes drift{from{transform:translate(0,0) scale(1)}to{transform:translate(40px,30px) scale(1.12)}}
 
-/* ---------- pull line ---------- */
-.pull{font-size:1.45rem;font-weight:700;line-height:1.35;color:var(--brand-primary);margin:6px 0 0}
-.dark .pull{color:#fff}
-.rule{height:3px;width:64px;background:var(--brand-primary);border-radius:2px;margin:0 0 26px}
-.dark .rule{background:#fff}
+/* ---------- SCROLLYTELLING: numbers chapter ---------- */
+.scrolly{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+.scrolly .sticky-viz{position:sticky;top:12vh}
+.scrolly .steps .step{min-height:78vh;display:flex;flex-direction:column;justify-content:center;opacity:.18;transition:opacity .45s ease}
+.scrolly .steps .step.active{opacity:1}
+.big-meter{position:relative;height:340px;display:flex;align-items:flex-end;justify-content:center;gap:60px}
+.mbar{width:130px;border-radius:12px 12px 0 0;position:relative;transition:height .9s cubic-bezier(.22,.61,.36,1)}
+.mbar .mval{position:absolute;top:-52px;left:50%;transform:translateX(-50%);font-size:1.9rem;font-weight:700;white-space:nowrap}
+.mbar .mlab{position:absolute;bottom:-34px;left:50%;transform:translateX(-50%);font-size:.8rem;text-transform:uppercase;letter-spacing:1px;opacity:.7;white-space:nowrap}
+.mbar.members{background:var(--brand-primary)}
+.mbar.nonmembers{background:var(--brand-border)}
+.gapline{position:absolute;left:0;right:0;top:50%;border-top:2px dashed var(--brand-slate);opacity:0;transition:opacity .6s}
+.gapline.on{opacity:.5}
 
-/* ---------- flow timeline ---------- */
+/* ---------- timeline (interactive emails) ---------- */
 .timeline{position:relative;margin:30px 0 8px;padding-left:34px}
 .timeline::before{content:'';position:absolute;left:11px;top:6px;bottom:6px;width:3px;background:linear-gradient(var(--brand-primary),var(--brand-secondary));border-radius:2px}
 .tl-item{position:relative;padding:0 0 30px 22px;opacity:0;transform:translateX(30px);transition:opacity .7s ease,transform .7s ease}
@@ -75,44 +85,47 @@ a{color:var(--brand-secondary)}
 .tl-item::before{content:'';position:absolute;left:-30px;top:4px;width:16px;height:16px;border-radius:50%;background:#fff;border:4px solid var(--brand-primary)}
 .tl-day{display:inline-block;background:var(--brand-primary);color:#fff;font-weight:700;font-size:.78rem;letter-spacing:1px;padding:5px 14px;border-radius:100px;margin-bottom:6px;text-transform:uppercase}
 .tl-item h4{font-size:1.12rem;margin-bottom:4px;color:var(--brand-primary)}
+.dark .tl-item h4{color:#fff}
 .tl-item p{font-size:.95rem;margin-bottom:4px;opacity:.85}
 .tl-tag{display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.6px;text-transform:uppercase;padding:3px 10px;border-radius:100px;margin:4px 6px 0 0}
-.tag-value{background:#E4F0E1;color:#2F6B2F}
-.tag-close{background:#FBE6E6;color:#8E2A2A}
-.tag-welcome{background:var(--brand-surface);color:var(--brand-primary)}
+.tag-value{background:#E4F0E1;color:#2F6B2F}.tag-close{background:#FBE6E6;color:#8E2A2A}.tag-welcome{background:var(--brand-surface);color:var(--brand-primary)}
+.tl-item.interactive{cursor:pointer}
+.tl-item.interactive:hover .tl-expand-hint{color:var(--brand-secondary)}
+.tl-expand-hint{display:inline-flex;align-items:center;gap:6px;font-size:.78rem;font-weight:700;color:var(--brand-slate);margin-top:6px;letter-spacing:.5px;text-transform:uppercase;transition:color .25s}
+.tl-expand-hint::after{content:'▸';display:inline-block;transition:transform .3s}
+.tl-item.open .tl-expand-hint::after{transform:rotate(90deg)}
+.tl-body{max-height:0;overflow:hidden;transition:max-height .6s cubic-bezier(.22,.61,.36,1),opacity .5s ease;opacity:0}
+.tl-item.open .tl-body{max-height:2400px;opacity:1;transition:max-height .7s cubic-bezier(.22,.61,.36,1),opacity .55s ease .1s}
+.mini-email{background:#fff;color:#333;border:1px solid var(--brand-border);border-radius:12px;box-shadow:0 14px 40px rgba(11,29,59,.18);margin:14px 0 8px;overflow:hidden;transform:translateY(14px);transition:transform .5s ease .08s}
+.tl-item.open .mini-email{transform:none}
+.mini-email .m-head{background:var(--brand-field);padding:12px 18px;border-bottom:1px solid var(--brand-border);display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.mini-email .m-subject{font-weight:700;font-size:.98rem;color:var(--brand-text)}
+.mini-email .m-meta{font-size:.74rem;color:var(--brand-slate);margin-top:2px}
+.mini-email .m-body{padding:16px 20px;font-size:.87rem;line-height:1.62;white-space:pre-line}
+.mini-email .m-body .sig{margin-top:12px;color:var(--brand-primary);font-weight:700}
+.mini-email .m-foot{background:var(--brand-field);padding:8px 18px;font-size:.7rem;color:var(--brand-slate);border-top:1px solid var(--brand-border)}
 
-/* ---------- trade chips ---------- */
+/* fun toggle */
+.tone-toggle{display:inline-flex;background:#fff;border:1px solid var(--brand-border);border-radius:100px;overflow:hidden;font-size:.7rem;font-weight:700}
+.tone-toggle button{font-family:inherit;border:none;background:transparent;padding:6px 14px;cursor:pointer;color:var(--brand-slate);letter-spacing:.4px;transition:all .2s}
+.tone-toggle button.active{background:var(--brand-primary);color:#fff}
+.email-variant{display:none}
+.email-variant.active{display:block;animation:fadeUp .45s ease}
+.branch-picker{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 4px}
+.branch-picker button{font-family:inherit;font-size:.75rem;font-weight:700;padding:6px 14px;border-radius:100px;border:1px solid var(--brand-border);background:#fff;color:var(--brand-text);cursor:pointer;transition:all .2s}
+.branch-picker button:hover{border-color:var(--brand-secondary);color:var(--brand-secondary)}
+.branch-picker button.active{background:var(--brand-primary);border-color:var(--brand-primary);color:#fff}
+.branch-view{display:none}
+.branch-view.active{display:block;animation:fadeUp .45s ease}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+/* trade chips */
 .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
 .chip{font-size:.78rem;font-weight:700;padding:6px 14px;border-radius:100px;border:1px solid var(--brand-border);background:#fff;color:var(--brand-text)}
 .chip i{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:7px;vertical-align:1px}
 .c-plumb i{background:var(--acc-plumbing)}.c-air i{background:var(--acc-aircon)}.c-elec i{background:var(--acc-electrical)}.c-roof i{background:var(--acc-roofing)}.c-reno i{background:var(--acc-reno)}
 
-/* ---------- email mock ---------- */
-.email-stage{display:flex;flex-wrap:wrap;gap:30px;align-items:flex-start;justify-content:center}
-.email{background:#fff;border:1px solid var(--brand-border);border-radius:14px;box-shadow:0 18px 50px rgba(11,29,59,.13);max-width:430px;width:100%;overflow:hidden;opacity:0;transform:translateY(40px) rotate(1.2deg);transition:opacity .9s ease,transform .9s ease}
-.email.visible{opacity:1;transform:none}
-.email .e-head{background:var(--brand-field);padding:14px 20px;border-bottom:1px solid var(--brand-border)}
-.email .e-subject{font-weight:700;font-size:1rem;color:var(--brand-text)}
-.email .e-meta{font-size:.76rem;color:var(--brand-slate);margin-top:3px}
-.email .e-body{padding:20px 22px;font-size:.9rem;line-height:1.6;color:#333;white-space:pre-line}
-.email .e-body .sig{margin-top:14px;color:var(--brand-primary);font-weight:700}
-.email .e-foot{background:var(--brand-field);padding:10px 20px;font-size:.72rem;color:var(--brand-slate);border-top:1px solid var(--brand-border)}
-
-/* ---------- diagram: tech pipeline ---------- */
-.pipe{display:flex;flex-wrap:wrap;align-items:stretch;justify-content:center;gap:0;margin:26px 0 10px}
-.pipe-node{flex:1 1 220px;max-width:280px;background:var(--brand-field);border-radius:14px;padding:20px;text-align:center;position:relative;opacity:0;transform:scale(.92);transition:opacity .7s ease,transform .7s ease}
-.pipe-node.visible{opacity:1;transform:scale(1)}
-.pipe-node h4{color:var(--brand-primary);margin-bottom:6px;font-size:1.05rem}
-.pipe-node p{font-size:.85rem;opacity:.8;margin-bottom:8px}
-.pipe-node .cost{font-weight:700;color:var(--brand-primary);font-size:.9rem}
-.pipe-arrow{align-self:center;font-size:1.7rem;color:var(--brand-secondary);padding:0 12px;opacity:0;transition:opacity .7s ease .3s}
-.pipe-arrow.visible{opacity:1}
-
-/* ---------- quote ---------- */
-.quote{border-left:4px solid var(--brand-primary);padding:14px 18px;margin:18px 0;font-size:1rem;font-style:italic;background:rgba(29,59,109,.05);border-radius:0 10px 10px 0}
-.dark .quote{border-left-color:#fff;background:rgba(255,255,255,.08)}
-
-/* ---------- branch table ---------- */
+/* branch table */
 .branch{width:100%;border-collapse:collapse;margin-top:14px;font-size:.88rem}
 .branch th{text-align:left;padding:9px 12px;background:var(--brand-primary);color:#fff;font-size:.8rem;letter-spacing:.6px;text-transform:uppercase}
 .branch th:first-child{border-radius:10px 0 0 0}.branch th:last-child{border-radius:0 10px 0 0}
@@ -120,23 +133,33 @@ a{color:var(--brand-secondary)}
 .branch tr:nth-child(even) td{background:var(--brand-field)}
 .branch td b{color:var(--brand-primary)}
 
-/* ---------- footer nav ---------- */
+/* pipeline */
+.pipe{display:flex;flex-wrap:wrap;align-items:stretch;justify-content:center;gap:0;margin:26px 0 10px}
+.pipe-node{flex:1 1 220px;max-width:280px;background:var(--brand-field);border-radius:14px;padding:20px;text-align:center;opacity:0;transform:scale(.92);transition:opacity .7s ease,transform .7s ease}
+.pipe-node.visible{opacity:1;transform:scale(1)}
+.pipe-node h4{color:var(--brand-primary);margin-bottom:6px;font-size:1.05rem}
+.pipe-node p{font-size:.85rem;opacity:.8;margin-bottom:8px}
+.pipe-node .cost{font-weight:700;color:var(--brand-primary);font-size:.9rem}
+.pipe-arrow{align-self:center;font-size:1.7rem;color:var(--brand-secondary);padding:0 12px;opacity:0;transition:opacity .7s ease .3s}
+.pipe-arrow.visible{opacity:1}
+
+/* side nav */
 .deck-nav{position:fixed;right:18px;top:50%;transform:translateY(-50%);z-index:50;display:flex;flex-direction:column;gap:9px}
 .deck-nav a{width:10px;height:10px;border-radius:50%;background:rgba(29,59,109,.25);display:block;transition:background .3s,transform .3s}
 .deck-nav a.active{background:var(--brand-primary);transform:scale(1.35)}
-section.dark ~ .deck-nav a{background:rgba(255,255,255,.35)}
 
-.disclaimer{margin-top:24px;padding-top:14px;border-top:1px solid var(--brand-border);font-size:.78rem;opacity:.6;line-height:1.45}
-.dark .disclaimer{border-top-color:rgba(255,255,255,.2)}
-
+@media(max-width:820px){
+  .scrolly{grid-template-columns:1fr}
+  .scrolly .sticky-viz{position:static;order:-1;margin-bottom:20px}
+  .scrolly .steps .step{min-height:auto;padding:34px 0;opacity:1}
+}
 @media(max-width:700px){
   h1{font-size:2rem}h2{font-size:1.6rem}.stat{font-size:2.4rem}
-  p,li{font-size:.94rem}.deck-nav{display:none}
-  .pipe-arrow{transform:rotate(90deg)}
-  .pull{font-size:1.2rem}
+  p,li{font-size:.94rem}.deck-nav{display:none}.pull{font-size:1.2rem}
 }
 @media(prefers-reduced-motion:reduce){
-  .reveal,.tl-item,.email,.pipe-node,.pipe-arrow{transition:none;opacity:1;transform:none}
+  .reveal,.tl-item,.pipe-node,.pipe-arrow,.tl-body,.mbar,.step{transition:none!important;opacity:1!important;transform:none!important}
+  .hero-orb{animation:none}
 }
 </style>
 </head>
@@ -147,11 +170,13 @@ section.dark ~ .deck-nav a{background:rgba(255,255,255,.35)}
 
 <!-- 1. TITLE -->
 <section class="dark" id="s1">
-  <div class="wrap" style="text-align:center">
-    <div class="reveal"><div class="vs" style="opacity:.55">aba TRADES · September 2026</div></div>
+  <div class="hero-bg"><div class="hero-orb orb1"></div><div class="hero-orb orb2"></div></div>
+  <div class="wrap" style="text-align:center;position:relative">
+    <div class="reveal"><img src="https://harley-abatrades.github.io/abatrades-pages/assets/brand/abatrades-logo.png" alt="aba TRADES" style="width:190px;max-width:60%;margin:0 auto 26px;display:block;filter:drop-shadow(0 6px 22px rgba(0,0,0,.28))"></div>
+    <div class="reveal d1"><div class="vs" style="opacity:.55">aba TRADES · September 2026</div></div>
     <h1 class="reveal d1" style="font-size:3rem">Customer Lifetime Value</h1>
-    <p class="lede reveal d2" style="opacity:.92">Member re-engagement initiative — from one-off jobs to a membership that stays front of mind.</p>
-    <p class="reveal d3" style="opacity:.5;margin-top:26px;font-size:.85rem">Scroll to begin ↓</p>
+    <p class="lede reveal d2" style="opacity:.92">Our best customers don't come back any faster.<br>Here's how we change that.</p>
+    <p class="reveal d3" style="opacity:.5;margin-top:26px;font-size:.85rem">Scroll — this is a story, not a slide deck ↓</p>
   </div>
 </section>
 
@@ -181,121 +206,123 @@ section.dark ~ .deck-nav a{background:rgba(255,255,255,.35)}
   </div>
 </section>
 
-<!-- 3. RE-ENGAGEMENT REALITY -->
-<section class="alt" id="s3">
-  <div class="wrap">
-    <div class="rule reveal"></div>
-    <h2 class="reveal">Re-engagement reality</h2>
-    <div class="vs reveal d1">Fresh engagements over a 6-month window</div>
-    <div class="stat-row">
-      <div class="stat-block reveal d1">
-        <div class="stat"><span class="count" data-to="4.2" data-dec="1">0</span>%</div>
-        <div class="stat-label">Members</div>
-        <p>~1 in 24 members start a genuinely new job per half-year</p>
+<!-- 3. RE-ENGAGEMENT — SCROLLYTELLING -->
+<section class="alt" id="s3" style="align-items:flex-start">
+  <div class="wrap wide">
+    <div class="scrolly">
+      <div class="sticky-viz">
+        <div class="big-meter">
+          <div class="mbar members" id="barMembers" style="height:42px"><div class="mval" id="valMembers">4.2%</div><div class="mlab">Members</div></div>
+          <div class="mbar nonmembers" id="barNon" style="height:75px"><div class="mval" id="valNon">7.5%</div><div class="mlab">Non-members</div></div>
+        </div>
+        <p class="fine" style="text-align:center;margin-top:52px">Fresh engagements per 6-month window</p>
       </div>
-      <div class="stat-block reveal d2">
-        <div class="stat"><span class="count" data-to="7.5" data-dec="1">0</span>%</div>
-        <div class="stat-label">Non-members</div>
-        <p>Non-members initiate fresh jobs more often than members do</p>
-      </div>
-      <div class="stat-block reveal d3">
-        <div class="stat">8<span style="font-size:1.6rem">/1316</span></div>
-        <div class="stat-label">second fresh engagement</div>
-        <p>Only 8 members had a 2nd fresh engagement across the full 22-month window. Median gap: ~200 days.</p>
+      <div class="steps">
+        <div class="step" data-step="0">
+          <div class="vs">Chapter 1</div>
+          <h2 style="font-size:1.8rem">Re-engagement reality</h2>
+          <p>Over a 6-month window, <strong>4.2% of members</strong> start a genuinely new job. Roughly 1 in 24.</p>
+          <p>Non-members? <strong>7.5%</strong>. The people who pay us less come back more often.</p>
+        </div>
+        <div class="step" data-step="1">
+          <div class="vs">Chapter 2</div>
+          <h2 style="font-size:1.8rem">Across 22 months, only 8</h2>
+          <p>Of 1,316 members, just <strong>8</strong> ever came back for a second fresh engagement.</p>
+          <p>The median gap between a member's genuine new jobs is <strong>~200 days</strong>. Nearly seven months of silence between visits.</p>
+        </div>
+        <div class="step" data-step="2">
+          <div class="vs">Chapter 3</div>
+          <h2 style="font-size:1.8rem">Why the gap?</h2>
+          <p>A member's call-out generates ~12 billed jobs on average — investigation, install, return visits. One visit covers a lot of ground before they need us again.</p>
+          <p>Non-members average ~3 billed jobs per call-out, so their next need arrives fresh, sooner.</p>
+        </div>
+        <div class="step" data-step="3">
+          <div class="vs">The punchline</div>
+          <p class="pull">Members are worth twice as much — and they don't come back any faster.</p>
+          <p class="fine" style="margin-top:14px">What counts as a 'new job': a fresh engagement is a genuinely new call-out — not a follow-on from a prior quote, not a recall child. This removes the investigation-then-dispatch double-count that inflates raw job counts.</p>
+        </div>
       </div>
     </div>
-    <div class="quote reveal d3">Why the gap? A member's call-out generates ~12 billed jobs on average — investigation, install, return visits — so one visit covers a lot of ground before they need us again. Non-members average ~3 billed jobs per call-out, so their next need comes fresh sooner.</div>
-    <p class="pull reveal d4">Members are worth twice as much — and they don't come back any faster.</p>
-    <div class="disclaimer reveal d4"><strong>What counts as a 'new job':</strong> a fresh engagement is a genuinely new call-out — not a follow-on from a prior quote, not a recall child of an earlier job. This removes the investigation-then-dispatch double-count that inflates raw job counts. The CLV report uses the same definition throughout.</div>
   </div>
 </section>
 
-<!-- 4. THE OPPORTUNITY -->
+<!-- 4. THE OPPORTUNITY (with bottom-line math) -->
 <section class="light" id="s4">
+  <div class="wrap wide">
+    <div class="rule reveal"></div>
+    <h2 class="reveal">The opportunity — and what it's worth</h2>
+    <p class="reveal d1">Members are the business's most valuable customers. They pay more. They return more often on a billing basis. But on the metric that matters — <em>when will they genuinely need us next?</em> — they don't re-engage any faster than non-members.</p>
+    <div class="stat-row">
+      <div class="stat-block card reveal d2">
+        <div class="stat" style="font-size:2.6rem;color:var(--brand-primary)">$60K</div>
+        <div class="stat-label">per +0.8pt lift, per half-year</div>
+        <p style="font-size:.95rem">Lift 6-month fresh engagement from 4.2% to just 5% and ~10.5 extra fresh jobs land per period — at the member AOV of $5,699, that's ~$60K. Every period.</p>
+      </div>
+      <div class="stat-block card reveal d3">
+        <div class="stat" style="font-size:2.6rem;color:var(--brand-primary)">+35%</div>
+        <div class="stat-label">booking frequency</div>
+        <p style="font-size:.95rem">Shrink the median re-engagement gap from 200 to 150 days and annual fresh bookings per member rise ~35% (1.8 → 2.4 per year) — compounding against a $9.7M member base.</p>
+      </div>
+      <div class="stat-block card reveal d4">
+        <div class="stat" style="font-size:2.6rem;color:var(--brand-primary)">~28</div>
+        <div class="stat-label">natural bookers per 90 days</div>
+        <p style="font-size:.95rem">That's the control group. If our sequence moves even a handful of members to book in the window instead of month 7, the lift shows up against that baseline.</p>
+      </div>
+    </div>
+    <p class="pull reveal d4">Even a small nudge on when members come back is worth real money on a $9.7M cohort.</p>
+  </div>
+</section>
+
+<!-- 5. THE MVP TEST (moved up, directly after opportunity) -->
+<section class="dark" id="s5">
   <div class="wrap">
     <div class="rule reveal"></div>
-    <h2 class="reveal">The opportunity</h2>
-    <p class="reveal d1">Members are the business's most valuable customers. They pay more. They return more often on a billing basis. But on the metric that matters — <em>when will they genuinely need us next?</em> — they don't re-engage any faster than non-members.</p>
-    <p class="reveal d2">That gap is addressable. A timely, value-first email sequence could be the difference between a member booking at month 3 vs month 7. Even a small directional lift on a cohort spending $9.7 million a year is worth testing.</p>
-    <p class="reveal d3">If the emails work at all, the path from email to SMS to full evergreen nurture is clear. If they don't — we know before over-investing.</p>
-    <p class="pull reveal d4">The highest-value customers are the ones most worth a light, timely nudge to come back sooner.</p>
+    <h2 class="reveal">So we test it — small, clean, measurable</h2>
+    <p class="reveal d1" style="opacity:.9">Not a revenue commitment. A single email first, to prove the channel moves the number at all.</p>
+    <div class="stat-row" style="margin-top:18px">
+      <div class="stat-block card reveal d1">
+        <div class="stat" style="font-size:2.6rem">1,283</div>
+        <div class="stat-label">consent-gated members</div>
+        <p>The Day-0 welcome email goes to every member with valid email + consent — the simplest version of the flow, tested first.</p>
+      </div>
+      <div class="stat-block card reveal d2">
+        <div class="stat" style="font-size:2.6rem">50/50</div>
+        <div class="stat-label">A/B split</div>
+        <p>Flow gets the email, control is held out. The control group is what turns "we sent email and things happened" into "email moved it."</p>
+      </div>
+      <div class="stat-block card reveal d3">
+        <div class="stat" style="font-size:2.6rem">90<span style="font-size:1.4rem"> days</span></div>
+        <div class="stat-label">measurement window</div>
+        <p>Fresh booking within 90 days vs control — a directional read, with re-engagement tracked open-ended after that.</p>
+      </div>
+    </div>
+    <p class="reveal d4" style="margin-top:18px;opacity:.9">Validate the channel with one email. Then the full five-email sequence becomes the always-on onboarding every new member receives.</p>
   </div>
 </section>
 
-<!-- 5. THE FLOW -->
-<section class="dark" id="s5">
+<!-- 6. THE FLOW (interactive timeline) -->
+<section class="light" id="s6">
   <div class="wrap wide">
     <div class="rule reveal"></div>
     <h2 class="reveal">The flow: five emails over 90 days</h2>
-    <p class="reveal d1" style="opacity:.9">Not one email. An evergreen onboarding sequence that runs for every new member, forever — value first, cross-trade by design, closing on the membership's highest-value benefit.</p>
+    <p class="reveal d1" style="opacity:.9">An evergreen onboarding sequence that runs for every new member, forever — value first, cross-trade by design, closing on the membership's highest-value benefit.</p>
+    <p class="fine reveal d1" style="margin-top:6px;opacity:.7">Click a step to read the email. Toggle <strong>Plain</strong> / <strong>Spark</strong> to compare the safe copy with the livelier draft.</p>
     <div class="timeline">
-      <div class="tl-item">
+
+      <!-- DAY 0 -->
+      <div class="tl-item interactive" data-tl>
         <span class="tl-day">Day 0</span>
         <h4>Welcome — membership is active</h4>
         <p>Orient to the direct line, $1000+ coupons, year-round pricing, 25-year labour warranty, and the free $389 annual inspection. Same email for every member.</p>
         <span class="tl-tag tag-welcome">Universal</span>
-      </div>
-      <div class="tl-item">
-        <span class="tl-day">Day 7</span>
-        <h4>First cross-trade value</h4>
-        <p>A practical guide from another trade — e.g. bought aircon, receive "5 easy DIY tips to unclog your sink". Give the knowledge away; the member benefit is that one call handles it.</p>
-        <span class="tl-tag tag-value">Value first</span><span class="tl-tag tag-welcome">Branched</span>
-      </div>
-      <div class="tl-item">
-        <span class="tl-day">Day 21</span>
-        <h4>Second cross-trade value</h4>
-        <p>A second trade, a second useful guide — e.g. "Top 5 reasons your roof is leaking". Builds the mental model: one membership covers the whole home.</p>
-        <span class="tl-tag tag-value">Value first</span><span class="tl-tag tag-welcome">Branched</span>
-      </div>
-      <div class="tl-item">
-        <span class="tl-day">Day 45</span>
-        <h4>Third cross-trade value + soft nudge</h4>
-        <p>A third guide, with the reminder that coupons and member pricing are waiting. The first gentle nudge toward using the membership.</p>
-        <span class="tl-tag tag-value">Value first</span><span class="tl-tag tag-welcome">Branched</span>
-      </div>
-      <div class="tl-item">
-        <span class="tl-day">Day 90</span>
-        <h4>The close: book your free inspection</h4>
-        <p>Hard call to action on the $389 whole-house inspection — the highest-value, most concrete benefit, and the one that drives the next visit. Lands exactly as the 90-day measurement window closes.</p>
-        <span class="tl-tag tag-close">Hard CTA</span><span class="tl-tag tag-welcome">Universal</span>
-      </div>
-    </div>
-    <div class="chips reveal">
-      <span class="chip c-plumb"><i></i>Plumbing &amp; Gas</span>
-      <span class="chip c-air"><i></i>Air Conditioning</span>
-      <span class="chip c-elec"><i></i>Electrical + Solar</span>
-      <span class="chip c-roof"><i></i>Roofing</span>
-      <span class="chip c-reno"><i></i>Renovations</span>
-    </div>
-    <p class="fine" style="margin-top:14px;opacity:.65">Branching rotates each member through the trades they did <em>not</em> just buy — never undermining a fresh install with "signs yours is failing" content. Seasonal campaigns stay separate, blasted to the whole database.</p>
-  </div>
-</section>
-
-<!-- 6. WHY THIS WORKS (Hormozi) -->
-<section class="light" id="s6">
-  <div class="wrap">
-    <div class="rule reveal"></div>
-    <h2 class="reveal">Why value first</h2>
-    <p class="reveal d1">The sequence follows a simple principle: <strong>give away the secrets, sell the implementation.</strong> Each email leads with genuinely useful content from our own blogs — the DIY fix, the health check, the warning signs — before it mentions anything we sell.</p>
-    <p class="reveal d2">The member difference is the hook: you <em>could</em> do this yourself, or as a member you call <strong>08 7323 1253</strong> and it's handled. Member pricing. Coupons. Warranty. The dream outcome — a home that's looked after — is already paid for. The emails just teach members to use it.</p>
-    <div class="quote reveal d3">"You don't have a sales problem or a marketing problem. You have an offer problem." — Alex Hormozi, $100M Offers. Our offer is membership; these emails make the offer felt.</div>
-  </div>
-</section>
-
-<!-- 7. EMAIL EXAMPLES -->
-<section class="alt" id="s7">
-  <div class="wrap wide" style="text-align:center">
-    <div class="rule reveal" style="margin-left:auto;margin-right:auto"></div>
-    <h2 class="reveal">The emails themselves</h2>
-    <p class="reveal d1" style="max-width:640px;margin:0 auto 34px">Plain text. One job per email. Signed by Harley — the member's direct line to the team.</p>
-    <div class="email-stage" style="text-align:left">
-
-      <div class="email">
-        <div class="e-head">
-          <div class="e-subject">Welcome to aba TRADES membership</div>
-          <div class="e-meta">Day 0 · To: [First Name] · From: Harley @ aba TRADES</div>
-        </div>
-        <div class="e-body">Hi [First Name],
+        <span class="tl-expand-hint">Read the email</span>
+        <div class="tl-body">
+          <div class="mini-email">
+            <div class="m-head">
+              <div><div class="m-subject" data-subject-plain="Welcome to aba TRADES membership" data-subject-fun="You're in. Here's everything your membership unlocks 🔓">Welcome to aba TRADES membership</div><div class="m-meta">Day 0 · To: [First Name] · From: Harley @ aba TRADES</div></div>
+              <div class="tone-toggle"><button class="active" data-tone="plain">Plain</button><button data-tone="fun">Spark ✨</button></div>
+            </div>
+            <div class="email-variant active" data-variant="plain"><div class="m-body">Hi [First Name],
 
 Welcome to the aba TRADES family. Your membership is active.
 
@@ -311,16 +338,50 @@ Your membership card holds it all in one place. Scan the QR code any time, or ke
 We look after your home, every trade, so you never chase more than one number.
 
 Talk soon,
-<div class="sig">Harley — aba TRADES</div></div>
-        <div class="e-foot">Reply UNSUBSCRIBE to opt out of future emails.</div>
+<div class="sig">Harley — aba TRADES</div></div></div>
+            <div class="email-variant" data-variant="fun"><div class="m-body">Hi [First Name],
+
+You're in! 🎉 Your aba TRADES membership is officially active — and your home just got a lot easier to look after.
+
+Here's what you've unlocked:
+• 📞 Your own direct line: 08 7323 1253. Members skip the queue. Every time.
+• 💰 $1000+ in discount coupons, good across plumbing, electrical, aircon and roofing.
+• 🕐 Year-round member pricing — middle of a heatwave, middle of the night (public holidays excepted).
+• 🛡️ A 25-year labour warranty. That's five years longer than standard.
+• 🔍 A free whole-house inspection every year, worth $389. We check everything so small problems never become big ones.
+
+Your membership card has the lot. Scan the QR code for the details, or just save 08 7323 1253 in your phone now. Future you will be glad you did.
+
+One number. Every trade. Sorted.
+
+Talk soon,
+<div class="sig">Harley — aba TRADES</div></div></div>
+            <div class="m-foot">Reply UNSUBSCRIBE to opt out of future emails.</div>
+          </div>
+        </div>
       </div>
 
-      <div class="email">
-        <div class="e-head">
-          <div class="e-subject">A quick win for your plumbing (on us)</div>
-          <div class="e-meta">Day 7 · Aircon branch · From: Harley @ aba TRADES</div>
-        </div>
-        <div class="e-body">Hi [First Name],
+      <!-- DAY 7 -->
+      <div class="tl-item interactive" data-tl>
+        <span class="tl-day">Day 7</span>
+        <h4>First cross-trade value</h4>
+        <p>A practical guide from another trade — give the knowledge away; the member benefit is that one call handles it.</p>
+        <span class="tl-tag tag-value">Value first</span><span class="tl-tag tag-welcome">Branched</span>
+        <span class="tl-expand-hint">Read the emails</span>
+        <div class="tl-body">
+          <div class="branch-picker" data-branch-picker>
+            <button class="active" data-branch="aircon">Bought Aircon</button>
+            <button data-branch="plumbing">Bought Plumbing</button>
+            <button data-branch="electrical">Bought Electrical</button>
+            <button data-branch="roofing">Bought Roofing</button>
+          </div>
+
+          <div class="branch-view active" data-view="aircon"><div class="mini-email">
+            <div class="m-head">
+              <div><div class="m-subject" data-subject-plain="A quick win for your plumbing (on us)" data-subject-fun="The 2-minute sink fix most people miss 🚰">A quick win for your plumbing (on us)</div><div class="m-meta">Day 7 · Aircon branch · From: Harley @ aba TRADES</div></div>
+              <div class="tone-toggle"><button class="active" data-tone="plain">Plain</button><button data-tone="fun">Spark ✨</button></div>
+            </div>
+            <div class="email-variant active" data-variant="plain"><div class="m-body">Hi [First Name],
 
 Now that your air conditioning is sorted, here's something useful for another part of your home.
 
@@ -333,16 +394,165 @@ But here's the member difference: if the DIY route doesn't work, or you'd rather
 That's the point of membership. Your home, every trade, one number.
 
 Talk soon,
-<div class="sig">Harley — aba TRADES</div></div>
-        <div class="e-foot">Reply UNSUBSCRIBE to opt out of future emails.</div>
+<div class="sig">Harley — aba TRADES</div></div></div>
+            <div class="email-variant" data-variant="fun"><div class="m-body">Hi [First Name],
+
+Your aircon's sorted ❄️ — so let's talk sinks. Stay with me, this one's genuinely useful.
+
+We wrote a guide: 5 easy DIY ways to unclog a sink. Boiling water, the baking soda trick, when a plunger actually works. It'll save you a call-out one day.
+
+Read it here: [blog link]
+
+And here's the part I like: if the clog wins, you don't wrestle it. Members call 08 7323 1253, our plumbers handle it, and your coupons are sitting there ready to use. 🧰
+
+That's the whole idea of your membership. One number, every trade, done.
+
+Talk soon,
+<div class="sig">Harley — aba TRADES</div></div></div>
+            <div class="m-foot">Reply UNSUBSCRIBE to opt out of future emails.</div>
+          </div></div>
+
+          <div class="branch-view" data-view="plumbing"><div class="mini-email">
+            <div class="m-head">
+              <div><div class="m-subject" data-subject-plain="Keep your air conditioning running efficiently" data-subject-fun="Your aircon's filter might be eating your power bill 💸">Keep your air conditioning running efficiently</div><div class="m-meta">Day 7 · Plumbing branch · From: Harley @ aba TRADES</div></div>
+              <div class="tone-toggle"><button class="active" data-tone="plain">Plain</button><button data-tone="fun">Spark ✨</button></div>
+            </div>
+            <div class="email-variant active" data-variant="plain"><div class="m-body">Hi [First Name],
+
+Now that your plumbing is sorted, here's something useful for another part of your home.
+
+We put together a 10-point health check for air conditioning systems. Simple things you can check yourself to keep it running efficiently and catch small issues before they become expensive ones.
+
+Read it here: [blog link]
+
+But here's the member difference: if you'd rather not climb into the roof space or pull filters yourself, your membership covers it. One call to 08 7323 1253 and our air conditioning team handles it. Member pricing applies, and your coupons are ready to use.
+
+That's the point of membership. Your home, every trade, one number.
+
+Talk soon,
+<div class="sig">Harley — aba TRADES</div></div></div>
+            <div class="email-variant" data-variant="fun"><div class="m-body">Hi [First Name],
+
+Plumbing's sorted 🔧 — now a quick one for the thing keeping you cool.
+
+We wrote a 10-point health check for air conditioners. It's the simple stuff most people never check — filters, airflow, the little signs before a $3,000 emergency.
+
+Read it here: [blog link]
+
+And if roof-space gymnastics aren't your idea of a good Saturday? Fair. Members just call 08 7323 1253 and our aircon team does the climbing. Your member pricing and coupons apply automatically. ☀️
+
+One number. Every trade. That's the membership working.
+
+Talk soon,
+<div class="sig">Harley — aba TRADES</div></div></div>
+            <div class="m-foot">Reply UNSUBSCRIBE to opt out of future emails.</div>
+          </div></div>
+
+          <div class="branch-view" data-view="electrical"><div class="mini-email">
+            <div class="m-head">
+              <div><div class="m-subject" data-subject-plain="A quick win for your water quality" data-subject-fun="The filter under your sink needs a 5-minute check 🚰">A quick win for your water quality</div><div class="m-meta">Day 7 · Electrical branch · From: Harley @ aba TRADES</div></div>
+              <div class="tone-toggle"><button class="active" data-tone="plain">Plain</button><button data-tone="fun">Spark ✨</button></div>
+            </div>
+            <div class="email-variant active" data-variant="plain"><div class="m-body">Hi [First Name],
+
+Now that your electrical work is sorted, here's something useful for another part of your home.
+
+We put together a guide on maintaining your water filtration system. Simple DIY checks that keep your water tasting right and your filter working properly.
+
+Read it here: [blog link]
+
+But here's the member difference: if you'd rather not get under the sink or mess with filters, your membership covers it. One call to 08 7323 1253 and our plumbing team handles it. Member pricing applies, and your coupons are ready to use.
+
+That's the point of membership. Your home, every trade, one number.
+
+Talk soon,
+<div class="sig">Harley — aba TRADES</div></div></div>
+            <div class="email-variant" data-variant="fun"><div class="m-body">Hi [First Name],
+
+Electrical's sorted ⚡ — quick question: when did you last check your water filter?
+
+Most people install it, feel good, and forget it exists. We wrote a simple DIY check guide so your water stays tasting right and the filter actually does its job.
+
+Read it here: [blog link]
+
+And if under-sink plumbing isn't your happy place? Members don't need one. Call 08 7323 1253 and our plumbing team takes care of it, member pricing and coupons included. 💧
+
+One number, every trade. That's what you signed up for.
+
+Talk soon,
+<div class="sig">Harley — aba TRADES</div></div></div>
+            <div class="m-foot">Reply UNSUBSCRIBE to opt out of future emails.</div>
+          </div></div>
+
+          <div class="branch-view" data-view="roofing"><div class="mini-email">
+            <div class="m-head">
+              <div><div class="m-subject" data-subject-plain="A quick win for your hot water" data-subject-fun="Nobody thinks about hot water until it's cold 🚿">A quick win for your hot water</div><div class="m-meta">Day 7 · Roofing branch · From: Harley @ aba TRADES</div></div>
+              <div class="tone-toggle"><button class="active" data-tone="plain">Plain</button><button data-tone="fun">Spark ✨</button></div>
+            </div>
+            <div class="email-variant active" data-variant="plain"><div class="m-body">Hi [First Name],
+
+Now that your roofing work is sorted, here's something useful for another part of your home.
+
+We put together an honest guide on hot water system replacement. When to repair, when to replace, and what actually delivers value for money.
+
+Read it here: [blog link]
+
+But here's the member difference: if your hot water system is playing up, or you'd rather not wait for a cold shower to find out, your membership covers it. One call to 08 7323 1253 and our plumbing team handles it. Member pricing applies, and your coupons are ready to use.
+
+That's the point of membership. Your home, every trade, one number.
+
+Talk soon,
+<div class="sig">Harley — aba TRADES</div></div></div>
+            <div class="email-variant" data-variant="fun"><div class="m-body">Hi [First Name],
+
+Roof sorted 🏠 — now let's talk about the appliance nobody thinks about until 6am on a cold morning.
+
+Hot water systems give warnings before they quit. We wrote an honest guide: when to repair, when to replace, and what's actually worth the money.
+
+Read it here: [blog link]
+
+Here's the good bit: as a member, hot water is guaranteed within 24 hours of booking. One call to 08 7323 1253 and it's handled — with member pricing and your coupons on top. 🚿
+
+No cold showers. That's the membership promise.
+
+Talk soon,
+<div class="sig">Harley — aba TRADES</div></div></div>
+            <div class="m-foot">Reply UNSUBSCRIBE to opt out of future emails.</div>
+          </div></div>
+        </div>
       </div>
 
-      <div class="email">
-        <div class="e-head">
-          <div class="e-subject">Your free inspection is ready to book</div>
-          <div class="e-meta">Day 90 · All members · From: Harley @ aba TRADES</div>
-        </div>
-        <div class="e-body">Hi [First Name],
+      <!-- DAY 21 -->
+      <div class="tl-item">
+        <span class="tl-day">Day 21</span>
+        <h4>Second cross-trade value</h4>
+        <p>A second trade, a second useful guide — e.g. "Top 5 reasons your roof is leaking". Builds the mental model: one membership covers the whole home.</p>
+        <span class="tl-tag tag-value">Value first</span><span class="tl-tag tag-welcome">Branched</span>
+        <p class="fine" style="margin-top:6px;opacity:.7">Same structure as Day 7 — new trade, new guide, same member-difference close. Full branch copy lives on the flow card.</p>
+      </div>
+
+      <!-- DAY 45 -->
+      <div class="tl-item">
+        <span class="tl-day">Day 45</span>
+        <h4>Third cross-trade value + soft nudge</h4>
+        <p>A third guide, with the reminder that coupons and member pricing are waiting. The first gentle nudge toward using the membership.</p>
+        <span class="tl-tag tag-value">Value first</span><span class="tl-tag tag-welcome">Branched</span>
+      </div>
+
+      <!-- DAY 90 -->
+      <div class="tl-item interactive" data-tl>
+        <span class="tl-day">Day 90</span>
+        <h4>The close: book your free inspection</h4>
+        <p>Hard call to action on the $389 whole-house inspection — the highest-value, most concrete benefit, and the one that drives the next visit. Lands exactly as the 90-day measurement window closes.</p>
+        <span class="tl-tag tag-close">Hard CTA</span><span class="tl-tag tag-welcome">Universal</span>
+        <span class="tl-expand-hint">Read the email</span>
+        <div class="tl-body">
+          <div class="mini-email">
+            <div class="m-head">
+              <div><div class="m-subject" data-subject-plain="Your free inspection is ready to book" data-subject-fun="Your $389 inspection is sitting there, [First Name] 🔍">Your free inspection is ready to book</div><div class="m-meta">Day 90 · All members · From: Harley @ aba TRADES</div></div>
+              <div class="tone-toggle"><button class="active" data-tone="plain">Plain</button><button data-tone="fun">Spark ✨</button></div>
+            </div>
+            <div class="email-variant active" data-variant="plain"><div class="m-body">Hi [First Name],
 
 Three months ago you became an aba TRADES member. Since then we've sent you practical guides for your home and reminders of what your membership covers.
 
@@ -357,12 +567,47 @@ This is what membership is for. Not just discounts when something breaks, but pr
 We look forward to seeing you.
 
 Talk soon,
-<div class="sig">Harley — aba TRADES</div></div>
-        <div class="e-foot">Reply UNSUBSCRIBE to opt out of future emails.</div>
+<div class="sig">Harley — aba TRADES</div></div></div>
+            <div class="email-variant" data-variant="fun"><div class="m-body">Hi [First Name],
+
+It's been three months since you joined aba TRADES 🎉 — and there's something sitting in your account you haven't used yet.
+
+Your free whole-house inspection. Worth $389. Already paid for by your membership.
+
+One visit. Every trade — plumbing, electrical, roofing, heating and cooling. We go through the place top to bottom and hand you the full picture: what's great, what's fair, what needs attention before it gets expensive.
+
+Booking takes one call: 08 7323 1253. Or just reply to this email and I'll sort it. 📞
+
+This is the part of membership that stops the 6am emergencies. Let's get you on the calendar.
+
+Talk soon,
+<div class="sig">Harley — aba TRADES</div></div></div>
+            <div class="m-foot">Reply UNSUBSCRIBE to opt out of future emails.</div>
+          </div>
+        </div>
       </div>
 
     </div>
-    <p class="fine reveal" style="margin-top:22px">Full copy deck — all branches for E2–E4 — lives on the flow card in the project board, ready for sign-off.</p>
+    <div class="chips reveal">
+      <span class="chip c-plumb"><i></i>Plumbing &amp; Gas</span>
+      <span class="chip c-air"><i></i>Air Conditioning</span>
+      <span class="chip c-elec"><i></i>Electrical + Solar</span>
+      <span class="chip c-roof"><i></i>Roofing</span>
+      <span class="chip c-reno"><i></i>Renovations</span>
+    </div>
+    <p class="fine" style="margin-top:14px;opacity:.65">Branching rotates each member through the trades they did <em>not</em> just buy — never undermining a fresh install with "signs yours is failing" content. Seasonal campaigns stay separate, blasted to the whole database.</p>
+  </div>
+</section>
+
+<!-- 7. WHY VALUE FIRST -->
+<section class="alt" id="s7">
+  <div class="wrap">
+    <div class="rule reveal"></div>
+    <h2 class="reveal">Why value first</h2>
+    <p class="reveal d1">The sequence follows a simple principle: <strong>give away the secrets, sell the implementation.</strong> Each email leads with genuinely useful content from our own blogs — the DIY fix, the health check, the warning signs — before it mentions anything we sell.</p>
+    <p class="reveal d2">The member difference is the hook: you <em>could</em> do this yourself, or as a member you call <strong>08 7323 1253</strong> and it's handled. Member pricing. Coupons. Warranty. The dream outcome — a home that's looked after — is already paid for. The emails just teach members to use it.</p>
+    <div class="quote reveal d3">"You don't have a sales problem or a marketing problem. You have an offer problem." — Alex Hormozi, $100M Offers. Our offer is membership; these emails make the offer felt.</div>
+    <p class="fine reveal d4" style="margin-top:10px">Two drafts per email above — <strong>Plain</strong> (the safe, proven register) and <strong>Spark</strong> (same structure, warmer voice, a couple of emojis). The Plain/Spark toggle also makes A/B variant testing trivial later: Brevo can split-send both.</p>
   </div>
 </section>
 
@@ -387,7 +632,7 @@ Talk soon,
 </section>
 
 <!-- 9. TECH STACK -->
-<section class="light" id="s9">
+<section class="alt" id="s9">
   <div class="wrap wide">
     <div class="rule reveal"></div>
     <h2 class="reveal">How the pieces connect</h2>
@@ -416,29 +661,39 @@ Talk soon,
         <div class="cost">Compliance-safe</div>
       </div>
     </div>
-    <p class="fine reveal" style="margin-top:18px">Why Brevo over ServiceTitan Marketing Pro? ST Marketing Pro is a paid add-on with no API for template or campaign creation — everything must be built manually in the UI. Brevo's free tier covers the cohort, its automation handles the 5-step journey timing, and n8n's native Brevo connector bridges it to ServiceTitan without custom code.</p>
-    <p class="fine reveal" style="margin-top:4px">Why n8n over cron? A 5-step, 90-day evergreen flow is a state machine — tracking each member's position, timing from join date, handling unsubscribes mid-sequence. Building and maintaining that in a cron script is fragile. n8n provides the sequencing, retry logic, and native Brevo triggers out of the box.</p>
-    <p class="fine reveal" style="margin-top:4px">Total trial cost: under USD 100. The infrastructure is reusable for SMS, seasonal blasts, and every future nurture flow.</p>
+    <p class="fine reveal" style="margin-top:18px">Total trial cost: under USD 100. The infrastructure is reusable for SMS, seasonal blasts, and every future nurture flow.</p>
   </div>
 </section>
 
-<!-- 10. THE MVP TEST -->
-<section class="dark" id="s10">
-  <div class="wrap">
+<!-- 9b. WHY THIS STACK -->
+<section class="light" id="s9b">
+  <div class="wrap wide">
     <div class="rule reveal"></div>
-    <h2 class="reveal">The MVP test</h2>
-    <ul>
-      <li class="reveal d1">The Day-0 welcome email goes to <strong>1,283 consent-gated members</strong> — the simplest version of the flow, tested first</li>
-      <li class="reveal d2"><strong>50/50 A/B split</strong> — flow gets the email, control held out (attribution, not significance)</li>
-      <li class="reveal d3">Recipient list from ServiceTitan, consent-gated (email consent ON, doNotMail false)</li>
-      <li class="reveal d4">Measured: fresh booking within <strong>90 days</strong> vs control — directional read, re-engagement tracked open-ended</li>
-    </ul>
-    <p class="reveal d4" style="margin-top:18px;opacity:.9">Validate the channel with one email. Then the full five-email sequence becomes the always-on onboarding every new member receives.</p>
+    <h2 class="reveal">Why this stack — and what we said no to</h2>
+    <p class="reveal d1">Three deliberate choices, each measured against the obvious alternative.</p>
+    <div class="stat-row" style="margin-top:20px">
+      <div class="stat-block card reveal d1">
+        <h3>Why not ServiceTitan Marketing Pro?</h3>
+        <p style="font-size:.95rem">The obvious in-platform option — but its email template and campaign building is <strong>UI-only</strong>. The API exposes campaign metadata and attribution, not template, sequence or launch endpoints. We can't automate a journey we can only click-build, and every change needs a human in the UI.</p>
+        <p style="font-size:.95rem;margin-bottom:0"><strong>Our path:</strong> keep ServiceTitan as the source of truth (members, service type, consent) and run the journey on a real ESP. Revenue attribution stays in ServiceTitan via campaign tagging.</p>
+      </div>
+      <div class="stat-block card reveal d2">
+        <h3>Why Brevo over ActiveCampaign / MailerLite?</h3>
+        <p style="font-size:.95rem">Native triggered-journey builder, plain-text support (no forced HTML templates), and built-in unsubscribe/suppression compliance — the things a legal marketing send actually needs. <strong>Free tier covers our whole pilot</strong> (300 emails/day vs ~1,283 members).</p>
+        <p style="font-size:.95rem;margin-bottom:0"><strong>The others:</strong> ActiveCampaign's cost scales fast at our volume ($79+/mo territory); MailerLite is cheaper but lighter on the branching depth this flow needs. Brevo leaves room to grow into SMS and variant testing later.</p>
+      </div>
+      <div class="stat-block card reveal d3">
+        <h3>Why n8n over Harley crons?</h3>
+        <p style="font-size:.95rem">Harley could cron the polling and sends — but a 5-step, 90-day evergreen flow is a <strong>state machine</strong>: tracking each member's position, timing from join date, handling unsubscribes mid-sequence. Hand-building that in cron is fragile. n8n provides sequencing, retry logic and a native Brevo Trigger node out of the box.</p>
+        <p style="font-size:.95rem;margin-bottom:0"><strong>The clincher:</strong> the unsubscribe → ServiceTitan consent write-back must be deterministic and auditable, not AI-judged. n8n's visual node mapping is inspectable and testable — cron scripts aren't.</p>
+      </div>
+    </div>
+    <div class="quote reveal d4">Consent and marketing-status changes stay logic-based and foolproof — deterministic automation, never AI judgement, on anything customer-facing.</div>
   </div>
 </section>
 
-<!-- 11. WHAT WE'LL LEARN -->
-<section class="light" id="s11">
+<!-- 10. WHAT WE'LL LEARN -->
+<section class="alt" id="s11">
   <div class="wrap">
     <div class="rule reveal"></div>
     <h2 class="reveal">What we'll learn</h2>
@@ -457,7 +712,7 @@ Talk soon,
   </div>
 </section>
 
-<!-- 12. CLOSE -->
+<!-- 11. CLOSE -->
 <section class="dark" id="s12">
   <div class="wrap" style="text-align:center">
     <h2 class="reveal" style="font-size:2.2rem">Members are worth twice as much.<br>Now we teach them to come back sooner.</h2>
@@ -467,21 +722,20 @@ Talk soon,
 </section>
 
 <script>
-// ---- progress bar ----
+// progress bar
 const bar=document.getElementById('progress');
 window.addEventListener('scroll',()=>{
   const h=document.documentElement;
-  const p=h.scrollTop/(h.scrollHeight-h.clientHeight)*100;
-  bar.style.width=p+'%';
+  bar.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';
 },{passive:true});
 
-// ---- scroll reveal ----
+// reveal
 const io=new IntersectionObserver((entries)=>{
   entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}});
 },{threshold:.18});
-document.querySelectorAll('.reveal,.tl-item,.email,.pipe-node,.pipe-arrow').forEach(el=>io.observe(el));
+document.querySelectorAll('.reveal,.tl-item,.pipe-node,.pipe-arrow').forEach(el=>io.observe(el));
 
-// ---- count-up stats ----
+// count-up
 const cio=new IntersectionObserver((entries)=>{
   entries.forEach(e=>{
     if(!e.isIntersecting)return;
@@ -498,7 +752,70 @@ const cio=new IntersectionObserver((entries)=>{
 },{threshold:.6});
 document.querySelectorAll('.count').forEach(el=>cio.observe(el));
 
-// ---- side nav dots ----
+// scrolly steps
+const steps=document.querySelectorAll('.step');
+const barM=document.getElementById('barMembers'),barN=document.getElementById('barNon');
+const valM=document.getElementById('valMembers'),valN=document.getElementById('valNon');
+const stepStates=[
+  {m:42,n:75,vm:'4.2%',vn:'7.5%'},
+  {m:8,n:75,vm:'8/1316',vn:'—'},
+  {m:30,n:75,vm:'~12 jobs',vn:'~3 jobs'},
+  {m:42,n:75,vm:'4.2%',vn:'7.5%'}
+];
+if(steps.length){
+  const sio=new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        steps.forEach(s=>s.classList.remove('active'));
+        e.target.classList.add('active');
+        const st=stepStates[parseInt(e.target.dataset.step)]||stepStates[0];
+        if(barM){barM.style.height=st.m*3+'px';valM.textContent=st.vm;}
+        if(barN){barN.style.height=st.n*3+'px';valN.textContent=st.vn;}
+      }
+    });
+  },{threshold:.55});
+  steps.forEach(s=>sio.observe(s));
+}
+
+// expandable timeline
+document.querySelectorAll('.tl-item.interactive').forEach(item=>{
+  item.addEventListener('click',e=>{
+    if(e.target.closest('.branch-picker')||e.target.closest('.tone-toggle'))return;
+    item.classList.toggle('open');
+  });
+});
+
+// branch pickers
+document.querySelectorAll('[data-branch-picker]').forEach(picker=>{
+  const body=picker.closest('.tl-body');
+  picker.querySelectorAll('button').forEach(btn=>{
+    btn.addEventListener('click',e=>{
+      e.stopPropagation();
+      picker.querySelectorAll('button').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      const key=btn.dataset.branch;
+      body.querySelectorAll('.branch-view').forEach(v=>v.classList.toggle('active',v.dataset.view===key));
+    });
+  });
+});
+
+// tone toggles (Plain / Spark)
+document.querySelectorAll('.tone-toggle').forEach(tg=>{
+  const email=tg.closest('.mini-email');
+  const subject=email.querySelector('.m-subject');
+  tg.querySelectorAll('button').forEach(btn=>{
+    btn.addEventListener('click',e=>{
+      e.stopPropagation();
+      tg.querySelectorAll('button').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      const tone=btn.dataset.tone;
+      email.querySelectorAll('.email-variant').forEach(v=>v.classList.toggle('active',v.dataset.variant===tone));
+      if(subject.dataset.subjectPlain)subject.textContent=tone==='fun'?subject.dataset.subjectFun:subject.dataset.subjectPlain;
+    });
+  });
+});
+
+// side nav
 const nav=document.getElementById('decknav');
 const secs=[...document.querySelectorAll('section')];
 secs.forEach(s=>{
