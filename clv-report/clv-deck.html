@@ -90,7 +90,10 @@ a{color:var(--brand-secondary)}.dark a{color:#fff}
 .tl-tag{display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.6px;text-transform:uppercase;padding:3px 10px;border-radius:100px;margin:4px 6px 0 0}
 .tag-value{background:#E4F0E1;color:#2F6B2F}.tag-close{background:#FBE6E6;color:#8E2A2A}.tag-welcome{background:var(--brand-surface);color:var(--brand-primary)}
 .tl-item.interactive{cursor:pointer}
-.tl-item.open{z-index:3}
+.tl-item{--tl-bg:#fff}
+section.alt .tl-item{--tl-bg:var(--brand-surface)}
+section.dark .tl-item{--tl-bg:var(--brand-primary)}
+.tl-item.open{z-index:5;background:var(--tl-bg);border-radius:12px;padding:14px 14px 18px 22px;margin-left:-14px;box-shadow:0 10px 34px rgba(11,29,59,.10)}
 .tl-item.interactive:hover .tl-expand-hint{color:var(--brand-secondary)}
 .tl-expand-hint{display:inline-flex;align-items:center;gap:6px;font-size:.78rem;font-weight:700;color:var(--brand-slate);margin-top:6px;letter-spacing:.5px;text-transform:uppercase;transition:color .25s}
 .tl-expand-hint::after{content:'▸';display:inline-block;transition:transform .3s}
@@ -128,7 +131,7 @@ a{color:var(--brand-secondary)}.dark a{color:#fff}
 @keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 
 /* trade chips */
-.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:34px;padding-top:22px;border-top:1px solid var(--brand-border)}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:34px;padding-top:22px;border-top:1px solid var(--brand-border);position:relative;z-index:1}
 .chip{font-size:.78rem;font-weight:700;padding:6px 14px;border-radius:100px;border:1px solid var(--brand-border);background:#fff;color:var(--brand-text)}
 .chip i{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:7px;vertical-align:1px}
 .c-plumb i{background:var(--acc-plumbing)}.c-air i{background:var(--acc-aircon)}.c-elec i{background:var(--acc-electrical)}.c-roof i{background:var(--acc-roofing)}.c-reno i{background:var(--acc-reno)}
