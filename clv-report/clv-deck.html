@@ -98,6 +98,33 @@ a{color:var(--brand-secondary)}
 .email .e-body .sig{margin-top:14px;color:var(--brand-primary);font-weight:700}
 .email .e-foot{background:var(--brand-field);padding:10px 20px;font-size:.72rem;color:var(--brand-slate);border-top:1px solid var(--brand-border)}
 
+/* ---------- expandable timeline emails ---------- */
+.tl-item.interactive{cursor:pointer}
+.tl-item.interactive:hover .tl-expand-hint{color:var(--brand-secondary)}
+.tl-expand-hint{display:inline-flex;align-items:center;gap:6px;font-size:.78rem;font-weight:700;color:var(--brand-slate);margin-top:6px;letter-spacing:.5px;text-transform:uppercase;transition:color .25s}
+.tl-expand-hint::after{content:'▸';display:inline-block;transition:transform .3s}
+.tl-item.open .tl-expand-hint::after{transform:rotate(90deg)}
+.tl-body{max-height:0;overflow:hidden;transition:max-height .6s cubic-bezier(.22,.61,.36,1),opacity .5s ease;opacity:0}
+.tl-item.open .tl-body{max-height:1600px;opacity:1;transition:max-height .7s cubic-bezier(.22,.61,.36,1),opacity .55s ease .1s}
+.tl-body .mini-email{background:#fff;color:#333;border:1px solid var(--brand-border);border-radius:12px;box-shadow:0 14px 40px rgba(11,29,59,.18);margin:14px 0 8px;overflow:hidden;transform:translateY(14px);transition:transform .5s ease .08s}
+.tl-item.open .tl-body .mini-email{transform:none}
+.mini-email .m-head{background:var(--brand-field);padding:12px 18px;border-bottom:1px solid var(--brand-border)}
+.mini-email .m-subject{font-weight:700;font-size:.98rem;color:var(--brand-text)}
+.mini-email .m-meta{font-size:.74rem;color:var(--brand-slate);margin-top:2px}
+.mini-email .m-body{padding:16px 20px;font-size:.87rem;line-height:1.62;white-space:pre-line}
+.mini-email .m-body .sig{margin-top:12px;color:var(--brand-primary);font-weight:700}
+.mini-email .m-foot{background:var(--brand-field);padding:8px 18px;font-size:.7rem;color:var(--brand-slate);border-top:1px solid var(--brand-border)}
+.branch-picker{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 4px}
+.branch-picker button{font-family:inherit;font-size:.75rem;font-weight:700;padding:6px 14px;border-radius:100px;border:1px solid var(--brand-border);background:#fff;color:var(--brand-text);cursor:pointer;transition:all .2s}
+.branch-picker button:hover{border-color:var(--brand-secondary);color:var(--brand-secondary)}
+.branch-picker button.active{background:var(--brand-primary);border-color:var(--brand-primary);color:#fff}
+.tl-body .branch-view{display:none}
+.tl-body .branch-view.active{display:block;animation:fadeUp .45s ease}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){
+  .tl-body,.tl-item.open .tl-body{transition:none}
+}
+
 /* ---------- diagram: tech pipeline ---------- */
 .pipe{display:flex;flex-wrap:wrap;align-items:stretch;justify-content:center;gap:0;margin:26px 0 10px}
 .pipe-node{flex:1 1 220px;max-width:280px;background:var(--brand-field);border-radius:14px;padding:20px;text-align:center;position:relative;opacity:0;transform:scale(.92);transition:opacity .7s ease,transform .7s ease}
@@ -148,7 +175,8 @@ section.dark ~ .deck-nav a{background:rgba(255,255,255,.35)}
 <!-- 1. TITLE -->
 <section class="dark" id="s1">
   <div class="wrap" style="text-align:center">
-    <div class="reveal"><div class="vs" style="opacity:.55">aba TRADES · September 2026</div></div>
+    <div class="reveal"><img src="https://harley-abatrades.github.io/abatrades-pages/assets/brand/abatrades-logo.png" alt="aba TRADES" style="width:190px;max-width:60%;margin:0 auto 26px;display:block;filter:drop-shadow(0 6px 22px rgba(0,0,0,.28))"></div>
+    <div class="reveal d1"><div class="vs" style="opacity:.55">aba TRADES · September 2026</div></div>
     <h1 class="reveal d1" style="font-size:3rem">Customer Lifetime Value</h1>
     <p class="lede reveal d2" style="opacity:.92">Member re-engagement initiative — from one-off jobs to a membership that stays front of mind.</p>
     <p class="reveal d3" style="opacity:.5;margin-top:26px;font-size:.85rem">Scroll to begin ↓</p>
@@ -228,24 +256,134 @@ section.dark ~ .deck-nav a{background:rgba(255,255,255,.35)}
     <div class="rule reveal"></div>
     <h2 class="reveal">The flow: five emails over 90 days</h2>
     <p class="reveal d1" style="opacity:.9">Not one email. An evergreen onboarding sequence that runs for every new member, forever — value first, cross-trade by design, closing on the membership's highest-value benefit.</p>
+    <p class="fine reveal d1" style="margin-top:6px;opacity:.7">Click any step to read the actual email the member receives.</p>
     <div class="timeline">
-      <div class="tl-item">
+
+      <div class="tl-item interactive" data-tl>
         <span class="tl-day">Day 0</span>
         <h4>Welcome — membership is active</h4>
         <p>Orient to the direct line, $1000+ coupons, year-round pricing, 25-year labour warranty, and the free $389 annual inspection. Same email for every member.</p>
         <span class="tl-tag tag-welcome">Universal</span>
+        <span class="tl-expand-hint">Read the email</span>
+        <div class="tl-body">
+          <div class="mini-email">
+            <div class="m-head"><div class="m-subject">Welcome to aba TRADES membership</div><div class="m-meta">Day 0 · To: [First Name] · From: Harley @ aba TRADES</div></div>
+            <div class="m-body">Hi [First Name],
+
+Welcome to the aba TRADES family. Your membership is active.
+
+Here's what that means for your home, all year round:
+• Your direct line: 08 7323 1253. Call it and you skip the queue.
+• $1000+ worth of discount coupons across plumbing, electrical, air conditioning and roofing.
+• Year-round member pricing, around the clock, excluding public holidays.
+• An extended 25-year labour warranty — five years beyond standard.
+• A free annual whole-house maintenance inspection, valued at $389.
+
+Your membership card holds it all in one place. Scan the QR code any time, or keep the direct line handy.
+
+We look after your home, every trade, so you never chase more than one number.
+
+Talk soon,
+<div class="sig">Harley — aba TRADES</div></div>
+            <div class="m-foot">Reply UNSUBSCRIBE to opt out of future emails.</div>
+          </div>
+        </div>
       </div>
-      <div class="tl-item">
+
+      <div class="tl-item interactive" data-tl>
         <span class="tl-day">Day 7</span>
         <h4>First cross-trade value</h4>
         <p>A practical guide from another trade — e.g. bought aircon, receive "5 easy DIY tips to unclog your sink". Give the knowledge away; the member benefit is that one call handles it.</p>
         <span class="tl-tag tag-value">Value first</span><span class="tl-tag tag-welcome">Branched</span>
+        <span class="tl-expand-hint">Read the emails</span>
+        <div class="tl-body">
+          <div class="branch-picker" data-branch-picker>
+            <button class="active" data-branch="aircon">Bought Aircon</button>
+            <button data-branch="plumbing">Bought Plumbing</button>
+            <button data-branch="electrical">Bought Electrical</button>
+            <button data-branch="roofing">Bought Roofing</button>
+          </div>
+          <div class="branch-view active" data-view="aircon"><div class="mini-email">
+            <div class="m-head"><div class="m-subject">A quick win for your plumbing (on us)</div><div class="m-meta">Day 7 · Aircon branch · From: Harley @ aba TRADES</div></div>
+            <div class="m-body">Hi [First Name],
+
+Now that your air conditioning is sorted, here's something useful for another part of your home.
+
+We put together a practical guide: 5 easy DIY ways to unclog a sink. It's the kind of thing that saves a call-out when it's a simple fix.
+
+Read it here: [blog link]
+
+But here's the member difference: if the DIY route doesn't work, or you'd rather not get under the sink yourself, your membership covers it. One call to 08 7323 1253 and our plumbing team handles it. Member pricing applies, and your coupons are ready to use.
+
+That's the point of membership. Your home, every trade, one number.
+
+Talk soon,
+<div class="sig">Harley — aba TRADES</div></div>
+            <div class="m-foot">Reply UNSUBSCRIBE to opt out of future emails.</div>
+          </div></div>
+          <div class="branch-view" data-view="plumbing"><div class="mini-email">
+            <div class="m-head"><div class="m-subject">Keep your air conditioning running efficiently</div><div class="m-meta">Day 7 · Plumbing branch · From: Harley @ aba TRADES</div></div>
+            <div class="m-body">Hi [First Name],
+
+Now that your plumbing is sorted, here's something useful for another part of your home.
+
+We put together a 10-point health check for air conditioning systems. Simple things you can check yourself to keep it running efficiently and catch small issues before they become expensive ones.
+
+Read it here: [blog link]
+
+But here's the member difference: if you'd rather not climb into the roof space or pull filters yourself, your membership covers it. One call to 08 7323 1253 and our air conditioning team handles it. Member pricing applies, and your coupons are ready to use.
+
+That's the point of membership. Your home, every trade, one number.
+
+Talk soon,
+<div class="sig">Harley — aba TRADES</div></div>
+            <div class="m-foot">Reply UNSUBSCRIBE to opt out of future emails.</div>
+          </div></div>
+          <div class="branch-view" data-view="electrical"><div class="mini-email">
+            <div class="m-head"><div class="m-subject">A quick win for your water quality</div><div class="m-meta">Day 7 · Electrical branch · From: Harley @ aba TRADES</div></div>
+            <div class="m-body">Hi [First Name],
+
+Now that your electrical work is sorted, here's something useful for another part of your home.
+
+We put together a guide on maintaining your water filtration system. Simple DIY checks that keep your water tasting right and your filter working properly.
+
+Read it here: [blog link]
+
+But here's the member difference: if you'd rather not get under the sink or mess with filters, your membership covers it. One call to 08 7323 1253 and our plumbing team handles it. Member pricing applies, and your coupons are ready to use.
+
+That's the point of membership. Your home, every trade, one number.
+
+Talk soon,
+<div class="sig">Harley — aba TRADES</div></div>
+            <div class="m-foot">Reply UNSUBSCRIBE to opt out of future emails.</div>
+          </div></div>
+          <div class="branch-view" data-view="roofing"><div class="mini-email">
+            <div class="m-head"><div class="m-subject">A quick win for your hot water</div><div class="m-meta">Day 7 · Roofing branch · From: Harley @ aba TRADES</div></div>
+            <div class="m-body">Hi [First Name],
+
+Now that your roofing work is sorted, here's something useful for another part of your home.
+
+We put together an honest guide on hot water system replacement. When to repair, when to replace, and what actually delivers value for money.
+
+Read it here: [blog link]
+
+But here's the member difference: if your hot water system is playing up, or you'd rather not wait for a cold shower to find out, your membership covers it. One call to 08 7323 1253 and our plumbing team handles it. Member pricing applies, and your coupons are ready to use.
+
+That's the point of membership. Your home, every trade, one number.
+
+Talk soon,
+<div class="sig">Harley — aba TRADES</div></div>
+            <div class="m-foot">Reply UNSUBSCRIBE to opt out of future emails.</div>
+          </div></div>
+        </div>
       </div>
+
       <div class="tl-item">
         <span class="tl-day">Day 21</span>
         <h4>Second cross-trade value</h4>
         <p>A second trade, a second useful guide — e.g. "Top 5 reasons your roof is leaking". Builds the mental model: one membership covers the whole home.</p>
         <span class="tl-tag tag-value">Value first</span><span class="tl-tag tag-welcome">Branched</span>
+        <p class="fine" style="margin-top:6px;opacity:.7">Same structure as Day 7 — new trade, new guide, same member-difference close. Full branch copy lives on the flow card.</p>
       </div>
       <div class="tl-item">
         <span class="tl-day">Day 45</span>
@@ -253,12 +391,37 @@ section.dark ~ .deck-nav a{background:rgba(255,255,255,.35)}
         <p>A third guide, with the reminder that coupons and member pricing are waiting. The first gentle nudge toward using the membership.</p>
         <span class="tl-tag tag-value">Value first</span><span class="tl-tag tag-welcome">Branched</span>
       </div>
-      <div class="tl-item">
+
+      <div class="tl-item interactive" data-tl>
         <span class="tl-day">Day 90</span>
         <h4>The close: book your free inspection</h4>
         <p>Hard call to action on the $389 whole-house inspection — the highest-value, most concrete benefit, and the one that drives the next visit. Lands exactly as the 90-day measurement window closes.</p>
         <span class="tl-tag tag-close">Hard CTA</span><span class="tl-tag tag-welcome">Universal</span>
+        <span class="tl-expand-hint">Read the email</span>
+        <div class="tl-body">
+          <div class="mini-email">
+            <div class="m-head"><div class="m-subject">Your free inspection is ready to book</div><div class="m-meta">Day 90 · All members · From: Harley @ aba TRADES</div></div>
+            <div class="m-body">Hi [First Name],
+
+Three months ago you became an aba TRADES member. Since then we've sent you practical guides for your home and reminders of what your membership covers.
+
+Now it's time to use what you've been given.
+
+Your free annual whole-house maintenance inspection is ready to book. Valued at $389, it covers plumbing, electrical, roofing, heating and cooling. One visit, every trade, a full picture of your home's condition.
+
+Book it now: call 08 7323 1253 or reply to this email.
+
+This is what membership is for. Not just discounts when something breaks, but preventing the break in the first place.
+
+We look forward to seeing you.
+
+Talk soon,
+<div class="sig">Harley — aba TRADES</div></div>
+            <div class="m-foot">Reply UNSUBSCRIBE to opt out of future emails.</div>
+          </div>
+        </div>
       </div>
+
     </div>
     <div class="chips reveal">
       <span class="chip c-plumb"><i></i>Plumbing &amp; Gas</span>
@@ -282,87 +445,13 @@ section.dark ~ .deck-nav a{background:rgba(255,255,255,.35)}
   </div>
 </section>
 
-<!-- 7. EMAIL EXAMPLES -->
+<!-- 7. EMAIL VOICE -->
 <section class="alt" id="s7">
-  <div class="wrap wide" style="text-align:center">
+  <div class="wrap" style="text-align:center">
     <div class="rule reveal" style="margin-left:auto;margin-right:auto"></div>
-    <h2 class="reveal">The emails themselves</h2>
-    <p class="reveal d1" style="max-width:640px;margin:0 auto 34px">Plain text. One job per email. Signed by Harley — the member's direct line to the team.</p>
-    <div class="email-stage" style="text-align:left">
-
-      <div class="email">
-        <div class="e-head">
-          <div class="e-subject">Welcome to aba TRADES membership</div>
-          <div class="e-meta">Day 0 · To: [First Name] · From: Harley @ aba TRADES</div>
-        </div>
-        <div class="e-body">Hi [First Name],
-
-Welcome to the aba TRADES family. Your membership is active.
-
-Here's what that means for your home, all year round:
-• Your direct line: 08 7323 1253. Call it and you skip the queue.
-• $1000+ worth of discount coupons across plumbing, electrical, air conditioning and roofing.
-• Year-round member pricing, around the clock, excluding public holidays.
-• An extended 25-year labour warranty — five years beyond standard.
-• A free annual whole-house maintenance inspection, valued at $389.
-
-Your membership card holds it all in one place. Scan the QR code any time, or keep the direct line handy.
-
-We look after your home, every trade, so you never chase more than one number.
-
-Talk soon,
-<div class="sig">Harley — aba TRADES</div></div>
-        <div class="e-foot">Reply UNSUBSCRIBE to opt out of future emails.</div>
-      </div>
-
-      <div class="email">
-        <div class="e-head">
-          <div class="e-subject">A quick win for your plumbing (on us)</div>
-          <div class="e-meta">Day 7 · Aircon branch · From: Harley @ aba TRADES</div>
-        </div>
-        <div class="e-body">Hi [First Name],
-
-Now that your air conditioning is sorted, here's something useful for another part of your home.
-
-We put together a practical guide: 5 easy DIY ways to unclog a sink. It's the kind of thing that saves a call-out when it's a simple fix.
-
-Read it here: [blog link]
-
-But here's the member difference: if the DIY route doesn't work, or you'd rather not get under the sink yourself, your membership covers it. One call to 08 7323 1253 and our plumbing team handles it. Member pricing applies, and your coupons are ready to use.
-
-That's the point of membership. Your home, every trade, one number.
-
-Talk soon,
-<div class="sig">Harley — aba TRADES</div></div>
-        <div class="e-foot">Reply UNSUBSCRIBE to opt out of future emails.</div>
-      </div>
-
-      <div class="email">
-        <div class="e-head">
-          <div class="e-subject">Your free inspection is ready to book</div>
-          <div class="e-meta">Day 90 · All members · From: Harley @ aba TRADES</div>
-        </div>
-        <div class="e-body">Hi [First Name],
-
-Three months ago you became an aba TRADES member. Since then we've sent you practical guides for your home and reminders of what your membership covers.
-
-Now it's time to use what you've been given.
-
-Your free annual whole-house maintenance inspection is ready to book. Valued at $389, it covers plumbing, electrical, roofing, heating and cooling. One visit, every trade, a full picture of your home's condition.
-
-Book it now: call 08 7323 1253 or reply to this email.
-
-This is what membership is for. Not just discounts when something breaks, but preventing the break in the first place.
-
-We look forward to seeing you.
-
-Talk soon,
-<div class="sig">Harley — aba TRADES</div></div>
-        <div class="e-foot">Reply UNSUBSCRIBE to opt out of future emails.</div>
-      </div>
-
-    </div>
-    <p class="fine reveal" style="margin-top:22px">Full copy deck — all branches for E2–E4 — lives on the flow card in the project board, ready for sign-off.</p>
+    <h2 class="reveal">The voice</h2>
+    <p class="reveal d1" style="max-width:660px;margin:0 auto">Every email is plain text, does one job, and is signed by <strong>Harley</strong> — the member's direct line to the team. No design templates, no sales banners. It reads like it came from a person, because that's the point.</p>
+    <p class="reveal d2" style="max-width:660px;margin:0 auto">The full copy deck — every branch for every step — lives on the flow card in the project board, ready for sign-off. You just read three of them in the timeline above.</p>
   </div>
 </section>
 
@@ -417,6 +506,33 @@ Talk soon,
       </div>
     </div>
     <p class="fine reveal" style="margin-top:18px">Total trial cost: under USD 100. The infrastructure is reusable for SMS, seasonal blasts, and every future nurture flow.</p>
+  </div>
+</section>
+
+<!-- 9b. WHY THIS STACK -->
+<section class="alt" id="s9b">
+  <div class="wrap wide">
+    <div class="rule reveal"></div>
+    <h2 class="reveal">Why this stack — and what we said no to</h2>
+    <p class="reveal d1">Three deliberate choices, each measured against the obvious alternative.</p>
+    <div class="stat-row" style="margin-top:20px">
+      <div class="stat-block card reveal d1">
+        <h3>Why not ServiceTitan Marketing Pro?</h3>
+        <p style="font-size:.95rem">The obvious in-platform option — but its email template and campaign building is <strong>UI-only</strong>. The API exposes campaign metadata and attribution, not template, sequence or launch endpoints. We can't automate a journey we can only click-build, and every change needs a human in the UI.</p>
+        <p style="font-size:.95rem;margin-bottom:0"><strong>Our path:</strong> keep ServiceTitan as the source of truth (members, service type, consent) and run the journey on a real ESP. Revenue attribution stays in ServiceTitan via campaign tagging.</p>
+      </div>
+      <div class="stat-block card reveal d2">
+        <h3>Why Brevo over ActiveCampaign / MailerLite?</h3>
+        <p style="font-size:.95rem">Native triggered-journey builder, plain-text support (no forced HTML templates), and built-in unsubscribe/suppression compliance — the things a legal marketing send actually needs. <strong>Free tier covers our whole pilot</strong> (300 emails/day vs ~1,283 members).</p>
+        <p style="font-size:.95rem;margin-bottom:0"><strong>The others:</strong> ActiveCampaign's cost scales fast at our volume ($79+/mo territory); MailerLite is cheaper but lighter on the branching depth this flow needs. Brevo leaves room to grow into SMS and variant testing later.</p>
+      </div>
+      <div class="stat-block card reveal d3">
+        <h3>Why n8n over Harley crons?</h3>
+        <p style="font-size:.95rem">Harley could cron the polling and sends — but a 5-step, 90-day evergreen flow is a <strong>state machine</strong>: tracking each member's position, timing from join date, handling unsubscribes mid-sequence. Hand-building that in cron is fragile. n8n provides sequencing, retry logic and a native Brevo Trigger node out of the box.</p>
+        <p style="font-size:.95rem;margin-bottom:0"><strong>The clincher:</strong> the unsubscribe → ServiceTitan consent write-back must be deterministic and auditable, not AI-judged. n8n's visual node mapping is inspectable and testable — cron scripts aren't.</p>
+      </div>
+    </div>
+    <div class="quote reveal d4">Consent and marketing-status changes stay logic-based and foolproof — deterministic automation, never AI judgement, on anything customer-facing.</div>
   </div>
 </section>
 
@@ -495,6 +611,28 @@ const cio=new IntersectionObserver((entries)=>{
   });
 },{threshold:.6});
 document.querySelectorAll('.count').forEach(el=>cio.observe(el));
+
+// ---- expandable timeline items ----
+document.querySelectorAll('.tl-item.interactive').forEach(item=>{
+  item.addEventListener('click',e=>{
+    if(e.target.closest('.branch-picker'))return; // let branch buttons work without collapsing
+    item.classList.toggle('open');
+  });
+});
+
+// ---- branch pickers inside timeline ----
+document.querySelectorAll('[data-branch-picker]').forEach(picker=>{
+  const body=picker.closest('.tl-body');
+  picker.querySelectorAll('button').forEach(btn=>{
+    btn.addEventListener('click',e=>{
+      e.stopPropagation();
+      picker.querySelectorAll('button').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      const key=btn.dataset.branch;
+      body.querySelectorAll('.branch-view').forEach(v=>v.classList.toggle('active',v.dataset.view===key));
+    });
+  });
+});
 
 // ---- side nav dots ----
 const nav=document.getElementById('decknav');
