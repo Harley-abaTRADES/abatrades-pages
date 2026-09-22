@@ -248,30 +248,40 @@ a{color:var(--brand-secondary)}.dark a{color:#fff}
   </div>
 </section>
 
-<!-- 4. THE OPPORTUNITY (with bottom-line math) -->
+<!-- 4. THE OPPORTUNITY — interactive revenue lever -->
 <section class="light" id="s4">
   <div class="wrap wide">
     <div class="rule reveal"></div>
-    <h2 class="reveal">The opportunity — and what it's worth</h2>
-    <p class="reveal d1">Members are the business's most valuable customers. They pay more. They return more often on a billing basis. But on the metric that matters — <em>when will they genuinely need us next?</em> — they don't re-engage any faster than non-members.</p>
-    <div class="stat-row">
-      <div class="stat-block card reveal d2">
-        <div class="stat" style="font-size:2.6rem;color:var(--brand-primary)">$60K</div>
-        <div class="stat-label">per +0.8pt lift, per half-year</div>
-        <p style="font-size:.95rem">Lift 6-month fresh engagement from 4.2% to just 5% and ~10.5 extra fresh jobs land per period — at the member AOV of $5,699, that's ~$60K. Every period.</p>
+    <h2 class="reveal">The opportunity — pull the lever, see the money</h2>
+    <p class="reveal d1">Members come back on their own every <strong>~200 days</strong>. Every email in the flow exists to shrink that number. Here's what shrinking it is worth:</p>
+
+    <div class="card reveal d2" style="margin-top:26px;padding:34px 34px 26px">
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:6px">
+        <div style="font-size:.85rem;text-transform:uppercase;letter-spacing:1.5px;opacity:.65;font-weight:700">The lever: days between a member's fresh jobs</div>
+        <div id="gapReadout" style="font-size:1.6rem;font-weight:700;color:var(--brand-primary)">200 days</div>
       </div>
-      <div class="stat-block card reveal d3">
-        <div class="stat" style="font-size:2.6rem;color:var(--brand-primary)">+35%</div>
-        <div class="stat-label">booking frequency</div>
-        <p style="font-size:.95rem">Shrink the median re-engagement gap from 200 to 150 days and annual fresh bookings per member rise ~35% (1.8 → 2.4 per year) — compounding against a $9.7M member base.</p>
+      <input type="range" id="gapSlider" min="90" max="200" value="200" step="5"
+        style="width:100%;height:8px;-webkit-appearance:none;appearance:none;background:linear-gradient(90deg,var(--brand-primary),var(--brand-border));border-radius:100px;outline:none;margin:14px 0 8px;cursor:pointer">
+      <div style="display:flex;justify-content:space-between;font-size:.75rem;opacity:.55;margin-bottom:22px">
+        <span>90 days — ambitious</span><span>150 days — the target</span><span>200 days — today</span>
       </div>
-      <div class="stat-block card reveal d4">
-        <div class="stat" style="font-size:2.6rem;color:var(--brand-primary)">~28</div>
-        <div class="stat-label">natural bookers per 90 days</div>
-        <p style="font-size:.95rem">That's the control group. If our sequence moves even a handful of members to book in the window instead of month 7, the lift shows up against that baseline.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:26px;align-items:flex-end">
+        <div style="flex:1 1 180px">
+          <div style="font-size:.8rem;text-transform:uppercase;letter-spacing:1.2px;opacity:.6;margin-bottom:4px">Extra fresh jobs a year</div>
+          <div id="jobsOut" style="font-size:2.6rem;font-weight:700;line-height:1;color:var(--brand-text)">0</div>
+        </div>
+        <div style="flex:1 1 180px">
+          <div style="font-size:.8rem;text-transform:uppercase;letter-spacing:1.2px;opacity:.6;margin-bottom:4px">Extra revenue a year</div>
+          <div id="revOut" style="font-size:2.6rem;font-weight:700;line-height:1;color:var(--brand-primary)">$0</div>
+        </div>
+        <div style="flex:1 1 220px;font-size:.85rem;opacity:.7;line-height:1.5">
+          <span id="leverNote">That's today — members booking at their natural pace, no program running.</span>
+        </div>
       </div>
     </div>
-    <p class="pull reveal d4">Even a small nudge on when members come back is worth real money on a $9.7M cohort.</p>
+
+    <p class="fine reveal d3" style="margin-top:16px">The math, kept honest: 1,316 members. Today each books a fresh job every ~200 days (1.8 a year). At a 150-day gap that's 2.4 a year — <strong>+35% more bookings</strong>, worth <strong>~$780K a year</strong> at the $5,699 member average. We won't hit 150 on day one — but the 90-day test tells us which direction the number moves before we scale anything.</p>
+    <p class="pull reveal d4">The lever is a reminder at the right moment. The money is members coming back sooner.</p>
   </div>
 </section>
 
@@ -839,6 +849,31 @@ document.querySelectorAll('.tone-toggle').forEach(tg=>{
     });
   });
 });
+
+// opportunity lever slider
+const gapSlider=document.getElementById('gapSlider');
+if(gapSlider){
+  const MEMBERS=1316, AOV=5699;
+  const gapReadout=document.getElementById('gapReadout'),
+        jobsOut=document.getElementById('jobsOut'),
+        revOut=document.getElementById('revOut'),
+        leverNote=document.getElementById('leverNote');
+  const fmt$=n=>'$'+Math.round(n).toLocaleString('en-AU');
+  function leverUpdate(){
+    const gap=parseInt(gapSlider.value);
+    const baseJobs=MEMBERS*365/200, newJobs=MEMBERS*365/gap;
+    const extra=Math.max(0,newJobs-baseJobs), rev=extra*AOV;
+    gapReadout.textContent=gap+' days';
+    jobsOut.textContent='+'+Math.round(extra).toLocaleString('en-AU');
+    revOut.textContent=rev>0?fmt$(rev):'$0';
+    if(gap>=200)leverNote.textContent="That's today — members booking at their natural pace, no program running.";
+    else if(gap>=170)leverNote.textContent='A modest nudge. Even landing here pays for the program many times over.';
+    else if(gap>=150)leverNote.textContent='The target. One timely reminder per member, every few months, gets us here.';
+    else leverNote.textContent='Ambitious territory — where the full flow, SMS and seasonal campaigns compound.';
+  }
+  gapSlider.addEventListener('input',leverUpdate);
+  leverUpdate();
+}
 
 // side nav
 const nav=document.getElementById('decknav');
