@@ -3,121 +3,149 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CLV Member Re-engagement — Slide Deck Preview | aba TRADES</title>
+<title>Customer Lifetime Value — Member Re-engagement | aba TRADES</title>
 <link rel="icon" href="../assets/brand/favicon.ico" type="image/x-icon">
 <style>
 :root{--brand-primary:#1D3B6D;--brand-secondary:#2E528E;--brand-surface:#EBEDF2;--brand-field:#F5F6F8;--brand-border:#D3D4DA;--brand-bg:#FFFFFF;--brand-text:#1D3B6D;--font-body:'Futura PT','futura-pt',Helvetica,Arial,sans-serif}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-body{font-family:var(--font-body);background:var(--brand-bg);color:var(--brand-text);line-height:1.6;-webkit-font-smoothing:antialiased}
-.header{background:var(--brand-primary);color:#fff;padding:32px 16px;text-align:center}
-.header h1{font-size:1.4rem;font-weight:700}
-.header p{opacity:.85;margin-top:6px;font-size:.85rem}
-.container{max-width:780px;margin:0 auto;padding:16px 14px}
-.card{background:#fff;border:1px solid var(--brand-border);border-radius:10px;padding:18px 16px;margin:14px 0}
-.card h2{font-size:1.05rem;font-weight:700;color:var(--brand-primary);margin-bottom:4px}
-.card .slide-n{font-size:.75rem;color:#7789A7;margin-bottom:10px}
-.card ul{list-style:none;padding:0}
-.card li{position:relative;padding:4px 0 4px 16px;font-size:.9rem;line-height:1.45}
-.card li::before{content:'·';position:absolute;left:0;color:var(--brand-primary);font-weight:700}
-.card .notes{font-size:.78rem;color:#5a6577;margin-top:10px;padding-top:8px;border-top:1px solid var(--brand-border);font-style:italic}
-.dl{text-align:center;margin:20px 0}
-.btn{display:inline-block;background:var(--brand-primary);color:#fff;padding:14px 24px;border-radius:100px;text-decoration:none;font-weight:700;font-size:.95rem;border:1px solid var(--brand-primary);transition:all 0.2s}
-.btn:hover{background:var(--brand-secondary)}
-.footer{background:var(--brand-primary);color:#fff;padding:18px 14px;text-align:center;font-size:.78rem}
-@media(min-width:600px){.header{padding:48px 20px}.header h1{font-size:1.9rem}.card{padding:22px 20px;margin:20px 0}.container{padding:8px 20px}}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);background:var(--brand-bg);color:var(--brand-text);line-height:1.55;-webkit-font-smoothing:antialiased}
+section{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:60px 20px}
+section.dark{background:var(--brand-primary);color:#fff}
+section.dark h2{color:#fff}
+section.light{background:var(--brand-bg)}
+section.light h2{color:var(--brand-primary)}
+section.alt{background:var(--brand-surface)}
+.wrap{max-width:720px;width:100%}
+h2{font-size:2rem;font-weight:700;line-height:1.2;margin-bottom:24px}
+h3{font-size:1.15rem;font-weight:700;margin-bottom:8px;color:var(--brand-primary)}
+p{font-size:1.05rem;margin-bottom:16px;opacity:0.9}
+ul{list-style:none;padding:0}
+li{position:relative;padding:6px 0 6px 24px;font-size:1rem;line-height:1.45}
+li::before{content:'';position:absolute;left:0;top:13px;width:6px;height:6px;border-radius:50%;background:var(--brand-primary)}
+.dark li::before{background:#fff}
+.dark p,.dark li{opacity:0.9}
+.stat{font-size:3.2rem;font-weight:700;line-height:1.1;margin-bottom:4px}
+.stat-label{font-size:.95rem;opacity:0.7;text-transform:uppercase;letter-spacing:1px}
+.stat-row{display:flex;flex-wrap:wrap;gap:28px;margin-bottom:20px}
+.stat-block{flex:1 1 180px;min-width:150px}
+.gap{height:8px}
+small{font-size:.8rem;opacity:0.7}
+.cost-row{display:flex;flex-wrap:wrap;gap:16px}
+.cost-item{background:#fff;border:1px solid var(--brand-border);border-radius:9px;padding:14px 16px;flex:1 1 180px;min-width:150px}
+.cost-item .amt{font-weight:700;font-size:1.3rem;color:var(--brand-primary)}
+.cost-item .lbl{font-size:.82rem;color:#5a6577}
+.quote{border-left:4px solid var(--brand-primary);padding:12px 16px;margin:16px 0;font-size:.95rem;font-style:italic;background:rgba(29,59,109,0.04);border-radius:0 8px 8px 0}
+.cta{display:inline-block;background:var(--brand-primary);color:#fff;padding:14px 26px;border-radius:100px;text-decoration:none;font-weight:700;font-size:1rem;border:1px solid var(--brand-primary);margin-top:12px;transition:all .2s}
+.cta:hover{background:var(--brand-secondary)}
+.navbar{position:fixed;bottom:20px;right:20px;z-index:10;display:flex;flex-direction:column;gap:8px}
+.navdot{width:10px;height:10px;border-radius:50%;background:var(--brand-primary);opacity:0.3;cursor:pointer;transition:opacity .2s}
+.navdot.active{opacity:1}
+.dark .navdot{background:#fff}
+@media(max-width:600px){h2{font-size:1.6rem}.stat{font-size:2.4rem}p,li{font-size:.95rem}}
 </style>
 </head>
 <body>
-<div class="header">
-<h1>Customer Lifetime Value</h1>
-<p>Member Re-engagement Initiative · Slide Deck Preview · aba TRADES</p>
-</div>
-<div class="container">
-<div class="dl"><a href="clv-deck.pptx" class="btn">Download .pptx (9 slides)</a></div>
 
-<div class="card">
-<h2>Slide 1 · Customer Lifetime Value</h2>
-<div class="slide-n">Title slide (navy background)</div>
-<p style="font-size:.9rem">Member re-engagement initiative · aba TRADES</p>
-<div class="notes">Opening slide. Keep brief: this sets up what we learned and what we're doing.</div>
+<!-- 1. TITLE -->
+<section class="dark" id="s1">
+<div class="wrap" style="text-align:center">
+<h2 style="font-size:2.4rem">Customer Lifetime Value</h2>
+<p style="font-size:1.2rem;opacity:0.9">Member re-engagement initiative</p>
+<p style="opacity:0.6">aba TRADES · September 2026</p>
 </div>
-<div class="card">
-<h2>Slide 2 · What we found</h2>
-<ul>
-<li>Members are 13% of customers — but 48% of revenue</li>
-<li>Member AOV: $5,699 vs non-member $2,892 (2x)</li>
-<li>But beneath the headline: investigation + dispatch inflates 'orders' 3.9x</li>
-<li>The honest picture — using fresh engagements only — is much starker</li>
-</ul>
-<div class="notes">The CLV report headline numbers. Establish the value asymmetry, then pivot to the gap.</div>
+</section>
+
+<!-- 2. WHAT WE FOUND -->
+<section class="light" id="s2">
+<div class="wrap">
+<h2>What we found</h2>
+<div class="stat-row">
+<div class="stat-block"><div class="stat">13%</div><div class="stat-label">of customers</div><p>but 48% of revenue</p></div>
+<div class="stat-block"><div class="stat">2&times;</div><div class="stat-label">member AOV</div><p>$5,699 vs $2,892 non-member</p></div>
 </div>
-<div class="card">
-<h2>Slide 3 · Re-engagement reality</h2>
-<ul>
-<li>6-month fresh-engagement rate: 4.2% (1 in 24 members start a new job per half-year)</li>
-<li>Median gap between genuine new jobs: ~200 days</li>
-<li>Only 8 members out of 1,316 had a 2nd fresh engagement in 22 months</li>
-<li>Members are our most valuable customers — and they barely come back on their own</li>
-</ul>
-<div class="notes">The bridge slide. This is the problem statement that justifies the initiative.</div>
+<p>Members are our highest-value customers by every measure — revenue, ticket size, and return rate. But the headline hides a subtlety: investigation + dispatch jobs inflate the 'orders' count 3.9&times;. The honest picture, using fresh engagements only, is more sobering.</p>
 </div>
-<div class="card">
-<h2>Slide 4 · The opportunity</h2>
-<ul>
-<li>Members worth ~2x more, but re-engage once every ~7 months</li>
-<li>No natural cadence pushing them back to us</li>
-<li>A light, timely email touch could pull that forward</li>
-<li>Goal: move the 4.2% 6-month rate directionally upward</li>
-</ul>
-<div class="notes">Framing the asymmetry as the opportunity. Don't overclaim — the trial is small, directional.</div>
+</section>
+
+<!-- 3. RE-ENGAGEMENT REALITY -->
+<section class="alt" id="s3">
+<div class="wrap">
+<h2>Re-engagement reality</h2>
+<div class="stat-row">
+<div class="stat-block"><div class="stat">4.2%</div><div class="stat-label">6-month rate</div><p>1 in 24 members starts a new job per half-year</p></div>
+<div class="stat-block"><div class="stat">~200</div><div class="stat-label">days median gap</div><p>between genuine new engagements</p></div>
 </div>
-<div class="card">
-<h2>Slide 5 · This week</h2>
+<div class="stat-row">
+<div class="stat-block"><div class="stat">8</div><div class="stat-label">true repeats</div><p>members with 2+ fresh jobs in 22 months — out of 1,316</p></div>
+</div>
+<p><strong>Members are our most valuable customers — and they barely come back on their own.</strong></p>
+</div>
+</section>
+
+<!-- 4. THE OPPORTUNITY -->
+<section class="light" id="s4">
+<div class="wrap">
+<h2>The opportunity</h2>
+<p>Members are worth roughly double the revenue of non-members, yet they re-engage at just 4.2% over six months. There is no natural cadence pulling them back to us.</p>
+<p>A light, timely email touch — post-purchase, plain text, no hard sell — could pull that forward. Even a small directional lift on a cohort spending $9.7 million a year is worth testing.</p>
+<p>If we can move the needle at all, the path from email to SMS to multi-step nurture is clear. If not, we know before over-investing.</p>
+</div>
+</section>
+
+<!-- 5. THIS WEEK -->
+<section class="dark" id="s5">
+<div class="wrap">
+<h2 style="font-size:1.8rem">This week</h2>
 <ul>
-<li>Plain-text post-purchase email to 1,283 members with valid email</li>
-<li>50/50 A/B split — flow gets email, control held out (attribution, not significance)</li>
-<li>Built on Brevo for delivery + unsubscribe handling</li>
+<li>Plain-text post-purchase email to <strong>1,283 members</strong> with valid email</li>
+<li>50/50 A/B split — flow gets email, control held out</li>
+<li>Built on Brevo (free tier) for delivery + unsubscribe handling</li>
 <li>Recipient list from ServiceTitan, consent-gated, Humm excluded</li>
+<li>Measured: booking within 90 days vs control (directional)</li>
 </ul>
-<div class="notes">The execution plan. Concise — this is what's happening right now.</div>
-</div>
-<div class="card">
-<h2>Slide 6 · Costs</h2>
-<ul>
-<li>Brevo: free tier (300 emails/day, covers the 1,283-member cohort comfortably)</li>
-<li>n8n: self-hosted cloud instance ~$20–40/month (workflow automation — trigger logic, contact sync, unsubscribe webhook)</li>
-<li>ServiceTitan API: already provisioned, no incremental cost</li>
-<li>Total MVP run cost: under $100 for the trial period</li>
-</ul>
-<div class="notes">Keep costs real and low — this is not a big-budget initiative. Brevo is free. n8n is the only line item.</div>
-</div>
-<div class="card">
-<h2>Slide 7 · How it works</h2>
-<ul>
-<li>One email, plain text, post-purchase timing</li>
-<li>"Hi [first name], thanks for choosing aba TRADES. As a Gold member, here's what to know about your next call…"</li>
-<li>One CTA: call or book online. No upsell, no 10%-off-now — just a reminder they're a member</li>
-<li>Measured: booking within 90 days vs control (directional), open/click as leading indicator</li>
-</ul>
-<div class="notes">Creative concept. Paint the picture — what the member actually receives.</div>
-</div>
-<div class="card">
-<h2>Slide 8 · What we'll learn</h2>
-<ul>
-<li>Does a single email move the needle on re-engagement? (90-day fresh-booking rate)</li>
-<li>If yes: scale to SMS, multi-step nurture flows, service-type targeting</li>
-<li>If no, or unclear: the MVP was the right size test; we know before over-investing</li>
-<li>Either way: we'll have a clean baseline, a directional read, and the infrastructure built</li>
-</ul>
-<div class="notes">Close with the learning agenda. This isn't a revenue-commitment slide — it's about validated learning.</div>
-</div>
-<div class="card">
-<h2>Slide 9 · Thank you</h2>
-<div class="slide-n">Closing slide (navy background)</div>
-<p style="font-size:.9rem">Customer Lifetime Value · Member re-engagement initiative · aba TRADES</p>
-<div class="notes">Closing slide. Clean, brand-colour background, simple.</div>
+<div class="gap"></div>
+<h3>Costs</h3>
+<div class="cost-row">
+<div class="cost-item"><div class="amt">$0</div><div class="lbl">Brevo — free tier covers the cohort comfortably</div></div>
+<div class="cost-item"><div class="amt">~$30/mo</div><div class="lbl">n8n — self-hosted workflow automation</div></div>
+<div class="cost-item"><div class="amt">$0</div><div class="lbl">ServiceTitan — already provisioned</div></div>
+<div class="cost-item"><div class="amt"><$100</div><div class="lbl">Total MVP trial cost</div></div>
 </div>
 </div>
-<div class="footer">aba Trades · CLV Member Re-engagement Initiative · September 2026</div>
+</section>
+
+<!-- 6. HOW IT WORKS -->
+<section class="alt" id="s6">
+<div class="wrap">
+<h2>How it works</h2>
+<p>One email. Plain text. Post-purchase timing. No upsell, no discount code, no heavy design — just a reminder that they're a member.</p>
+<div class="quote">"Hi {{first_name}}, thanks for choosing aba TRADES for your recent {{service_type}} job. As a Gold member, you get priority service, discounted rates, and peace of mind on every call-out. When you next need us — call or book online and we'll be there. — aba TRADES"</div>
+<p>The email's job is simple: <strong>be the reason they think of us first.</strong> Open and click-through give us a leading indicator in days; booking rate within 90 days tells us whether it worked.</p>
+</div>
+</section>
+
+<!-- 7. WHAT WE'LL LEARN -->
+<section class="light" id="s7">
+<div class="wrap">
+<h2>What we'll learn</h2>
+<p>This MVP isn't a revenue commitment — it's <strong>validated learning</strong> on the smallest possible test.</p>
+<div class="stat-row">
+<div class="stat-block"><div class="stat">&#x2197;</div><div class="stat-label">if it moves</div><p>Scale to SMS, multi-step nurture, service-type targeting, evergreen flows</p></div>
+<div class="stat-block"><div class="stat">&#x2192;</div><div class="stat-label">if it doesn't</div><p>We know before over-investing. The infrastructure — Brevo, n8n, A/B rig — is reusable for the next test</p></div>
+</div>
+<p>Either way: we'll have a clean baseline, a directional read, and the plumbing built for whatever comes next.</p>
+</div>
+</section>
+
+<!-- 8. CLOSING -->
+<section class="dark" id="s8">
+<div class="wrap" style="text-align:center">
+<h2 style="font-size:2rem">Thank you</h2>
+<p style="font-size:1.1rem">Customer Lifetime Value · Member re-engagement initiative</p>
+<p style="opacity:0.5;margin-top:24px"><a href="clv-report/" style="color:#fff;text-decoration:underline">View the full CLV report →</a></p>
+</div>
+</section>
+
 </body>
 </html>
