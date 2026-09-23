@@ -52,6 +52,8 @@
     The service-type branch is handled by a <b>contact filter on each automation's trigger</b>, not a conditional-split block.
     So instead of one big flow with nested 2-way splits, you build <b>4 straight-line automations</b> — one per trade.
     Each member is admitted to exactly ONE of them (the trade they bought), and the flow runs top-to-bottom.
+    <b>E1-Welcome goes to every member</b> (no cohort filter); the treatment/control gate lives on the trade automations,
+    so control members get the welcome but never the nurture flow.
   </div>
 
   <div class="legend">
@@ -62,18 +64,18 @@
   </div>
 
   <div class="auto">
-    <div class="auto-h"><span class="ai">A0</span>Welcome + cohort — trigger member_joined</div>
-    <div class="filters">Contact filter: <b>COHORT = treatment</b> · (control members never enter, never emailed)</div>
-    <div class="node trigger"><b>Trigger:</b> Custom event → member_joined &nbsp;·&nbsp; filter COHORT=treatment</div>
+    <div class="auto-h"><span class="ai">A0</span>Welcome — trigger member_joined</div>
+    <div class="filters">No cohort filter — <b>every member gets the welcome</b> (control included). Treatment/control only gates the nurture flow, which starts at E2.</div>
+    <div class="node trigger"><b>Trigger:</b> Custom event → member_joined</div>
     <div class="arr">↓</div>
     <div class="node"><b>E1 · Welcome</b> — template id 1</div>
-    <div class="arr">↓ member moves to their trade automation on payment</div>
+    <div class="arr">↓ member moves to their trade automation on payment (if treatment)</div>
     <div class="node end">End of E1 automation</div>
   </div>
 
   <div class="auto">
     <div class="auto-h"><span class="ai">A1</span>Air Con automation</div>
-    <div class="filters">Contact filter: <b>COHORT = treatment</b> AND <b>SERVICE_TYPE = Air Conditioning</b></div>
+    <div class="filters">Contact filter: <b>COHORT = treatment</b> AND <b>SERVICE_TYPE = Air Conditioning</b> · control members are filtered out here, so the nurture flow never reaches them</div>
 
     <div class="node wait"><b>Trigger:</b> Custom event → member_invoice_paid &nbsp;·&nbsp; filter COHORT=treatment, SERVICE_TYPE=Air Conditioning</div>
     <div class="arr">↓</div>
