@@ -53,7 +53,8 @@
   <div class="sub">Evergreen email flow · E1→E6 · build order &amp; flow logic (Brevo automation)</div>
 
   <div class="legend">
-    <div class="lg"><span class="sw" style="background:#fff;border:2px solid var(--blue)"></span>Trigger (custom event)</div>
+    <div class="lg"><span class="sw" style="background:#fff;border:2px solid var(--blue)"></span>Trigger (custom event, set once at top)</div>
+    <div class="lg"><span class="sw" style="background:#fff;border:2px solid var(--blue)"></span>Rule — Wait until event (mid-flow)</div>
     <div class="lg"><span class="sw" style="background:var(--field);border:2px solid var(--navy)"></span>Send email</div>
     <div class="lg"><span class="sw" style="background:#fff;border:2px dashed var(--slate)"></span>Conditional / branch</div>
     <div class="lg"><span class="sw" style="background:#fff;border:2px solid #C0564F"></span>End</div>
@@ -92,10 +93,11 @@
     </div>
     <div class="arr"><div class="t" style="text-align:center">treatment continues ↓ · control exits</div></div>
 
-    <div class="node trigger">
-      <div><span class="tag">TRIGGER</span></div>
-      <div class="n-h">Wait on custom event → member_invoice_paid</div>
-      <div class="n-c">Fires when a member's invoice is actually paid (cron 1 lane B). This is the E2 onset — NOT a fixed day-count.</div>
+    <div class="node trigger" style="border-style:solid">
+      <div><span class="tag">RULE (not a trigger)</span></div>
+      <div class="n-h">Wait until event happens → member_invoice_paid</div>
+      <div class="n-c">Pauses the contact until their invoice is actually paid (cron 1 lane B event). Set a time limit = Day 45 fallback. Yes branch = paid, continue to E2. No branch = no payment by limit, jump to E4 fallback so the flow never goes silent.</div>
+      <div class="brow"><b><span style="color:var(--plumb)">●</span> Yes (paid) → E2</b>  <b><span style="color:var(--elec)">●</span> No (timed out) → E4 fallback</b></div>
     </div>
     <div class="arr"><div class="t">then</div></div>
 
