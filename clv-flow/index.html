@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Members | New-Member Nurture — Flow</title>
+<title>Members | New-Member Nurture — Split-Automation Flow</title>
 <link rel="icon" href="../assets/brand/favicon.ico" type="image/x-icon">
 <style>
   :root{
@@ -13,170 +13,126 @@
   }
   *{box-sizing:border-box}
   body{background:var(--bg);color:var(--ink);font-family:Arial,Helvetica,sans-serif;margin:0;line-height:1.45}
-  .wrap{max-width:820px;margin:24px auto;padding:12px 18px}
+  .wrap{max-width:860px;margin:24px auto;padding:12px 18px}
   h1{font-size:1.5rem;margin:0 0 2px}
-  .sub{color:var(--slate);font-size:.9rem;margin:4px 0 18px}
+  .sub{color:var(--slate);font-size:.9rem;margin:6px 0 6px}
+  .hero{background:var(--navy);color:#fff;border-radius:10px;padding:14px 18px;margin:8px 0 22px}
+  .hero b{color:#fff}
   .legend{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 22px}
   .lg{display:flex;align-items:center;gap:5px;font-size:.78rem;color:var(--slate)}
   .sw{width:11px;height:11px;border-radius:3px}
-  .flow{display:flex;flex-direction:column;align-items:center;gap:0}
-  .node{background:var(--field);border:2px solid var(--line);border-radius:10px;padding:10px 14px;width:560px;max-width:100%}
-  .node .n-h{font-weight:700;font-size:1rem;color:var(--navy)}
-  .node .n-c{font-size:.82rem;color:var(--slate);margin:3px 0 0}
+  .auto{background:#fff;border:2px solid var(--blue);border-radius:12px;margin:10px 0;padding:10px 16px}
+  .auto-h{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.05rem;color:var(--navy)}
+  .auto .ai{display:inline-block;background:var(--blue);color:#fff;font-weight:800;font-size:.8rem;border-radius:6px;padding:3px 9px}
+  .auto .filters{font-size:.78rem;color:var(--slate);margin:6px 0 10px}
+  .node{background:var(--field);border:2px solid var(--navy);border-radius:9px;padding:8px 12px;font-size:.9rem}
+  .node b{color:var(--navy)}
   .node.trigger{background:#fff;border-color:var(--blue)}
-  .node.email{background:var(--field);border-color:var(--navy)}
-  .node.branch{background:#fff;border-color:var(--slate);border-style:dashed}
+  .node.wait{background:#fff;border-color:var(--slate);border-style:dashed}
   .node.end{background:#fff;border-color:#C0564F;color:#C0564F}
-  .arr{display:flex;align-items:center;justify-content:center;width:560px;max-width:100%;padding:10px 0}
-  .arr .t{font-size:.78rem;color:var(--slate)}
-  .arr-svg{width:16px;color:var(--slate);text-align:center}
-  .branch-lines{display:flex;align-items:center;justify-content:center;padding:10px 0}
-  .tag{display:inline-block;background:var(--blue);color:#fff;font-size:.72rem;font-weight:700;padding:2px 8px;border-radius:100px;margin-bottom:6px}
-  .months{color:var(--slate);font-size:.8rem}
-  .brow{display:flex;flex-wrap:wrap;gap:4px;align-items:center;margin-top:3px}
-  .brow b{font-size:.68rem;letter-spacing:.5px;text-transform:uppercase}
-  .branch-node{display:flex;flex-direction:column;align-items:center;gap:6px}
-  .fn{color:var(--slate);font-size:.72rem}
-  .split{display:flex;gap:6px;justify-content:center;align-items:center}
-  .arm{width:277px;border-radius:8px;padding:8px 10px}
-  .arm-h{font-weight:700;font-size:.95rem;color:var(--navy)}
-  .arm-c{font-size:.78rem;color:var(--slate);margin-top:2px}
-  .arm-right{width:277px}
-  @media(max-width:600px){.split{flex-direction:column}.arm{width:100%}}
-  @media(min-width:600px){.brow b{font-size:.72rem}}
-  @media(max-width:380px){.node{width:100%}.arr{width:100%}}
-  .nested{background:#fff;border:2px solid var(--blue);border-radius:10px;padding:12px 16px;width:620px;max-width:100%;text-align:center}
-  .row{display:flex;align-items:center;justify-content:flex-start;gap:8px;margin:4px 0;width:100%}
-  .row.arm{padding-left:18px}.row.arm2{padding-left:36px}.row.arm3{padding-left:54px}
-  .sq{background:var(--field);border:1px solid var(--navy);border-radius:7px;padding:5px 10px;text-align:center;min-width:320px}
-  .yes{display:inline-block;background:#E5F2E5;color:#1F7A3D;font-weight:700;font-size:.72rem;padding:2px 7px;border-radius:100px;min-width:34px;text-align:center}
-  .no{display:inline-block;background:#FDE6E6;color:#B33;font-weight:700;font-size:.72rem;padding:2px 7px;border-radius:100px;min-width:34px;text-align:center}
-  .note{font-size:.72rem;color:var(--slate)}
-  .note-line{font-size:.76rem;color:var(--slate);max-width:620px;width:100%;margin:8px auto;text-align:center}
-  @media(max-width:620px){.nested{width:100%}.sq{min-width:0;width:auto}}
+  .arr{text-align:center;color:var(--slate);margin:2px 0;font-size:.75rem}
+  .wait-pair{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;font-size:.8rem}
+  .yes{background:#E5F2E5;color:#1F7A3D;font-weight:700;padding:3px 9px;border-radius:100px}
+  .no{background:#FDE6E6;color:#B33;font-weight:700;padding:3px 9px;border-radius:100px}
+  .mirror{background:var(--field);border:1px dashed var(--slate);border-radius:9px;padding:9px 12px;margin-top:8px}
+  .mirror h3{font-size:.95rem;margin:2px 0}
+  table{border-collapse:collapse;margin:8px 0;font-size:.82rem}
+  th,td{padding:5px 10px;border:1px solid var(--line);text-align:left}
+  th{background:var(--field);font-weight:700}
+  .note{background:#FFF8E6;border:1px solid #E6C;border-radius:9px;padding:10px 12px;font-size:.82rem;color:#6B5317;margin:10px 0}
+  @media(max-width:460px){.auto-h{flex-wrap:wrap}.wait-pair{flex-direction:column}}
 </style>
 </head>
 <body>
 <div class="wrap">
   <h1>Members | New-Member Nurture</h1>
-  <div class="sub">Evergreen email flow · E1→E6 · build order &amp; flow logic (Brevo automation)</div>
+  <div class="sub">Split-automation build · one flow per trade · zero conditional splits</div>
+
+  <div class="hero">
+    The service-type branch is handled by a <b>contact filter on each automation's trigger</b>, not a conditional-split block.
+    So instead of one big flow with nested 2-way splits, you build <b>4 straight-line automations</b> — one per trade.
+    Each member is admitted to exactly ONE of them (the trade they bought), and the flow runs top-to-bottom.
+  </div>
 
   <div class="legend">
-    <div class="lg"><span class="sw" style="background:#fff;border:2px solid var(--blue)"></span>Trigger (custom event, set once at top)</div>
-    <div class="lg"><span class="sw" style="background:#fff;border:2px solid var(--blue)"></span>Rule — Wait until event (mid-flow)</div>
+    <div class="lg"><span class="sw" style="background:#fff;border:2px solid var(--blue)"></span>Trigger + contact filter</div>
+    <div class="lg"><span class="sw" style="background:#fff;border:2px dashed var(--slate)"></span>Wait-until rule (event)</div>
     <div class="lg"><span class="sw" style="background:var(--field);border:2px solid var(--navy)"></span>Send email</div>
-    <div class="lg"><span class="sw" style="background:#fff;border:2px dashed var(--slate)"></span>Conditional / branch</div>
     <div class="lg"><span class="sw" style="background:#fff;border:2px solid #C0564F"></span>End</div>
   </div>
 
-  <div class="flow">
-
-    <div class="node trigger">
-      <div><span class="tag">TRIGGER</span></div>
-      <div class="n-h">Custom event → member_joined</div>
-      <div class="n-c">Fires on membership activation (cron 1 lane A). Every new member enters here.</div>
-    </div>
-    <div class="arr"><div class="t">enters flow</div></div>
-
-    <div class="node email">
-      <div><span class="tag">STEP 1</span></div>
-      <div class="n-h">E1 · Welcome — template id 1</div>
-      <div class="n-c">Universal (same for every member). Subject: Welcome to aba TRADES membership</div>
-    </div>
-    <div class="arr"><div class="t">then split</div></div>
-
-    <div class="node branch">
-      <div class="n-h">Conditional split — COHORT</div>
-      <div class="n-c">Read contact attribute</div>
-    </div>
-
-    <div class="split">
-      <div class="arm" style="background:var(--field);border:2px solid var(--navy)">
-        <div class="arm-h">TREATMENT · 75%</div>
-        <div class="arm-c">Continue to E2 ↓</div>
-      </div>
-      <div class="arm arm-right" style="background:#fff;border:2px solid #C0564F">
-        <div class="arm-h" style="color:#C0564F">CONTROL · 25%</div>
-        <div class="arm-c" style="color:#C0564F">End — hold-out. Never emailed.</div>
-      </div>
-    </div>
-    <div class="arr"><div class="t" style="text-align:center">treatment continues ↓ · control exits</div></div>
-
-    <div class="node trigger" style="border-style:solid">
-      <div><span class="tag">RULE (not a trigger)</span></div>
-      <div class="n-h">Wait until event happens → member_invoice_paid</div>
-      <div class="n-c">Pauses the contact until their invoice is actually paid (cron 1 lane B event). Set a time limit = Day 45 fallback. Yes branch = paid, continue to E2. No branch = no payment by limit, jump to E4 fallback so the flow never goes silent.</div>
-      <div class="brow"><b><span style="color:var(--plumb)">●</span> Yes (paid) → E2</b>  <b><span style="color:var(--elec)">●</span> No (timed out) → E4 fallback</b></div>
-    </div>
-    <div class="arr"><div class="t">then</div></div>
-
-    <div class="node email">
-      <div><span class="tag">STEP 2</span></div>
-      <div class="n-h">E2 · First cross-trade value — nested 2-way splits (Brevo only allows 2-way)</div>
-      <div class="n-c">Branch by the trade the member BOUGHT (SERVICE_TYPE). Chain three conditional splits so each peels off one trade:</div>
-    </div>
-
-    <div class="nested">
-      <div class="row"><div class="sq">SPLIT 1 — <b>SERVICE_TYPE = "Air Conditioning"?</b></div></div>
-      <div class="row arm"><div class="yes">YES</div><div class="sq">E2 | Aircon → template id <b>2</b></div></div>
-      <div class="row arm"><div class="no">NO</div><div class="sq">SPLIT 2 — <b>SERVICE_TYPE = "Plumbing and Gas"?</b></div></div>
-      <div class="row arm2"><div class="yes">YES</div><div class="sq">E2 | Plumbing → template id <b>3</b></div></div>
-      <div class="row arm2"><div class="no">NO</div><div class="sq">SPLIT 3 — <b>SERVICE_TYPE = "Electrical"?</b></div></div>
-      <div class="row arm3"><div class="yes">YES</div><div class="sq">E2 | Electrical → template id <b>4</b></div></div>
-      <div class="row arm3"><div class="no">NO</div><div class="sq">E2 | Roofing → template id <b>5</b> <span class="note">(the remaining catch-all)</span></div></div>
-    </div>
-    <div class="note-line">Each SPLIT is the same Conditional Split block, one per SERVICE_TYPE value. Read top→bottom: Aircon? no → Plumbing? no → Electrical? no → Roofing.</div>
-    <div class="arr"><div class="t">each E2 arm then feeds its own E3 split</div></div>
-
-    <div class="node email">
-      <div><span class="tag">STEP 3</span></div>
-      <div class="n-h">E3 · Second cross-trade value — same nested chain, new ids</div>
-      <div class="n-c" style="margin:0 0 8px">Repeat the exact 3-split chain from E2, on the same SERVICE_TYPE values:</div>
-      <div class="brow">
-        <b><span style="color:var(--air)">●</span> Aircon → 6</b>
-        <b><span style="color:var(--plumb)">●</span> Plumbing → 7</b>
-        <b><span style="color:var(--elec)">●</span> Electrical → 8</b>
-        <b><span style="color:var(--roof)">●</span> Roofing → 9</b>
-      </div>
-      <div class="n-c" style="margin-top:6px">Each E2 arm → its own 3-split chain → E3 mail for that trade.</div>
-    </div>
-    <div class="arr"><div class="t">each E3 arm then feeds its own E4 split</div></div>
-
-    <div class="node email">
-      <div><span class="tag">STEP 4</span></div>
-      <div class="n-h">E4 · Third cross-trade value + soft close — same nested chain, new ids</div>
-      <div class="n-c" style="margin:0 0 8px">Repeat the 3-split chain again, on the same SERVICE_TYPE values:</div>
-      <div class="brow">
-        <b><span style="color:var(--air)">●</span> Aircon → 10</b>
-        <b><span style="color:var(--plumb)">●</span> Plumbing → 11</b>
-        <b><span style="color:var(--elec)">●</span> Electrical → 12</b>
-        <b><span style="color:var(--roof)">●</span> Roofing → 13</b>
-      </div>
-      <div class="n-c" style="margin-top:6px"><b>Fallback landed here:</b> the Wait-until <b>No</b> branch (no payment by ~Day 45) jumps in at E4 so the flow never goes silent.</div>
-    </div>
-    <div class="arr"><div class="t" style="text-align:center">then ~Day 90</div></div>
-
-    <div class="node email">
-      <div><span class="tag">STEP 5</span></div>
-      <div class="n-h">E5 · Hard close — template id 14</div>
-      <div class="n-c">Universal. ~Day 90 after E1 (measurement close).</div>
-    </div>
-    <div class="arr"><div class="t">then ~Day 330</div></div>
-
-    <div class="node email">
-      <div><span class="tag">STEP 6</span></div>
-      <div class="n-h">E6 · Renewal — template id 15</div>
-      <div class="n-c">Universal. ~Day 330 (~35 days pre-renewal). Uses [renewal date] attribute.</div>
-    </div>
-    <div class="arr"><div class="t">flow ends</div></div>
-
-    <div class="node end" style="width:560px;max-width:100%">
-      <div class="n-h">Activate once: trigger events registered ✓ · sender/DNS verified ⏳</div>
-    </div>
-
+  <div class="auto">
+    <div class="auto-h"><span class="ai">A0</span>Welcome + cohort — trigger member_joined</div>
+    <div class="filters">Contact filter: <b>COHORT = treatment</b> · (control members never enter, never emailed)</div>
+    <div class="node trigger"><b>Trigger:</b> Custom event → member_joined &nbsp;·&nbsp; filter COHORT=treatment</div>
+    <div class="arr">↓</div>
+    <div class="node"><b>E1 · Welcome</b> — template id 1</div>
+    <div class="arr">↓ member moves to their trade automation on payment</div>
+    <div class="node end">End of E1 automation</div>
   </div>
 
-  <div class="sub" style="margin-top:18px">Source of truth: CLV membership deck. Templates built via API. Cron 1 = lane A (member_joined) + lane B (member_invoice_paid).</div>
+  <div class="auto">
+    <div class="auto-h"><span class="ai">A1</span>Air Con automation</div>
+    <div class="filters">Contact filter: <b>COHORT = treatment</b> AND <b>SERVICE_TYPE = Air Conditioning</b></div>
+
+    <div class="node wait"><b>Trigger:</b> Custom event → member_invoice_paid &nbsp;·&nbsp; filter COHORT=treatment, SERVICE_TYPE=Air Conditioning</div>
+    <div class="arr">↓</div>
+    <div class="node"><b>E2 · First cross-trade</b> — template id 2</div>
+    <div class="arr">↓ (delay ~Day 14)</div>
+    <div class="node"><b>E3 · Second cross-trade</b> — template id 6</div>
+    <div class="arr">↓ (delay ~Day 21)</div>
+    <div class="node"><b>E4 · Third cross-trade + soft close</b> — template id 10</div>
+    <div class="arr">↓ (delay ~Day 45)</div>
+    <div class="node"><b>E5 · Hard close</b> — template id 14</div>
+    <div class="arr">↓ (delay ~Day 90)</div>
+    <div class="node"><b>E6 · Renewal</b> — template id 15</div>
+    <div class="arr">↓</div>
+    <div class="node end">End</div>
+  </div>
+
+  <div class="auto">
+    <div class="auto-h"><span class="ai">A2</span>Plumbing automation</div>
+    <div class="filters">Filter: COHORT=treatment AND SERVICE_TYPE = Plumbing and Gas</div>
+    <div class="mirror">
+      <h3>Same straight line as A1, with these template ids:</h3>
+      E2 → <b>3</b> · E3 → <b>7</b> · E4 → <b>11</b> · E5 → 14 · E6 → 15
+    </div>
+  </div>
+
+  <div class="auto">
+    <div class="auto-h"><span class="ai">A3</span>Electrical automation</div>
+    <div class="filters">Filter: COHORT=treatment AND SERVICE_TYPE = Electrical</div>
+    <div class="mirror">
+      <h3>Same straight line as A1, with these template ids:</h3>
+      E2 → <b>4</b> · E3 → <b>8</b> · E4 → <b>12</b> · E5 → 14 · E6 → 15
+    </div>
+  </div>
+
+  <div class="auto">
+    <div class="auto-h"><span class="ai">A4</span>Roofing automation</div>
+    <div class="filters">Filter: COHORT=treatment AND SERVICE_TYPE = Roofing</div>
+    <div class="mirror">
+      <h3>Same straight line as A1, with these template ids:</h3>
+      E2 → <b>5</b> · E3 → <b>9</b> · E4 → <b>13</b> · E5 → 14 · E6 → 15
+    </div>
+  </div>
+
+  <div class="note">
+    <b>Why split automations beat nested splits here:</b> the earlier nested approach needed 9 conditional-split blocks
+    (3 per email × E2/E3/E4). Splitting by trade moves that decision to a <b>trigger contact filter</b> — one filter per
+    automation, zero split blocks. You build 4 identical straight lines instead of one branching tree.
+  </div>
+
+  <div class="note">
+    <b>Same limitation applies:</b> a member must match one of the four SERVICE_TYPE values to be admitted. Anyone whose
+    attribute is blank or unmatched would fall through all four filters and get nothing after E1. If that's possible,
+    add a fifth "Other" automation with no SERVICE_TYPE filter to carry them — worth deciding as you wire it.
+  </div>
+
+  <div class="sub" style="margin-top:16px">
+    Source of truth: CLV membership deck. Templates built via API (ids 1–15). Cron 1 lane A fires member_joined;
+    lane B fires member_invoice_paid on real invoice payment.
+  </div>
 </div>
 </body>
 </html>
