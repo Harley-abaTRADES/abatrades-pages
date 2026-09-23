@@ -45,6 +45,15 @@
   @media(max-width:600px){.split{flex-direction:column}.arm{width:100%}}
   @media(min-width:600px){.brow b{font-size:.72rem}}
   @media(max-width:380px){.node{width:100%}.arr{width:100%}}
+  .nested{background:#fff;border:2px solid var(--blue);border-radius:10px;padding:12px 16px;width:620px;max-width:100%;text-align:center}
+  .row{display:flex;align-items:center;justify-content:flex-start;gap:8px;margin:4px 0;width:100%}
+  .row.arm{padding-left:18px}.row.arm2{padding-left:36px}.row.arm3{padding-left:54px}
+  .sq{background:var(--field);border:1px solid var(--navy);border-radius:7px;padding:5px 10px;text-align:center;min-width:320px}
+  .yes{display:inline-block;background:#E5F2E5;color:#1F7A3D;font-weight:700;font-size:.72rem;padding:2px 7px;border-radius:100px;min-width:34px;text-align:center}
+  .no{display:inline-block;background:#FDE6E6;color:#B33;font-weight:700;font-size:.72rem;padding:2px 7px;border-radius:100px;min-width:34px;text-align:center}
+  .note{font-size:.72rem;color:var(--slate)}
+  .note-line{font-size:.76rem;color:var(--slate);max-width:620px;width:100%;margin:8px auto;text-align:center}
+  @media(max-width:620px){.nested{width:100%}.sq{min-width:0;width:auto}}
 </style>
 </head>
 <body>
@@ -103,28 +112,47 @@
 
     <div class="node email">
       <div><span class="tag">STEP 2</span></div>
-      <div class="n-h">E2 · First cross-trade value</div>
-      <div class="n-c">Branches by what the member bought (SERVICE_TYPE)</div>
-      <div class="brow">
-        <b><span style="color:var(--air)">●</span> Aircon → id 2</b>
-        <b><span style="color:var(--plumb)">●</span> Plumbing → id 3</b>
-        <b><span style="color:var(--elec)">●</span> Electrical → id 4</b>
-        <b><span style="color:var(--roof)">●</span> Roofing → id 5</b>
-      </div>
+      <div class="n-h">E2 · First cross-trade value — nested 2-way splits (Brevo only allows 2-way)</div>
+      <div class="n-c">Branch by the trade the member BOUGHT (SERVICE_TYPE). Chain three conditional splits so each peels off one trade:</div>
     </div>
-    <div class="arr"><div class="t">then</div></div>
+
+    <div class="nested">
+      <div class="row"><div class="sq">SPLIT 1 — <b>SERVICE_TYPE = "Air Conditioning"?</b></div></div>
+      <div class="row arm"><div class="yes">YES</div><div class="sq">E2 | Aircon → template id <b>2</b></div></div>
+      <div class="row arm"><div class="no">NO</div><div class="sq">SPLIT 2 — <b>SERVICE_TYPE = "Plumbing and Gas"?</b></div></div>
+      <div class="row arm2"><div class="yes">YES</div><div class="sq">E2 | Plumbing → template id <b>3</b></div></div>
+      <div class="row arm2"><div class="no">NO</div><div class="sq">SPLIT 3 — <b>SERVICE_TYPE = "Electrical"?</b></div></div>
+      <div class="row arm3"><div class="yes">YES</div><div class="sq">E2 | Electrical → template id <b>4</b></div></div>
+      <div class="row arm3"><div class="no">NO</div><div class="sq">E2 | Roofing → template id <b>5</b> <span class="note">(the remaining catch-all)</span></div></div>
+    </div>
+    <div class="note-line">Each SPLIT is the same Conditional Split block, one per SERVICE_TYPE value. Read top→bottom: Aircon? no → Plumbing? no → Electrical? no → Roofing.</div>
+    <div class="arr"><div class="t">each E2 arm then feeds its own E3 split</div></div>
 
     <div class="node email">
       <div><span class="tag">STEP 3</span></div>
-      <div class="n-h">E3 · Second cross-trade value</div>
-      <div class="n-c">Branches on SERVICE_TYPE — ids 6 (Aircon) · 7 (Plumbing) · 8 (Electrical) · 9 (Roofing)</div>
+      <div class="n-h">E3 · Second cross-trade value — same nested chain, new ids</div>
+      <div class="n-c" style="margin:0 0 8px">Repeat the exact 3-split chain from E2, on the same SERVICE_TYPE values:</div>
+      <div class="brow">
+        <b><span style="color:var(--air)">●</span> Aircon → 6</b>
+        <b><span style="color:var(--plumb)">●</span> Plumbing → 7</b>
+        <b><span style="color:var(--elec)">●</span> Electrical → 8</b>
+        <b><span style="color:var(--roof)">●</span> Roofing → 9</b>
+      </div>
+      <div class="n-c" style="margin-top:6px">Each E2 arm → its own 3-split chain → E3 mail for that trade.</div>
     </div>
-    <div class="arr"><div class="t">then</div></div>
+    <div class="arr"><div class="t">each E3 arm then feeds its own E4 split</div></div>
 
     <div class="node email">
       <div><span class="tag">STEP 4</span></div>
-      <div class="n-h">E4 · Third cross-trade value + soft close</div>
-      <div class="n-c">Branches on SERVICE_TYPE — ids 10-13. <b>Fallback:</b> if no member_invoice_paid by ~Day 45, still send E4 (flow never silent).</div>
+      <div class="n-h">E4 · Third cross-trade value + soft close — same nested chain, new ids</div>
+      <div class="n-c" style="margin:0 0 8px">Repeat the 3-split chain again, on the same SERVICE_TYPE values:</div>
+      <div class="brow">
+        <b><span style="color:var(--air)">●</span> Aircon → 10</b>
+        <b><span style="color:var(--plumb)">●</span> Plumbing → 11</b>
+        <b><span style="color:var(--elec)">●</span> Electrical → 12</b>
+        <b><span style="color:var(--roof)">●</span> Roofing → 13</b>
+      </div>
+      <div class="n-c" style="margin-top:6px"><b>Fallback landed here:</b> the Wait-until <b>No</b> branch (no payment by ~Day 45) jumps in at E4 so the flow never goes silent.</div>
     </div>
     <div class="arr"><div class="t" style="text-align:center">then ~Day 90</div></div>
 
