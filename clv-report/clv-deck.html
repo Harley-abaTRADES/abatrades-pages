@@ -109,11 +109,13 @@ section.dark .tl-item{--tl-bg:var(--brand-primary)}
 .mini-email .m-body a{color:var(--brand-secondary);font-weight:700;text-decoration:underline;text-underline-offset:2px}
 .mini-email .m-body .sig{margin-top:12px;color:var(--brand-primary);font-weight:700}
 /* Harley signature block */
-.sig-block{display:flex;align-items:center;gap:14px;margin-top:18px;padding-top:14px;border-top:1px solid var(--brand-border);white-space:normal}
-.sig-block img{width:52px;height:52px;border-radius:50%;flex-shrink:0;border:2px solid var(--brand-primary)}
+.sig-block{display:flex;flex-direction:column;align-items:flex-start;gap:11px;margin-top:18px;padding-top:14px;border-top:1px solid var(--brand-border);white-space:normal}
 .sig-block .sig-name{font-weight:700;color:var(--brand-primary);font-size:.95rem;line-height:1.3}
 .sig-block .sig-tag{font-size:.8rem;color:var(--brand-slate);line-height:1.35}
 .sig-block .sig-ff{font-weight:700;color:var(--brand-primary);font-size:.88rem;font-style:italic}
+.sig-block .sig-logos{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin-top:2px;font-size:.68rem;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--brand-slate)}
+.sig-block .sig-logos img{height:16px;width:auto;flex-shrink:0;border:none;border-radius:0;margin-right:2px}
+.sig-block .sig-logos span+span:before{content:"·";margin-right:8px;color:var(--brand-border)}
 .mini-email .m-foot{background:var(--brand-field);padding:8px 18px;font-size:.7rem;color:var(--brand-slate);border-top:1px solid var(--brand-border)}
 
 /* fun toggle */
@@ -244,11 +246,16 @@ section.dark .tl-item{--tl-bg:var(--brand-primary)}
           <p>Over a 6-month window, <strong>4.2% of members</strong> start a genuinely new job. Roughly 1 in 24.</p>
           <p>Non-members? <strong>7.5%</strong>. The people who pay us less come back more often.</p>
           <p class="fine" style="margin-top:12px;opacity:.7"><strong>What counts as a "new job" here:</strong> a fresh engagement is a genuinely new call-out, not a follow-on visit from a prior quote, and not a recall child of an earlier job. This removes the investigation-then-dispatch double-count that inflates raw job counts.</p>
+          <div style="margin-top:16px;padding:14px 16px;border:1px solid var(--brand-border);border-left:4px solid var(--brand-primary);background:var(--brand-field);border-radius:8px">
+            <div style="font-size:.68rem;text-transform:uppercase;letter-spacing:1px;font-weight:700;opacity:.6;margin-bottom:6px">The definition that matters</div>
+            <p style="margin:0;font-size:.9rem;line-height:1.5">A <strong>fresh engagement</strong> is a genuinely new call-out, not a follow-on from a prior quote and not a recall child of an earlier job. That strips out the <strong>investigation-to-dispatch double-count</strong> that inflates raw job numbers. So a member who books an aircon job a week after their plumbing job counts as a genuinely new job: both are fresh engagements, and that second one is the re-engagement we're chasing.</p>
+          </div>
+          <p style="margin-top:12px;font-size:.85rem;opacity:.75;line-height:1.5">Two numbers do different jobs here. The <strong>4.2%</strong> is how many members start a fresh job in a half-year (incidence). The "only 8" in Chapter 2 is how many ever start a <em>second</em> one across 22 months (repeat). Same definition, two different questions.</p>
         </div>
         <div class="step" data-step="1">
           <div class="vs">Chapter 2</div>
           <h2 style="font-size:1.8rem">Across 22 months, only 8</h2>
-          <p>Of 1,316 members, just <strong>8</strong> ever came back for a second fresh engagement.</p>
+          <p>Of 1,316 members, just <strong>8</strong> ever came back for a second fresh engagement, a repeat, two genuinely new jobs from the same member.</p>
           <p>The median gap between a member's genuine new jobs is <strong>~200 days</strong>. Nearly seven months of silence between visits.</p>
         </div>
         <div class="step" data-step="2">
@@ -308,12 +315,12 @@ section.dark .tl-item{--tl-bg:var(--brand-primary)}
       <div class="stat-block card reveal d1">
         <div class="stat" style="font-size:2.6rem">~5<span style="font-size:1.4rem">/day</span></div>
         <div class="stat-label">new members joining</div>
-        <p>Every new membership activation enters the flow automatically, roughly 5 a day, each one split 50/50 into flow vs control. The test keeps filling itself.</p>
+        <p>Every new membership activation enters the flow automatically, roughly 5 a day, each one split 75/25 into flow vs control. The test keeps filling itself.</p>
       </div>
       <div class="stat-block card reveal d2">
         <div class="stat" style="font-size:2.6rem">1,283</div>
         <div class="stat-label">existing members backfilled</div>
-        <p>The current base joins at Email 2 (Day 7), they've already had their welcome. Consent-gated, same 50/50 split, so the read covers both populations.</p>
+        <p>The current base joins at Email 2 (Day 7), they've already had their welcome. Consent-gated, same 75/25 split so more members get the new messaging sooner, and the read still covers both populations.</p>
       </div>
       <div class="stat-block card reveal d3">
         <div class="stat" style="font-size:2.6rem">90<span style="font-size:1.4rem"> days</span></div>
@@ -363,16 +370,17 @@ section.dark .tl-item{--tl-bg:var(--brand-primary)}
 <section class="light" id="s6">
   <div class="wrap wide">
     <div class="rule reveal"></div>
-    <h2 class="reveal">The flow: five emails over 90 days</h2>
-    <p class="reveal d1" style="opacity:.9">An evergreen onboarding sequence that runs for every new member, forever, value first, cross-trade by design, closing on the membership's highest-value benefit.</p>
+    <h2 class="reveal">The flow: six emails, onboarding to renewal</h2>
+    <p class="reveal d1" style="opacity:.9">An evergreen onboarding sequence that runs for every new member, forever, value first, cross-trade by design, closing on the membership's highest-value benefit and tying it to renewal.</p>
     <p class="fine reveal d1" style="margin-top:6px;opacity:.7">Click a step to read the email. Toggle <strong>Plain</strong> / <strong>Spark</strong> to compare the safe copy with the livelier draft.</p>
+    <p class="fine reveal d1" style="margin-top:6px;opacity:.7">Day 7, Day 21 and Day 45 fire when a member's job is marked complete and cleared, not on a calendar date, so the trade branch is always what they actually bought. A member with no completed job by day 45 still receives the Day 45 email as a scheduled fallback, so the flow never goes silent.</p>
     <div class="timeline">
 
       <!-- DAY 0 -->
       <div class="tl-item interactive" data-tl>
         <span class="tl-day">Day 0</span>
         <h4>Welcome, membership is active</h4>
-        <p>Orient to the direct line, $1000+ coupons, year-round pricing, 25-year labour warranty, and the free $389 annual inspection. Same email for every member.</p>
+        <p>Fires the moment the membership line item lands on a created job, which is what activates the membership in ServiceTitan. Orients to the direct line, $1000+ coupons, year-round pricing, 25-year labour warranty, and the free $389 annual inspection. Same email for every member.</p>
         <span class="tl-tag tag-welcome">Universal</span>
         <span class="tl-expand-hint">Read the email</span>
         <div class="tl-body">
@@ -392,12 +400,12 @@ Here's what that means for your home, all year round:
 • An extended 25-year labour warranty, five years beyond standard.
 • A free annual whole-house maintenance inspection, valued at $389.
 
-Your membership card holds it all in one place. Scan the QR code any time, or keep the direct line handy.
+Your membership card holds it all in one place. Scan the QR code on your pack any time, or keep the direct line handy. If your technician didn't get a physical pack to you on the day, call 08 7323 1253 and we'll sort one out.
 
 We look after your home, every trade, so you never chase more than one number.
 
 Talk soon,
-<div class="sig-block"><img src="https://harley-abatrades.github.io/abatrades-pages/assets/profile/abatrades-avatar.jpg" alt="Harley"><div><div class="sig-name">Harley · aba TRADES</div><div class="sig-tag">Your member line: 08 7323 1253</div><div class="sig-ff">fixed fast.</div></div></div></div></div>
+<div class="sig-block"><div><div class="sig-name">Harley · aba TRADES</div><div class="sig-tag">Your member line: 08 7323 1253</div><div class="sig-ff">fixed fast.</div></div><div class="sig-logos"><img src="https://harley-abatrades.github.io/abatrades-pages/assets/brand/abatrades-logo.png" alt="aba TRADES"><span>Air Con</span><span>AEP</span><span>Roofing</span></div></div></div></div>
             <div class="email-variant" data-variant="fun"><div class="m-body">Hi [First Name],
 
 You're in! 🎉 Your aba TRADES membership is officially active, and your home just got a lot easier to look after.
@@ -409,12 +417,12 @@ Here's what you've unlocked:
 • 🛡️ A 25-year labour warranty. That's five years longer than standard.
 • 🔍 A free whole-house inspection every year, worth $389. We check everything so small problems never become big ones.
 
-Your membership card has the lot. Scan the QR code for the details, or just save 08 7323 1253 in your phone now. Future you will be glad you did.
+Your membership card has the lot. Scan the QR code on your pack for the details, or just save 08 7323 1253 in your phone now. Future you will be glad you did. And if your technician didn't get a physical pack to you on the day, just call 08 7323 1253 and we'll sort one out.
 
 One number. Every trade. Sorted.
 
 Talk soon,
-<div class="sig-block"><img src="https://harley-abatrades.github.io/abatrades-pages/assets/profile/abatrades-avatar.jpg" alt="Harley"><div><div class="sig-name">Harley · aba TRADES</div><div class="sig-tag">Your member line: 08 7323 1253</div><div class="sig-ff">fixed fast.</div></div></div></div></div>
+<div class="sig-block"><div><div class="sig-name">Harley · aba TRADES</div><div class="sig-tag">Your member line: 08 7323 1253</div><div class="sig-ff">fixed fast.</div></div><div class="sig-logos"><img src="https://harley-abatrades.github.io/abatrades-pages/assets/brand/abatrades-logo.png" alt="aba TRADES"><span>Air Con</span><span>AEP</span><span>Roofing</span></div></div></div></div>
             <div class="m-foot">Reply UNSUBSCRIBE to opt out of future emails.</div>
           </div>
         </div>
@@ -424,7 +432,7 @@ Talk soon,
       <div class="tl-item interactive" data-tl>
         <span class="tl-day">Day 7</span>
         <h4>First cross-trade value</h4>
-        <p>A practical guide from another trade, and give the knowledge away; the member benefit is that one call handles it.</p>
+        <p>Event-triggered when the member's job is marked complete and cleared to zero, not a calendar date, so the trade branch is always what they actually bought. A practical guide from another trade; give the knowledge away, the member benefit is that one call handles it.</p>
         <span class="tl-tag tag-value">Value first</span><span class="tl-tag tag-welcome">Branched</span>
         <span class="tl-expand-hint">Read the emails</span>
         <div class="tl-body">
@@ -453,7 +461,7 @@ But here's the member difference: if the DIY route doesn't work, or you'd rather
 That's the point of membership. Your home, every trade, one number.
 
 Talk soon,
-<div class="sig-block"><img src="https://harley-abatrades.github.io/abatrades-pages/assets/profile/abatrades-avatar.jpg" alt="Harley"><div><div class="sig-name">Harley · aba TRADES</div><div class="sig-tag">Your member line: 08 7323 1253</div><div class="sig-ff">fixed fast.</div></div></div></div></div>
+<div class="sig-block"><div><div class="sig-name">Harley · aba TRADES</div><div class="sig-tag">Your member line: 08 7323 1253</div><div class="sig-ff">fixed fast.</div></div><div class="sig-logos"><img src="https://harley-abatrades.github.io/abatrades-pages/assets/brand/abatrades-logo.png" alt="aba TRADES"><span>Air Con</span><span>AEP</span><span>Roofing</span></div></div></div></div>
             <div class="email-variant" data-variant="fun"><div class="m-body">Hi [First Name],
 
 Your aircon's sorted ❄️, so let's talk sinks. Stay with me, this one's genuinely useful.
@@ -467,7 +475,7 @@ And here's the part I like: if the clog wins, you don't wrestle it. Members call
 That's the whole idea of your membership. One number, every trade, done.
 
 Talk soon,
-<div class="sig-block"><img src="https://harley-abatrades.github.io/abatrades-pages/assets/profile/abatrades-avatar.jpg" alt="Harley"><div><div class="sig-name">Harley · aba TRADES</div><div class="sig-tag">Your member line: 08 7323 1253</div><div class="sig-ff">fixed fast.</div></div></div></div></div>
+<div class="sig-block"><div><div class="sig-name">Harley · aba TRADES</div><div class="sig-tag">Your member line: 08 7323 1253</div><div class="sig-ff">fixed fast.</div></div><div class="sig-logos"><img src="https://harley-abatrades.github.io/abatrades-pages/assets/brand/abatrades-logo.png" alt="aba TRADES"><span>Air Con</span><span>AEP</span><span>Roofing</span></div></div></div></div>
             <div class="m-foot">Reply UNSUBSCRIBE to opt out of future emails.</div>
           </div></div>
 
@@ -489,7 +497,7 @@ But here's the member difference: if you'd rather not climb into the roof space 
 That's the point of membership. Your home, every trade, one number.
 
 Talk soon,
-<div class="sig-block"><img src="https://harley-abatrades.github.io/abatrades-pages/assets/profile/abatrades-avatar.jpg" alt="Harley"><div><div class="sig-name">Harley · aba TRADES</div><div class="sig-tag">Your member line: 08 7323 1253</div><div class="sig-ff">fixed fast.</div></div></div></div></div>
+<div class="sig-block"><div><div class="sig-name">Harley · aba TRADES</div><div class="sig-tag">Your member line: 08 7323 1253</div><div class="sig-ff">fixed fast.</div></div><div class="sig-logos"><img src="https://harley-abatrades.github.io/abatrades-pages/assets/brand/abatrades-logo.png" alt="aba TRADES"><span>Air Con</span><span>AEP</span><span>Roofing</span></div></div></div></div>
             <div class="email-variant" data-variant="fun"><div class="m-body">Hi [First Name],
 
 Plumbing's sorted🔧, now a quick one for the thing keeping you cool.
@@ -503,7 +511,7 @@ And if roof-space gymnastics aren't your idea of a good Saturday? Fair. Members 
 One number. Every trade. That's the membership working.
 
 Talk soon,
-<div class="sig-block"><img src="https://harley-abatrades.github.io/abatrades-pages/assets/profile/abatrades-avatar.jpg" alt="Harley"><div><div class="sig-name">Harley · aba TRADES</div><div class="sig-tag">Your member line: 08 7323 1253</div><div class="sig-ff">fixed fast.</div></div></div></div></div>
+<div class="sig-block"><div><div class="sig-name">Harley · aba TRADES</div><div class="sig-tag">Your member line: 08 7323 1253</div><div class="sig-ff">fixed fast.</div></div><div class="sig-logos"><img src="https://harley-abatrades.github.io/abatrades-pages/assets/brand/abatrades-logo.png" alt="aba TRADES"><span>Air Con</span><span>AEP</span><span>Roofing</span></div></div></div></div>
             <div class="m-foot">Reply UNSUBSCRIBE to opt out of future emails.</div>
           </div></div>
 
@@ -525,7 +533,7 @@ But here's the member difference: if you'd rather not get under the sink or mess
 That's the point of membership. Your home, every trade, one number.
 
 Talk soon,
-<div class="sig-block"><img src="https://harley-abatrades.github.io/abatrades-pages/assets/profile/abatrades-avatar.jpg" alt="Harley"><div><div class="sig-name">Harley · aba TRADES</div><div class="sig-tag">Your member line: 08 7323 1253</div><div class="sig-ff">fixed fast.</div></div></div></div></div>
+<div class="sig-block"><div><div class="sig-name">Harley · aba TRADES</div><div class="sig-tag">Your member line: 08 7323 1253</div><div class="sig-ff">fixed fast.</div></div><div class="sig-logos"><img src="https://harley-abatrades.github.io/abatrades-pages/assets/brand/abatrades-logo.png" alt="aba TRADES"><span>Air Con</span><span>AEP</span><span>Roofing</span></div></div></div></div>
             <div class="email-variant" data-variant="fun"><div class="m-body">Hi [First Name],
 
 Electrical's sorted⚡, quick question: when did you last check your water filter?
@@ -539,7 +547,7 @@ And if under-sink plumbing isn't your happy place? Members don't need one. Call 
 One number, every trade. That's what you signed up for.
 
 Talk soon,
-<div class="sig-block"><img src="https://harley-abatrades.github.io/abatrades-pages/assets/profile/abatrades-avatar.jpg" alt="Harley"><div><div class="sig-name">Harley · aba TRADES</div><div class="sig-tag">Your member line: 08 7323 1253</div><div class="sig-ff">fixed fast.</div></div></div></div></div>
+<div class="sig-block"><div><div class="sig-name">Harley · aba TRADES</div><div class="sig-tag">Your member line: 08 7323 1253</div><div class="sig-ff">fixed fast.</div></div><div class="sig-logos"><img src="https://harley-abatrades.github.io/abatrades-pages/assets/brand/abatrades-logo.png" alt="aba TRADES"><span>Air Con</span><span>AEP</span><span>Roofing</span></div></div></div></div>
             <div class="m-foot">Reply UNSUBSCRIBE to opt out of future emails.</div>
           </div></div>
 
@@ -561,7 +569,7 @@ But here's the member difference: if your hot water system is playing up, or you
 That's the point of membership. Your home, every trade, one number.
 
 Talk soon,
-<div class="sig-block"><img src="https://harley-abatrades.github.io/abatrades-pages/assets/profile/abatrades-avatar.jpg" alt="Harley"><div><div class="sig-name">Harley · aba TRADES</div><div class="sig-tag">Your member line: 08 7323 1253</div><div class="sig-ff">fixed fast.</div></div></div></div></div>
+<div class="sig-block"><div><div class="sig-name">Harley · aba TRADES</div><div class="sig-tag">Your member line: 08 7323 1253</div><div class="sig-ff">fixed fast.</div></div><div class="sig-logos"><img src="https://harley-abatrades.github.io/abatrades-pages/assets/brand/abatrades-logo.png" alt="aba TRADES"><span>Air Con</span><span>AEP</span><span>Roofing</span></div></div></div></div>
             <div class="email-variant" data-variant="fun"><div class="m-body">Hi [First Name],
 
 Roof sorted 🏠, now let's talk about the appliance nobody thinks about until 6am on a cold morning.
@@ -575,7 +583,7 @@ Here's the good bit: as a member, hot water is guaranteed within 24 hours of boo
 No cold showers. That's the membership promise.
 
 Talk soon,
-<div class="sig-block"><img src="https://harley-abatrades.github.io/abatrades-pages/assets/profile/abatrades-avatar.jpg" alt="Harley"><div><div class="sig-name">Harley · aba TRADES</div><div class="sig-tag">Your member line: 08 7323 1253</div><div class="sig-ff">fixed fast.</div></div></div></div></div>
+<div class="sig-block"><div><div class="sig-name">Harley · aba TRADES</div><div class="sig-tag">Your member line: 08 7323 1253</div><div class="sig-ff">fixed fast.</div></div><div class="sig-logos"><img src="https://harley-abatrades.github.io/abatrades-pages/assets/brand/abatrades-logo.png" alt="aba TRADES"><span>Air Con</span><span>AEP</span><span>Roofing</span></div></div></div></div>
             <div class="m-foot">Reply UNSUBSCRIBE to opt out of future emails.</div>
           </div></div>
         </div>
@@ -613,7 +621,7 @@ As a member, you don't need to climb a ladder or guess. Your free annual whole-h
 Your home, every trade, one number.
 
 Talk soon,
-<div class="sig-block"><img src="https://harley-abatrades.github.io/abatrades-pages/assets/profile/abatrades-avatar.jpg" alt="Harley"><div><div class="sig-name">Harley · aba TRADES</div><div class="sig-tag">Your member line: 08 7323 1253</div><div class="sig-ff">fixed fast.</div></div></div></div></div>
+<div class="sig-block"><div><div class="sig-name">Harley · aba TRADES</div><div class="sig-tag">Your member line: 08 7323 1253</div><div class="sig-ff">fixed fast.</div></div><div class="sig-logos"><img src="https://harley-abatrades.github.io/abatrades-pages/assets/brand/abatrades-logo.png" alt="aba TRADES"><span>Air Con</span><span>AEP</span><span>Roofing</span></div></div></div></div>
             <div class="email-variant" data-variant="fun"><div class="m-body">Hi [First Name],
 
 Roofs are quiet right up until they're not 🏠, a ceiling stain, a drip mid-storm, a smell you can't place.
@@ -627,7 +635,7 @@ The member bit: no ladders, no guessing. Your free annual inspection covers the 
 One number, every trade. That's the membership working.
 
 Talk soon,
-<div class="sig-block"><img src="https://harley-abatrades.github.io/abatrades-pages/assets/profile/abatrades-avatar.jpg" alt="Harley"><div><div class="sig-name">Harley · aba TRADES</div><div class="sig-tag">Your member line: 08 7323 1253</div><div class="sig-ff">fixed fast.</div></div></div></div></div>
+<div class="sig-block"><div><div class="sig-name">Harley · aba TRADES</div><div class="sig-tag">Your member line: 08 7323 1253</div><div class="sig-ff">fixed fast.</div></div><div class="sig-logos"><img src="https://harley-abatrades.github.io/abatrades-pages/assets/brand/abatrades-logo.png" alt="aba TRADES"><span>Air Con</span><span>AEP</span><span>Roofing</span></div></div></div></div>
             <div class="m-foot">Reply UNSUBSCRIBE to opt out of future emails.</div>
           </div></div>
           <div class="branch-view" data-view="plumbing"><div class="mini-email">
@@ -648,7 +656,7 @@ As a member, you don't need to research or second-guess. Your free annual whole-
 Your home, every trade, one number.
 
 Talk soon,
-<div class="sig-block"><img src="https://harley-abatrades.github.io/abatrades-pages/assets/profile/abatrades-avatar.jpg" alt="Harley"><div><div class="sig-name">Harley · aba TRADES</div><div class="sig-tag">Your member line: 08 7323 1253</div><div class="sig-ff">fixed fast.</div></div></div></div></div>
+<div class="sig-block"><div><div class="sig-name">Harley · aba TRADES</div><div class="sig-tag">Your member line: 08 7323 1253</div><div class="sig-ff">fixed fast.</div></div><div class="sig-logos"><img src="https://harley-abatrades.github.io/abatrades-pages/assets/brand/abatrades-logo.png" alt="aba TRADES"><span>Air Con</span><span>AEP</span><span>Roofing</span></div></div></div></div>
             <div class="email-variant" data-variant="fun"><div class="m-body">Hi [First Name],
 
 Quick question: when did you last clean your gutters? 🍂
@@ -662,7 +670,7 @@ And here's the member difference: your free annual inspection covers roofing and
 One number, every trade. That's the membership working.
 
 Talk soon,
-<div class="sig-block"><img src="https://harley-abatrades.github.io/abatrades-pages/assets/profile/abatrades-avatar.jpg" alt="Harley"><div><div class="sig-name">Harley · aba TRADES</div><div class="sig-tag">Your member line: 08 7323 1253</div><div class="sig-ff">fixed fast.</div></div></div></div></div>
+<div class="sig-block"><div><div class="sig-name">Harley · aba TRADES</div><div class="sig-tag">Your member line: 08 7323 1253</div><div class="sig-ff">fixed fast.</div></div><div class="sig-logos"><img src="https://harley-abatrades.github.io/abatrades-pages/assets/brand/abatrades-logo.png" alt="aba TRADES"><span>Air Con</span><span>AEP</span><span>Roofing</span></div></div></div></div>
             <div class="m-foot">Reply UNSUBSCRIBE to opt out of future emails.</div>
           </div></div>
           <div class="branch-view" data-view="electrical"><div class="mini-email">
@@ -683,7 +691,7 @@ As a member, you don't need to figure out filters or upgrades yourself. Your fre
 Your home, every trade, one number.
 
 Talk soon,
-<div class="sig-block"><img src="https://harley-abatrades.github.io/abatrades-pages/assets/profile/abatrades-avatar.jpg" alt="Harley"><div><div class="sig-name">Harley · aba TRADES</div><div class="sig-tag">Your member line: 08 7323 1253</div><div class="sig-ff">fixed fast.</div></div></div></div></div>
+<div class="sig-block"><div><div class="sig-name">Harley · aba TRADES</div><div class="sig-tag">Your member line: 08 7323 1253</div><div class="sig-ff">fixed fast.</div></div><div class="sig-logos"><img src="https://harley-abatrades.github.io/abatrades-pages/assets/brand/abatrades-logo.png" alt="aba TRADES"><span>Air Con</span><span>AEP</span><span>Roofing</span></div></div></div></div>
             <div class="email-variant" data-variant="fun"><div class="m-body">Hi [First Name],
 
 Windows shut, heaters on, everyone inside, winter air gets stale fast 🌬️
@@ -697,7 +705,7 @@ The member bit: no filter research, no guesswork. Your free annual inspection co
 One number, every trade. That's the membership working.
 
 Talk soon,
-<div class="sig-block"><img src="https://harley-abatrades.github.io/abatrades-pages/assets/profile/abatrades-avatar.jpg" alt="Harley"><div><div class="sig-name">Harley · aba TRADES</div><div class="sig-tag">Your member line: 08 7323 1253</div><div class="sig-ff">fixed fast.</div></div></div></div></div>
+<div class="sig-block"><div><div class="sig-name">Harley · aba TRADES</div><div class="sig-tag">Your member line: 08 7323 1253</div><div class="sig-ff">fixed fast.</div></div><div class="sig-logos"><img src="https://harley-abatrades.github.io/abatrades-pages/assets/brand/abatrades-logo.png" alt="aba TRADES"><span>Air Con</span><span>AEP</span><span>Roofing</span></div></div></div></div>
             <div class="m-foot">Reply UNSUBSCRIBE to opt out of future emails.</div>
           </div></div>
           <div class="branch-view" data-view="roofing"><div class="mini-email">
@@ -718,7 +726,7 @@ As a member, you don't need to sweat through a breakdown or rush a decision in t
 Your home, every trade, one number.
 
 Talk soon,
-<div class="sig-block"><img src="https://harley-abatrades.github.io/abatrades-pages/assets/profile/abatrades-avatar.jpg" alt="Harley"><div><div class="sig-name">Harley · aba TRADES</div><div class="sig-tag">Your member line: 08 7323 1253</div><div class="sig-ff">fixed fast.</div></div></div></div></div>
+<div class="sig-block"><div><div class="sig-name">Harley · aba TRADES</div><div class="sig-tag">Your member line: 08 7323 1253</div><div class="sig-ff">fixed fast.</div></div><div class="sig-logos"><img src="https://harley-abatrades.github.io/abatrades-pages/assets/brand/abatrades-logo.png" alt="aba TRADES"><span>Air Con</span><span>AEP</span><span>Roofing</span></div></div></div></div>
             <div class="email-variant" data-variant="fun"><div class="m-body">Hi [First Name],
 
 The first 40-degree day doesn't knock politely☀️, it just arrives, and suddenly everyone's aircon matters.
@@ -732,7 +740,7 @@ The member bit: no sweating a breakdown in a heatwave. Your free annual inspecti
 One number, every trade. That's the membership working.
 
 Talk soon,
-<div class="sig-block"><img src="https://harley-abatrades.github.io/abatrades-pages/assets/profile/abatrades-avatar.jpg" alt="Harley"><div><div class="sig-name">Harley · aba TRADES</div><div class="sig-tag">Your member line: 08 7323 1253</div><div class="sig-ff">fixed fast.</div></div></div></div></div>
+<div class="sig-block"><div><div class="sig-name">Harley · aba TRADES</div><div class="sig-tag">Your member line: 08 7323 1253</div><div class="sig-ff">fixed fast.</div></div><div class="sig-logos"><img src="https://harley-abatrades.github.io/abatrades-pages/assets/brand/abatrades-logo.png" alt="aba TRADES"><span>Air Con</span><span>AEP</span><span>Roofing</span></div></div></div></div>
             <div class="m-foot">Reply UNSUBSCRIBE to opt out of future emails.</div>
           </div></div>
         </div>
@@ -770,7 +778,7 @@ But here's the member difference: if the fix doesn't hold, or you'd rather not g
 Your home, every trade, one number.
 
 Talk soon,
-<div class="sig-block"><img src="https://harley-abatrades.github.io/abatrades-pages/assets/profile/abatrades-avatar.jpg" alt="Harley"><div><div class="sig-name">Harley · aba TRADES</div><div class="sig-tag">Your member line: 08 7323 1253</div><div class="sig-ff">fixed fast.</div></div></div></div></div>
+<div class="sig-block"><div><div class="sig-name">Harley · aba TRADES</div><div class="sig-tag">Your member line: 08 7323 1253</div><div class="sig-ff">fixed fast.</div></div><div class="sig-logos"><img src="https://harley-abatrades.github.io/abatrades-pages/assets/brand/abatrades-logo.png" alt="aba TRADES"><span>Air Con</span><span>AEP</span><span>Roofing</span></div></div></div></div>
             <div class="email-variant" data-variant="fun"><div class="m-body">Hi [First Name],
 
 Drip. Drip. Drip. 🚰
@@ -784,7 +792,7 @@ And if the drip outlasts the spanner? Members call 08 7323 1253 and I'll send ou
 One number, every trade. That's the membership working.
 
 Talk soon,
-<div class="sig-block"><img src="https://harley-abatrades.github.io/abatrades-pages/assets/profile/abatrades-avatar.jpg" alt="Harley"><div><div class="sig-name">Harley · aba TRADES</div><div class="sig-tag">Your member line: 08 7323 1253</div><div class="sig-ff">fixed fast.</div></div></div></div></div>
+<div class="sig-block"><div><div class="sig-name">Harley · aba TRADES</div><div class="sig-tag">Your member line: 08 7323 1253</div><div class="sig-ff">fixed fast.</div></div><div class="sig-logos"><img src="https://harley-abatrades.github.io/abatrades-pages/assets/brand/abatrades-logo.png" alt="aba TRADES"><span>Air Con</span><span>AEP</span><span>Roofing</span></div></div></div></div>
             <div class="m-foot">Reply UNSUBSCRIBE to opt out of future emails.</div>
           </div></div>
           <div class="branch-view" data-view="plumbing"><div class="mini-email">
@@ -805,7 +813,7 @@ But here's the member difference: if you'd rather not pull the filter or climb i
 Your home, every trade, one number.
 
 Talk soon,
-<div class="sig-block"><img src="https://harley-abatrades.github.io/abatrades-pages/assets/profile/abatrades-avatar.jpg" alt="Harley"><div><div class="sig-name">Harley · aba TRADES</div><div class="sig-tag">Your member line: 08 7323 1253</div><div class="sig-ff">fixed fast.</div></div></div></div></div>
+<div class="sig-block"><div><div class="sig-name">Harley · aba TRADES</div><div class="sig-tag">Your member line: 08 7323 1253</div><div class="sig-ff">fixed fast.</div></div><div class="sig-logos"><img src="https://harley-abatrades.github.io/abatrades-pages/assets/brand/abatrades-logo.png" alt="aba TRADES"><span>Air Con</span><span>AEP</span><span>Roofing</span></div></div></div></div>
             <div class="email-variant" data-variant="fun"><div class="m-body">Hi [First Name],
 
 Here's a question that costs people hundreds: when did you last check your aircon filter? 💸
@@ -819,7 +827,7 @@ And if roof-space gymnastics aren't your thing? Members call 08 7323 1253 and I'
 One number, every trade. That's the membership working.
 
 Talk soon,
-<div class="sig-block"><img src="https://harley-abatrades.github.io/abatrades-pages/assets/profile/abatrades-avatar.jpg" alt="Harley"><div><div class="sig-name">Harley · aba TRADES</div><div class="sig-tag">Your member line: 08 7323 1253</div><div class="sig-ff">fixed fast.</div></div></div></div></div>
+<div class="sig-block"><div><div class="sig-name">Harley · aba TRADES</div><div class="sig-tag">Your member line: 08 7323 1253</div><div class="sig-ff">fixed fast.</div></div><div class="sig-logos"><img src="https://harley-abatrades.github.io/abatrades-pages/assets/brand/abatrades-logo.png" alt="aba TRADES"><span>Air Con</span><span>AEP</span><span>Roofing</span></div></div></div></div>
             <div class="m-foot">Reply UNSUBSCRIBE to opt out of future emails.</div>
           </div></div>
           <div class="branch-view" data-view="electrical"><div class="mini-email">
@@ -840,7 +848,7 @@ But here's the member difference: if you want to know whether your roof is ready
 Your home, every trade, one number.
 
 Talk soon,
-<div class="sig-block"><img src="https://harley-abatrades.github.io/abatrades-pages/assets/profile/abatrades-avatar.jpg" alt="Harley"><div><div class="sig-name">Harley · aba TRADES</div><div class="sig-tag">Your member line: 08 7323 1253</div><div class="sig-ff">fixed fast.</div></div></div></div></div>
+<div class="sig-block"><div><div class="sig-name">Harley · aba TRADES</div><div class="sig-tag">Your member line: 08 7323 1253</div><div class="sig-ff">fixed fast.</div></div><div class="sig-logos"><img src="https://harley-abatrades.github.io/abatrades-pages/assets/brand/abatrades-logo.png" alt="aba TRADES"><span>Air Con</span><span>AEP</span><span>Roofing</span></div></div></div></div>
             <div class="email-variant" data-variant="fun"><div class="m-body">Hi [First Name],
 
 Solar's one of those "someday" projects☀️, but your roof gets a vote on when someday arrives.
@@ -854,7 +862,7 @@ The member bit: if you want a straight answer on whether your roof's ready, I'll
 One number, every trade. That's the membership working.
 
 Talk soon,
-<div class="sig-block"><img src="https://harley-abatrades.github.io/abatrades-pages/assets/profile/abatrades-avatar.jpg" alt="Harley"><div><div class="sig-name">Harley · aba TRADES</div><div class="sig-tag">Your member line: 08 7323 1253</div><div class="sig-ff">fixed fast.</div></div></div></div></div>
+<div class="sig-block"><div><div class="sig-name">Harley · aba TRADES</div><div class="sig-tag">Your member line: 08 7323 1253</div><div class="sig-ff">fixed fast.</div></div><div class="sig-logos"><img src="https://harley-abatrades.github.io/abatrades-pages/assets/brand/abatrades-logo.png" alt="aba TRADES"><span>Air Con</span><span>AEP</span><span>Roofing</span></div></div></div></div>
             <div class="m-foot">Reply UNSUBSCRIBE to opt out of future emails.</div>
           </div></div>
           <div class="branch-view" data-view="roofing"><div class="mini-email">
@@ -875,7 +883,7 @@ But here's the member difference: if you want to know what your water is actuall
 Your home, every trade, one number.
 
 Talk soon,
-<div class="sig-block"><img src="https://harley-abatrades.github.io/abatrades-pages/assets/profile/abatrades-avatar.jpg" alt="Harley"><div><div class="sig-name">Harley · aba TRADES</div><div class="sig-tag">Your member line: 08 7323 1253</div><div class="sig-ff">fixed fast.</div></div></div></div></div>
+<div class="sig-block"><div><div class="sig-name">Harley · aba TRADES</div><div class="sig-tag">Your member line: 08 7323 1253</div><div class="sig-ff">fixed fast.</div></div><div class="sig-logos"><img src="https://harley-abatrades.github.io/abatrades-pages/assets/brand/abatrades-logo.png" alt="aba TRADES"><span>Air Con</span><span>AEP</span><span>Roofing</span></div></div></div></div>
             <div class="email-variant" data-variant="fun"><div class="m-body">Hi [First Name],
 
 White marks on the taps. Scale in the kettle. That's Adelaide water leaving its signature 💧
@@ -889,7 +897,7 @@ The member bit: if you want to know what your water's doing to your pipes and ap
 One number, every trade. That's the membership working.
 
 Talk soon,
-<div class="sig-block"><img src="https://harley-abatrades.github.io/abatrades-pages/assets/profile/abatrades-avatar.jpg" alt="Harley"><div><div class="sig-name">Harley · aba TRADES</div><div class="sig-tag">Your member line: 08 7323 1253</div><div class="sig-ff">fixed fast.</div></div></div></div></div>
+<div class="sig-block"><div><div class="sig-name">Harley · aba TRADES</div><div class="sig-tag">Your member line: 08 7323 1253</div><div class="sig-ff">fixed fast.</div></div><div class="sig-logos"><img src="https://harley-abatrades.github.io/abatrades-pages/assets/brand/abatrades-logo.png" alt="aba TRADES"><span>Air Con</span><span>AEP</span><span>Roofing</span></div></div></div></div>
             <div class="m-foot">Reply UNSUBSCRIBE to opt out of future emails.</div>
           </div></div>
         </div>
@@ -923,7 +931,7 @@ This is what membership is for. Not just discounts when something breaks, though
 We look forward to seeing you.
 
 Talk soon,
-<div class="sig-block"><img src="https://harley-abatrades.github.io/abatrades-pages/assets/profile/abatrades-avatar.jpg" alt="Harley"><div><div class="sig-name">Harley · aba TRADES</div><div class="sig-tag">Your member line: 08 7323 1253</div><div class="sig-ff">fixed fast.</div></div></div></div></div>
+<div class="sig-block"><div><div class="sig-name">Harley · aba TRADES</div><div class="sig-tag">Your member line: 08 7323 1253</div><div class="sig-ff">fixed fast.</div></div><div class="sig-logos"><img src="https://harley-abatrades.github.io/abatrades-pages/assets/brand/abatrades-logo.png" alt="aba TRADES"><span>Air Con</span><span>AEP</span><span>Roofing</span></div></div></div></div>
             <div class="email-variant" data-variant="fun"><div class="m-body">Hi [First Name],
 
 It's been three months since you joined aba TRADES🎉, and there's something sitting in your account you haven't used yet.
@@ -937,7 +945,49 @@ Booking takes one call: 08 7323 1253. Or just reply to this email and I'll sort 
 This is the part of membership that stops the 6am emergencies. And your $1000+ in coupons? Still sitting there for anything we find. Let's get you on the calendar.
 
 Talk soon,
-<div class="sig-block"><img src="https://harley-abatrades.github.io/abatrades-pages/assets/profile/abatrades-avatar.jpg" alt="Harley"><div><div class="sig-name">Harley · aba TRADES</div><div class="sig-tag">Your member line: 08 7323 1253</div><div class="sig-ff">fixed fast.</div></div></div></div></div>
+<div class="sig-block"><div><div class="sig-name">Harley · aba TRADES</div><div class="sig-tag">Your member line: 08 7323 1253</div><div class="sig-ff">fixed fast.</div></div><div class="sig-logos"><img src="https://harley-abatrades.github.io/abatrades-pages/assets/brand/abatrades-logo.png" alt="aba TRADES"><span>Air Con</span><span>AEP</span><span>Roofing</span></div></div></div></div>
+            <div class="m-foot">Reply UNSUBSCRIBE to opt out of future emails.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DAY 330 -->
+      <div class="tl-item interactive" data-tl>
+        <span class="tl-day">Day 330</span>
+        <h4>Renewal: book the inspection, renew covered</h4>
+        <p>Roughly a month before the annual renewal, ties the included $389 whole-house inspection to renewal, book it before the renewal date and the membership's value comfortably covers the fee. Where the retention and CLV payoff actually sits.</p>
+        <span class="tl-tag tag-close">Renewal</span><span class="tl-tag tag-welcome">Universal</span>
+        <span class="tl-expand-hint">Read the email</span>
+        <div class="tl-body">
+          <div class="mini-email">
+            <div class="m-head">
+              <div><div class="m-subject" data-subject-plain="Your membership renews soon. Your inspection covers it." data-subject-fun="Your renewal's coming due. Your $389 inspection already covers it 🔄">Your membership renews soon. Your inspection covers it.</div><div class="m-meta">Day 330 · All members · From: Harley @ aba TRADES</div></div>
+              <div class="tone-toggle"><button class="active" data-tone="plain">Plain</button><button data-tone="fun">Spark ✨</button></div>
+            </div>
+            <div class="email-variant active" data-variant="plain"><div class="m-body">Hi [First Name],
+
+Your aba TRADES membership is up for renewal on [renewal date]. Good news: it's already covered.
+
+Every year of membership includes a free whole-house maintenance inspection, valued at $389, which is far more than the cost of renewing. You've already paid for it, so use it.
+
+Book your inspection before [renewal date] on 08 7323 1253. On the visit we go top to bottom across plumbing, electrical, air conditioning and roofing, and hand you the full picture of your home. Anything we find is where your coupons and member pricing come in.
+
+One call, every trade, and your renewal is sorted.
+
+Talk soon,
+<div class="sig-block"><div><div class="sig-name">Harley · aba TRADES</div><div class="sig-tag">Your member line: 08 7323 1253</div><div class="sig-ff">fixed fast.</div></div><div class="sig-logos"><img src="https://harley-abatrades.github.io/abatrades-pages/assets/brand/abatrades-logo.png" alt="aba TRADES"><span>Air Con</span><span>AEP</span><span>Roofing</span></div></div></div></div>
+            <div class="email-variant" data-variant="fun"><div class="m-body">Hi [First Name],
+
+Time check 🔄, your aba TRADES membership renews on [renewal date].
+
+Here's the nice part: it's already covered. Your membership includes a free whole-house inspection worth $389, a good deal more than the cost of renewing, and you've already paid for it.
+
+Book it before [renewal date] at 08 7323 1253, and we'll go through the whole home, plumbing, electrical, air conditioning and roofing. Whatever we flag, your coupons and member pricing take the edge off. This is the inspection doing its job.
+
+One call, every trade, renewal sorted.
+
+Talk soon,
+<div class="sig-block"><div><div class="sig-name">Harley · aba TRADES</div><div class="sig-tag">Your member line: 08 7323 1253</div><div class="sig-ff">fixed fast.</div></div><div class="sig-logos"><img src="https://harley-abatrades.github.io/abatrades-pages/assets/brand/abatrades-logo.png" alt="aba TRADES"><span>Air Con</span><span>AEP</span><span>Roofing</span></div></div></div></div>
             <div class="m-foot">Reply UNSUBSCRIBE to opt out of future emails.</div>
           </div>
         </div>
