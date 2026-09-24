@@ -220,12 +220,12 @@ tr:nth-child(even) td { background: var(--brand-field); }
       <code>📧 E1 · Welcome · template #1 · harley@abatrades.com.au</code><br>
       <code>Subject: You're in! 🎉 Welcome to aba TRADES membership</code><br>
       <code>(blank line)</code><br>
-      <code>[full plain-text copy, HTML stripped — ends with the template's own Harley / aba TRADES Support Team / 45 Henry St footer]</code>
+      <code>[full plain-text copy, HTML stripped - ends with the template's own Harley / aba TRADES Support Team / 45 Henry St footer]</code>
     </div>
     <ul>
       <li>First line: channel emoji (📧 email / 📱 SMS later) · journey step + name · <code>template #N</code> · from address.</li>
       <li>Then the Subject line verbatim, then the full word-for-word plain-text body.</li>
-      <li>No appended signature line (the template footer is already part of the copy — appending one creates a duplicate footer). No recipient, no timestamp.</li>
+      <li>No appended signature line (the template footer is already part of the copy - appending one creates a duplicate footer). No recipient, no timestamp.</li>
       <li>SMS later reuses the same shape with 📱.</li>
     </ul>
 
@@ -319,7 +319,27 @@ tr:nth-child(even) td { background: var(--brand-field); }
   </section>
 
   <section>
-    <h2>11. Reference</h2>
+    <h2>11. To-do (pick up next week)</h2>
+    <div class="callout notice"><div class="title">Opened 24 Sep 2026 (Josh) - unsubscribe loop + cron scheduling</div>Captured so it can be picked up next week without re-deriving it. Two items, in order.</div>
+
+    <h3>11.1 Full unsubscribe loop test (link -&gt; Brevo -&gt; ServiceTitan)</h3>
+    <p>Prove all three hops end-to-end on a <strong>scratch member</strong> (a throwaway ST customer + Brevo contact joined by <code>ST_CUSTOMER_ID</code>, matching cron 1's payload), so no real member is touched.</p>
+    <div class="step"><span class="num">1.</span> <strong>Hop 1 - link renders.</strong> Send the E1 template; confirm the delivered email's "Unsubscribe" link resolves to a Brevo URL (not the raw <code>{{ unsubscribe }}</code> tag). The tag is now present in all 15 templates (fix applied 24 Sep: <code>bin/build_clv_templates.py</code> emits the footer; use the DOUBLE-brace tag, triple-brace is rejected 400).</div>
+    <div class="step"><span class="num">2.</span> <strong>Hop 2 - click records in Brevo.</strong> Click the unsubscribe link in a real browser and confirm the recipient lands on Brevo's opt-out page AND the email appears on the blacklist, read from <code>GET /smtp/blockedContacts</code> (authoritative) UNION <code>/contacts</code> where <code>emailBlacklisted=true</code>.</div>
+    <div class="step"><span class="num">3.</span> <strong>Hop 3 - write-back to ServiceTitan.</strong> Run <code>bin/sync_brevo_unsubscribes_to_st.py</code> (cron 2; dry-run first, then live) and read ServiceTitan back to confirm the contact's <code>preferences.marketingUpdatesEnabled</code> flips to <code>false</code>. All three wrapped in the standard gates (Brevo <code>delivered</code> event + ST read-back).</div>
+    <div class="callout error"><div class="title">Needs Tier-4 go before running</div>Creates a scratch ST + Brevo record (both writes) and clicks a live opt-out. Codified as a chat-issued write under the human-in-the-loop gate (section 9) - flag and get explicit approval first.</div>
+
+    <h3>11.2 Schedule cron 1 and cron 2 (currently NOT scheduled)</h3>
+    <div class="callout error"><div class="title">Found 24 Sep 2026 - the crons are unscheduled</div>The SOP previously claimed cron 2 ran every 6h (id <code>1a18497752df</code>), but the live Hermes cron list has no such job, there is no system crontab, and neither job is in n8n. The scripts exist and run by hand (<code>bin/sync_members_to_brevo.py</code>, <code>bin/sync_brevo_unsubscribes_to_st.py</code>) but no scheduler fires them. This must be fixed before any live campaign, or suppression and cohort assignment never happen automatically.</div>
+    <ul>
+      <li><strong>Cron 1 (members in):</strong> <code>scripts/clv-members-to-brevo.sh</code> - poll ST activations, hash to <code>COHORT</code>, POST Brevo <code>member_joined</code>. Requires the rolling cursor set first (<code>bin/sync_members_to_brevo.py --since &lt;iso&gt;</code> once).</li>
+      <li><strong>Cron 2 (unsubscribes out):</strong> <code>scripts/clv-unsubscribe-writeback.sh</code> - poll Brevo blacklist, PATCH ST consent off, joined on <code>ST_CUSTOMER_ID</code>.</li>
+      <li><strong>Decision needed:</strong> schedule them via Hermes cron (script-only jobs) once the section 11.1 test proves the chain, holding cron 1's armed lane gated on the journey going live.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>12. Reference</h2>
     <ul>
       <li>Vault skill: <code>client-saas-api-integration</code> - references <code>n8n-brevo.md</code>, <code>n8n-selfhost-hardening.md</code>, <code>brevo-api.md</code>, <code>servicetitan.md</code>.</li>
       <li>Vault integration index: <code>integrations/servicetitan.md</code>.</li>
@@ -333,7 +353,7 @@ tr:nth-child(even) td { background: var(--brand-field); }
 </div>
 
 <footer class="footer">
-  <strong>aba TRADES</strong> &nbsp;&middot;&nbsp; Standard Operating Procedure 002 &nbsp;&middot;&nbsp; v1.1
+  <strong>aba TRADES</strong> &nbsp;&middot;&nbsp; Standard Operating Procedure 002 &nbsp;&middot;&nbsp; v1.2
   <br><span style="opacity:0.7">Harley is customer support. Contributions and corrections: <a href="mailto:harley@abatrades.com.au" style="color:#fff">harley@abatrades.com.au</a>
 </footer>
 
