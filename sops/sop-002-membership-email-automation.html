@@ -93,7 +93,7 @@ tr:nth-child(even) td { background: var(--brand-field); }
     <div class="m"><strong>SOP</strong>002</div>
     <div class="m"><strong>Owner</strong>Harley (AI ops) / Josh Hancock</div>
     <div class="m"><strong>Applies to</strong>aba TRADES membership (all trades)</div>
-    <div class="m"><strong>Version</strong>1.0</div>
+    <div class="m"><strong>Version</strong>1.1</div>
     <div class="m"><strong>Last reviewed</strong>24 Sep 2026</div>
     <div class="m"><strong>Status</strong>Draft - build in progress, not yet live</div>
   </div>
@@ -260,7 +260,43 @@ tr:nth-child(even) td { background: var(--brand-field); }
   </section>
 
   <section>
-    <h2>8. Verification gates and the "never claim success without evidence" rule</h2>
+    <h2>8. Reporting and Measurement (performance dashboard)</h2>
+    <p><strong>Design decision (Josh 24 Sep 2026):</strong> the membership email reporting lives on the group ("All Brands") landing of the aba TRADES performance dashboard. To stop the page growing unbounded, the group landing is tabulated within itself into <strong>Leads / Revenue / Email</strong>. The Email area is itself split into three sub-tabs: <strong>Flows</strong>, <strong>Campaigns</strong>, and a temporary <strong>A/B Test</strong>. Everything below is the agreed design and the attribution model; it is theoretical until the feed is wired after the journey goes live. No n8n changes are part of this reporting design.</p>
+
+    <h3>8.1 The three Email sub-tabs</h3>
+    <table>
+      <tr><th>Sub-tab</th><th>Shows</th><th>Lifetime</th></tr>
+      <tr><td>Flows</td><td>The evergreen automations. <code>member_joined</code> journey (E1 welcome to all, E2-E13 nurture to treatment, E14/15 close) and <code>member_invoice_paid</code>, each its own row set. Per-step funnel by calendar window: sends, delivered, opens, clicks + rates.</td><td>Permanent</td></tr>
+      <tr><td>Campaigns</td><td>Genuine batch blasts. Empty-state placeholder now; fills in once wired. TabId + panels kept, hidden until live (same pattern as the hidden Meta/Bing/Pinterest tabs).</td><td>Permanent</td></tr>
+      <tr><td>A/B Test</td><td>The trial measurement shell. Treatment vs control on the money outcome: booked jobs, book rate, revenue, AOV, and the uplift delta per join-cohort over the ~90-day post-join window.</td><td>Temporary - drops off at trial close</td></tr>
+    </table>
+    <div class="callout notice"><div class="title">Trial teardown scope</div>The A/B Test tab lasts exactly the duration of the trial and then is removed from the dashboard. The drop trigger is a fixed sign-off at the measurement-read date (the day-90 close lands near it), defined when the go-live date is set, so the temporary scope is explicit rather than ad hoc. When it drops, what remains is clean email performance as a live split of Flows and Campaigns. Rows that would overlap between the A/B Test and Flows (sends/opens/clicks for the trial cohort) stay on Flows; the A/B tab carries only the uplift outcome that the A/B read can provide.</div>
+
+    <h3>8.2 Attribution stitching - jobs and revenue back to the email channel</h3>
+    <p><strong>The strongest stitch already exists for free.</strong> Because every send writes a ServiceTitan Customer Note to the customer record (section 6), we already know exactly which members received which email, identified by <code>customerId</code>. The member phone line and email replies are not needed to establish who is in the funnel. This gives two layers, and they must not be conflated:</p>
+    <ul>
+      <li><strong>Layer 1 - recipient exposure attribution (deterministic).</strong> Join the recipient set (from ST notes, by <code>customerId</code>) to <code>jpm/v2/jobs</code> (by <code>customerId</code>) for booked jobs and <code>accounting/v2/invoices</code> (by <code>customerId</code>) for revenue. This yields per-flow jobs and revenue. It is <em>exposure-attributed</em>, never claim it as "caused by email".</li>
+      <li><strong>Layer 2 - causation (the A/B uplift).</strong> Because control members also book and spend without any emails, only the treatment-vs-control delta removes the would-have-booked-anyway baseline. Present the delta as the causal read; present the raw per-channel numbers as exposure only.</li>
+    </ul>
+    <h3>8.3 The phone number and email-reply pathways</h3>
+    <ul>
+      <li><strong>Unique member phone number:</strong> if it is a campaign-tracked inbound number wired in ST, the campaign reports (1314 <code>InboundCalls</code>, 1386 <code>TotalJobsBooked</code>/<code>CompletedRevenue</code>) split inbound calls and bookings from that number into a membership campaign. This is <em>channel-level</em> attribution (anyone who calls the line), not per-recipient. Worth verifying whether such a tracked member line exists.</li>
+      <li><strong>Email replies:</strong> land in a shared mailbox with no native ServiceTitan link, so they are not a reliable stitch unless a reply-to-booking capture flow is built. Not planned; skip for attribution.</li>
+    </ul>
+    <div class="callout error"><div class="title">Revenue measure + double-count rule</div><strong>Revenue measure:</strong> per-member via invoice <code>total</code> (GST-inclusive, good for relative uplift / AOV, labelled non-reconciling). Report 295 is per-business-unit, not per-customer, so it is not the tool for member-level attribution. <strong>Double-count rule:</strong> a member's booked job may also carry a marketing campaignId (Google Ads / SMS) via the manual Campaign field on the ticket. Counting it under both "membership" and another channel double-counts the group roll-up (violates the no-double-count rule). Rule: a job carrying a named marketing campaignId is attributed to that channel; the membership channel row counts jobs not otherwise campaign-tagged (membership as fallback/touch attribution). This precedence is an open decision for Josh/Paul before the feed is wired.</div>
+
+    <h3>8.4 Data sources and feed wiring</h3>
+    <ul>
+      <li><strong>Sends:</strong> ST notes (count the <code>📧 E1 · ... template #N</code> prefix per step per day) today, cross-checked against Brevo.</li>
+      <li><strong>Opens / clicks / delivered / bounced:</strong> Brevo <code>/smtp/statistics/report</code> (aggregate) plus per-step once each send carries a step/template/cohort tag (a small n8n send-payload change, queued - not built as part of this design).</li>
+      <li><strong>Jobs + revenue:</strong> ST <code>jpm/v2/jobs</code> + <code>accounting/v2/invoices</code> by customerId over the recipient set.</li>
+      <li><strong>Cohort:</strong> Brevo <code>COHORT</code> attribute joined to <code>ST_CUSTOMER_ID</code>.</li>
+      <li><strong>Feed:</strong> add a <code>group.email</code> section to <code>gen_group_feed.py</code> + <code>CONTRACT.schema.json</code>; the member pull is a new source module following the standard add-a-channel pattern (contract always carries the section, zeroed on failure).</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>9. Verification gates and the "never claim success without evidence" rule</h2>
     <ul>
       <li><strong>A webhook 200 is an acknowledgement, not a delivery.</strong> "Workflow was started" only means the trigger ran.</li>
       <li><strong>Confirm what actually ran from the SQLite DB (read-only):</strong> <code>execution_entity</code> (status/finished) and <code>execution_data</code> (runData = which nodes ran, lastNodeExecuted). If runData contains ONLY the trigger, the chain did not advance - investigate, do not assume a delivery.</li>
@@ -271,7 +307,7 @@ tr:nth-child(even) td { background: var(--brand-field); }
   </section>
 
   <section>
-    <h2>9. Learnings and pitfalls (append as discovered)</h2>
+    <h2>10. Learnings and pitfalls (append as discovered)</h2>
     <ul>
       <li><strong>(24 Sep 2026) n8n routes connections by node <code>name</code>, not <code>id</code>.</strong> An authoring helper writing <code>id</code>s into the connections map leaves dangling edges: the trigger fires, nothing downstream runs, recorded as <code>success</code>. Fix: key both the connection-map source and every edge target by the node's display <code>name</code>.</li>
       <li><strong>(24 Sep 2026) httpRequest custom headers must go via <code>sendHeaders</code> + <code>headerParameters</code>,</strong> NOT <code>options.headers</code> - HttpRequest V3 drops <code>options.headers</code> for auth headers (silent 401).</li>
@@ -286,7 +322,7 @@ tr:nth-child(even) td { background: var(--brand-field); }
   </section>
 
   <section>
-    <h2>10. Reference</h2>
+    <h2>11. Reference</h2>
     <ul>
       <li>Vault skill: <code>client-saas-api-integration</code> - references <code>n8n-brevo.md</code>, <code>n8n-selfhost-hardening.md</code>, <code>brevo-api.md</code>, <code>servicetitan.md</code>.</li>
       <li>Vault integration index: <code>integrations/servicetitan.md</code>.</li>
@@ -300,7 +336,7 @@ tr:nth-child(even) td { background: var(--brand-field); }
 </div>
 
 <footer class="footer">
-  <strong>aba TRADES</strong> &nbsp;&middot;&nbsp; Standard Operating Procedure 002 &nbsp;&middot;&nbsp; v1.0
+  <strong>aba TRADES</strong> &nbsp;&middot;&nbsp; Standard Operating Procedure 002 &nbsp;&middot;&nbsp; v1.1
   <br><span style="opacity:0.7">Harley is customer support. Contributions and corrections: <a href="mailto:harley@abatrades.com.au" style="color:#fff">harley@abatrades.com.au</a>
 </footer>
 
