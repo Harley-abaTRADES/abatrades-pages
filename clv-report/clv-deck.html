@@ -250,13 +250,13 @@ section.dark .tl-item{--tl-bg:var(--brand-primary)}
             <p style="margin:0;font-size:.9rem;line-height:1.5">A <strong>fresh engagement</strong> is a genuinely new call-out, not a follow-on from a prior quote and not a recall child of an earlier job. That strips out the <strong>investigation-to-dispatch double-count</strong> that inflates raw job numbers. So a member who books an aircon job a week after their plumbing job counts as a genuinely new job: both are fresh engagements, and that second one is the re-engagement we're chasing.</p>
             <div style="margin-top:10px;font-size:.72rem;opacity:.65;line-height:1.45">Dig in: ServiceTitan Reporting API → Operations → "Parent Job" report (<strong>id 453741926</strong>), field <strong>ParentJobNumber</strong>. One distinct parent job against a customer = one engagement.</div>
           </div>
-          <p style="margin-top:12px;font-size:.85rem;opacity:.75;line-height:1.5">Two numbers do different jobs here. The <strong>27.2%</strong> is how many members start a fresh job in a half-year (incidence). The <strong>592</strong> in Chapter 2 is how many ever start a <em>second</em> one across 22 months (repeat). Same definition, two different questions.</p>
+          
         </div>
         <div class="step" data-step="1">
           <div class="vs">Chapter 2</div>
-          <h2 style="font-size:1.8rem">Across 22 months, 592 repeat</h2>
-          <p>Of the 2,417 members who held a membership in the window, <strong>592</strong> (24.5%) came back for a second fresh engagement, a repeat, two genuinely new jobs from the same member.</p>
-          <p>The median gap between a member's genuine new jobs is <strong>~53 days</strong>. Members re-engage, on their own, roughly every eight weeks.</p>
+          <h2 style="font-size:1.8rem">And they come back often</h2>
+          <p>The median gap between a member's genuine new jobs is <strong>~53 days</strong> — about once every eight weeks.</p>
+          <p>Our most valuable customers already return on their own, often. The program's job is to make that rhythm even faster.</p>
         </div>
         <div class="step" data-step="2">
           <div class="vs">The punchline</div>
@@ -1182,7 +1182,7 @@ const barM=document.getElementById('barMembers'),barN=document.getElementById('b
 const valM=document.getElementById('valMembers'),valN=document.getElementById('valNon');
 const stepStates=[
   {m:88,n:25,vm:'27.2%',vn:'7.7%'},
-  {m:12,n:3,vm:'592 / 2,417',vn:'-'},
+  {m:88,n:25,vm:'27.2%',vn:'7.7%'},
   {m:88,n:25,vm:'27.2%',vn:'7.7%'}
 ];
 if(steps.length){
