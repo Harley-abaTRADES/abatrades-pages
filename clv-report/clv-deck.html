@@ -198,6 +198,25 @@ section.dark .tl-item{--tl-bg:var(--brand-primary)}
 .tl-scroll .tl-item.open{margin:-4px;padding:12px 14px 16px;flex-basis:320px}
 .tl-scroll::-webkit-scrollbar{height:8px}
 .tl-scroll::-webkit-scrollbar-thumb{background:var(--brand-border);border-radius:8px}
+
+/* ---------- Catherine cohort / ST notes wireframe / unsubscribe map ---------- */
+.st-app{border:1px solid #D3D4DA;border-radius:12px;overflow:hidden;max-width:720px;background:#fff;box-shadow:0 10px 30px rgba(11,29,59,.08)}
+.st-app-head{background:#1D3B6D;color:#fff;font-size:.9rem;padding:12px 18px;font-weight:500}
+.st-app-tabs{display:flex;gap:2px;background:#EBEDF2;border-bottom:1px solid #D3D4DA;padding:6px 10px 0}
+.st-app-tab{padding:8px 16px;font-size:.82rem;font-weight:600;color:#2a3550;cursor:default}
+.st-app-tab.active{background:#fff;border:1px solid #D3D4DA;border-bottom:none;border-radius:8px 8px 0 0;color:#1D3B6D}
+.st-app-body{background:#F5F6F8;padding:10px 16px 18px}
+.st-note{border-left:3px solid #1D3B6D;background:#fff;border-radius:0 8px 8px 0;padding:10px 14px;margin:9px 0;box-shadow:0 1px 2px rgba(11,29,59,.05)}
+.st-note-created{font-size:.72rem;color:#7789A7;font-weight:600;margin-bottom:4px}
+.st-note-text{font-size:.88rem;color:#1D3B6D;line-height:1.5}
+.st-note-more{font-size:.74rem;color:#7789A7}
+.st-note-muted{color:#8E2A2A;font-weight:600}
+.unsub-map{max-width:720px;display:flex;flex-direction:column;gap:12px}
+.unsub-step{display:flex;gap:14px;align-items:flex-start;background:var(--brand-field);border:1px solid var(--brand-border);border-radius:11px;padding:13px 16px}
+.unsub-step strong{color:var(--brand-primary);font-size:.96rem}
+.unsub-sub{font-size:.83rem;color:#2a3550;opacity:.85;margin-top:2px}
+.unsub-num{flex:0 0 30px;height:30px;border-radius:50%;background:var(--brand-primary);color:#fff;font-weight:800;display:grid;place-items:center;font-size:.92rem;margin-top:1px}
+
 @media(min-width:768px){.tl-scroll .tl-item{flex-basis:340px}}
 </style>
 </head>
@@ -1332,6 +1351,58 @@ www.abatrades.com.au</div></div>
         </div>
       </div>
     </div>
+    <div class="reveal d3" style="margin-top:26px;background:#E4F0E1;border:1px solid #B7D6A8;border-radius:12px;padding:18px 22px;display:flex;gap:16px;align-items:flex-start;flex-wrap:wrap">
+  <div style="min-width:150px"><div style="font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#2F6B2F">Cohort</div><div style="font-size:1.5rem;font-weight:800;color:#2F6B2F;margin-top:2px">🔬 Treatment</div></div>
+  <div style="flex:1;min-width:220px"><p style="margin:0;color:#333;font-size:.92rem"><strong>Why Catherine gets the nurture flow:</strong> on joining (today, 24 Sep), the ServiceTitan customer ID hashes deterministically to <code>COHORT=Treatment</code>. So her welcome (Day 0) and hard-close (Day 90) go to every member, but the three cross-trade value emails (Days 7 · 21 · 45) fire for her because she is in the treatment arm. A control member would receive <em>only</em> Day 0 and Day 90 - no value emails during the measurement window - so the lift is attributable to the flow, not to membership itself.</p></div>
+</div>
+
+<div class="reveal" style="margin-top:26px">
+  <h3 style="font-size:1.3rem;margin-bottom:4px">What the CSR team sees: a note on Catherine's record</h3>
+  <p style="opacity:.85;max-width:720px;margin-bottom:16px">Every email we send is written back to ServiceTitan as a Customer Note on the member's record, in the locked <code>📧</code> format - so the office can see exactly what was sent, when, and to whom, without a Brevo login.</p>
+  <div class="st-app">
+    <div class="st-app-head">Customer record · <strong>Newport, Catherine</strong> &nbsp;·&nbsp; 453673779</div>
+    <div class="st-app-tabs"><span class="st-app-tab active">Notes</span><span class="st-app-tab">Contacts</span><span class="st-app-tab">Jobs</span><span class="st-app-tab">Membership</span></div>
+    <div class="st-app-body">
+          <div class="st-note">
+            <div class="st-note-created">Thu 24 Sep 2026 13:00 · abatrades</div>
+            <div class="st-note-text"><span class="st-note-icon">📧</span> <span class="st-note-day">DAY 0</span> · <strong>You're in! 🎉 Welcome to aba TRADES membership</strong><br><span class="st-note-more">From harley@abatrades.com.au · full copy in the real record</span></div>
+          </div>
+          <div class="st-note">
+            <div class="st-note-created">Thu 1 Oct 2026 08:00 · abatrades</div>
+            <div class="st-note-text"><span class="st-note-icon">📧</span> <span class="st-note-day">DAY 7</span> · <strong>The filter under your sink needs a 5-minute check 🚰</strong><br><span class="st-note-more">From harley@abatrades.com.au · full copy in the real record</span></div>
+          </div>
+          <div class="st-note">
+            <div class="st-note-created">Thu 15 Oct 2026 08:00 · abatrades</div>
+            <div class="st-note-text"><span class="st-note-icon">📧</span> <span class="st-note-day">DAY 21</span> · <strong>The air in your house might need a clean too 🌬️</strong><br><span class="st-note-more">From harley@abatrades.com.au · full copy in the real record</span></div>
+          </div>
+          <div class="st-note">
+            <div class="st-note-created">Sun 8 Nov 2026 08:00 · abatrades</div>
+            <div class="st-note-text"><span class="st-note-icon">📧</span> <span class="st-note-day">DAY 45</span> · <strong>Thinking about solar? Your roof gets a say ☀️</strong><br><span class="st-note-more">From harley@abatrades.com.au · full copy in the real record</span></div>
+          </div>
+          <div class="st-note">
+            <div class="st-note-created">Wed 23 Dec 2026 08:00 · abatrades</div>
+            <div class="st-note-text"><span class="st-note-icon">📧</span> <span class="st-note-day">DAY 90</span> · <strong>Your $389 inspection is sitting there, Catherine 🔍</strong><br><span class="st-note-more">From harley@abatrades.com.au · full copy in the real record</span></div>
+          </div>
+      <div class="st-note">
+        <div class="st-note-created">Created when member unsubscribed (example)</div>
+        <div class="st-note-text st-note-muted">MEMBER OPTED OUT of email marketing - consent off (Brevo blacklist sync)</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="reveal" style="margin-top:30px">
+  <h3 style="font-size:1.3rem;margin-bottom:4px">What happens if Catherine unsubscribes</h3>
+  <p style="opacity:.85;max-width:720px;margin-bottom:16px">A theoretical example, mapped end-to-end. The goal is: ServiceTitan stays the source of truth for consent, and the unsubscribe stops future sends within one sync cycle.</p>
+  <div class="unsub-map">
+    <div class="unsub-step"><span class="unsub-num">1</span><div><strong>Catherine clicks "unsubscribe"</strong><div class="unsub-sub">In any email she receives, she clicks the unsubscribe link (List-Unsubscribe / {{{{unsubscribe}}}} tag in the template).</div></div></div>
+    <div class="unsub-step"><span class="unsub-num">2</span><div><strong>Brevo blacklists the address</strong><div class="unsub-sub">Brevo marks katherinelouiselee@gmail.com as email-blacklisted on the contact - the compliance opt-out record. Brevo will not deliver marketing to it.</div></div></div>
+    <div class="unsub-step"><span class="unsub-num">3</span><div><strong>Cron 2 polls every 6h</strong><div class="unsub-sub">The hardened sync reads <code>/smtp/blockedContacts</code> + <code>/contacts emailBlacklisted</code>, finds Catherine by her <code>ST_CUSTOMER_ID</code> join key (stored on the Brevo contact at join).</div></div></div>
+    <div class="unsub-step"><span class="unsub-num">4</span><div><strong>ServiceTitan consent flipped off</strong><div class="unsub-sub">PATCH <code>crm/v2/.../contacts</code> → <code>preferences.marketingUpdatesEnabled=false</code> on Catherine's email contact. Consent stays off; membership itself is untouched.</div></div></div>
+    <div class="unsub-step"><span class="unsub-num">5</span><div><strong>Future sends exclude her</strong><div class="unsub-sub">The n8n journey and cron 1 gate every recipient on ST consent, so Catherine stops receiving the nurture flow from the next send. ST is now the single source of truth.</div></div></div>
+  </div>
+</div>
+
     <div class="reveal d4" style="margin-top:24px;opacity:.7;font-size:.85rem">
       <p><strong style="color:var(--brand-text)">Method:</strong> Catherine = ServiceTitan customer 453673779 (joined 24 Sep 2026, Electrical, treatment cohort). Sequence = evergreen Day 0 / 7 / 21 / 45 / 90; cross-trade rotation feeds trades she did not buy (Plumbing → Air Con → Roofing). Copy shown is the actual Brevo template content (E1 tpl 1, E2-Electrical tpl 4, E3-Electrical tpl 8, E4-Electrical tpl 12, E5 tpl 14, E6 tpl 15). Links use Brevo's native UTM tracking.</p>
     </div>
