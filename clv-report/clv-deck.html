@@ -183,6 +183,22 @@ section.dark .tl-item{--tl-bg:var(--brand-primary)}
   .reveal,.tl-item,.pipe-node,.pipe-arrow,.tl-body,.mbar,.step{transition:none!important;opacity:1!important;transform:none!important}
   .hero-orb{animation:none}
 }
+
+/* ---------- Catherine journey: horizontal scroll ---------- */
+.tl-scrollwrap{margin:30px 0 8px;-webkit-overflow-scrolling:touch}
+.tl-scroll{display:flex;gap:18px;overflow-x:auto;padding:6px 4px 22px;scroll-snap-type:x proximity}
+.tl-scroll .tl-item{flex:0 0 320px;opacity:1;transform:none;padding:0;border:1px solid var(--brand-border);border-radius:14px;background:var(--brand-surface);scroll-snap-align:start}
+.tl-scroll .tl-item::before{left:18px;top:18px;width:14px;height:14px}
+.tl-scroll .tl-item .tl-day{margin:14px 16px 8px}
+.tl-scroll .tl-item h4{margin:0 16px}
+.tl-scroll .tl-item p{margin:8px 16px 6px}
+.tl-scroll .tl-tag{margin:4px 16px 0}
+.tl-trigger{font-size:.74rem;font-weight:700;color:var(--brand-secondary);margin:8px 16px 6px;letter-spacing:.3px}
+.tl-scroll .tl-expand-hint{margin:6px 16px}
+.tl-scroll .tl-item.open{margin:-4px;padding:12px 14px 16px;flex-basis:320px}
+.tl-scroll::-webkit-scrollbar{height:8px}
+.tl-scroll::-webkit-scrollbar-thumb{background:var(--brand-border);border-radius:8px}
+@media(min-width:768px){.tl-scroll .tl-item{flex-basis:340px}}
 </style>
 </head>
 <body>
@@ -1128,6 +1144,200 @@ Talk soon,
 </section>
 
 <!-- 11. CLOSE -->
+<section class="alt" id="catherine">
+  <div class="wrap">
+    <span class="reveal" style="text-transform:uppercase;letter-spacing:.12em;font-size:.8rem;font-weight:700;color:var(--brand-primary)">Real customer · Catherine · Electrical member</span>
+    <h2 class="reveal d1" style="font-size:2rem;margin-top:10px">A member's journey, day by day</h2>
+    <p class="reveal d2" style="opacity:.85;max-width:720px;margin-top:12px">Catherine joined today (Thu 24 Sep). Here is the exact set of communications she will receive over the next 12 months - which email, which day, and what triggers it. Scroll across to walk her journey. Tap any email to read it.</p>
+    <div class="tl-scrollwrap reveal d3">
+      <div class="tl-scroll">
+<div class="tl-item interactive" data-tl>
+          <span class="tl-day">DAY 0 <span style="display:block;font-weight:400;letter-spacing:.3px;text-transform:none;font-size:.72rem;opacity:.85;margin-top:2px">Thu 24 Sep</span></span>
+          <h4>Welcome · membership is active</h4>
+          <p>Fires when the membership line item lands on the job that activated Catherine's membership (ServiceTitan). Same email for every member - no cohort filter.</p>
+          <span class="tl-tag tag-welcome">Welcome · all members</span>
+          <div class="tl-trigger">⚡ Membership activated in ServiceTitan</div>
+          <span class="tl-expand-hint">Read the email</span>
+          <div class="tl-body">
+<div class="mini-email">
+                <div class="m-head">
+                  <div><div class="m-subject">You're in! 🎉 Welcome to aba TRADES membership</div><div class="m-meta">DAY 0 · To: Catherine · From: Harley @ aba TRADES</div></div>
+                </div>
+                <div class="email-variant active" data-variant="plain"><div class="m-body">You're in. Your membership unlocks the direct line, coupons, a 25-year warranty and a free $389 inspection.
+Hi Catherine,
+You're in! 🎉 Your aba TRADES membership is officially active, and your home just got a lot easier to look after.
+Here's what you've unlocked:
+📞 Your own direct line: 08 7323 1253. Members skip the queue. Every time.
+💰 $1000+ in discount coupons, good across plumbing, electrical, aircon and roofing. Real ones too, $100 off a hot water renewal, $150 off sewer repairs, $100 off a new AC system.
+🕐 Year-round member pricing, middle of a heatwave, middle of the night (public holidays excepted).
+🛡️ A 25-year labour warranty. That's five years longer than standard.
+🔍 A free whole-house inspection every year, worth $389. We check everything so small problems never become big ones.
+
+Your membership card has the lot. Scan the QR code on your pack for the details, or just save 08 7323 1253 in your phone now.
+If your technician didn't get a membership pack to you on the day, reply to this email or call 08 7323 1253 and we'll make sure you get one.
+One number. Every trade. Sorted.
+Talk soon,
+Harley
+aba TRADES Support Team
+___
+
+45 Henry St, Stepney SA 5069
+www.abatrades.com.au</div></div>
+              </div>
+          </div>
+        </div>
+<div class="tl-item interactive" data-tl>
+          <span class="tl-day">DAY 7 <span style="display:block;font-weight:400;letter-spacing:.3px;text-transform:none;font-size:.72rem;opacity:.85;margin-top:2px">Thu 1 Oct</span></span>
+          <h4>E2 · First cross-trade value (Plumbing)</h4>
+          <p>Catherine joined as Electrical. Day 7 introduces a trade she did NOT just buy (Plumbing) - a real DIY guide first, then the member benefit. Treatment cohort only.</p>
+          <span class="tl-tag tag-welcome">Treatment · Electrical → Plumbing</span>
+          <div class="tl-trigger">⚡ 7 days after Day 0</div>
+          <span class="tl-expand-hint">Read the email</span>
+          <div class="tl-body">
+<div class="mini-email">
+                <div class="m-head">
+                  <div><div class="m-subject">The filter under your sink needs a 5-minute check 🚰</div><div class="m-meta">DAY 7 · To: Catherine · From: Harley @ aba TRADES</div></div>
+                </div>
+                <div class="email-variant active" data-variant="plain"><div class="m-body">Electrical's sorted⚡, quick question: when did you last check your water filter? Most people install it, feel good, and forget it...
+Hi Catherine,
+Electrical's sorted⚡, quick question: when did you last check your water filter?
+Most people install it, feel good, and forget it exists. We wrote a simple DIY check guide so your water stays tasting right and the filter actually does its job.
+ See the filter checks
+And if under-sink plumbing isn't your happy place? Members don't need one. Call 08 7323 1253 and our plumbing team takes care of it, member pricing and coupons included ($50 off a plumbing service, $100 off a hot water tank replacement if it ever comes to that). 💧
+One number, every trade. That's what you signed up for.
+Talk soon,
+Harley
+aba TRADES Support Team
+___
+
+45 Henry St, Stepney SA 5069
+www.abatrades.com.au</div></div>
+              </div>
+          </div>
+        </div>
+<div class="tl-item interactive" data-tl>
+          <span class="tl-day">DAY 21 <span style="display:block;font-weight:400;letter-spacing:.3px;text-transform:none;font-size:.72rem;opacity:.85;margin-top:2px">Thu 15 Oct</span></span>
+          <h4>E3 · Second cross-trade value (Air Con)</h4>
+          <p>Continues the cross-trade rotation - a second trade she didn't buy (Air Conditioning), value-first guide, then the membership upgrade. Treatment cohort.</p>
+          <span class="tl-tag tag-welcome">Treatment · Electrical → Air Con</span>
+          <div class="tl-trigger">⚡ 21 days after Day 0</div>
+          <span class="tl-expand-hint">Read the email</span>
+          <div class="tl-body">
+<div class="mini-email">
+                <div class="m-head">
+                  <div><div class="m-subject">The air in your house might need a clean too 🌬️</div><div class="m-meta">DAY 21 · To: Catherine · From: Harley @ aba TRADES</div></div>
+                </div>
+                <div class="email-variant active" data-variant="plain"><div class="m-body">Windows shut, heaters on, everyone inside, winter air gets stale fast 🌬️ Your aircon does more than heat and cool; it filters what you...
+Hi Catherine,
+Windows shut, heaters on, everyone inside, winter air gets stale fast 🌬️
+Your aircon does more than heat and cool; it filters what you breathe. We wrote a guide on allergen-free winter living and the upgrades that genuinely clear the air.
+ See what clears the air
+The member bit: no filter research, no guesswork. Your free annual inspection covers heating and cooling, and I'll get our aircon team onto anything it flags. One call to 08 7323 1253 and it's booked.
+One number, every trade. That's the membership working.
+Talk soon,
+Harley
+aba TRADES Support Team
+___
+
+45 Henry St, Stepney SA 5069
+www.abatrades.com.au</div></div>
+              </div>
+          </div>
+        </div>
+<div class="tl-item interactive" data-tl>
+          <span class="tl-day">DAY 45 <span style="display:block;font-weight:400;letter-spacing:.3px;text-transform:none;font-size:.72rem;opacity:.85;margin-top:2px">Sun 8 Nov</span></span>
+          <h4>E4 · Third cross-trade value (Roofing / Solar)</h4>
+          <p>Third cross-trade rotation (Roofing). Keeps the pendulum on trades she hasn't seen, always value-first. Treatment cohort.</p>
+          <span class="tl-tag tag-welcome">Treatment · Electrical → Roofing</span>
+          <div class="tl-trigger">⚡ 45 days after Day 0</div>
+          <span class="tl-expand-hint">Read the email</span>
+          <div class="tl-body">
+<div class="mini-email">
+                <div class="m-head">
+                  <div><div class="m-subject">Thinking about solar? Your roof gets a say ☀️</div><div class="m-meta">DAY 45 · To: Catherine · From: Harley @ aba TRADES</div></div>
+                </div>
+                <div class="email-variant active" data-variant="plain"><div class="m-body">Solar's one of those \"someday\" projects☀️, but your roof gets a vote on when someday arrives. We wrote a guide on future-proofing your...
+Hi Catherine,
+Solar's one of those \"someday\" projects☀️, but your roof gets a vote on when someday arrives.
+We wrote a guide on future-proofing your roof for solar, even if panels are years away. What matters, what doesn't, and what to sort now so you're not paying twice later.
+ See how to prep
+The member bit: if you want a straight answer on whether your roof's ready, I'll get our roofing team to assess it properly. One call to 08 7323 1253, member pricing and coupons included.
+One number, every trade. That's the membership working.
+Talk soon,
+Harley
+aba TRADES Support Team
+___
+
+45 Henry St, Stepney SA 5069
+www.abatrades.com.au</div></div>
+              </div>
+          </div>
+        </div>
+<div class="tl-item interactive" data-tl>
+          <span class="tl-day">DAY 90 <span style="display:block;font-weight:400;letter-spacing:.3px;text-transform:none;font-size:.72rem;opacity:.85;margin-top:2px">Wed 23 Dec</span></span>
+          <h4>E5 · Hard close · free annual inspection</h4>
+          <p>The payoff: Catherine hasn't used her free whole-house inspection, worth $389. Hard close to book it across every trade. Drives the measurement read.</p>
+          <span class="tl-tag tag-welcome">Universal · all members</span>
+          <div class="tl-trigger">⚡ 90 days after Day 0</div>
+          <span class="tl-expand-hint">Read the email</span>
+          <div class="tl-body">
+<div class="mini-email">
+                <div class="m-head">
+                  <div><div class="m-subject">Your $389 inspection is sitting there, Catherine 🔍</div><div class="m-meta">DAY 90 · To: Catherine · From: Harley @ aba TRADES</div></div>
+                </div>
+                <div class="email-variant active" data-variant="plain"><div class="m-body">It's been three months since you joined aba TRADES🎉, and there's something sitting in your account you haven't used yet. Your free...
+Hi Catherine,
+It's been three months since you joined aba TRADES🎉, and there's something sitting in your account you haven't used yet.
+Your free whole-house inspection. Worth $389. Already paid for by your membership.
+One visit. Every trade, plumbing, electrical, roofing, heating and cooling. We go through the place top to bottom and hand you the full picture: what's great, what's fair, what needs attention before it gets expensive.
+Booking takes one call: 08 7323 1253. Or just reply to this email and I'll sort it. 📞
+This is the part of membership that stops the 6am emergencies. And your $1000+ in coupons? Still sitting there for anything we find. Let's get you on the calendar.
+Talk soon,
+Harley
+aba TRADES Support Team
+___
+
+45 Henry St, Stepney SA 5069
+www.abatrades.com.au</div></div>
+              </div>
+          </div>
+        </div>
+<div class="tl-item interactive" data-tl>
+          <span class="tl-day">RENEWAL <span style="display:block;font-weight:400;letter-spacing:.3px;text-transform:none;font-size:.72rem;opacity:.85;margin-top:2px">~12 months</span></span>
+          <h4>E6 · Renewal</h4>
+          <p>Near her membership anniversary, reminds Catherine the renewal is already covered by the inspection. Set to fire ahead of the membership end date.</p>
+          <span class="tl-tag tag-welcome">Universal · all members</span>
+          <div class="tl-trigger">⚡ Ahead of membership end date</div>
+          <span class="tl-expand-hint">Read the email</span>
+          <div class="tl-body">
+<div class="mini-email">
+                <div class="m-head">
+                  <div><div class="m-subject">Your renewal's coming due. Your $389 inspection already covers it 🔄</div><div class="m-meta">RENEWAL · To: Catherine · From: Harley @ aba TRADES</div></div>
+                </div>
+                <div class="email-variant active" data-variant="plain"><div class="m-body">Time check 🔄, your aba TRADES membership renews on 23 December 2026. Here's the nice part: it's already covered. Your membership includes...
+Hi Catherine,
+Time check 🔄, your aba TRADES membership renews on 23 December 2026.
+Here's the nice part: it's already covered. Your membership includes a free whole-house inspection worth $389, a good deal more than the cost of renewing, and you've already paid for it.
+Book it before 23 December 2026 at 08 7323 1253, and we'll go through the whole home, plumbing, electrical, air conditioning and roofing. Whatever we flag, your coupons and member pricing take the edge off. This is the inspection doing its job.
+One call, every trade, renewal sorted.
+Talk soon,
+Harley
+aba TRADES Support Team
+___
+
+45 Henry St, Stepney SA 5069
+www.abatrades.com.au</div></div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="reveal d4" style="margin-top:24px;opacity:.7;font-size:.85rem">
+      <p><strong style="color:var(--brand-text)">Method:</strong> Catherine = ServiceTitan customer 453673779 (joined 24 Sep 2026, Electrical, treatment cohort). Sequence = evergreen Day 0 / 7 / 21 / 45 / 90; cross-trade rotation feeds trades she did not buy (Plumbing → Air Con → Roofing). Copy shown is the actual Brevo template content (E1 tpl 1, E2-Electrical tpl 4, E3-Electrical tpl 8, E4-Electrical tpl 12, E5 tpl 14, E6 tpl 15). Links use Brevo's native UTM tracking.</p>
+    </div>
+  </div>
+</section>
+
 <section class="dark" id="s12">
   <div class="wrap" style="text-align:center">
     <h2 class="reveal" style="font-size:2.2rem">Members are worth twice as much.<br>Now we bring them back even more often.</h2>
