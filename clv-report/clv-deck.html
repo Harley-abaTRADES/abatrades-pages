@@ -300,7 +300,7 @@ section.dark .tl-item{--tl-bg:var(--brand-primary)}
       </div>
     </div>
 
-    <p class="fine reveal d3" style="margin-top:16px">The math, kept honest: 2,417 members, 658 re-engagements in the last half-year (27.2%), at the $5,699 member average job. The lever is <strong>increasing retention frequency</strong>: converting more of the 74% who didn't re-engage this half-year into repeat bookers. Every +1pt of retention ≈ 24 extra members re-engaged a half-year ≈ <strong>~$275K a year</strong> at member AOV. The 90-day test measures whether the emails lift it at all.</p>
+    <p class="fine reveal d3" style="margin-top:16px">The math, kept honest: 2,417 members, 658 re-engagements in the last half-year (27.2%). The lever is <strong>increasing retention frequency</strong>: converting more of the 74% who didn't re-engage this half-year into repeat bookers. Every +1pt of retention ≈ 24 extra members re-engaged a half-year ≈ <strong>~$190K a year</strong>. <em>Why $3,900 rather than the $5,699 member average:</em> an incremental (repeat) engagement is worth less than an initial one — a follow-up engagement averages ~$3,900 vs ~$5,963 for a first (median 0.62&times;), so extra bookings are priced at the typical repeat engagement, not the overall average. The 90-day test measures whether the emails lift it at all.</p>
     <p class="pull reveal d4">The lever isn't about winning new customers. It's about getting our best customers back a little more often.</p>
   </div>
 </section>
@@ -1243,7 +1243,7 @@ document.querySelectorAll('.tone-toggle').forEach(tg=>{
 // opportunity lever slider
 const gapSlider=document.getElementById('gapSlider');
 if(gapSlider){
-  const MEMBERS=2417, AOV=5699, BASE=27.2;
+  const MEMBERS=2417, AOV=3900, BASE=27.2;
   const gapReadout=document.getElementById('gapReadout'),
         jobsOut=document.getElementById('jobsOut'),
         revOut=document.getElementById('revOut'),
