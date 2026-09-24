@@ -185,38 +185,9 @@ section.dark .tl-item{--tl-bg:var(--brand-primary)}
 }
 
 
-/* ---------- Catherine journey v2: event-driven horizontal scroll ---------- */
-.cat-map{display:flex;gap:16px;overflow-x:auto;padding:8px 4px 24px;margin:26px 0 6px;-webkit-overflow-scrolling:touch;scroll-snap-type:x proximity}
-.cat-item{flex:0 0 340px;scroll-snap-align:start;background:#fff;border:1px solid var(--brand-border);border-radius:14px;padding:16px 18px;box-shadow:0 4px 18px rgba(11,29,59,.06);display:flex;flex-direction:column}
-.cat-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
-.cat-stage{display:inline-block;background:var(--brand-primary);color:#fff;font-weight:800;font-size:.74rem;letter-spacing:.08em;padding:4px 12px;border-radius:100px;text-transform:uppercase}
-.cat-date{font-size:.76rem;color:var(--brand-slate);font-weight:600}
-.cat-item h4{font-size:1.08rem;color:var(--brand-primary);margin:0 0 8px;line-height:1.3}
-.cat-trigger{font-size:.78rem;color:var(--brand-secondary);font-weight:600;line-height:1.4;margin-bottom:8px;background:#EAF4FB;border-radius:8px;padding:7px 10px}
-.cat-trigger-icon{margin-right:2px}
-.cat-item p{font-size:.85rem;color:#2a3550;opacity:.9;margin:0 0 8px;line-height:1.5;flex:1}
-.cat-tag{display:inline-block;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px;background:var(--brand-surface);color:var(--brand-primary);padding:3px 10px;border-radius:100px;align-self:flex-start;margin-bottom:12px}
-.cat-expand{appearance:none;border:none;background:none;cursor:pointer;font:inherit;font-size:.78rem;font-weight:700;color:var(--brand-slate);text-transform:uppercase;letter-spacing:.5px;padding:0;display:inline-flex;align-items:center;gap:6px;text-align:left;transition:color .2s}
-.cat-expand:hover{color:var(--brand-secondary)}
-.cat-expand span{transition:transform .3s;display:inline-block}
-.cat-item.open .cat-expand span{transform:rotate(180deg)}
-.cat-body{max-height:0;overflow:hidden;opacity:0;transition:max-height .55s cubic-bezier(.22,.61,.36,1),opacity .4s}
-.cat-item.open .cat-body{max-height:4000px;opacity:1}
-.cat-map::-webkit-scrollbar{height:8px}
-.cat-map::-webkit-scrollbar-thumb{background:var(--brand-border);border-radius:8px}
-.cat-body .mini-email{background:#fff;color:#333;border:1px solid var(--brand-border);border-radius:12px;margin-top:12px;overflow:hidden;box-shadow:0 10px 26px rgba(11,29,59,.14)}
-.cat-body .m-head{background:var(--brand-field);padding:11px 14px;border-bottom:1px solid var(--brand-border)}
-.cat-body .m-subject{font-weight:700;color:var(--brand-primary);font-size:.9rem}
-.cat-body .m-meta{font-size:.72rem;color:var(--brand-slate);margin-top:2px}
-.cat-body .m-body{padding:14px;font-size:.82rem;line-height:1.6;white-space:pre-line}
-@media(min-width:768px){.cat-item{flex-basis:360px}}
-@media(prefers-reduced-motion:reduce){.cat-item{transform:none}.cat-body{max-height:none;opacity:1}}
-
-
-
 /* ---------- Catherine journey v3: event-driven horizontal scroll ---------- */
 .cat-map{display:flex;gap:16px;overflow-x:auto;padding:8px 4px 24px;margin:26px 0 6px;-webkit-overflow-scrolling:touch;scroll-snap-type:x proximity}
-.cat-item{flex:0 0 340px;scroll-snap-align:start;background:#fff;border:1px solid var(--brand-border);border-radius:14px;padding:16px 18px;box-shadow:0 4px 18px rgba(11,29,59,.06);display:flex;flex-direction:column}
+.cat-item{flex:0 0 510px;scroll-snap-align:start;background:#fff;border:1px solid var(--brand-border);border-radius:14px;padding:16px 18px;box-shadow:0 4px 18px rgba(11,29,59,.06);display:flex;flex-direction:column}
 .cat-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
 .cat-stage{display:inline-block;background:var(--brand-primary);color:#fff;font-weight:800;font-size:.74rem;letter-spacing:.08em;padding:4px 12px;border-radius:100px;text-transform:uppercase}
 .cat-date{font-size:.76rem;color:var(--brand-slate);font-weight:600}
@@ -241,7 +212,7 @@ section.dark .tl-item{--tl-bg:var(--brand-primary)}
 .cat-body .email-body .e-ul{margin:8px 0 10px;padding-left:20px;list-style:disc}
 .cat-body .email-body .e-ul li{margin:4px 0}
 .cat-body .email-body .e-l{color:var(--brand-secondary);font-weight:700;text-decoration:underline}
-@media(min-width:768px){.cat-item{flex-basis:360px}}
+@media(min-width:768px){.cat-item{flex-basis:540px}}
 @media(prefers-reduced-motion:reduce){.cat-body{max-height:none;opacity:1}}
 
 /* ---------- ST notes wireframe + unsubscribe map ---------- */

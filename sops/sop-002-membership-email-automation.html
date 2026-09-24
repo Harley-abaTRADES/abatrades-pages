@@ -214,21 +214,18 @@ tr:nth-child(even) td { background: var(--brand-field); }
     <div class="step"><span class="num">1.</span> Create a note: <code>POST /crm/v2/tenant/3306271893/customers/{customerId}/notes</code> with body <code>{ "text": "..." }</code>. Uses the <strong>write key</strong>.</div>
     <div class="step"><span class="num">2.</span> Read back / verify: <code>GET /crm/v2/tenant/3306271893/customers/{customerId}/notes</code>.</div>
 
-    <h3>6.2 Note format (locked 24 Sep 2026, rev 2)</h3>
-    <p>ST auto-appends the Created date/timestamp under each note, so the note text does NOT include a timestamp (avoids double handling). Format:</p>
+    <h3>6.2 Note format (locked 24 Sep 2026, rev 3)</h3>
+    <p>ST auto-appends the Created date/timestamp under each note, so the note text does NOT include a timestamp (avoids double handling). The template copy already ends with the email's own signature footer, so the note does NOT append a second signature either. Format:</p>
     <div class="step">
       <code>📧 E1 · Welcome · template #1 · harley@abatrades.com.au</code><br>
       <code>Subject: You're in! 🎉 Welcome to aba TRADES membership</code><br>
       <code>(blank line)</code><br>
-      <code>[full plain-text copy, HTML stripped]</code><br>
-      <code>(blank line)</code><br>
-      <code>— Harley · aba TRADES Support Team</code><br>
-      <code>45 Henry St, Stepney SA 5069 · www.abatrades.com.au</code>
+      <code>[full plain-text copy, HTML stripped — ends with the template's own Harley / aba TRADES Support Team / 45 Henry St footer]</code>
     </div>
     <ul>
       <li>First line: channel emoji (📧 email / 📱 SMS later) · journey step + name · <code>template #N</code> · from address.</li>
       <li>Then the Subject line verbatim, then the full word-for-word plain-text body.</li>
-      <li>No recipient (it is on the customer record). No timestamp (ST adds it).</li>
+      <li>No appended signature line (the template footer is already part of the copy — appending one creates a duplicate footer). No recipient, no timestamp.</li>
       <li>SMS later reuses the same shape with 📱.</li>
     </ul>
 
