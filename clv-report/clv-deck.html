@@ -212,6 +212,56 @@ section.dark .tl-item{--tl-bg:var(--brand-primary)}
 @media(min-width:768px){.cat-item{flex-basis:360px}}
 @media(prefers-reduced-motion:reduce){.cat-item{transform:none}.cat-body{max-height:none;opacity:1}}
 
+
+
+/* ---------- Catherine journey v3: event-driven horizontal scroll ---------- */
+.cat-map{display:flex;gap:16px;overflow-x:auto;padding:8px 4px 24px;margin:26px 0 6px;-webkit-overflow-scrolling:touch;scroll-snap-type:x proximity}
+.cat-item{flex:0 0 340px;scroll-snap-align:start;background:#fff;border:1px solid var(--brand-border);border-radius:14px;padding:16px 18px;box-shadow:0 4px 18px rgba(11,29,59,.06);display:flex;flex-direction:column}
+.cat-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.cat-stage{display:inline-block;background:var(--brand-primary);color:#fff;font-weight:800;font-size:.74rem;letter-spacing:.08em;padding:4px 12px;border-radius:100px;text-transform:uppercase}
+.cat-date{font-size:.76rem;color:var(--brand-slate);font-weight:600}
+.cat-item h4{font-size:1.06rem;color:var(--brand-primary);margin:0 0 8px;line-height:1.3}
+.cat-trigger{font-size:.78rem;color:var(--brand-secondary);font-weight:600;line-height:1.4;margin-bottom:10px;background:#EAF4FB;border-radius:8px;padding:7px 10px}
+.cat-trigger-icon{margin-right:3px}
+.cat-tag{display:inline-block;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px;background:var(--brand-surface);color:var(--brand-primary);padding:3px 10px;border-radius:100px;align-self:flex-start;margin-bottom:12px}
+.cat-expand{appearance:none;border:none;background:none;cursor:pointer;font:inherit;font-size:.78rem;font-weight:700;color:var(--brand-slate);text-transform:uppercase;letter-spacing:.5px;padding:0;display:inline-flex;align-items:center;gap:6px;text-align:left;transition:color .2s}
+.cat-expand:hover{color:var(--brand-secondary)}
+.cat-expand span{transition:transform .3s;display:inline-block}
+.cat-item.open .cat-expand span{transform:rotate(180deg)}
+.cat-body{max-height:0;overflow:hidden;opacity:0;transition:max-height .55s cubic-bezier(.22,.61,.36,1),opacity .4s}
+.cat-item.open .cat-body{max-height:6000px;opacity:1}
+.cat-map::-webkit-scrollbar{height:8px}
+.cat-map::-webkit-scrollbar-thumb{background:var(--brand-border);border-radius:8px}
+.cat-body .mini-email{background:#fff;color:#333;border:1px solid var(--brand-border);border-radius:12px;margin-top:12px;overflow:hidden;box-shadow:0 10px 26px rgba(11,29,59,.14)}
+.cat-body .m-head{background:var(--brand-field);padding:11px 14px;border-bottom:1px solid var(--brand-border)}
+.cat-body .m-subject{font-weight:700;color:var(--brand-primary);font-size:.9rem}
+.cat-body .m-meta{font-size:.72rem;color:var(--brand-slate);margin-top:2px}
+.cat-body .email-body{padding:14px;font-size:.84rem;line-height:1.6;color:#333}
+.cat-body .email-body p{margin:0 0 10px}
+.cat-body .email-body .e-ul{margin:8px 0 10px;padding-left:20px;list-style:disc}
+.cat-body .email-body .e-ul li{margin:4px 0}
+.cat-body .email-body .e-l{color:var(--brand-secondary);font-weight:700;text-decoration:underline}
+@media(min-width:768px){.cat-item{flex-basis:360px}}
+@media(prefers-reduced-motion:reduce){.cat-body{max-height:none;opacity:1}}
+
+/* ---------- ST notes wireframe + unsubscribe map ---------- */
+.st-app{border:1px solid #D3D4DA;border-radius:12px;overflow:hidden;max-width:720px;background:#fff;box-shadow:0 10px 30px rgba(11,29,59,.08)}
+.st-app-head{background:#1D3B6D;color:#fff;font-size:.9rem;padding:12px 18px;font-weight:500}
+.st-app-tabs{display:flex;gap:2px;background:#EBEDF2;border-bottom:1px solid #D3D4DA;padding:6px 10px 0}
+.st-app-tab{padding:8px 16px;font-size:.82rem;font-weight:600;color:#2a3550;cursor:default}
+.st-app-tab.active{background:#fff;border:1px solid #D3D4DA;border-bottom:none;border-radius:8px 8px 0 0;color:#1D3B6D}
+.st-app-body{background:#F5F6F8;padding:10px 16px 18px}
+.st-note{border-left:3px solid #1D3B6D;background:#fff;border-radius:0 8px 8px 0;padding:10px 14px;margin:9px 0;box-shadow:0 1px 2px rgba(11,29,59,.05)}
+.st-note-created{font-size:.72rem;color:#7789A7;font-weight:600;margin-bottom:4px}
+.st-note-text{font-size:.88rem;color:#1D3B6D;line-height:1.5}
+.st-note-more{font-size:.74rem;color:#7789A7}
+.st-note-muted{color:#8E2A2A;font-weight:600}
+.unsub-map{max-width:720px;display:flex;flex-direction:column;gap:12px}
+.unsub-step{display:flex;gap:14px;align-items:flex-start;background:var(--brand-field);border:1px solid var(--brand-border);border-radius:11px;padding:13px 16px}
+.unsub-step strong{color:var(--brand-primary);font-size:.96rem}
+.unsub-sub{font-size:.83rem;color:#2a3550;opacity:.85;margin-top:2px}
+.unsub-num{flex:0 0 30px;height:30px;border-radius:50%;background:var(--brand-primary);color:#fff;font-weight:800;display:grid;place-items:center;font-size:.92rem;margin-top:1px}
+
 </style>
 </head>
 <body>
@@ -1157,186 +1207,150 @@ Talk soon,
 </section>
 
 <!-- 11. CLOSE -->
+
+
 <section class="alt" id="catherine">
   <div class="wrap">
     <span class="reveal" style="text-transform:uppercase;letter-spacing:.12em;font-size:.8rem;font-weight:700;color:var(--brand-primary);display:block">Real customer · Catherine · Electrical member</span>
     <h2 class="reveal d1" style="font-size:2rem;margin-top:8px">Catherine's membership journey</h2>
-    <p class="reveal d2" style="opacity:.85;max-width:760px;margin-top:10px">Catherine joined today (Thu 24 Sep, Electrical). Below is the exact sequence of emails she will receive — <em>driven by real events, not calendar dates</em> — starting with her welcome, then each cross-trade email triggered off the moment her job is billed. Scroll across; open any card to read the full email.</p>
+    <p class="reveal d2" style="opacity:.85;max-width:760px;margin-top:10px">Catherine joined today (Thu 24 Sep, Electrical). Below is the exact sequence of emails she will receive — <em>driven by real events, not calendar dates</em>. Scroll across; open any card to read the full email as sent.</p>
 
     <div class="cat-map reveal d3">
       <div class="cat-item">
-        <div class="cat-top"><span class="cat-stage">START</span><span class="cat-date">Thu 24 Sep · today</span></div>
-        <h4>E1 · Welcome — membership is active</h4>
-        <div class="cat-trigger"><span class="cat-trigger-icon">⚡</span> `member_joined` fires the moment the membership line item lands on a job in ServiceTitan — no day count, it starts now.</div>
-        <p>Orients Catherine to the direct line, $1000+ coupons, year-round pricing, 25-year labour warranty and the free $389 annual inspection. Same email for every member.</p>
-        <span class="cat-tag">Universal · all members</span>
+        <div class="cat-top"><span class="cat-stage">E1</span><span class="cat-date">Thu 24 Sep · today</span></div>
+        <h4>Welcome — membership is active</h4>
+        <div class="cat-trigger"><span class="cat-trigger-icon">⚡</span>`member_joined` — the moment the membership activates in ServiceTitan. Starts now.</div>
+        <span class="cat-tag">Universal</span>
         <button class="cat-expand" type="button" data-cat>Read the email <span aria-hidden="true">▾</span></button>
         <div class="cat-body"><div class="mini-email">
               <div class="m-head">
-                <div><div class="m-subject">You&#x27;re in! 🎉 Welcome to aba TRADES membership</div><div class="m-meta">START · To: Catherine · From: Harley @ aba TRADES</div></div>
+                <div><div class="m-subject">You&#x27;re in! 🎉 Welcome to aba TRADES membership</div><div class="m-meta">E1 · To: Catherine · From: Harley @ aba TRADES</div></div>
               </div>
-              <div class="email-variant active" data-variant="plain"><div class="m-body">You're in. Your membership unlocks the direct line, coupons, a 25-year warranty and a free $389 inspection.
-Hi Catherine,
-You're in! 🎉 Your aba TRADES membership is officially active, and your home just got a lot easier to look after.
-Here's what you've unlocked:
-📞 Your own direct line: 08 7323 1253. Members skip the queue. Every time.
-💰 $1000+ in discount coupons, good across plumbing, electrical, aircon and roofing. Real ones too, $100 off a hot water renewal, $150 off sewer repairs, $100 off a new AC system.
-🕐 Year-round member pricing, middle of a heatwave, middle of the night (public holidays excepted).
-🛡️ A 25-year labour warranty. That's five years longer than standard.
-🔍 A free whole-house inspection every year, worth $389. We check everything so small problems never become big ones.
-
-Your membership card has the lot. Scan the QR code on your pack for the details, or just save 08 7323 1253 in your phone now.
-If your technician didn't get a membership pack to you on the day, reply to this email or call 08 7323 1253 and we'll make sure you get one.
-One number. Every trade. Sorted.
-Talk soon,
-Harley
-aba TRADES Support Team
-___
-
-45 Henry St, Stepney SA 5069
-www.abatrades.com.au</div></div>
+              <div class="email-body"><div style="display:none; max-height:0; overflow:hidden; mso-hide:all;">You&#39;re in. Your membership unlocks the direct line, coupons, a 25-year warranty and a free $389 inspection.</div><p>Hi Catherine,</p><p>You're in! 🎉 Your aba TRADES membership is officially active, and your home just got a lot easier to look after.</p><p>Here's what you've unlocked:</p><ul class="e-ul"><li>📞 Your own direct line: 08 7323 1253. Members skip the queue. Every time.</li><li>💰 $1000+ in discount coupons, good across plumbing, electrical, aircon and roofing. Real ones too, $100 off a hot water renewal, $150 off sewer repairs, $100 off a new AC system.</li><li>🕐 Year-round member pricing, middle of a heatwave, middle of the night (public holidays excepted).</li><li>🛡️ A 25-year labour warranty. That's five years longer than standard.</li><li>🔍 A free whole-house inspection every year, worth $389. We check everything so small problems never become big ones.</li></ul><p>Your membership card has the lot. Scan the QR code on your pack for the details, or just save 08 7323 1253 in your phone now.</p><p>If your technician didn't get a membership pack to you on the day, reply to this email or call 08 7323 1253 and we'll make sure you get one.</p><p>One number. Every trade. Sorted.</p><p>Talk soon,</p><div style="font-family:Arial,Helvetica,sans-serif; color:rgb(11,83,148);"><div style="font-size:18px; color:rgb(11,83,148);"><b>Harley</b></div><div style="font-size:9.75pt; color:rgb(11,83,148);">aba TRADES Support Team</div><div style="font-size:9.75pt; color:rgb(147,196,125);"><b>___</b></div><br><div style="font-size:9.75pt; color:rgb(17,85,204);"><a class="e-l" href="https://www.google.com/maps/search/45+Henry+St,+Stepney+SA+5069?utm_source=sendinblue&utm_campaign=Members__E1_Welcome&utm_medium=email">45 Henry St, Stepney SA 5069</a></div><div style="font-size:9.75pt; color:rgb(17,85,204);"><b><u>www.abatrades.com.au</u></b></div></div><br><a class="e-l" href="https://www.abatrades.com.au?utm_source=sendinblue&utm_campaign=Members__E1_Welcome&utm_medium=email"></a></div>
             </div></div>
       </div>
       <div class="cat-item">
-        <div class="cat-top"><span class="cat-stage">E2</span><span class="cat-date">When invoiced</span></div>
-        <h4>E2 · First cross-trade value (Plumbing)</h4>
-        <div class="cat-trigger"><span class="cat-trigger-icon">⚡</span> Triggered by the `member_invoice_paid` API event — the moment Catherine's Electrical job is billed and paid — NOT a fixed “day 7”. This is the job-billed signal.</div>
-        <p>Catherine joined as Electrical, so E2 introduces a trade she did not just buy (Plumbing) — a real DIY guide first, then the member benefit. Filtered to COHORT=Treatment.</p>
-        <span class="cat-tag">Treatment · event-driven</span>
+        <div class="cat-top"><span class="cat-stage">E2</span><span class="cat-date">When her job is billed</span></div>
+        <h4>First cross-trade value (Plumbing)</h4>
+        <div class="cat-trigger"><span class="cat-trigger-icon">⚡</span>`member_invoice_paid` — the moment Catherine's Electrical job is billed and paid. NOT a fixed 'day 7'.</div>
+        <span class="cat-tag">Treatment</span>
         <button class="cat-expand" type="button" data-cat>Read the email <span aria-hidden="true">▾</span></button>
         <div class="cat-body"><div class="mini-email">
               <div class="m-head">
                 <div><div class="m-subject">The filter under your sink needs a 5-minute check 🚰</div><div class="m-meta">E2 · To: Catherine · From: Harley @ aba TRADES</div></div>
               </div>
-              <div class="email-variant active" data-variant="plain"><div class="m-body">Electrical's sorted⚡, quick question: when did you last check your water filter? Most people install it, feel good, and forget it...
-Hi Catherine,
-Electrical's sorted⚡, quick question: when did you last check your water filter?
-Most people install it, feel good, and forget it exists. We wrote a simple DIY check guide so your water stays tasting right and the filter actually does its job.
- See the filter checks
-And if under-sink plumbing isn't your happy place? Members don't need one. Call 08 7323 1253 and our plumbing team takes care of it, member pricing and coupons included ($50 off a plumbing service, $100 off a hot water tank replacement if it ever comes to that). 💧
-One number, every trade. That's what you signed up for.
-Talk soon,
-Harley
-aba TRADES Support Team
-___
-
-45 Henry St, Stepney SA 5069
-www.abatrades.com.au</div></div>
+              <div class="email-body"><div style="display:none; max-height:0; overflow:hidden; mso-hide:all;">Electrical&#x27;s sorted⚡, quick question: when did you last check your water filter? Most people install it, feel good, and forget it...</div><p>Hi Catherine,</p><p>Electrical's sorted⚡, quick question: when did you last check your water filter?</p><p>Most people install it, feel good, and forget it exists. We wrote a simple DIY check guide so your water stays tasting right and the filter actually does its job.</p><p><a class="e-l" href="https://www.abaplumbing.com.au/water-filter-maintenance-adelaide-diy-checks/?utm_source=sendinblue&utm_campaign=Members__E2_First_cross-trade_value__Electrical&utm_medium=email"> See the filter checks</a></p><p>And if under-sink plumbing isn't your happy place? Members don't need one. Call 08 7323 1253 and our plumbing team takes care of it, member pricing and coupons included ($50 off a plumbing service, $100 off a hot water tank replacement if it ever comes to that). 💧</p><p>One number, every trade. That's what you signed up for.</p><p>Talk soon,</p><div style="font-family:Arial,Helvetica,sans-serif; color:rgb(11,83,148);"><div style="font-size:18px; color:rgb(11,83,148);"><b>Harley</b></div><div style="font-size:9.75pt; color:rgb(11,83,148);">aba TRADES Support Team</div><div style="font-size:9.75pt; color:rgb(147,196,125);"><b>___</b></div><br><div style="font-size:9.75pt; color:rgb(17,85,204);"><a class="e-l" href="https://www.google.com/maps/search/45+Henry+St,+Stepney+SA+5069?utm_source=sendinblue&utm_campaign=Members__E2_First_cross-trade_value__Electrical&utm_medium=email">45 Henry St, Stepney SA 5069</a></div><div style="font-size:9.75pt; color:rgb(17,85,204);"><b><u>www.abatrades.com.au</u></b></div></div><br><a class="e-l" href="https://www.abatrades.com.au?utm_source=sendinblue&utm_campaign=Members__E2_First_cross-trade_value__Electrical&utm_medium=email"></a></div>
             </div></div>
       </div>
       <div class="cat-item">
         <div class="cat-top"><span class="cat-stage">E3</span><span class="cat-date">~14 days after E2</span></div>
-        <h4>E3 · Second cross-trade value (Air Con)</h4>
-        <div class="cat-trigger"><span class="cat-trigger-icon">⚡</span> A ~14-day wait after E2 (measured from the invoice-paid event, not from Day 0).</div>
-        <p>Continues the cross-trade rotation — Air Conditioning, value-first guide, then the membership upgrade. Treatment cohort.</p>
+        <h4>Second cross-trade value (Air Con)</h4>
+        <div class="cat-trigger"><span class="cat-trigger-icon">⚡</span>~14-day wait after the invoice-paid event.</div>
         <span class="cat-tag">Treatment</span>
         <button class="cat-expand" type="button" data-cat>Read the email <span aria-hidden="true">▾</span></button>
         <div class="cat-body"><div class="mini-email">
               <div class="m-head">
                 <div><div class="m-subject">The air in your house might need a clean too 🌬️</div><div class="m-meta">E3 · To: Catherine · From: Harley @ aba TRADES</div></div>
               </div>
-              <div class="email-variant active" data-variant="plain"><div class="m-body">Windows shut, heaters on, everyone inside, winter air gets stale fast 🌬️ Your aircon does more than heat and cool; it filters what you...
-Hi Catherine,
-Windows shut, heaters on, everyone inside, winter air gets stale fast 🌬️
-Your aircon does more than heat and cool; it filters what you breathe. We wrote a guide on allergen-free winter living and the upgrades that genuinely clear the air.
- See what clears the air
-The member bit: no filter research, no guesswork. Your free annual inspection covers heating and cooling, and I'll get our aircon team onto anything it flags. One call to 08 7323 1253 and it's booked.
-One number, every trade. That's the membership working.
-Talk soon,
-Harley
-aba TRADES Support Team
-___
-
-45 Henry St, Stepney SA 5069
-www.abatrades.com.au</div></div>
+              <div class="email-body"><div style="display:none; max-height:0; overflow:hidden; mso-hide:all;">Windows shut, heaters on, everyone inside, winter air gets stale fast 🌬️ Your aircon does more than heat and cool; it filters what you...</div><p>Hi Catherine,</p><p>Windows shut, heaters on, everyone inside, winter air gets stale fast 🌬️</p><p>Your aircon does more than heat and cool; it filters what you breathe. We wrote a guide on allergen-free winter living and the upgrades that genuinely clear the air.</p><p><a class="e-l" href="https://abaairconditioning.com.au/air-conditioning/allergen-free-winter-living-ac-upgrades-that-clear-the-air/?utm_source=sendinblue&utm_campaign=Members__E3_Second_cross-trade_value__Electrical&utm_medium=email"> See what clears the air</a></p><p>The member bit: no filter research, no guesswork. Your free annual inspection covers heating and cooling, and I'll get our aircon team onto anything it flags. One call to 08 7323 1253 and it's booked.</p><p>One number, every trade. That's the membership working.</p><p>Talk soon,</p><div style="font-family:Arial,Helvetica,sans-serif; color:rgb(11,83,148);"><div style="font-size:18px; color:rgb(11,83,148);"><b>Harley</b></div><div style="font-size:9.75pt; color:rgb(11,83,148);">aba TRADES Support Team</div><div style="font-size:9.75pt; color:rgb(147,196,125);"><b>___</b></div><br><div style="font-size:9.75pt; color:rgb(17,85,204);"><a class="e-l" href="https://www.google.com/maps/search/45+Henry+St,+Stepney+SA+5069?utm_source=sendinblue&utm_campaign=Members__E3_Second_cross-trade_value__Electrical&utm_medium=email">45 Henry St, Stepney SA 5069</a></div><div style="font-size:9.75pt; color:rgb(17,85,204);"><b><u>www.abatrades.com.au</u></b></div></div><br><a class="e-l" href="https://www.abatrades.com.au?utm_source=sendinblue&utm_campaign=Members__E3_Second_cross-trade_value__Electrical&utm_medium=email"></a></div>
             </div></div>
       </div>
       <div class="cat-item">
         <div class="cat-top"><span class="cat-stage">E4</span><span class="cat-date">~21 days after E3</span></div>
-        <h4>E4 · Third cross-trade value (Roofing / Solar)</h4>
-        <div class="cat-trigger"><span class="cat-trigger-icon">⚡</span> ~21-day wait after E3.</div>
-        <p>Third cross-trade rotation (Roofing), with a gentle nudge that coupons and member pricing are waiting. Treatment cohort.</p>
+        <h4>Third cross-trade value (Roofing)</h4>
+        <div class="cat-trigger"><span class="cat-trigger-icon">⚡</span>~21-day wait.</div>
         <span class="cat-tag">Treatment</span>
         <button class="cat-expand" type="button" data-cat>Read the email <span aria-hidden="true">▾</span></button>
         <div class="cat-body"><div class="mini-email">
               <div class="m-head">
                 <div><div class="m-subject">Thinking about solar? Your roof gets a say ☀️</div><div class="m-meta">E4 · To: Catherine · From: Harley @ aba TRADES</div></div>
               </div>
-              <div class="email-variant active" data-variant="plain"><div class="m-body">Solar's one of those \"someday\" projects☀️, but your roof gets a vote on when someday arrives. We wrote a guide on future-proofing your...
-Hi Catherine,
-Solar's one of those \"someday\" projects☀️, but your roof gets a vote on when someday arrives.
-We wrote a guide on future-proofing your roof for solar, even if panels are years away. What matters, what doesn't, and what to sort now so you're not paying twice later.
- See how to prep
-The member bit: if you want a straight answer on whether your roof's ready, I'll get our roofing team to assess it properly. One call to 08 7323 1253, member pricing and coupons included.
-One number, every trade. That's the membership working.
-Talk soon,
-Harley
-aba TRADES Support Team
-___
-
-45 Henry St, Stepney SA 5069
-www.abatrades.com.au</div></div>
+              <div class="email-body"><div style="display:none; max-height:0; overflow:hidden; mso-hide:all;">Solar&#x27;s one of those &quot;someday&quot; projects☀️, but your roof gets a vote on when someday arrives. We wrote a guide on future-proofing your...</div><p>Hi Catherine,</p><p>Solar's one of those "someday" projects☀️, but your roof gets a vote on when someday arrives.</p><p>We wrote a guide on future-proofing your roof for solar, even if panels are years away. What matters, what doesn't, and what to sort now so you're not paying twice later.</p><p><a class="e-l" href="https://abaroofing.com.au/roof/future-proofing-your-roof-how-to-prepare-for-solar/?utm_source=sendinblue&utm_campaign=Members__E4_Third_cross-trade_value__Electrical&utm_medium=email"> See how to prep</a></p><p>The member bit: if you want a straight answer on whether your roof's ready, I'll get our roofing team to assess it properly. One call to 08 7323 1253, member pricing and coupons included.</p><p>One number, every trade. That's the membership working.</p><p>Talk soon,</p><div style="font-family:Arial,Helvetica,sans-serif; color:rgb(11,83,148);"><div style="font-size:18px; color:rgb(11,83,148);"><b>Harley</b></div><div style="font-size:9.75pt; color:rgb(11,83,148);">aba TRADES Support Team</div><div style="font-size:9.75pt; color:rgb(147,196,125);"><b>___</b></div><br><div style="font-size:9.75pt; color:rgb(17,85,204);"><a class="e-l" href="https://www.google.com/maps/search/45+Henry+St,+Stepney+SA+5069?utm_source=sendinblue&utm_campaign=Members__E4_Third_cross-trade_value__Electrical&utm_medium=email">45 Henry St, Stepney SA 5069</a></div><div style="font-size:9.75pt; color:rgb(17,85,204);"><b><u>www.abatrades.com.au</u></b></div></div><br><a class="e-l" href="https://www.abatrades.com.au?utm_source=sendinblue&utm_campaign=Members__E4_Third_cross-trade_value__Electrical&utm_medium=email"></a></div>
             </div></div>
       </div>
       <div class="cat-item">
         <div class="cat-top"><span class="cat-stage">E5</span><span class="cat-date">~45 days after E4</span></div>
-        <h4>E5 · Hard close · book the free inspection</h4>
-        <div class="cat-trigger"><span class="cat-trigger-icon">⚡</span> ~45-day wait after E4. (Total ≈ 90 days from the invoice-paid event.)</div>
-        <p>The payoff: Catherine&#x27;s free whole-house inspection, worth $389, goes unused. Hard close to book it across every trade. Universal — lands as the measurement window closes.</p>
-        <span class="cat-tag">Universal · all members</span>
+        <h4>Hard close · book the free inspection</h4>
+        <div class="cat-trigger"><span class="cat-trigger-icon">⚡</span>~45-day wait (≈90 days from billing). Universal.</div>
+        <span class="cat-tag">Universal</span>
         <button class="cat-expand" type="button" data-cat>Read the email <span aria-hidden="true">▾</span></button>
         <div class="cat-body"><div class="mini-email">
               <div class="m-head">
                 <div><div class="m-subject">Your $389 inspection is sitting there, Catherine 🔍</div><div class="m-meta">E5 · To: Catherine · From: Harley @ aba TRADES</div></div>
               </div>
-              <div class="email-variant active" data-variant="plain"><div class="m-body">It's been three months since you joined aba TRADES🎉, and there's something sitting in your account you haven't used yet. Your free...
-Hi Catherine,
-It's been three months since you joined aba TRADES🎉, and there's something sitting in your account you haven't used yet.
-Your free whole-house inspection. Worth $389. Already paid for by your membership.
-One visit. Every trade, plumbing, electrical, roofing, heating and cooling. We go through the place top to bottom and hand you the full picture: what's great, what's fair, what needs attention before it gets expensive.
-Booking takes one call: 08 7323 1253. Or just reply to this email and I'll sort it. 📞
-This is the part of membership that stops the 6am emergencies. And your $1000+ in coupons? Still sitting there for anything we find. Let's get you on the calendar.
-Talk soon,
-Harley
-aba TRADES Support Team
-___
-
-45 Henry St, Stepney SA 5069
-www.abatrades.com.au</div></div>
+              <div class="email-body"><div style="display:none; max-height:0; overflow:hidden; mso-hide:all;">It&#x27;s been three months since you joined aba TRADES🎉, and there&#x27;s something sitting in your account you haven&#x27;t used yet. Your free...</div><p>Hi Catherine,</p><p>It's been three months since you joined aba TRADES🎉, and there's something sitting in your account you haven't used yet.</p><p>Your free whole-house inspection. Worth $389. Already paid for by your membership.</p><p>One visit. Every trade, plumbing, electrical, roofing, heating and cooling. We go through the place top to bottom and hand you the full picture: what's great, what's fair, what needs attention before it gets expensive.</p><p>Booking takes one call: 08 7323 1253. Or just reply to this email and I'll sort it. 📞</p><p>This is the part of membership that stops the 6am emergencies. And your $1000+ in coupons? Still sitting there for anything we find. Let's get you on the calendar.</p><p>Talk soon,</p><div style="font-family:Arial,Helvetica,sans-serif; color:rgb(11,83,148);"><div style="font-size:18px; color:rgb(11,83,148);"><b>Harley</b></div><div style="font-size:9.75pt; color:rgb(11,83,148);">aba TRADES Support Team</div><div style="font-size:9.75pt; color:rgb(147,196,125);"><b>___</b></div><br><div style="font-size:9.75pt; color:rgb(17,85,204);"><a class="e-l" href="https://www.google.com/maps/search/45+Henry+St,+Stepney+SA+5069?utm_source=sendinblue&utm_campaign=Members__E5_Hard_close&utm_medium=email">45 Henry St, Stepney SA 5069</a></div><div style="font-size:9.75pt; color:rgb(17,85,204);"><b><u>www.abatrades.com.au</u></b></div></div><br><a class="e-l" href="https://www.abatrades.com.au?utm_source=sendinblue&utm_campaign=Members__E5_Hard_close&utm_medium=email"></a></div>
             </div></div>
       </div>
       <div class="cat-item">
         <div class="cat-top"><span class="cat-stage">E6</span><span class="cat-date">~renewal</span></div>
-        <h4>E6 · Renewal</h4>
-        <div class="cat-trigger"><span class="cat-trigger-icon">⚡</span> Fires ahead of Catherine's membership end date.</div>
-        <p>Reminds Catherine the renewal is already covered by the inspection. Universal.</p>
-        <span class="cat-tag">Universal · all members</span>
+        <h4>Renewal</h4>
+        <div class="cat-trigger"><span class="cat-trigger-icon">⚡</span>Ahead of Catherine's membership end date.</div>
+        <span class="cat-tag">Universal</span>
         <button class="cat-expand" type="button" data-cat>Read the email <span aria-hidden="true">▾</span></button>
         <div class="cat-body"><div class="mini-email">
               <div class="m-head">
                 <div><div class="m-subject">Your renewal&#x27;s coming due. Your $389 inspection already covers it 🔄</div><div class="m-meta">E6 · To: Catherine · From: Harley @ aba TRADES</div></div>
               </div>
-              <div class="email-variant active" data-variant="plain"><div class="m-body">Time check 🔄, your aba TRADES membership renews on 23 December 2026. Here's the nice part: it's already covered. Your membership includes...
-Hi Catherine,
-Time check 🔄, your aba TRADES membership renews on 23 December 2026.
-Here's the nice part: it's already covered. Your membership includes a free whole-house inspection worth $389, a good deal more than the cost of renewing, and you've already paid for it.
-Book it before 23 December 2026 at 08 7323 1253, and we'll go through the whole home, plumbing, electrical, air conditioning and roofing. Whatever we flag, your coupons and member pricing take the edge off. This is the inspection doing its job.
-One call, every trade, renewal sorted.
-Talk soon,
-Harley
-aba TRADES Support Team
-___
-
-45 Henry St, Stepney SA 5069
-www.abatrades.com.au</div></div>
+              <div class="email-body"><div style="display:none; max-height:0; overflow:hidden; mso-hide:all;">Time check 🔄, your aba TRADES membership renews on 23 December 2026. Here&#x27;s the nice part: it&#x27;s already covered. Your membership includes...</div><p>Hi Catherine,</p><p>Time check 🔄, your aba TRADES membership renews on 23 December 2026.</p><p>Here's the nice part: it's already covered. Your membership includes a free whole-house inspection worth $389, a good deal more than the cost of renewing, and you've already paid for it.</p><p>Book it before 23 December 2026 at 08 7323 1253, and we'll go through the whole home, plumbing, electrical, air conditioning and roofing. Whatever we flag, your coupons and member pricing take the edge off. This is the inspection doing its job.</p><p>One call, every trade, renewal sorted.</p><p>Talk soon,</p><div style="font-family:Arial,Helvetica,sans-serif; color:rgb(11,83,148);"><div style="font-size:18px; color:rgb(11,83,148);"><b>Harley</b></div><div style="font-size:9.75pt; color:rgb(11,83,148);">aba TRADES Support Team</div><div style="font-size:9.75pt; color:rgb(147,196,125);"><b>___</b></div><br><div style="font-size:9.75pt; color:rgb(17,85,204);"><a class="e-l" href="https://www.google.com/maps/search/45+Henry+St,+Stepney+SA+5069?utm_source=sendinblue&utm_campaign=Members__E6_Renewal&utm_medium=email">45 Henry St, Stepney SA 5069</a></div><div style="font-size:9.75pt; color:rgb(17,85,204);"><b><u>www.abatrades.com.au</u></b></div></div><br><a class="e-l" href="https://www.abatrades.com.au?utm_source=sendinblue&utm_campaign=Members__E6_Renewal&utm_medium=email"></a></div>
             </div></div>
       </div>
     </div>
 
     <div class="cat-note reveal d4" style="margin-top:26px;background:#E4F0E1;border:1px solid #B7D6A8;border-radius:12px;padding:16px 20px">
       <div style="font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#2F6B2F">Cohort · Treatment</div>
-      <p style="margin:6px 0 0;color:#333;font-size:.9rem">Catherine's ServiceTitan customer ID hashes deterministically to <code>COHORT=Treatment</code> on joining. So her <strong>welcome (E1) and hard-close (E5) go to every member</strong>, but the three <strong>cross-trade value emails (E2–E4) fire only because she is in the treatment arm</strong>. A control member would get E1 + E5 only — no value emails during the measurement window — so the measured lift is attributable to the flow, not to membership itself. The E2–E4 sequence is gated on the <code>member_invoice_paid</code> event, so the trade branch always reflects what she actually bought.</p>
+      <p style="margin:6px 0 0;color:#333;font-size:.9rem">Catherine's ServiceTitan customer ID hashes deterministically to <code>COHORT=Treatment</code> on joining. Her <strong>welcome (E1) and hard-close (E5) go to every member</strong>; the three <strong>cross-trade value emails (E2–E4) fire only because she is in the treatment arm</strong>. A control member would get E1 + E5 only, so the measured lift is attributable to the flow.</p>
     </div>
+
+    
+<div class="reveal" style="margin-top:30px">
+  <h3 style="font-size:1.3rem;margin-bottom:4px">What the CSR team sees: notes on Catherine's record</h3>
+  <p style="opacity:.85;max-width:720px;margin-bottom:16px">Every email we send is written back to ServiceTitan as a Customer Note on the member's record, in the locked <code>📧</code> format — so the office sees exactly what was sent, when and from whom, without a Brevo login.</p>
+  <div class="st-app">
+    <div class="st-app-head">Customer record · <strong>Newport, Catherine</strong> &nbsp;·&nbsp; 453673779</div>
+    <div class="st-app-tabs"><span class="st-app-tab active">Notes</span><span class="st-app-tab">Contacts</span><span class="st-app-tab">Jobs</span><span class="st-app-tab">Membership</span></div>
+    <div class="st-app-body">
+          <div class="st-note">
+            <div class="st-note-created">Thu 24 Sep 2026 13:00 · abatrades</div>
+            <div class="st-note-text"><span class="st-note-icon">📧</span> <span class="st-note-day">E1</span> · <strong>You&#x27;re in! 🎉 Welcome to aba TRADES membership</strong><br><span class="st-note-more">From harley@abatrades.com.au · full copy on the record</span></div>
+          </div>
+          <div class="st-note">
+            <div class="st-note-created">when invoiced · abatrades</div>
+            <div class="st-note-text"><span class="st-note-icon">📧</span> <span class="st-note-day">E2</span> · <strong>The filter under your sink needs a 5-minute check 🚰</strong><br><span class="st-note-more">From harley@abatrades.com.au · full copy on the record</span></div>
+          </div>
+          <div class="st-note">
+            <div class="st-note-created">+14d · abatrades</div>
+            <div class="st-note-text"><span class="st-note-icon">📧</span> <span class="st-note-day">E3</span> · <strong>The air in your house might need a clean too 🌬️</strong><br><span class="st-note-more">From harley@abatrades.com.au · full copy on the record</span></div>
+          </div>
+          <div class="st-note">
+            <div class="st-note-created">+21d · abatrades</div>
+            <div class="st-note-text"><span class="st-note-icon">📧</span> <span class="st-note-day">E4</span> · <strong>Thinking about solar? Your roof gets a say ☀️</strong><br><span class="st-note-more">From harley@abatrades.com.au · full copy on the record</span></div>
+          </div>
+          <div class="st-note">
+            <div class="st-note-created">+45d · abatrades</div>
+            <div class="st-note-text"><span class="st-note-icon">📧</span> <span class="st-note-day">E5</span> · <strong>Your $389 inspection is sitting there, Catherine 🔍</strong><br><span class="st-note-more">From harley@abatrades.com.au · full copy on the record</span></div>
+          </div>
+      <div class="st-note">
+        <div class="st-note-created">example · when she unsubscribes</div>
+        <div class="st-note-text st-note-muted">MEMBER OPTED OUT of email marketing — consent off (Brevo blacklist sync)</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    
+<div class="reveal" style="margin-top:30px">
+  <h3 style="font-size:1.3rem;margin-bottom:4px">What happens if Catherine unsubscribes</h3>
+  <p style="opacity:.85;max-width:720px;margin-bottom:16px">Theoretical example mapped end-to-end. ServiceTitan stays the source of truth for consent.</p>
+  <div class="unsub-map">
+    <div class="unsub-step"><span class="unsub-num">1</span><div><strong>Catherine clicks "unsubscribe"</strong><div class="unsub-sub">In any email she receives (List-Unsubscribe / {{{{unsubscribe}}}} tag in the template).</div></div></div>
+    <div class="unsub-step"><span class="unsub-num">2</span><div><strong>Brevo blacklists the address</strong><div class="unsub-sub">katherinelouiselee@gmail.com is marked email-blacklisted on the contact — the compliance opt-out record.</div></div></div>
+    <div class="unsub-step"><span class="unsub-num">3</span><div><strong>Cron 2 polls every 6h</strong><div class="unsub-sub">Reads <code>/smtp/blockedContacts</code> + <code>/contacts emailBlacklisted</code>, finds Catherine by her <code>ST_CUSTOMER_ID</code> join key.</div></div></div>
+    <div class="unsub-step"><span class="unsub-num">4</span><div><strong>ServiceTitan consent flipped off</strong><div class="unsub-sub">PATCH contact → <code>preferences.marketingUpdatesEnabled=false</code>. Membership untouched.</div></div></div>
+    <div class="unsub-step"><span class="unsub-num">5</span><div><strong>Future sends exclude her</strong><div class="unsub-sub">n8n and cron 1 gate every recipient on ST consent, so Catherine stops receiving the flow. ST is the single source of truth.</div></div></div>
+  </div>
+</div>
+
   </div>
 </section>
 
