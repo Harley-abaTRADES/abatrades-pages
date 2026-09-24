@@ -81,6 +81,22 @@ tr:nth-child(even) td { background: var(--brand-field); }
   .wrap { padding: 0 14px; }
   .hero { padding: 40px 16px 36px; }
 }
+@media (max-width: 600px) {
+  .meta { gap: 14px 20px; }
+  h2 { font-size: 1.3rem; }
+  h3 { font-size: 1.05rem; }
+  .hero { padding: 32px 14px 28px; }
+  .wrap { padding: 0 12px; }
+  section { padding: 26px 0; }
+  /* tables: horizontal scroll so wide tables never overflow the viewport */
+  table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; white-space: nowrap; }
+  tr:nth-child(even) td { background: transparent; }
+  /* long code / URLs wrap instead of overflowing */
+  code { word-break: break-word; overflow-wrap: anywhere; }
+  .step code { word-break: break-word; overflow-wrap: anywhere; white-space: normal; }
+  .callout { padding: 13px 14px 13px 16px; }
+  ul, ol { margin-left: 18px; }
+}
 </style>
 </head>
 <body>
@@ -262,7 +278,7 @@ tr:nth-child(even) td { background: var(--brand-field); }
     <h3>Step 3  -  Draft copy in Podium</h3>
     <div class="step"><span class="num">3a.</span> Use the approved campaign copy (see the marketing-calendar skill). Lead with the first-name merge: Podium's composer button inserts <code>:contact first name</code>  -  write <code>Dear :contact first name,</code> or the warm member-greeting approved for the campaign.</div>
     <div class="step"><span class="num">3b.</span> Keep to the credit rules (Section 8). Emojis drop the per-credit limit from 160 to 70 characters, so a long personal greeting can push a message to 4-5 credits  -  audit the live credit count in Podium's composer before send, it is the authority.</div>
-    <div class="step"><span class="num">3c.</span> End every message with the combined CTA (e.g. "Reply YES or call 08 8462 9469 code SPRING26") and the opt-out line <code>Text REMOVE for marketing optout.</code> Tag the message <strong>Marketing</strong> so Podium auto-excludes opted-out contacts.</div>
+    <div class="step"><span class="num">3c.</span> End every message with the combined CTA (e.g. "Reply YES or call 08 8462 9469 code SPRING26"). Do NOT add an opt-out line to the copy: Podium appends the opt-out automatically to outbound blasts (locked with Josh 2026-09-24). Tag the message <strong>Marketing</strong> so Podium auto-excludes opted-out contacts, and confirm the auto-append on a test send.</div>
     <div class="callout error"><div class="title">Never send from the wrong sender name</div>Confirm the Podium From/sender is the correct brand for the offer (e.g. Air Conditioning or Plumbing), not a different business unit. A drain-clean SMS from "Renovations" breaks trust immediately.</div>
 
     <h3>Step 4  -  Schedule and track</h3>
