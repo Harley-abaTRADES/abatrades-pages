@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>aba Trades - SOP 002 | Membership Email Automation - Technical Specification</title>
+<style>
+:root {
+  --brand-primary: #1D3B6D;
+  --brand-primary-rgb: 29, 59, 109;
+  --brand-secondary: #2E528E;
+  --brand-slate: #7789A7;
+  --brand-dark-navy: #0B1D3B;
+  --brand-footer-navy: #172F57;
+  --brand-surface: #EBEDF2;
+  --brand-field: #F5F6F8;
+  --brand-border: #D3D4DA;
+  --brand-bg: #FFFFFF;
+  --brand-text: #1D3B6D;
+  --brand-success: #8FAE1B;
+  --brand-notice: #1E85BE;
+  --brand-error: #B81C23;
+  --font-heading: 'Futura PT', 'futura-pt', Helvetica, Arial, sans-serif;
+  --font-body: 'Futura PT', 'futura-pt', Helvetica, Arial, sans-serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--font-body); background: var(--brand-bg); color: var(--brand-text); line-height: 1.6; }
+.hero { background: var(--brand-primary); color: #fff; padding: 56px 24px 48px; }
+.hero .kicker { text-transform: uppercase; letter-spacing: 0.12em; font-size: 13px; font-weight: 700; color: rgba(255,255,255,0.75); }
+.hero h1 { font-family: var(--font-heading); font-weight: 700; font-size: 2.4rem; line-height: 1.2; margin: 10px 0 6px; }
+.hero p { opacity: 0.85; max-width: 860px; }
+.wrap { max-width: 960px; margin: 0 auto; padding: 0 20px; }
+.meta { display: flex; flex-wrap: wrap; gap: 18px 34px; padding: 22px 0; border-bottom: 1px solid var(--brand-border); }
+.meta .m { font-size: 13px; color: var(--brand-slate); }
+.meta .m strong { display: block; color: var(--brand-primary); font-size: 15px; }
+section { padding: 34px 0; border-bottom: 1px solid var(--brand-border); }
+section:last-of-type { border-bottom: none; }
+h2 { font-family: var(--font-heading); font-weight: 700; font-size: 1.5rem; margin-bottom: 14px; color: var(--brand-primary); }
+h3 { font-family: var(--font-heading); font-weight: 700; font-size: 1.15rem; margin: 20px 0 8px; }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0 10px 22px; }
+li { margin: 6px 0; }
+.step { background: var(--brand-field); border-left: 4px solid var(--brand-primary); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.step .num { font-weight: 700; color: var(--brand-primary); }
+code { background: var(--brand-surface); padding: 2px 6px; border-radius: 4px; font-size: 0.92em; color: var(--brand-dark-navy); }
+.step code { background: #eef0f5; }
+.callout { border-radius: 10px; padding: 16px 18px 16px 20px; margin: 16px 0; border-left: 5px solid; }
+.callout.success { background: #f4f8e8; border-color: var(--brand-success); }
+.callout.notice { background: #eaf4fb; border-color: var(--brand-notice); }
+.callout.error { background: #fbeeee; border-color: var(--brand-error); }
+.callout .title { font-weight: 700; margin-bottom: 4px; }
+table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 0.95em; }
+th { text-align: left; background: var(--brand-primary); color: #fff; padding: 10px 12px; font-weight: 700; }
+td { padding: 10px 12px; border-bottom: 1px solid var(--brand-border); }
+tr:nth-child(even) td { background: var(--brand-field); }
+.chip { display: inline-block; background: var(--brand-surface); border-radius: 100px; padding: 3px 12px; font-size: 12px; font-weight: 700; margin: 2px 4px 2px 0; }
+.footer { background: var(--brand-footer-navy); color: rgba(255,255,255,0.85); padding: 30px 20px; text-align: center; font-size: 14px; }
+.footer strong { color: #fff; }
+@media (max-width: 700px) { .hero h1 { font-size: 1.7rem; } .wrap { padding: 0 14px; } .hero { padding: 40px 16px 36px; } }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div style="text-align:left;margin-bottom:18px"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC0AAAAtCAYAAAA6QJDcAAAAhklEQVR42u3QsQ2AIBRAQfs/YQvb0jCiYHAAVhSHO9pID3/H8uMXifO5WJ3zN9ZfbfsGNUexbTUz2Wom80RSsDVM6qJ3/SHnPZGOAQDQarlj2nO67USq3fIeO+Q9G9HYJa1rtZOT37LSEdD1bTv6pfhfxk+dDSCtXF0rO65OWbfkHU8M+6CUCLcc2aRtAAAAAElFTkSuQmCC" alt="aba TRADES" style="width:150px;height:auto;background:#fff;border-radius:14px;padding:8px 14px;"></div>
+    <div class="kicker">aba Trades &nbsp;|&nbsp; Standard Operating Procedure</div>
+    <h1>SOP 002 - Membership Email Automation (Technical Specification)</h1>
+    <p>End-to-end technical specification and process map for the aba TRADES membership email automation: the self-hosted n8n journey engine, Brevo transactional sends, the ServiceTitan note-log write-back, the cohort logic, and the proven vs pending state. Written so an AI (or engineer) can reconstruct the stack and operate it without re-deriving it.</p>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="meta">
+    <div class="m"><strong>SOP</strong>002</div>
+    <div class="m"><strong>Owner</strong>Harley (AI ops) / Josh Hancock</div>
+    <div class="m"><strong>Applies to</strong>aba TRADES membership (all trades)</div>
+    <div class="m"><strong>Version</strong>1.0</div>
+    <div class="m"><strong>Last reviewed</strong>24 Sep 2026</div>
+    <div class="m"><strong>Status</strong>Draft - build in progress, not yet live</div>
+  </div>
+
+  <section>
+    <h2>1. Purpose</h2>
+    <p>This document is the technical specification for automating aba TRADES membership email communication. It describes the exact stack, the data flow, the credentials, the note-log write-back format, and the cohort logic, and it records clearly which parts are <strong>proven working</strong> versus <strong>pending live go</strong>. It exists so any future operator - human or AI - can read it and reconstruct, operate, or extend the system without rediscovering the hard-won details.</p>
+    <div class="callout notice"><div class="title">Status: build-in-progress</div>This is a living document. It captures the verified state as of 24 Sep 2026. Once the flow is live, revisit and correct anything that has drifted. The earlier SOP 001 covers SMS campaigns; this covers the membership email journey.</div>
+  </section>
+
+  <section>
+    <h2>2. Scope</h2>
+    <p>In scope:</p>
+    <ul>
+      <li>The membership evergreen email journey (new-member flow) and the member invoice-paid trigger flow.</li>
+      <li>The self-hosted n8n instance as the journey engine (API-authored, versioned JSON flows).</li>
+      <li>Brevo as the transactional email sender (per-member, template-based).</li>
+      <li>The ServiceTitan Customer Note write-back so the CSR team sees what was sent to each customer.</li>
+      <li>Treatment/control cohort assignment and the measurement baseline.</li>
+    </ul>
+    <p>Out of scope for this SOP (see future revisions):</p>
+    <ul>
+      <li>The commercial rationale and customer-lifetime-value analysis behind membership (covered in the CLV deck, not here).</li>
+      <li>Marketing-pro campaign management in ServiceTitan (covered separately; the API cannot build those).</li>
+      <li>SMS sending (future: same note-log format with a channel emoji; not yet built).</li>
+      <li>Direct-mail / traditional channel automation.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>3. Source of truth and architecture</h2>
+    <h3>3.1 Systems in the stack</h3>
+    <table>
+      <tr><th>System</th><th>Role</th><th>Key detail</th></tr>
+      <tr><td>n8n (self-hosted)</td><td>Journey / orchestration engine</td><td>API-authored JSON flows on the box at $0 software. Runs every flow.</td></tr>
+      <tr><td>Brevo (ESP)</td><td>Transactional email sender</td><td>Per-member sends via template ID. Source of truth for delivery/open/click.</td></tr>
+      <tr><td>ServiceTitan (CRM)</td><td>System of record + consent + note-log</td><td>Customer/contact records; the Customer Note is where sent-emails land for the CSR team.</td></tr>
+      <tr><td>Self-hosted crons</td><td>Deterministic sync</td><td>Cron 1 (members in), cron 2 (unsubscribes out) - logic-based, foolproof.</td></tr>
+    </table>
+
+    <h3>3.2 Core architecture decision (Josh-signed 23 Sep 2026)</h3>
+    <p>Use <strong>self-hosted n8n as the journey engine</strong> (API-authored, versioned, AI-editable JSON flows) with <strong>Brevo transactional sends</strong> (per-member, templateId - not marketing-campaign objects) and <strong>analytics pulled programmatically</strong> from Brevo statistics. Suppression on the transactional path is owned by us deterministically (cron 2 + unsubscribe tag in templates).</p>
+    <div class="callout notice"><div class="title">Why Brevo transactional, not marketing-campaign</div>Per-member evergreen timing is incompatible with marketing-campaign objects (a campaign is a batch blast; per-member timing would need a campaign per send). Transactional per-member sends are the fit. Marketing campaigns stay for genuine batch blasts.</div>
+
+    <h3>3.3 Why n8n and not the Brevo canvas</h3>
+    <ul>
+      <li>Brevo's canvas has no authoring API; n8n workflows are JSON we create/edit/pivot via API.</li>
+      <li>n8n Switch node does an N-way branch in one node; Brevo's canvas is 2-way-split limited.</li>
+      <li>Self-hosted = $0 software, reuses box you already pay for.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>4. Environment and access (how to reach each system)</h2>
+
+    <h3>4.1 n8n instance</h3>
+    <div class="step"><span class="num">1.</span> Install layout: <code>/opt/n8n</code> (npm, no Docker). Version <strong>1.122.4</strong> (DO NOT run 1.120.0 - known startup crash #22440).</div>
+    <div class="step"><span class="num">2.</span> Runs under <strong>supervisord</strong>: <code>program:n8n</code>, config <code>/etc/supervisor/conf.d/n8n.conf</code>, log <code>/var/log/n8n.log</code>, port <code>5678</code>, auto-start/restart.</div>
+    <div class="step"><span class="num">3.</span> Health check: <code>curl :5678/healthz</code> returns 200. Status: <code>supervisorctl status n8n</code>.</div>
+    <div class="step"><span class="num">4.</span> Public API base: <code>http://localhost:5678</code>. Auth via header <code>X-N8N-API-KEY</code>.</div>
+    <div class="step"><span class="num">5.</span> Owner user: <code>harley@abatrades.com.au</code> (headless owner + API key provisioned via <code>/owner/setup</code> and <code>/api-keys/</code>).</div>
+
+    <h3>4.2 Credentials (all read by reference, never printed)</h3>
+    <table>
+      <tr><th>File (chmod 600)</th><th>System</th><th>Holds</th></tr>
+      <tr><td><code>/root/.hermes/secrets/n8n.env</code></td><td>n8n</td><td><code>N8N_API_KEY</code>, owner email/password, base URL.</td></tr>
+      <tr><td><code>/root/.hermes/secrets/brevo.env</code></td><td>Brevo</td><td><code>BREVO_API_KEY</code> (api-key header).</td></tr>
+      <tr><td><code>/root/.hermes/secrets/servicetitan.env</code></td><td>ServiceTitan (read)</td><td>Broad read key: 122 read-only scopes (crm, jobs, accounting, etc). Data pulls only.</td></tr>
+      <tr><td><code>/root/.hermes/secrets/servicetitan-write.env</code></td><td>ServiceTitan (write)</td><td>Minimal write key: <code>tn.crm.customers</code> + <code>tn.crm.contacts</code> (r+w only). Used for ALL writes.</td></tr>
+    </table>
+    <div class="callout error"><div class="title">Two ServiceTitan keys - pick the right one</div>The read key (<code>servicetitan.env</code>) has zero write scopes. The write key (<code>servicetitan-write.env</code>) is a separate, minimal, permission-restrictive credential for writes only. Never widen the read key to do a write. Both are live-verified 24 Sep 2026. Decode the token's <code>scope</code> to confirm before a call change.</div>
+
+    <h3>4.3 ServiceTitan API notes</h3>
+    <ul>
+      <li>Tenant: <code>3306271893</code>. Base: <code>https://api.servicetitan.io/{module}/v2/tenant/{tenant}/...</code> (reporting uses <code>reporting/v2/tenant/{tenant}/.../</code>).</li>
+      <li>OAuth2 client-credentials token (15-min expiry, no refresh). Every call needs BOTH <code>Authorization: Bearer &lt;token&gt;</code> AND <code>ST-App-Key</code> header.</li>
+      <li>Rate limit ~60 req/s; reporting module far stricter (~1/min per report). Send a browser-like User-Agent.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>5. The flows (process map)</h2>
+
+    <h3>5.1 Flow A - member_joined evergreen journey (the main flow)</h3>
+    <p>Trigger: a member joins. n8n webhook receives the event, branches by service type, and produces the day-0/7/21/45/90 sequence via Brevo transactional sends, with a ServiceTitan note-log on each send.</p>
+    <div class="step"><span class="num">1.</span> <strong>Trigger (webhook):</strong> <code>member_journey</code> receives <code>{ customerId, service_type, member_joined_date, first_name }</code>.</div>
+    <div class="step"><span class="num">2.</span> <strong>Switch:</strong> <code>n8n-nodes-base.switch</code> (version 1, positional outputs) branches on <code>service_type</code> to Aircon / Plumbing / Electrical / Roofing. Fallback output catches unknowns.</div>
+    <div class="step"><span class="num">3.</span> <strong>Day 0 send:</strong> Brevo transactional <code>POST /smtp/email</code> with the E1 Welcome template (id 1) to all members (no cohort filter).</div>
+    <div class="step"><span class="num">4.</span> <strong>Days 7/21/45:</strong> cross-trade value emails (templates 2-13) - only to the <code>treatment</code> cohort, branch-specific.</div>
+    <div class="step"><span class="num">5.</span> <strong>Day 90:</strong> hard close on the free annual inspection (templates 14/15).</div>
+    <div class="step"><span class="num">6.</span> <strong>After every send:</strong> write the note to ServiceTitan (see section 6).</div>
+    <div class="callout notice"><div class="title">Sequence timing</div>The flow matches the real re-engagement rhythm (median ~200 days between fresh jobs). A 14-day flow is a trap - don't trim to it. The 90-day span is deliberate so the last email lands near the measurement read.</div>
+
+    <h3>5.2 Flow B - member_invoice_paid trigger</h3>
+    <div class="step"><span class="num">1.</span> <strong>Trigger (webhook):</strong> <code>member_paid</code> receives <code>{ customerId, service_type, paid_date }</code>.</div>
+    <div class="step"><span class="num">2.</span> <strong>Switch:</strong> branch on <code>service_type</code> to the relevant E2 cross-trade send.</div>
+    <div class="step"><span class="num">3.</span> <strong>Send + note:</strong> Brevo send then ServiceTitan note-log, same as Flow A.</div>
+
+    <h3>5.3 Where the automation lives today (current n8n workflows)</h3>
+    <table>
+      <tr><th>Workflow ID</th><th>Name</th><th>Status</th></tr>
+      <tr><td><code>7Fmtif2WRWjztUHg</code></td><td>TEST send to Josh via Brevo (webhook fire)</td><td>Proven end-to-end (delivered 24 Sep); deactivated</td></tr>
+      <tr><td><code>MzODpRAUgj3GmTyh</code></td><td>ST auth proof (n8n -&gt; ST note-write)</td><td>Proven (note landed 24 Sep); deactivated</td></tr>
+      <tr><td><code>V2g7hDNtzabRNWsS</code></td><td>member_invoice_paid -&gt; branch -&gt; Brevo send (REFERENCE)</td><td>Switch routing proven against stubs; needs final send+note wiring</td></tr>
+      <tr><td><code>hTdGmiHeYbGHkwdt</code></td><td>Minimal webhook-&gt;httpbin probe</td><td>Proven chain execution; deactivated</td></tr>
+      <tr><td>(to build)</td><td>Full member_joined =&gt; journey =&gt; note-log flow</td><td>Next build step; inactive until approved</td></tr>
+    </table>
+    <div class="callout success"><div class="title">Build state (24 Sep 2026)</div>Every hard sub-step is individually proven: (a) n8n -&gt; Brevo send delivers, (b) n8n 4-way switch routing works, (c) n8n -&gt; ServiceTitan note-write auth works and lands on the record. Assembling these into the full journey flow is mechanical wiring of proven parts.</div>
+  </section>
+
+  <section>
+    <h2>6. ServiceTitan note-log write-back (CSR visibility)</h2>
+    <p><strong>Decision (Josh 24 Sep 2026):</strong> every email (and eventually SMS) sent to a member is logged as a <strong>ServiceTitan Customer Note</strong> on the customer record, so the CSR team can see what was sent, to whom, and when. ST has no per-contact email-history write via API, so the note lives at the customer level.</p>
+
+    <h3>6.1 Endpoint</h3>
+    <div class="step"><span class="num">1.</span> Create a note: <code>POST /crm/v2/tenant/3306271893/customers/{customerId}/notes</code> with body <code>{ "text": "..." }</code>. Uses the <strong>write key</strong>.</div>
+    <div class="step"><span class="num">2.</span> Read back / verify: <code>GET /crm/v2/tenant/3306271893/customers/{customerId}/notes</code>.</div>
+
+    <h3>6.2 Note format (locked 24 Sep 2026, rev 2)</h3>
+    <p>ST auto-appends the Created date/timestamp under each note, so the note text does NOT include a timestamp (avoids double handling). Format:</p>
+    <div class="step">
+      <code>📧 E1 · Welcome · template #1 · harley@abatrades.com.au</code><br>
+      <code>Subject: You're in! 🎉 Welcome to aba TRADES membership</code><br>
+      <code>(blank line)</code><br>
+      <code>[full plain-text copy, HTML stripped]</code><br>
+      <code>(blank line)</code><br>
+      <code>— Harley · aba TRADES Support Team</code><br>
+      <code>45 Henry St, Stepney SA 5069 · www.abatrades.com.au</code>
+    </div>
+    <ul>
+      <li>First line: channel emoji (📧 email / 📱 SMS later) · journey step + name · <code>template #N</code> · from address.</li>
+      <li>Then the Subject line verbatim, then the full word-for-word plain-text body.</li>
+      <li>No recipient (it is on the customer record). No timestamp (ST adds it).</li>
+      <li>SMS later reuses the same shape with 📱.</li>
+    </ul>
+
+    <h3>6.3 Verified facts behind the format</h3>
+    <table>
+      <tr><th>Fact</th><th>Verified</th></tr>
+      <tr><td>Notes are plain-text only; HTML does not render</td><td>Yes - bold/link tags show literally (tested 24 Sep)</td></tr>
+      <tr><td>Emojis render (not boxes)</td><td>Yes - tested 24 Sep</td></tr>
+      <tr><td>Full email copy fits in a note</td><td>Yes - longest template (E1) = 1,214 plain-text chars; a full 1,289-char note read back intact</td></tr>
+      <tr><td>No public Brevo template URL exists</td><td>Yes - the app.brevo.com preview link is login-gated, not public</td></tr>
+    </table>
+  </section>
+
+  <section>
+    <h2>7. Cohort logic (treatment vs control)</h2>
+    <h3>7.1 How assignment works</h3>
+    <div class="step"><span class="num">1.</span> At <code>member_joined</code> time, the flow resolves each member deterministically: a hash of the ServiceTitan customer ID maps to <code>COHORT</code> = treatment or control.</div>
+    <div class="step"><span class="num">2.</span> The cohort is written into <strong>Brevo as a contact attribute</strong> (<code>COHORT</code>). Brevo is the source of truth for which arm a member is in.</div>
+    <div class="step"><span class="num">3.</span> E1 (welcome) goes to EVERY member, no cohort filter. The gate applies only from E2 onward (nurture sends filter <code>COHORT = treatment</code>; control receives nothing during the measurement window).</div>
+
+    <h3>7.2 Measurement</h3>
+    <ul>
+      <li>Baseline: 1,223 sendable members (email + consent + not doNotMail).</li>
+      <li>Split: <strong>75/25</strong> (Josh-confirmed 24 Sep 2026) = ~917 treatment / ~306 control.</li>
+      <li>All cohort attributes are assigned deterministically (logic-based, foolproof), never AI-judged.</li>
+      <li>Control must receive nothing during the measurement window - do not contaminate the read.</li>
+    </ul>
+    <div class="callout notice"><div class="title">Not yet live</div>The cohort-writing step (cron 1 lane A) is currently PAUSED, so no <code>COHORT</code> values exist in Brevo yet. It is armed only when the journey goes live.</div>
+  </section>
+
+  <section>
+    <h2>8. Verification gates and the "never claim success without evidence" rule</h2>
+    <ul>
+      <li><strong>A webhook 200 is an acknowledgement, not a delivery.</strong> "Workflow was started" only means the trigger ran.</li>
+      <li><strong>Confirm what actually ran from the SQLite DB (read-only):</strong> <code>execution_entity</code> (status/finished) and <code>execution_data</code> (runData = which nodes ran, lastNodeExecuted). If runData contains ONLY the trigger, the chain did not advance - investigate, do not assume a delivery.</li>
+      <li><strong>Confirm Brevo delivery via <code>GET /smtp/statistics/events?email=&lt;recipient&gt;</code></strong> returning an <code>event: delivered</code>. The messageId from a POST 200 is acceptance, not delivery.</li>
+      <li><strong>Confirm ST note-write via read-back</strong> of the customer's notes, and on-screen by the CSR.</li>
+    </ul>
+    <div class="callout error"><div class="title">Human-in-the-loop gate for writes from chat</div>Any DELETE / PATCH / PUT issued from a chat session (troubleshooting, or any request to do so) must be flagged and paused for explicit Tier-4 approval first, even for a single record - state the object, id, scope and blast radius. Scripted flows already approved to run autonomously (the journey flow's sends + note-write, the consent write-back) do NOT need a per-action go.</div>
+  </section>
+
+  <section>
+    <h2>9. Learnings and pitfalls (append as discovered)</h2>
+    <ul>
+      <li><strong>(24 Sep 2026) n8n routes connections by node <code>name</code>, not <code>id</code>.</strong> An authoring helper writing <code>id</code>s into the connections map leaves dangling edges: the trigger fires, nothing downstream runs, recorded as <code>success</code>. Fix: key both the connection-map source and every edge target by the node's display <code>name</code>.</li>
+      <li><strong>(24 Sep 2026) httpRequest custom headers must go via <code>sendHeaders</code> + <code>headerParameters</code>,</strong> NOT <code>options.headers</code> - HttpRequest V3 drops <code>options.headers</code> for auth headers (silent 401).</li>
+      <li><strong>(24 Sep 2026) ST rejects a <code>scope</code> param on its token endpoint</strong> (EAUTH); leave the OAuth2 credential <code>scope</code> empty - ST derives scopes from the app grant.</li>
+      <li><strong>(24 Sep 2026) A <code>n8n-nodes-base.httpRequest</code> node ignores an attached credential unless <code>authentication: genericCredentialType</code> + the auth type param are set.</strong> Without it, no auth header is sent (Brevo 401 "authentication not found in headers").</li>
+      <li><strong>(23-24 Sep 2026) Pin n8n 1.122.4.</strong> 1.120.0 crashes at startup (#22440). npm install is slow on this single-core box - run it backgrounded with a notify.</li>
+      <li><strong>(24 Sep 2026) Switch node: match the parameter shape to its <code>typeVersion</code>.</strong> V1 reads <code>mode</code>/<code>dataType</code>/<code>value1</code>/<code>rules[].output</code>/<code>fallbackOutput</code>; V2/V3 differ. V1 positional outputs map 1:1 to <code>connections[].main[i]</code>.</li>
+      <li><strong>(24 Sep 2026) Webhook data nests under <code>$json.body</code>.</strong> A POST/JSON webhook exposes payload at <code>$json.body.&lt;field&gt;</code>, not <code>$json.&lt;field&gt;</code>.</li>
+      <li><strong>(24 Sep 2026) ST note-write can return 200 with a note id yet the note not appear immediately</strong> in read-back - eventual consistency; re-check before concluding.</li>
+      <li><strong>(2026) Long installs / feed regens must run backgrounded</strong> (exit-124 on foreground timeout), and a partial global install gets <code>npm uninstall -g</code> before reinstall.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>10. Reference</h2>
+    <ul>
+      <li>Vault skill: <code>client-saas-api-integration</code> - references <code>n8n-brevo.md</code>, <code>n8n-selfhost-hardening.md</code>, <code>brevo-api.md</code>, <code>servicetitan.md</code>.</li>
+      <li>Vault integration index: <code>integrations/servicetitan.md</code>.</li>
+      <li>Handover: <code>cache/handover-2026-09-23.md</code> (rolling state).</li>
+      <li>Activity log: <code>Agent/Activity.md</code>.</li>
+      <li>SOP 001 (SMS campaigns): <code>/sops/sop-001-sms-campaigns.html</code>.</li>
+      <li>Related SOP: membership audience (<code>membership-audience</code> skill).</li>
+    </ul>
+  </section>
+
+</div>
+
+<footer class="footer">
+  <strong>aba TRADES</strong> &nbsp;&middot;&nbsp; Standard Operating Procedure 002 &nbsp;&middot;&nbsp; v1.0
+  <br><span style="opacity:0.7">Harley is customer support. Contributions and corrections: <a href="mailto:harley@abatrades.com.au" style="color:#fff">harley@abatrades.com.au</a>
+</footer>
+
+</body>
+</html>
