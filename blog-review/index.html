@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog Performance Review | aba TRADES</title>
+<link rel="icon" href="../assets/brand/favicon.ico" type="image/x-icon">
+<style>
+:root{
+  --brand-primary:#1D3B6D;--brand-secondary:#2E528E;--brand-slate:#7789A7;
+  --brand-dark-navy:#0B1D3B;--brand-surface:#EBEDF2;--brand-field:#F5F6F8;--brand-border:#D3D4DA;
+  --brand-bg:#FFFFFF;--brand-text:#1D3B6D;
+  --acc-plumbing:#94BE8C;--acc-aircon:#58A4AE;--acc-electrical:#DC7E49;--acc-roofing:#A0AFD9;--acc-reno:#E57D7D;
+  --bad:0,0,1;--good-gap:#2E528E;
+  --font-body:'Futura PT','futura-pt',Helvetica,Arial,sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);background:var(--brand-bg);color:var(--brand-text);line-height:1.55;overflow-x:hidden}
+section{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:80px 20px;position:relative}
+.wrap{max-width:900px;width:100%;margin:0 auto;flex:0 0 auto}
+.wrap.wide{max-width:1120px}
+section.dark{background:var(--brand-primary);color:#fff}
+section.light{background:var(--brand-bg)}
+section.alt{background:var(--brand-surface)}
+h1{font-size:2.9rem;font-weight:700;line-height:1.12;margin-bottom:18px}
+h2{font-size:2.1rem;font-weight:700;line-height:1.2;margin-bottom:22px}
+h3{font-size:1.02rem;font-weight:700;margin-bottom:6px;color:var(--brand-primary)}
+.dark h1,.dark h2,.dark h3{color:#fff}
+p{font-size:1.05rem;margin-bottom:16px;opacity:.92}
+.lede{font-size:1.2rem;opacity:.9}
+small,.fine{font-size:.8rem;opacity:.65;line-height:1.45}
+a{color:var(--brand-secondary)}.dark a{color:#fff}
+.rule{height:3px;width:64px;background:var(--brand-primary);border-radius:2px;margin:0 0 26px}
+.dark .rule{background:#fff}
+.pull{font-size:1.38rem;font-weight:700;line-height:1.35;color:var(--brand-primary)}
+.dark .pull{color:#fff}
+.vs{font-size:.85rem;opacity:.6;margin-bottom:8px;text-transform:uppercase;letter-spacing:1.5px}
+.card{background:var(--brand-field);border-radius:12px;padding:20px 22px}
+.dark .card{background:rgba(255,255,255,.10)}
+#progress{position:fixed;top:0;left:0;height:4px;width:0%;background:var(--brand-secondary);z-index:60;transition:width .1s linear}
+.reveal{opacity:0;transform:translateY(34px);transition:opacity .8s cubic-bezier(.22,.61,.36,1),transform .8s cubic-bezier(.22,.61,.36,1)}
+.reveal.visible{opacity:1;transform:none}
+.reveal.d1{transition-delay:.12s}.reveal.d2{transition-delay:.24s}.reveal.d3{transition-delay:.36s}.reveal.d4{transition-delay:.48s}
+.stat-row{display:flex;flex-wrap:wrap;gap:26px;margin:8px 0 22px}
+.stat-block{flex:1 1 220px;min-width:180px}
+.stat{font-size:3.2rem;font-weight:700;line-height:1.05;margin-bottom:4px;color:var(--brand-text)}
+.dark .stat{color:#fff}
+.stat-label{font-size:.85rem;opacity:.7;text-transform:uppercase;letter-spacing:1.2px}
+.stat-block p{font-size:.96rem}
+.big-num{font-size:4.6rem;font-weight:700;line-height:1;color:#fff;text-align:center}
+.big-label{font-size:.9rem;opacity:.75;text-transform:uppercase;letter-spacing:1.4px;text-align:center;margin-top:10px}
+.badge{display:inline-block;font-weight:700;font-size:.78rem;letter-spacing:.6px;text-transform:uppercase;padding:5px 14px;border-radius:100px;margin-bottom:20px}
+.bad-good{background:#E4F0E1;color:#2F6B2F}.bad-warn{background:#FBE6E6;color:#8E2A2A}.bad-navy{background:var(--brand-primary);color:#fff}
+.band{display:inline-block;font-weight:700;font-size:.85rem;padding:7px 16px;border-radius:100px;margin-right:10px}
+.band-g{background:#E4F0E1;color:#2F6B2F}.band-r{background:#FBE6E6;color:#8E2A2A}.band-a{background:var(--brand-surface);color:var(--brand-primary)}
+/* tables */
+.tbl-wrap{overflow-x:auto;margin:14px 0}
+.tbl{width:100%;border-collapse:collapse;font-size:.9rem;min-width:520px}
+.tbl th{text-align:left;padding:10px 14px;background:var(--brand-primary);color:#fff;font-size:.8rem;letter-spacing:.6px;text-transform:uppercase}
+.tbl th:first-child{border-radius:9px 0 0 0}.tbl th:last-child{border-radius:0 9px 0 0}
+.tbl td{padding:10px 14px;border-bottom:1px solid var(--brand-border);vertical-align:top}
+.tbl tr:nth-child(even) td{background:var(--brand-field)}
+.tbl td b{color:var(--brand-primary)}
+.tbl .pos{font-weight:700;color:var(--brand-primary)}
+.mono{font-variant-numeric:tabular-nums;font-weight:700}
+@media(min-width:640px){.tbl{min-width:0}}
+/* brand grid */
+.bu-grid{display:grid;grid-template-columns:1fr;gap:12px;margin-top:20px}
+.bu{background:#fff;border:1px solid var(--brand-border);border-radius:14px;overflow:hidden}
+.bu-head{font-weight:700;color:#fff;padding:8px 14px;font-size:.95rem;letter-spacing:.4px}
+.bu-row{display:flex;align-items:baseline;gap:12px;padding:10px 14px;border-top:1px solid var(--brand-border);font-size:.88rem;flex-wrap:wrap}
+.bu-m{font-weight:700}
+@media(min-width:640px){.bu-grid{grid-template-columns:1fr 1fr}}
+/* plan split */
+.split{display:flex;gap:20px;align-items:stretch;flex-wrap:wrap;margin:22px 0}
+.split-col{flex:1 1 320px}
+.split-box{background:#fff;border:1px solid var(--brand-border);border-radius:14px;padding:20px 20px;height:100%}
+.split-box h4{color:var(--brand-primary);font-size:1.06rem;margin-bottom:14px;font-weight:700}
+.big-fig{font-size:2.6rem;font-weight:700;color:var(--brand-primary);line-height:1}
+.split-box .fig-label{font-size:.82rem;opacity:.75;text-transform:uppercase;letter-spacing:1px}
+.good-col{border-top:3px solid #3D7A44}.warn-col{border-top:3px solid #B81C23}
+/* chapter / dots */
+.deck-nav{position:fixed;right:18px;top:50%;transform:translateY(-50%);z-index:50;display:flex;flex-direction:column;gap:9px}
+.deck-nav a{width:10px;height:10px;border-radius:50%;background:rgba(29,59,109,.25);display:block;transition:background .3s,transform .3s}
+.deck-nav a.active{background:var(--brand-primary);transform:scale(1.35)}
+.footer{background:var(--brand-dark-navy);color:rgba(255,255,255,.82)}
+.footer .wrap{max-width:960px}
+.footer h2{color:#fff}
+.footer p,li{color:rgba(255,255,255,.85);font-size:.9rem}
+.footer ul{padding-left:18px;margin:14px 0}
+.footer li{margin:4px 0}
+.foot-meta{margin-top:26px;padding-top:16px;border-top:1px solid rgba(255,255,255,.18);font-size:.8rem;color:rgba(255,255,255,.6)}
+/* rec tiles */
+.rec-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;margin-top:22px}
+.rec-tile{background:#fff;border:1px solid var(--brand-border);border-radius:14px;padding:20px 18px;box-shadow:0 8px 24px rgba(11,29,59,.07)}
+.rec-num{display:inline-block;width:34px;height:34px;line-height:34px;text-align:center;border-radius:50%;background:var(--brand-primary);color:#fff;font-weight:700;margin-bottom:10px}
+.rec-tile h4{font-size:1.02rem;font-weight:700;color:var(--brand-primary);margin-bottom:8px}
+.rec-tile p{font-size:.9rem;opacity:.85;margin-bottom:0;line-height:1.55}
+/* gap meter */
+.meter-wrap{display:flex;flex-direction:column;gap:18px;margin:20px 0}
+.meter{position:relative;height:46px;border-radius:23px;background:linear-gradient(var(--brand-primary),var(--brand-primary));overflow:hidden}
+.meter-fill{position:absolute;left:0;top:0;height:100%;border-radius:23px;background:var(--brand-secondary)}
+.meter-label{display:flex;align-items:center;gap:10px;font-size:.88rem}
+.meter-dot{width:14px;height:14px;border-radius:50%;background:var(--brand-secondary);flex:0 0 auto}
+@media(max-width:700px){
+  h1{font-size:2rem}h2{font-size:1.6rem}.stat{font-size:2.3rem}.big-num{font-size:3.4rem}
+  p,li{font-size:.94rem}.deck-nav{display:none}.pull{font-size:1.18rem}
+  section{padding:48px 16px}
+}
+@media(prefers-reduced-motion:reduce){
+  .reveal{transition:none!important;opacity:1!important;transform:none!important}
+  .count{text-align:inherit}
+}
+</style>
+</head>
+<body>
+
+<div id="progress"></div>
+<nav class="deck-nav" id="decknav"></nav>
+
+<!-- 1. TITLE -->
+<section class="dark">
+  <div class="wrap">
+    <p class="vs">aba TRADES · meeting prep · 29 Sep 2026</p>
+    <h1 class="reveal">Blog performance review</h1>
+    <div class="rule"></div>
+    <p class="lede reveal d1">What our blog content is actually doing across all six brands, measured in search clicks, reader engagement, and leads. The numbers behind whether the agency is doing a good job.</p>
+    <p class="reveal d2 fine">Window: 1 Jul 2025 to 29 Sep 2026. Sources: Google Search Console, Google Analytics 4. Method in the footer.</p>
+  </div>
+</section>
+
+<!-- 2. THE HEADLINE -->
+<section class="light">
+  <div class="wrap">
+    <span class="badge bad-good reveal">the headline</span>
+    <h2 class="reveal">It works on two brands. It is dead on the other four.</h2>
+    <p class="reveal d1">The blog machine is genuinely pulling traffic on Air Con and Plumbing, where the articles rank on page one. On Electrical, Roofing, Renovations and the group site, the blog is effectively invisible to search.</p>
+    <div class="stattwo">
+      <div class="stat-row">
+        <div class="stat-block reveal d1">
+          <div class="stat"><span class="count" data-to="48">0</span>%</div>
+          <div class="stat-label">Air Con organic clicks from blog</div>
+          <p>3,091 organic clicks to 40 article pages, barely 15 months</p>
+        </div>
+        <div class="stat-block reveal d2">
+          <div class="stat"><span class="count" data-to="1">0</span>%</div>
+          <div class="stat-label">blog clicks elsewhere, combined</div>
+          <p>Electrical, Roofing, Renovations, group: under 1% each</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. BRAND TABLE -->
+<section class="alt">
+  <div class="wrap wide">
+    <span class="badge bad-navy reveal">the map</span>
+    <h2 class="reveal">Blog contribution by brand</h2>
+    <div class="bu-grid">
+      <div class="bu reveal">
+        <div class="bu-head" style="background:#58A4AE">Air Conditioning</div>
+        <div class="bu-row"><span>Article pages</span><span class="bu-m">40</span></div>
+        <div class="bu-row"><span>Organic clicks</span><span class="bu-m">3,091</span></div>
+        <div class="bu-row"><span>Share of brand organic</span><span class="bu-m" style="color:#2F6B2F">48%</span></div>
+        <div class="bu-row"><span>Avg. search position</span><span class="bu-m">12.8</span></div>
+      </div>
+      <div class="bu reveal d1">
+        <div class="bu-head" style="background:#94BE8C">Plumbing &amp; Gas</div>
+        <div class="bu-row"><span>Article pages</span><span class="bu-m">85</span></div>
+        <div class="bu-row"><span>Organic clicks</span><span class="bu-m">1,031</span></div>
+        <div class="bu-row"><span>Share of brand organic</span><span class="bu-m" style="color:#2F6B2F">12%</span></div>
+        <div class="bu-row"><span>Avg. search position</span><span class="bu-m">33.3</span></div>
+      </div>
+      <div class="bu reveal">
+        <div class="bu-head" style="background:#E57D7D">Renovations</div>
+        <div class="bu-row"><span>Article pages</span><span class="bu-m">14</span></div>
+        <div class="bu-row"><span>Organic clicks</span><span class="bu-m">41</span></div>
+        <div class="bu-row"><span>Share of brand organic</span><span class="bu-m" style="color:#B81C23">&lt;1%</span></div>
+      </div>
+      <div class="bu reveal d1">
+        <div class="bu-head" style="background:#A0AFD9">Roofing</div>
+        <div class="bu-row"><span>Article pages</span><span class="bu-m">8</span></div>
+        <div class="bu-row"><span>Organic clicks</span><span class="bu-m">10</span></div>
+        <div class="bu-row"><span>Share of brand organic</span><span class="bu-m" style="color:#B81C23">&lt;1%</span></div>
+      </div>
+      <div class="bu reveal d2">
+        <div class="bu-head" style="background:#DC7E49">Electrical + Solar</div>
+        <div class="bu-row"><span>Article pages</span><span class="bu-m">2</span></div>
+        <div class="bu-row"><span>Organic clicks</span><span class="bu-m">1</span></div>
+        <div class="bu-row"><span>Share of brand organic</span><span class="bu-m" style="color:#B81C23">&lt;1%</span></div>
+      </div>
+      <div class="bu reveal d2">
+        <div class="bu-head" style="background:#1D3B6D">Trades (group)</div>
+        <div class="bu-row"><span>Article pages</span><span class="bu-m">5</span></div>
+        <div class="bu-row"><span>Organic clicks</span><span class="bu-m">3</span></div>
+        <div class="bu-row"><span>Share of brand organic</span><span class="bu-m" style="color:#B81C23">&lt;1%</span></div>
+      </div>
+    </div>
+    <p class="fine reveal d3">Blog contribution = organic clicks to article pages as a share of each brand's total organic clicks, same window.</p>
+  </div>
+</section>
+
+<!-- 4. WHAT WORKS -->
+<section class="light">
+  <div class="wrap">
+    <span class="badge bad-good reveal">what works</span>
+    <h2 class="reveal">Air Con: where the blog earns its keep</h2>
+    <p class="reveal d1">Troubleshooting and DIY how-to articles rank on page one and pull real search demand. These four are the standouts.</p>
+    <div class="tbl-wrap reveal d2"><table class="tbl">
+      <tr><th>Article</th><th>Clicks</th><th>Impressions</th><th>Position</th></tr>
+      <tr><td>How to Replace Air Vent Covers Without Damaging Your Walls</td><td class="mono">1,054</td><td class="mono">94,258</td><td class="pos">7.0</td></tr>
+      <tr><td>Split AC Not Cooling but Fan Is Running</td><td class="mono">699</td><td class="mono">87,054</td><td class="pos">10.4</td></tr>
+      <tr><td>Ducted vs Split System Running Costs</td><td class="mono">385</td><td class="mono">94,409</td><td class="pos">7.6</td></tr>
+      <tr><td>Why Does My Aircon Smell? Causes &amp; Fixes</td><td class="mono">179</td><td class="mono">18,998</td><td class="pos">6.8</td></tr>
+    </table></div>
+  </div>
+</section>
+
+<!-- 5. PLUMBING -->
+<section class="alt">
+  <div class="wrap">
+    <span class="badge bad-good reveal">what works</span>
+    <h2 class="reveal">Plumbing: the qualifying formula lands</h2>
+    <p class="reveal d1">The same pattern repeats, bigger on decision-style queries. Error-code guides and cost checks rank on the first page.</p>
+    <div class="tbl-wrap reveal d2"><table class="tbl">
+      <tr><th>Article</th><th>Clicks</th><th>Impressions</th><th>Position</th></tr>
+      <tr><td>Unlocking Rheem Hot Water Error Codes</td><td class="mono">240</td><td class="mono">32,097</td><td class="pos">7.8</td></tr>
+      <tr><td>How Much to Fix a Leaking Pipe in the Wall</td><td class="mono">113</td><td class="mono">23,629</td><td class="pos">21.5</td></tr>
+      <tr><td>Rinnai Error Codes Guide II</td><td class="mono">103</td><td class="mono">20,425</td><td class="pos">10.9</td></tr>
+      <tr><td>How Much Adelaide Plumbers Charge per Hour</td><td class="mono">95</td><td class="mono">42,092</td><td class="pos">48.7</td></tr>
+    </table></div>
+    <p class="fine reveal d3">Plumbing articles average 66 seconds read with 94% engagement, meaning people who land stay and read.</p>
+  </div>
+</section>
+
+<!-- 6. INSIDE THE PLAN -->
+<section class="light">
+  <div class="wrap">
+    <span class="badge bad-warn reveal">the gap</span>
+    <h2 class="reveal">The plan and reality pull in different directions</h2>
+    <p class="reveal d1">The flagship "click-bait" titles in the FY25-26 plan mostly do not match what people actually search. Of the plan titles we confirmed live, over half have earned zero organic clicks in the window.</p>
+    <div class="split">
+      <div class="split-col">
+        <div class="split-box good-col reveal d1">
+          <h4>What actually ranks</h4>
+          <div class="big-fig">How-to + cost queries</div>
+          <p style="margin-top:6px">"error codes", "how much does it cost", "how to fix", "best temperature". Users search problems, not seasons.</p>
+        </div>
+      </div>
+      <div class="split-col">
+        <div class="split-box warn-col reveal d2">
+          <h4>What the plan preferred</h4>
+          <div class="big-fig">Seasonal click-bait</div>
+          <p style="margin-top:6px">"Toilet Replacement vs Repair", "Spring Gas Safety Checklist", "The Summer Decision That Affects Your Water Bills". Good titles, low search demand.</p>
+        </div>
+      </div>
+    </div>
+    <div class="stat-row">
+      <div class="stat-block reveal d1">
+        <div class="stat"><span class="count" data-to="22">0</span></div>
+        <div class="stat-label">plan titles live</div>
+      </div>
+      <div class="stat-block reveal d2">
+        <div class="stat"><span class="count" data-to="12">0</span></div>
+        <div class="stat-label">with zero clicks</div>
+      </div>
+      <div class="stat-block reveal d3">
+        <div class="stat">36</div>
+        <div class="stat-label">clicks, total, across all 22</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 7. LEADS -->
+<section class="dark">
+  <div class="wrap">
+    <span class="badge bad-warn reveal">the sharp finding</span>
+    <h2 class="reveal">Traffic without the lead capture</h2>
+    <p class="lede reveal d1">The blogs dominate search clicks but capture almost none of the leads directly. The conversion happens on service pages, not article pages.</p>
+    <div class="stat-row">
+      <div class="stat-block reveal d1">
+        <div class="stat">0.9%</div>
+        <div class="stat-label">Air Con leads landing on blog</div>
+        <p>77 of 8,937 lead events</p>
+      </div>
+      <div class="stat-block reveal d2">
+        <div class="stat">0.7%</div>
+        <div class="stat-label">Plumbing leads landing on blog</div>
+        <p>45 of 6,697 lead events</p>
+      </div>
+    </div>
+    <p class="reveal d3">Every brand has real lead events tracking (form, click-to-call, book-now, chat). So this is measurable, and it is a gap, not a tracking blank.</p>
+  </div>
+</section>
+
+<!-- 8. WHERE LEADS COME FROM -->
+<section class="light">
+  <div class="wrap">
+    <span class="badge bad-navy reveal">channel check</span>
+    <h2 class="reveal">Where the leads actually land from</h2>
+    <p class="reveal d1">Leads are driven chiefly by paid search and the service pages. Organic search, the channel the blog feeds, contributes a minority on the two big brands.</p>
+    <div class="tbl-wrap reveal d2"><table class="tbl">
+      <tr><th>Brand</th><th>Total leads</th><th>Organic</th><th>Paid</th></tr>
+      <tr><td><b>Air Conditioning</b></td><td class="mono">8,937</td><td class="mono">966 · 11%</td><td class="mono">3,664 · 41%</td></tr>
+      <tr><td><b>Plumbing</b></td><td class="mono">6,697</td><td class="mono">1,315 · 20%</td><td class="mono">2,676 · 40%</td></tr>
+      <tr><td><b>Electrical</b></td><td class="mono">288</td><td class="mono">71 · 25%</td><td class="mono">89 · 31%</td></tr>
+      <tr><td><b>Roofing</b></td><td class="mono">1,568</td><td class="mono">368 · 23%</td><td class="mono">174 · 11%</td></tr>
+      <tr><td><b>Renovations</b></td><td class="mono">189</td><td class="mono">8 · 4%</td><td class="mono">118 · 62%</td></tr>
+    </table></div>
+    <p class="fine reveal d3">Channel = source of the converting session. "Cross-network" (Google Ads auto) is excluded from both columns for clarity.</p>
+  </div>
+</section>
+
+<!-- 9. STRAIGHT VERDICT -->
+<section class="alt">
+  <div class="wrap">
+    <span class="badge bad-good reveal">verdict</span>
+    <h2 class="reveal">Is the agency doing a good job?</h2>
+    <div class="card reveal d1">
+      <p class="pull">Good where the reward lives, weak at the plan itself.</p>
+    </div>
+    <p class="reveal d2" style="margin-top:6px">They have a clear, working SEO playbook: the troubleshooting and how-to articles on Air Con and Plumbing rank and pull genuine demand with strong read-engagement. That is real capability.</p>
+    <p class="reveal d3">But four of six brands have no blog presence at all, and the content plan they wrote is not producing traffic where it has been published. The calendar reads well and does not match search reality.</p>
+  </div>
+</section>
+
+<!-- 10. WHAT TO ASK -->
+<section class="dark">
+  <div class="wrap">
+    <span class="badge bad-navy reveal">for the meeting</span>
+    <h2 class="reveal">Five questions to put to the agency</h2>
+    <div class="rec-grid">
+      <div class="rec-tile reveal"><span class="rec-num">1</span><h4>Why no blog on 4 brands?</h4><p>Electrical, Roofing, Renovations and the group site have essentially no article presence. Was coverage intentional?</p></div>
+      <div class="rec-tile reveal d1"><span class="rec-num">2</span><h4>Plan vs search demand</h4><p>Why do seasonal click-bait titles keep being planned when the data shows problem-based how-to queries are what ranks and pulls?</p></div>
+      <div class="rec-tile reveal"><span class="rec-num">3</span><h4>Traffic to conversion</h4><p>0.9% and 0.7% of leads land on blog articles. How are articles meant to capture leads, or are they purely a ranking asset?</p></div>
+      <div class="rec-tile reveal d1"><span class="rec-num">4</span><h4>What are their KPIs</h4><p>Are they accountable to rankings and clicks, or to leads and revenue? The answer changes how you read their reports.</p></div>
+      <div class="rec-tile reveal"><span class="rec-num">5</span><h4>Replicate the winner</h4><p>The Air Con formula is proven. What is the plan to run the same method across Plumbing's full set and into the other four brands?</p></div>
+      <div class="rec-tile reveal d1"><span class="rec-num">6</span><h4>Attribution wiring</h4><p>Offer to sink lead events into the dashboard so blog value is tracked in leads, not just clicks, next quarter.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 11. CLOSE -->
+<section class="light">
+  <div class="wrap">
+    <h1 class="reveal">Bottom line</h1>
+    <div class="rule"></div>
+    <p class="lede reveal d1">They are not uniformly good or bad. They are strong where it pays and missing on most of the map. Walk in holding the click and lead numbers, and ask for the plan to match them.</p>
+    <p class="reveal d2 fine" style="margin-top:10px">Want the detail behind any number? The full article tables are a pull away.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<section class="footer">
+  <div class="wrap">
+    <h2>Method</h2>
+    <p>Prepared by Harley, aba TRADES support team, for the agency meeting.</p>
+    <ul>
+      <li>Window: 1 Jul 2025 to 29 Sep 2026 (the FY25-26 plan period plus current month).</li>
+      <li>Organic clicks, impressions and average search position: Google Search Console, per brand site, page-level.</li>
+      <li>Article pages identified by URL pattern and cross-checked against the plan's published titles; blog contribution = article-page clicks as a share of each brand's total organic clicks.</li>
+      <li>Reader engagement: GA4 sessions, engaged sessions and average session length for the article page set.</li>
+      <li>Lead attribution: GA4 lead events (form, click-to-call, book-now, chat, product enquiry) attributed to the landing page of the converting session. This is a landing-page cut, so it understates blog value for users who read an article and convert on a later session or page.</li>
+      <li>Lead channel: GA4 session default channel group of the converting session; "Cross-network" (Google Ads automated) excluded from the Organic/Paid columns.</li>
+      <li>GA4 path-exploration and supervised assisted-conversion reporting are not exposed through the automated data API, so a true multi-touch path is not included here.</li>
+    </ul>
+    <div class="foot-meta">aba TRADES · Blog Performance Review · 29 Sep 2026 · data verified from live GA4 + Search Console</div>
+  </div>
+</section>
+
+<script>
+const bar=document.getElementById('progress');
+window.addEventListener('scroll',()=>{
+  const h=document.documentElement;
+  bar.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';
+},{passive:true});
+
+// reveal
+const io=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}});
+},{threshold:.06,rootMargin:'0px 0px -5% 0px'});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+// count-up
+const cio=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(!e.isIntersecting)return;
+    cio.unobserve(e.target);
+    const el=e.target,to=parseFloat(el.dataset.to),dec=parseInt(el.dataset.dec||'0');
+    const dur=1100,t0=performance.now();
+    function tick(t){
+      const k=Math.min(1,(t-t0)/dur),ease=1-Math.pow(1-k,3);
+      el.textContent=(to*ease).toFixed(dec);
+      if(k<1)requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  });
+},{threshold:.6});
+document.querySelectorAll('.count').forEach(el=>cio.observe(el));
+
+// side nav
+const nav=document.getElementById('decknav');
+const secs=[...document.querySelectorAll('section')].filter(s=>!s.classList.contains('footer'));
+secs.forEach((s,i)=>{s.id=s.id||('chap'+(i+1));const a=document.createElement('a');a.href='#'+s.id;a.title=s.id;nav.appendChild(a);});
+const navIo=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(!e.isIntersecting)return;
+    const href='#'+e.target.id;
+    [...nav.children].forEach(a=>a.classList.toggle('active',a.getAttribute('href')===href));
+  });
+},{threshold:.5});
+secs.forEach(s=>navIo.observe(s));
+</script>
+</body>
+</html>
