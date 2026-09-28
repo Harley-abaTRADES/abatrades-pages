@@ -198,8 +198,8 @@ tr:nth-child(even) td { background: var(--brand-field); }
     <h3>5.3 Where the automation lives (current n8n workflows)</h3>
     <table>
       <tr><th>Workflow ID</th><th>Name</th><th>Status</th></tr>
-      <tr><td><code>Q3g1NG1NHIc1w3HZ</code></td><td>Membership email journey (member_joined -&gt; send -&gt; ST note-log)</td><td>Being rebuilt to the 13-touchpoint series; NOT ARMED until staged-tested</td></tr>
-      <tr><td><code>V2g7hDNtzabRNWsS</code></td><td>member_invoice_paid reference</td><td>Switch routing proven; to be folded into the journey rebuild</td></tr>
+      <tr><td><code>Q3g1NG1NHIc1w3HZ</code></td><td>Flow A - member_joined (E1 welcome -&gt; Wait -&gt; E12 close day90 -&gt; Wait -&gt; E14 renewal)</td><td>BUILT (12 nodes) - NOT ARMED - staged-tested before live</td></tr>
+      <tr><td><code>V2g7hDNtzabRNWsS</code></td><td>Flow B - member_invoice_paid (Resolve-trade -&gt; E2 entrance -&gt; rotation E3-E13 every ~3wk via Wait)</td><td>BUILT (163 nodes) - NOT ARMED - staged-tested before live</td></tr>
       <tr><td><code>MzODpRAUgj3GmTyh</code></td><td>ST note-write proof</td><td>Proven (24 Sep); deactivated</td></tr>
     </table>
     <div class="callout notice"><div class="title">Go-live gate</div>The journey remains inactive until it is rebuilt to the final series and proven end-to-end against a staged test member. Consent/suppression gating applies to every send; nothing fires to live members until signed off.</div>
