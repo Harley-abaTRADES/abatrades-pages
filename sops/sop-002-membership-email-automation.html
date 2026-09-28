@@ -188,25 +188,22 @@ flowchart TB
   end
   E1 --> W90["WAIT · welcome +13 wk (≈90 days)"]
   W90 --> E12["E12 CLOSE · tpl 45 (Day 90)<br/>📧 Member Flow E12 note"]
-  E12 --> WEND["WAIT · welcome + end of membership<br/>(+35 wk more ≈ 1 mo before expiry)"]
+  E12 --> WEND["WAIT · welcome + end of membership (+35 wk more)"]
   WEND --> E14["E14 RENEWAL · tpl 47<br/>📧 Member Flow E14 note"]
 
   subgraph TR2["TRIGGER 2 · member_invoice_paid (billing)"]
-    A2[member_invoice_paid<br/>member-paid webhook] --> RT["RESOLVE TRADE<br/>(normalise service_type)"]
+    A2[member_invoice_paid<br/>member-paid webhook] --> RT["RESOLVE TRADE<br/>(service_type → member's 10-template<br/>sequence, incl. which 3 neutralised)"]
   end
-  RT --> SW{{"SWITCH by trade"}}
-  SW -->|aircon| E2A["E2 ENTRANCE SINK · tpl 31<br/>📧 Member Flow E2 note"]
-  SW -->|plumbing| E2P["E2 ENTRANCE AC HEALTH · tpl 32<br/>📧 Member Flow E2 note"]
-  SW -->|electrical| E2E["E2 ENTRANCE WATER FILTER · tpl 33<br/>📧 Member Flow E2 note"]
-  SW -->|roofing| E2R["E2 ENTRANCE HOT WATER · tpl 34<br/>📧 Member Flow E2 note"]
+  RT --> E2["E2 ENTRANCE · tpl 31-34 (trade-specific)<br/>📧 Member Flow E2 note"]
 
-  E2A --> WA3["WAIT +3 wk"] --> E3["E3 SWITCHBOARD · tpl 35"] --> WA4["WAIT +3 wk"] --> E4["E4 TAP FIX · tpl 36"] --> WA5["WAIT +3 wk"] --> E5["E5 AC FILTER · tpl 37"] --> WA6["WAIT +3 wk"] --> E6["E6 ROOF LEAKS · tpl 38"] --> WA7["WAIT +3 wk"] --> EN["E8/E9/E10/E11/E12<br/>3 neutralised + Adelaide water<br/>tpl 39,41,42,43,44<br/>(trade-dependent)"] --> WAR["WAIT +3 wk"] --> E13["E13 RENOVATION · tpl 46<br/>📧 Member Flow E# note each"]
+  E2 --> W1["WAIT +3 wk"] --> E3["E3 SWITCHBOARD · tpl 35"] --> W2["WAIT +3 wk"] --> E4["E4 TAP FIX · tpl 36"] --> W3["WAIT +3 wk"] --> E5["E5 AC FILTER · tpl 37"] --> W4["WAIT +3 wk"] --> E6["E6 ROOF LEAKS · tpl 38"] --> W5["WAIT +3 wk"] --> EN["E8 NEUTRALISED · tpl 39/42/43/44"] --> W6["WAIT +3 wk"] --> EA["E9 ADELAIDE WATER · tpl 41"] --> W7["WAIT +3 wk"] --> EN2["E10 NEUTRALISED · trade-specific"] --> W8["WAIT +3 wk"] --> EN3["E11 NEUTRALISED · trade-specific"] --> W9["WAIT +3 wk"] --> E13["E13 RENOVATION · tpl 46<br/>📧 Member Flow E# note each send"]
 
   style A1 fill:#1e3a8a;color:#fff
   style A2 fill:#1e3a8a;color:#fff
+  style RT fill:#1e3a8a;color:#fff
   style W90 fill:#7c2d12;color:#fff
   style WEND fill:#7c2d12;color:#fff
-  style WA3,WA4,WA5,WA6,WA7,WAR fill:#7c2d12;color:#fff
+  style W1,W2,W3,W4,W5,W6,W7,W8,W9 fill:#7c2d12;color:#fff
 </pre>
 <div style="font-family:Arial,sans-serif;font-size:.72rem;color:#94a3b8;padding:0 10px 12px">
 Two independent triggers. Flow A (blue) is welcome-anchored: the close lands at the 90-day measurement and renewal near expiry. Flow B (billing) handles E2 on the invoice-paid event, then the rotation runs every ~3 weeks from billing. Every Brevo send writes a <code>📧 Member Flow E#</code> ST note.
