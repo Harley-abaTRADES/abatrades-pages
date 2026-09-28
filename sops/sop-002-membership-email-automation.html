@@ -204,7 +204,9 @@ tr:nth-child(even) td { background: var(--brand-field); }
     </table>
     <div class="callout notice"><div class="title">Go-live gate</div>The journey remains inactive until it is rebuilt to the final series and proven end-to-end against a staged test member. Consent/suppression gating applies to every send; nothing fires to live members until signed off.</div>
 
-  <section>
+  </section>
+
+<section>
     <h2>6. ServiceTitan note-log write-back (CSR visibility)</h2>
     <p><strong>Decision (Josh 24 Sep 2026):</strong> every email (and eventually SMS) sent to a member is logged as a <strong>ServiceTitan Customer Note</strong> on the customer record, so the CSR team can see what was sent, to whom, and when. ST has no per-contact email-history write via API, so the note lives at the customer level.</p>
 
