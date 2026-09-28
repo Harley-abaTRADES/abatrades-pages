@@ -177,34 +177,32 @@ tr:nth-child(even) td { background: var(--brand-field); }
   </section>
 
   <section>
-    <h2>5. The flows (process map)</h2>
+    <h2>5. The flows (13-touchpoint final series, 28 Sep 2026)</h2>
 
-    <h3>5.1 Flow A - member_joined evergreen journey (the main flow)</h3>
-    <p>Trigger: a member joins. n8n webhook receives the event, branches by service type, and produces the day-0/7/21/45/90 sequence via Brevo transactional sends, with a ServiceTitan note-log on each send.</p>
-    <div class="step"><span class="num">1.</span> <strong>Trigger (webhook):</strong> <code>member_journey</code> receives <code>{ customerId, service_type, member_joined_date, first_name }</code>.</div>
-    <div class="step"><span class="num">2.</span> <strong>Switch:</strong> <code>n8n-nodes-base.switch</code> (version 1, positional outputs) branches on <code>service_type</code> to Aircon / Plumbing / Electrical / Roofing. Fallback output catches unknowns.</div>
-    <div class="step"><span class="num">3.</span> <strong>Day 0 send:</strong> Brevo transactional <code>POST /smtp/email</code> with the E1 Welcome template (id 1) to all members (no cohort filter).</div>
-    <div class="step"><span class="num">4.</span> <strong>Days 7/21/45:</strong> cross-trade value emails (templates 2-13) - only to the <code>treatment</code> cohort, branch-specific.</div>
-    <div class="step"><span class="num">5.</span> <strong>Day 90:</strong> hard close on the free annual inspection (templates 14/15).</div>
-    <div class="step"><span class="num">6.</span> <strong>After every send:</strong> write the note to ServiceTitan (see section 6).</div>
-    <div class="callout notice"><div class="title">Sequence timing</div>The flow matches the real re-engagement rhythm (median ~200 days between fresh jobs). A 14-day flow is a trap - don't trim to it. The 90-day span is deliberate so the last email lands near the measurement read.</div>
+    <p><strong>Series (retimed, no solar):</strong> E1 Welcome - E2 First cross-trade (billing) - E3-E11 rotation - E12 Close (day 90) - E13 Renovation - E14 Renewal. Every member receives every article (universal delivery). Brevo templates for the series are the <strong>Final Series</strong> set (ids 30-39, 41-47). Timing anchors:</p>
+    <div class="step">The 90-day hard close (E12) and the end-of-membership renewal (E14) are <strong>time-bound from the Welcome (day 0)</strong>.</div>
+    <div class="step">Everything else (E2 entrance plus the E3-E13 rotation) is anchored to the <strong>billing event</strong> via Wait nodes, one every ~3 weeks.</div>
 
-    <h3>5.2 Flow B - member_invoice_paid trigger</h3>
-    <div class="step"><span class="num">1.</span> <strong>Trigger (webhook):</strong> <code>member_paid</code> receives <code>{ customerId, service_type, paid_date }</code>.</div>
-    <div class="step"><span class="num">2.</span> <strong>Switch:</strong> branch on <code>service_type</code> to the relevant E2 cross-trade send.</div>
-    <div class="step"><span class="num">3.</span> <strong>Send + note:</strong> Brevo send then ServiceTitan note-log, same as Flow A.</div>
+    <h3>5.1 Flow A - member_joined (Welcome + the two time-bound emails)</h3>
+    <p>Trigger: a member joins (member_joined webhook). This execution owns the day-0 anchor.</p>
+    <div class="step"><span class="num">1.</span> <strong>E1 Welcome:</strong> Brevo transactional send (Final Series E1, id 30) to every member, no cohort filter. Write the <code>📧 Member Flow E1</code> ST note.</div>
+    <div class="step"><span class="num">2.</span> <strong>Wait node (welcome + 90 days):</strong> then send <strong>E12 Close</strong> (Final Series E7 Close, id 45) - the hard close on the free $389 inspection. Write its note.</div>
+    <div class="step"><span class="num">3.</span> <strong>Wait node (end of membership, welcome-anchored):</strong> then send <strong>E14 Renewal</strong> (Final Series E14, id 47). Write its note.</div>
 
-    <h3>5.3 Where the automation lives today (current n8n workflows)</h3>
+    <h3>5.2 Flow B - member_invoice_paid (billing-anchored rotation)</h3>
+    <p>Trigger: the billing event (member_invoice_paid webhook). This execution owns the E2 + rotation chain.</p>
+    <div class="step"><span class="num">1.</span> <strong>Switch:</strong> branch on <code>service_type</code> to Aircon / Plumbing / Electrical / Roofing.</div>
+    <div class="step"><span class="num">2.</span> <strong>E2 First cross-trade (event trigger, not a day):</strong> send the trade-specific entrance template (Final Series E2, ids 31-34). Write the <code>📧 Member Flow E2</code> note. The opener references the trade just used.</div>
+    <div class="step"><span class="num">3.</span> <strong>Rotation (Wait nodes, every ~3 weeks from billing):</strong> E3 Switchboard, E4 Tap fix, E5 AC filter, E6 Roof leaks, E8-E11 (the three non-entrance opener articles in neutralised form + Adelaide water), then E13 Renovation. Write the <code>📧 Member Flow E#</code> note on every send. Which three opener articles appear neutralised depends on the member's entrance trade.</div>
+
+    <h3>5.3 Where the automation lives (current n8n workflows)</h3>
     <table>
       <tr><th>Workflow ID</th><th>Name</th><th>Status</th></tr>
-      <tr><td><code>7Fmtif2WRWjztUHg</code></td><td>TEST send to Josh via Brevo (webhook fire)</td><td>Proven end-to-end (delivered 24 Sep); deactivated</td></tr>
-      <tr><td><code>MzODpRAUgj3GmTyh</code></td><td>ST auth proof (n8n -&gt; ST note-write)</td><td>Proven (note landed 24 Sep); deactivated</td></tr>
-      <tr><td><code>V2g7hDNtzabRNWsS</code></td><td>member_invoice_paid -&gt; branch -&gt; Brevo send (REFERENCE)</td><td>Switch routing proven against stubs; needs final send+note wiring</td></tr>
-      <tr><td><code>hTdGmiHeYbGHkwdt</code></td><td>Minimal webhook-&gt;httpbin probe</td><td>Proven chain execution; deactivated</td></tr>
-      <tr><td>(to build)</td><td>Full member_joined =&gt; journey =&gt; note-log flow</td><td>Next build step; inactive until approved</td></tr>
+      <tr><td><code>Q3g1NG1NHIc1w3HZ</code></td><td>Membership email journey (member_joined -&gt; send -&gt; ST note-log)</td><td>Being rebuilt to the 13-touchpoint series; NOT ARMED until staged-tested</td></tr>
+      <tr><td><code>V2g7hDNtzabRNWsS</code></td><td>member_invoice_paid reference</td><td>Switch routing proven; to be folded into the journey rebuild</td></tr>
+      <tr><td><code>MzODpRAUgj3GmTyh</code></td><td>ST note-write proof</td><td>Proven (24 Sep); deactivated</td></tr>
     </table>
-    <div class="callout success"><div class="title">Build state (24 Sep 2026)</div>Every hard sub-step is individually proven: (a) n8n -&gt; Brevo send delivers, (b) n8n 4-way switch routing works, (c) n8n -&gt; ServiceTitan note-write auth works and lands on the record. Assembling these into the full journey flow is mechanical wiring of proven parts.</div>
-  </section>
+    <div class="callout notice"><div class="title">Go-live gate</div>The journey remains inactive until it is rebuilt to the final series and proven end-to-end against a staged test member. Consent/suppression gating applies to every send; nothing fires to live members until signed off.</div>
 
   <section>
     <h2>6. ServiceTitan note-log write-back (CSR visibility)</h2>
@@ -214,16 +212,16 @@ tr:nth-child(even) td { background: var(--brand-field); }
     <div class="step"><span class="num">1.</span> Create a note: <code>POST /crm/v2/tenant/3306271893/customers/{customerId}/notes</code> with body <code>{ "text": "..." }</code>. Uses the <strong>write key</strong>.</div>
     <div class="step"><span class="num">2.</span> Read back / verify: <code>GET /crm/v2/tenant/3306271893/customers/{customerId}/notes</code>.</div>
 
-    <h3>6.2 Note format (locked 24 Sep 2026, rev 3)</h3>
+    <h3>6.2 Note format (locked 24 Sep 2026, rev 4 — prefixed "Member Flow")</h3>
     <p>ST auto-appends the Created date/timestamp under each note, so the note text does NOT include a timestamp (avoids double handling). The template copy already ends with the email's own signature footer, so the note does NOT append a second signature either. Format:</p>
     <div class="step">
-      <code>📧 E1 · Welcome · template #1 · harley@abatrades.com.au</code><br>
+      <code>📧 Member Flow E1 · Welcome · template #1 · harley@abatrades.com.au</code><br>
       <code>Subject: You're in! 🎉 Welcome to aba TRADES membership</code><br>
       <code>(blank line)</code><br>
       <code>[full plain-text copy, HTML stripped - ends with the template's own Harley / aba TRADES Support Team / 45 Henry St footer]</code>
     </div>
     <ul>
-      <li>First line: channel emoji (📧 email / 📱 SMS later) · journey step + name · <code>template #N</code> · from address.</li>
+      <li>First line: channel emoji (📧 email / 📱 SMS later) · <code>Member Flow</code> · journey step + name · <code>template #N</code> · from address.</li>
       <li>Then the Subject line verbatim, then the full word-for-word plain-text body.</li>
       <li>No appended signature line (the template footer is already part of the copy - appending one creates a duplicate footer). No recipient, no timestamp.</li>
       <li>SMS later reuses the same shape with 📱.</li>
@@ -284,7 +282,7 @@ tr:nth-child(even) td { background: var(--brand-field); }
 
     <h3>8.4 Data sources and feed wiring</h3>
     <ul>
-      <li><strong>Sends:</strong> ST notes (count the <code>📧 E1 · ... template #N</code> prefix per step per day) today, cross-checked against Brevo.</li>
+      <li><strong>Sends:</strong> ST notes (count the <code>📧 Member Flow E1 · ... template #N</code> prefix per step per day) today, cross-checked against Brevo.</li>
       <li><strong>Opens / clicks / delivered / bounced:</strong> Brevo <code>/smtp/statistics/report</code> (aggregate) plus per-step once each send carries a step/template/cohort tag (a small n8n send-payload change, queued - not built as part of this design).</li>
       <li><strong>Jobs + revenue:</strong> ST <code>jpm/v2/jobs</code> + <code>accounting/v2/invoices</code> by customerId over the recipient set.</li>
       <li><strong>Cohort:</strong> Brevo <code>COHORT</code> attribute joined to <code>ST_CUSTOMER_ID</code>.</li>
