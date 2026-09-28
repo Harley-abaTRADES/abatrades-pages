@@ -180,6 +180,38 @@ tr:nth-child(even) td { background: var(--brand-field); }
     <h2>5. The flows (13-touchpoint final series, 28 Sep 2026)</h2>
 
     <p><strong>Series (retimed, no solar):</strong> E1 Welcome - E2 First cross-trade (billing) - E3-E11 rotation - E12 Close (day 90) - E13 Renovation - E14 Renewal. Every member receives every article (universal delivery). Brevo templates for the series are the <strong>Final Series</strong> set (ids 30-39, 41-47). Timing anchors:</p>
+<div class="callout" style="background:#0f172a;border:1px solid #334155;border-radius:12px;padding:18px 8px 6px;margin:16px 0">
+<pre class="mermaid" style="background:transparent;color:#e2e8f0;overflow-x:auto">
+flowchart TB
+  subgraph TR1["TRIGGER 1 · member_joined (join)"]
+    A1[member_joined<br/>member-journey webhook] --> E1["E1 WELCOME · tpl 30<br/>📧 Member Flow E1 note"]
+  end
+  E1 --> W90["WAIT · welcome +13 wk (≈90 days)"]
+  W90 --> E12["E12 CLOSE · tpl 45 (Day 90)<br/>📧 Member Flow E12 note"]
+  E12 --> WEND["WAIT · welcome + end of membership<br/>(+35 wk more ≈ 1 mo before expiry)"]
+  WEND --> E14["E14 RENEWAL · tpl 47<br/>📧 Member Flow E14 note"]
+
+  subgraph TR2["TRIGGER 2 · member_invoice_paid (billing)"]
+    A2[member_invoice_paid<br/>member-paid webhook] --> RT["RESOLVE TRADE<br/>(normalise service_type)"]
+  end
+  RT --> SW{{"SWITCH by trade"}}
+  SW -->|aircon| E2A["E2 ENTRANCE SINK · tpl 31<br/>📧 Member Flow E2 note"]
+  SW -->|plumbing| E2P["E2 ENTRANCE AC HEALTH · tpl 32<br/>📧 Member Flow E2 note"]
+  SW -->|electrical| E2E["E2 ENTRANCE WATER FILTER · tpl 33<br/>📧 Member Flow E2 note"]
+  SW -->|roofing| E2R["E2 ENTRANCE HOT WATER · tpl 34<br/>📧 Member Flow E2 note"]
+
+  E2A --> WA3["WAIT +3 wk"] --> E3["E3 SWITCHBOARD · tpl 35"] --> WA4["WAIT +3 wk"] --> E4["E4 TAP FIX · tpl 36"] --> WA5["WAIT +3 wk"] --> E5["E5 AC FILTER · tpl 37"] --> WA6["WAIT +3 wk"] --> E6["E6 ROOF LEAKS · tpl 38"] --> WA7["WAIT +3 wk"] --> EN["E8/E9/E10/E11/E12<br/>3 neutralised + Adelaide water<br/>tpl 39,41,42,43,44<br/>(trade-dependent)"] --> WAR["WAIT +3 wk"] --> E13["E13 RENOVATION · tpl 46<br/>📧 Member Flow E# note each"]
+
+  style A1 fill:#1e3a8a;color:#fff
+  style A2 fill:#1e3a8a;color:#fff
+  style W90 fill:#7c2d12;color:#fff
+  style WEND fill:#7c2d12;color:#fff
+  style WA3,WA4,WA5,WA6,WA7,WAR fill:#7c2d12;color:#fff
+</pre>
+<div style="font-family:Arial,sans-serif;font-size:.72rem;color:#94a3b8;padding:0 10px 12px">
+Two independent triggers. Flow A (blue) is welcome-anchored: the close lands at the 90-day measurement and renewal near expiry. Flow B (billing) handles E2 on the invoice-paid event, then the rotation runs every ~3 weeks from billing. Every Brevo send writes a <code>📧 Member Flow E#</code> ST note.
+</div>
+</div>
     <div class="step">The 90-day hard close (E12) and the end-of-membership renewal (E14) are <strong>time-bound from the Welcome (day 0)</strong>.</div>
     <div class="step">Everything else (E2 entrance plus the E3-E13 rotation) is anchored to the <strong>billing event</strong> via Wait nodes, one every ~3 weeks.</div>
 
@@ -357,5 +389,7 @@ tr:nth-child(even) td { background: var(--brand-field); }
   <br><span style="opacity:0.7">Harley is customer support. Contributions and corrections: <a href="mailto:harley@abatrades.com.au" style="color:#fff">harley@abatrades.com.au</a>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>mermaid.initialize({startOnLoad:true,theme:"dark"});</script>
 </body>
 </html>
