@@ -101,7 +101,7 @@ tr:nth-child(even) td { background: var(--brand-field); }
   <section>
     <h2>1. Purpose</h2>
     <p>This document is the technical specification for automating aba TRADES membership email communication. It describes the exact stack, the data flow, the credentials, the note-log write-back format, and the cohort logic, and it records clearly which parts are <strong>proven working</strong> versus <strong>pending live go</strong>. It exists so any future operator - human or AI - can read it and reconstruct, operate, or extend the system without rediscovering the hard-won details.</p>
-    <div class="callout notice"><div class="title">Status: built and unarmed (29 Sep 2026)</div>This is a living document. It captures the verified state as of 29 Sep 2026. Schedule: the scheduler (Option 2) replaces the n8n Wait-journey that was abandoned because this n8n instance cannot activate Wait-node workflows (300-scope check failed: "object is not iterable"). Brevo contact attributes are now the source of truth for member progress; a daily scheduler cron drives the sends. Flows are built and UNARMED - no real member is in the flow (no <code>MEMBER_FLOW_ACTIVE=true</code> on any real contact) until the staged test passes and go-live is signed. The earlier SOP 001 covers SMS campaigns.</div>
+    <div class="callout notice"><div class="title">Status: LIVE for new members (29 Sep 2026)</div>This is a living document. Captures verified state as of 29 Sep 2026. The scheduler (Option 2) replaces the n8n Wait-journey that was abandoned because this n8n instance cannot activate Wait-node workflows. Brevo contact attributes are the source of truth for member progress; a daily scheduler cron drives the sends. As of 29 Sep the system is <strong>LIVE for NEW members only</strong>: new joiners (after baseline 29 Sep 2026 11:03 ACST) enter the flow, existing members are NOT armed (no backfill until explicitly called). Crons: ingress 3h (<code>e81f6476e045</code>), send scheduler 09:00 live (<code>68fed814ac7e</code>), consent write-back 6h (<code>009b85f00461</code>). The earlier SOP 001 covers SMS campaigns.</div>
   </section>
 
   <section>
@@ -250,6 +250,7 @@ Two tracks, both read by the same daily scheduler. Join track (blue) is welcome-
       <li>First line: channel emoji (📧 email / 📱 SMS later) · <code>Member Flow</code> · journey step + name · <code>template #N</code> · from address.</li>
       <li>Then the Subject line verbatim, then the full word-for-word plain-text body.</li>
       <li>No appended signature line (the template footer is already part of the copy - appending one creates a duplicate footer). No recipient, no timestamp.</li>
+      <li><strong>Opt-out note:</strong> when a member's consent is flipped off by the consent write-back, the customer record also gets a note <code>MEMBER OPTED OUT of email marketing - consent off (Brevo blacklist sync)</code> (added 29 Sep) so CSR sees opt-outs alongside the send-log.</li>
       <li>SMS later reuses the same shape with 📱.</li>
     </ul>
 
@@ -353,12 +354,13 @@ Two tracks, both read by the same daily scheduler. Join track (blue) is welcome-
     <div class="step"><span class="num">3.</span> <strong>Hop 3 - write-back to ServiceTitan.</strong> Run <code>bin/sync_brevo_unsubscribes_to_st.py</code> (cron 2; dry-run first, then live) and read ServiceTitan back to confirm the contact's <code>preferences.marketingUpdatesEnabled</code> flips to <code>false</code>. All three wrapped in the standard gates (Brevo <code>delivered</code> event + ST read-back).</div>
     <div class="callout error"><div class="title">Needs Tier-4 go before running</div>Creates a scratch ST + Brevo record (both writes) and clicks a live opt-out. Codified as a chat-issued write under the human-in-the-loop gate (section 9) - flag and get explicit approval first.</div>
 
-    <h3>11.2 Schedule cron 1 and cron 2 (currently NOT scheduled)</h3>
-    <div class="callout error"><div class="title">Found 24 Sep 2026 - the crons are unscheduled</div>The SOP previously claimed cron 2 ran every 6h (id <code>1a18497752df</code>), but the live Hermes cron list has no such job, there is no system crontab, and neither job is in n8n. The scripts exist and run by hand (<code>bin/sync_members_to_brevo.py</code>, <code>bin/sync_brevo_unsubscribes_to_st.py</code>) but no scheduler fires them. This must be fixed before any live campaign, or suppression and cohort assignment never happen automatically.</div>
+    <h3>11.2 Schedule cron 1 and cron 2 (SCHEDULED 29 Sep 2026)</h3>
+    <div class="callout notice"><div class="title">Resolved 29 Sep 2026 - all three member-flow crons are now scheduled</div>The 24 Sep gap (scripts existed, no scheduler fired them) is closed. Live Hermes cron jobs:</div>
     <ul>
-      <li><strong>Cron 1 (members in):</strong> <code>scripts/clv-members-to-brevo.sh</code> - poll ST activations, hash to <code>COHORT</code>, POST Brevo <code>member_joined</code>. Requires the rolling cursor set first (<code>bin/sync_members_to_brevo.py --since &lt;iso&gt;</code> once).</li>
-      <li><strong>Cron 2 (unsubscribes out):</strong> <code>scripts/clv-unsubscribe-writeback.sh</code> - poll Brevo blacklist, PATCH ST consent off, joined on <code>ST_CUSTOMER_ID</code>.</li>
-      <li><strong>Decision needed:</strong> schedule them via Hermes cron (script-only jobs) once the section 11.1 test proves the chain, holding cron 1's armed lane gated on the journey going live.</li>
+      <li><strong>Ingress (3h)</strong> <code>e81f6476e045</code> - <code>scripts/member_ingress.sh</code>: join sync <code>--arm-flow</code> (arms NEW joiners only, baseline cursor set 29 Sep - no backfill) + billing sync (sets <code>MEMBER_BILLED_AT</code>).</li>
+      <li><strong>Send scheduler (daily 09:00, LIVE)</strong> <code>68fed814ac7e</code> - <code>scripts/member_flow_daily.sh</code>: <code>MF_ENABLE_SENDS=1</code>, sends the series to flow-active members.</li>
+      <li><strong>Consent write-back (6h)</strong> <code>009b85f00461</code> - <code>scripts/member_unsubscribe_sync.sh</code>: Brevo blacklist -> ST consent off + opt-out note. ST auth via the <code>bash -c</code> curl path (write key rejects urllib - see section 4.3 note).</li>
+      <li><strong>Morning check (one-shot 30 Sep 08:00)</strong> <code>3ec9623ab7f7</code> - <code>scripts/member_flow_morning_check.py</code>: reports whether a real new member entered the flow.</li>
     </ul>
   </section>
 
