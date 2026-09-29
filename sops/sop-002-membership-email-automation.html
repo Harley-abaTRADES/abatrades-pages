@@ -101,7 +101,7 @@ tr:nth-child(even) td { background: var(--brand-field); }
   <section>
     <h2>1. Purpose</h2>
     <p>This document is the technical specification for automating aba TRADES membership email communication. It describes the exact stack, the data flow, the credentials, the note-log write-back format, and the cohort logic, and it records clearly which parts are <strong>proven working</strong> versus <strong>pending live go</strong>. It exists so any future operator - human or AI - can read it and reconstruct, operate, or extend the system without rediscovering the hard-won details.</p>
-    <div class="callout notice"><div class="title">Status: build-in-progress</div>This is a living document. It captures the verified state as of 24 Sep 2026. Once the flow is live, revisit and correct anything that has drifted. The earlier SOP 001 covers SMS campaigns; this covers the membership email journey.</div>
+    <div class="callout notice"><div class="title">Status: built and unarmed (29 Sep 2026)</div>This is a living document. It captures the verified state as of 29 Sep 2026. Schedule: the scheduler (Option 2) replaces the n8n Wait-journey that was abandoned because this n8n instance cannot activate Wait-node workflows (300-scope check failed: "object is not iterable"). Brevo contact attributes are now the source of truth for member progress; a daily scheduler cron drives the sends. Flows are built and UNARMED - no real member is in the flow (no <code>MEMBER_FLOW_ACTIVE=true</code> on any real contact) until the staged test passes and go-live is signed. The earlier SOP 001 covers SMS campaigns.</div>
   </section>
 
   <section>
@@ -109,7 +109,7 @@ tr:nth-child(even) td { background: var(--brand-field); }
     <p>In scope:</p>
     <ul>
       <li>The membership evergreen email journey (new-member flow) and the member invoice-paid trigger flow.</li>
-      <li>The self-hosted n8n instance as the journey engine (API-authored, versioned JSON flows).</li>
+      <li>The daily scheduler (cron + <code>bin/member_flow_scheduler.py</code>) as the journey engine, with Brevo contact attributes as the source of truth for each member's stage.</li>
       <li>Brevo as the transactional email sender (per-member, template-based).</li>
       <li>The ServiceTitan Customer Note write-back so the CSR team sees what was sent to each customer.</li>
       <li>Treatment/control cohort assignment and the measurement baseline.</li>
@@ -128,23 +128,25 @@ tr:nth-child(even) td { background: var(--brand-field); }
     <h3>3.1 Systems in the stack</h3>
     <table>
       <tr><th>System</th><th>Role</th><th>Key detail</th></tr>
-      <tr><td>n8n (self-hosted)</td><td>Journey / orchestration engine</td><td>API-authored JSON flows on the box at $0 software. Runs every flow.</td></tr>
-      <tr><td>Brevo (ESP)</td><td>Transactional email sender</td><td>Per-member sends via template ID. Source of truth for delivery/open/click.</td></tr>
+      <tr><td>Daily scheduler (Hermes cron + <code>member_flow_scheduler.py</code>)</td><td>Journey engine</td><td>Runs daily (dry by default); reads each member's Brevo stage attributes, sends the email that is due today, writes the ST note, advances the attributes. No n8n Wait nodes.</td></tr>
+      <tr><td>Brevo (ESP)</td><td>Transactional email sender + stage state</td><td>Per-member sends via template ID; the Contact attributes (<code>MEMBER_FLOW_ACTIVE</code>, <code>MEMBER_BILLED_AT</code>, ...) are the source of truth for each member's position in the series.</td></tr>
       <tr><td>ServiceTitan (CRM)</td><td>System of record + consent + note-log</td><td>Customer/contact records; the Customer Note is where sent-emails land for the CSR team.</td></tr>
       <tr><td>Self-hosted crons</td><td>Deterministic sync</td><td>Cron 1 (members in), cron 2 (unsubscribes out) - logic-based, foolproof. Cron 2 restored + hardened 24 Sep (id <code>1a18497752df</code>, every 6h).</td></tr>
     </table>
 
     <div class="callout error"><div class="title">Transactional sends bypass Brevo's opt-out list - suppression is OURS to own</div>Brevo's transactional <code>/smtp/email</code> API does NOT auto-suppress against the blacklist the way marketing campaigns do. So sending transactionally means WE must maintain suppression. That is cron 2 exactly: it polls Brevo's opt-out/blacklist and PATCHes the ServiceTitan contact's <code>preferences.marketingUpdatesEnabled=false</code> (ST is the source of truth for consent; the send audience must read consent from ST). The blacklist MUST be read from <code>/smtp/blockedContacts</code> (the authoritative surface) UNION <code>/contacts</code> where <code>emailBlacklisted=true</code> - reading only <code>/contacts</code> silently misses the flag shape and under-counts. Join key: Brevo contact attribute <code>ST_CUSTOMER_ID</code>, written by cron 1, so contacts without it are skipped for manual review. Cron 2 must be verified running before any live send.</div>
 
-    <h3>3.2 Core architecture decision (Josh-signed 23 Sep 2026)</h3>
-    <p>Use <strong>self-hosted n8n as the journey engine</strong> (API-authored, versioned, AI-editable JSON flows) with <strong>Brevo transactional sends</strong> (per-member, templateId - not marketing-campaign objects) and <strong>analytics pulled programmatically</strong> from Brevo statistics. Suppression on the transactional path is owned by us deterministically (cron 2 + unsubscribe tag in templates).</p>
+    <h3>3.2 Core architecture decision (revised 29 Sep 2026)</h3>
+    <p>Use a <strong>daily scheduler</strong> (<code>bin/member_flow_scheduler.py</code> under a Hermes cron) as the journey engine, with <strong>Brevo contact attributes as the single source of truth</strong> for each member's position in the series. The scheduler reads each member's stage attributes each day, sends the email whose date has arrived (Brevo transactional per-member, templateId - not marketing-campaign objects), writes the <code>📧 Member Flow E#</code> ST note, and advances the attributes. Analytics are pulled from Brevo statistics.</p>
+    <p><strong>Why the scheduler (and not n8n Wait):</strong> this self-hosted n8n instance cannot activate any workflow containing a Wait node (proven 29 Sep with a minimal webhook-to-Wait probe - n8n returns "object is not iterable" because held/paused executions are not enabled on the instance; enabling them would require queue mode + Redis + a worker, a whole-instance infra change). The scheduler needs no n8n change, holds no in-flight execution (a 90/390-day email is just a date the cron compares), and survives restarts - the state lives in Brevo, not in a process.</p>
     <div class="callout notice"><div class="title">Why Brevo transactional, not marketing-campaign</div>Per-member evergreen timing is incompatible with marketing-campaign objects (a campaign is a batch blast; per-member timing would need a campaign per send). Transactional per-member sends are the fit. Marketing campaigns stay for genuine batch blasts.</div>
 
-    <h3>3.3 Why n8n and not the Brevo canvas</h3>
+    <h3>3.3 The logic: how the scheduler decides what to send</h3>
     <ul>
-      <li>Brevo's canvas has no authoring API; n8n workflows are JSON we create/edit/pivot via API.</li>
-      <li>n8n Switch node does an N-way branch in one node; Brevo's canvas is 2-way-split limited.</li>
-      <li>Self-hosted = $0 software, reuses box you already pay for.</li>
+      <li>Only contacts with <code>MEMBER_FLOW_ACTIVE=true</code> and an opted-in email are considered (the arming gate - no real member has this set until go-live).</li>
+      <li>The scheduler holds per-member state on the Brevo contact, not in-world (see section 5.3).</li>
+      <li>Each day it sends at most ONE email per member (whichever is first due), so a run is deterministic and never batches.</li>
+      <li>Rotation/trade logic is computed from the member's <code>SERVICE_TYPE</code> at run time (E2 entrance + which 3 opener articles appear neutralised), so no n8n branch/switch nodes are needed.</li>
     </ul>
   </section>
 
@@ -179,59 +181,52 @@ tr:nth-child(even) td { background: var(--brand-field); }
   <section>
     <h2>5. The flows (13-touchpoint final series, 28 Sep 2026)</h2>
 
-    <p><strong>Series (retimed, no solar):</strong> E1 Welcome - E2 First cross-trade (billing) - E3-E11 rotation - E12 Close (day 90) - E13 Renovation - E14 Renewal. Every member receives every article (universal delivery). Brevo templates for the series are the <strong>Final Series</strong> set (ids 30-39, 41-47). Timing anchors:</p>
-<div class="callout" style="background:#0f172a;border:1px solid #334155;border-radius:12px;padding:18px 8px 6px;margin:16px 0">
+    <p><strong>Series (retimed, no solar):</strong> E1 Welcome - E2 First cross-trade (billing) - E3-E11 rotation - E12 Close (day 90) - E13 Renovation - E14 Renewal. Every member receives every article (universal delivery). Brevo templates for the series are the <strong>Final Series</strong> set (ids 30-39, 41-47). Timing is driven by the daily scheduler against Brevo stage attributes - no in-flow Wait nodes.</p>
+<div class="callout" style="background:#0f172a;border:1px solid #334155;border-radius:12px;padding:18px 8px 8px;margin:16px 0">
 <pre class="mermaid" style="background:transparent;color:#e2e8f0;overflow-x:auto">
 flowchart TB
-  subgraph TR1["TRIGGER 1 · member_joined (join)"]
-    A1[member_joined<br/>member-journey webhook] --> E1["E1 WELCOME · tpl 30<br/>📧 Member Flow E1 note"]
+  subgraph ENTER["ENTER · MEMBER_FLOW_ACTIVE=true"]
+    A1[join sync --arm-flow<br/>sets FLOW_ACTIVE + SERVICE_TYPE] --> S
+    A2[billing sync<br/>sets MEMBER_BILLED_AT + SERVICE_TYPE] --> S
   end
-  E1 --> W90["WAIT · welcome +13 wk (≈90 days)"]
-  W90 --> E12["E12 CLOSE · tpl 45 (Day 90)<br/>📧 Member Flow E12 note"]
-  E12 --> WEND["WAIT · welcome + end of membership (+35 wk more)"]
-  WEND --> E14["E14 RENEWAL · tpl 47<br/>📧 Member Flow E14 note"]
-
-  subgraph TR2["TRIGGER 2 · member_invoice_paid (billing)"]
-    A2[member_invoice_paid<br/>member-paid webhook] --> RT["RESOLVE TRADE<br/>(service_type → member's 10-template<br/>sequence, incl. which 3 neutralised)"]
-  end
-  RT --> E2["E2 ENTRANCE · tpl 31-34 (trade-specific)<br/>📧 Member Flow E2 note"]
-
-  E2 --> W1["WAIT +3 wk"] --> E3["E3 SWITCHBOARD · tpl 35"] --> W2["WAIT +3 wk"] --> E4["E4 TAP FIX · tpl 36"] --> W3["WAIT +3 wk"] --> E5["E5 AC FILTER · tpl 37"] --> W4["WAIT +3 wk"] --> E6["E6 ROOF LEAKS · tpl 38"] --> W5["WAIT +3 wk"] --> EN["E8 NEUTRALISED · tpl 39/42/43/44"] --> W6["WAIT +3 wk"] --> EA["E9 ADELAIDE WATER · tpl 41"] --> W7["WAIT +3 wk"] --> EN2["E10 NEUTRALISED · trade-specific"] --> W8["WAIT +3 wk"] --> EN3["E11 NEUTRALISED · trade-specific"] --> W9["WAIT +3 wk"] --> E13["E13 RENOVATION · tpl 46<br/>📧 Member Flow E# note each send"]
-
+  S["DAILY CRON 68fed814ac7e<br/>reads Brevo stage attrs, fires due email,<br/>writes 📧 note, advances attrs"]
+  S --> E1["E1 WELCOME · tpl 30 (join)<br/>sets CLOSE_AT +90d / RENEW_AT +390d"]
+  S --> E12["E12 CLOSE · tpl 45 · when CLOSE_AT due"]
+  S --> E14["E14 RENEWAL · tpl 47 · when RENEW_AT due"]
+  S --> E2["E2 ENTRANCE · tpl 31-34 · when BILLED_AT"]
+  S --> ROT["E3-E13 rotation · BILLED_AT + 3wk×ROT_POS"]
+  ROT --> N["📧 Member Flow E# note every send"]
   style A1 fill:#1e3a8a;color:#fff
   style A2 fill:#1e3a8a;color:#fff
-  style RT fill:#1e3a8a;color:#fff
-  style W90 fill:#7c2d12;color:#fff
-  style WEND fill:#7c2d12;color:#fff
-  style W1,W2,W3,W4,W5,W6,W7,W8,W9 fill:#7c2d12;color:#fff
+  style S fill:#7c2d12;color:#fff
+  style ROT fill:#1e3a8a;color:#fff
 </pre>
 <div style="font-family:Arial,sans-serif;font-size:.72rem;color:#94a3b8;padding:0 10px 12px">
-Two independent triggers. Flow A (blue) is welcome-anchored: the close lands at the 90-day measurement and renewal near expiry. Flow B (billing) handles E2 on the invoice-paid event, then the rotation runs every ~3 weeks from billing. Every Brevo send writes a <code>📧 Member Flow E#</code> ST note.
+Two tracks, both read by the same daily scheduler. Join track (blue) is welcome-anchored: E1 on entry, Close at +90 days, Renewal near expiry. Billing track sets MEMBER_BILLED_AT so E2 fires on the invoice-paid event, then one rotation email every ~3 weeks indexed by MEMBER_ROT_POS. Every Brevo send writes a <code>📧 Member Flow E#</code> ST note.
 </div>
 </div>
-    <div class="step">The 90-day hard close (E12) and the end-of-membership renewal (E14) are <strong>time-bound from the Welcome (day 0)</strong>.</div>
-    <div class="step">Everything else (E2 entrance plus the E3-E13 rotation) is anchored to the <strong>billing event</strong> via Wait nodes, one every ~3 weeks.</div>
+    <div class="step">The 90-day hard close (E12) and the end-of-membership renewal (E14) are <strong>time-bound from the Welcome</strong>: on the E1 run the scheduler sets CLOSE_AT = E1 date + 90 days and RENEW_AT = E1 date + 390 days, then fires each when its date arrives.</div>
+    <div class="step">Everything else (E2 entrance plus the E3-E13 rotation) is anchored to <strong>MEMBER_BILLED_AT</strong>: E2 at the billed date, then one rotation email every ~3 weeks indexed by MEMBER_ROT_POS (0-9).</div>
 
-    <h3>5.1 Flow A - member_joined (Welcome + the two time-bound emails)</h3>
-    <p>Trigger: a member joins (member_joined webhook). This execution owns the day-0 anchor.</p>
-    <div class="step"><span class="num">1.</span> <strong>E1 Welcome:</strong> Brevo transactional send (Final Series E1, id 30) to every member, no cohort filter. Write the <code>📧 Member Flow E1</code> ST note.</div>
-    <div class="step"><span class="num">2.</span> <strong>Wait node (welcome + 90 days):</strong> then send <strong>E12 Close</strong> (Final Series E7 Close, id 45) - the hard close on the free $389 inspection. Write its note.</div>
-    <div class="step"><span class="num">3.</span> <strong>Wait node (end of membership, welcome-anchored):</strong> then send <strong>E14 Renewal</strong> (Final Series E14, id 47). Write its note.</div>
+    <h3>5.1 Scheduler - join track (Welcome + the two time-bound emails)</h3>
+    <p>A member enters when <code>MEMBER_FLOW_ACTIVE=true</code>. On the first run for that contact the scheduler sends <strong>E1 Welcome</strong> (Final Series E1, id 30) to every member, no cohort filter, writes the <code>📧 Member Flow E1</code> ST note, and sets CLOSE_AT (+90 days) and RENEW_AT (+390 days). Later daily runs fire <strong>E12 Close</strong> (id 45) when CLOSE_AT arrives and <strong>E14 Renewal</strong> (id 47) when RENEW_AT arrives, each with its own note.</p>
 
-    <h3>5.2 Flow B - member_invoice_paid (billing-anchored rotation)</h3>
-    <p>Trigger: the billing event (member_invoice_paid webhook). This execution owns the E2 + rotation chain.</p>
-    <div class="step"><span class="num">1.</span> <strong>Switch:</strong> branch on <code>service_type</code> to Aircon / Plumbing / Electrical / Roofing.</div>
-    <div class="step"><span class="num">2.</span> <strong>E2 First cross-trade (event trigger, not a day):</strong> send the trade-specific entrance template (Final Series E2, ids 31-34). Write the <code>📧 Member Flow E2</code> note. The opener references the trade just used.</div>
-    <div class="step"><span class="num">3.</span> <strong>Rotation (Wait nodes, every ~3 weeks from billing):</strong> E3 Switchboard, E4 Tap fix, E5 AC filter, E6 Roof leaks, E8-E11 (the three non-entrance opener articles in neutralised form + Adelaide water), then E13 Renovation. Write the <code>📧 Member Flow E#</code> note on every send. Which three opener articles appear neutralised depends on the member's entrance trade.</div>
+    <h3>5.2 Scheduler - billing track (E2 entrance + rotation)</h3>
+    <p>When <code>MEMBER_BILLED_AT</code> is set (billing sync), the scheduler sends <strong>E2 First cross-trade</strong> (trade-specific entrance, ids 31-34) at the billed date - the opener references the trade just used - then one rotation email every ~3 weeks: E3 Switchboard, E4 Tap fix, E5 AC filter, E6 Roof leaks, E8-E11 (the three non-entrance opener articles in neutralised form + Adelaide water), then E13 Renovation (id 46). The sequence is computed from the member's <code>SERVICE_TYPE</code> at run time; which three opener articles appear neutralised depends on the entrance trade. <code>MEMBER_ROT_POS</code> (0-9) tracks how many billing-track emails have been sent.</p>
 
-    <h3>5.3 Where the automation lives (current n8n workflows)</h3>
+    <h3>5.3 Where the automation lives (scheduler + cron) and the stage attributes</h3>
+    <p>Scheduler: <code>/root/.hermes/bin/member_flow_scheduler.py</code>. Cron: <code>/root/.hermes/scripts/member_flow_daily.sh</code> under Hermes cron id <code>68fed814ac7e</code> (daily 09:00, dry by default - sends nothing). Set <code>MF_ENABLE_SENDS=1</code> in the cron environment to actually send (go-live only).</p>
     <table>
-      <tr><th>Workflow ID</th><th>Name</th><th>Status</th></tr>
-      <tr><td><code>Q3g1NG1NHIc1w3HZ</code></td><td>Flow A - member_joined (E1 welcome -&gt; Wait -&gt; E12 close day90 -&gt; Wait -&gt; E14 renewal)</td><td>BUILT (12 nodes) - NOT ARMED - staged-tested before live</td></tr>
-      <tr><td><code>V2g7hDNtzabRNWsS</code></td><td>Flow B - member_invoice_paid (Resolve-trade -&gt; E2 entrance -&gt; rotation E3-E13 every ~3wk via Wait)</td><td>BUILT (163 nodes) - NOT ARMED - staged-tested before live</td></tr>
-      <tr><td><code>MzODpRAUgj3GmTyh</code></td><td>ST note-write proof</td><td>Proven (24 Sep); deactivated</td></tr>
+      <tr><th>Brevo contact attribute</th><th>Meaning</th></tr>
+      <tr><td><code>MEMBER_FLOW_ACTIVE</code> (bool)</td><td>In the flow = the arming gate. No real member has this set until go-live (backfill / <code>--arm-flow</code> join).</td></tr>
+      <tr><td><code>MEMBER_E1_SENT</code> (bool)</td><td>Welcome dispatched.</td></tr>
+      <tr><td><code>MEMBER_CLOSE_AT</code> / <code>MEMBER_RENEW_AT</code> (date)</td><td>When the Close (Day 90) and Renewal fire (join-anchored).</td></tr>
+      <tr><td><code>MEMBER_BILLED_AT</code> (date)</td><td>Billing date that anchors the E2 + rotation track (set by the billing sync).</td></tr>
+      <tr><td><code>MEMBER_ROT_POS</code> (0-9)</td><td>How many billing-track emails have been sent (0 = E2 due).</td></tr>
+      <tr><td><code>MEMBER_CLOSE_SENT</code> / <code>MEMBER_RENEW_SENT</code> (bool)</td><td>Close / renewal dispatched.</td></tr>
     </table>
-    <div class="callout notice"><div class="title">Go-live gate</div>The journey remains inactive until it is rebuilt to the final series and proven end-to-end against a staged test member. Consent/suppression gating applies to every send; nothing fires to live members until signed off.</div>
+    <div class="step">Ingress wiring: join sync (<code>bin/sync_members_to_brevo.py --arm-flow</code>, flag default OFF) sets <code>MEMBER_FLOW_ACTIVE</code> on new joiners; billing sync (<code>bin/sync_member_invoice_paid.py</code>) sets <code>MEMBER_BILLED_AT</code> + <code>SERVICE_TYPE</code> on the invoice-paid event.</div>
+    <div class="callout notice"><div class="title">Go-live gate</div>The scheduler cron is dry (sends nothing) and no real member has <code>MEMBER_FLOW_ACTIVE=true</code>. Go-live = staged test passes + owner sign-off, then backfill <code>MEMBER_FLOW_ACTIVE</code> on consented members and set <code>MF_ENABLE_SENDS=1</code> for the cron. Nothing fires to live members until then.</div>
 
   </section>
 
