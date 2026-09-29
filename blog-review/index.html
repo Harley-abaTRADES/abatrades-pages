@@ -112,6 +112,21 @@ a{color:var(--brand-secondary)}.dark a{color:#fff}
   .reveal{transition:none!important;opacity:1!important;transform:none!important}
   .count{text-align:inherit}
 }
+
+/* blog tables */
+.blog-picker{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 6px}
+.blog-pill{font-family:inherit;font-size:.8rem;font-weight:700;padding:7px 14px;border-radius:100px;border:1px solid var(--brand-border);background:#fff;color:var(--brand-text);cursor:pointer;transition:all .2s;display:inline-flex;align-items:center;gap:6px}
+.blog-pill:hover{border-color:var(--brand-secondary);color:var(--brand-secondary)}
+.blog-pill.active{background:var(--brand-primary);border-color:var(--brand-primary);color:#fff}
+.pill-n{display:inline-block;min-width:24px;text-align:center;font-size:.7rem;font-weight:700;border-radius:100px;background:var(--brand-surface);color:var(--brand-primary);padding:1px 8px}
+.blog-pill.active .pill-n{background:rgba(255,255,255,.18);color:#fff}
+.blog-panel{display:none;margin-top:4px}
+.blog-panel{display:flex}
+.blog-panel[data-hide]{display:none}
+.blog-tbl td.blg-n{text-align:left;min-width:210px}
+.blg-path{font-size:.8rem;color:var(--brand-slate);word-break:break-all}
+.blog-meta{font-size:.82rem;color:var(--brand-slate);opacity:.9;margin-bottom:8px}
+
 </style>
 </head>
 <body>
@@ -314,6 +329,186 @@ a{color:var(--brand-secondary)}.dark a{color:#fff}
   </div>
 </section>
 
+<!-- 8b. THE BLOGS, PAGE BY PAGE (generated) -->
+<section class="alt" id="blogs">
+  <div class="wrap wide">
+    <span class="badge bad-navy reveal">every blog, tabulated</span>
+    <h2 class="reveal">The blogs, page by page</h2>
+    <p class="reveal d1">Top 40 blogs per brand, ranked by sessions. <b>Sessions</b> = GA4 page sessions. <b>Clicks</b> = Google Search Console organic clicks. <b>Leads</b> = GA4 lead events landing on that page. Window 1 Jul 2025 to 29 Sep 2026.</p>
+    <div class="blog-picker reveal d2">
+      <button class="blog-pill active" data-brand="air-conditioning">Air Conditioning<span class="pill-n">40</span></button>
+      <button class="blog-pill" data-brand="plumbing-gas">Plumbing &amp; Gas<span class="pill-n">40</span></button>
+      <button class="blog-pill" data-brand="electrical">Electrical + Solar<span class="pill-n">28</span></button>
+      <button class="blog-pill" data-brand="roofing">Roofing<span class="pill-n">8</span></button>
+      <button class="blog-pill" data-brand="renovations">Renovations<span class="pill-n">4</span></button>
+      <button class="blog-pill" data-brand="trades">Trades<span class="pill-n">6</span></button>
+    </div>
+    <div class="blog-panel" data-brand="air-conditioning">
+      <div class="blog-meta">abaairconditioning.com.au · 40 articles listed · top 40 by sessions</div>
+      <div class="tbl-wrap"><table class="tbl blog-tbl">
+        <tr><th>Article</th><th>Sessions</th><th>Clicks</th><th>Leads</th></tr>
+<tr><td class="blg-n"><span class="blg-path">/air-conditioning/everything-you-need-to-know-about-ac-c…</span></td><td class="mono">211</td><td class="mono">153</td><td class="mono">0</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/air-conditioning/10-key-signs-when-to-replace-your-air-…</span></td><td class="mono">47</td><td class="mono">1</td><td class="mono">0</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/air-conditioning/the-10-point-ac-health-check-that-prev…</span></td><td class="mono">22</td><td class="mono">2</td><td class="mono">0</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/air-conditioning/why-your-ac-filter-could-be-costing-yo…</span></td><td class="mono">20</td><td class="mono">0</td><td class="mono">0</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/air-conditioning/air-purification-systems-the-winter-he…</span></td><td class="mono">13</td><td class="mono">0</td><td class="mono">0</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/air-conditioning/whats-the-best-aircon-temperature-for-…</span></td><td class="mono">11</td><td class="mono">20</td><td class="mono">2</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/air-conditioning/allergen-free-winter-living-ac-upgrade…</span></td><td class="mono">9</td><td class="mono">0</td><td class="mono">0</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/air-conditioning/how-much-does-it-cost-to-install-a-spl…</span></td><td class="mono">5</td><td class="mono">145</td><td class="mono">15</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/air-conditioning/is-your-reverse-cycle-air-conditioner-…</span></td><td class="mono">4</td><td class="mono">15</td><td class="mono">0</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/air-conditioning/how-to-replace-air-vent-covers-without…</span></td><td class="mono">3</td><td class="mono">1,054</td><td class="mono">7</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/air-conditioning/everything-you-need-to-know-about-duct…</span></td><td class="mono">3</td><td class="mono">385</td><td class="mono">7</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/air-conditioning/are-convection-heaters-energy-efficient</span></td><td class="mono">3</td><td class="mono">113</td><td class="mono">2</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/air-conditioning/how-to-clean-air-conditioner-vents</span></td><td class="mono">3</td><td class="mono">38</td><td class="mono">4</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/air-conditioning/top-common-air-conditioner-issues-you-…</span></td><td class="mono">3</td><td class="mono">2</td><td class="mono">0</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/air-conditioning/is-your-heater-ready-to-rest-why-a-shu…</span></td><td class="mono">3</td><td class="mono">0</td><td class="mono">0</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/air-conditioning/gas-fireplace-safety-in-adelaide-the-w…</span></td><td class="mono">3</td><td class="mono">0</td><td class="mono">0</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/air-conditioning/how-to-choose-between-reverse-cycle-vs…</span></td><td class="mono">2</td><td class="mono">12</td><td class="mono">0</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/air-conditioning/how-to-clean-an-aircon-complete-step-b…</span></td><td class="mono">2</td><td class="mono">6</td><td class="mono">6</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/air-conditioning/when-should-you-replace-your-air-condi…</span></td><td class="mono">2</td><td class="mono">5</td><td class="mono">0</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/air-conditioning/adelaide-winters-are-getting-colder-ho…</span></td><td class="mono">2</td><td class="mono">2</td><td class="mono">0</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/air-conditioning/what-is-ducted-air-conditioning-a-comp…</span></td><td class="mono">2</td><td class="mono">2</td><td class="mono">4</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/air-conditioning/signs-your-air-conditioner-is-struggli…</span></td><td class="mono">2</td><td class="mono">1</td><td class="mono">0</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/air-conditioning/should-you-upgrade-your-air-conditione…</span></td><td class="mono">2</td><td class="mono">0</td><td class="mono">0</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/air-conditioning/winter-humidity-control-why-your-heati…</span></td><td class="mono">2</td><td class="mono">0</td><td class="mono">0</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/air-conditioning/is-your-ducted-air-conditioning-ready-…</span></td><td class="mono">2</td><td class="mono">0</td><td class="mono">0</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/air-conditioning/why-does-my-aircon-smell-common-causes…</span></td><td class="mono">1</td><td class="mono">179</td><td class="mono">0</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/air-conditioning/air-conditioner-not-working</span></td><td class="mono">1</td><td class="mono">159</td><td class="mono">9</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/air-conditioning/aircon-blowing-hot-air</span></td><td class="mono">1</td><td class="mono">84</td><td class="mono">0</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/air-conditioning/how-to-improve-your-air-conditioners-e…</span></td><td class="mono">1</td><td class="mono">6</td><td class="mono">0</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/air-conditioning/whats-the-difference-between-evaporati…</span></td><td class="mono">1</td><td class="mono">5</td><td class="mono">1</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/air-conditioning/how-dirty-filters-affect-your-heating-…</span></td><td class="mono">1</td><td class="mono">2</td><td class="mono">0</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/air-conditioning/why-your-air-conditioner-dies-at-42c-a…</span></td><td class="mono">1</td><td class="mono">1</td><td class="mono">0</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/air-conditioning/page/2</span></td><td class="mono">1</td><td class="mono">0</td><td class="mono">0</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/air-conditioning/gas-fireplace-safety-in-adelaide</span></td><td class="mono">1</td><td class="mono">0</td><td class="mono">0</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/air-conditioning/easy-guide-about-reverse-cycle-split-s…</span></td><td class="mono">1</td><td class="mono">0</td><td class="mono">0</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/air-conditioning/split-ac-not-cooling-but-fan-is-running</span></td><td class="mono">1</td><td class="mono">0</td><td class="mono">20</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/air-conditioning/whats-the-best-aircon-temperature-for-…</span></td><td class="mono">1</td><td class="mono">0</td><td class="mono">0</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/air-conditioning/how-to-keep-your-home-warm-in-winters</span></td><td class="mono">1</td><td class="mono">0</td><td class="mono">0</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/air-conditioning/is-ducted-reverse-cycle-air-conditioni…</span></td><td class="mono">1</td><td class="mono">0</td><td class="mono">0</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/air-conditioning/difference-between-inverter-vs-standar…</span></td><td class="mono">1</td><td class="mono">0</td><td class="mono">0</td></tr>
+      </table></div>
+    </div>
+    <div class="blog-panel" data-brand="plumbing-gas" data-hide="1">
+      <div class="blog-meta">abaplumbing.com.au · 40 articles listed · top 40 by sessions</div>
+      <div class="tbl-wrap"><table class="tbl blog-tbl">
+        <tr><th>Article</th><th>Sessions</th><th>Clicks</th><th>Leads</th></tr>
+<tr><td class="blg-n"><span class="blg-path">/5-easy-diy-tips-to-unclog-your-sink-a-handy-guide-for-h…</span></td><td class="mono">528</td><td class="mono">61</td><td class="mono">0</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/unlocking-rheem-hot-water-error-codes</span></td><td class="mono">405</td><td class="mono">240</td><td class="mono">1</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/most-common-causes-of-blocked-toilets-and-what-to-do-ab…</span></td><td class="mono">332</td><td class="mono">40</td><td class="mono">2</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/what-do-most-adelaide-plumbers-charge-per-hour</span></td><td class="mono">293</td><td class="mono">95</td><td class="mono">1</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/top-reasons-why-drains-are-smelling-bad</span></td><td class="mono">243</td><td class="mono">1</td><td class="mono">2</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/the-complete-guide-to-plumbed-fridge-installations</span></td><td class="mono">191</td><td class="mono">0</td><td class="mono">3</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/how-much-does-it-cost-to-fix-a-leaking-pipe-in-the-wall</span></td><td class="mono">166</td><td class="mono">113</td><td class="mono">1</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/the-complete-guide-why-whole-house-water-filtration-is-…</span></td><td class="mono">156</td><td class="mono">9</td><td class="mono">6</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/dishwasher-disasters-common-issues-and-how-professional…</span></td><td class="mono">94</td><td class="mono">0</td><td class="mono">0</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/hot-water-costs-whats-your-system-really-costing-you-ea…</span></td><td class="mono">93</td><td class="mono">0</td><td class="mono">0</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/replacing-your-hot-water-system-6-common-traps-to-avoid…</span></td><td class="mono">90</td><td class="mono">3</td><td class="mono">0</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/the-hidden-cost-of-ignoring-plumbing-issues-over-public…</span></td><td class="mono">87</td><td class="mono">21</td><td class="mono">0</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/common-gas-appliance-issues-you-cant-ignore</span></td><td class="mono">86</td><td class="mono">3</td><td class="mono">1</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/why-you-shouldnt-overlook-a-kitchen-sink-leak</span></td><td class="mono">80</td><td class="mono">3</td><td class="mono">0</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/how-much-does-it-cost-to-replace-plumbing-in-an-old-house</span></td><td class="mono">79</td><td class="mono">34</td><td class="mono">0</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/difference-between-plumber-and-gasfitter</span></td><td class="mono">78</td><td class="mono">51</td><td class="mono">1</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/why-you-shouldnt-ignore-a-blocked-drain-seriously-dont-…</span></td><td class="mono">77</td><td class="mono">0</td><td class="mono">0</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/what-to-look-for-when-hiring-plumbers-a-comprehensive-g…</span></td><td class="mono">76</td><td class="mono">2</td><td class="mono">0</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/the-real-cost-of-diy-drain-fixes</span></td><td class="mono">75</td><td class="mono">1</td><td class="mono">0</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/the-financial-benefits-of-installing-a-tankless-hot-wat…</span></td><td class="mono">73</td><td class="mono">0</td><td class="mono">3</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/adelaide-plumber-shares-fixes-for-common-summer-plumbin…</span></td><td class="mono">72</td><td class="mono">0</td><td class="mono">0</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/gas-plumbing-issues-heres-how-to-find-reliable-help-in-…</span></td><td class="mono">72</td><td class="mono">0</td><td class="mono">0</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/4-signs-you-need-adelaide-plumber-hot-water-system-repair</span></td><td class="mono">70</td><td class="mono">0</td><td class="mono">0</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/top-things-to-consider-before-hiring-an-adelaide-emerge…</span></td><td class="mono">68</td><td class="mono">9</td><td class="mono">0</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/keep-your-kitchen-plumbing-in-top-shape-with-these-tips</span></td><td class="mono">67</td><td class="mono">0</td><td class="mono">0</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/choosing-the-best-hot-water-system-for-your-adelaide-ho…</span></td><td class="mono">63</td><td class="mono">4</td><td class="mono">0</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/how-to-find-affordable-emergency-plumbing-adelaide-fast</span></td><td class="mono">63</td><td class="mono">0</td><td class="mono">0</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/dont-ignore-these-signs-and-call-an-emergency-gas-plumb…</span></td><td class="mono">55</td><td class="mono">1</td><td class="mono">0</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/buyers-guide-choose-hot-water-system</span></td><td class="mono">55</td><td class="mono">1</td><td class="mono">0</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/practical-tips-to-detect-gas-leaks</span></td><td class="mono">55</td><td class="mono">0</td><td class="mono">0</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/can-i-snake-a-drain-myself-a-diy-guide-to-tackling-clogs</span></td><td class="mono">52</td><td class="mono">19</td><td class="mono">0</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/gas-hot-water-system-maintenance-checklist</span></td><td class="mono">51</td><td class="mono">14</td><td class="mono">0</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/how-to-fix-your-kitchen-sink-leak-like-a-pro</span></td><td class="mono">42</td><td class="mono">9</td><td class="mono">0</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/why-are-plumbers-so-hard-to-find-understanding-the-chal…</span></td><td class="mono">40</td><td class="mono">18</td><td class="mono">0</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/the-5-minute-leaking-tap-fix-that-saves-adelaide-homeow…</span></td><td class="mono">37</td><td class="mono">0</td><td class="mono">0</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/adelaide-hot-water-brand-battle-which-system-delivers-t…</span></td><td class="mono">35</td><td class="mono">0</td><td class="mono">0</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/the-hidden-health-risks-in-your-tap-water-and-how-to-fi…</span></td><td class="mono">34</td><td class="mono">0</td><td class="mono">0</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/now-is-the-best-time-to-service-your-hot-water-system-i…</span></td><td class="mono">34</td><td class="mono">0</td><td class="mono">2</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/common-gas-leak-causes-and-why-you-should-never-diy-gas…</span></td><td class="mono">33</td><td class="mono">4</td><td class="mono">0</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/how-much-does-a-plumber-cost-to-snake-a-drain</span></td><td class="mono">33</td><td class="mono">1</td><td class="mono">0</td></tr>
+      </table></div>
+    </div>
+    <div class="blog-panel" data-brand="electrical" data-hide="1">
+      <div class="blog-meta">abaelectrical.net.au · 28 articles listed · top 28 by sessions</div>
+      <div class="tbl-wrap"><table class="tbl blog-tbl">
+        <tr><th>Article</th><th>Sessions</th><th>Clicks</th><th>Leads</th></tr>
+<tr><td class="blg-n"><span class="blg-path">/uncategorised/whats-the-difference-between-hard-wired-a…</span></td><td class="mono">6</td><td class="mono">0</td><td class="mono">0</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/uncategorised/2847</span></td><td class="mono">5</td><td class="mono">0</td><td class="mono">0</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/category/uncategorised</span></td><td class="mono">4</td><td class="mono">0</td><td class="mono">0</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/uncategorised/top-7-questions-to-ask-before-hiring-an-e…</span></td><td class="mono">4</td><td class="mono">0</td><td class="mono">0</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/uncategorised/what-warning-signs-can-your-switchboard-g…</span></td><td class="mono">3</td><td class="mono">1</td><td class="mono">0</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/uncategorised/what-licenses-or-certifications-should-an…</span></td><td class="mono">3</td><td class="mono">0</td><td class="mono">0</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/uncategorised/switchboard-upgrades-safety-switches-and-…</span></td><td class="mono">3</td><td class="mono">0</td><td class="mono">0</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/lighting/why-choosing-a-licensed-electrician-in-adelaid…</span></td><td class="mono">3</td><td class="mono">0</td><td class="mono">0</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/uncategorised/why-hiring-a-local-electrician-in-kensing…</span></td><td class="mono">3</td><td class="mono">0</td><td class="mono">0</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/uncategorised/from-outlets-to-emergencies-what-you-need…</span></td><td class="mono">2</td><td class="mono">0</td><td class="mono">0</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/uncategorised/how-much-does-ceiling-fan-installation-in…</span></td><td class="mono">2</td><td class="mono">0</td><td class="mono">0</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/uncategorised/7-signs-you-need-an-electrician-in-adelai…</span></td><td class="mono">2</td><td class="mono">0</td><td class="mono">0</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/uncategorised/what-to-expect-from-a-professional-electr…</span></td><td class="mono">2</td><td class="mono">0</td><td class="mono">0</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/uncategorised/do-you-really-need-a-licensed-electrician…</span></td><td class="mono">2</td><td class="mono">0</td><td class="mono">0</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/uncategorised/5-signs-you-need-to-call-an-electrician-i…</span></td><td class="mono">2</td><td class="mono">0</td><td class="mono">0</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/uncategorised/is-your-adelaide-home-electrically-safe-q…</span></td><td class="mono">2</td><td class="mono">0</td><td class="mono">0</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/uncategorised/top-questions-to-ask-before-hiring-an-ele…</span></td><td class="mono">2</td><td class="mono">0</td><td class="mono">0</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/uncategorised/looking-for-a-norwood-electrician-you-can…</span></td><td class="mono">2</td><td class="mono">0</td><td class="mono">0</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/uncategorised/electrical-safety-upgrades-every-kensingt…</span></td><td class="mono">1</td><td class="mono">0</td><td class="mono">0</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/uncategorised/are-you-hiring-an-electrician-in-kensingt…</span></td><td class="mono">1</td><td class="mono">0</td><td class="mono">0</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/uncategorised/common-electrical-issues-in-kensington-ho…</span></td><td class="mono">1</td><td class="mono">0</td><td class="mono">0</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/electrical-safety/how-to-find-a-reliable-electrician-in…</span></td><td class="mono">1</td><td class="mono">0</td><td class="mono">0</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/uncategorised/can-a-kensington-electrician-help-upgrade…</span></td><td class="mono">1</td><td class="mono">0</td><td class="mono">0</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/category/lighting</span></td><td class="mono">1</td><td class="mono">0</td><td class="mono">0</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/category/electrical-safety</span></td><td class="mono">1</td><td class="mono">0</td><td class="mono">0</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/uncategorised/how-to-find-a-reliable-electrician-in-ade…</span></td><td class="mono">1</td><td class="mono">0</td><td class="mono">0</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/uncategorised/why-some-homes-keep-having-electrical-iss…</span></td><td class="mono">1</td><td class="mono">0</td><td class="mono">0</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/uncategorised/why-regular-electrical-safety-checks-are-…</span></td><td class="mono">1</td><td class="mono">0</td><td class="mono">0</td></tr>
+      </table></div>
+    </div>
+    <div class="blog-panel" data-brand="roofing" data-hide="1">
+      <div class="blog-meta">abaroofing.com.au · 8 articles listed · top 8 by sessions</div>
+      <div class="tbl-wrap"><table class="tbl blog-tbl">
+        <tr><th>Article</th><th>Sessions</th><th>Clicks</th><th>Leads</th></tr>
+<tr><td class="blg-n"><span class="blg-path">/roof/is-your-adelaide-roof-strong-enough-for-solar-panels</span></td><td class="mono">29</td><td class="mono">7</td><td class="mono">0</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/roof/5-signs-your-roof-wont-survive-another-adelaide-su…</span></td><td class="mono">27</td><td class="mono">0</td><td class="mono">2</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/roof/why-smart-adelaide-homeowners-are-switching-to-lig…</span></td><td class="mono">27</td><td class="mono">0</td><td class="mono">0</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/roof/roofer-vs-roof-contractor-vs-roof-plumber-who-shou…</span></td><td class="mono">9</td><td class="mono">0</td><td class="mono">5</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/roof/metal-roof-repairs-in-adelaide-when-to-call-a-prof…</span></td><td class="mono">6</td><td class="mono">0</td><td class="mono">0</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/roof/leaf-guard-systems-why-adelaide-homeowners-are-nev…</span></td><td class="mono">5</td><td class="mono">2</td><td class="mono">0</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/roof/top-5-reasons-your-roof-is-leaking</span></td><td class="mono">4</td><td class="mono">1</td><td class="mono">0</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/roof/future-proofing-your-roof-how-to-prepare-for-solar</span></td><td class="mono">1</td><td class="mono">0</td><td class="mono">0</td></tr>
+      </table></div>
+    </div>
+    <div class="blog-panel" data-brand="renovations" data-hide="1">
+      <div class="blog-meta">abarenovations.com.au · 4 articles listed · top 4 by sessions</div>
+      <div class="tbl-wrap"><table class="tbl blog-tbl">
+        <tr><th>Article</th><th>Sessions</th><th>Clicks</th><th>Leads</th></tr>
+<tr><td class="blg-n"><span class="blg-path">/best-practice-for-waterproofing-showers-in-adelaide-bat…</span></td><td class="mono">114</td><td class="mono">15</td><td class="mono">0</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/shower-vs-bath-what-do-you-prefer</span></td><td class="mono">100</td><td class="mono">0</td><td class="mono">1</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/bathroom-renovations-do-i-need-a-bidet</span></td><td class="mono">54</td><td class="mono">1</td><td class="mono">0</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/how-cool-do-backlit-mirrors-look</span></td><td class="mono">50</td><td class="mono">2</td><td class="mono">0</td></tr>
+      </table></div>
+    </div>
+    <div class="blog-panel" data-brand="trades" data-hide="1">
+      <div class="blog-meta">abatrades.com.au · 6 articles listed · top 6 by sessions</div>
+      <div class="tbl-wrap"><table class="tbl blog-tbl">
+        <tr><th>Article</th><th>Sessions</th><th>Clicks</th><th>Leads</th></tr>
+<tr><td class="blg-n"><span class="blg-path">/in-the-press/the-advertiser</span></td><td class="mono">70</td><td class="mono">0</td><td class="mono">0</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/in-the-press/glam-adelaide</span></td><td class="mono">41</td><td class="mono">0</td><td class="mono">0</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/in-the-press/south-australian-style</span></td><td class="mono">31</td><td class="mono">2</td><td class="mono">0</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/in-the-press/indaily-sa</span></td><td class="mono">30</td><td class="mono">0</td><td class="mono">0</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/in-the-press/sa-style-qa</span></td><td class="mono">26</td><td class="mono">0</td><td class="mono">0</td></tr>
+<tr><td class="blg-n"><span class="blg-path">/in-the-press/indaily-corporate-ladder</span></td><td class="mono">20</td><td class="mono">1</td><td class="mono">0</td></tr>
+      </table></div>
+    </div>
+    <p class="fine reveal d3">Sessions and leads come from GA4; clicks come from Search Console (Google organic search). The two sources are joined by URL path. "Trades (group)" rows are press-coverage pages, not authored blogs. Blog-article identity is inferred from URL structure, so a page we count as a blog shows only figures for that exact URL.</p>
+  </div>
+</section>
+
 <!-- 9. STRAIGHT VERDICT -->
 <section class="alt">
   <div class="wrap">
@@ -413,6 +608,19 @@ const navIo=new IntersectionObserver((entries)=>{
   });
 },{threshold:.5});
 secs.forEach(s=>navIo.observe(s));
+
+// blog brand picker
+document.querySelectorAll('.blog-pill').forEach(pill=>{
+  pill.addEventListener('click',()=>{
+    const b=pill.dataset.brand;
+    document.querySelectorAll('.blog-pill').forEach(p=>p.classList.remove('active'));
+    pill.classList.add('active');
+    document.querySelectorAll('.blog-panel').forEach(pan=>{
+      pan.style.display = pan.dataset.brand===b ? 'flex' : 'none';
+    });
+  });
+});
+
 </script>
 </body>
 </html>
