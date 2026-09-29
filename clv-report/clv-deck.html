@@ -40,6 +40,10 @@ a{color:var(--brand-secondary)}.dark a{color:#fff}
 .quote{border-left:4px solid var(--brand-primary);padding:14px 18px;margin:18px 0;font-size:1rem;font-style:italic;background:rgba(29,59,109,.05);border-radius:0 10px 10px 0}
 .dark .quote{border-left-color:#fff;background:rgba(255,255,255,.08)}
 .disclaimer{margin-top:24px;padding-top:14px;border-top:1px solid var(--brand-border);font-size:.78rem;opacity:.6;line-height:1.45}
+.video-cta{display:inline-block;background:var(--brand-primary);color:#fff;font-weight:700;font-size:1.05rem;padding:14px 30px;border-radius:999px;text-decoration:none;transition:background .3s,transform .2s}
+.video-cta:hover{background:var(--brand-secondary);transform:translateY(-2px);color:#fff}
+.dark .video-cta{background:#fff;color:var(--brand-primary)}
+.dark .video-cta:hover{background:#E8ECF5}
 
 /* progress */
 #progress{position:fixed;top:0;left:0;height:4px;width:0%;background:var(--brand-secondary);z-index:60;transition:width .1s linear}
@@ -251,7 +255,20 @@ section.dark .tl-item{--tl-bg:var(--brand-primary)}
   </div>
 </section>
 
-<!-- 2. WHAT WE FOUND -->
+<!-- 1b. OVERVIEW -->
+<section class="alt" id="overview">
+  <div class="wrap" style="max-width:760px">
+    <div class="rule reveal"></div>
+    <h2 class="reveal">The program at a glance</h2>
+    <p class="lede reveal d1">Members are 13% of customers but generate nearly half our revenue. This is what aba Membership is, and how we're going to nurture it. Watch the short walkthrough below, then read on.</p>
+    <div class="card reveal d2" style="text-align:center;padding:28px 26px">
+      <div class="vs">Overview video</div>
+      <div style="font-size:1.5rem;font-weight:700;margin-bottom:6px;color:var(--brand-primary)">aba TRADES Membership</div>
+      <p style="font-size:.92rem;opacity:.75;margin-bottom:20px">A short walkthrough of the program</p>
+      <a class="video-cta" href="https://abapowerbi-my.sharepoint.com/:v:/g/personal/harley_abatrades_com_au/IQCiZhBp3yB6TpEIFtoUmND8AaMzYAlIPZ6mZwQGdl6-VPw" target="_blank" rel="noopener">▶&nbsp; Watch the membership video</a>
+    </div>
+  </div>
+</section>
 <section class="light" id="s2">
   <div class="wrap">
     <div class="rule reveal"></div>
