@@ -128,7 +128,7 @@ tr:nth-child(even) td { background: var(--brand-field); }
     <div class="m"><strong>SOP</strong>003</div>
     <div class="m"><strong>Owner</strong>Paul / Josh</div>
     <div class="m"><strong>Applies to</strong>All aba TRADES brands</div>
-    <div class="m"><strong>Version</strong>1.6</div>
+    <div class="m"><strong>Version</strong>1.7</div>
     <div class="m"><strong>Last reviewed</strong>30 Sep 2026</div>
     <div class="m"><strong>Status</strong>In build</div>
   </div>
@@ -399,6 +399,7 @@ tr:nth-child(even) td { background: var(--brand-field); }
       <li>The client-ID cookie is the only identifier organic/email/SMS/social sessions produce (no GCLID), so hashed phone/email is the reliable cross-channel join key.</li>
       <li>ST campaign.source/medium fields are NULL on our records; the campaign <em>name</em> + DNIS (from the phone-number table) carry the attribution signal.</li>
       <li>The contacts collection root 403s; use the per-customer <code>customers/{id}/contacts</code> sub-resource.</li>
+      <li><strong>3CX operator panel shows the phone layer, not the carrier.</strong> The 3CX "Voice &amp; Chat" screen for this install (dept "ABA Plumbing") surfaces the SBC/Router-Phone endpoints but listed no SIP trunk and no DIDs (both empty in the view checked 30 Sep 2026), so the upstream carrier and the live DID range could not be confirmed from the 3CX panel or ServiceTitan. A ServiceTitan phone-number record carries the 3CX SIP endpoint (e.g. <code>sip:80007@abaplumbing.3cx.com.au:5060</code>) plus the campaign and lead-type map, not the registration. The real number registration sits upstream of the PBX (SIP trunk/DID provider fronting 3CX) and must be read from Simply5/3CX admin (SIP trunk view), not from the box. Do not re-derive the carrier from ServiceTitan or the shared panel.</li>
     </ul>
   </section>
 
@@ -436,7 +437,7 @@ tr:nth-child(even) td { background: var(--brand-field); }
 </div>
 
 <footer class="footer">
-  <strong>aba TRADES</strong> &nbsp;&middot;&nbsp; Standard Operating Procedure 003 &nbsp;&middot;&nbsp; v1.6
+  <strong>aba TRADES</strong> &nbsp;&middot;&nbsp; Standard Operating Procedure 003 &nbsp;&middot;&nbsp; v1.7
   <br><span style="opacity:0.7">Harley is customer support. Contributions and corrections: <a href="mailto:harley@abatrades.com.au" style="color:#fff">harley@abatrades.com.au</a>
 </footer>
 
