@@ -75,18 +75,33 @@ tr:nth-child(even) td { background: var(--brand-field); }
   ul, ol { margin-left: 18px; }
 }
 
-/* interactive current-vs-future chart */
-.interactive-wrap { background: var(--brand-surface); border: 1px solid var(--brand-border); border-radius: 10px; padding: 16px 18px; margin: 18px 0; }
-.istate-row { margin-bottom: 10px; }
-.istate-btn { border: 1px solid var(--brand-border); background: #fff; color: var(--brand-text); font-family: var(--font-body); font-weight: 700; font-size: 13px; border-radius: 8px; padding: 6px 14px; margin-right: 6px; cursor: pointer; }
-.istate-btn.is-active { background: var(--brand-primary); color: #fff; }
-.ichannel-row { margin: 6px 0 12px; }
-.ichannel-cap { font-weight: 700; font-size: 12px; color: var(--brand-text); margin-right: 4px; }
-.ichannel { border: 1px solid var(--brand-border); background: #fff; color: var(--brand-text); font-family: var(--font-body); font-weight: 600; font-size: 12px; border-radius: 100px; padding: 5px 13px; margin-right: 6px; cursor: pointer; }
-.ichannel.is-active { background: var(--brand-secondary); color: #fff; }
-.imap { width: 100%; overflow-x: auto; }
-.imap svg { max-width: 100%; height: auto; display: block; }
-.ireadout { background: var(--brand-primary); color: #fff; font-size: 12.5px; line-height: 1.45; border-radius: 8px; padding: 8px 12px; margin-top: 10px; }
+/* current-vs-future state panel (two-column comparison) */
+.statepanel { display: flex; flex-wrap: wrap; gap: 18px; margin: 16px 0; }
+.panel { flex: 1 1 420px; background: var(--brand-surface); border: 1px solid var(--brand-border); border-radius: 12px; padding: 14px 16px; }
+.panel-head { font-weight: 800; font-size: 14px; color: var(--brand-primary); text-transform: uppercase; letter-spacing: 0.04em; padding: 8px 0; border-bottom: 2px solid var(--brand-primary); margin-bottom: 12px; }
+.panel-head.future { color: var(--brand-secondary); border-bottom-color: var(--brand-secondary); }
+.pl-title { font-weight: 700; font-size: 12px; color: var(--brand-text); margin: 8px 0 6px; }
+.pl-chips { margin: 4px 0 2px; }
+.srcchip { display: inline-block; background: var(--brand-surface); border: 1px solid var(--brand-border); border-radius: 100px; padding: 3px 10px; font-size: 11px; font-weight: 600; color: var(--brand-text); margin: 2px 3px; }
+.pl-arrow { text-align: center; color: var(--brand-primary); font-size: 16px; margin: 2px 0; }
+.pl-surf, .pl-capture, .pl-google { display: flex; gap: 10px; flex-wrap: wrap; align-items: stretch; }
+.surfbox { flex: 1 1 40%; background: #fff; border: 1px solid var(--brand-border); border-radius: 10px; padding: 10px 12px; }
+.surfbox strong { display: block; color: var(--brand-primary); font-size: 13px; font-weight: 700; }
+.surfbox small { display: block; color: var(--brand-slate); font-size: 11px; line-height: 1.35; margin-top: 2px; }
+.capbox { flex: 1 1 40%; background: #fff; border: 1px solid var(--brand-border); border-radius: 10px; padding: 10px 12px; }
+.capbox strong { display: block; color: var(--brand-primary); font-size: 13px; font-weight: 700; }
+.capbox small { display: block; color: var(--brand-slate); font-size: 11px; line-height: 1.35; margin-top: 2px; }
+.capbox .capwarn { display: inline-block; background: #fdf3e3; color: var(--brand-warn); border-radius: 100px; padding: 1px 8px; font-size: 10px; font-weight: 700; margin-top: 5px; }
+.capbox .capbad { display: inline-block; background: #fbeceb; color: var(--brand-error); border-radius: 100px; padding: 1px 8px; font-size: 10px; font-weight: 700; margin-top: 5px; }
+.capbox.add .capgood { display: inline-block; background: #eef7e4; color: var(--brand-success); border-radius: 100px; padding: 1px 8px; font-size: 10px; font-weight: 700; margin-top: 5px; }
+.pl-st { background: #fff; border: 1px solid var(--brand-primary); border-radius: 10px; padding: 10px 12px; margin: 2px 0; }
+.pl-st strong { color: var(--brand-primary); font-weight: 700; font-size: 13px; }
+.pl-st small { display: block; color: var(--brand-slate); font-size: 11px; line-height: 1.35; margin-top: 2px; }
+.googlebox { flex: 1 1 40%; background: #fff; border: 1px solid var(--brand-border); border-radius: 10px; padding: 10px 12px; }
+.googlebox strong { display: block; color: var(--brand-primary); font-size: 13px; font-weight: 700; }
+.googlebox small { display: block; margin-top: 2px; }
+.googlebox .bad { color: var(--brand-error); font-size: 11px; }
+.googlebox .good { color: var(--brand-success); font-size: 11px; }
 
 </style>
 </head>
@@ -107,7 +122,7 @@ tr:nth-child(even) td { background: var(--brand-field); }
     <div class="m"><strong>SOP</strong>003</div>
     <div class="m"><strong>Owner</strong>Paul / Josh</div>
     <div class="m"><strong>Applies to</strong>All aba TRADES brands</div>
-    <div class="m"><strong>Version</strong>1.1</div>
+    <div class="m"><strong>Version</strong>1.3</div>
     <div class="m"><strong>Last reviewed</strong>30 Sep 2026</div>
     <div class="m"><strong>Status</strong>In build</div>
   </div>
@@ -253,98 +268,86 @@ tr:nth-child(even) td { background: var(--brand-field); }
   </section>
 
   <section>
-    <h2>4a. Current state vs future state (interactive)</h2>
-    <p>This chart is the same architecture, but shows what each platform is actually doing today versus what we are heading to. Click a channel to see its data flow light up. Click the state toggle to flip between today and the target build.</p>
-    <div class="interactive-wrap">
-      <div class="istate-row">
-        <button class="istate-btn is-active" data-state="current">Current state</button>
-        <button class="istate-btn" data-state="future">Future state</button>
+    <h2>4a. Current state vs future state</h2>
+    <p>Every customer has two separate facts, and this keeps them apart. <strong>Channel</strong>: where they came from (source/medium, in the GA4 format). <strong>Surface</strong>: how they got in touch (a phone call or the website form). The two panels show today versus the target build side by side.</p>
+
+    <div class="statepanel">
+      <div class="panel">
+        <div class="panel-head">CURRENT STATE (today)</div>
+
+        <div class="pl-title">Channel | where they came from</div>
+        <div class="pl-chips">
+          <span class="srcchip">google_cpc</span><span class="srcchip">google_organic</span><span class="srcchip">google_gmb_stepney</span><span class="srcchip">meta_cpc</span><span class="srcchip">sms_sms</span><span class="srcchip">print_print</span>
+        </div>
+
+        <div class="pl-arrow">&#8595;</div>
+        <div class="pl-title">Surface | how they got in touch</div>
+        <div class="pl-surf">
+          <div class="surfbox"><strong>Phone call</strong><small>3CX + SIP answer it</small></div>
+          <div class="surfbox"><strong>Website form</strong><small>lands a web lead</small></div>
+        </div>
+
+        <div class="pl-arrow">&#8595;</div>
+        <div class="pl-title">Capture | what we record</div>
+        <div class="pl-capture">
+          <div class="capbox"><strong>Caller + dialed number</strong><small>DNIS points to the campaign (manual number map)</small><span class="capwarn">number map has leaks</span></div>
+          <div class="capbox"><strong>GCLID + client_id</strong><small>not captured yet</small><span class="capbad">exact ad unknown</span></div>
+        </div>
+
+        <div class="pl-arrow">&#8595;</div>
+        <div class="pl-title">System of record</div>
+        <div class="pl-st">ServiceTitan <small>jobs + revenue + campaign tag + customer contact</small></div>
+
+        <div class="pl-arrow">&#8595;</div>
+        <div class="pl-title">Google destinations</div>
+        <div class="pl-google">
+          <div class="googlebox"><strong>Google Ads</strong><small class="bad">no revenue back yet</small></div>
+          <div class="googlebox"><strong>GA4</strong><small class="bad">no revenue back yet</small></div>
+        </div>
       </div>
-      <div class="ichannel-row">
-        <span class="ichannel-cap">Pick a channel:</span>
-        <button class="ichannel is-active" data-ch="phone">&#128222; Phone call</button>
-        <button class="ichannel" data-ch="web">&#127760; Website form</button>
-        <button class="ichannel" data-ch="ads">&#128200; Google Ads</button>
-        <button class="ichannel" data-ch="organic">&#127965; Organic</button>
+
+      <div class="panel">
+        <div class="panel-head future">FUTURE STATE (target build)</div>
+
+        <div class="pl-title">Channel | where they came from</div>
+        <div class="pl-chips">
+          <span class="srcchip">google_cpc</span><span class="srcchip">google_organic</span><span class="srcchip">google_gmb_stepney</span><span class="srcchip">meta_cpc</span><span class="srcchip">sms_sms</span><span class="srcchip">print_print</span>
+        </div>
+
+        <div class="pl-arrow">&#8595;</div>
+        <div class="pl-title">Surface | how they got in touch</div>
+        <div class="pl-surf">
+          <div class="surfbox"><strong>Phone call</strong><small>3CX + SIP, answered via CallRail</small></div>
+          <div class="surfbox"><strong>Website form</strong><small>with the GCLID snippet</small></div>
+        </div>
+
+        <div class="pl-arrow">&#8595;</div>
+        <div class="pl-title">Capture | what we record</div>
+        <div class="pl-capture">
+          <div class="capbox add"><strong>CallRail (new)</strong><small>DNI + GCLID, exact click</small><span class="capgood">click-level calls</span></div>
+          <div class="capbox add"><strong>GCLID + client_id</strong><small>captured at click</small><span class="capgood">exact ad known</span></div>
+        </div>
+
+        <div class="pl-arrow">&#8595;</div>
+        <div class="pl-title">System of record</div>
+        <div class="pl-st">ServiceTitan <small>jobs + revenue + campaign tag + customer contact</small></div>
+
+        <div class="pl-arrow">&#8595;</div>
+        <div class="pl-title">Google destinations (source/medium mapped)</div>
+        <div class="pl-google">
+          <div class="googlebox"><strong>Google Ads</strong><small class="good">conversion value lands</small></div>
+          <div class="googlebox"><strong>GA4</strong><small class="good">revenue by channel</small></div>
+        </div>
       </div>
-      <div class="imap" id="imap">
-        <svg viewBox="0 0 900 560" xmlns="http://www.w3.org/2000/svg" font-family="Futura PT, Helvetica, Arial, sans-serif">
-          <defs>
-            <marker id="ia" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker>
-          </defs>
-          <path class="al dark" d="M 450 118 L 260 118" stroke="#94a3b8" stroke-width="2" marker-end="url(#ia)"/>
-          <path class="al dark" d="M 450 118 L 650 118" stroke="#94a3b8" stroke-width="2" marker-end="url(#ia)"/>
-          <path class="al" data-ch="ads" data-state="future" d="M 140 220 L 140 300 M 140 220 L 140 300" stroke="#d3d4da" stroke-width="2" marker-end="url(#ia)"/>
-          <path id="pPhoneIn" class="al" data-ch="phone" data-state="future" d="M 250 82 L 250 120" stroke="#d3d4da" stroke-width="2" marker-end="url(#ia)"/>
-          <path id="pWebIn" class="al" data-ch="web" data-state="future" d="M 650 82 L 650 120" stroke="#d3d4da" stroke-width="2" marker-end="url(#ia)"/>
-          <path id="pPhoneDown" class="al" data-ch="phone" d="M 250 180 L 250 230" stroke="#d3d4da" stroke-width="2" marker-end="url(#ia)"/>
-          <path id="pWebDown" class="al" data-ch="web" d="M 650 180 L 650 230" stroke="#d3d4da" stroke-width="2" marker-end="url(#ia)"/>
-          <path id="pPhoneST" class="al" data-ch="phone" d="M 250 286 L 250 340 M 400 340 L 480 340" stroke="#d3d4da" stroke-width="2" marker-end="url(#ia)"/>
-          <path id="pWebST" class="al" data-ch="web" d="M 650 286 L 650 340 M 600 340 L 520 340" stroke="#d3d4da" stroke-width="2" marker-end="url(#ia)"/>
-          <path id="pSTads" class="al" data-ch="any" data-state="future" d="M 360 400 L 280 470" stroke="#d3d4da" stroke-width="2" marker-end="url(#ia)"/>
-          <path id="pSTga4" class="al" data-ch="any" data-state="future" d="M 540 400 L 560 470" stroke="#d3d4da" stroke-width="2" marker-end="url(#ia)"/>
-
-          <g class="boxvisitor"><rect x="360" y="40" width="180" height="44" rx="10" fill="#fff" stroke="#1D3B6D"/><text x="450" y="70" fill="#1D3B6D" font-size="12" text-anchor="middle" font-weight="bold">Customer</text></g>
-
-          <g class="boxphone"><rect x="150" y="120" width="200" height="60" rx="10" fill="#fff" stroke="#1D3B6D"/><text x="250" y="147" fill="#1D3B6D" font-size="12" text-anchor="middle" font-weight="bold">Phone call</text><text x="250" y="166" fill="#7a8494" font-size="9" text-anchor="middle">3CX + SIP answer it</text></g>
-          <g class="boxweb"><rect x="550" y="120" width="200" height="60" rx="10" fill="#fff" stroke="#1D3B6D"/><text x="650" y="147" fill="#1D3B6D" font-size="12" text-anchor="middle" font-weight="bold">Website form</text><text x="650" y="166" fill="#7a8494" font-size="9" text-anchor="middle">lands a web lead</text></g>
-
-          <g class="boxcap-phone"><rect x="150" y="230" width="200" height="56" rx="10" fill="#fff" stroke="#2E528E"/><text x="250" y="253" fill="#1D3B6D" font-size="10" text-anchor="middle" font-weight="bold">Caller + dialed number</text><text x="250" y="271" fill="#7a8494" font-size="8.5" text-anchor="middle">DNIS names the campaign</text></g>
-          <g class="boxcap-web"><rect x="550" y="230" width="200" height="56" rx="10" fill="#fff" stroke="#2E528E"/><text x="650" y="253" fill="#1D3B6D" font-size="10" text-anchor="middle" font-weight="bold">GCLID + client_id</text><text class="cap-web-state" x="650" y="271" fill="#B81C23" font-size="8.5" text-anchor="middle" data-state="current">not captured yet</text><text class="cap-web-state" x="650" y="271" fill="#2E8B57" font-size="8.5" text-anchor="middle" data-state="future">captured at click</text></g>
-
-          <g class="boxst"><rect x="200" y="340" width="500" height="60" rx="10" fill="#fff" stroke="#1D3B6D"/><text x="450" y="365" fill="#1D3B6D" font-size="12" text-anchor="middle" font-weight="bold">ServiceTitan</text><text x="450" y="384" fill="#7a8494" font-size="9" text-anchor="middle">jobs + revenue + campaign tag + customer contact</text></g>
-
-          <g class="boxads"><rect x="200" y="470" width="240" height="56" rx="10" fill="#fff" stroke="#2E528E"/><text x="320" y="493" fill="#1D3B6D" font-size="11" text-anchor="middle" font-weight="bold">Google Ads</text><text class="ads-state" x="320" y="510" fill="#B81C23" font-size="8.5" text-anchor="middle" data-state="current">no revenue back yet</text><text class="ads-state" x="320" y="510" fill="#2E8B57" font-size="8.5" text-anchor="middle" data-state="future">conversion value lands</text></g>
-          <g class="boxga4"><rect x="460" y="470" width="240" height="56" rx="10" fill="#fff" stroke="#2E528E"/><text x="580" y="493" fill="#1D3B6D" font-size="11" text-anchor="middle" font-weight="bold">GA4</text><text class="ga4-state" x="580" y="510" fill="#B81C23" font-size="8.5" text-anchor="middle" data-state="current">no revenue back yet</text><text class="ga4-state" x="580" y="510" fill="#2E8B57" font-size="8.5" text-anchor="middle" data-state="future">revenue by channel</text></g>
-
-          <g class="boxsrc-ads"><rect x="40" y="240" width="80" height="40" rx="8" fill="#fdf6e3" stroke="#c39b3a"/><text x="80" y="263" fill="#8a6b1c" font-size="9" text-anchor="middle">Google Ads</text><text x="80" y="276" fill="#8a6b1c" font-size="8" text-anchor="middle">arrival</text></g>
-          <g class="boxsrc-organic"><rect x="780" y="240" width="90" height="40" rx="8" fill="#fdf6e3" stroke="#c39b3a"/><text x="825" y="263" fill="#8a6b1c" font-size="9" text-anchor="middle">Organic</text><text x="825" y="276" fill="#8a6b1c" font-size="8" text-anchor="middle">arrival</text></g>
-        </svg>
-      </div>
-      <div class="ireadout" id="ireadout">Click a channel to trace its data flow; flip the state to see today vs the target build.</div>
     </div>
+
     <h3>What this shows</h3>
     <ul>
-      <li><strong>Current state.</strong> Phones are the strong channel: 3CX/SIP records the dialed number, ServiceTitan already tags the campaign from it, and contact details cover almost every job. Website GCLID is <em>not</em> captured, and no revenue is flowing back to Google yet (the write scope is the open gate).</li>
-      <li><strong>Future state.</strong> A first-party snippet captures GCLID + client_id on web leads (exact click known), and CRON 1 sends job revenue back to Google Ads and GA4 so bidding and reporting work on money, not clicks.</li>
+      <li><strong>Channel and surface are separate.</strong> Channel = where the customer came from (in source/medium form: <code>google_cpc</code>, <code>google_organic</code>, <code>google_gmb_stepney</code>, <code>meta_cpc</code>, <code>sms_sms</code>, <code>print_print</code>), which is the form GA4's default channel grouping already understands, so every campaign lands in the right bucket with no manual tagging. Surface = how they got in touch (phone call or website form), kept out of the campaign name.</li>
+      <li><strong>Today</strong> the phone path relies on a hand-built number-to-campaign table with known leaks, and the website GCLID is not captured, so neither surface reaches click-level attribution. No revenue flows back to Google (the write scope is the open gate).</li>
+      <li><strong>Future</strong> adds CallRail at the phone surface (dynamic number insertion + GCLID capture, giving click-level calls) and a first-party snippet on the website (GCLID + client_id), and CRON 1 sends job revenue back to Google Ads (conversion value) and GA4 (revenue by channel) using the source/medium mapping. CallRail removes the need to trust the manual number map; 3CX stays as the phone system that answers and routes.</li>
+      <li><strong>CallRail replaces the tracking-number role, not 3CX.</strong> CallRail owns the many marketing numbers for DNI; 3CX stops managing that list and just answers and routes calls (its operating numbers, Dispatch and Tech Hotline, remain).</li>
     </ul>
-    <script>
-    (function(){
-      var state="current", ch="phone";
-      var map=document.getElementById("imap");
-      function refresh(){
-        Array.prototype.forEach.call(map.querySelectorAll(".al"),function(p){
-          var ok=true;
-          if(p.getAttribute("data-ch") && p.getAttribute("data-ch")!=="any" && p.getAttribute("data-ch")!==ch){ok=false;}
-          if(p.getAttribute("data-state") && p.getAttribute("data-state")!==state){ok=false;}
-          p.setAttribute("stroke", ok?"#1D3B6D":"#d3d4da");
-          p.setAttribute("stroke-width", ok?3:2);
-        });
-        Array.prototype.forEach.call(map.querySelectorAll(".cap-web-state,.ads-state,.ga4-state"),function(t){
-          t.style.display=(t.getAttribute("data-state")===state)?"":"none";
-        });
-        var paths={
-          phone:"Phone call: an ad drives the call, 3CX/SIP answers it, records the caller and the dialed number, the number names the campaign in ServiceTitan, the job earns revenue.",
-          web:"Website form: the lead lands from a web click. "+(state==="future"?"The GCLID and client_id are captured at the click so the exact ad is known.":"The GCLID is not captured today, so the channel is known but not the exact ad."),
-          ads:"Google Ads arrival: a paid click. "+(state==="future"?"Revenue is written back as conversion value so Smart Bidding optimises on money.":"No revenue is written back yet (write scope not granted)."),
-          organic:"Organic arrival: a free web visit. No GCLID exists, so the hashed phone/email is the reliable join key."
-        };
-        document.getElementById("ireadout").textContent=paths[ch];
-      }
-      Array.prototype.forEach.call(document.querySelectorAll(".istate-btn"),function(b){
-        b.addEventListener("click",function(){ state=b.getAttribute("data-state");
-          Array.prototype.forEach.call(document.querySelectorAll(".istate-btn"),function(x){x.className=x.getAttribute("data-state")===state?"istate-btn is-active":"istate-btn";});
-          refresh(); });
-      });
-      Array.prototype.forEach.call(document.querySelectorAll(".ichannel"),function(b){
-        b.addEventListener("click",function(){ ch=b.getAttribute("data-ch");
-          Array.prototype.forEach.call(document.querySelectorAll(".ichannel"),function(x){x.className=x.getAttribute("data-ch")===ch?"ichannel is-active":"ichannel";});
-          refresh(); });
-      });
-      window.ireadoutRefresh=refresh;
-      refresh();
-    })();
-    </script>
   </section>
 
   <section>
@@ -413,7 +416,7 @@ tr:nth-child(even) td { background: var(--brand-field); }
 </div>
 
 <footer class="footer">
-  <strong>aba TRADES</strong> &nbsp;&middot;&nbsp; Standard Operating Procedure 003 &nbsp;&middot;&nbsp; v1.1
+  <strong>aba TRADES</strong> &nbsp;&middot;&nbsp; Standard Operating Procedure 003 &nbsp;&middot;&nbsp; v1.3
   <br><span style="opacity:0.7">Harley is customer support. Contributions and corrections: <a href="mailto:harley@abatrades.com.au" style="color:#fff">harley@abatrades.com.au</a>
 </footer>
 
