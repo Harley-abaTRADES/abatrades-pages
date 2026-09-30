@@ -128,7 +128,7 @@ tr:nth-child(even) td { background: var(--brand-field); }
     <div class="m"><strong>SOP</strong>003</div>
     <div class="m"><strong>Owner</strong>Paul / Josh</div>
     <div class="m"><strong>Applies to</strong>All aba TRADES brands</div>
-    <div class="m"><strong>Version</strong>1.5</div>
+    <div class="m"><strong>Version</strong>1.6</div>
     <div class="m"><strong>Last reviewed</strong>30 Sep 2026</div>
     <div class="m"><strong>Status</strong>In build</div>
   </div>
@@ -358,6 +358,9 @@ tr:nth-child(even) td { background: var(--brand-field); }
       <div class="legrow"><span class="legt">Surface (GA4 event type)</span><span class="legd">call / chat / form / booking</span><small>appears in GA4 as conversion events (Calls From Website, Text Us Chat Website, book_now), not as a session dimension</small></div>
     </div>
 
+    <div class="callout notice"><div class="title">Worked example (current state, verified 30 Sep 2026)</div>
+    A real ServiceTitan phone-number record for <strong>08 6610 1913</strong> shows all three layers in one place: the technical identity is <code>sip:80007@abaplumbing.3cx.com.au:5060</code> (the SIP endpoint 3CX provisions and terminates), the <strong>Set Campaign</strong> field ties it to <em>AIR CONDITIONING - Podium Chat</em> (the ServiceTitan-side number-to-campaign map), and <strong>Default Call Type</strong> is <em>Lead</em>. The "Set Forwarding Number" options (Use Default / Add Custom) sit on top of the SIP termination, and it is that forwarding layer that produces the composite provenance*destination DNIS values seen in the call data. Note the campaign name here names the <em>surface</em> (a chat) but not the channel that drove it, which is exactly the mis-attribution the re-cut fixes.</div>
+
     <h3>What this shows</h3>
     <ul>
       <li><strong>Channel and surface are separate, and GA4 models them differently.</strong> Channel = where the customer came from, as a session dimension in source/medium form (<code>google_cpc</code>, <code>google_organic</code>, <code>google_gmb_stepney</code>, <code>meta_cpc</code>, <code>sms_sms</code>, <code>print_print</code>), which GA4's default channel grouping already understands. Surface = how they got in touch, which GA4 records as conversion events (Calls From Website, Text Us Chat Website, book_now), not as a session dimension. A phone call is a surface driven by a channel, not a channel itself.</li>
@@ -433,7 +436,7 @@ tr:nth-child(even) td { background: var(--brand-field); }
 </div>
 
 <footer class="footer">
-  <strong>aba TRADES</strong> &nbsp;&middot;&nbsp; Standard Operating Procedure 003 &nbsp;&middot;&nbsp; v1.5
+  <strong>aba TRADES</strong> &nbsp;&middot;&nbsp; Standard Operating Procedure 003 &nbsp;&middot;&nbsp; v1.6
   <br><span style="opacity:0.7">Harley is customer support. Contributions and corrections: <a href="mailto:harley@abatrades.com.au" style="color:#fff">harley@abatrades.com.au</a>
 </footer>
 
