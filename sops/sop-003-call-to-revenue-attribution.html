@@ -108,6 +108,7 @@ tr:nth-child(even) td { background: var(--brand-field); }
 .legt { width: 210px; color: var(--brand-text); font-size: 12px; font-weight: 700; }
 .legd { width: 170px; color: var(--brand-primary); font-size: 12.5px; font-weight: 700; }
 .legrow small { flex: 1; color: var(--brand-slate); font-size: 11.5px; line-height: 1.35; }
+ol.tight li { margin: 5px 0; line-height: 1.4; }
 
 </style>
 </head>
@@ -128,7 +129,7 @@ tr:nth-child(even) td { background: var(--brand-field); }
     <div class="m"><strong>SOP</strong>003</div>
     <div class="m"><strong>Owner</strong>Paul / Josh</div>
     <div class="m"><strong>Applies to</strong>All aba TRADES brands</div>
-    <div class="m"><strong>Version</strong>1.7</div>
+    <div class="m"><strong>Version</strong>1.8</div>
     <div class="m"><strong>Last reviewed</strong>30 Sep 2026</div>
     <div class="m"><strong>Status</strong>In build</div>
   </div>
@@ -361,6 +362,18 @@ tr:nth-child(even) td { background: var(--brand-field); }
     <div class="callout notice"><div class="title">Worked example (current state, verified 30 Sep 2026)</div>
     A real ServiceTitan phone-number record for <strong>08 6610 1913</strong> shows all three layers in one place: the technical identity is <code>sip:80007@abaplumbing.3cx.com.au:5060</code> (the SIP endpoint 3CX provisions and terminates), the <strong>Set Campaign</strong> field ties it to <em>AIR CONDITIONING - Podium Chat</em> (the ServiceTitan-side number-to-campaign map), and <strong>Default Call Type</strong> is <em>Lead</em>. The "Set Forwarding Number" options (Use Default / Add Custom) sit on top of the SIP termination, and it is that forwarding layer that produces the composite provenance*destination DNIS values seen in the call data. Note the campaign name here names the <em>surface</em> (a chat) but not the channel that drove it, which is exactly the mis-attribution the re-cut fixes.</div>
 
+    <div class="callout success"><div class="title">How the Google figures land (the connected dots)</div>
+    <p>From a completed job back to Google, in six steps:</p>
+    <ol class="tight">
+      <li><strong>Capture the click identifier.</strong> The click's GCLID is grabbed at the click: on a web form by the first-party snippet (GCLID + GA4 client_id), on a phone call by <strong>CallRail's DNI</strong> (the per-session number ties back to the GCLID of the ad that showed it).</li>
+      <li><strong>Persist onto the lead.</strong> The captured identifier is written to the ServiceTitan lead, so the enquiry carries its click ID into the system of record.</li>
+      <li><strong>Close the job, earn the money.</strong> The job completes and earns real invoiced revenue in ServiceTitan (report 295 TotalRevenue).</li>
+      <li><strong>CRON 1 reads the joined data.</strong> The revenue-sync cron reads the completed job, its captured GCLID, its campaign, and its contact.</li>
+      <li><strong>Upload via the Google Data Manager API.</strong> CRON 1 sends an offline conversion to Google: to <strong>Google Ads</strong> a valued conversion keyed by GCLID (making "conversion value" land), and to <strong>GA4</strong> an offline revenue event keyed by client_id / user.</li>
+      <li><strong>Google matches server-side.</strong> Google Ads joins the GCLID to the exact click and credits the ad/keyword with the real dollar value, so Smart Bidding optimises on money not lead counts. GA4 attributes the revenue to the channel, and the source/medium mapping tells it which channel bucket.</li>
+    </ol>
+    <p>The job's real revenue lands in Google Ads (conversion value, via GCLID) and in GA4 (revenue by channel, via client_id), and the campaign name maps the job to the right source/medium so the whole chain closes the loop.</p></div>
+
     <h3>What this shows</h3>
     <ul>
       <li><strong>Channel and surface are separate, and GA4 models them differently.</strong> Channel = where the customer came from, as a session dimension in source/medium form (<code>google_cpc</code>, <code>google_organic</code>, <code>google_gmb_stepney</code>, <code>meta_cpc</code>, <code>sms_sms</code>, <code>print_print</code>), which GA4's default channel grouping already understands. Surface = how they got in touch, which GA4 records as conversion events (Calls From Website, Text Us Chat Website, book_now), not as a session dimension. A phone call is a surface driven by a channel, not a channel itself.</li>
@@ -437,7 +450,7 @@ tr:nth-child(even) td { background: var(--brand-field); }
 </div>
 
 <footer class="footer">
-  <strong>aba TRADES</strong> &nbsp;&middot;&nbsp; Standard Operating Procedure 003 &nbsp;&middot;&nbsp; v1.7
+  <strong>aba TRADES</strong> &nbsp;&middot;&nbsp; Standard Operating Procedure 003 &nbsp;&middot;&nbsp; v1.8
   <br><span style="opacity:0.7">Harley is customer support. Contributions and corrections: <a href="mailto:harley@abatrades.com.au" style="color:#fff">harley@abatrades.com.au</a>
 </footer>
 
