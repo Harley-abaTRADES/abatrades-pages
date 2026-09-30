@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/x-icon" href="../assets/brand/favicon.ico">
+<title>aba TRADES | Where the money comes from</title>
+<style>
+:root{
+  --brand-primary:#1D3B6D; --brand-secondary:#2E528E; --brand-slate:#7789A7;
+  --brand-dark-navy:#0B1D3B; --brand-footer-navy:#172F57; --brand-surface:#EBEDF2;
+  --brand-field:#F5F6F8; --brand-border:#D3D4DA; --brand-bg:#FFFFFF; --brand-text:#1D3B6D;
+  --brand-success:#8FAE1B; --brand-notice:#1E85BE; --brand-warn:#C9760B; --brand-error:#B81C23;
+  --font-heading:'Futura PT','futura-pt',Helvetica,Arial,sans-serif;
+  --font-body:'Futura PT','futura-pt',Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);background:var(--brand-bg);color:var(--brand-text);line-height:1.55}
+#progress{position:fixed;top:0;left:0;height:4px;width:0;background:var(--brand-primary);z-index:60}
+#dots{position:fixed;right:18px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:10px;z-index:55;list-style:none}
+#dots a{display:block;width:11px;height:11px;border-radius:50%;background:var(--brand-border);border:0;transition:background .25s, transform .25s}
+#dots a.active{background:var(--brand-primary);transform:scale(1.25)}
+
+section{min-height:100vh;display:flex;align-items:center;padding:90px 40px}
+.wrap{max-width:1080px;margin:0 auto;width:100%}
+
+/* title */
+.title{background:var(--brand-primary);color:#fff}
+.title .kicker{text-transform:uppercase;letter-spacing:.13em;font-size:13px;font-weight:700;color:rgba(255,255,255,.7);margin-bottom:24px}
+.title h1{font-family:var(--font-heading);font-size:3rem;font-weight:700;line-height:1.15}
+.title .sub{font-size:1.15rem;opacity:.88;max-width:760px;margin-top:18px}
+.title .tag{display:inline-block;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.35);border-radius:100px;padding:8px 20px;font-weight:700;font-size:.95rem;margin-top:26px}
+
+/* content slide */
+.slide{background:var(--brand-bg)}
+.slide .num{display:inline-block;background:var(--brand-surface);color:var(--brand-slate);border-radius:100px;padding:3px 13px;font-size:.8rem;font-weight:700;letter-spacing:.05em;margin-bottom:14px}
+.slide h2{font-family:var(--font-heading);font-size:2.2rem;font-weight:700;color:var(--brand-primary);line-height:1.2}
+.slide .lead{font-size:1.15rem;color:var(--brand-text);margin:16px 0 6px}
+.slide .lead b{color:var(--brand-primary)}
+
+/* dark data slide */
+.dark{background:var(--brand-primary);color:#fff}
+.dark h2{color:#fff;font-family:var(--font-heading);font-size:2.2rem;font-weight:700}
+.dark .stat{font-family:'Roboto Mono','Courier New',monospace}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(34px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:none}
+.d1{transition-delay:.08s}.d2{transition-delay:.2s}.d3{transition-delay:.34s}
+
+.stats{display:flex;flex-wrap:wrap;gap:22px;margin-top:30px}
+.statbox{flex:1 1 220px;background:#fff;border:1px solid var(--brand-border);border-radius:12px;padding:26px 22px;text-align:center}
+.statbox .n{font-size:2.4rem;font-weight:700;color:var(--brand-primary)}
+.statbox .l{font-size:.95rem;color:var(--brand-slate);margin-top:8px}
+
+/* cards */
+.cards{display:flex;flex-wrap:wrap;gap:18px;margin-top:26px}
+.card{flex:1 1 320px;background:#fff;border:1px solid var(--brand-border);border-radius:12px;padding:24px 20px}
+.card .t{font-weight:700;color:var(--brand-primary);font-size:1.05rem}
+.card .d{color:#2a3550;font-size:.98rem;line-height:1.5;margin-top:10px}
+.bad{display:inline-block;background:#fbeceb;color:var(--brand-error);border-radius:100px;padding:2px 12px;font-size:.8rem;font-weight:700;margin-top:10px}
+.good{display:inline-block;background:#eef7e4;color:var(--brand-success);border-radius:100px;padding:2px 12px;font-size:.8rem;font-weight:700;margin-top:10px}
+.warn{display:inline-block;background:#fdf3e3;color:var(--brand-warn);border-radius:100px;padding:2px 12px;font-size:.8rem;font-weight:700;margin-top:10px}
+
+/* chip */
+.chip{display:inline-block;background:var(--brand-surface);border:1px solid var(--brand-border);border-radius:100px;padding:4px 13px;font-weight:700;font-size:.9rem;margin:2px 4px}
+
+/* two-panel current vs future */
+.panelrow{display:flex;flex-wrap:wrap;gap:22px;margin-top:24px}
+.panel{flex:1 1 480px;background:var(--brand-surface);border:1px solid var(--brand-border);border-radius:14px;padding:18px 20px}
+.pt{font-weight:800;font-size:1.05rem;color:var(--brand-primary);text-transform:uppercase;letter-spacing:.05em;border-bottom:2px solid var(--brand-primary);padding-bottom:8px;margin-bottom:14px}
+.pt.f{color:var(--brand-secondary);border-bottom-color:var(--brand-secondary)}
+.layer{font-weight:700;font-size:.88rem;color:var(--brand-text);margin:10px 0 4px}
+.lcap{display:flex;gap:9px;flex-wrap:wrap}
+.lc{flex:1 1 46%;background:#fff;border:1px solid var(--brand-border);border-radius:9px;padding:9px 11px}
+.lc b{display:block;color:var(--brand-primary);font-size:.9rem}
+.lc small{display:block;color:var(--brand-slate);font-size:.78rem;line-height:1.3;margin-top:2px}
+.addl{background:#fdf6e3;border-color:var(--brand-primary)}
+.arrow{text-align:center;color:var(--brand-primary);font-size:1.05rem;margin:3px 0}
+.strow{background:#fff;border:1px solid var(--brand-primary);border-radius:9px;padding:9px 11px;margin:2px 0}
+.strow b{color:var(--brand-primary);font-size:.9rem}
+.strow small{display:block;color:var(--brand-slate);font-size:.78rem;line-height:1.3;margin-top:2px}
+.google{display:flex;gap:9px;flex-wrap:wrap}
+.gbx{flex:1 1 46%;background:#fff;border:1px solid var(--brand-border);border-radius:9px;padding:9px 11px}
+.gbx b{display:block;color:var(--brand-primary);font-size:.9rem}
+
+/* pipeline */
+.pipe{display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:center;margin-top:20px}
+.node{background:#fff;border:2px solid var(--brand-primary);border-radius:12px;padding:16px 18px;text-align:center;min-width:150px}
+.node b{display:block;color:var(--brand-primary);font-size:1rem;font-weight:700}
+.node small{display:block;color:var(--brand-slate);font-size:.8rem;line-height:1.3;margin-top:4px;max-width:170px}
+.go{color:var(--brand-primary);font-size:1.3rem;font-weight:700}
+
+/* steps */
+.steps{counter-reset:st;margin-top:18px;display:grid;gap:0}
+.step{display:flex;gap:16px;align-items:flex-start;padding:12px 0;border-bottom:1px solid var(--brand-border)}
+.step:last-child{border-bottom:none}
+.step .sno{flex:0 0 46px;height:46px;width:46px;border-radius:50%;background:var(--brand-primary);color:#fff;font-weight:700;display:flex;align-items:center;justify-content:center;font-size:1.05rem}
+.step .stxt b{color:var(--brand-primary)}
+.step .stxt{color:#2a3550;font-size:1rem;line-height:1.5}
+
+/* proposal */
+.proposal{background:var(--brand-surface)}
+.askrow{display:flex;flex-wrap:wrap;gap:18px;margin-top:20px}
+.ask{flex:1 1 320px;background:#fff;border:1px solid var(--brand-border);border-left:4px solid var(--brand-primary);border-radius:10px;padding:22px 20px}
+.ask .t{font-weight:700;color:var(--brand-primary);font-size:1.02rem}
+.ask .d{color:#2a3550;font-size:.96rem;line-height:1.5;margin-top:8px}
+
+.footer{background:var(--brand-footer-navy);color:rgba(255,255,255,.88);text-align:center;padding:80px 20px}
+.footer h2{color:#fff;font-family:var(--font-heading);font-size:1.9rem;font-weight:700}
+.footer .l{color:rgba(255,255,255,.72);margin-top:10px;max-width:640px}
+.footer .btn{display:inline-block;background:var(--brand-primary);color:#fff;border-radius:100px;padding:14px 26px;font-weight:700;text-decoration:none;border:1px solid var(--brand-primary);margin-top:22px}
+.footer .btn:hover{background:var(--brand-secondary)}
+.footer .mute{margin-top:30px;font-size:.85rem;opacity:.6}
+
+@media (max-width:700px){ #dots{display:none} section{padding:70px 18px} .title h1{font-size:2rem} .slide h2,.dark h2{font-size:1.6rem} .statbox flex{flex:1 1 100%} .pipe .go{transform:rotate(90deg)} }
+@media (prefers-reduced-motion:reduce){ .reveal{opacity:1;transform:none;transition:none} *{transition:none} }
+</style>
+</head>
+<body>
+<div id="progress"></div>
+<nav id="dots"></nav>
+
+<section class="title">
+  <div class="wrap">
+    <div class="kicker reveal">Attribution · How the money connects</div>
+    <h1 class="reveal">Where the money comes from</h1>
+    <p class="sub reveal d1">How aba TRADES ties every dollar of job revenue back to the ad and channel that produced it, so we can spend where the money is made.</p>
+    <span class="tag reveal d2">Current state → The gap → The fix</span>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="wrap">
+    <span class="num reveal">01 · The goal</span>
+    <h2 class="reveal">Know the origin of every dollar</h2>
+    <p class="lead reveal d1">Today aba TRADES can see <b>how much is earned</b>, but not always <b>where it came from</b>.</p>
+    <div class="stats">
+      <div class="statbox reveal d1"><div class="n" data-to="7769">0</div><div class="l">calls in 90 days</div></div>
+      <div class="statbox reveal d2"><div class="n" data-to="73">0</div><div class="l">marketing campaigns</div></div>
+      <div class="statbox reveal d3"><div class="n" data-to="46">0</div><div class="l">&percnt; of jobs arrive by phone</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="wrap">
+    <h2 class="reveal">The three things we want to know</h2>
+    <div class="cards" style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.25)">
+      <div class="card" style="background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.25)"><div class="t" style="color:#fff">Channel</div><div class="d" style="color:rgba(255,255,255,.85)">Where the customer came from: paid search, organic, Google listing, email, print, social.</div></div>
+      <div class="card" style="background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.25)"><div class="t" style="color:#fff">Surface</div><div class="d" style="color:rgba(255,255,255,.85)">How they got in touch: a phone call, a website form, a chat.</div></div>
+      <div class="card" style="background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.25)"><div class="t" style="color:#fff">Revenue</div><div class="d" style="color:rgba(255,255,255,.85)">The real job money that landed, mapped back to when it came.</div></div>
+    </div>
+    <p class="reveal d2" style="color:rgba(255,255,255,.85);font-size:1.05rem;margin-top:20px"><b>Channel and surface are different facts.</b> A phone call is not a channel, it is how the call happened; the channel is what drove it.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="wrap">
+    <span class="num reveal">02 · Today</span>
+    <h2 class="reveal">How the platforms connect now</h2>
+    <div class="panelrow">
+      <div class="panel">
+        <div class="pt reveal">Current state (today)</div>
+        <div class="layer reveal d1">Channel - where they came from</div>
+        <div class="lcap reveal d1"><span class="chip">google_cpc</span><span class="chip">google_organic</span><span class="chip">google_gmb_stepney</span><span class="chip">meta</span><span class="chip">sms</span><span class="chip">print</span></div>
+        <div class="arrow reveal d1">&#8595;</div>
+        <div class="layer reveal d1">Surface - how they got in touch</div>
+        <div class="lcap reveal d1"><div class="lc"><b>Phone call</b><small>3CX owns the tracking numbers and answers</small></div><div class="lc"><b>Website form</b><small>lands a web lead</small></div></div>
+        <div class="arrow reveal d1">&#8595;</div>
+        <div class="layer reveal d1">Capture - what we record</div>
+        <div class="lcap reveal d1"><div class="lc"><b>Caller + dialed number</b><small>3CX records it, ServiceTitan's number map names the campaign</small><span class="warn">manual map, leaks</span></div><div class="lc"><b>GCLID + client_id</b><small>not captured yet</small><span class="bad">exact ad unknown</span></div></div>
+        <div class="arrow reveal d1">&#8595;</div>
+        <div class="layer reveal d1">System of record</div>
+        <div class="strow reveal d1"><b>ServiceTitan</b><small>jobs + revenue + campaign tag + customer contact</small></div>
+        <div class="arrow reveal d1">&#8595;</div>
+        <div class="layer reveal d1">Google destinations</div>
+        <div class="google reveal d1"><div class="gbx"><b>Google Ads</b><span class="bad">no revenue back yet</span></div><div class="gbx"><b>GA4</b><span class="bad">no revenue back yet</span></div></div>
+      </div>
+      <div class="panel">
+        <div class="pt f reveal">Future state (target build)</div>
+        <div class="layer reveal d1">Channel - where they came from</div>
+        <div class="lcap reveal d1"><span class="chip">google_cpc</span><span class="chip">google_organic</span><span class="chip">google_gmb_stepney</span><span class="chip">meta</span><span class="chip">sms</span><span class="chip">print</span></div>
+        <div class="arrow reveal d1">&#8595;</div>
+        <div class="layer reveal d1">Surface - how they got in touch</div>
+        <div class="lcap reveal d1"><div class="lc"><b>Phone call</b><small>3CX answers, CallRail handles the numbers</small></div><div class="lc"><b>Website form</b><small>with the GCLID snippet</small></div></div>
+        <div class="arrow reveal d1">&#8595;</div>
+        <div class="layer reveal d1">Capture - what we record</div>
+        <div class="lcap reveal d1"><div class="lc addl"><b>CallRail (new)</b><small>DNI + GCLID, exact click</small><span class="good">click-level calls</span></div><div class="lc addl"><b>GCLID + client_id</b><small>captured at click</small><span class="good">exact ad known</span></div></div>
+        <div class="arrow reveal d1">&#8595;</div>
+        <div class="layer reveal d1">System of record</div>
+        <div class="strow reveal d1"><b>ServiceTitan</b><small>jobs + revenue + campaign tag + customer contact</small></div>
+        <div class="arrow reveal d1">&#8595;</div>
+        <div class="layer reveal d1">Google destinations (source/medium mapped)</div>
+        <div class="google reveal d1"><div class="gbx"><b>Google Ads</b><span class="good">conversion value lands</span></div><div class="gbx"><b>GA4</b><span class="good">revenue by channel</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="wrap">
+    <span class="num reveal">03 · What is missing</span>
+    <h2 class="reveal">Three things stand in the way</h2>
+    <div class="cards">
+      <div class="card reveal d1"><div class="t">The ad click ID is lost</div><div class="d">GCLID lives in the click URL for only about 90 days and is not captured anywhere today. Once lost, it is gone forever. This is the signal that would name the exact ad.</div><span class="bad">not captured</span></div>
+      <div class="card reveal d2"><div class="t">The number map is hand-built</div><div class="d">Campaigns come from a manually-maintained number-to-campaign table in ServiceTitan. It mis-files office/hotline calls and some numbers map unevenly. No independent check confirms it.</div><span class="warn">untrusted today</span></div>
+      <div class="card reveal d3"><div class="t">No revenue flows back to Google</div><div class="d">Google Ads and GA4 see how many clicks and calls happen, but not which jobs paid out. So bidding optimises on lead counts, not on the money each ad earns.</div><span class="bad">no conversion value</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="wrap">
+    <h2 class="reveal">The fix in one line</h2>
+    <p class="reveal d1" style="color:#fff;font-size:1.5rem;font-weight:700;margin-top:22px">Capture each click's identifier, then send the real job revenue back to the click that earned it.</p>
+    <div class="pipe">
+      <div class="node reveal d1"><b>Click identifier</b><small>GCLID captured at the moment of the click</small></div>
+      <div class="go reveal d1">&#8594;</div>
+      <div class="node reveal d2"><b>Capture</b><small>web snippet + CallRail DNI</small></div>
+      <div class="go reveal d2">&#8594;</div>
+      <div class="node reveal d3"><b>ServiceTitan</b><small>job, campaign, revenue, contact</small></div>
+      <div class="go reveal d3">&#8594;</div>
+      <div class="node reveal d3"><b>Google</b><small>revenue back to Ads + GA4</small></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="wrap">
+    <span class="num reveal">04 · How it lands</span>
+    <h2 class="reveal">The connected dots</h2>
+    <p class="lead reveal d1">From a completed job back to Google, in six steps.</p>
+    <div class="steps">
+      <div class="step reveal d1"><div class="sno">1</div><div class="stxt"><b>Capture the click identifier.</b> The GCLID is grabbed at the click: on a web form by the first-party snippet, on a phone call by CallRail's DNI.</div></div>
+      <div class="step reveal d1"><div class="sno">2</div><div class="stxt"><b>Persist onto the lead.</b> The identifier is written to the ServiceTitan lead at enquiry.</div></div>
+      <div class="step reveal d2"><div class="sno">3</div><div class="stxt"><b>Close the job, earn the money.</b> The job completes and earns real invoiced revenue in ServiceTitan.</div></div>
+      <div class="step reveal d2"><div class="sno">4</div><div class="stxt"><b>The cron reads the joins.</b> Revenue-sync reads the completed job, its GCLID, its campaign and its contact.</div></div>
+      <div class="step reveal d3"><div class="sno">5</div><div class="stxt"><b>Upload via the Data Manager API.</b> A valued conversion keyed by GCLID goes to Google Ads; a revenue event keyed by client_id goes to GA4.</div></div>
+      <div class="step reveal d3"><div class="sno">6</div><div class="stxt"><b>Google matches server-side.</b> Ads credits the exact click so Smart Bidding optimises on money, and GA4 attributes the revenue to the channel via source/medium.</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="proposal">
+  <div class="wrap">
+    <span class="num reveal">05 · What we are proposing</span>
+    <h2 class="reveal">Break the taxonomy apart to put it back correctly</h2>
+    <div class="askrow">
+      <div class="ask reveal d1"><div class="t">Split channel from surface</div><div class="d">Rename the 73 campaign buckets onto a clean source/medium axis (google_cpc, google_organic, google_gmb, meta_cpc, sms, print), moving the contact means (call, form, chat) out of the campaign name into its own field.</div></div>
+      <div class="ask reveal d2"><div class="t">Add the capture layer</div><div class="d">A first-party snippet for web leads and CallRail DNI for phone calls, so every enquiry carries the GCLID that produced it.</div></div>
+      <div class="ask reveal d3"><div class="t">Close the loop to Google</div><div class="d">CRON 1 sends real invoiced revenue back as conversion value in Google Ads and revenue-by-channel in GA4, so bidding and reporting run on money, not lead counts.</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="footer">
+  <h2 class="reveal">Spend where the money is made</h2>
+  <p class="reveal d1">The full technical spec, validation and every data check behind this plan.</p>
+  <a class="reveal d2" href="https://harley-abatrades.github.io/abatrades-pages/sops/sop-003-call-to-revenue-attribution.html" style="background:#fff;color:var(--brand-primary);border-color:#fff">Open the full specification</a>
+  <p class="mute" >harley · aba TRADES support team</p>
+</section>
+
+<script>
+(function(){
+  var dots=document.getElementById('dots');
+  var sections=Array.prototype.slice.call(document.querySelectorAll('section'));
+  sections.forEach(function(s,i){
+    var a=document.createElement('a');a.href='#'+('s'+i);a.setAttribute('aria-label','slide '+(i+1));dots.appendChild(a);
+  });
+  var dotEls=Array.prototype.slice.call(dots.children);
+
+  var revealObserver=new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){e.target.classList.add('visible'); revealObserver.unobserve(e.target);} });
+  },{threshold:.18});
+  Array.prototype.forEach.call(document.querySelectorAll('.reveal'),function(el){ revealObserver.observe(el); });
+
+  var counters=new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ runCount(e.target); counters.unobserve(e.target);} });
+  },{threshold:.6});
+  function runCount(el){
+    var to=parseFloat(el.getAttribute('data-to'));var dur=1100;var t0=null;
+    var tick=function(ts){ if(!t0)t0=ts; var p=Math.min(1,(ts-t0)/dur); var e=1-Math.pow(1-p,3); el.textContent=Math.round(to*e).toLocaleString('en-AU'); if(p<1)requestAnimationFrame(tick); };
+    requestAnimationFrame(tick);
+  }
+  Array.prototype.forEach.call(document.querySelectorAll('[data-to]'),function(el){ counters.observe(el); });
+
+  var dotsObserver=new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ dotEls.forEach(function(d,i){ d.classList.toggle('active', sections[i]===e.target); }); } });
+  },{threshold:.5});
+  sections.forEach(function(s){ dotsObserver.observe(s); });
+
+  var bar=document.getElementById('progress');
+  addEventListener('scroll',function(){ var h=document.documentElement; var max=h.scrollHeight-h.clientHeight; bar.style.width=((h.scrollTop/max)*100)+'%'; },{passive:true});
+})();
+</script>
+</body>
+</html>
