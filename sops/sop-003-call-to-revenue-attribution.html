@@ -128,7 +128,7 @@ tr:nth-child(even) td { background: var(--brand-field); }
     <div class="m"><strong>SOP</strong>003</div>
     <div class="m"><strong>Owner</strong>Paul / Josh</div>
     <div class="m"><strong>Applies to</strong>All aba TRADES brands</div>
-    <div class="m"><strong>Version</strong>1.4</div>
+    <div class="m"><strong>Version</strong>1.5</div>
     <div class="m"><strong>Last reviewed</strong>30 Sep 2026</div>
     <div class="m"><strong>Status</strong>In build</div>
   </div>
@@ -349,17 +349,18 @@ tr:nth-child(even) td { background: var(--brand-field); }
 
     <h3>Legend - platform roles</h3>
     <div class="pl-legend">
-      <div class="legrow"><span class="legt">Phone / PBX platform</span><span class="legd">3CX</span><small>answers the call, records caller + dialed number</small></div>
-      <div class="legrow"><span class="legt">Call tracking / DNI platform</span><span class="legd">CallRail</span><small>dynamic number insertion + GCLID, click-level call attribution</small></div>
-      <div class="legrow"><span class="legt">System of record</span><span class="legd">ServiceTitan</span><small>the truth for jobs + revenue; where the number-to-campaign map lives today</small></div>
+      <div class="legrow"><span class="legt">Phone / PBX platform</span><span class="legd">3CX (today + future)</span><small>answers the call, records caller + dialed number</small></div>
+      <div class="legrow"><span class="legt">Call tracking</span><span class="legd">Now: 3CX via number map</span><small>numbers live in 3CX, ServiceTitan's map turns DNIS into a campaign</small></div>
+      <div class="legrow"><span class="legt">Call tracking - future</span><span class="legd">CallRail (DNI + GCLID)</span><small>replaces the manual number map; click-level call attribution</small></div>
+      <div class="legrow"><span class="legt">System of record</span><span class="legd">ServiceTitan</span><small>the truth for jobs + revenue</small></div>
       <div class="legrow"><span class="legt">Google destinations</span><span class="legd">Google Ads + GA4</span><small>where revenue lands as conversion value / channel</small></div>
-      <div class="legrow"><span class="legt">Channel format</span><span class="legd">source_medium</span><small>GA4-native: google_cpc, google_organic, google_gmb, meta_cpc, sms_sms, print_print</small></div>
-      <div class="legrow"><span class="legt">Surface</span><span class="legd">phone call / website form</span><small>how the customer got in touch, never part of the campaign name</small></div>
+      <div class="legrow"><span class="legt">Channel (GA4 session dimension)</span><span class="legd">source_medium</span><small>GA4-native: google_cpc, google_organic, google_gmb, meta_cpc, sms_sms, print_print</small></div>
+      <div class="legrow"><span class="legt">Surface (GA4 event type)</span><span class="legd">call / chat / form / booking</span><small>appears in GA4 as conversion events (Calls From Website, Text Us Chat Website, book_now), not as a session dimension</small></div>
     </div>
 
     <h3>What this shows</h3>
     <ul>
-      <li><strong>Channel and surface are separate.</strong> Channel = where the customer came from (in source/medium form: <code>google_cpc</code>, <code>google_organic</code>, <code>google_gmb_stepney</code>, <code>meta_cpc</code>, <code>sms_sms</code>, <code>print_print</code>), which is the form GA4's default channel grouping already understands, so every campaign lands in the right bucket with no manual tagging. Surface = how they got in touch (phone call or website form), kept out of the campaign name.</li>
+      <li><strong>Channel and surface are separate, and GA4 models them differently.</strong> Channel = where the customer came from, as a session dimension in source/medium form (<code>google_cpc</code>, <code>google_organic</code>, <code>google_gmb_stepney</code>, <code>meta_cpc</code>, <code>sms_sms</code>, <code>print_print</code>), which GA4's default channel grouping already understands. Surface = how they got in touch, which GA4 records as conversion events (Calls From Website, Text Us Chat Website, book_now), not as a session dimension. A phone call is a surface driven by a channel, not a channel itself.</li>
       <li><strong>Today</strong> the phone path is 3CX: 3CX owns and answers the tracking numbers, and ServiceTitan's manually-built number-to-campaign map turns the dialed number into a campaign. That map has known leaks, and the website GCLID is not captured, so neither surface reaches click-level attribution. No revenue flows back to Google (the write scope is the open gate).</li>
       <li><strong>Future</strong> adds CallRail at the phone surface (dynamic number insertion + GCLID capture, giving click-level calls) and a first-party snippet on the website (GCLID + client_id), and CRON 1 sends job revenue back to Google Ads (conversion value) and GA4 (revenue by channel) using the source/medium mapping. CallRail removes the need to trust the manual number map; 3CX stays as the phone system that answers and routes.</li>
       <li><strong>CallRail replaces the tracking-number role, not 3CX.</strong> CallRail owns the many marketing numbers for DNI; 3CX stops managing that list and just answers and routes calls (its operating numbers, Dispatch and Tech Hotline, remain).</li>
@@ -432,7 +433,7 @@ tr:nth-child(even) td { background: var(--brand-field); }
 </div>
 
 <footer class="footer">
-  <strong>aba TRADES</strong> &nbsp;&middot;&nbsp; Standard Operating Procedure 003 &nbsp;&middot;&nbsp; v1.4
+  <strong>aba TRADES</strong> &nbsp;&middot;&nbsp; Standard Operating Procedure 003 &nbsp;&middot;&nbsp; v1.5
   <br><span style="opacity:0.7">Harley is customer support. Contributions and corrections: <a href="mailto:harley@abatrades.com.au" style="color:#fff">harley@abatrades.com.au</a>
 </footer>
 
