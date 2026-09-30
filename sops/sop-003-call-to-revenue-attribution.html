@@ -221,7 +221,26 @@ tr:nth-child(even) td { background: var(--brand-field); }
   </section>
 
   <section>
-    <h2>8. Reference</h2>
+    <h2>8. Open items &amp; data-test checklist</h2>
+    <div class="callout notice"><div class="title">Opened 30 Sep 2026 (Josh) - ready to start mapping investigation + data tests</div>
+    Everything below is captured so a fresh session can start working without re-deriving it from conversation. Three open threads, then the concrete first data tests.</div>
+    <h3>8.1 Open items (need human or external action)</h3>
+    <ol>
+      <li><strong>Google Ads Data Manager write scope (BLOCKER for CRON 1).</strong> Our service-account dev token is verified read-only for spend. Confirm and scope the Google Cloud project for offline/valued conversion upload (Data Manager API) before any construction. This is the single external gate.</li>
+      <li><strong>WildJar DNI capture (CRON 2).</strong> Evaluate/adopt WildJar as the tracker that captures GCLID + GA4 client ID at the click and writes it toward the ST lead (its Zapier to ST lead-attribution call carries the full gclid/UTM set, no Marketing Pro). Confirm what it actually stores per call on OUR setup.</li>
+      <li><strong>Test GA4 property.</strong> Josh chose a single test property (same account, not a separate account) to validate offline revenue landing; flip to production via one config flag after sign-off.</li>
+    </ol>
+    <h3>8.2 First data tests (read-only, do these next)</h3>
+    <ol>
+      <li><strong>Job-to-campaign join on a real sample.</strong> Pull recent completed jobs; confirm every one resolves a campaign via <code>jpm/v2/.../jobs</code> <code>campaignId</code> and the telecom call's DNIS. Note any job with a null/unmapped campaign (e.g. current ST phone-number table has an empty-campaign row, 08 7666 3736).</li>
+      <li><strong>Contact coverage.</strong> For the same sample, confirm <code>/crm/v2/.../customers/{id}/contacts</code> returns phone + email for every job (verified 20/20 on 30 Sep; re-run on a wider net).</li>
+      <li><strong>Revenue source.</strong> Confirm the reported figure you will push is <em>invoiced revenue</em> (report 295 <code>TotalRevenue</code>), not an estimate or job-total. Label GST-inclusive if shown.</li>
+      <li><strong>Identifier availability.</strong> For a sample, check whether GCLID/client_id exists on the lead at all today (expected: not yet, until CRON 2 capture is live). This sets the honest match-rate expectation for the hashed-phone/email path.</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>9. Reference</h2>
     <ul>
       <li>Planner card: <code>Research: Virtual Call Tracking vs CallRail</code> (tiYG64AhVUGzTpEWTgdh5QgAF8YL) - full findings + recommendation.</li>
       <li>Vault skill: <code>client-saas-api-integration</code>, references <code>call-tracking.md</code>, <code>servicetitan.md</code>.</li>
