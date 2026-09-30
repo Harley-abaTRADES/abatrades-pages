@@ -102,6 +102,12 @@ tr:nth-child(even) td { background: var(--brand-field); }
 .googlebox small { display: block; margin-top: 2px; }
 .googlebox .bad { color: var(--brand-error); font-size: 11px; }
 .googlebox .good { color: var(--brand-success); font-size: 11px; }
+/* legend */
+.pl-legend { display: flex; flex-direction: column; gap: 8px; margin: 4px 0; }
+.legrow { display: flex; align-items: flex-start; gap: 16px; padding: 9px 14px; background: #fff; border: 1px solid var(--brand-border); border-radius: 8px; }
+.legt { width: 210px; color: var(--brand-text); font-size: 12px; font-weight: 700; }
+.legd { width: 170px; color: var(--brand-primary); font-size: 12.5px; font-weight: 700; }
+.legrow small { flex: 1; color: var(--brand-slate); font-size: 11.5px; line-height: 1.35; }
 
 </style>
 </head>
@@ -122,7 +128,7 @@ tr:nth-child(even) td { background: var(--brand-field); }
     <div class="m"><strong>SOP</strong>003</div>
     <div class="m"><strong>Owner</strong>Paul / Josh</div>
     <div class="m"><strong>Applies to</strong>All aba TRADES brands</div>
-    <div class="m"><strong>Version</strong>1.3</div>
+    <div class="m"><strong>Version</strong>1.4</div>
     <div class="m"><strong>Last reviewed</strong>30 Sep 2026</div>
     <div class="m"><strong>Status</strong>In build</div>
   </div>
@@ -275,22 +281,22 @@ tr:nth-child(even) td { background: var(--brand-field); }
       <div class="panel">
         <div class="panel-head">CURRENT STATE (today)</div>
 
-        <div class="pl-title">Channel | where they came from</div>
+        <div class="pl-title">Channel - where they came from</div>
         <div class="pl-chips">
           <span class="srcchip">google_cpc</span><span class="srcchip">google_organic</span><span class="srcchip">google_gmb_stepney</span><span class="srcchip">meta_cpc</span><span class="srcchip">sms_sms</span><span class="srcchip">print_print</span>
         </div>
 
         <div class="pl-arrow">&#8595;</div>
-        <div class="pl-title">Surface | how they got in touch</div>
+        <div class="pl-title">Surface - how they got in touch</div>
         <div class="pl-surf">
-          <div class="surfbox"><strong>Phone call</strong><small>3CX + SIP answer it</small></div>
+          <div class="surfbox"><strong>Phone call</strong><small>3CX owns the tracking numbers and answers</small></div>
           <div class="surfbox"><strong>Website form</strong><small>lands a web lead</small></div>
         </div>
 
         <div class="pl-arrow">&#8595;</div>
-        <div class="pl-title">Capture | what we record</div>
+        <div class="pl-title">Capture - what we record</div>
         <div class="pl-capture">
-          <div class="capbox"><strong>Caller + dialed number</strong><small>DNIS points to the campaign (manual number map)</small><span class="capwarn">number map has leaks</span></div>
+          <div class="capbox"><strong>Caller + dialed number</strong><small>3CX records it, ServiceTitan's number map points DNIS to a campaign</small><span class="capwarn">map is manual, has leaks</span></div>
           <div class="capbox"><strong>GCLID + client_id</strong><small>not captured yet</small><span class="capbad">exact ad unknown</span></div>
         </div>
 
@@ -309,20 +315,20 @@ tr:nth-child(even) td { background: var(--brand-field); }
       <div class="panel">
         <div class="panel-head future">FUTURE STATE (target build)</div>
 
-        <div class="pl-title">Channel | where they came from</div>
+        <div class="pl-title">Channel - where they came from</div>
         <div class="pl-chips">
           <span class="srcchip">google_cpc</span><span class="srcchip">google_organic</span><span class="srcchip">google_gmb_stepney</span><span class="srcchip">meta_cpc</span><span class="srcchip">sms_sms</span><span class="srcchip">print_print</span>
         </div>
 
         <div class="pl-arrow">&#8595;</div>
-        <div class="pl-title">Surface | how they got in touch</div>
+        <div class="pl-title">Surface - how they got in touch</div>
         <div class="pl-surf">
-          <div class="surfbox"><strong>Phone call</strong><small>3CX + SIP, answered via CallRail</small></div>
+          <div class="surfbox"><strong>Phone call</strong><small>3CX answers, CallRail handles the numbers</small></div>
           <div class="surfbox"><strong>Website form</strong><small>with the GCLID snippet</small></div>
         </div>
 
         <div class="pl-arrow">&#8595;</div>
-        <div class="pl-title">Capture | what we record</div>
+        <div class="pl-title">Capture - what we record</div>
         <div class="pl-capture">
           <div class="capbox add"><strong>CallRail (new)</strong><small>DNI + GCLID, exact click</small><span class="capgood">click-level calls</span></div>
           <div class="capbox add"><strong>GCLID + client_id</strong><small>captured at click</small><span class="capgood">exact ad known</span></div>
@@ -341,10 +347,20 @@ tr:nth-child(even) td { background: var(--brand-field); }
       </div>
     </div>
 
+    <h3>Legend - platform roles</h3>
+    <div class="pl-legend">
+      <div class="legrow"><span class="legt">Phone / PBX platform</span><span class="legd">3CX</span><small>answers the call, records caller + dialed number</small></div>
+      <div class="legrow"><span class="legt">Call tracking / DNI platform</span><span class="legd">CallRail</span><small>dynamic number insertion + GCLID, click-level call attribution</small></div>
+      <div class="legrow"><span class="legt">System of record</span><span class="legd">ServiceTitan</span><small>the truth for jobs + revenue; where the number-to-campaign map lives today</small></div>
+      <div class="legrow"><span class="legt">Google destinations</span><span class="legd">Google Ads + GA4</span><small>where revenue lands as conversion value / channel</small></div>
+      <div class="legrow"><span class="legt">Channel format</span><span class="legd">source_medium</span><small>GA4-native: google_cpc, google_organic, google_gmb, meta_cpc, sms_sms, print_print</small></div>
+      <div class="legrow"><span class="legt">Surface</span><span class="legd">phone call / website form</span><small>how the customer got in touch, never part of the campaign name</small></div>
+    </div>
+
     <h3>What this shows</h3>
     <ul>
       <li><strong>Channel and surface are separate.</strong> Channel = where the customer came from (in source/medium form: <code>google_cpc</code>, <code>google_organic</code>, <code>google_gmb_stepney</code>, <code>meta_cpc</code>, <code>sms_sms</code>, <code>print_print</code>), which is the form GA4's default channel grouping already understands, so every campaign lands in the right bucket with no manual tagging. Surface = how they got in touch (phone call or website form), kept out of the campaign name.</li>
-      <li><strong>Today</strong> the phone path relies on a hand-built number-to-campaign table with known leaks, and the website GCLID is not captured, so neither surface reaches click-level attribution. No revenue flows back to Google (the write scope is the open gate).</li>
+      <li><strong>Today</strong> the phone path is 3CX: 3CX owns and answers the tracking numbers, and ServiceTitan's manually-built number-to-campaign map turns the dialed number into a campaign. That map has known leaks, and the website GCLID is not captured, so neither surface reaches click-level attribution. No revenue flows back to Google (the write scope is the open gate).</li>
       <li><strong>Future</strong> adds CallRail at the phone surface (dynamic number insertion + GCLID capture, giving click-level calls) and a first-party snippet on the website (GCLID + client_id), and CRON 1 sends job revenue back to Google Ads (conversion value) and GA4 (revenue by channel) using the source/medium mapping. CallRail removes the need to trust the manual number map; 3CX stays as the phone system that answers and routes.</li>
       <li><strong>CallRail replaces the tracking-number role, not 3CX.</strong> CallRail owns the many marketing numbers for DNI; 3CX stops managing that list and just answers and routes calls (its operating numbers, Dispatch and Tech Hotline, remain).</li>
     </ul>
@@ -416,7 +432,7 @@ tr:nth-child(even) td { background: var(--brand-field); }
 </div>
 
 <footer class="footer">
-  <strong>aba TRADES</strong> &nbsp;&middot;&nbsp; Standard Operating Procedure 003 &nbsp;&middot;&nbsp; v1.3
+  <strong>aba TRADES</strong> &nbsp;&middot;&nbsp; Standard Operating Procedure 003 &nbsp;&middot;&nbsp; v1.4
   <br><span style="opacity:0.7">Harley is customer support. Contributions and corrections: <a href="mailto:harley@abatrades.com.au" style="color:#fff">harley@abatrades.com.au</a>
 </footer>
 
