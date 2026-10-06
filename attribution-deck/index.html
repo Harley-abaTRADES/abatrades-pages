@@ -99,6 +99,8 @@ section{min-height:100vh;display:flex;align-items:center;padding:90px 40px}
 .step .sno{flex:0 0 46px;height:46px;width:46px;border-radius:50%;background:var(--brand-primary);color:#fff;font-weight:700;display:flex;align-items:center;justify-content:center;font-size:1.05rem}
 .step .stxt b{color:var(--brand-primary)}
 .step .stxt{color:#2a3550;font-size:1rem;line-height:1.5}
+.step .stxt code{background:var(--brand-surface);padding:1px 6px;border-radius:4px;font-size:.9em;color:var(--brand-dark-navy)}
+.slide h3{font-size:1.3rem;font-weight:700;color:var(--brand-primary);margin:22px 0 4px;font-family:var(--font-heading)}
 
 /* proposal */
 .proposal{background:var(--brand-surface)}
@@ -243,9 +245,35 @@ section{min-height:100vh;display:flex;align-items:center;padding:90px 40px}
   </div>
 </section>
 
+<section class="slide">
+  <div class="wrap">
+    <span class="num reveal">05 · The build</span>
+    <h2 class="reveal">Build it ourselves, not through Marketing Pro</h2>
+    <p class="lead reveal d1">The native CallRail-to-ServiceTitan path needs ServiceTitan Marketing Pro (~$125/mo). We can close the same loop on our own box, at the tracker's base tier, with the call record as the join key.</p>
+    <div class="pipe">
+      <div class="node reveal d1"><b>Click</b><small>tracker DNI + GCLID captured</small></div>
+      <div class="go reveal d1">&#8594;</div>
+      <div class="node reveal d1"><b>Webhook</b><small>call event to a receiver on the box</small></div>
+      <div class="go reveal d1">&#8594;</div>
+      <div class="node reveal d2"><b>Call store</b><small>caller + tracking number + GCLID + time</small></div>
+      <div class="go reveal d2">&#8594;</div>
+      <div class="node reveal d3"><b>Join</b><small>job &rarr; leadCall &rarr; call &rarr; webhook &rarr; GCLID</small></div>
+    </div>
+    <div class="steps">
+      <div class="step reveal d1"><div class="sno">J</div><div class="stxt"><b>The dot to dot.</b> ServiceTitan jobs carry <code>leadCallId</code>, which resolves to the ST call record holding caller + timestamp. The tracker webhook carries the same caller + time + GCLID. So we join the two on caller number + timestamp and pull the GCLID out. The two systems never talk to each other; they both recorded the same call.</div></div>
+    </div>
+    <h3 class="reveal d2">The decisions</h3>
+    <div class="askrow">
+      <div class="ask reveal d1"><div class="t">Custom job field</div><div class="d">Write the GCLID onto the ServiceTitan job's own custom field, so the team can see which ad drove it, inside ST. Needs a minimal write-scope ST key, kept separate from the read key.</div></div>
+      <div class="ask reveal d2"><div class="t">Bidding</div><div class="d">Google Smart Bidding replaces ST's Ads Optimizer. Same goal (bid on money), run by Google, no Marketing Pro.</div></div>
+      <div class="ask reveal d3"><div class="t">We own it</div><div class="d">The webhook receiver, join and upload are ours to build and maintain. More control, more we own. Vendor only supplies the numbers and DNI.</div></div>
+    </div>
+  </div>
+</section>
+
 <section class="proposal">
   <div class="wrap">
-    <span class="num reveal">05 · What we are proposing</span>
+    <span class="num reveal">06 · What we are proposing</span>
     <h2 class="reveal">Break the taxonomy apart to put it back correctly</h2>
     <div class="askrow">
       <div class="ask reveal d1"><div class="t">Split channel from surface</div><div class="d">Rename the 73 campaign buckets onto a clean source/medium axis (google_cpc, google_organic, google_gmb, meta_cpc, sms, print), moving the contact means (call, form, chat) out of the campaign name into its own field.</div></div>
