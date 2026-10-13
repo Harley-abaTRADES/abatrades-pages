@@ -247,7 +247,20 @@ section{min-height:100vh;display:flex;align-items:center;padding:90px 40px}
 
 <section class="slide">
   <div class="wrap">
-    <span class="num reveal">05 · The build</span>
+    <span class="num reveal">05 · Web enquiries</span>
+    <h2 class="reveal">Forms and chat are tracked too</h2>
+    <p class="lead reveal d1">Not every job arrives by phone. Web form submissions and live chat are captured the same way, so their source lands against the job too.</p>
+    <div class="askrow">
+      <div class="ask reveal d1"><div class="t">Web forms</div><div class="d">Each submission carries hidden fields with the GCLID and source/medium when the form has them wired. Harley's box polls the site's form entry feed (Gravity Forms REST) every ~15 minutes and pulls each submission, so the source rides the lead.</div></div>
+      <div class="ask reveal d2"><div class="t">Live chat (Podium)</div><div class="d">Website chat and SMS come through Podium as lead records and map back to the job the same way a call or form does, carrying their own channel signal.</div></div>
+      <div class="ask reveal d3"><div class="t">The form capture rollout</div><div class="d">We have sent an email to Argon (our site developer) to explore wiring the hidden GCLID/source fields onto every form across the sites, so web form submissions are captured consistently, not just where a form already has the fields.</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="wrap">
+    <span class="num reveal">06 · The build</span>
     <h2 class="reveal">Who does what</h2>
     <p class="lead reveal d1">Call-tracking platforms capture and store the call's source. They do not push ServiceTitan revenue anywhere by themselves. Mapping that source onto the job is the work in the middle, and it is ours to do.</p>
     <div class="askrow">
@@ -260,7 +273,7 @@ section{min-height:100vh;display:flex;align-items:center;padding:90px 40px}
 
 <section class="proposal">
   <div class="wrap">
-    <span class="num reveal">06 · What we are proposing</span>
+    <span class="num reveal">07 · What we are proposing</span>
     <h2 class="reveal">Break the taxonomy apart to put it back correctly</h2>
     <div class="askrow">
       <div class="ask reveal d1"><div class="t">Split channel from surface</div><div class="d">Rename the 73 campaign buckets onto a clean source/medium axis (google_cpc, google_organic, google_gmb, meta_cpc, sms, print), moving the contact means (call, form, chat) out of the campaign name into its own field.</div></div>
