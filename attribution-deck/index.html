@@ -128,7 +128,7 @@ section{min-height:100vh;display:flex;align-items:center;padding:90px 40px}
   <div class="wrap">
     <div class="kicker reveal">Attribution · How the money connects</div>
     <h1 class="reveal">Where the money comes from</h1>
-    <p class="sub reveal d1">How aba TRADES ties every dollar of job revenue back to the ad and channel that produced it, so we can spend where the money is made.</p>
+    <p class="sub reveal d1">How aba TRADES ties every job back to the ad and channel that produced it, so we can spend where the money is made.</p>
     <span class="tag reveal d2">Current state → The gap → The fix</span>
   </div>
 </section>
@@ -169,7 +169,7 @@ section{min-height:100vh;display:flex;align-items:center;padding:90px 40px}
         <div class="lcap reveal d1"><span class="chip">google_cpc</span><span class="chip">google_organic</span><span class="chip">google_gmb_stepney</span><span class="chip">meta</span><span class="chip">sms</span><span class="chip">print</span></div>
         <div class="arrow reveal d1">&#8595;</div>
         <div class="layer reveal d1">Surface - how they got in touch</div>
-        <div class="lcap reveal d1"><div class="lc"><b>Phone call</b><small>3CX owns the tracking numbers and answers</small></div><div class="lc"><b>Website form</b><small>lands a web lead</small></div></div>
+        <div class="lcap reveal d1"><div class="lc"><b>Phone call</b><small>3CX owns the tracking numbers and answers</small></div><div class="lc"><b>Website form</b><small>lands a web lead</small></div><div class="lc"><b>Live chat (Podium)</b><small>website chat + SMS</small></div></div>
         <div class="arrow reveal d1">&#8595;</div>
         <div class="layer reveal d1">Capture - what we record</div>
         <div class="lcap reveal d1"><div class="lc"><b>Caller + dialed number</b><small>3CX records it, ServiceTitan's number map names the campaign</small><span class="warn">manual map, leaks</span></div><div class="lc"><b>GCLID + client_id</b><small>not captured yet</small><span class="bad">exact ad unknown</span></div></div>
@@ -178,24 +178,24 @@ section{min-height:100vh;display:flex;align-items:center;padding:90px 40px}
         <div class="strow reveal d1"><b>ServiceTitan</b><small>jobs + revenue + campaign tag + customer contact</small></div>
         <div class="arrow reveal d1">&#8595;</div>
         <div class="layer reveal d1">Google destinations</div>
-        <div class="google reveal d1"><div class="gbx"><b>Google Ads</b><span class="bad">no revenue back yet</span></div><div class="gbx"><b>GA4</b><span class="bad">no revenue back yet</span></div></div>
+        <div class="google reveal d1"><div class="gbx"><b>Google Ads</b><span class="bad">no revenue back yet</span></div><div class="gbx"><b>GA4</b><span class="warn">call events only, no revenue</span></div></div>
       </div>
       <div class="panel">
-        <div class="pt f reveal">Future state (target build)</div>
+        <div class="pt f reveal">Future state (target)</div>
         <div class="layer reveal d1">Channel - where they came from</div>
         <div class="lcap reveal d1"><span class="chip">google_cpc</span><span class="chip">google_organic</span><span class="chip">google_gmb_stepney</span><span class="chip">meta</span><span class="chip">sms</span><span class="chip">print</span></div>
         <div class="arrow reveal d1">&#8595;</div>
         <div class="layer reveal d1">Surface - how they got in touch</div>
-        <div class="lcap reveal d1"><div class="lc"><b>Phone call</b><small>3CX answers, CallRail handles the numbers</small></div><div class="lc"><b>Website form</b><small>with the GCLID snippet</small></div></div>
+        <div class="lcap reveal d1"><div class="lc"><b>Phone call</b><small>WildJar serves the numbers (DNI), 3CX answers</small></div><div class="lc"><b>Website form</b><small>with the GCLID snippet</small></div><div class="lc"><b>Live chat (Podium)</b><small>website chat + SMS</small></div></div>
         <div class="arrow reveal d1">&#8595;</div>
         <div class="layer reveal d1">Capture - what we record</div>
-        <div class="lcap reveal d1"><div class="lc addl"><b>CallRail (new)</b><small>DNI + GCLID, exact click</small><span class="good">click-level calls</span></div><div class="lc addl"><b>GCLID + client_id</b><small>captured at click</small><span class="good">exact ad known</span></div></div>
+        <div class="lcap reveal d1"><div class="lc addl"><b>WildJar (recommended)</b><small>stores the call's source: caller, number, channel, GCLID, time</small><span class="good">source captured</span></div><div class="lc addl"><b>Harley's script</b><small>maps that source onto the ServiceTitan job by phone number</small><span class="good">mapped into ST</span></div></div>
         <div class="arrow reveal d1">&#8595;</div>
-        <div class="layer reveal d1">System of record</div>
-        <div class="strow reveal d1"><b>ServiceTitan</b><small>jobs + revenue + campaign tag + customer contact</small></div>
+        <div class="layer reveal d1">System of record + revenue owner</div>
+        <div class="strow reveal d1"><b>ServiceTitan</b><small>jobs + revenue + campaign tag + the source data we stored onto each</small></div>
         <div class="arrow reveal d1">&#8595;</div>
-        <div class="layer reveal d1">Google destinations (source/medium mapped)</div>
-        <div class="google reveal d1"><div class="gbx"><b>Google Ads</b><span class="good">conversion value lands</span></div><div class="gbx"><b>GA4</b><span class="good">revenue by channel</span></div></div>
+        <div class="layer reveal d1">Google destinations</div>
+        <div class="google reveal d1"><div class="gbx"><b>Google Ads</b><span class="warn">conversion value: being investigated</span></div><div class="gbx"><b>GA4</b><span class="warn">conversion value: being investigated</span></div><div class="gbx"><b>Harley's dashboard</b><span class="good">source + revenue per channel</span></div></div>
       </div>
     </div>
   </div>
@@ -208,7 +208,7 @@ section{min-height:100vh;display:flex;align-items:center;padding:90px 40px}
     <div class="cards">
       <div class="card reveal d1"><div class="t">The ad click ID is lost</div><div class="d">GCLID lives in the click URL for only about 90 days and is not captured anywhere today. Once lost, it is gone forever. This is the signal that would name the exact ad.</div><span class="bad">not captured</span></div>
       <div class="card reveal d2"><div class="t">The number map is hand-built</div><div class="d">Campaigns come from a manually-maintained number-to-campaign table in ServiceTitan. It mis-files office/hotline calls and some numbers map unevenly. No independent check confirms it.</div><span class="warn">untrusted today</span></div>
-      <div class="card reveal d3"><div class="t">No revenue flows back to Google</div><div class="d">Google Ads and GA4 see how many clicks and calls happen, but not which jobs paid out. So bidding optimises on lead counts, not on the money each ad earns.</div><span class="bad">no conversion value</span></div>
+      <div class="card reveal d3"><div class="t">The call's source is not stored on the job</div><div class="d">ServiceTitan shows the caller and the number they dialed, but the source that produced the call (the channel, the ad click) is not written against the job. That is the line we need to complete.</div><span class="warn">not mapped</span></div>
     </div>
   </div>
 </section>
@@ -216,15 +216,15 @@ section{min-height:100vh;display:flex;align-items:center;padding:90px 40px}
 <section class="dark">
   <div class="wrap">
     <h2 class="reveal">The fix in one line</h2>
-    <p class="reveal d1" style="color:#fff;font-size:1.5rem;font-weight:700;margin-top:22px">Capture each click's identifier, then send the real job revenue back to the click that earned it.</p>
+    <p class="reveal d1" style="color:#fff;font-size:1.5rem;font-weight:700;margin-top:22px">Capture each call's source, store it, and map it onto the job in ServiceTitan so every dollar's origin is known.</p>
     <div class="pipe">
-      <div class="node reveal d1"><b>Click identifier</b><small>GCLID captured at the moment of the click</small></div>
+      <div class="node reveal d1"><b>Source captured</b><small>WildJar stores caller, number, channel, GCLID per call</small></div>
       <div class="go reveal d1">&#8594;</div>
-      <div class="node reveal d2"><b>Capture</b><small>web snippet + CallRail DNI</small></div>
+      <div class="node reveal d2"><b>Mapped into ST</b><small>Harley's script joins each call to its job by phone number</small></div>
       <div class="go reveal d2">&#8594;</div>
-      <div class="node reveal d3"><b>ServiceTitan</b><small>job, campaign, revenue, contact</small></div>
+      <div class="node reveal d3"><b>ServiceTitan</b><small>holds the channel picture per job; ST pairs the data in its own dashboard</small></div>
       <div class="go reveal d3">&#8594;</div>
-      <div class="node reveal d3"><b>Google</b><small>revenue back to Ads + GA4</small></div>
+      <div class="node reveal d3"><b>Google Ads / GA4</b><small>conversion value: being investigated</small></div>
     </div>
   </div>
 </section>
@@ -233,40 +233,27 @@ section{min-height:100vh;display:flex;align-items:center;padding:90px 40px}
   <div class="wrap">
     <span class="num reveal">04 · How it lands</span>
     <h2 class="reveal">The connected dots</h2>
-    <p class="lead reveal d1">From a completed job back to Google, in six steps.</p>
+    <p class="lead reveal d1">From a captured call to the source on the job, in four steps, with Google conversion value as a separate line still under investigation.</p>
     <div class="steps">
-      <div class="step reveal d1"><div class="sno">1</div><div class="stxt"><b>Capture the click identifier.</b> The GCLID is grabbed at the click: on a web form by the first-party snippet, on a phone call by CallRail's DNI.</div></div>
-      <div class="step reveal d1"><div class="sno">2</div><div class="stxt"><b>Persist onto the lead.</b> The identifier is written to the ServiceTitan lead at enquiry.</div></div>
-      <div class="step reveal d2"><div class="sno">3</div><div class="stxt"><b>Close the job, earn the money.</b> The job completes and earns real invoiced revenue in ServiceTitan.</div></div>
-      <div class="step reveal d2"><div class="sno">4</div><div class="stxt"><b>The cron reads the joins.</b> Revenue-sync reads the completed job, its GCLID, its campaign and its contact.</div></div>
-      <div class="step reveal d3"><div class="sno">5</div><div class="stxt"><b>Upload via the Data Manager API.</b> A valued conversion keyed by GCLID goes to Google Ads; a revenue event keyed by client_id goes to GA4.</div></div>
-      <div class="step reveal d3"><div class="sno">6</div><div class="stxt"><b>Google matches server-side.</b> Ads credits the exact click so Smart Bidding optimises on money, and GA4 attributes the revenue to the channel via source/medium.</div></div>
+      <div class="step reveal d1"><div class="sno">1</div><div class="stxt"><b>Capture the call source.</b> WildJar stores the caller, the tracking number, the channel (source/medium), the GCLID if there is one, and the call time.</div></div>
+      <div class="step reveal d1"><div class="sno">2</div><div class="stxt"><b>Map it onto the job.</b> A script on Harley's box matches each call to its ServiceTitan job by phone number (call time as a check) and pulls the stored source.</div></div>
+      <div class="step reveal d1"><div class="sno">3</div><div class="stxt"><b>Store on the job.</b> The source row (channel, keyword, campaign, GCLID) is written onto the ServiceTitan job so the system of record holds the full picture.</div></div>
+      <div class="step reveal d1"><div class="sno">4</div><div class="stxt"><b>Pair the data.</b> ServiceTitan (and our dashboard) reads each job's revenue against its channel. ServiceTitan pairs the data in its own dashboard, the same way we already do.</div></div>
     </div>
+    <h3 class="reveal d2">The separate line</h3>
+    <div class="step reveal d2"><div class="sno">5</div><div class="stxt"><b>Conversion value into Google.</b> Pushing job revenue back into Google Ads and GA4 as conversion value is a separate question. ServiceTitan does not appear to do it in Australia today, so we are still investigating the path (initially via the Google Ads account link, or a native tracker upload).</div></div>
   </div>
 </section>
 
 <section class="slide">
   <div class="wrap">
     <span class="num reveal">05 · The build</span>
-    <h2 class="reveal">Build it ourselves, not through Marketing Pro</h2>
-    <p class="lead reveal d1">The native CallRail-to-ServiceTitan path needs ServiceTitan Marketing Pro (~$125/mo). We can close the same loop on our own box, at the tracker's base tier, with the call record as the join key.</p>
-    <div class="pipe">
-      <div class="node reveal d1"><b>Click</b><small>tracker DNI + GCLID captured</small></div>
-      <div class="go reveal d1">&#8594;</div>
-      <div class="node reveal d1"><b>Webhook</b><small>call event to a receiver on the box</small></div>
-      <div class="go reveal d1">&#8594;</div>
-      <div class="node reveal d2"><b>Call store</b><small>caller + tracking number + GCLID + time</small></div>
-      <div class="go reveal d2">&#8594;</div>
-      <div class="node reveal d3"><b>Join</b><small>job &rarr; leadCall &rarr; call &rarr; webhook &rarr; GCLID</small></div>
-    </div>
-    <div class="steps">
-      <div class="step reveal d1"><div class="sno">J</div><div class="stxt"><b>The dot to dot.</b> ServiceTitan jobs carry <code>leadCallId</code>, which resolves to the ST call record holding caller + timestamp. The tracker webhook carries the same caller + time + GCLID. So we join the two on caller number + timestamp and pull the GCLID out. The two systems never talk to each other; they both recorded the same call.</div></div>
-    </div>
-    <h3 class="reveal d2">The decisions</h3>
+    <h2 class="reveal">Who does what</h2>
+    <p class="lead reveal d1">Call-tracking platforms capture and store the call's source. They do not push ServiceTitan revenue anywhere by themselves. Mapping that source onto the job is the work in the middle, and it is ours to do.</p>
     <div class="askrow">
-      <div class="ask reveal d1"><div class="t">Custom job field</div><div class="d">Write the GCLID onto the ServiceTitan job's own custom field, so the team can see which ad drove it, inside ST. Needs a minimal write-scope ST key, kept separate from the read key.</div></div>
-      <div class="ask reveal d2"><div class="t">Bidding</div><div class="d">Google Smart Bidding replaces ST's Ads Optimizer. Same goal (bid on money), run by Google, no Marketing Pro.</div></div>
-      <div class="ask reveal d3"><div class="t">We own it</div><div class="d">The webhook receiver, join and upload are ours to build and maintain. More control, more we own. Vendor only supplies the numbers and DNI.</div></div>
+      <div class="ask reveal d1"><div class="t">WildJar (call tracking)</div><div class="d">Stores the phone call source data: caller, tracking number, channel, GCLID, time. Australian, local support, and the vendor ServiceTitan's own call-attribution product is built around. Recommended over CallRail for the ST path.</div></div>
+      <div class="ask reveal d2"><div class="t">Harley's script (the mapping)</div><div class="d">Joins each captured call to its ServiceTitan job by phone number and writes the stored source onto the job. This is the mapping-in step, done on our side, that ServiceTitan does not do for call source.</div></div>
+      <div class="ask reveal d3"><div class="t">ServiceTitan (the system of record)</div><div class="d">Holds jobs, revenue and the source data we store onto each. Its own marketing tool pairs the data in its own dashboard, but it does not appear able to push job revenue value back into GA4 or Google Ads in Australia today.</div></div>
     </div>
   </div>
 </section>
@@ -277,8 +264,8 @@ section{min-height:100vh;display:flex;align-items:center;padding:90px 40px}
     <h2 class="reveal">Break the taxonomy apart to put it back correctly</h2>
     <div class="askrow">
       <div class="ask reveal d1"><div class="t">Split channel from surface</div><div class="d">Rename the 73 campaign buckets onto a clean source/medium axis (google_cpc, google_organic, google_gmb, meta_cpc, sms, print), moving the contact means (call, form, chat) out of the campaign name into its own field.</div></div>
-      <div class="ask reveal d2"><div class="t">Add the capture layer</div><div class="d">A first-party snippet for web leads and CallRail DNI for phone calls, so every enquiry carries the GCLID that produced it.</div></div>
-      <div class="ask reveal d3"><div class="t">Close the loop to Google</div><div class="d">CRON 1 sends real invoiced revenue back as conversion value in Google Ads and revenue-by-channel in GA4, so bidding and reporting run on money, not lead counts.</div></div>
+      <div class="ask reveal d2"><div class="t">Add the capture layer</div><div class="d">WildJar DNI for phone calls and a first-party snippet for web leads, so every enquiry carries the source and GCLID that produced it. Store that source against the ServiceTitan job via our mapping script.</div></div>
+      <div class="ask reveal d3"><div class="t">Investigate conversion value to Google</div><div class="d">Separately investigate pushing job revenue into Google Ads and GA4 as conversion value, initially via the Google Ads account link or a native tracker upload. Not committed yet; it is a distinct workstream from the source-data mapping.</div></div>
     </div>
   </div>
 </section>
@@ -286,7 +273,7 @@ section{min-height:100vh;display:flex;align-items:center;padding:90px 40px}
 <section class="footer">
   <h2 class="reveal">Spend where the money is made</h2>
   <p class="reveal d1">The full technical spec, validation and every data check behind this plan.</p>
-  <a class="reveal d2" href="https://harley-abatrades.github.io/abatrades-pages/sops/sop-003-call-to-revenue-attribution.html" style="background:#fff;color:var(--brand-primary);border-color:#fff">Open the full specification</a>
+  <a class="reveal d2" href="https://aba-trades.pages.dev/sops/sop-003-call-to-revenue-attribution.html" style="background:#fff;color:var(--brand-primary);border-color:#fff">Open the full specification</a>
   <p class="mute" >harley · aba TRADES support team</p>
 </section>
 
