@@ -251,7 +251,7 @@ section{min-height:100vh;display:flex;align-items:center;padding:90px 40px}
     <h2 class="reveal">Forms and chat are tracked too</h2>
     <p class="lead reveal d1">Not every job arrives by phone. Web form submissions and live chat carry their own source, and we capture both so enquiries can be tied back to the CRM once they become jobs.</p>
     <div class="askrow">
-      <div class="ask reveal d1"><div class="t">Web forms today</div><div class="d">Gravity Forms submissions currently land in the admin inbox as emails, not straight into ServiceTitan. Where a form has hidden tracking fields wired, Harley's box already polls the form feed (Gravity Forms REST) every ~15 minutes and pulls each submission with its GCLID and source/medium.</div></div>
+      <div class="ask reveal d1"><div class="t">Web forms today</div><div class="d">Gravity Forms submissions currently land in the admin inbox as emails, not straight into ServiceTitan. The Gravity Forms feed exposes each submission with its GCLID and source/medium where the fields are wired, and the capture path is proven end to end, but it is not running continuously yet.</div></div>
       <div class="ask reveal d2"><div class="t">Live chat (Podium)</div><div class="d">Website chat and SMS come through Podium as lead records and carry their own channel signal back to the job.</div></div>
       <div class="ask reveal d3"><div class="t">The Argon work</div><div class="d">We've asked Argon (our site developer) to wire the visitor's GA4 client id and source onto every form submission, starting with aba ELECTRICAL, so each enquiry carries the tracking value into the CRM. Argon is scoping a clean, reusable solution across our sites.</div></div>
     </div>
