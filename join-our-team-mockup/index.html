@@ -24,7 +24,7 @@
   --shadow:0 10px 30px rgba(29,59,109,.08);
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
+html{scroll-behavior:auto}
 body{font-family:var(--font);color:var(--navy);background:var(--white);line-height:1.6;font-size:16px;-webkit-font-smoothing:antialiased}
 img{max-width:100%;display:block}
 a{color:inherit}
@@ -602,7 +602,6 @@ footer a:hover{color:#fff}
 
 <script src="../assets/vendor/gsap.min.js"></script>
 <script src="../assets/vendor/ScrollTrigger.min.js"></script>
-<script src="../assets/vendor/lenis.min.js"></script>
 <script>
 (function(){
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -666,18 +665,7 @@ footer a:hover{color:#fff}
   if(!reduce && window.gsap && window.ScrollTrigger){
     gsap.registerPlugin(ScrollTrigger);
 
-    if(window.Lenis){
-      var lenis = new Lenis({lerp:0.1, smoothWheel:true});
-      lenis.on('scroll', ScrollTrigger.update);
-      gsap.ticker.add(function(t){ lenis.raf(t * 1000); });
-      gsap.ticker.lagSmoothing(0);
-      document.querySelectorAll('a[href^="#"]').forEach(function(a){
-        a.addEventListener('click', function(ev){
-          var t = document.querySelector(a.getAttribute('href'));
-          if(t){ ev.preventDefault(); lenis.scrollTo(t, {offset:-90}); }
-        });
-      });
-    }
+    ScrollTrigger.refresh();
 
     /* hero: line reveal, then the supporting bits */
     var h1 = document.getElementById('heroh1');
