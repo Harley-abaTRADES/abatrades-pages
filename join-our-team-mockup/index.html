@@ -7,6 +7,8 @@
 <meta name="description" content="aba TRADES is always hiring good tradespeople in Adelaide. Plumbers, gas fitters, electricians, air conditioning techs, roofers, carpenters, apprentices and office roles. Apply in 60 seconds.">
 <link rel="icon" type="image/x-icon" href="../assets/brand/favicon.ico">
 <link rel="apple-touch-icon" href="../assets/brand/abatrades-favicon.png">
+<!-- the same Typekit kit the live aba TRADES site uses -->
+<link rel="stylesheet" href="https://use.typekit.net/aym5yls.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Ms+Madi&display=swap" rel="stylesheet">
@@ -16,9 +18,9 @@
   --surface:#EBEDF2; --field:#F5F6F8; --border:#D3D4DA; --white:#fff;
   --plumbing:#BDD2B4; --aircon:#6BB2BC; --electrical:#F8D0A7; --roofing:#B2BDE3; --reno:#EFACAC;
   --success:#8FAE1B;
-  --font:'Futura PT','futura-pt',Helvetica,Arial,sans-serif;
+  --font:'futura-pt','Futura PT','Century Gothic',Helvetica,Arial,sans-serif;
   --cursive:'Ms Madi',cursive;
-  --r-pill:100px; --r-surface:20px; --r-field:30px;
+  --r-pill:100px; --r-surface:20px;
   --shadow:0 10px 30px rgba(29,59,109,.08);
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -28,15 +30,17 @@ img{max-width:100%;display:block}
 a{color:inherit}
 .wrap{max-width:1200px;margin:0 auto;padding:0 24px}
 .narrow{max-width:840px;margin:0 auto;padding:0 24px}
-h1,h2,h3,h4{font-weight:700;line-height:1.25;letter-spacing:-.01em}
-h1{font-size:clamp(2rem,4.4vw,3.1rem)}
-h2{font-size:clamp(1.5rem,3vw,2.2rem)}
-h3{font-size:1.25rem}
-p{max-width:70ch}
+/* live-site type hierarchy: h1/h2 48, h3 30, h4 20, h5 16, body 16 */
+h1,h2,h3,h4,h5{font-weight:700;line-height:1.3}
+h1{font-size:clamp(2.1rem,5vw,3rem)}
+h2{font-size:clamp(1.8rem,3.4vw,3rem)}
+h3{font-size:clamp(1.25rem,2.1vw,1.875rem)}
+h4{font-size:1.25rem}
+h5{font-size:1rem}
+p{max-width:70ch;line-height:1.6}
 .eyebrow{display:inline-block;font-size:.8rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
   background:rgba(143,174,27,.16);color:#5d7208;padding:7px 16px;border-radius:var(--r-pill);margin-bottom:18px}
 .section{padding:88px 0}
-.section.tight{padding:64px 0}
 .center{text-align:center}
 .center p{margin-left:auto;margin-right:auto}
 .btn{display:inline-flex;align-items:center;gap:10px;font-weight:700;font-size:1rem;line-height:1;
@@ -50,10 +54,11 @@ p{max-width:70ch}
 .btn.sm{padding:14px 22px;font-size:.92rem}
 .btnrow{display:flex;gap:14px;flex-wrap:wrap;margin-top:28px}
 
+.progress{position:fixed;top:0;left:0;height:3px;width:0;background:var(--success);z-index:90}
+
 /* ---------- top bar ---------- */
 .topbar{background:var(--dark);color:#fff;font-size:.85rem}
 .topbar .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;height:44px}
-.topbar b{font-weight:700}
 .nav{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--border)}
 .nav .wrap{display:flex;align-items:center;justify-content:space-between;height:78px;gap:20px}
 .nav img{height:46px;width:auto}
@@ -65,28 +70,49 @@ p{max-width:70ch}
 
 /* ---------- hero ---------- */
 .hero{position:relative;background:var(--navy);color:#fff;overflow:hidden}
-.hero-bg{position:absolute;inset:0;background:url('../assets/recruit/careers-hero.jpg') center/cover no-repeat;opacity:.34}
-.hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(11,29,59,.92) 8%,rgba(11,29,59,.62) 55%,rgba(11,29,59,.35) 100%)}
-.hero .wrap{position:relative;padding-top:92px;padding-bottom:92px;max-width:1200px}
-.hero-inner{max-width:660px}
+.hero-bg{position:absolute;inset:-8% 0 -8% 0;background:url('../assets/recruit/careers-hero.jpg') center/cover no-repeat;opacity:.34;will-change:transform}
+.hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(11,29,59,.93) 8%,rgba(11,29,59,.66) 55%,rgba(11,29,59,.38) 100%)}
+.hero .wrap{position:relative;padding-top:96px;padding-bottom:96px;max-width:1200px}
+.hero-inner{max-width:680px}
 .hero h1{color:#fff}
-.hero p{color:rgba(255,255,255,.9);font-size:1.13rem;margin-top:18px}
+.hero h1 .ln{display:block;overflow:hidden;padding-bottom:.08em}
+.hero h1 .ln > span{display:inline-block}
+.hero-sub{color:rgba(255,255,255,.9);font-size:1.13rem;margin-top:18px}
 .hero .btn.light{background:#fff;border-color:#fff;color:var(--navy)}
 .hero .btn.light:hover{background:var(--surface);border-color:var(--surface)}
 .hero .btn.heroghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.6)}
 .hero .btn.heroghost:hover{background:#fff;color:var(--navy);border-color:#fff}
 .trust{display:flex;gap:26px;flex-wrap:wrap;margin-top:40px;padding-top:26px;border-top:1px solid rgba(255,255,255,.18);font-size:.92rem;color:rgba(255,255,255,.85)}
 .trust span{display:inline-flex;align-items:center;gap:9px}
-.trust svg{flex:none}
+.scrollcue{position:absolute;left:50%;bottom:20px;transform:translateX(-50%);opacity:.7}
+.scrollcue svg{animation:bob 1.8s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
 
 /* ---------- mission ---------- */
 .mission{background:var(--surface)}
-.mission blockquote{font-size:clamp(1.3rem,2.4vw,1.8rem);font-weight:700;line-height:1.4;color:var(--navy);max-width:900px}
+.mission blockquote{font-size:clamp(1.4rem,2.6vw,2rem);font-weight:700;line-height:1.35;color:var(--navy);max-width:900px}
 .mission .lead{color:var(--slate);font-weight:700;letter-spacing:.12em;text-transform:uppercase;font-size:.8rem;margin-bottom:14px}
-.quote{margin-top:44px;background:#fff;border-radius:var(--r-surface);padding:34px 34px 30px;box-shadow:var(--shadow);max-width:760px}
-.quote p{font-style:italic;color:var(--navy)}
-.sig{font-family:var(--cursive);font-size:2.1rem;color:var(--navy);margin-top:14px;line-height:1}
-.sigrole{font-size:.85rem;color:var(--slate);font-family:var(--font)}
+.quote{margin-top:44px;background:#fff;border-radius:var(--r-surface);padding:34px;box-shadow:var(--shadow);max-width:840px;display:flex;gap:26px;align-items:flex-start}
+.quote img{width:104px;height:104px;border-radius:50%;object-fit:cover;flex:none;border:4px solid var(--surface)}
+.quote .qbody p{font-style:italic;color:var(--navy);margin:0}
+.sig{font-family:var(--cursive);font-size:2.2rem;color:var(--navy);margin-top:14px;line-height:1}
+.sigrole{font-size:.85rem;color:var(--slate)}
+@media(max-width:640px){.quote{flex-direction:column;gap:18px}}
+
+/* ---------- film ---------- */
+.film{background:var(--navy);color:#fff}
+.film h2{color:#fff}
+.film p{color:rgba(255,255,255,.85)}
+.video{position:relative;margin-top:40px;border-radius:24px;overflow:hidden;aspect-ratio:16/9;background:#000;box-shadow:0 30px 60px rgba(11,29,59,.5)}
+.video img{width:100%;height:100%;object-fit:cover;opacity:.72}
+.video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.video-play{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;
+  background:none;border:0;cursor:pointer;color:#fff;font-family:var(--font)}
+.playring{width:88px;height:88px;border-radius:50%;background:rgba(255,255,255,.95);display:grid;place-items:center;
+  transition:transform .25s ease;box-shadow:0 10px 30px rgba(0,0,0,.35)}
+.video-play:hover .playring{transform:scale(1.08)}
+.playlabel{font-weight:700;font-size:1rem;text-shadow:0 2px 10px rgba(0,0,0,.55)}
+.video-meta{display:flex;gap:28px;flex-wrap:wrap;margin-top:22px;color:rgba(255,255,255,.8);font-size:.9rem}
 
 /* ---------- values ---------- */
 .values-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:20px;margin-top:52px}
@@ -95,9 +121,15 @@ p{max-width:70ch}
 @media(max-width:420px){.values-grid{grid-template-columns:1fr}}
 .value{background:#fff;border:1px solid var(--border);border-radius:var(--r-surface);padding:26px 22px;text-align:center;transition:transform .2s ease,box-shadow .2s ease}
 .value:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
-.value svg{width:104px;height:104px;margin:0 auto 16px}
-.value h3{font-size:1.06rem;margin-bottom:9px}
+.value svg{width:104px;height:104px;margin:0 auto 16px;overflow:visible}
+.value h4{font-size:1.06rem;margin-bottom:9px}
 .value p{font-size:.93rem;color:#3d527a;max-width:none}
+
+/* ---------- marquee ---------- */
+.marquee{background:var(--navy);color:#fff;overflow:hidden;padding:18px 0;white-space:nowrap}
+.marquee .track{display:inline-flex;will-change:transform}
+.marquee .track span{display:inline-flex;align-items:center;gap:46px;padding-right:46px;font-weight:700;font-size:1.05rem}
+.marquee .track span::after{content:"";width:7px;height:7px;border-radius:50%;background:var(--success);display:inline-block;margin-left:46px}
 
 /* ---------- roles ---------- */
 .roles{background:var(--surface)}
@@ -105,17 +137,17 @@ p{max-width:70ch}
 @media(max-width:980px){.rolegrid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:620px){.rolegrid{grid-template-columns:1fr}}
 .rolegroup{background:#fff;border-radius:var(--r-surface);padding:26px 24px;border-top:5px solid var(--navy)}
-.rolegroup h3{display:flex;align-items:center;gap:11px;font-size:1.1rem;margin-bottom:16px}
+.rolegroup h4{display:flex;align-items:center;gap:11px;font-size:1.1rem;margin-bottom:16px}
 .dot{width:12px;height:12px;border-radius:50%;flex:none}
 .rolegroup ul{list-style:none;display:flex;flex-direction:column;gap:12px}
 .rolegroup li{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;font-size:.95rem}
 .rolegroup li span{color:#3d527a}
-.pick{flex:none;font-size:.82rem;font-weight:700;color:var(--navy);border:1px solid var(--border);background:var(--field);border-radius:var(--r-pill);padding:12px 17px;min-height:44px;cursor:pointer;transition:all .18s}
+.pick{flex:none;font-size:.82rem;font-weight:700;color:var(--navy);border:1px solid var(--border);background:var(--field);border-radius:var(--r-pill);padding:12px 17px;min-height:44px;cursor:pointer;transition:all .18s;font-family:var(--font)}
 .pick:hover{background:var(--navy);color:#fff;border-color:var(--navy)}
 .applyany{margin-top:34px;background:#fff;border:1px dashed var(--navy);border-radius:var(--r-surface);padding:26px 28px;display:flex;gap:20px;align-items:center;justify-content:space-between;flex-wrap:wrap}
 .applyany p{margin:0;font-size:1rem}
 
-/* ---------- apprenticeship band ---------- */
+/* ---------- apprenticeship ---------- */
 .apprentice{background:var(--navy);color:#fff}
 .apprentice h2{color:#fff}
 .apprentice p{color:rgba(255,255,255,.88)}
@@ -141,13 +173,8 @@ p{max-width:70ch}
 /* ---------- gallery ---------- */
 .gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:40px}
 @media(max-width:880px){.gallery{grid-template-columns:repeat(2,1fr)}}
-.gallery img{aspect-ratio:1/1;object-fit:cover;border-radius:16px}
+.gallery img{aspect-ratio:1/1;object-fit:cover;border-radius:16px;width:100%}
 .gallery .wide{grid-column:span 2;aspect-ratio:2/1}
-.videotile{position:relative;display:block;border-radius:16px;overflow:hidden}
-.videotile img{width:100%;height:100%;object-fit:cover;aspect-ratio:1/1}
-.videotile.wide img{aspect-ratio:2/1}
-.videotile .play{position:absolute;inset:0;margin:auto;width:58px;height:58px;border-radius:50%;background:rgba(29,59,109,.86);display:grid;place-items:center;transition:background .2s}
-.videotile:hover .play{background:var(--navy-2)}
 
 /* ---------- faq ---------- */
 .faq{max-width:840px;margin:44px auto 0}
@@ -156,11 +183,11 @@ p{max-width:70ch}
 .acc summary::-webkit-details-marker{display:none}
 .acc summary::after{content:"+";font-size:1.4rem;font-weight:700;color:var(--slate);flex:none}
 .acc[open] summary::after{content:"\2212"}
-.acc p{padding:0 22px 22px;color:#3d527a}
+.acc p{padding:0 22px 22px;color:#3d527a;margin:0}
 
 /* ---------- apply ---------- */
 .apply{background:var(--surface)}
-.applygrid{display:grid;grid-template-columns:.9fr 1.1fr;gap:52px;align-items:start}
+.applygrid{display:grid;grid-template-columns:.85fr 1.15fr;gap:52px;align-items:start}
 @media(max-width:920px){.applygrid{grid-template-columns:1fr;gap:34px}}
 .formcard{background:#fff;border-radius:24px;padding:34px;box-shadow:var(--shadow)}
 .field{margin-bottom:18px}
@@ -178,10 +205,11 @@ input[type=file]{padding:14px 20px;height:auto;background:var(--field)}
 .formcard .btn{width:100%;justify-content:center;margin-top:8px}
 .mocknote{margin-top:16px;font-size:.83rem;color:var(--slate);text-align:center}
 .okbox{display:none;background:rgba(143,174,27,.12);border:1px solid var(--success);color:#4c5f06;border-radius:14px;padding:16px 18px;font-size:.95rem;margin-top:16px}
-.contactcard{background:#fff;border-radius:var(--r-surface);padding:28px;margin-top:20px}
-.contactcard a{color:var(--navy);font-weight:700}
+.applylist{list-style:none;margin-top:26px;display:flex;flex-direction:column;gap:14px}
+.applylist li{display:flex;gap:12px;align-items:flex-start;color:#3d527a;font-size:.95rem}
+.applylist svg{flex:none;margin-top:3px}
 
-/* ---------- sticky apply ---------- */
+/* ---------- sticky ---------- */
 .stickybar{position:fixed;left:0;right:0;bottom:0;z-index:70;background:var(--navy);color:#fff;
   transform:translateY(120%);transition:transform .25s ease;box-shadow:0 -6px 24px rgba(11,29,59,.25)}
 .stickybar.on{transform:none}
@@ -203,14 +231,13 @@ footer a:hover{color:#fff}
 </style>
 </head>
 <body>
+<div class="progress" id="progress"></div>
 
-<!-- top bar -->
 <div class="topbar"><div class="wrap">
   <span>Servicing all Adelaide metro suburbs &nbsp;|&nbsp; <b>No solution, no charge</b></span>
   <span><b>08 8462 9469</b></span>
 </div></div>
 
-<!-- nav -->
 <nav class="nav"><div class="wrap">
   <a href="https://abatrades.com.au" aria-label="aba TRADES home"><img src="../assets/brand/abatrades-logo.png" alt="aba TRADES"></a>
   <ul class="navlinks">
@@ -225,12 +252,12 @@ footer a:hover{color:#fff}
 
 <!-- hero -->
 <header class="hero" id="top">
-  <div class="hero-bg"></div>
+  <div class="hero-bg" id="herobg"></div>
   <div class="wrap"><div class="hero-inner">
     <span class="eyebrow" style="background:rgba(255,255,255,.16);color:#fff">Always hiring</span>
-    <h1>Join the aba TRADES team</h1>
-    <p>We are always looking for good tradespeople. Whether or not a role is advertised right now, if you are skilled, reliable and care about doing right by the customer, we want to hear from you.</p>
-    <div class="btnrow">
+    <h1 id="heroh1">Join the aba TRADES team</h1>
+    <p class="hero-sub">We are always looking for good tradespeople. Whether or not a role is advertised right now, if you are skilled, reliable and care about doing right by the customer, we want to hear from you.</p>
+    <div class="btnrow hero-cta">
       <a class="btn light" href="#apply">Apply in 60 seconds</a>
       <a class="btn heroghost" href="#roles">See the roles we hire for</a>
     </div>
@@ -240,18 +267,22 @@ footer a:hover{color:#fff}
       <span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#BDD2B4" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Training apprentices since 2015</span>
     </div>
   </div></div>
+  <div class="scrollcue"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
 </header>
 
 <!-- mission -->
 <section class="mission section">
   <div class="wrap">
-    <div class="lead">Our mission</div>
-    <blockquote>To deliver the best solutions to our customers by developing the best tradespeople.</blockquote>
-    <p style="margin-top:22px;color:#3d527a;font-size:1.05rem">That is not a slogan on a wall. It is why we train, why we mentor, and why we hire the way we do. We invest in our team, and our team looks after our customers. Everyone wins from there.</p>
-    <div class="quote">
-      <p>"At aba TRADES, I believe in investing in our team, because when they are on site they are not just solving a problem, they are delivering the best solution for your problem, fixed fast and with care."</p>
-      <div class="sig">Paul Chaina</div>
-      <div class="sigrole">Founder and Owner, aba TRADES</div>
+    <div class="lead reveal">Our mission</div>
+    <blockquote class="reveal">To deliver the best solutions to our customers by developing the best tradespeople.</blockquote>
+    <p class="reveal" style="margin-top:22px;color:#3d527a;font-size:1.05rem">That is not a slogan on a wall. It is why we train, why we mentor, and why we hire the way we do. We invest in our team, and our team looks after our customers.</p>
+    <div class="quote reveal">
+      <img src="../assets/recruit/paul-chaina.jpg" alt="Paul Chaina, founder and owner of aba TRADES">
+      <div class="qbody">
+        <p>"At aba TRADES, I believe in investing in our team, because when they are on site they are not just solving a problem, they are delivering the best solution for your problem, fixed fast and with care."</p>
+        <div class="sig">Paul Chaina</div>
+        <div class="sigrole">Founder and Owner, aba TRADES</div>
+      </div>
     </div>
   </div>
 </section>
@@ -260,9 +291,9 @@ footer a:hover{color:#fff}
 <section class="section">
   <div class="wrap">
     <div class="center">
-      <span class="eyebrow">What we stand for</span>
-      <h2>Our values shape how we work</h2>
-      <p style="color:#3d527a;margin-top:14px">Five things we hold to, every day, on every job.</p>
+      <span class="eyebrow reveal">What we stand for</span>
+      <h2 class="reveal">Our values shape how we work</h2>
+      <p class="reveal" style="color:#3d527a;margin-top:14px">Five things we hold to, every day, on every job.</p>
     </div>
     <div class="values-grid">
       <div class="value">
@@ -272,7 +303,7 @@ footer a:hover{color:#fff}
           <path d="M36 58v34h48V58" fill="#fff" stroke="#1D3B6D" stroke-width="4.5" stroke-linejoin="round"/>
           <path d="M60 84c-11-7.5-17-12.8-17-19a9.2 9.2 0 0 1 17-5 9.2 9.2 0 0 1 17 5c0 6.2-6 11.5-17 19z" fill="#1D3B6D"/>
         </svg>
-        <h3>Customer centric</h3>
+        <h4>Customer centric</h4>
         <p>We put customers first, listen properly, and build relationships that last.</p>
       </div>
       <div class="value">
@@ -282,7 +313,7 @@ footer a:hover{color:#fff}
           <path d="M52 53l6 6 12-13" fill="none" stroke="#1D3B6D" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
           <path d="M52 78h16M55 86h10" stroke="#1D3B6D" stroke-width="4.5" stroke-linecap="round"/>
         </svg>
-        <h3>Solution focused</h3>
+        <h4>Solution focused</h4>
         <p>We train hard so every solution is backed by real expertise and confidence.</p>
       </div>
       <div class="value">
@@ -290,9 +321,9 @@ footer a:hover{color:#fff}
           <circle cx="60" cy="60" r="56" fill="#F8D0A7" opacity=".42"/>
           <path d="M26 38h44a9 9 0 0 1 9 9v16a9 9 0 0 1-9 9H50l-16 12V72h-8a9 9 0 0 1-9-9V47a9 9 0 0 1 9-9z" fill="#fff" stroke="#1D3B6D" stroke-width="4.5" stroke-linejoin="round"/>
           <circle cx="41" cy="55" r="3.6" fill="#1D3B6D"/><circle cx="54" cy="55" r="3.6" fill="#1D3B6D"/><circle cx="67" cy="55" r="3.6" fill="#1D3B6D"/>
-          <path d="M84 56h18a8 8 0 0 1 8 8v10a8 8 0 0 1-8 8h-6l-12 9V82h0a8 8 0 0 1-8-8" fill="#1D3B6D" opacity=".12"/>
+          <path d="M84 56h18a8 8 0 0 1 8 8v10a8 8 0 0 1-8 8h-6l-12 9V82a8 8 0 0 1-8-8" fill="#fff" stroke="#1D3B6D" stroke-width="4.5" stroke-linejoin="round"/>
         </svg>
-        <h3>Communication</h3>
+        <h4>Communication</h4>
         <p>Clear and honest with each other and with customers. We never assume.</p>
       </div>
       <div class="value">
@@ -303,7 +334,7 @@ footer a:hover{color:#fff}
           <path d="M60 72c0-13 10-20 22-20 0 13-9 20-22 20z" fill="#fff" stroke="#1D3B6D" stroke-width="4.5" stroke-linejoin="round"/>
           <path d="M40 92h40" stroke="#1D3B6D" stroke-width="4.5" stroke-linecap="round"/>
         </svg>
-        <h3>Personal development</h3>
+        <h4>Personal development</h4>
         <p>We help our people grow, on the tools and as people.</p>
       </div>
       <div class="value">
@@ -315,62 +346,80 @@ footer a:hover{color:#fff}
           <path d="M44 90a16 16 0 0 1 32 0z" fill="#1D3B6D"/>
           <path d="M26 88a12 12 0 0 1 20-8M94 88a12 12 0 0 0-20-8" fill="none" stroke="#1D3B6D" stroke-width="4.5" stroke-linecap="round"/>
         </svg>
-        <h3>Teamwork</h3>
+        <h4>Teamwork</h4>
         <p>We back each other up, so customers meet people they can trust.</p>
       </div>
     </div>
   </div>
 </section>
 
+<!-- film -->
+<section class="film section" id="film">
+  <div class="wrap center">
+    <span class="eyebrow reveal" style="background:rgba(255,255,255,.16);color:#fff">Meet the crew</span>
+    <h2 class="reveal">See what it is actually like here</h2>
+    <p class="reveal" style="margin-top:14px">No stock footage. This is our team, on the tools and off the clock.</p>
+  </div>
+  <div class="wrap">
+    <div class="video reveal" id="video">
+      <img src="../assets/recruit/team-video.jpg" alt="">
+      <button class="video-play" type="button" aria-label="Play the aba TRADES team film">
+        <span class="playring"><svg viewBox="0 0 24 24" width="30" height="30" fill="#1D3B6D"><path d="M8 5v14l11-7z"/></svg></span>
+        <span class="playlabel">Watch the team film</span>
+      </button>
+    </div>
+    <div class="video-meta reveal">
+      <span>Real crews, real jobs</span><span>Adelaide metro</span><span>Training since 2015</span>
+    </div>
+  </div>
+</section>
+
+<!-- marquee -->
+<div class="marquee" aria-hidden="true"><div class="track" id="marquee"></div></div>
+
 <!-- roles -->
 <section class="roles section" id="roles">
   <div class="wrap">
-    <span class="eyebrow">Always hiring</span>
-    <h2>Roles we are always looking for</h2>
-    <p style="color:#3d527a;margin-top:14px">These are the trades and roles we hire for year round across Adelaide. Pick yours and it will jump you to the form.</p>
+    <span class="eyebrow reveal">Always hiring</span>
+    <h2 class="reveal">Roles we are always looking for</h2>
+    <p class="reveal" style="color:#3d527a;margin-top:14px">These are the trades and roles we hire for year round across Adelaide. Pick yours and it will jump you to the form.</p>
     <div class="rolegrid">
-
       <div class="rolegroup" style="border-top-color:#94BE8C">
-        <h3><span class="dot" style="background:#94BE8C"></span> Plumbing and gas</h3>
+        <h4><span class="dot" style="background:#94BE8C"></span> Plumbing and gas</h4>
         <ul>
           <li><span><b>Qualified plumber</b><br>Service, repairs, hot water and bathroom work.</span><button class="pick" data-role="Qualified plumber">Apply</button></li>
           <li><span><b>Gas fitter</b><br>Gas line work and appliance connections.</span><button class="pick" data-role="Gas fitter">Apply</button></li>
           <li><span><b>Drainage and labourer</b><br>Supporting the crew on site.</span><button class="pick" data-role="Drainage / labourer">Apply</button></li>
         </ul>
       </div>
-
       <div class="rolegroup" style="border-top-color:#58A4AE">
-        <h3><span class="dot" style="background:#58A4AE"></span> Air conditioning</h3>
+        <h4><span class="dot" style="background:#58A4AE"></span> Air conditioning</h4>
         <ul>
           <li><span><b>Air conditioning technician</b><br>Install, service and repair, residential.</span><button class="pick" data-role="Air conditioning technician">Apply</button></li>
           <li><span><b>Installer</b><br>Split and ducted installs, start to finish.</span><button class="pick" data-role="Air conditioning installer">Apply</button></li>
         </ul>
       </div>
-
       <div class="rolegroup" style="border-top-color:#DC7E49">
-        <h3><span class="dot" style="background:#DC7E49"></span> Electrical</h3>
+        <h4><span class="dot" style="background:#DC7E49"></span> Electrical</h4>
         <ul>
           <li><span><b>Licensed electrician</b><br>Installs, repairs, switchboards and safety.</span><button class="pick" data-role="Licensed electrician">Apply</button></li>
         </ul>
       </div>
-
       <div class="rolegroup" style="border-top-color:#A0AFD9">
-        <h3><span class="dot" style="background:#A0AFD9"></span> Roofing</h3>
+        <h4><span class="dot" style="background:#A0AFD9"></span> Roofing</h4>
         <ul>
           <li><span><b>Roofer</b><br>Repairs and replacements, residential.</span><button class="pick" data-role="Roofer">Apply</button></li>
         </ul>
       </div>
-
       <div class="rolegroup" style="border-top-color:#E57D7D">
-        <h3><span class="dot" style="background:#E57D7D"></span> Renovations</h3>
+        <h4><span class="dot" style="background:#E57D7D"></span> Renovations</h4>
         <ul>
           <li><span><b>Carpenter</b><br>Bathroom and home renovations.</span><button class="pick" data-role="Carpenter">Apply</button></li>
           <li><span><b>Bathroom renovator</b><br>Wet-area work, start to handover.</span><button class="pick" data-role="Bathroom renovator">Apply</button></li>
         </ul>
       </div>
-
       <div class="rolegroup" style="border-top-color:#8FAE1B">
-        <h3><span class="dot" style="background:#8FAE1B"></span> Office and operations</h3>
+        <h4><span class="dot" style="background:#8FAE1B"></span> Office and operations</h4>
         <ul>
           <li><span><b>Customer service</b><br>Looking after customers on the phone.</span><button class="pick" data-role="Customer service">Apply</button></li>
           <li><span><b>Scheduler and dispatch</b><br>Keeping the crews moving.</span><button class="pick" data-role="Scheduler / dispatch">Apply</button></li>
@@ -378,10 +427,8 @@ footer a:hover{color:#fff}
           <li><span><b>Warehouse storeperson</b><br>Stock and parts.</span><button class="pick" data-role="Warehouse storeperson">Apply</button></li>
         </ul>
       </div>
-
     </div>
-
-    <div class="applyany">
+    <div class="applyany reveal">
       <p><b>Not sure which one fits?</b> Apply anyway, pick the closest role, and tell us the rest in your message. We would rather have a conversation than miss a good person.</p>
       <button class="pick" data-role="Apprentice (any trade)">I am interested in an apprenticeship</button>
     </div>
@@ -392,65 +439,58 @@ footer a:hover{color:#fff}
 <section class="apprentice section">
   <div class="wrap"><div class="split">
     <div>
-      <span class="eyebrow" style="background:rgba(255,255,255,.16);color:#fff">Apprenticeships</span>
-      <h2>Earn while you learn</h2>
-      <p style="margin-top:16px">We train the next generation of tradespeople on site, on real jobs, with real mentors. Since 2015 we have built our people through hands-on learning and our own in-house training wall, a one of a kind setup you will not find at most Adelaide trade businesses.</p>
+      <span class="eyebrow reveal" style="background:rgba(255,255,255,.16);color:#fff">Apprenticeships</span>
+      <h2 class="reveal">Earn while you learn</h2>
+      <p class="reveal" style="margin-top:16px">We train the next generation of tradespeople on site, on real jobs, with real mentors. Since 2015 we have built our people through hands-on learning and our own in-house training wall, a one of a kind setup you will not find at most Adelaide trade businesses.</p>
       <div class="stat">
         <div><b>2015</b><small>Training apprentices since</small></div>
-        <div><b>25m</b><small>In-house training wall</small></div>
+        <div><b><span data-count="25">25</span>m</b><small>In-house training wall</small></div>
         <div><b>1 to 4</b><small>Year apprentices welcome</small></div>
       </div>
       <div class="btnrow"><a class="btn light" href="#apply">Start an apprenticeship</a></div>
     </div>
-    <div><img src="../assets/recruit/training-square.jpg" alt="aba TRADES apprentices training on the in-house training wall" loading="lazy"></div>
+    <div class="reveal" id="apprenticeimg"><img src="../assets/recruit/training-square.jpg" alt="aba TRADES apprentices training on the in-house training wall"></div>
   </div></div>
 </section>
 
 <!-- benefits -->
 <section class="section">
   <div class="wrap">
-    <span class="eyebrow">What you get</span>
-    <h2>What you can expect when you join</h2>
+    <span class="eyebrow reveal">What you get</span>
+    <h2 class="reveal">What you can expect when you join</h2>
     <div class="benefits">
-      <div class="benefit"><div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1D3B6D" stroke-width="2.2"><path d="M12 3l9 5v8l-9 5-9-5V8z"/><path d="M12 12l9-5M12 12v9M12 12L3 7"/></svg></div><div><b>Our full training facility</b><span>Learn and sharpen your skills in house.</span></div></div>
-      <div class="benefit"><div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1D3B6D" stroke-width="2.2"><path d="M4 19V6a2 2 0 0 1 2-2h9l5 5v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"/><path d="M8 13l3 3 5-6"/></svg></div><div><b>Pathways program</b><span>Support with your personal and workplace goals.</span></div></div>
-      <div class="benefit"><div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1D3B6D" stroke-width="2.2"><circle cx="9" cy="8" r="3.2"/><path d="M3 20a6 6 0 0 1 12 0"/><path d="M17 7v6M14 10h6"/></svg></div><div><b>Monthly one on ones</b><span>Regular time with your manager, not once a year.</span></div></div>
-      <div class="benefit"><div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1D3B6D" stroke-width="2.2"><path d="M12 21s7-6.3 7-11a7 7 0 1 0-14 0c0 4.7 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></svg></div><div><b>Work close to home</b><span>All Adelaide metro, so less time on the road.</span></div></div>
-      <div class="benefit"><div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1D3B6D" stroke-width="2.2"><path d="M12 3l2.6 5.6 6.1.8-4.5 4.2 1.2 6-5.4-3-5.4 3 1.2-6L3.3 9.4l6.1-.8z"/></svg></div><div><b>Growth and upskilling</b><span>Real opportunities to move up as tradespeople.</span></div></div>
-      <div class="benefit"><div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1D3B6D" stroke-width="2.2"><path d="M4 20v-6a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v6"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></div><div><b>A team that backs you</b><span>Supportive managers and teammates, monthly BBQs and events.</span></div></div>
+      <div class="benefit reveal"><div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1D3B6D" stroke-width="2.2"><path d="M12 3l9 5v8l-9 5-9-5V8z"/><path d="M12 12l9-5M12 12v9M12 12L3 7"/></svg></div><div><b>Our full training facility</b><span>Learn and sharpen your skills in house.</span></div></div>
+      <div class="benefit reveal"><div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1D3B6D" stroke-width="2.2"><path d="M4 19V6a2 2 0 0 1 2-2h9l5 5v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"/><path d="M8 13l3 3 5-6"/></svg></div><div><b>Pathways program</b><span>Support with your personal and workplace goals.</span></div></div>
+      <div class="benefit reveal"><div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1D3B6D" stroke-width="2.2"><circle cx="9" cy="8" r="3.2"/><path d="M3 20a6 6 0 0 1 12 0"/><path d="M17 7v6M14 10h6"/></svg></div><div><b>Monthly one on ones</b><span>Regular time with your manager, not once a year.</span></div></div>
+      <div class="benefit reveal"><div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1D3B6D" stroke-width="2.2"><path d="M12 21s7-6.3 7-11a7 7 0 1 0-14 0c0 4.7 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></svg></div><div><b>Work close to home</b><span>All Adelaide metro, so less time on the road.</span></div></div>
+      <div class="benefit reveal"><div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1D3B6D" stroke-width="2.2"><path d="M12 3l2.6 5.6 6.1.8-4.5 4.2 1.2 6-5.4-3-5.4 3 1.2-6L3.3 9.4l6.1-.8z"/></svg></div><div><b>Growth and upskilling</b><span>Real opportunities to move up as tradespeople.</span></div></div>
+      <div class="benefit reveal"><div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1D3B6D" stroke-width="2.2"><path d="M4 20v-6a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v6"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></div><div><b>A team that backs you</b><span>Supportive managers and teammates, monthly BBQs and events.</span></div></div>
     </div>
-    <div class="reviewnote"><b>For review, remove before publishing:</b> vehicle, RDOs, overtime, uniforms and tool allowances are the things tradies ask about first. If they apply at aba TRADES, they belong in this section.</div>
+    <div class="reviewnote reveal"><b>For review, remove before publishing:</b> vehicle, RDOs, overtime, uniforms and tool allowances are the things tradies ask about first. If they apply at aba TRADES, they belong in this section.</div>
   </div>
 </section>
 
-<!-- life -->
+<!-- gallery + community -->
 <section class="section" style="padding-top:0">
   <div class="wrap">
-    <span class="eyebrow">Life at aba TRADES</span>
-    <h2>A crew you would actually want to work with</h2>
+    <span class="eyebrow reveal">Life at aba TRADES</span>
+    <h2 class="reveal">A crew you would actually want to work with</h2>
     <div class="gallery">
-      <img class="wide" src="../assets/recruit/team-collage.jpg" alt="aba TRADES team at work and at team events" loading="lazy">
-      <img src="../assets/recruit/training-square.jpg" alt="Training at aba TRADES" loading="lazy">
-      <img src="../assets/recruit/careers-hero.jpg" alt="The aba TRADES crew" loading="lazy">
-      <a class="videotile wide" href="https://vimeo.com/1108950559" target="_blank" rel="noopener" aria-label="Watch the aba TRADES team culture video">
-        <img src="../assets/recruit/team-video.jpg" alt="" loading="lazy">
-        <span class="play"><svg viewBox="0 0 24 24" width="26" height="26" fill="#fff"><path d="M8 5v14l11-7z"/></svg></span>
-      </a>
-      <img src="../assets/recruit/team-wide.jpg" alt="aba TRADES team" loading="lazy">
-      <a class="videotile" href="https://vimeo.com/1108950559" target="_blank" rel="noopener" aria-label="Watch the aba TRADES team culture video">
-        <img src="../assets/recruit/training-square.jpg" alt="" loading="lazy">
-        <span class="play"><svg viewBox="0 0 24 24" width="26" height="26" fill="#fff"><path d="M8 5v14l11-7z"/></svg></span>
-      </a>
+      <img class="wide reveal" src="../assets/recruit/team-collage.jpg" alt="aba TRADES team at work and at team events">
+      <img class="reveal" src="../assets/recruit/training-square.jpg" alt="Training at aba TRADES">
+      <img class="reveal" src="../assets/recruit/careers-hero.jpg" alt="The aba TRADES crew">
+      <img class="wide reveal" src="../assets/recruit/team-wide.jpg" alt="aba TRADES team">
+      <img class="reveal" src="../assets/recruit/paul-chaina.jpg" alt="Paul Chaina">
+      <img class="reveal" src="../assets/recruit/team-video.jpg" alt="aba TRADES team">
     </div>
   </div>
 </section>
 
-<!-- community -->
-<section class="section" style="background:var(--surface)">
+<section class="section" style="background:var(--surface);padding-top:70px">
   <div class="wrap narrow center">
-    <span class="eyebrow">Community</span>
-    <h2>We are part of Adelaide, not just working in it</h2>
-    <p style="margin-top:14px;color:#3d527a">Over the years we have raised more than $40,000 for local charities, and we host our annual Christmas fundraiser for KickStart for Kids at our Stepney home. When you join aba TRADES, you join a team that gives back.</p>
+    <span class="eyebrow reveal">Community</span>
+    <h2 class="reveal">We are part of Adelaide, not just working in it</h2>
+    <p class="reveal" style="margin-top:14px;color:#3d527a">Over the years we have raised more than $40,000 for local charities, and we host our annual Christmas fundraiser for KickStart for Kids at our Stepney home. When you join aba TRADES, you join a team that gives back.</p>
   </div>
 </section>
 
@@ -458,16 +498,16 @@ footer a:hover{color:#fff}
 <section class="section">
   <div class="wrap">
     <div class="center">
-      <span class="eyebrow">Good to know</span>
-      <h2>Questions people ask before applying</h2>
+      <span class="eyebrow reveal">Good to know</span>
+      <h2 class="reveal">Questions people ask before applying</h2>
     </div>
     <div class="faq">
-      <details class="acc"><summary>Do you take on apprentices?</summary><p>Yes. We take on first to fourth year apprentices across plumbing and gas, air conditioning, electrical, roofing and renovations. You earn while you learn and train on real jobs, with our in-house training wall and the Pathways program behind you.</p></details>
-      <details class="acc"><summary>Do I need my licence and my own tools?</summary><p>Bring a current licence for your trade where it applies, a driver's licence, and a good attitude. Let us know in your application what you have, and we will talk through the rest.</p></details>
-      <details class="acc"><summary>Where would I be working?</summary><p>All Adelaide metro suburbs. We are based at Stepney and work across the metro area.</p></details>
-      <details class="acc"><summary>What happens after I apply?</summary><p>We read every application. If it looks like a fit, one of our team will get in touch to have a chat. If there is nothing open for you right now, we keep your details on file so we can reach out when something comes up.</p></details>
-      <details class="acc"><summary>I am not sure which role suits me.</summary><p>Pick the closest one and tell us the rest in your message. Plenty of our people started in a role that was not their final one.</p></details>
-      <details class="acc"><summary>Do you hire people without trade experience?</summary><p>For apprenticeships and labouring, yes. We are looking for reliability and willingness to learn as much as anything.</p></details>
+      <details class="acc reveal"><summary>Do you take on apprentices?</summary><p>Yes. We take on first to fourth year apprentices across plumbing and gas, air conditioning, electrical, roofing and renovations. You earn while you learn and train on real jobs, with our in-house training wall and the Pathways program behind you.</p></details>
+      <details class="acc reveal"><summary>Do I need my licence and my own tools?</summary><p>Bring a current licence for your trade where it applies, a driver's licence, and a good attitude. Let us know in your application what you have, and we will talk through the rest.</p></details>
+      <details class="acc reveal"><summary>Where would I be working?</summary><p>All Adelaide metro suburbs. We are based at Stepney and work across the metro area.</p></details>
+      <details class="acc reveal"><summary>What happens after I apply?</summary><p>We read every application. If it looks like a fit, one of our team will get in touch to have a chat. If there is nothing open for you right now, we keep your details on file so we can reach out when something comes up.</p></details>
+      <details class="acc reveal"><summary>I am not sure which role suits me.</summary><p>Pick the closest one and tell us the rest in your message. Plenty of our people started in a role that was not their final one.</p></details>
+      <details class="acc reveal"><summary>Do you hire people without trade experience?</summary><p>For apprenticeships and labouring, yes. We are looking for reliability and willingness to learn as much as anything.</p></details>
     </div>
   </div>
 </section>
@@ -476,17 +516,16 @@ footer a:hover{color:#fff}
 <section class="apply section" id="apply">
   <div class="wrap"><div class="applygrid">
     <div>
-      <span class="eyebrow">Apply</span>
-      <h2>Tell us about you</h2>
-      <p style="margin-top:16px;color:#3d527a">It takes about a minute. No account, no long form. If you would rather just email us, that works too.</p>
-      <div class="contactcard">
-        <b>Prefer to email?</b>
-        <p style="margin-top:8px"><a href="mailto:robert.p@abatrades.com.au">robert.p@abatrades.com.au</a></p>
-        <p style="margin-top:14px;color:#3d527a;font-size:.92rem">Or call us on <b>08 8462 9469</b>.</p>
-      </div>
+      <span class="eyebrow reveal">Apply</span>
+      <h2 class="reveal">Tell us about you</h2>
+      <p class="reveal" style="margin-top:16px;color:#3d527a">It takes about a minute, right here. No account, no job board, no long form.</p>
+      <ul class="applylist reveal">
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8FAE1B" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg><span>Five fields, about 60 seconds</span></li>
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8FAE1B" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg><span>One of our team reads every application</span></li>
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8FAE1B" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg><span>Nothing open right now? We keep you on file</span></li>
+      </ul>
     </div>
-
-    <form class="formcard" id="applyform" novalidate>
+    <form class="formcard reveal" id="applyform" novalidate>
       <div class="two">
         <div class="field"><label for="f-name">Your name</label><input id="f-name" name="name" type="text" autocomplete="name" required></div>
         <div class="field"><label for="f-phone">Phone</label><input id="f-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" required></div>
@@ -499,18 +538,12 @@ footer a:hover{color:#fff}
         <label for="f-role">Role you are applying for</label>
         <select id="f-role" name="role" required>
           <option value="">Choose a role</option>
-          <optgroup label="Plumbing and gas">
-            <option>Qualified plumber</option><option>Gas fitter</option><option>Drainage / labourer</option>
-          </optgroup>
-          <optgroup label="Air conditioning">
-            <option>Air conditioning technician</option><option>Air conditioning installer</option>
-          </optgroup>
+          <optgroup label="Plumbing and gas"><option>Qualified plumber</option><option>Gas fitter</option><option>Drainage / labourer</option></optgroup>
+          <optgroup label="Air conditioning"><option>Air conditioning technician</option><option>Air conditioning installer</option></optgroup>
           <optgroup label="Electrical"><option>Licensed electrician</option></optgroup>
           <optgroup label="Roofing"><option>Roofer</option></optgroup>
           <optgroup label="Renovations"><option>Carpenter</option><option>Bathroom renovator</option></optgroup>
-          <optgroup label="Office and operations">
-            <option>Customer service</option><option>Scheduler / dispatch</option><option>Estimator</option><option>Warehouse storeperson</option>
-          </optgroup>
+          <optgroup label="Office and operations"><option>Customer service</option><option>Scheduler / dispatch</option><option>Estimator</option><option>Warehouse storeperson</option></optgroup>
           <optgroup label="Apprenticeships"><option>Apprentice (any trade)</option></optgroup>
           <option>Not sure, happy to talk</option>
         </select>
@@ -519,21 +552,12 @@ footer a:hover{color:#fff}
         <label for="f-exp">Where you are at <span class="hint">(optional)</span></label>
         <select id="f-exp" name="experience">
           <option value="">Choose one</option>
-          <option>Qualified and experienced</option>
-          <option>Qualified, early career</option>
-          <option>Apprentice or trainee</option>
-          <option>Labouring or general</option>
-          <option>Office or operations</option>
+          <option>Qualified and experienced</option><option>Qualified, early career</option>
+          <option>Apprentice or trainee</option><option>Labouring or general</option><option>Office or operations</option>
         </select>
       </div>
-      <div class="field">
-        <label for="f-resume">Resume <span class="hint">(optional, PDF or Word)</span></label>
-        <input id="f-resume" name="resume" type="file" accept=".pdf,.doc,.docx">
-      </div>
-      <div class="field">
-        <label for="f-msg">Anything else? <span class="hint">(optional)</span></label>
-        <textarea id="f-msg" name="message" placeholder="Tell us a bit about your experience, your licence, and what you are looking for."></textarea>
-      </div>
+      <div class="field"><label for="f-resume">Resume <span class="hint">(optional, PDF or Word)</span></label><input id="f-resume" name="resume" type="file" accept=".pdf,.doc,.docx"></div>
+      <div class="field"><label for="f-msg">Anything else? <span class="hint">(optional)</span></label><textarea id="f-msg" name="message" placeholder="Tell us a bit about your experience, your licence, and what you are looking for."></textarea></div>
       <label class="consent"><input type="checkbox" name="consent" required> <span>I am happy for aba TRADES to contact me about roles and keep my details on file.</span></label>
       <button class="btn" type="submit" id="submitbtn" disabled>Send my application</button>
       <div class="okbox" id="okbox"><b>Thanks, that is in.</b> This is a mock-up, so nothing was actually sent. On the live page this would email the team and store your application.</div>
@@ -542,7 +566,6 @@ footer a:hover{color:#fff}
   </div></div>
 </section>
 
-<!-- footer -->
 <footer>
   <div class="wrap">
     <div class="cols">
@@ -562,13 +585,7 @@ footer a:hover{color:#fff}
       </div>
       <div>
         <h4>Our services</h4>
-        <ul>
-          <li>aba PLUMBING + GAS</li>
-          <li>aba AIR CONDITIONING</li>
-          <li>aba ELECTRICAL</li>
-          <li>aba ROOFING</li>
-          <li>aba RENOVATIONS</li>
-        </ul>
+        <ul><li>aba PLUMBING + GAS</li><li>aba AIR CONDITIONING</li><li>aba ELECTRICAL</li><li>aba ROOFING</li><li>aba RENOVATIONS</li></ul>
       </div>
     </div>
     <div class="legal">
@@ -578,49 +595,140 @@ footer a:hover{color:#fff}
   </div>
 </footer>
 
-<!-- sticky apply -->
 <div class="stickybar" id="stickybar"><div class="wrap">
   <div><b>We are always hiring</b><small>Tell us about you. It takes about a minute.</small></div>
   <a class="btn sm" href="#apply" style="background:#fff;border-color:#fff;color:var(--navy)">Apply now</a>
 </div></div>
 
+<script src="../assets/vendor/gsap.min.js"></script>
+<script src="../assets/vendor/ScrollTrigger.min.js"></script>
+<script src="../assets/vendor/lenis.min.js"></script>
 <script>
-// role buttons prefill the form and jump to it
-document.querySelectorAll('.pick').forEach(function(b){
-  b.addEventListener('click', function(){
-    var role = b.getAttribute('data-role');
-    var sel = document.getElementById('f-role');
-    if (role) {
-      for (var i=0;i<sel.options.length;i++){ if (sel.options[i].value===role || sel.options[i].text===role){ sel.selectedIndex=i; break; } }
-    }
-    document.getElementById('apply').scrollIntoView({behavior:'smooth'});
-    setTimeout(function(){ document.getElementById('f-name').focus({preventScroll:true}); }, 500);
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* marquee content */
+  var words = ['Plumbers','Electricians','Air conditioning techs','Gas fitters','Roofers','Carpenters','Apprentices','Customer service','Estimators'];
+  var row = words.map(function(w){ return '<span>'+w+'</span>'; }).join('');
+  document.getElementById('marquee').innerHTML = row + row;
+
+  /* role buttons: prefill the form and jump to it */
+  var sel = document.getElementById('f-role');
+  document.querySelectorAll('.pick').forEach(function(b){
+    b.addEventListener('click', function(){
+      var role = b.getAttribute('data-role');
+      if(role){
+        for(var i=0;i<sel.options.length;i++){
+          if(sel.options[i].value===role || sel.options[i].text===role){ sel.selectedIndex=i; break; }
+        }
+      }
+      document.getElementById('apply').scrollIntoView({behavior: reduce?'auto':'smooth'});
+      setTimeout(function(){ document.getElementById('f-name').focus({preventScroll:true}); }, 500);
+    });
   });
-});
-// sticky bar after the hero
-var bar = document.getElementById('stickybar');
-var hero = document.querySelector('.hero');
-window.addEventListener('scroll', function(){
-  var past = window.scrollY > hero.offsetHeight - 120;
-  var atForm = document.getElementById('apply').getBoundingClientRect().top < window.innerHeight;
-  bar.classList.toggle('on', past && !atForm);
-}, {passive:true});
-// enable submit only when required fields are filled
-var form = document.getElementById('applyform');
-var btn = document.getElementById('submitbtn');
-function check(){
-  var ok = form.checkValidity();
-  btn.disabled = !ok;
-  btn.textContent = ok ? 'Send my application' : 'Fill your name, phone, email and role to send';
-}
-form.addEventListener('input', check);
-form.addEventListener('change', check);
-check();
-form.addEventListener('submit', function(e){
-  e.preventDefault();
-  document.getElementById('okbox').style.display = 'block';
-  document.getElementById('okbox').scrollIntoView({behavior:'smooth', block:'center'});
-});
+
+  /* video: click to play */
+  document.querySelector('.video-play').addEventListener('click', function(){
+    document.getElementById('video').innerHTML =
+      '<iframe src="https://www.youtube-nocookie.com/embed/BogOWR7bEA8?autoplay=1&rel=0" title="aba TRADES team film" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>';
+  });
+
+  /* sticky bar + progress bar */
+  var bar = document.getElementById('stickybar');
+  var hero = document.querySelector('.hero');
+  var apply = document.getElementById('apply');
+  var prog = document.getElementById('progress');
+  function onScroll(){
+    var past = window.scrollY > hero.offsetHeight - 140;
+    var atForm = apply.getBoundingClientRect().top < window.innerHeight * .9;
+    bar.classList.toggle('on', past && !atForm);
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    prog.style.width = (h > 0 ? (window.scrollY / h) * 100 : 0) + '%';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+
+  /* form validity + mock submit */
+  var form = document.getElementById('applyform'), btn = document.getElementById('submitbtn');
+  function check(){
+    var ok = form.checkValidity();
+    btn.disabled = !ok;
+    btn.textContent = ok ? 'Send my application' : 'Fill your name, phone, email and role to send';
+  }
+  form.addEventListener('input', check); form.addEventListener('change', check); check();
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var box = document.getElementById('okbox');
+    box.style.display = 'block';
+    box.scrollIntoView({behavior: reduce?'auto':'smooth', block:'center'});
+  });
+
+  /* ---------- motion ---------- */
+  if(!reduce && window.gsap && window.ScrollTrigger){
+    gsap.registerPlugin(ScrollTrigger);
+
+    if(window.Lenis){
+      var lenis = new Lenis({lerp:0.1, smoothWheel:true});
+      lenis.on('scroll', ScrollTrigger.update);
+      gsap.ticker.add(function(t){ lenis.raf(t * 1000); });
+      gsap.ticker.lagSmoothing(0);
+      document.querySelectorAll('a[href^="#"]').forEach(function(a){
+        a.addEventListener('click', function(ev){
+          var t = document.querySelector(a.getAttribute('href'));
+          if(t){ ev.preventDefault(); lenis.scrollTo(t, {offset:-90}); }
+        });
+      });
+    }
+
+    /* hero: line reveal, then the supporting bits */
+    var h1 = document.getElementById('heroh1');
+    h1.innerHTML = '<span class="ln"><span>' + h1.textContent + '</span></span>';
+    var tl = gsap.timeline({defaults:{ease:'power4.out'}});
+    tl.from('.hero .eyebrow', {y:14, opacity:0, duration:.5})
+      .from('#heroh1 .ln > span', {yPercent:118, duration:1.05}, '-=.25')
+      .from('.hero-sub', {y:22, opacity:0, duration:.7}, '-=.6')
+      .from('.hero-cta .btn', {y:18, opacity:0, duration:.5, stagger:.09}, '-=.45')
+      .from('.trust span', {y:14, opacity:0, duration:.45, stagger:.08}, '-=.35');
+
+    gsap.to('#herobg', {yPercent:12, ease:'none',
+      scrollTrigger:{trigger:'.hero', start:'top top', end:'bottom top', scrub:true}});
+    gsap.to('.scrollcue', {opacity:0, duration:.3,
+      scrollTrigger:{trigger:'.hero', start:'top+=80 top', toggleActions:'play none none reverse'}});
+
+    /* generic reveals */
+    ScrollTrigger.batch('.reveal', {
+      start:'top 88%', once:true,
+      onEnter:function(batch){
+        gsap.from(batch, {y:26, opacity:0, duration:.7, stagger:.08, ease:'power2.out', overwrite:true});
+      }
+    });
+
+    /* value cards: circle pops, line art settles */
+    document.querySelectorAll('.values-grid .value').forEach(function(card){
+      var trig = {trigger:card, start:'top 85%'};
+      gsap.from(card.querySelector('circle'), {scale:.55, transformOrigin:'50% 50%', opacity:0, duration:.6, ease:'back.out(1.7)', scrollTrigger:trig});
+      gsap.from(card.querySelectorAll('svg path'), {opacity:0, y:9, duration:.5, stagger:.06, delay:.12, scrollTrigger:trig});
+    });
+
+    /* roles stagger */
+    gsap.from('.rolegroup', {y:30, opacity:0, duration:.6, stagger:.07, ease:'power2.out',
+      scrollTrigger:{trigger:'.rolegrid', start:'top 85%'}});
+
+    /* apprenticeship image parallax */
+    gsap.fromTo('#apprenticeimg img', {yPercent:-6, scale:1.08}, {yPercent:6, scale:1.08, ease:'none',
+      scrollTrigger:{trigger:'.apprentice', start:'top bottom', end:'bottom top', scrub:true}});
+
+    /* the 25m counter */
+    document.querySelectorAll('[data-count]').forEach(function(el){
+      var end = +el.dataset.count, o = {v:0};
+      gsap.to(o, {v:end, duration:1.1, ease:'power2.out',
+        scrollTrigger:{trigger:'#apprenticeimg', start:'top 85%'},
+        onUpdate:function(){ el.textContent = Math.round(o.v); }});
+    });
+
+    /* marquee drift */
+    gsap.to('#marquee', {xPercent:-50, duration:26, ease:'none', repeat:-1});
+  }
+})();
 </script>
 </body>
 </html>
