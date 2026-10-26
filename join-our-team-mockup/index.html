@@ -65,7 +65,7 @@ p{max-width:70ch}
 
 /* ---------- hero ---------- */
 .hero{position:relative;background:var(--navy);color:#fff;overflow:hidden}
-.hero-bg{position:absolute;inset:0;background:url('https://abatrades.com.au/wp-content/uploads/2025/08/header-aba-trades-careers.jpg') center/cover no-repeat;opacity:.34}
+.hero-bg{position:absolute;inset:0;background:url('../assets/recruit/careers-hero.jpg') center/cover no-repeat;opacity:.34}
 .hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(11,29,59,.92) 8%,rgba(11,29,59,.62) 55%,rgba(11,29,59,.35) 100%)}
 .hero .wrap{position:relative;padding-top:92px;padding-bottom:92px;max-width:1200px}
 .hero-inner{max-width:660px}
@@ -141,6 +141,11 @@ p{max-width:70ch}
 @media(max-width:880px){.gallery{grid-template-columns:repeat(2,1fr)}}
 .gallery img{aspect-ratio:1/1;object-fit:cover;border-radius:16px}
 .gallery .wide{grid-column:span 2;aspect-ratio:2/1}
+.videotile{position:relative;display:block;border-radius:16px;overflow:hidden}
+.videotile img{width:100%;height:100%;object-fit:cover;aspect-ratio:1/1}
+.videotile.wide img{aspect-ratio:2/1}
+.videotile .play{position:absolute;inset:0;margin:auto;width:58px;height:58px;border-radius:50%;background:rgba(29,59,109,.86);display:grid;place-items:center;transition:background .2s}
+.videotile:hover .play{background:var(--navy-2)}
 
 /* ---------- faq ---------- */
 .faq{max-width:840px;margin:44px auto 0}
@@ -395,7 +400,7 @@ footer a:hover{color:#fff}
       </div>
       <div class="btnrow"><a class="btn light" href="#apply">Start an apprenticeship</a></div>
     </div>
-    <div><img src="https://abatrades.com.au/wp-content/uploads/2025/08/square-aba-trades-training.jpg" alt="aba TRADES apprentices training on the in-house training wall" loading="lazy"></div>
+    <div><img src="../assets/recruit/training-square.jpg" alt="aba TRADES apprentices training on the in-house training wall" loading="lazy"></div>
   </div></div>
 </section>
 
@@ -422,12 +427,18 @@ footer a:hover{color:#fff}
     <span class="eyebrow">Life at aba TRADES</span>
     <h2>A crew you would actually want to work with</h2>
     <div class="gallery">
-      <img class="wide" src="https://abatrades.com.au/wp-content/uploads/2025/08/join-our-team2.png" alt="aba TRADES team at work and at team events" loading="lazy">
-      <img src="https://abatrades.com.au/wp-content/uploads/2025/08/square-aba-trades-training.jpg" alt="Training at aba TRADES" loading="lazy">
-      <img src="https://abatrades.com.au/wp-content/uploads/2025/08/header-aba-trades-careers.jpg" alt="aba TRADES team" loading="lazy">
-      <img class="wide" src="https://abatrades.com.au/wp-content/uploads/2025/08/video-aba-trades-team-3.jpg" alt="aba TRADES team culture video" loading="lazy">
-      <img src="https://abatrades.com.au/wp-content/uploads/2025/08/join-our-team.jpg" alt="aba TRADES team" loading="lazy">
-      <img src="https://abatrades.com.au/wp-content/uploads/2025/07/icon-same-day-service-24-7-02.svg" alt="" loading="lazy" style="object-fit:contain;background:var(--surface);padding:24px">
+      <img class="wide" src="../assets/recruit/team-collage.jpg" alt="aba TRADES team at work and at team events" loading="lazy">
+      <img src="../assets/recruit/training-square.jpg" alt="Training at aba TRADES" loading="lazy">
+      <img src="../assets/recruit/careers-hero.jpg" alt="The aba TRADES crew" loading="lazy">
+      <a class="videotile wide" href="https://vimeo.com/1108950559" target="_blank" rel="noopener" aria-label="Watch the aba TRADES team culture video">
+        <img src="../assets/recruit/team-video.jpg" alt="" loading="lazy">
+        <span class="play"><svg viewBox="0 0 24 24" width="26" height="26" fill="#fff"><path d="M8 5v14l11-7z"/></svg></span>
+      </a>
+      <img src="../assets/recruit/team-wide.jpg" alt="aba TRADES team" loading="lazy">
+      <a class="videotile" href="https://vimeo.com/1108950559" target="_blank" rel="noopener" aria-label="Watch the aba TRADES team culture video">
+        <img src="../assets/recruit/training-square.jpg" alt="" loading="lazy">
+        <span class="play"><svg viewBox="0 0 24 24" width="26" height="26" fill="#fff"><path d="M8 5v14l11-7z"/></svg></span>
+      </a>
     </div>
   </div>
 </section>
