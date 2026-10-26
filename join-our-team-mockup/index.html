@@ -661,6 +661,29 @@ footer a:hover{color:#fff}
 (function(){
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  /* ---------- reveal on scroll (pure CSS transitions, set up first so a later
+       error can never leave content invisible) ---------- */
+  try {
+    var reveals = [].slice.call(document.querySelectorAll('.reveal'));
+    if (!reduce && 'IntersectionObserver' in window){
+      var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(en){
+          if (en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); }
+        });
+      }, {rootMargin:'0px 0px -8% 0px', threshold:0.05});
+      reveals.forEach(function(el){ io.observe(el); });
+    } else {
+      reveals.forEach(function(el){ el.classList.add('in'); });
+    }
+    window.addEventListener('load', function(){
+      reveals.forEach(function(el){
+        if (!el.classList.contains('in') && el.getBoundingClientRect().top < window.innerHeight) el.classList.add('in');
+      });
+    });
+  } catch (e) {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+
   /* ---------- Apply buttons: prefill the form and jump to it ---------- */
   var sel = document.getElementById('f-role');
   function bindPicks(root){
@@ -777,18 +800,6 @@ footer a:hover{color:#fff}
     box.scrollIntoView({behavior: reduce ? 'auto' : 'smooth', block:'center'});
   });
 
-  /* ---------- reveal on scroll (pure CSS transitions) ---------- */
-  var reveals = [].slice.call(document.querySelectorAll('.reveal'));
-  if (!reduce && 'IntersectionObserver' in window){
-    var io = new IntersectionObserver(function(entries){
-      entries.forEach(function(en){
-        if (en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); }
-      });
-    }, {rootMargin:'0px 0px -8% 0px', threshold:0.05});
-    reveals.forEach(function(el){ io.observe(el); });
-  } else {
-    reveals.forEach(function(el){ el.classList.add('in'); });
-  }
 
   /* ---------- the 25m counter ---------- */
   var counter = document.querySelector('[data-count]');
