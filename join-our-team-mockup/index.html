@@ -56,6 +56,36 @@ p{max-width:70ch;line-height:1.6}
 
 .progress{position:fixed;top:0;left:0;height:3px;width:0;background:var(--success);z-index:90}
 
+/* ---------- motion (CSS only, no library) ---------- */
+@keyframes riseIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+@keyframes marqueeScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.js .reveal{opacity:0;transform:translateY(20px);
+  transition:opacity .7s cubic-bezier(.22,.7,.24,1),transform .7s cubic-bezier(.22,.7,.24,1)}
+.js .reveal.in{opacity:1;transform:none}
+.js .hero .eyebrow{animation:riseIn .6s .05s both cubic-bezier(.22,.7,.24,1)}
+.js .hero h1{animation:riseIn .8s .14s both cubic-bezier(.22,.7,.24,1)}
+.js .hero .hero-sub{animation:riseIn .8s .26s both cubic-bezier(.22,.7,.24,1)}
+.js .hero .hero-cta{animation:riseIn .8s .38s both cubic-bezier(.22,.7,.24,1)}
+.js .hero .trust{animation:riseIn .8s .5s both cubic-bezier(.22,.7,.24,1)}
+.js .value svg circle{transform:scale(.55);transform-origin:50% 50%;
+  transition:transform .7s cubic-bezier(.22,.7,.24,1)}
+.js .value.in svg circle{transform:none}
+.js .value svg path{opacity:0;transition:opacity .45s ease .12s}
+.js .value.in svg path{opacity:1}
+.values-grid .value:nth-child(2),.benefits .benefit:nth-child(2),.gallery img:nth-child(2){transition-delay:.06s}
+.values-grid .value:nth-child(3),.benefits .benefit:nth-child(3),.gallery img:nth-child(3){transition-delay:.12s}
+.values-grid .value:nth-child(4),.benefits .benefit:nth-child(4),.gallery img:nth-child(4){transition-delay:.18s}
+.values-grid .value:nth-child(5),.benefits .benefit:nth-child(5),.gallery img:nth-child(5){transition-delay:.24s}
+.benefits .benefit:nth-child(6),.gallery img:nth-child(6){transition-delay:.3s}
+@media (prefers-reduced-motion: reduce){
+  .js .reveal{opacity:1 !important;transform:none !important;transition:none !important}
+  .js .hero .eyebrow,.js .hero h1,.js .hero .hero-sub,.js .hero .hero-cta,.js .hero .trust{animation:none !important}
+  .js .fan-card{transition:none !important}
+  .js .value svg circle,.js .value svg path{transition:none !important;opacity:1 !important;transform:none !important}
+  .marquee .track{animation:none !important}
+  .scrollcue svg{animation:none !important}
+}
+
 /* ---------- top bar ---------- */
 .topbar{background:var(--dark);color:#fff;font-size:.85rem}
 .topbar .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;height:44px}
@@ -70,7 +100,7 @@ p{max-width:70ch;line-height:1.6}
 
 /* ---------- hero ---------- */
 .hero{position:relative;background:var(--navy);color:#fff;overflow:hidden}
-.hero-bg{position:absolute;inset:-8% 0 -8% 0;background:url('../assets/recruit/careers-hero.jpg') center/cover no-repeat;opacity:.82;will-change:transform}
+.hero-bg{position:absolute;inset:-8% 0 -8% 0;background:url('../assets/recruit/careers-hero.jpg') center/cover no-repeat;opacity:.82}
 .hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(11,29,59,.88) 0%,rgba(11,29,59,.52) 48%,rgba(11,29,59,.10) 100%)}
 .hero .wrap{position:relative;padding-top:96px;padding-bottom:96px;max-width:1200px}
 .hero-inner{max-width:680px;text-shadow:0 1px 14px rgba(11,29,59,.5)}
@@ -106,7 +136,7 @@ p{max-width:70ch;line-height:1.6}
 .video{position:relative;margin-top:40px;border-radius:24px;overflow:hidden;aspect-ratio:16/9;background:#000;box-shadow:0 30px 60px rgba(11,29,59,.5)}
 .video img{width:100%;height:100%;object-fit:cover;opacity:.72}
 .video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
-.video-play{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;
+.video-play{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;text-decoration:none;
   background:none;border:0;cursor:pointer;color:#fff;font-family:var(--font)}
 .playring{width:88px;height:88px;border-radius:50%;background:rgba(255,255,255,.95);display:grid;place-items:center;
   transition:transform .25s ease;box-shadow:0 10px 30px rgba(0,0,0,.35)}
@@ -130,7 +160,7 @@ p{max-width:70ch;line-height:1.6}
   border-top:1px solid var(--border);border-bottom:1px solid var(--border);
   -webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);
   mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)}
-.marquee .track{display:inline-flex;will-change:transform}
+.marquee .track{display:inline-flex;will-change:transform;animation:marqueeScroll 34s linear infinite}
 .marquee .track span{display:inline-flex;align-items:center;font-weight:700;font-size:1.22rem;letter-spacing:.01em;color:var(--navy)}
 .marquee .track span::after{content:"";width:8px;height:8px;border-radius:50%;background:var(--success);display:inline-block;margin:0 34px}
 
@@ -141,7 +171,8 @@ p{max-width:70ch;line-height:1.6}
   background:#fff;border-radius:22px;border:1px solid var(--border);padding:26px 22px;cursor:pointer;
   display:flex;flex-direction:column;align-items:center;text-align:center;font-family:var(--font);
   box-shadow:0 14px 34px rgba(29,59,109,.14);will-change:transform;
-  transition:box-shadow .3s ease,opacity .3s ease}
+  transition:transform .6s cubic-bezier(.22,.7,.24,1),opacity .6s ease,box-shadow .3s ease}
+.js .fan-card{opacity:0}
 .fan-card:hover{box-shadow:0 26px 56px rgba(29,59,109,.26)}
 .fan-card.is-active{box-shadow:0 26px 60px rgba(29,59,109,.26)}
 .fan-card svg{width:104px;height:104px;margin-bottom:16px;overflow:visible}
@@ -159,6 +190,8 @@ p{max-width:70ch;line-height:1.6}
 .fan-dot{width:9px;height:9px;border-radius:50%;background:rgba(29,59,109,.22);border:0;cursor:pointer;padding:0;transition:all .2s ease}
 .fan-dot.on{background:var(--navy);width:28px;border-radius:var(--r-pill)}
 .roles-panel{margin-top:36px;background:#fff;border-radius:var(--r-surface);padding:30px 32px;box-shadow:var(--shadow)}
+.roles-panel .rpane{display:none}
+.roles-panel .rpane.on{display:block}
 .roles-panel h4{font-size:1.3rem;margin-bottom:4px}
 .roles-panel .sub{color:var(--slate);font-size:.92rem;margin-bottom:20px}
 .roles-list{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
@@ -276,6 +309,7 @@ footer a:hover{color:#fff}
 </style>
 </head>
 <body>
+<script>document.documentElement.classList.add("js");</script>
 <div class="progress" id="progress"></div>
 
 <div class="topbar"><div class="wrap">
@@ -341,7 +375,7 @@ footer a:hover{color:#fff}
       <p class="reveal" style="color:#3d527a;margin-top:14px">Five things we hold to, every day, on every job.</p>
     </div>
     <div class="values-grid">
-      <div class="value">
+      <div class="value reveal">
         <svg viewBox="0 0 120 120" role="img" aria-label="Customer centric">
           <circle cx="60" cy="60" r="56" fill="#BDD2B4" opacity=".38"/>
           <path d="M26 60 60 32l34 28" fill="none" stroke="#1D3B6D" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -351,7 +385,7 @@ footer a:hover{color:#fff}
         <h4>Customer centric</h4>
         <p>We put customers first, listen properly, and build relationships that last.</p>
       </div>
-      <div class="value">
+      <div class="value reveal">
         <svg viewBox="0 0 120 120" role="img" aria-label="Solution focused">
           <circle cx="60" cy="60" r="56" fill="#6BB2BC" opacity=".34"/>
           <circle cx="60" cy="53" r="23" fill="#fff" stroke="#1D3B6D" stroke-width="4.5"/>
@@ -361,7 +395,7 @@ footer a:hover{color:#fff}
         <h4>Solution focused</h4>
         <p>We train hard so every solution is backed by real expertise and confidence.</p>
       </div>
-      <div class="value">
+      <div class="value reveal">
         <svg viewBox="0 0 120 120" role="img" aria-label="Communication">
           <circle cx="60" cy="60" r="56" fill="#F8D0A7" opacity=".42"/>
           <path d="M26 38h44a9 9 0 0 1 9 9v16a9 9 0 0 1-9 9H50l-16 12V72h-8a9 9 0 0 1-9-9V47a9 9 0 0 1 9-9z" fill="#fff" stroke="#1D3B6D" stroke-width="4.5" stroke-linejoin="round"/>
@@ -371,7 +405,7 @@ footer a:hover{color:#fff}
         <h4>Communication</h4>
         <p>Clear and honest with each other and with customers. We never assume.</p>
       </div>
-      <div class="value">
+      <div class="value reveal">
         <svg viewBox="0 0 120 120" role="img" aria-label="Personal development">
           <circle cx="60" cy="60" r="56" fill="#B2BDE3" opacity=".42"/>
           <path d="M60 92V58" stroke="#1D3B6D" stroke-width="4.5" stroke-linecap="round"/>
@@ -382,7 +416,7 @@ footer a:hover{color:#fff}
         <h4>Personal development</h4>
         <p>We help our people grow, on the tools and as people.</p>
       </div>
-      <div class="value">
+      <div class="value reveal">
         <svg viewBox="0 0 120 120" role="img" aria-label="Teamwork">
           <circle cx="60" cy="60" r="56" fill="#EFACAC" opacity=".4"/>
           <circle cx="60" cy="44" r="13" fill="#fff" stroke="#1D3B6D" stroke-width="4.5"/>
@@ -408,10 +442,10 @@ footer a:hover{color:#fff}
   <div class="wrap">
     <div class="video reveal" id="video">
       <img src="../assets/recruit/team-video.jpg" alt="">
-      <button class="video-play" type="button" aria-label="Play the aba TRADES team film">
+      <a class="video-play" id="videoPlay" href="https://www.youtube.com/watch?v=BogOWR7bEA8" target="_blank" rel="noopener" aria-label="Play the aba TRADES team film">
         <span class="playring"><svg viewBox="0 0 24 24" width="30" height="30" fill="#1D3B6D"><path d="M8 5v14l11-7z"/></svg></span>
         <span class="playlabel">Watch the team film</span>
-      </button>
+      </a>
     </div>
     <div class="video-meta reveal">
       <span>Real crews, real jobs</span><span>Adelaide metro</span><span>Training since 2015</span>
@@ -420,7 +454,7 @@ footer a:hover{color:#fff}
 </section>
 
 <!-- marquee -->
-<div class="marquee" aria-hidden="true"><div class="track" id="marquee"></div></div>
+<div class="marquee" aria-hidden="true"><div class="track" id="marquee"><span>Plumbers</span><span>Electricians</span><span>Air conditioning techs</span><span>Gas fitters</span><span>Roofers</span><span>Carpenters</span><span>Apprentices</span><span>Customer service</span><span>Estimators</span><span>Plumbers</span><span>Electricians</span><span>Air conditioning techs</span><span>Gas fitters</span><span>Roofers</span><span>Carpenters</span><span>Apprentices</span><span>Customer service</span><span>Estimators</span></div></div>
 
 <!-- roles -->
 <section class="roles section" id="roles">
@@ -428,13 +462,34 @@ footer a:hover{color:#fff}
     <span class="eyebrow reveal">Always hiring</span>
     <h2 class="reveal">Roles we are always looking for</h2>
     <p class="reveal" style="color:#3d527a;margin-top:14px">Fan through the trades, then pick a role to jump straight to the form. These are the roles we hire for year round across Adelaide.</p>
-    <div class="fan" id="fan"></div>
+    <div class="fan" id="fan">
+      <button class="fan-card" type="button" aria-label="Plumbing and gas"><svg viewBox="0 0 96 96" aria-hidden="true"><circle cx="48" cy="48" r="44" fill="#BDD2B4" opacity=".38"/><path d="M22 42h26a7 7 0 0 1 7 7v7" fill="none" stroke="#1D3B6D" stroke-width="5" stroke-linecap="round"/><path d="M32 42V30h12" fill="none" stroke="#1D3B6D" stroke-width="5" stroke-linecap="round"/><path d="M55 78c-6.6 0-11-4.4-11-10 0-4.6 11-14 11-14s11 9.4 11 14c0 5.6-4.4 10-11 10z" fill="#1D3B6D"/></svg><h4>Plumbing and gas</h4><div class="count">3 roles</div><span class="go">View roles</span></button>
+      <button class="fan-card" type="button" aria-label="Air conditioning"><svg viewBox="0 0 96 96" aria-hidden="true"><circle cx="48" cy="48" r="44" fill="#6BB2BC" opacity=".34"/><rect x="20" y="28" width="56" height="26" rx="9" fill="#fff" stroke="#1D3B6D" stroke-width="5"/><path d="M30 41h36" stroke="#1D3B6D" stroke-width="5" stroke-linecap="round"/><path d="M30 64q5-6 10 0t10 0" fill="none" stroke="#1D3B6D" stroke-width="5" stroke-linecap="round"/><path d="M30 76q5-6 10 0t10 0" fill="none" stroke="#1D3B6D" stroke-width="5" stroke-linecap="round"/></svg><h4>Air conditioning</h4><div class="count">2 roles</div><span class="go">View roles</span></button>
+      <button class="fan-card" type="button" aria-label="Electrical"><svg viewBox="0 0 96 96" aria-hidden="true"><circle cx="48" cy="48" r="44" fill="#F8D0A7" opacity=".42"/><circle cx="48" cy="48" r="26" fill="#fff" stroke="#1D3B6D" stroke-width="5"/><path d="M52 26 38 52h10l-4 20 16-26H50z" fill="#1D3B6D"/></svg><h4>Electrical</h4><div class="count">1 role</div><span class="go">View roles</span></button>
+      <button class="fan-card" type="button" aria-label="Roofing"><svg viewBox="0 0 96 96" aria-hidden="true"><circle cx="48" cy="48" r="44" fill="#B2BDE3" opacity=".42"/><path d="M20 54 48 28l28 26" fill="none" stroke="#1D3B6D" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><path d="M30 52v20h36V52" fill="#fff" stroke="#1D3B6D" stroke-width="5" stroke-linejoin="round"/><path d="M42 52v20M54 52v20" stroke="#1D3B6D" stroke-width="4" opacity=".5"/></svg><h4>Roofing</h4><div class="count">1 role</div><span class="go">View roles</span></button>
+      <button class="fan-card" type="button" aria-label="Renovations"><svg viewBox="0 0 96 96" aria-hidden="true"><circle cx="48" cy="48" r="44" fill="#EFACAC" opacity=".4"/><rect x="20" y="28" width="46" height="16" rx="8" fill="#fff" stroke="#1D3B6D" stroke-width="5"/><path d="M66 36h4a6 6 0 0 1 6 6v8a6 6 0 0 1-6 6H44v6" fill="none" stroke="#1D3B6D" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><rect x="36" y="60" width="16" height="18" rx="5" fill="#fff" stroke="#1D3B6D" stroke-width="5"/></svg><h4>Renovations</h4><div class="count">2 roles</div><span class="go">View roles</span></button>
+      <button class="fan-card" type="button" aria-label="Office and operations"><svg viewBox="0 0 96 96" aria-hidden="true"><circle cx="48" cy="48" r="44" fill="#C8DD8A" opacity=".45"/><path d="M26 50v-6a22 22 0 0 1 44 0v6" fill="none" stroke="#1D3B6D" stroke-width="5" stroke-linecap="round"/><rect x="18" y="46" width="15" height="20" rx="7" fill="#fff" stroke="#1D3B6D" stroke-width="5"/><rect x="63" y="46" width="15" height="20" rx="7" fill="#fff" stroke="#1D3B6D" stroke-width="5"/><path d="M70 66v6a9 9 0 0 1-9 9h-9" fill="none" stroke="#1D3B6D" stroke-width="5" stroke-linecap="round"/></svg><h4>Office and operations</h4><div class="count">4 roles</div><span class="go">View roles</span></button>
+    </div>
     <div class="fan-nav">
       <button class="fan-arrow" id="fanPrev" type="button" aria-label="Previous trade"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1D3B6D" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
-      <div class="fan-dots" id="fanDots"></div>
+      <div class="fan-dots" id="fanDots">
+        <button class="fan-dot on" type="button" aria-label="Show Plumbing and gas"></button>
+        <button class="fan-dot" type="button" aria-label="Show Air conditioning"></button>
+        <button class="fan-dot" type="button" aria-label="Show Electrical"></button>
+        <button class="fan-dot" type="button" aria-label="Show Roofing"></button>
+        <button class="fan-dot" type="button" aria-label="Show Renovations"></button>
+        <button class="fan-dot" type="button" aria-label="Show Office and operations"></button>
+      </div>
       <button class="fan-arrow" id="fanNext" type="button" aria-label="Next trade"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1D3B6D" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button>
     </div>
-    <div class="roles-panel" id="rolesPanel"></div>
+    <div class="roles-panel" id="rolesPanel">
+      <div class="rpane on"><h4>Plumbing and gas</h4><div class="sub">Roles we hire for year round.</div><div class="roles-list"><div class="role-item"><div><b>Qualified plumber</b><span>Service, repairs, hot water and bathroom work.</span></div><button class="pick" data-role="Qualified plumber">Apply</button></div><div class="role-item"><div><b>Gas fitter</b><span>Gas line work and appliance connections.</span></div><button class="pick" data-role="Gas fitter">Apply</button></div><div class="role-item"><div><b>Drainage and labourer</b><span>Supporting the crew on site.</span></div><button class="pick" data-role="Drainage and labourer">Apply</button></div></div></div>
+      <div class="rpane"><h4>Air conditioning</h4><div class="sub">Roles we hire for year round.</div><div class="roles-list"><div class="role-item"><div><b>Air conditioning technician</b><span>Install, service and repair, residential.</span></div><button class="pick" data-role="Air conditioning technician">Apply</button></div><div class="role-item"><div><b>Air conditioner installer</b><span>Split and ducted installs, start to finish.</span></div><button class="pick" data-role="Air conditioner installer">Apply</button></div></div></div>
+      <div class="rpane"><h4>Electrical</h4><div class="sub">Roles we hire for year round.</div><div class="roles-list"><div class="role-item"><div><b>Licensed electrician</b><span>Installs, repairs, switchboards and safety.</span></div><button class="pick" data-role="Licensed electrician">Apply</button></div></div></div>
+      <div class="rpane"><h4>Roofing</h4><div class="sub">Roles we hire for year round.</div><div class="roles-list"><div class="role-item"><div><b>Roofer</b><span>Repairs and replacements, residential.</span></div><button class="pick" data-role="Roofer">Apply</button></div></div></div>
+      <div class="rpane"><h4>Renovations</h4><div class="sub">Roles we hire for year round.</div><div class="roles-list"><div class="role-item"><div><b>Carpenter</b><span>Bathroom and home renovations.</span></div><button class="pick" data-role="Carpenter">Apply</button></div><div class="role-item"><div><b>Bathroom renovator</b><span>Wet-area work, start to handover.</span></div><button class="pick" data-role="Bathroom renovator">Apply</button></div></div></div>
+      <div class="rpane"><h4>Office and operations</h4><div class="sub">Roles we hire for year round.</div><div class="roles-list"><div class="role-item"><div><b>Customer service</b><span>Looking after customers on the phone.</span></div><button class="pick" data-role="Customer service">Apply</button></div><div class="role-item"><div><b>Scheduler and dispatch</b><span>Keeping the crews moving.</span></div><button class="pick" data-role="Scheduler and dispatch">Apply</button></div><div class="role-item"><div><b>Estimator</b><span>Quotes and pricing.</span></div><button class="pick" data-role="Estimator">Apply</button></div><div class="role-item"><div><b>Warehouse storeperson</b><span>Stock and parts.</span></div><button class="pick" data-role="Warehouse storeperson">Apply</button></div></div></div>
+    </div>
     <div class="applyany reveal">
       <p><b>Not sure which one fits?</b> Apply anyway, pick the closest role, and tell us the rest in your message. We would rather have a conversation than miss a good person.</p>
       <button class="pick" data-role="Apprentice (any trade)">I am interested in an apprenticeship</button>
@@ -619,18 +674,11 @@ footer a:hover{color:#fff}
   <a class="btn sm" href="#apply" style="background:#fff;border-color:#fff;color:var(--navy)">Apply now</a>
 </div></div>
 
-<script src="../assets/vendor/gsap.min.js"></script>
-<script src="../assets/vendor/ScrollTrigger.min.js"></script>
 <script>
 (function(){
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* marquee content */
-  var words = ['Plumbers','Electricians','Air conditioning techs','Gas fitters','Roofers','Carpenters','Apprentices','Customer service','Estimators'];
-  var row = words.map(function(w){ return '<span>'+w+'</span>'; }).join('');
-  document.getElementById('marquee').innerHTML = row + row;
-
-  /* every Apply button: prefill the form and jump to it */
+  /* ---------- Apply buttons: prefill the form and jump to it ---------- */
   var sel = document.getElementById('f-role');
   function bindPicks(root){
     (root||document).querySelectorAll('.pick').forEach(function(b){
@@ -643,131 +691,82 @@ footer a:hover{color:#fff}
             if(sel.options[i].value===role || sel.options[i].text===role){ sel.selectedIndex=i; break; }
           }
         }
-        document.getElementById('apply').scrollIntoView({behavior: reduce?'auto':'smooth'});
+        document.getElementById('apply').scrollIntoView({behavior: reduce ? 'auto' : 'smooth'});
         setTimeout(function(){ document.getElementById('f-name').focus({preventScroll:true}); }, 500);
       });
     });
   }
   bindPicks(document);
 
-  /* ---------- roles: card fan carousel ---------- */
-  var TRADES = [
-    {name:'Plumbing and gas', roles:[
-      ['Qualified plumber','Service, repairs, hot water and bathroom work.'],
-      ['Gas fitter','Gas line work and appliance connections.'],
-      ['Drainage and labourer','Supporting the crew on site.']],
-      art:'<circle cx="48" cy="48" r="44" fill="#BDD2B4" opacity=".38"/><path d="M22 42h26a7 7 0 0 1 7 7v7" fill="none" stroke="#1D3B6D" stroke-width="5" stroke-linecap="round"/><path d="M32 42V30h12" fill="none" stroke="#1D3B6D" stroke-width="5" stroke-linecap="round"/><path d="M55 78c-6.6 0-11-4.4-11-10 0-4.6 11-14 11-14s11 9.4 11 14c0 5.6-4.4 10-11 10z" fill="#1D3B6D"/>'},
-    {name:'Air conditioning', roles:[
-      ['Air conditioning technician','Install, service and repair, residential.'],
-      ['Air conditioner installer','Split and ducted installs, start to finish.']],
-      art:'<circle cx="48" cy="48" r="44" fill="#6BB2BC" opacity=".34"/><rect x="20" y="28" width="56" height="26" rx="9" fill="#fff" stroke="#1D3B6D" stroke-width="5"/><path d="M30 41h36" stroke="#1D3B6D" stroke-width="5" stroke-linecap="round"/><path d="M30 64q5-6 10 0t10 0" fill="none" stroke="#1D3B6D" stroke-width="5" stroke-linecap="round"/><path d="M30 76q5-6 10 0t10 0" fill="none" stroke="#1D3B6D" stroke-width="5" stroke-linecap="round"/>'},
-    {name:'Electrical', roles:[
-      ['Licensed electrician','Installs, repairs, switchboards and safety.']],
-      art:'<circle cx="48" cy="48" r="44" fill="#F8D0A7" opacity=".42"/><circle cx="48" cy="48" r="26" fill="#fff" stroke="#1D3B6D" stroke-width="5"/><path d="M52 26 38 52h10l-4 20 16-26H50z" fill="#1D3B6D"/>'},
-    {name:'Roofing', roles:[
-      ['Roofer','Repairs and replacements, residential.']],
-      art:'<circle cx="48" cy="48" r="44" fill="#B2BDE3" opacity=".42"/><path d="M20 54 48 28l28 26" fill="none" stroke="#1D3B6D" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><path d="M30 52v20h36V52" fill="#fff" stroke="#1D3B6D" stroke-width="5" stroke-linejoin="round"/><path d="M42 52v20M54 52v20" stroke="#1D3B6D" stroke-width="4" opacity=".5"/>'},
-    {name:'Renovations', roles:[
-      ['Carpenter','Bathroom and home renovations.'],
-      ['Bathroom renovator','Wet-area work, start to handover.']],
-      art:'<circle cx="48" cy="48" r="44" fill="#EFACAC" opacity=".4"/><rect x="20" y="28" width="46" height="16" rx="8" fill="#fff" stroke="#1D3B6D" stroke-width="5"/><path d="M66 36h4a6 6 0 0 1 6 6v8a6 6 0 0 1-6 6H44v6" fill="none" stroke="#1D3B6D" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><rect x="36" y="60" width="16" height="18" rx="5" fill="#fff" stroke="#1D3B6D" stroke-width="5"/>'},
-    {name:'Office and operations', roles:[
-      ['Customer service','Looking after customers on the phone.'],
-      ['Scheduler and dispatch','Keeping the crews moving.'],
-      ['Estimator','Quotes and pricing.'],
-      ['Warehouse storeperson','Stock and parts.']],
-      art:'<circle cx="48" cy="48" r="44" fill="#C8DD8A" opacity=".45"/><path d="M26 50v-6a22 22 0 0 1 44 0v6" fill="none" stroke="#1D3B6D" stroke-width="5" stroke-linecap="round"/><rect x="18" y="46" width="15" height="20" rx="7" fill="#fff" stroke="#1D3B6D" stroke-width="5"/><rect x="63" y="46" width="15" height="20" rx="7" fill="#fff" stroke="#1D3B6D" stroke-width="5"/><path d="M70 66v6a9 9 0 0 1-9 9h-9" fill="none" stroke="#1D3B6D" stroke-width="5" stroke-linecap="round"/>'}
-  ];
+  /* ---------- roles: fan carousel (positions the cards; markup is static) ---------- */
+  var fanEl = document.getElementById('fan');
+  if(fanEl){
+    var fanCards = [].slice.call(fanEl.querySelectorAll('.fan-card'));
+    var fanDots  = [].slice.call(document.querySelectorAll('#fanDots .fan-dot'));
+    var panes    = [].slice.call(document.querySelectorAll('#rolesPanel .rpane'));
+    var active = 0, revealed = false;
 
-  var fan = document.getElementById('fan'), dotWrap = document.getElementById('fanDots'),
-      panel = document.getElementById('rolesPanel'), active = 0;
-
-  TRADES.forEach(function(t, i){
-    var card = document.createElement('button');
-    card.type = 'button';
-    card.className = 'fan-card';
-    card.setAttribute('aria-label', t.name);
-    card.innerHTML = '<svg viewBox="0 0 96 96" aria-hidden="true">' + t.art + '</svg>' +
-                     '<h4>' + t.name + '</h4>' +
-                     '<div class="count">' + t.roles.length + (t.roles.length > 1 ? ' roles' : ' role') + '</div>' +
-                     '<span class="go">View roles</span>';
-    card.addEventListener('click', function(){ go(i); });
-    fan.appendChild(card);
-    var d = document.createElement('button');
-    d.type = 'button'; d.className = 'fan-dot';
-    d.setAttribute('aria-label', 'Show ' + t.name);
-    d.addEventListener('click', function(){ go(i); });
-    dotWrap.appendChild(d);
-  });
-
-  function spread(){
-    var n = TRADES.length, cards = fan.querySelectorAll('.fan-card');
-    var narrow = window.innerWidth < 700;
-    var step = narrow ? 74 : 132, rot = narrow ? 7 : 9, vis = narrow ? 2 : 3;
-    cards.forEach(function(c, i){
-      var d = i - active;
-      if (d > n/2) d -= n;
-      if (d < -n/2) d += n;
-      var ad = Math.abs(d);
-      var sc = Math.max(0.62, 1 - ad*0.11);
-      c.style.transform = 'translateX(' + (d*step) + 'px) translateY(' + (ad*10) + 'px) rotate(' + (d*rot) + 'deg) scale(' + sc.toFixed(3) + ')';
-      c.style.zIndex = String(100 - ad);
-      c.style.opacity = ad > vis ? '0' : '1';
-      c.style.pointerEvents = ad > vis ? 'none' : 'auto';
-      c.classList.toggle('is-active', d === 0);
-    });
-    dotWrap.querySelectorAll('.fan-dot').forEach(function(el, i){ el.classList.toggle('on', i === active); });
-    var t = TRADES[active];
-    panel.innerHTML = '<h4>' + t.name + '</h4><div class="sub">Roles we hire for year round.</div><div class="roles-list">' +
-      t.roles.map(function(r){
-        return '<div class="role-item"><div><b>' + r[0] + '</b><span>' + r[1] + '</span></div>' +
-               '<button class="pick" data-role="' + r[0] + '">Apply</button></div>';
-      }).join('') + '</div>';
-    bindPicks(panel);
-  }
-  function go(i){ var n = TRADES.length; active = ((i % n) + n) % n; spread(); }
-  document.getElementById('fanPrev').addEventListener('click', function(){ go(active - 1); });
-  document.getElementById('fanNext').addEventListener('click', function(){ go(active + 1); });
-  window.addEventListener('resize', function(){ spread(); });
-  spread();
-
-
-  /* video: click to play, with sound */
-  function playFilm(){
-    var host = document.getElementById('video');
-    host.innerHTML = '<div id="ytplayer"></div>';
-    function build(){
-      new YT.Player('ytplayer', {
-        videoId: 'BogOWR7bEA8',
-        playerVars: {autoplay:1, rel:0, playsinline:1, modestbranding:1},
-        events: {onReady:function(e){ try{e.target.unMute(); e.target.setVolume(100);}catch(err){} e.target.playVideo(); }}
+    function spread(){
+      var n = fanCards.length, narrow = window.innerWidth < 700;
+      var step = narrow ? 70 : 132, rot = narrow ? 7 : 9, vis = narrow ? 2 : 3;
+      fanCards.forEach(function(c, i){
+        var d = i - active;
+        if (d > n/2) d -= n;
+        if (d < -n/2) d += n;
+        var ad = Math.abs(d);
+        var sc = Math.max(0.62, 1 - ad * 0.11);
+        c.style.transform = 'translateX(' + (d*step) + 'px) translateY(' + (ad*10) + 'px) rotate(' + (d*rot) + 'deg) scale(' + sc.toFixed(3) + ')';
+        c.style.zIndex = String(100 - ad);
+        c.style.opacity = (revealed && ad <= vis) ? '1' : '0';
+        c.style.pointerEvents = (revealed && ad <= vis) ? 'auto' : 'none';
+        c.classList.toggle('is-active', d === 0);
       });
+      fanDots.forEach(function(el, i){ el.classList.toggle('on', i === active); });
+      panes.forEach(function(el, i){ el.classList.toggle('on', i === active); });
     }
-    if(window.YT && window.YT.Player){ build(); }
-    else {
-      window.onYouTubeIframeAPIReady = build;
-      var s = document.createElement('script');
-      s.src = 'https://www.youtube.com/iframe_api';
-      document.head.appendChild(s);
-    }
-  }
-  document.querySelector('.video-play').addEventListener('click', playFilm);
+    function go(i){ var n = fanCards.length; active = ((i % n) + n) % n; spread(); }
+    fanCards.forEach(function(c, i){ c.addEventListener('click', function(){ go(i); }); });
+    fanDots.forEach(function(d, i){ d.addEventListener('click', function(){ go(i); }); });
+    document.getElementById('fanPrev').addEventListener('click', function(){ go(active - 1); });
+    document.getElementById('fanNext').addEventListener('click', function(){ go(active + 1); });
+    var rt; window.addEventListener('resize', function(){ clearTimeout(rt); rt = setTimeout(spread, 120); });
+    spread();
 
-  /* sticky bar + progress bar */
+    if ('IntersectionObserver' in window){
+      var fanIO = new IntersectionObserver(function(entries, obs){
+        entries.forEach(function(e){ if(e.isIntersecting){ revealed = true; spread(); obs.disconnect(); } });
+      }, {rootMargin:'0px 0px -10% 0px'});
+      fanIO.observe(fanEl);
+    } else { revealed = true; spread(); }
+  }
+
+  /* ---------- video: swap the link for an inline player (link stays as the fallback) ---------- */
+  var vp = document.getElementById('videoPlay');
+  if(vp){
+    vp.addEventListener('click', function(e){
+      e.preventDefault();
+      document.getElementById('video').innerHTML =
+        '<iframe src="https://www.youtube-nocookie.com/embed/BogOWR7bEA8?autoplay=1&rel=0&playsinline=1" title="aba TRADES team film" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>';
+    });
+  }
+
+  /* ---------- sticky apply bar + read progress ---------- */
   var bar = document.getElementById('stickybar');
-  var hero = document.querySelector('.hero');
-  var apply = document.getElementById('apply');
+  var heroEl = document.querySelector('.hero');
+  var applyEl = document.getElementById('apply');
   var prog = document.getElementById('progress');
   function onScroll(){
-    var past = window.scrollY > hero.offsetHeight - 140;
-    var atForm = apply.getBoundingClientRect().top < window.innerHeight * .9;
+    var past = window.scrollY > heroEl.offsetHeight - 140;
+    var atForm = applyEl.getBoundingClientRect().top < window.innerHeight * 0.9;
     bar.classList.toggle('on', past && !atForm);
     var h = document.documentElement.scrollHeight - window.innerHeight;
     prog.style.width = (h > 0 ? (window.scrollY / h) * 100 : 0) + '%';
   }
-  window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+  window.addEventListener('scroll', onScroll, {passive:true});
+  window.addEventListener('resize', onScroll);
+  onScroll();
 
-  /* form validity + mock submit */
+  /* ---------- application form ---------- */
   var form = document.getElementById('applyform'), btn = document.getElementById('submitbtn');
   function check(){
     var ok = form.checkValidity();
@@ -779,66 +778,42 @@ footer a:hover{color:#fff}
     e.preventDefault();
     var box = document.getElementById('okbox');
     box.style.display = 'block';
-    box.scrollIntoView({behavior: reduce?'auto':'smooth', block:'center'});
+    box.scrollIntoView({behavior: reduce ? 'auto' : 'smooth', block:'center'});
   });
 
-  /* ---------- motion ---------- */
-  if(!reduce && window.gsap && window.ScrollTrigger){
-    gsap.registerPlugin(ScrollTrigger);
-
-    ScrollTrigger.refresh();
-
-    /* hero: line reveal, then the supporting bits */
-    var h1 = document.getElementById('heroh1');
-    h1.innerHTML = '<span class="ln"><span>' + h1.textContent + '</span></span>';
-    var tl = gsap.timeline({defaults:{ease:'power4.out'}});
-    tl.from('.hero .eyebrow', {y:14, opacity:0, duration:.5})
-      .from('#heroh1 .ln > span', {yPercent:118, duration:1.05}, '-=.25')
-      .from('.hero-sub', {y:22, opacity:0, duration:.7}, '-=.6')
-      .from('.hero-cta .btn', {y:18, opacity:0, duration:.5, stagger:.09}, '-=.45')
-      .from('.trust span', {y:14, opacity:0, duration:.45, stagger:.08}, '-=.35');
-
-    gsap.to('#herobg', {yPercent:12, ease:'none',
-      scrollTrigger:{trigger:'.hero', start:'top top', end:'bottom top', scrub:true}});
-    gsap.to('.scrollcue', {opacity:0, duration:.3,
-      scrollTrigger:{trigger:'.hero', start:'top+=80 top', toggleActions:'play none none reverse'}});
-
-    /* generic reveals */
-    ScrollTrigger.batch('.reveal', {
-      start:'top 88%', once:true,
-      onEnter:function(batch){
-        gsap.from(batch, {y:26, opacity:0, duration:.7, stagger:.08, ease:'power2.out', overwrite:true});
-      }
-    });
-
-    /* value cards: circle pops, line art settles */
-    document.querySelectorAll('.values-grid .value').forEach(function(card){
-      var trig = {trigger:card, start:'top 85%'};
-      gsap.from(card.querySelector('circle'), {scale:.55, transformOrigin:'50% 50%', opacity:0, duration:.6, ease:'back.out(1.7)', scrollTrigger:trig});
-      gsap.from(card.querySelectorAll('svg path'), {opacity:0, y:9, duration:.5, stagger:.06, delay:.12, scrollTrigger:trig});
-    });
-
-    /* card fan entrance */
-    gsap.from('.fan-card', {y:70, opacity:0, duration:.85, stagger:.06, ease:'back.out(1.6)',
-      scrollTrigger:{trigger:'.fan', start:'top 82%'}});
-    gsap.from('.roles-panel', {y:26, opacity:0, duration:.6, ease:'power2.out',
-      scrollTrigger:{trigger:'.roles-panel', start:'top 88%'}});
-
-    /* apprenticeship image parallax */
-    gsap.fromTo('#apprenticeimg img', {yPercent:-6, scale:1.08}, {yPercent:6, scale:1.08, ease:'none',
-      scrollTrigger:{trigger:'.apprentice', start:'top bottom', end:'bottom top', scrub:true}});
-
-    /* the 25m counter */
-    document.querySelectorAll('[data-count]').forEach(function(el){
-      var end = +el.dataset.count, o = {v:0};
-      gsap.to(o, {v:end, duration:1.1, ease:'power2.out',
-        scrollTrigger:{trigger:'#apprenticeimg', start:'top 85%'},
-        onUpdate:function(){ el.textContent = Math.round(o.v); }});
-    });
-
-    /* marquee drift */
-    gsap.to('#marquee', {xPercent:-50, duration:26, ease:'none', repeat:-1});
+  /* ---------- reveal on scroll (pure CSS transitions) ---------- */
+  var reveals = [].slice.call(document.querySelectorAll('.reveal'));
+  if (!reduce && 'IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if (en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); }
+      });
+    }, {rootMargin:'0px 0px -8% 0px', threshold:0.05});
+    reveals.forEach(function(el){ io.observe(el); });
+  } else {
+    reveals.forEach(function(el){ el.classList.add('in'); });
   }
+
+  /* ---------- the 25m counter ---------- */
+  var counter = document.querySelector('[data-count]');
+  if (counter && !reduce && 'IntersectionObserver' in window){
+    var target = +counter.dataset.count;
+    var cio = new IntersectionObserver(function(entries, obs){
+      entries.forEach(function(e){
+        if(!e.isIntersecting) return;
+        obs.disconnect();
+        var t0 = null, dur = 900;
+        requestAnimationFrame(function step(now){
+          if(t0 === null) t0 = now;
+          var p = Math.min(1, (now - t0) / dur);
+          counter.textContent = Math.round(target * (1 - Math.pow(1 - p, 3)));
+          if(p < 1) requestAnimationFrame(step);
+        });
+      });
+    }, {threshold:0.4});
+    cio.observe(counter);
+  }
+
 })();
 </script>
 </body>
