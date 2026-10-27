@@ -5,251 +5,377 @@
 <link rel="icon" type="image/x-icon" href="../../assets/brand/favicon.ico">
 <link rel="stylesheet" href="https://use.typekit.net/aym5yls.css">
 <style>
-:root{--navy:#1D3B6D;--navy2:#2E528E;--slate:#7789A7;--dark:#0B1D3B;--surface:#EBEDF2;
- --field:#F5F6F8;--border:#D3D4DA;--accent:#DC7E49;--font:'futura-pt','Futura PT',Helvetica,Arial,sans-serif}
+:root{--navy:#1D3B6D;--navy2:#2E528E;--slate:#7789A7;--dark:#0B1D3B;--field:#F5F6F8;
+ --border:#D3D4DA;--accent:#DC7E49;--ink:#0F2036;
+ --font:'futura-pt','Futura PT',Helvetica,Arial,sans-serif}
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:var(--font);background:#fff;color:var(--navy);line-height:1.6}
-.wrap{max-width:1180px;margin:0 auto;padding:0 28px}
+.wrap{max-width:1240px;margin:0 auto;padding:0 28px}
 header{background:var(--navy);color:#fff;padding:56px 0 60px}
 header img{height:38px;margin-bottom:26px}
-header h1{font-size:clamp(2rem,4vw,3rem);font-weight:700;line-height:1.1;text-wrap:balance;max-width:900px}
-header p{color:rgba(255,255,255,.86);font-size:1.05rem;max-width:760px;margin-top:16px}
+header h1{font-size:clamp(2rem,4vw,3rem);font-weight:700;line-height:1.1;text-wrap:balance;max-width:920px}
+header p{color:rgba(255,255,255,.86);font-size:1.05rem;max-width:780px;margin-top:16px}
 .pill{display:inline-block;background:var(--accent);color:#3a1c07;font-weight:700;font-size:.78rem;
  letter-spacing:.12em;text-transform:uppercase;padding:8px 16px;border-radius:100px;margin-bottom:20px}
-section{padding:60px 0}
-section+section{border-top:1px solid var(--border)}
+section{padding:58px 0} section+section{border-top:1px solid var(--border)}
 h2{font-size:clamp(1.5rem,2.6vw,2.1rem);font-weight:700;text-wrap:balance}
-.lead{color:#3d527a;margin-top:12px;max-width:820px}
-.method{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px;margin-top:28px}
-.method div{background:var(--field);border-radius:14px;padding:20px}
-.method b{display:block;font-size:1.4rem}
-.method span{color:var(--slate);font-size:.88rem}
-.pat{border-left:4px solid var(--accent);padding:4px 0 4px 20px;margin-top:26px}
-.pat b{font-size:1.1rem}
-.pat p{color:#3d527a;margin-top:6px}
-.card{display:grid;grid-template-columns:340px 1fr;gap:30px;border:1px solid var(--border);
- border-radius:20px;padding:24px;margin-top:26px;background:#fff}
-.shot{background:var(--field);border-radius:14px;display:flex;align-items:center;justify-content:center;
- padding:14px;min-height:220px}
-.shot img{max-width:100%;max-height:340px;border-radius:8px;display:block}
-.meta{display:flex;flex-wrap:wrap;gap:10px;align-items:baseline}
-.adv{font-weight:700;font-size:1.15rem}
-.run{background:var(--navy);color:#fff;font-weight:700;font-size:.78rem;padding:5px 12px;border-radius:100px}
-.sub{color:var(--slate);font-size:.84rem}
-.lib{color:var(--navy2);font-size:.84rem;font-weight:700;text-decoration:none;border-bottom:1px solid var(--border)}
-.note{margin-top:14px;font-size:1.02rem}
-.why{margin:14px 0 0 18px;color:#3d527a}
+h3{font-size:1.15rem;margin-top:34px}
+.lead{color:#3d527a;margin-top:12px;max-width:860px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:16px;margin-top:28px}
+.stat{background:var(--field);border-radius:14px;padding:20px}
+.stat b{display:block;font-size:1.7rem;line-height:1.15}
+.stat span{color:var(--slate);font-size:.86rem;display:block;margin-top:4px}
+.pat{border-left:4px solid var(--accent);padding:4px 0 4px 20px;margin-top:24px}
+.pat b{font-size:1.08rem} .pat p{color:#3d527a;margin-top:5px}
+.card{display:grid;grid-template-columns:400px 1fr;gap:34px;margin-top:30px;align-items:start}
+.unit{background:#fff;border:1px solid #DADDE3;border-radius:12px;overflow:hidden;
+ box-shadow:0 2px 10px rgba(15,32,54,.07);max-width:400px}
+.uhead{display:flex;gap:11px;align-items:center;padding:13px 15px 9px}
+.av{width:40px;height:40px;border-radius:50%;background:var(--navy);color:#fff;font-weight:700;
+ display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1.05rem}
+.uname{font-weight:700;font-size:.95rem;line-height:1.25;display:flex;flex-direction:column}
+.uname em{font-weight:400;font-style:normal;color:var(--slate);font-size:.79rem;margin-top:2px}
+.utext{padding:3px 15px 12px;font-size:.9rem;color:var(--ink);white-space:pre-wrap}
+.vidmeta{display:flex;gap:8px;flex-wrap:wrap;padding-bottom:10px}
+.vbadge{background:var(--navy);color:#fff;font-size:.74rem;font-weight:700;padding:4px 10px;border-radius:100px}
+.uimg{background:#000}
+.uimg img{width:100%;display:block}
+.vstrip{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:#fff}
+.vstrip img{width:100%;height:230px;object-fit:cover;display:block}
+.vfoot{padding:8px 15px;font-size:.74rem;color:var(--slate);border-top:1px solid #E7E9EE}
+.ctabar{display:flex;align-items:center;justify-content:space-between;gap:12px;
+ background:#F0F2F5;padding:11px 15px;border-top:1px solid #E1E4EA}
+.ctatxt{display:flex;flex-direction:column;min-width:0}
+.ctadom{font-size:.71rem;color:var(--slate);text-transform:uppercase;letter-spacing:.05em}
+.ctahead{font-weight:700;font-size:.9rem}
+.ctabtn{background:#E4E6EB;border-radius:7px;padding:8px 14px;font-weight:700;font-size:.82rem;white-space:nowrap;flex-shrink:0}
+.col-say .note{font-size:1rem;font-weight:700}
+.why{margin:12px 0 0 18px;color:#3d527a}
 .why li{margin-top:7px}
-details{margin-top:16px}
-summary{cursor:pointer;font-weight:700;font-size:.9rem;color:var(--navy2)}
-.copy{margin-top:10px;background:var(--field);border-radius:12px;padding:16px;font-size:.9rem;color:#3d527a;white-space:pre-wrap}
-.gap{background:var(--field);border-radius:14px;padding:20px;margin-top:16px}
-.gap b{font-size:1.05rem} .gap p{color:#3d527a;margin-top:6px}
-.next{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:24px}
+.lib{display:inline-block;margin-top:16px;color:var(--navy2);font-weight:700;font-size:.85rem;text-decoration:none}
+.gap{background:var(--field);border-radius:14px;padding:20px;margin-top:15px}
+.gap b{font-size:1.03rem} .gap p{color:#3d527a;margin-top:5px}
+.next{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;margin-top:24px}
 .next div{border:1px solid var(--border);border-radius:16px;padding:22px}
 .next b{color:var(--accent)}
-footer{background:var(--dark);color:rgba(255,255,255,.75);padding:34px 0;font-size:.88rem}
+.callout{background:var(--navy);color:#fff;border-radius:18px;padding:28px;margin-top:30px}
+.callout b{font-size:1.2rem} .callout p{color:rgba(255,255,255,.88);margin-top:8px}
+footer{background:var(--dark);color:rgba(255,255,255,.75);padding:34px 0;font-size:.86rem}
 footer b{color:#fff}
-@media(max-width:820px){.card{grid-template-columns:1fr}}
+@media(max-width:880px){.card{grid-template-columns:1fr}.unit{max-width:100%}}
 </style></head><body>
 <header><div class="wrap">
   <img src="https://harley-abatrades.github.io/abatrades-pages/assets/brand/abatrades-logo-h.svg" alt="aba TRADES">
   <span class="pill">Phase 1 &middot; Research</span>
   <h1>Meta recruitment creative: what is actually working for electricians in Australia</h1>
-  <p>A swipe file of 11 live recruitment ads from the Meta Ad Library, ranked by how long they have been running, with the patterns pulled out. Prepared for review before we move to proposed content and then creative.</p>
+  <p>A swipe file of live recruitment ads from the Meta Ad Library, shown as they appear in the feed so the words and the image can be judged together, ranked by how long they have been running. Prepared for review before we move to proposed content and then creative.</p>
 </div></header>
 
 <section><div class="wrap">
   <h2>How this was built</h2>
-  <p class="lead">Every ad here is live right now and was pulled from the public Meta Ad Library on 28 October 2026, filtered to Australia. Nothing is copied from a third party list. The ranking signal is longevity, because Meta only shows active ads for ordinary commercial advertisers, so an ad still running is an ad that is earning its place.</p>
-  <div class="method">
-    <div><b>98</b><span>live ads scanned across four keyword sweeps</span></div>
-    <div><b>67</b><span>read as genuine recruitment ads</span></div>
-    <div><b>11</b><span>standout advertisers, ranked by days running</span></div>
-    <div><b>275</b><span>days the longest-running has been live</span></div>
+  <p class="lead">Every ad here is live right now and was pulled from the public Meta Ad Library on 28 October 2026, filtered to Australia. Nothing comes from a third party list. The ranking signal is longevity, because Meta only shows active ads for ordinary commercial advertisers, so an ad still running is an ad earning its place.</p>
+  <div class="stats">
+    <div class="stat"><b>451</b><span>live ads scanned across keyword sweeps</span></div>
+    <div class="stat"><b>143</b><span>of those are video</span></div>
+    <div class="stat"><b>67</b><span>read as genuine recruitment ads</span></div>
+    <div class="stat"><b>11</b><span>statics profiled, longest running first</span></div>
+    <div class="stat"><b>16</b><span>recruitment videos pulled and analysed</span></div>
   </div>
-  <p class="lead" style="margin-top:22px"><b>The one caveat:</b> the Ad Library shows active ads only, so this cannot tell us what historically worked and then stopped. It shows what is working now. Video ads are under-represented in this sweep because the library renders them as thumbnails; a separate video pass is a sensible phase 1b.</p>
+  <p class="lead" style="margin-top:22px"><b>The caveat:</b> the Ad Library shows active ads only, so this cannot tell us what historically worked and then stopped. It shows what is working now.</p>
+</div></section>
+
+<section><div class="wrap">
+  <h2>What role video plays</h2>
+  <p class="lead">This is the question worth answering properly, because the instinct is that video wins and the data says something more specific than that.</p>
+  <div class="stats">
+    <div class="stat"><b>59%</b><span>of genuine recruitment ads are video</span></div>
+    <div class="stat"><b>88%</b><span>of recruitment video is 9:16 vertical</span></div>
+    <div class="stat"><b>27s</b><span>median video length</span></div>
+    <div class="stat"><b>32 vs 113</b><span>median days running, video vs static</span></div>
+  </div>
+  <h3>What the numbers say</h3>
+  <div class="pat"><b>Video is roughly one in five recruitment ads, not the default.</b><p>Of everything the keywords surface about a third is video, but that includes trailers, lighting and product ads. Once you filter to genuine recruitment, 16 of 27 are video. Video is common and growing, but static is still carrying the category.</p></div>
+  <div class="pat"><b>The format is settled: vertical, 9:16, and nothing else.</b><p>Fourteen of sixteen recruitment videos are 360x640 vertical. One is landscape and one is 4:5. Landscape is effectively dead here, and the single landscape ad in the set is the long testimonial that would have performed better cropped.</p></div>
+  <div class="pat"><b>Recruitment video is short: median 27 seconds.</b><p>Three quarters sit under 30 seconds and a quarter under 15. Compare that to the wider video pool where the median is 69 seconds and 39% run past three minutes, because those are product ads. Nobody is asking a sparky to watch a five minute film to find out about a job.</p></div>
+  <div class="pat"><b>Video does not outlast static. This is the counterintuitive one.</b><p>Median days running is 32 for video against 113 for static. Sixty two per cent of videos have run past 30 days against seventy per cent of statics. So video is not the durability play. Its job is reach and attention, getting the role in front of people cheaply, while static carries the long haul and the detail.</p></div>
+  <div class="pat"><b>Every single video uses real people. Nobody is generating them.</b><p>Existing staff and owners, to camera, in branded polos and high-vis, cut with footage of real crews on real jobs, every time. Not one generated human in the entire set. In a trade whose whole pitch is a real team and a real training wall, that is the right instinct and it should shape our tooling decisions.</p></div>
+  <div class="pat"><b>The production bar is very low, which is the opportunity.</b><p>Most are a phone held to a face in a ute. Exactly one advertiser bought a drone shot and they have been running 43 days on it. A properly shot vertical with real crew footage would stand out immediately in this market.</p></div>
+
+  <h3>The video ads, longest running first</h3>
+  <article class="card">
+  <div class="col-ad">
+    <div class="unit">
+      <div class="uhead"><span class="av">B</span>
+        <span class="uname">Bice Electrical<em>Sponsored &middot; 113 days running &middot; video</em></span></div>
+      <div class="utext vidmeta"><span class="vbadge">&#9654; 53.6s</span>
+        <span class="vbadge">360x640</span>
+        <span class="vbadge">vertical 9:16</span></div>
+      <div class="uimg vstrip"><img src="../../assets/swipe/electrical/video/1892369321439306_f0.jpg" alt="Bice Electrical video frame" loading="eager"><img src="../../assets/swipe/electrical/video/1892369321439306_f1.jpg" alt="Bice Electrical video frame" loading="eager"><img src="../../assets/swipe/electrical/video/1892369321439306_f2.jpg" alt="Bice Electrical video frame" loading="eager"></div>
+      <div class="vfoot">Three frames from the video, at 15%, 50% and 85%</div>
+    </div>
+  </div>
+  <div class="col-say">
+    <p class="note">The one to beat, and it is in our own market. Adelaide, named by suburb.</p>
+    <ul class="why"><li>Hyper-local targeting in the first line: Unley, and the coastline south of the Adelaide CBD.</li><li>Leads with the strongest physical perk available: a brand new 2025 take-home van, fully kitted with Milwaukee Packout.</li><li>Positions on standards rather than speed: <em>Join a team that values skill, not just speed.</em></li><li>Three variants running simultaneously, so they are actively testing, not set and forget.</li></ul>
+    <a class="lib" href="https://www.facebook.com/ads/library/?id=1892369321439306" target="_blank" rel="noopener">View in the Ad Library &rarr;</a>
+  </div>
+</article><article class="card">
+  <div class="col-ad">
+    <div class="unit">
+      <div class="uhead"><span class="av">S</span>
+        <span class="uname">Sorted Electrical<em>Sponsored &middot; 72 days running &middot; video</em></span></div>
+      <div class="utext vidmeta"><span class="vbadge">&#9654; 27.0s</span>
+        <span class="vbadge">360x640</span>
+        <span class="vbadge">vertical 9:16</span></div>
+      <div class="uimg vstrip"><img src="../../assets/swipe/electrical/video/1045722865110456_f0.jpg" alt="Sorted Electrical video frame" loading="eager"><img src="../../assets/swipe/electrical/video/1045722865110456_f1.jpg" alt="Sorted Electrical video frame" loading="eager"><img src="../../assets/swipe/electrical/video/1045722865110456_f2.jpg" alt="Sorted Electrical video frame" loading="eager"></div>
+      <div class="vfoot">Three frames from the video, at 15%, 50% and 85%</div>
+    </div>
+  </div>
+  <div class="col-say">
+    <p class="note">The only apprentice-specific creative in the sweep, and it now runs video too.</p>
+    <ul class="why"><li>Targets apprentices who are <em>performing well but not getting the opportunities</em>, which is a very specific and very real frustration.</li><li>Sets a bar rather than pleading: this is not for someone who wants to cruise.</li><li>Four video variants at 14.7s, 19s, 27s and 27s, so they are testing length hard.</li></ul>
+    <a class="lib" href="https://www.facebook.com/ads/library/?id=1045722865110456" target="_blank" rel="noopener">View in the Ad Library &rarr;</a>
+  </div>
+</article><article class="card">
+  <div class="col-ad">
+    <div class="unit">
+      <div class="uhead"><span class="av">H</span>
+        <span class="uname">Hoile electrical<em>Sponsored &middot; 55 days running &middot; video</em></span></div>
+      <div class="utext vidmeta"><span class="vbadge">&#9654; 11.6s</span>
+        <span class="vbadge">360x640</span>
+        <span class="vbadge">vertical 9:16</span></div>
+      <div class="uimg vstrip"><img src="../../assets/swipe/electrical/video/1785529255808229_f0.jpg" alt="Hoile electrical video frame" loading="eager"><img src="../../assets/swipe/electrical/video/1785529255808229_f1.jpg" alt="Hoile electrical video frame" loading="eager"><img src="../../assets/swipe/electrical/video/1785529255808229_f2.jpg" alt="Hoile electrical video frame" loading="eager"></div>
+      <div class="vfoot">Three frames from the video, at 15%, 50% and 85%</div>
+    </div>
+  </div>
+  <div class="col-say">
+    <p class="note">Short, straight to camera, and the whole team is standing behind him. 11.6 seconds.</p>
+    <ul class="why"><li>Owner or senior sparky to camera in a branded polo, with the crew and the vans behind him.</li><li>Says Adelaide and career path in the first two lines.</li><li>No captions at all, which is the one weakness. Most of the feed is watched on mute.</li></ul>
+    <a class="lib" href="https://www.facebook.com/ads/library/?id=1785529255808229" target="_blank" rel="noopener">View in the Ad Library &rarr;</a>
+  </div>
+</article><article class="card">
+  <div class="col-ad">
+    <div class="unit">
+      <div class="uhead"><span class="av">A</span>
+        <span class="uname">Astill&#x27;s Electrical Services<em>Sponsored &middot; 43 days running &middot; video</em></span></div>
+      <div class="utext vidmeta"><span class="vbadge">&#9654; 13.6s</span>
+        <span class="vbadge">360x640</span>
+        <span class="vbadge">vertical 9:16</span></div>
+      <div class="uimg vstrip"><img src="../../assets/swipe/electrical/video/2361513434380886_f0.jpg" alt="Astill&#x27;s Electrical Services video frame" loading="eager"><img src="../../assets/swipe/electrical/video/2361513434380886_f1.jpg" alt="Astill&#x27;s Electrical Services video frame" loading="eager"><img src="../../assets/swipe/electrical/video/2361513434380886_f2.jpg" alt="Astill&#x27;s Electrical Services video frame" loading="eager"></div>
+      <div class="vfoot">Three frames from the video, at 15%, 50% and 85%</div>
+    </div>
+  </div>
+  <div class="col-say">
+    <p class="note">The best produced video in the set, and the clearest template to work from. 13.6 seconds.</p>
+    <ul class="why"><li>Three shots in thirteen seconds: branded van with a WE'RE HIRING title, a drone shot of the crew walking in, then two sparkies on the tools.</li><li>Text carries the whole argument, so it works with the sound off: GREAT TEAM, GOOD WORK, ROOM TO GROW, then APPLY NOW with the email address.</li><li>The drone shot is the only real production value anyone in this sweep is buying, and it lands.</li></ul>
+    <a class="lib" href="https://www.facebook.com/ads/library/?id=2361513434380886" target="_blank" rel="noopener">View in the Ad Library &rarr;</a>
+  </div>
+</article><article class="card">
+  <div class="col-ad">
+    <div class="unit">
+      <div class="uhead"><span class="av">E</span>
+        <span class="uname">Elite-Projects, Electrical, Maintenance<em>Sponsored &middot; 33 days running &middot; video</em></span></div>
+      <div class="utext vidmeta"><span class="vbadge">&#9654; 121.1s</span>
+        <span class="vbadge">640x360</span>
+        <span class="vbadge">landscape</span></div>
+      <div class="uimg vstrip"><img src="../../assets/swipe/electrical/video/1428032052615024_f0.jpg" alt="Elite-Projects, Electrical, Maintenance video frame" loading="eager"><img src="../../assets/swipe/electrical/video/1428032052615024_f1.jpg" alt="Elite-Projects, Electrical, Maintenance video frame" loading="eager"><img src="../../assets/swipe/electrical/video/1428032052615024_f2.jpg" alt="Elite-Projects, Electrical, Maintenance video frame" loading="eager"></div>
+      <div class="vfoot">Three frames from the video, at 15%, 50% and 85%</div>
+    </div>
+  </div>
+  <div class="col-say">
+    <p class="note"></p>
+    <ul class="why"></ul>
+    <a class="lib" href="https://www.facebook.com/ads/library/?id=1428032052615024" target="_blank" rel="noopener">View in the Ad Library &rarr;</a>
+  </div>
+</article><article class="card">
+  <div class="col-ad">
+    <div class="unit">
+      <div class="uhead"><span class="av">B</span>
+        <span class="uname">Booth Electrical Co.<em>Sponsored &middot; 32 days running &middot; video</em></span></div>
+      <div class="utext vidmeta"><span class="vbadge">&#9654; 5.2s</span>
+        <span class="vbadge">360x640</span>
+        <span class="vbadge">vertical 9:16</span></div>
+      <div class="uimg vstrip"><img src="../../assets/swipe/electrical/video/1391232149304904_f0.jpg" alt="Booth Electrical Co. video frame" loading="eager"><img src="../../assets/swipe/electrical/video/1391232149304904_f1.jpg" alt="Booth Electrical Co. video frame" loading="eager"><img src="../../assets/swipe/electrical/video/1391232149304904_f2.jpg" alt="Booth Electrical Co. video frame" loading="eager"></div>
+      <div class="vfoot">Three frames from the video, at 15%, 50% and 85%</div>
+    </div>
+  </div>
+  <div class="col-say">
+    <p class="note">Five seconds, one shot, text does all the work. Cheap and it ran 32 days.</p>
+    <ul class="why"><li>On-site kitchen fit-out footage with animated text layering up: WE ARE, WE ARE HIRING, WE ARE HIRING, MORE INFO BELOW.</li><li>Comments are switched on deliberately so people can ask questions publicly.</li><li>No branding anywhere in the frame, which is a missed opportunity at this length.</li></ul>
+    <a class="lib" href="https://www.facebook.com/ads/library/?id=1391232149304904" target="_blank" rel="noopener">View in the Ad Library &rarr;</a>
+  </div>
+</article>
 </div></section>
 
 <section><div class="wrap">
   <h2>The patterns that repeat</h2>
-  <p class="lead">These are the things the long-running ads do in common. Not one of them is a clever visual trick.</p>
-  <div class="pat"><b>1. Pay is stated outright</b><p>Five of the eleven name a number. $38 to $45 an hour, $110k to $135k a year, up to $65 an hour in Queensland. The ones that hide the rate are the ones that do not last.</p></div><div class="pat"><b>2. Perks are itemised, never summarised</b><p>The long-running ads list eight to ten single-line perks with ticks. Nobody writes generous package. They write the take-home ute, the fuel card, the birthday off, the Thursday finish.</p></div><div class="pat"><b>3. The take-home vehicle is the top currency</b><p>It is the perk that gets named first and described in most detail. Bice leads with the van and the tool kit; Activ8 leads with personal use on the fuel card.</p></div><div class="pat"><b>4. Time beats money as a differentiator</b><p>Five of eleven sell the schedule: four-day weeks, TOIL banking, RDOs, early Friday finishes, Monday to Thursday. At this pay level time is the thing competitors cannot easily match.</p></div><div class="pat"><b>5. The hook is your current employer, not us</b><p>The strongest copy names the reader's private frustration. Does your boss actually value your work. Ready to enjoy being a sparky again. It reads like a person, not a job spec.</p></div><div class="pat"><b>6. Location is named by suburb, not by state</b><p>Unley and the coastline south of the Adelaide CBD. Moreton Bay. Mount Gambier. Coffs Harbour. Specific geography signals a real local job to someone scrolling in that area.</p></div><div class="pat"><b>7. Non-negotiables are framed as integrity</b><p>We do follow the rules. Certificate III, sorry, non-negotiable. Stating the hard requirements plainly reads as a company that will not cut corners, which tradespeople screen for.</p></div><div class="pat"><b>8. The creative is mostly low production</b><p>Text on a photo, or a plain graphic card, dominates. Only a handful use real branded people and vehicles, and almost nobody in this sweep is running video.</p></div>
+  <p class="lead">What the long-running ads do in common. Not one of them is a clever visual trick.</p>
+  <div class="pat"><b>Pay is stated outright</b><p>Five of the eleven statics name a number. $38 to $45 an hour, $110k to $135k a year, up to $65 an hour in Queensland. The ones that hide the rate are the ones that do not last.</p></div><div class="pat"><b>Perks are itemised, never summarised</b><p>The long-running ads list eight to ten single-line perks with ticks. Nobody writes generous package. They write the take-home ute, the fuel card, the birthday off, the Thursday finish.</p></div><div class="pat"><b>The take-home vehicle is the top currency</b><p>It is the perk that gets named first and described in most detail. Bice leads with the van and the tool kit; Activ8 leads with personal use on the fuel card.</p></div><div class="pat"><b>Time beats money as a differentiator</b><p>Five of eleven sell the schedule: four-day weeks, TOIL banking, RDOs, early Friday finishes, Monday to Thursday. At this pay level time is the thing competitors cannot easily match.</p></div><div class="pat"><b>The hook is your current employer, not us</b><p>The strongest copy names the reader's private frustration. Does your boss actually value your work. Ready to enjoy being a sparky again. It reads like a person, not a job spec.</p></div><div class="pat"><b>Location is named by suburb, not by state</b><p>Unley and the coastline south of the Adelaide CBD. Moreton Bay. Mount Gambier. Coffs Harbour. Specific geography signals a real local job to someone scrolling in that area.</p></div><div class="pat"><b>Non-negotiables are framed as integrity</b><p>We do follow the rules. Certificate III, sorry, non-negotiable. Stating the hard requirements plainly reads as a company that will not cut corners, which tradespeople screen for.</p></div><div class="pat"><b>The winning creative is real people</b><p>Uniforms, branded vans, real crews on real jobs, in both the statics and every video. Nobody in this sweep is running generated people, and in a trade selling a real team that is the right call.</p></div>
 </div></section>
 
 <section><div class="wrap">
-  <h2>The ads, longest running first</h2>
-  <p class="lead">Ranked by days running as at 28 October 2026. Each one has the creative, the reason it is worth studying, and the full copy if you want it.</p>
+  <h2>The static ads, longest running first</h2>
+  <p class="lead">Each one is shown as it appears in the feed, copy and creative together, with the reason it is worth studying alongside.</p>
+  <article class="card">
+  <div class="col-ad"><div class="unit">
+  <div class="uhead"><span class="av">R</span>
+    <span class="uname">RESINC Solar &amp; Batteries<em>Sponsored &middot; 275 days running</em></span></div>
+  <div class="utext">⚡ Qualified Sparky? Let&#x27;s Chat. RESINC Solar &amp; Batteries is celebrating its 10th anniversary and is hiring experienced electricians to join our high-performing solar install teams. If you&#x27;re looking for full-ti<span class="more"> &hellip;<span class="rest">me, long-term work with a growing, award-winning business that genuinely looks after its people — we want to hear from you. Applicants must be qualified electricians. SAA accreditation (or willingness to obtain) for solar and battery systems required. Locations: Sydney Wollongong Canberra Central / North / Western Melbourne 📩 Apply now or reach out to our team directly via jobs@resinc.com.au or visit www.resinc.com.au/careers/ RESINC Solar &amp; Batteries Business Send message</span></span></div>
+  <div class="uimg"><img src="../../assets/swipe/electrical/resinc-solar-batteries.jpg" alt="RESINC Solar &amp; Batteries creative" loading="eager"></div>
   
-<article class="card">
-  <div class="shot"><img src="../../assets/swipe/electrical/resinc-solar---batteries.jpg" alt="RESINC Solar &amp; Batteries creative" loading="eager"></div>
-  <div class="body">
-    <div class="meta">
-      <span class="adv">RESINC Solar &amp; Batteries</span>
-      <span class="run">275 days running</span>
-      <span class="sub">started Jan 26, 2026 &middot; 600x600</span>
-      <a class="lib" href="https://www.facebook.com/ads/library/?id=1224613309735329" target="_blank" rel="noopener">view in Ad Library</a>
-    </div>
+</div></div>
+  <div class="col-say">
     <p class="note">Longest running in the whole sweep by a wide margin, and running in four variants at once, which is the strongest signal available.</p>
     <ul class="why"><li>Opens with a direct question at the trade, not a company statement: <em>Qualified Sparky? Let's Chat.</em></li><li>Gives a reason to look <em>now</em> rather than a generic we are hiring: the 10th anniversary.</li><li>Qualifies hard up front (must be qualified, must hold or obtain SAA accreditation), so the applications that arrive are actually eligible.</li><li>States the locations rather than saying Australia.</li></ul>
-    <details><summary>Full ad copy</summary><p class="copy">⚡ Qualified Sparky? Let&#x27;s Chat. RESINC Solar &amp; Batteries is celebrating its 10th anniversary and is hiring experienced electricians to join our high-performing solar install teams. If you&#x27;re looking for full-time, long-term work with a growing, award-winning business that genuinely looks after its people — we want to hear from you. Applicants must be qualified electricians. SAA accreditation (or willingness to obtain) for solar and battery systems required. Locations: Sydney Wollongong Canberra Central / North / Western Melbourne 📩 Apply now or reach out to our team directly via jobs@resinc.com.au or visit www.resinc.com.au/careers/ RESINC Solar &amp; Batteries Business Send message</p></details>
+    <a class="lib" href="https://www.facebook.com/ads/library/?id=1224613309735329" target="_blank" rel="noopener">View in the Ad Library &rarr;</a>
   </div>
-</article>
-<article class="card">
-  <div class="shot"><img src="../../assets/swipe/electrical/activ8-electrical-contractors-mount-gamb.jpg" alt="Activ8 Electrical Contractors Mount Gambier creative" loading="eager"></div>
-  <div class="body">
-    <div class="meta">
-      <span class="adv">Activ8 Electrical Contractors Mount Gambier</span>
-      <span class="run">153 days running</span>
-      <span class="sub">started May 28, 2026 &middot; 600x314</span>
-      <a class="lib" href="https://www.facebook.com/ads/library/?id=1938997766780958" target="_blank" rel="noopener">view in Ad Library</a>
-    </div>
+</article><article class="card">
+  <div class="col-ad"><div class="unit">
+  <div class="uhead"><span class="av">A</span>
+    <span class="uname">Activ8 Electrical Contractors Mount Gambier<em>Sponsored &middot; 153 days running</em></span></div>
+  <div class="utext">Are you a top sparky looking for a workplace that actually values you? 💪 We’re on the hunt for a Qualified Electrician to join our growing team in Mount Gambier, SA — and we’ve packed this role with awesome per<span class="more"> &hellip;<span class="rest">ks to make it worth your while 👇 ✅ $38–$45/hr (based on experience) ✅ $1000 sign-on bonus (after probation period) ✅ Work vehicle + fuel card (with personal use — never pay for fuel again!) ✅ Early Friday finishes (yes, really!) ✅ Paid day off for your birthday 🥳 ✅ Bonus incentives $$$ ✅ Flexible hours to suit family life 👨‍👩‍👧‍👦 ✅ Flexible positions (full-time, part-time or casual) ✅ Monthly paid BBQ’s 🍔🔥 ✅ Assistance with a relocation allowance if you’re moving from out of town 🚚 ✅ Many opportunities for overtime when you want it 💰 🧰 What You’ll Need: ⚡ Certificate III in Electrotechnology – sorry, non-negotiable ⚡ SA Electrical License – we do follow the rules 🚗 Driver’s License (must be able to drive manual) 🗣️ Solid communication skills – we’re a service-based business, so this is a must 💪 Good attitude &amp; strong work ethic – if you’re allergic to hard work or team chats, we’re probably not for you If you’re looking for a fresh start and want to feel valued for your skills, we’d love to hear from you. 📩 Apply now by sending us an email with your resume — we’d love to chat! admin@activ8electrical.com</span></span></div>
+  <div class="uimg"><img src="../../assets/swipe/electrical/activ8-electrical-contractors-mount-gamb.jpg" alt="Activ8 Electrical Contractors Mount Gambier creative" loading="eager"></div>
+  
+</div></div>
+  <div class="col-say">
     <p class="note">The perk list <em>is</em> the ad. Ten itemised lines, every one answering what is in it for me.</p>
     <ul class="why"><li>Pay band stated outright: $38 to $45 an hour, based on experience.</li><li>Take-home work vehicle plus fuel card <em>with personal use</em>. That is the single most valuable perk in the trade.</li><li>Time perks included alongside money: early Friday finishes, paid day off on your birthday, flexible hours for family life.</li><li>States the non-negotiables bluntly and treats that as a selling point: <em>SA Electrical License, we do follow the rules.</em></li></ul>
-    <details><summary>Full ad copy</summary><p class="copy">Are you a top sparky looking for a workplace that actually values you? 💪 We’re on the hunt for a Qualified Electrician to join our growing team in Mount Gambier, SA — and we’ve packed this role with awesome perks to make it worth your while 👇 ✅ $38–$45/hr (based on experience) ✅ $1000 sign-on bonus (after probation period) ✅ Work vehicle + fuel card (with personal use — never pay for fuel again!) ✅ Early Friday finishes (yes, really!) ✅ Paid day off for your birthday 🥳 ✅ Bonus incentives $$$ ✅ Flexible hours to suit family life 👨‍👩‍👧‍👦 ✅ Flexible positions (full-time, part-time or casual) ✅ Monthly paid BBQ’s 🍔🔥 ✅ Assistance with a relocation allowance if you’re moving from out of town 🚚 ✅ M</p></details>
+    <a class="lib" href="https://www.facebook.com/ads/library/?id=1938997766780958" target="_blank" rel="noopener">View in the Ad Library &rarr;</a>
   </div>
-</article>
-<article class="card">
-  <div class="shot"><img src="../../assets/swipe/electrical/rcbo-electrical.jpg" alt="RCBO Electrical creative" loading="eager"></div>
-  <div class="body">
-    <div class="meta">
-      <span class="adv">RCBO Electrical</span>
-      <span class="run">148 days running</span>
-      <span class="sub">started Jun 2, 2026 &middot; 600x600</span>
-      <a class="lib" href="https://www.facebook.com/ads/library/?id=2366555903874443" target="_blank" rel="noopener">view in Ad Library</a>
-    </div>
+</article><article class="card">
+  <div class="col-ad"><div class="unit">
+  <div class="uhead"><span class="av">R</span>
+    <span class="uname">RCBO Electrical<em>Sponsored &middot; 148 days running</em></span></div>
+  <div class="utext">RCBO Electrical is Hiring, We’re looking for a Qualified Electrician to join our growing team. Contact Colin for more information ✉️ Info@rcboelectrical.net 📱 0418311557 We are Hiring! Electrician, Home &amp; Garde<span class="more"> &hellip;<span class="rest">n, Appliance Repair Send message</span></span></div>
+  <div class="uimg"><img src="../../assets/swipe/electrical/rcbo-electrical.jpg" alt="RCBO Electrical creative" loading="eager"></div>
+  
+</div></div>
+  <div class="col-say">
     <p class="note">The cheapest creative in the set and still running 148 days. No photo at all, just a strong graphic card.</p>
     <ul class="why"><li>Names a real person to contact, with a mobile number. Tradies are wary of being funnelled into a recruiter, so a name matters.</li><li>Copy is three lines. Nothing to read, nothing to scroll past.</li><li>Proves you do not need a photoshoot to run a long-lived recruitment ad.</li></ul>
-    <details><summary>Full ad copy</summary><p class="copy">RCBO Electrical is Hiring, We’re looking for a Qualified Electrician to join our growing team. Contact Colin for more information ✉️ Info@rcboelectrical.net 📱 0418311557 We are Hiring! Electrician, Home &amp; Garden, Appliance Repair Send message</p></details>
+    <a class="lib" href="https://www.facebook.com/ads/library/?id=2366555903874443" target="_blank" rel="noopener">View in the Ad Library &rarr;</a>
   </div>
-</article>
-<article class="card">
-  <div class="shot"><img src="../../assets/swipe/electrical/abw-electrical-and-air-conditioning.jpg" alt="ABW Electrical and Air Conditioning creative" loading="eager"></div>
-  <div class="body">
-    <div class="meta">
-      <span class="adv">ABW Electrical and Air Conditioning</span>
-      <span class="run">146 days running</span>
-      <span class="sub">started Jun 4, 2026 &middot; 480x600</span>
-      <a class="lib" href="https://www.facebook.com/ads/library/?id=2031692120769448" target="_blank" rel="noopener">view in Ad Library</a>
-    </div>
+</article><article class="card">
+  <div class="col-ad"><div class="unit">
+  <div class="uhead"><span class="av">A</span>
+    <span class="uname">ABW Electrical and Air Conditioning<em>Sponsored &middot; 146 days running</em></span></div>
+  <div class="utext">Some things to look for when you’re hiring an electrician that you might find helpful. Contact us: ABW Electrical and Air Conditioning 📍 107 Almond Avenue Mildura 📞 (03) 5000 1791 ✉️ admin@abwelectrical.com.au <span class="more"> &hellip;<span class="rest">#trades #electrician #heatingandcooling #construction ABWGROUP.COM.AU Electrical &amp; Air Conditioning Mildura ABW Group Contact Us ABWGROUP.COM.AU Electrical &amp; Air Conditioning Mildura ABW Group Contact Us ABWGROUP.COM.AU Electrical &amp; Air Conditioning Mildura ABW Group Contact Us ABWGROUP.COM.AU Electrical &amp; Air Conditioning Mildura ABW Group Contact Us ABWGROUP.COM.AU Electrical &amp; Air Conditioning Mildura ABW Group Contact Us ABWGROUP.COM.AU Electrical &amp; Air Conditioning Mildura ABW Group Contact Us</span></span></div>
+  <div class="uimg"><img src="../../assets/swipe/electrical/abw-electrical-and-air-conditioning.jpg" alt="ABW Electrical and Air Conditioning creative" loading="eager"></div>
+  
+</div></div>
+  <div class="col-say">
     <p class="note">Included as a caution, not a model. The copy is written for CUSTOMERS, not candidates.</p>
     <ul class="why"><li><em>Some things to look for when you are hiring an electrician</em> is a homeowner message sitting in a recruitment keyword search.</li><li>It has run 146 days because it is a customer awareness ad that happens to use hiring language.</li><li>The lesson: electrical businesses routinely blur the candidate and customer audiences. Keep them separate.</li></ul>
-    <details><summary>Full ad copy</summary><p class="copy">Some things to look for when you’re hiring an electrician that you might find helpful. Contact us: ABW Electrical and Air Conditioning 📍 107 Almond Avenue Mildura 📞 (03) 5000 1791 ✉️ admin@abwelectrical.com.au #trades #electrician #heatingandcooling #construction ABWGROUP.COM.AU Electrical &amp; Air Conditioning Mildura ABW Group Contact Us ABWGROUP.COM.AU Electrical &amp; Air Conditioning Mildura ABW Group Contact Us ABWGROUP.COM.AU Electrical &amp; Air Conditioning Mildura ABW Group Contact Us ABWGROUP.COM.AU Electrical &amp; Air Conditioning Mildura ABW Group Contact Us ABWGROUP.COM.AU Electrical &amp; Air Conditioning Mildura ABW Group Contact Us ABWGROUP.COM.AU Electrical &amp; Air Conditioning Mildura ABW Gro</p></details>
+    <a class="lib" href="https://www.facebook.com/ads/library/?id=2031692120769448" target="_blank" rel="noopener">View in the Ad Library &rarr;</a>
   </div>
-</article>
-<article class="card">
-  <div class="shot"><img src="../../assets/swipe/electrical/dyfa-plumbing---electrical.jpg" alt="DYFA Plumbing &amp; Electrical creative" loading="eager"></div>
-  <div class="body">
-    <div class="meta">
-      <span class="adv">DYFA Plumbing &amp; Electrical</span>
-      <span class="run">119 days running</span>
-      <span class="sub">started Jul 1, 2026 &middot; 600x600</span>
-      <a class="lib" href="https://www.facebook.com/ads/library/?id=4483731908529156" target="_blank" rel="noopener">view in Ad Library</a>
-    </div>
+</article><article class="card">
+  <div class="col-ad"><div class="unit">
+  <div class="uhead"><span class="av">D</span>
+    <span class="uname">DYFA Plumbing &amp; Electrical<em>Sponsored &middot; 119 days running</em></span></div>
+  <div class="utext">We are hiring a qualified electrician to join our Sunshine Coast team! We have built a strong reputation as trusted electricians across the Sunshine Coast. Key responsibilities for the role include: ✅ Experienc<span class="more"> &hellip;<span class="rest">e in new builds (essential) ✅ Ability to read and interpret electrical diagrams and schematics ✅ Strong understanding of construction plans ✅ Solid knowledge of AS3000 and relevant electrical standards ✅ Current QLD Electrical Licence Why Join DYFA Electrical? ✅ Competitive hourly rate ✅ Ongoing training and development opportunities ✅ Clear pathways for career progression within the company FB.ME WE&#x27;RE HIRING Sign up</span></span></div>
+  <div class="uimg"><img src="../../assets/swipe/electrical/dyfa-plumbing-electrical.jpg" alt="DYFA Plumbing &amp; Electrical creative" loading="eager"></div>
+  
+</div></div>
+  <div class="col-say">
     <p class="note">Clean, credible, benefit-led. Separates what we need from what you get.</p>
     <ul class="why"><li>Requirements and benefits sit in two clearly labelled blocks, so the reader can self-check in seconds.</li><li>Ends with a soft call to action, <em>Express your interest</em>, rather than the harder Apply now.</li><li>Says immediate start and full time, which matters to anyone between jobs.</li></ul>
-    <details><summary>Full ad copy</summary><p class="copy">We are hiring a qualified electrician to join our Sunshine Coast team! We have built a strong reputation as trusted electricians across the Sunshine Coast. Key responsibilities for the role include: ✅ Experience in new builds (essential) ✅ Ability to read and interpret electrical diagrams and schematics ✅ Strong understanding of construction plans ✅ Solid knowledge of AS3000 and relevant electrical standards ✅ Current QLD Electrical Licence Why Join DYFA Electrical? ✅ Competitive hourly rate ✅ Ongoing training and development opportunities ✅ Clear pathways for career progression within the company FB.ME WE&#x27;RE HIRING Sign up</p></details>
+    <a class="lib" href="https://www.facebook.com/ads/library/?id=4483731908529156" target="_blank" rel="noopener">View in the Ad Library &rarr;</a>
   </div>
-</article>
-<article class="card">
-  <div class="shot"><img src="../../assets/swipe/electrical/bice-electrical.jpg" alt="Bice Electrical creative" loading="eager"></div>
-  <div class="body">
-    <div class="meta">
-      <span class="adv">Bice Electrical</span>
-      <span class="run">113 days running</span>
-      <span class="sub">started Jul 7, 2026 &middot; 600x400</span>
-      <a class="lib" href="https://www.facebook.com/ads/library/?id=1358395636396741" target="_blank" rel="noopener">view in Ad Library</a>
-    </div>
+</article><article class="card">
+  <div class="col-ad"><div class="unit">
+  <div class="uhead"><span class="av">B</span>
+    <span class="uname">Bice Electrical<em>Sponsored &middot; 113 days running</em></span></div>
+  <div class="utext">Sparkies in Unley or along the coastline south of Adelaide CBD! Ready to actually enjoy being a sparky again? Bice Electrical is hiring a fully qualified electrician. And we look after our crew: ✅ Brand new 202<span class="more"> &hellip;<span class="rest">5 Ford Transit Custom (take-home van, fully kitted with Milwaukee Packout) ✅ $1,000 sign-on bonus ✅ TOIL system. Bank your extra hours and choose when to take them off ✅ Earn more than just your hourly rate. Every job you do efficiently puts more in your pocket. Join a team that values skill, not just speed. Apply now and let&#x27;s get you behind the wheel of your new van.</span></span></div>
+  <div class="uimg"><img src="../../assets/swipe/electrical/bice-electrical.jpg" alt="Bice Electrical creative" loading="eager"></div>
+  
+</div></div>
+  <div class="col-say">
     <p class="note">The one to beat, and it is in our own market. Adelaide, named by suburb.</p>
     <ul class="why"><li>Hyper-local targeting in the first line: Unley, and the coastline south of the Adelaide CBD.</li><li>Leads with the strongest physical perk available: a brand new 2025 take-home van, fully kitted with Milwaukee Packout.</li><li>Positions on standards rather than speed: <em>Join a team that values skill, not just speed.</em></li><li>Three variants running simultaneously, so they are actively testing, not set and forget.</li></ul>
-    <details><summary>Full ad copy</summary><p class="copy">Sparkies in Unley or along the coastline south of Adelaide CBD! Ready to actually enjoy being a sparky again? Bice Electrical is hiring a fully qualified electrician. And we look after our crew: ✅ Brand new 2025 Ford Transit Custom (take-home van, fully kitted with Milwaukee Packout) ✅ $1,000 sign-on bonus ✅ TOIL system. Bank your extra hours and choose when to take them off ✅ Earn more than just your hourly rate. Every job you do efficiently puts more in your pocket. Join a team that values skill, not just speed. Apply now and let&#x27;s get you behind the wheel of your new van.</p></details>
+    <a class="lib" href="https://www.facebook.com/ads/library/?id=1358395636396741" target="_blank" rel="noopener">View in the Ad Library &rarr;</a>
   </div>
-</article>
-<article class="card">
-  <div class="shot"><img src="../../assets/swipe/electrical/gbr-4x4-pty-ltd.jpg" alt="GBR 4x4 Pty Ltd creative" loading="eager"></div>
-  <div class="body">
-    <div class="meta">
-      <span class="adv">GBR 4x4 Pty Ltd</span>
-      <span class="run">85 days running</span>
-      <span class="sub">started Aug 4, 2026 &middot; 600x338</span>
-      <a class="lib" href="https://www.facebook.com/ads/library/?id=4260998180789821" target="_blank" rel="noopener">view in Ad Library</a>
-    </div>
+</article><article class="card">
+  <div class="col-ad"><div class="unit">
+  <div class="uhead"><span class="av">G</span>
+    <span class="uname">GBR 4x4 Pty Ltd<em>Sponsored &middot; 85 days running</em></span></div>
+  <div class="utext">🚗 WE&#x27;RE HIRING – QUALIFIED AUTO ELECTRICIAN ⚡ GBR 4X4 is looking for a qualified Auto Electrician to join our busy, professional light vehicle mechanical workshop. If you&#x27;re passionate about automotive electric<span class="more"> &hellip;<span class="rest">al systems, enjoy diagnosing faults, and want to work with a supportive team, we&#x27;d love to hear from you. The Role: 🔧 Diagnose and repair electrical faults on light vehicles 🔧 Install and service automotive electrical systems and accessories 🔧 Repair charging, starting, and battery systems 🔧 Perform wiring repairs and fit aftermarket accessories 🔧 Air-conditioning diagnosis and repairs 🔧 Work alongside our experienced mechanical team to deliver quality workmanship What We&#x27;re Looking For: ✅ Qualified Auto Electrician ✅ Vehicle Air-Conditioning licenses (preferred but not essential) ✅ Experience working on light vehicles (4WD experience is an advantage) ✅ Strong diagnostic and fault-finding skills ✅ Current driver&#x27;s licence ✅ Reliable, motivated, and takes pride in producing high-quality work What We Offer: ✔ Competitive pay based on experience ✔ Full-time, secure position ✔ Modern, well-equipped workshop ✔ Friendly and supportive team environment If you&#x27;re looking for your next opportunity with a respected local workshop, we&#x27;d love to hear from you. 📩 Send your resume to info@gbr4x4.com.au. Join the team at GBR 4X4 and help keep our customers on th GBR 4x4 Pty Ltd Auto Service 871 people like this Like Page</span></span></div>
+  <div class="uimg"><img src="../../assets/swipe/electrical/gbr-4x4-pty-ltd.jpg" alt="GBR 4x4 Pty Ltd creative" loading="eager"></div>
+  
+</div></div>
+  <div class="col-say">
     <p class="note">Included to show creative failing good copy. The words are fine, the image does no work.</p>
     <ul class="why"><li>The creative is a stylised map of Queensland with a 4x4 on it. No hiring message at all.</li><li>Cold traffic has no idea this is a job ad. It relies entirely on the caption, which is a losing bet on a visual-first platform.</li><li>Auto electrician, not domestic electrical, but the lesson transfers.</li></ul>
-    <details><summary>Full ad copy</summary><p class="copy">🚗 WE&#x27;RE HIRING – QUALIFIED AUTO ELECTRICIAN ⚡ GBR 4X4 is looking for a qualified Auto Electrician to join our busy, professional light vehicle mechanical workshop. If you&#x27;re passionate about automotive electrical systems, enjoy diagnosing faults, and want to work with a supportive team, we&#x27;d love to hear from you. The Role: 🔧 Diagnose and repair electrical faults on light vehicles 🔧 Install and service automotive electrical systems and accessories 🔧 Repair charging, starting, and battery systems 🔧 Perform wiring repairs and fit aftermarket accessories 🔧 Air-conditioning diagnosis and repairs 🔧 Work alongside our experienced mechanical team to deliver quality workmanship What We&#x27;re Looking Fo</p></details>
+    <a class="lib" href="https://www.facebook.com/ads/library/?id=4260998180789821" target="_blank" rel="noopener">View in the Ad Library &rarr;</a>
   </div>
-</article>
-<article class="card">
-  <div class="shot"><img src="../../assets/swipe/electrical/mezelecs-electrical-solutions.jpg" alt="Mezelecs Electrical Solutions creative" loading="eager"></div>
-  <div class="body">
-    <div class="meta">
-      <span class="adv">Mezelecs Electrical Solutions</span>
-      <span class="run">67 days running</span>
-      <span class="sub">started Aug 22, 2026 &middot; 450x600</span>
-      <a class="lib" href="https://www.facebook.com/ads/library/?id=2543140792804178" target="_blank" rel="noopener">view in Ad Library</a>
-    </div>
+</article><article class="card">
+  <div class="col-ad"><div class="unit">
+  <div class="uhead"><span class="av">M</span>
+    <span class="uname">Mezelecs Electrical Solutions<em>Sponsored &middot; 67 days running</em></span></div>
+  <div class="utext">We are hiring!🥳 Looking for a a local geelong electrician with aircon experience. Mezelecs Electrical Solutions Electrician, Business Send message</div>
+  <div class="uimg"><img src="../../assets/swipe/electrical/mezelecs-electrical-solutions.jpg" alt="Mezelecs Electrical Solutions creative" loading="eager"></div>
+  
+</div></div>
+  <div class="col-say">
     <p class="note">One line, no design, 67 days. Included because it shows a tight geo can carry a weak creative.</p>
     <ul class="why"><li>The entire copy is: looking for a local Geelong electrician with aircon experience.</li><li>No pay, no perks, no reason to choose them over anyone else.</li><li>It works only because Geelong is a small pool. Do not read it as a template.</li></ul>
-    <details><summary>Full ad copy</summary><p class="copy">We are hiring!🥳 Looking for a a local geelong electrician with aircon experience. Mezelecs Electrical Solutions Electrician, Business Send message</p></details>
+    <a class="lib" href="https://www.facebook.com/ads/library/?id=2543140792804178" target="_blank" rel="noopener">View in the Ad Library &rarr;</a>
   </div>
-</article>
-<article class="card">
-  <div class="shot"><img src="../../assets/swipe/electrical/ns-energy---solahart-tamworth---district.jpg" alt="NS Energy - Solahart Tamworth &amp; Districts creative" loading="eager"></div>
-  <div class="body">
-    <div class="meta">
-      <span class="adv">NS Energy - Solahart Tamworth &amp; Districts</span>
-      <span class="run">59 days running</span>
-      <span class="sub">started Aug 30, 2026 &middot; 600x600</span>
-      <a class="lib" href="https://www.facebook.com/ads/library/?id=1435540581773852" target="_blank" rel="noopener">view in Ad Library</a>
-    </div>
+</article><article class="card">
+  <div class="col-ad"><div class="unit">
+  <div class="uhead"><span class="av">N</span>
+    <span class="uname">NS Energy - Solahart Tamworth &amp; Districts<em>Sponsored &middot; 59 days running</em></span></div>
+  <div class="utext">⚡ LICENSED ELECTRICIAN WANTED COFFS HARBOUR Ready for a change? Join the growing team at NS Energy and build your career in the solar and battery industry. We’re looking for a licensed electrician to work acros<span class="more"> &hellip;<span class="rest">s Solar PV, inverters, switchboards, DC/AC cabling, battery connections, and more. Plus, enjoy a range of great perks: ☀️ Primarily Monday - Thursday 40 hour working week 💰 Attractive base salary + performance bonuses ⚡ Regular Friday overtime available 📱 Mobile phone allowance after probation 🔋 Solar &amp; battery accreditation desirable - training can be provided 🤝 Join an experienced, growing local team The role is full-time and based in Coffs Harbour, with occasional travel to Tamworth. If you’re a qualified sparky who takes pride in safe, quality work and wants to grow your skills in solar and battery installations, we want to hear from you. 👉 Apply below via SEEK. AU.SEEK.COM Licensed Electrician Wanted ⚡ Coffs Harbour 4-Day Week Great Pay + Bonuses Solar &amp; Battery See details</span></span></div>
+  <div class="uimg"><img src="../../assets/swipe/electrical/ns-energy-solahart-tamworth-districts.jpg" alt="NS Energy - Solahart Tamworth &amp; Districts creative" loading="eager"></div>
+  
+</div></div>
+  <div class="col-say">
     <p class="note">Widens the pool instead of narrowing it. That is the move worth copying.</p>
     <ul class="why"><li>Leads with the schedule, not the money: Monday to Thursday, 40 hours.</li><li>Offers to <em>train</em> the solar and battery accreditation rather than requiring it, which opens the role to a far bigger group.</li><li>Adds performance bonuses, regular Friday overtime and a phone allowance on top.</li></ul>
-    <details><summary>Full ad copy</summary><p class="copy">⚡ LICENSED ELECTRICIAN WANTED COFFS HARBOUR Ready for a change? Join the growing team at NS Energy and build your career in the solar and battery industry. We’re looking for a licensed electrician to work across Solar PV, inverters, switchboards, DC/AC cabling, battery connections, and more. Plus, enjoy a range of great perks: ☀️ Primarily Monday - Thursday 40 hour working week 💰 Attractive base salary + performance bonuses ⚡ Regular Friday overtime available 📱 Mobile phone allowance after probation 🔋 Solar &amp; battery accreditation desirable - training can be provided 🤝 Join an experienced, growing local team The role is full-time and based in Coffs Harbour, with occasional travel to Tamworth</p></details>
+    <a class="lib" href="https://www.facebook.com/ads/library/?id=1435540581773852" target="_blank" rel="noopener">View in the Ad Library &rarr;</a>
   </div>
-</article>
-<article class="card">
-  <div class="shot"><img src="../../assets/swipe/electrical/qpes.jpg" alt="QPES creative" loading="eager"></div>
-  <div class="body">
-    <div class="meta">
-      <span class="adv">QPES</span>
-      <span class="run">56 days running</span>
-      <span class="sub">started Sep 2, 2026 &middot; 338x600</span>
-      <a class="lib" href="https://www.facebook.com/ads/library/?id=1081602157950426" target="_blank" rel="noopener">view in Ad Library</a>
-    </div>
+</article><article class="card">
+  <div class="col-ad"><div class="unit">
+  <div class="uhead"><span class="av">Q</span>
+    <span class="uname">QPES<em>Sponsored &middot; 56 days running</em></span></div>
+  <div class="utext">If you&#x27;re a qualified sparky in the Moreton Bay area working five days a week and wondering if your boss actually values your work, this is worth reading. Queensland Power &amp; Electrical Services is a growing ele<span class="more"> &hellip;<span class="rest">ctrical company based in the Moreton Bay area and we&#x27;re looking for a qualified electrician with solid domestic experience to join our team. Here&#x27;s what the role looks like. You&#x27;ll be doing domestic and commercial maintenance, minor projects, and there&#x27;s a real opportunity to get into high-voltage work. The pay sits between $110,000 and $135,000 a year depending on your experience. And you work four days a week. Not as a perk we&#x27;ll quietly take back after three months. That&#x27;s just how we run things. You&#x27;ll also have a company vehicle, flexible hours, an RDO and TOIL system, a bonus scheme, and overtime available when it suits you. We&#x27;re a small, tight-knit team. Young crew. We get along well and we actually look out for each other. If that sounds like the job you&#x27;ve been waiting for, click Apply Now. After you fill in the form, we will call you to walk through the next steps. Electrician Wanted. $110k - $135k/yr. 4-Day Work Week. Moreton Bay Area. Learn More</span></span></div>
+  <div class="uimg"><img src="../../assets/swipe/electrical/qpes.jpg" alt="QPES creative" loading="eager"></div>
+  
+</div></div>
+  <div class="col-say">
     <p class="note">The best writing in the set, and the one I would study hardest.</p>
     <ul class="why"><li>Opens by naming the reader's private thought: <em>wondering if your boss actually values your work.</em></li><li>Leads with pay at $110,000 to $135,000 a year, then the four-day week.</li><li>Pre-empts the obvious scepticism in the reader's head: <em>Not as a perk we will quietly take back after three months.</em></li><li>Talks like a person. Small tight-knit team, young crew. It does not read like HR wrote it.</li></ul>
-    <details><summary>Full ad copy</summary><p class="copy">If you&#x27;re a qualified sparky in the Moreton Bay area working five days a week and wondering if your boss actually values your work, this is worth reading. Queensland Power &amp; Electrical Services is a growing electrical company based in the Moreton Bay area and we&#x27;re looking for a qualified electrician with solid domestic experience to join our team. Here&#x27;s what the role looks like. You&#x27;ll be doing domestic and commercial maintenance, minor projects, and there&#x27;s a real opportunity to get into high-voltage work. The pay sits between $110,000 and $135,000 a year depending on your experience. And you work four days a week. Not as a perk we&#x27;ll quietly take back after three months. That&#x27;s just how </p></details>
+    <a class="lib" href="https://www.facebook.com/ads/library/?id=1081602157950426" target="_blank" rel="noopener">View in the Ad Library &rarr;</a>
   </div>
-</article>
-<article class="card">
-  <div class="shot"><img src="../../assets/swipe/electrical/sorted-electrical.jpg" alt="Sorted Electrical creative" loading="eager"></div>
-  <div class="body">
-    <div class="meta">
-      <span class="adv">Sorted Electrical</span>
-      <span class="run">32 days running</span>
-      <span class="sub">started Sep 26, 2026 &middot; 600x600</span>
-      <a class="lib" href="https://www.facebook.com/ads/library/?id=4355649184745658" target="_blank" rel="noopener">view in Ad Library</a>
-    </div>
-    <p class="note">The only apprentice-specific creative in the entire sweep, which is a gap worth noting.</p>
-    <ul class="why"><li>Targets apprentices who are <em>performing well but not getting the opportunities</em>, which is a very specific and very real frustration.</li><li>Sets a bar rather than pleading: this is not for someone who wants to cruise.</li><li>Brisbane and Bayside, and offers residential electrical plus air conditioning in one apprenticeship.</li></ul>
-    <details><summary>Full ad copy</summary><p class="copy">We’re looking for a driven 2nd or 3rd year Electrical Apprentice to join Sorted Electrical in Brisbane. This isn’t for someone who wants to cruise through their apprenticeship. We want someone who: ⚡ Wants to become a seriously good electrician ⚡ Takes pride in clean, high-quality work ⚡ Communicates well with customers and the team ⚡ Wants more responsibility as they improve ⚡ Is hungry to learn residential electrical + air conditioning ⚡ Wants to work around other motivated tradespeople If you’re performing well but feel like you’re not getting the opportunities, training or progression you want, we’d like to hear from you. At Sorted, you’ll work across quality residential electrical and a</p></details>
+</article><article class="card">
+  <div class="col-ad"><div class="unit">
+  <div class="uhead"><span class="av">S</span>
+    <span class="uname">Sorted Electrical<em>Sponsored &middot; 32 days running</em></span></div>
+  <div class="utext">We’re looking for a driven 2nd or 3rd year Electrical Apprentice to join Sorted Electrical in Brisbane. This isn’t for someone who wants to cruise through their apprenticeship. We want someone who: ⚡ Wants to b<span class="more"> &hellip;<span class="rest">ecome a seriously good electrician ⚡ Takes pride in clean, high-quality work ⚡ Communicates well with customers and the team ⚡ Wants more responsibility as they improve ⚡ Is hungry to learn residential electrical + air conditioning ⚡ Wants to work around other motivated tradespeople If you’re performing well but feel like you’re not getting the opportunities, training or progression you want, we’d like to hear from you. At Sorted, you’ll work across quality residential electrical and air-conditioning projects with a team that wants to keep improving. More opportunity. More responsibility. More room to grow. Based in Brisbane &amp; Bayside. SORTEDELECTRICAL.COM.AU Want More From Your Electrical Apprenticeship? Apply to join the Sorted Electrical team as a qualified residential electrician in Brisbane. Apply now</span></span></div>
+  <div class="uimg"><img src="../../assets/swipe/electrical/sorted-electrical.jpg" alt="Sorted Electrical creative" loading="eager"></div>
+  
+</div></div>
+  <div class="col-say">
+    <p class="note">The only apprentice-specific creative in the sweep, and it now runs video too.</p>
+    <ul class="why"><li>Targets apprentices who are <em>performing well but not getting the opportunities</em>, which is a very specific and very real frustration.</li><li>Sets a bar rather than pleading: this is not for someone who wants to cruise.</li><li>Four video variants at 14.7s, 19s, 27s and 27s, so they are testing length hard.</li></ul>
+    <a class="lib" href="https://www.facebook.com/ads/library/?id=4355649184745658" target="_blank" rel="noopener">View in the Ad Library &rarr;</a>
   </div>
 </article>
 </div></section>
 
 <section><div class="wrap">
   <h2>Where aba TRADES can win</h2>
-  <p class="lead">These are the gaps in the set. Every one of them is something we already hold the raw material for.</p>
-  <div class="gap"><b>Nobody makes the vehicle the hero image</b><p>Bice names the van in copy but the creative is a group photo holding signs. A clean shot of a kitted-out take-home ute with the perk line on it is an unclaimed visual.</p></div><div class="gap"><b>Almost nobody shows real team photography well</b><p>Only two advertisers use real people, and neither puts genuine craft into it. Our SharePoint library holds 65 professional electrical on-site shots at up to 8192px.</p></div><div class="gap"><b>Only one apprentice creative in the whole sweep</b><p>Sorted Electrical is the single apprentice ad found. Apprentice recruitment meta is close to uncontested, and we have the training wall to back it.</p></div><div class="gap"><b>Training is treated as a perk, not a system</b><p>Everyone offers ongoing training. Nobody can point at a facility. Our 25 metre in-house training wall is a physical, photographable, uncopyable proof point.</p></div><div class="gap"><b>Video is barely used</b><p>This sweep is static-only by design, but it is worth a separate video pass. If the market is this static-heavy, vertical video is a cheap edge.</p></div>
+  <p class="lead">The gaps in the set. Every one of them is something we already hold the raw material for.</p>
+  <div class="gap"><b>Nobody makes the vehicle the hero image</b><p>Bice names the van in copy but the creative is a group photo holding signs. A clean shot of a kitted-out take-home ute with the perk line on it is an unclaimed visual.</p></div><div class="gap"><b>Almost nobody shows real team photography well</b><p>Only two advertisers use real people, and neither puts genuine craft into it. Our SharePoint library holds 65 professional electrical on-site shots at up to 8192px.</p></div><div class="gap"><b>Only one apprentice creative in the whole sweep</b><p>Sorted Electrical is the single apprentice ad found, static or video. Apprentice recruitment on Meta is close to uncontested, and we have the training wall to back it.</p></div><div class="gap"><b>Training is treated as a perk, not a system</b><p>Everyone offers ongoing training. Nobody can point at a facility. Our 25 metre in-house training wall is a physical, photographable, uncopyable proof point.</p></div><div class="gap"><b>Nobody is running vertical video with real production value</b><p>Astills is the only advertiser buying a drone shot, and they are running 43 days. The bar for video production in this market is very low.</p></div>
 </div></section>
 
 <section><div class="wrap">
   <h2>What comes next</h2>
   <div class="next">
-    <div><b>Phase 2</b><p>Proposed content. Angles, hooks and the exact copy per division, grounded in this research and in our own language. Presented for approval before anything is designed.</p></div>
-    <div><b>Phase 3</b><p>The creative layer. Real photography from our library plus the RISE motion system, built per division in every placement size.</p></div>
-    <div><b>Phase 1b</b><p>A video pass on the Ad Library, since vertical video is barely represented in what we found and we already hold native 9:16 electrical footage.</p></div>
+    <div><b>Phase 2</b><p>Proposed content. Angles, hooks and exact copy per division, grounded in this research and in our own language, and codified as reusable concepts rather than one-off lines.</p></div>
+    <div><b>Phase 3</b><p>The creative layer. Real photography from our library plus the RISE motion system, built per division in every placement size, video first in 9:16.</p></div>
   </div>
+  <div class="callout"><b>The headline for phase 3</b>
+    <p>Vertical video, 15 to 30 seconds, real crew in branded uniform to camera, burned-in captions so it works on mute, and a real shot of the vehicle and the training wall. Nobody in this market is doing that combination well, and we already own every asset it needs.</p></div>
 </div></section>
 
 <footer><div class="wrap">
