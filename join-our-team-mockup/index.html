@@ -431,6 +431,17 @@ p,li,summary,.benefit span{text-wrap:pretty}
 a:focus-visible,button:focus-visible,summary:focus-visible,.fan-card:focus-visible{outline:2px solid var(--navy-2);outline-offset:3px}
 .hero a:focus-visible,.film a:focus-visible,.apprentice a:focus-visible,.stickybar a:focus-visible{outline-color:#fff}
 
+/* 44px-tall hit areas: the carousel dots draw their 9px dot inside a full-height
+   button, and the sticky bar's small button gets a 44px floor */
+.fan-dots{gap:2px}
+.fan-dot{position:relative;width:24px;height:44px;background:none;border-radius:0}
+.fan-dot::before{content:"";position:absolute;left:50%;top:50%;width:9px;height:9px;border-radius:50%;
+  background:rgba(29,59,109,.22);transform:translate(-50%,-50%);transition:all .2s ease}
+.fan-dot.on{width:36px;background:none;border-radius:0}
+.fan-dot.on::before{width:28px;background:var(--navy);border-radius:var(--r-pill)}
+.fan-dot:hover::before{background:var(--navy-2)}
+.stickybar .btn.sm{min-height:44px}
+
 /* phone rhythm: tighter bands and compact cards so the page is not one long stack */
 @media(max-width:560px){
   .section{padding:64px 0}
