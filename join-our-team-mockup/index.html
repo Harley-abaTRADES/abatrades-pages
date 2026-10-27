@@ -363,6 +363,95 @@ input[type=file]::file-selector-button:hover{background:var(--navy);color:#fff;b
 .stickybar small{font-size:.8rem;line-height:1.25;margin-top:2px}
 .stickybar .btn.sm{padding:12px 20px;font-size:.88rem;white-space:nowrap;flex-shrink:0}
 @media(max-width:560px){.stickybar .btn.sm{padding:11px 17px;font-size:.85rem}}
+
+/* ================= design pass: hierarchy, rhythm and polish ================= */
+/* brand-true section labels: navy on a navy tint, the same pill everywhere,
+   and the mission label now matches the other section labels */
+.eyebrow{background:rgba(29,59,109,.07);color:var(--navy);margin-bottom:16px;padding:8px 16px;letter-spacing:.16em}
+.mission .lead{display:inline-block;background:rgba(29,59,109,.07);color:var(--navy);padding:8px 16px;border-radius:var(--r-pill);letter-spacing:.16em;margin-bottom:18px}
+.mission blockquote{text-wrap:balance;letter-spacing:-.005em}
+h1,h2{letter-spacing:-.01em}
+p,li,summary,.benefit span{text-wrap:pretty}
+
+/* the ticker dot was an off-palette green; slate keeps it quiet */
+.marquee .track span::after{background:var(--slate);opacity:.55;width:6px;height:6px}
+
+/* film: the meta line sits under a centred heading, so centre it and give it separators */
+.video-meta{justify-content:center;gap:0}
+.video-meta span{display:inline-flex;align-items:center}
+.video-meta span+span::before{content:"";width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,.45);margin:0 16px}
+
+/* values: even card heights, quieter body copy */
+.value{display:flex;flex-direction:column;align-items:center}
+.value p{line-height:1.55}
+
+/* roles: the dashed outline read as unfinished; a solid hairline card with depth */
+.applyany{border:1px solid var(--border);box-shadow:var(--shadow);padding:24px 28px}
+.applyany p{color:#3d527a}
+.applyany p b{color:var(--navy)}
+
+/* apprenticeships: the stat rules were a plumbing accent on an all-trades band */
+.stat div{border-left-color:rgba(255,255,255,.28)}
+.stat b{line-height:1.2;margin-bottom:2px}
+.apprentice img{box-shadow:0 30px 60px rgba(0,0,0,.28)}
+
+/* benefits: lift on hover like every other card on the page */
+.benefit{transition:transform .2s ease,box-shadow .2s ease}
+.benefit:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+.benefit b{margin-bottom:2px}
+
+/* gallery: a three-column bento of four distinct photos */
+.gallery{grid-template-columns:repeat(3,1fr);grid-auto-rows:clamp(200px,24vw,330px)}
+.gallery img,.gallery .wide{aspect-ratio:auto;height:100%}
+.gallery .g-left{object-position:28% 40%}
+.gallery img:nth-child(4){transition-delay:.12s}
+
+@media(max-width:880px){.gallery{grid-template-columns:1fr 1fr;grid-auto-rows:clamp(170px,30vw,260px)}.gallery .wide{grid-column:span 2}}
+
+/* community thumbs match the card radius */
+.community-media .big{box-shadow:var(--shadow)}
+
+/* faq: a clear open state and hover */
+.acc{transition:border-color .2s ease,box-shadow .2s ease}
+.acc summary{min-height:64px;transition:color .2s ease}
+.acc summary:hover{color:var(--navy-2)}
+.acc[open]{border-color:transparent;box-shadow:var(--shadow)}
+.acc[open] summary::after{color:var(--navy)}
+
+/* apply form: the two-line disabled label needed real line height */
+.formcard .btn{line-height:1.3;text-align:center;padding-top:16px;padding-bottom:16px;min-height:56px}
+.btn:disabled{opacity:.55;cursor:not-allowed}
+.btn:disabled:hover{background:var(--navy);border-color:var(--navy)}
+
+/* sticky bar: white button on navy, LIGHT hover (never navy on navy) */
+.stickybar .btn.light{background:#fff;border-color:#fff;color:var(--navy)}
+.stickybar .btn.light:hover{background:var(--surface);border-color:var(--surface);color:var(--navy)}
+
+/* keyboard focus that reads on light and dark bands alike */
+a:focus-visible,button:focus-visible,summary:focus-visible,.fan-card:focus-visible{outline:2px solid var(--navy-2);outline-offset:3px}
+.hero a:focus-visible,.film a:focus-visible,.apprentice a:focus-visible,.stickybar a:focus-visible{outline-color:#fff}
+
+/* phone rhythm: tighter bands and compact cards so the page is not one long stack */
+@media(max-width:560px){
+  .section{padding:64px 0}
+  .mission{padding-bottom:48px}
+  .brandrow{grid-template-columns:1fr;gap:10px;margin-top:28px}
+  .brandcard{display:grid;grid-template-columns:128px 1fr;align-items:center;column-gap:16px;padding:14px 16px}
+  .brandcard .bar{display:none}
+  .brandcard img{max-width:128px}
+  .brandcard small{margin-top:0}
+  .values-grid{grid-template-columns:1fr;gap:12px;margin-top:36px}
+  .value{display:grid;grid-template-columns:64px 1fr;column-gap:16px;text-align:left;padding:18px;align-items:center}
+  .value svg{width:64px;height:64px;margin:0;grid-row:1 / span 2}
+  .value h4{margin-bottom:2px;align-self:end}
+  .value p{align-self:start}
+  .benefits{gap:12px;margin-top:32px}
+  .gallery{grid-template-columns:1fr 1fr;grid-auto-rows:170px;gap:12px;margin-top:28px}
+  .gallery .wide{grid-column:span 2}
+  .applyany{padding:22px}
+  .formcard{padding:24px 20px}
+  .quote{padding:26px 22px}
+}
 </style>
 </head>
 <body>
@@ -600,12 +689,10 @@ input[type=file]::file-selector-button:hover{background:var(--navy);color:#fff;b
     <span class="eyebrow reveal">Life at aba TRADES</span>
     <h2 class="reveal">A crew you would actually want to work with</h2>
     <div class="gallery">
-      <img class="wide reveal" src="../assets/recruit/team-collage.jpg" alt="aba TRADES team at work and at team events">
-      <img class="reveal" src="../assets/recruit/training-square.jpg" alt="Training at aba TRADES">
-      <img class="reveal" src="../assets/recruit/careers-hero.jpg" alt="The aba TRADES crew">
-      <img class="wide reveal" src="../assets/recruit/team-wide.jpg" alt="aba TRADES team">
-      <img class="reveal" src="../assets/recruit/paul-chaina.jpg" alt="Paul Chaina">
-      <img class="reveal" src="../assets/recruit/team-video.jpg" alt="aba TRADES team">
+      <img class="wide reveal" src="../assets/recruit/team-collage.jpg" alt="aba TRADES team at work and at team events" loading="lazy">
+      <img class="reveal g-left" src="../assets/recruit/community-2.jpg" alt="Two aba TRADES team members sharing a laugh on a break" loading="lazy">
+      <img class="reveal" src="../assets/recruit/community-5.jpg" alt="An aba TRADES crew briefing outdoors" loading="lazy">
+      <img class="wide reveal" src="../assets/recruit/team-wide.jpg" alt="aba TRADES team" loading="lazy">
     </div>
   </div>
 </section>
@@ -733,7 +820,7 @@ input[type=file]::file-selector-button:hover{background:var(--navy);color:#fff;b
 
 <div class="stickybar" id="stickybar"><div class="wrap">
   <div><b>We are always hiring</b><small>Tell us about you. It takes about a minute.</small></div>
-  <a class="btn sm" href="#apply" style="background:#fff;border-color:#fff;color:var(--navy)">Apply now</a>
+  <a class="btn sm light" href="#apply">Apply now</a>
 </div></div>
 
 <script src="../assets/recruit/join-our-team.js"></script>
