@@ -119,10 +119,10 @@ p{max-width:70ch;line-height:1.6}
 @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
 
 /* ---------- mission ---------- */
-.mission{background:var(--surface)}
+.mission{background:var(--surface);padding-bottom:64px}
 .mission blockquote{font-size:clamp(1.4rem,2.6vw,2rem);font-weight:700;line-height:1.35;color:var(--navy);max-width:900px}
 .mission .lead{color:var(--slate);font-weight:700;letter-spacing:.12em;text-transform:uppercase;font-size:.8rem;margin-bottom:14px}
-.quote{margin-top:44px;background:#fff;border-radius:var(--r-surface);padding:34px;box-shadow:var(--shadow);max-width:840px;display:flex;gap:26px;align-items:flex-start}
+.quote{margin-top:26px;background:#fff;border-radius:var(--r-surface);padding:34px;box-shadow:var(--shadow);max-width:840px;display:flex;gap:26px;align-items:flex-start}
 .quote img{width:104px;height:104px;border-radius:50%;object-fit:cover;flex:none;border:4px solid var(--surface)}
 .quote .qbody p{font-style:italic;color:var(--navy);margin:0}
 .sig{font-family:var(--cursive);font-size:2.2rem;color:var(--navy);margin-top:14px;line-height:1}
@@ -303,6 +303,22 @@ footer ul{list-style:none;display:flex;flex-direction:column;gap:9px}
 footer a{text-decoration:none}
 footer a:hover{color:#fff}
 .legal{margin-top:38px;padding-top:20px;border-top:1px solid rgba(255,255,255,.15);display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-size:.85rem;color:rgba(255,255,255,.62)}
+
+/* ---- who we are + brand suite ---- */
+.brands{background:#fff;border-bottom:1px solid var(--border)}
+.brands .intro{max-width:780px}
+.brands h2{margin-top:6px}
+.brands .intro p{margin-top:14px;color:#3d527a}
+.brandrow{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-top:36px}
+.brandcard{border:1px solid var(--border);border-radius:16px;padding:20px 18px;background:#fff;transition:transform .25s ease,box-shadow .25s ease}
+.brandcard:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.brandcard .bar{display:block;width:34px;height:6px;border-radius:6px;margin-bottom:14px}
+.brandcard b{display:block;font-size:.92rem;color:var(--navy);letter-spacing:.01em}
+.brandcard small{display:block;margin-top:7px;color:var(--slate);font-size:.82rem;line-height:1.45}
+.brandnote{margin-top:22px;color:var(--slate);font-size:.9rem}
+@media(max-width:1080px){.brandrow{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:680px){.brandrow{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:420px){.brandrow{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -345,6 +361,25 @@ footer a:hover{color:#fff}
   </div></div>
   <div class="scrollcue"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
 </header>
+
+<!-- who we are + the brand suite: cold traffic from ads lands here and needs context fast -->
+<section class="brands section" id="brands">
+  <div class="wrap">
+    <div class="intro">
+      <span class="eyebrow reveal">Who we are</span>
+      <h2 class="reveal">One team, five trades, all under one roof</h2>
+      <p class="reveal">aba TRADES is an Adelaide team of tradespeople. Plumbing and gas, air conditioning, electrical, roofing and renovations all sit under the one group, so our people learn across trades, work on real jobs from day one, and stay with a business that keeps investing in them.</p>
+    </div>
+    <div class="brandrow">
+      <div class="brandcard reveal"><span class="bar" style="background:#BDD2B4"></span><b>aba PLUMBING + GAS</b><small>Qualified plumbers, gas fitters and drainage crews.</small></div>
+      <div class="brandcard reveal"><span class="bar" style="background:#6BB2BC"></span><b>aba AIR CONDITIONING</b><small>Installers and service technicians across Adelaide.</small></div>
+      <div class="brandcard reveal"><span class="bar" style="background:#F8D0A7"></span><b>aba ELECTRICAL</b><small>Licensed electricians on residential work.</small></div>
+      <div class="brandcard reveal"><span class="bar" style="background:#B2BDE3"></span><b>aba ROOFING</b><small>Roofers and storm repair crews.</small></div>
+      <div class="brandcard reveal"><span class="bar" style="background:#EFACAC"></span><b>aba RENOVATIONS</b><small>Carpenters, bathroom renovators and site crews.</small></div>
+    </div>
+    <p class="brandnote reveal">We have been training apprentices on our own 25 metre in-house training wall since 2015.</p>
+  </div>
+</section>
 
 <!-- mission -->
 <section class="mission section">
