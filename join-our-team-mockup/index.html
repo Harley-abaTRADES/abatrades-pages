@@ -319,6 +319,40 @@ footer a:hover{color:#fff}
 @media(max-width:1080px){.brandrow{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:680px){.brandrow{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:420px){.brandrow{grid-template-columns:1fr}}
+
+/* ---- theme element bleed ----
+   The group theme styles BARE blockquote/ul/ol/p/h4/summary/img, and our content
+   lives inside that theme, so those rules reach in. The `*` reset in this sheet kills
+   padding and margin but NOT border, which is how a 10px navy bar appeared on the
+   mission blockquote that is not part of this design. Pin them here.
+   NOTE: this sheet is written UNscoped on purpose; the WP builder prefixes every
+   selector with the wrapper class. */
+blockquote{border-left:0;padding:0;margin:0;font-style:inherit}
+blockquote footer,blockquote small,blockquote cite{border:0;padding:0;margin:0;font-size:inherit;font-weight:inherit;color:inherit}
+ul,ol{list-style:none;padding:0;margin:0}
+li{margin:0;padding:0}
+summary{list-style:none}
+summary::-webkit-details-marker{display:none}
+table{border-collapse:collapse}
+img{border:0}
+.consent span{font-weight:400}
+
+/* ---- no orphan words in headings: balance the lines so the last line is never a
+   single word (standing design rule) ---- */
+h1,h2,h3{text-wrap:balance}
+
+/* ---- brand cards now carry the real ABA Services logo lockups ---- */
+.brandcard{display:flex;flex-direction:column;align-items:flex-start;gap:12px}
+.brandcard img{display:block;width:100%;max-width:216px;height:auto}
+
+/* ---- file input: the native "Choose file" button is the last piece of unstyled
+   browser chrome on the page ---- */
+input[type=file]{padding:0;background:none;border:0;color:var(--slate);font-size:.9rem}
+input[type=file]::file-selector-button{
+  font:inherit;font-weight:700;font-size:.9rem;color:var(--navy);background:var(--surface);
+  border:1px solid var(--border);border-radius:var(--r-pill);padding:11px 20px;margin-right:14px;
+  cursor:pointer;transition:background .2s ease,color .2s ease,border-color .2s ease}
+input[type=file]::file-selector-button:hover{background:var(--navy);color:#fff;border-color:var(--navy)}
 </style>
 </head>
 <body>
@@ -370,13 +404,7 @@ footer a:hover{color:#fff}
       <h2 class="reveal">One team, five trades, all under one roof</h2>
       <p class="reveal">aba TRADES is an Adelaide team of tradespeople. Plumbing and gas, air conditioning, electrical, roofing and renovations all sit under the one group, so our people learn across trades, work on real jobs from day one, and stay with a business that keeps investing in them.</p>
     </div>
-    <div class="brandrow">
-      <div class="brandcard reveal"><span class="bar" style="background:#BDD2B4"></span><b>aba PLUMBING + GAS</b><small>Qualified plumbers, gas fitters and drainage crews.</small></div>
-      <div class="brandcard reveal"><span class="bar" style="background:#6BB2BC"></span><b>aba AIR CONDITIONING</b><small>Installers and service technicians across Adelaide.</small></div>
-      <div class="brandcard reveal"><span class="bar" style="background:#F8D0A7"></span><b>aba ELECTRICAL</b><small>Licensed electricians on residential work.</small></div>
-      <div class="brandcard reveal"><span class="bar" style="background:#B2BDE3"></span><b>aba ROOFING</b><small>Roofers and storm repair crews.</small></div>
-      <div class="brandcard reveal"><span class="bar" style="background:#EFACAC"></span><b>aba RENOVATIONS</b><small>Carpenters, bathroom renovators and site crews.</small></div>
-    </div>
+    <div class="brandrow"><div class="brandcard reveal"><span class="bar" style="background:#BDD2B4"></span><img src="../assets/recruit/brands/aba-plumbing-gas.png" alt="aba TRADES Plumbing + Gas" loading="lazy"><small>Qualified plumbers, gas fitters and drainage crews.</small></div><div class="brandcard reveal"><span class="bar" style="background:#6BB2BC"></span><img src="../assets/recruit/brands/aba-air-conditioning.png" alt="aba TRADES Air Conditioning" loading="lazy"><small>Installers and service technicians across Adelaide.</small></div><div class="brandcard reveal"><span class="bar" style="background:#F8D0A7"></span><img src="../assets/recruit/brands/aba-electrical-solar.png" alt="aba TRADES Electrical + Solar" loading="lazy"><small>Licensed electricians on residential work.</small></div><div class="brandcard reveal"><span class="bar" style="background:#B2BDE3"></span><img src="../assets/recruit/brands/aba-roofing.png" alt="aba TRADES Roofing" loading="lazy"><small>Roofers and storm repair crews.</small></div><div class="brandcard reveal"><span class="bar" style="background:#EFACAC"></span><img src="../assets/recruit/brands/aba-renovations.png" alt="aba TRADES Renovations" loading="lazy"><small>Carpenters, bathroom renovators and site crews.</small></div></div>
     <p class="brandnote reveal">We have been training apprentices on our own 25 metre in-house training wall since 2015.</p>
   </div>
 </section>
@@ -495,12 +523,12 @@ footer a:hover{color:#fff}
     <h2 class="reveal">Roles we are always looking for</h2>
     <p class="reveal" style="color:#3d527a;margin-top:14px">Fan through the trades. Tap the one that fits and it drops you straight at the form. These are the roles we hire for year round across Adelaide.</p>
     <div class="fan" id="fan">
-      <button class="fan-card" type="button" aria-label="Plumbing and gas" data-role="Qualified plumber"><svg viewBox="0 0 96 96" aria-hidden="true"><circle cx="48" cy="48" r="44" fill="#BDD2B4" opacity=".38"/><path d="M22 42h26a7 7 0 0 1 7 7v7" fill="none" stroke="#1D3B6D" stroke-width="5" stroke-linecap="round"/><path d="M32 42V30h12" fill="none" stroke="#1D3B6D" stroke-width="5" stroke-linecap="round"/><path d="M55 78c-6.6 0-11-4.4-11-10 0-4.6 11-14 11-14s11 9.4 11 14c0 5.6-4.4 10-11 10z" fill="#1D3B6D"/></svg><h4>Plumbing and gas</h4><ul class="fan-roles"><li>Qualified plumber</li><li>Gas fitter</li><li>Drainage and labourer</li></ul><span class="go">Apply</span></button>
-      <button class="fan-card" type="button" aria-label="Air conditioning" data-role="Air conditioning technician"><svg viewBox="0 0 96 96" aria-hidden="true"><circle cx="48" cy="48" r="44" fill="#6BB2BC" opacity=".34"/><rect x="20" y="28" width="56" height="26" rx="9" fill="#fff" stroke="#1D3B6D" stroke-width="5"/><path d="M30 41h36" stroke="#1D3B6D" stroke-width="5" stroke-linecap="round"/><path d="M30 64q5-6 10 0t10 0" fill="none" stroke="#1D3B6D" stroke-width="5" stroke-linecap="round"/><path d="M30 76q5-6 10 0t10 0" fill="none" stroke="#1D3B6D" stroke-width="5" stroke-linecap="round"/></svg><h4>Air conditioning</h4><ul class="fan-roles"><li>Air conditioning technician</li><li>Air conditioner installer</li></ul><span class="go">View roles</span></button>
-      <button class="fan-card" type="button" aria-label="Electrical" data-role="Licensed electrician"><svg viewBox="0 0 96 96" aria-hidden="true"><circle cx="48" cy="48" r="44" fill="#F8D0A7" opacity=".42"/><circle cx="48" cy="48" r="26" fill="#fff" stroke="#1D3B6D" stroke-width="5"/><path d="M52 26 38 52h10l-4 20 16-26H50z" fill="#1D3B6D"/></svg><h4>Electrical</h4><ul class="fan-roles"><li>Licensed electrician</li></ul><span class="go">View roles</span></button>
-      <button class="fan-card" type="button" aria-label="Roofing" data-role="Roofer"><svg viewBox="0 0 96 96" aria-hidden="true"><circle cx="48" cy="48" r="44" fill="#B2BDE3" opacity=".42"/><path d="M20 54 48 28l28 26" fill="none" stroke="#1D3B6D" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><path d="M30 52v20h36V52" fill="#fff" stroke="#1D3B6D" stroke-width="5" stroke-linejoin="round"/><path d="M42 52v20M54 52v20" stroke="#1D3B6D" stroke-width="4" opacity=".5"/></svg><h4>Roofing</h4><ul class="fan-roles"><li>Roofer</li></ul><span class="go">View roles</span></button>
-      <button class="fan-card" type="button" aria-label="Renovations" data-role="Carpenter"><svg viewBox="0 0 96 96" aria-hidden="true"><circle cx="48" cy="48" r="44" fill="#EFACAC" opacity=".4"/><rect x="20" y="28" width="46" height="16" rx="8" fill="#fff" stroke="#1D3B6D" stroke-width="5"/><path d="M66 36h4a6 6 0 0 1 6 6v8a6 6 0 0 1-6 6H44v6" fill="none" stroke="#1D3B6D" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><rect x="36" y="60" width="16" height="18" rx="5" fill="#fff" stroke="#1D3B6D" stroke-width="5"/></svg><h4>Renovations</h4><ul class="fan-roles"><li>Carpenter</li><li>Bathroom renovator</li></ul><span class="go">View roles</span></button>
-      <button class="fan-card" type="button" aria-label="Office and operations" data-role="Customer service"><svg viewBox="0 0 96 96" aria-hidden="true"><circle cx="48" cy="48" r="44" fill="#C8DD8A" opacity=".45"/><path d="M26 50v-6a22 22 0 0 1 44 0v6" fill="none" stroke="#1D3B6D" stroke-width="5" stroke-linecap="round"/><rect x="18" y="46" width="15" height="20" rx="7" fill="#fff" stroke="#1D3B6D" stroke-width="5"/><rect x="63" y="46" width="15" height="20" rx="7" fill="#fff" stroke="#1D3B6D" stroke-width="5"/><path d="M70 66v6a9 9 0 0 1-9 9h-9" fill="none" stroke="#1D3B6D" stroke-width="5" stroke-linecap="round"/></svg><h4>Office and operations</h4><ul class="fan-roles"><li>Customer service</li><li>Scheduler and dispatch</li><li>Estimator</li><li>Warehouse storeperson</li></ul><span class="go">View roles</span></button>
+      <div class="fan-card" role="button" tabindex="0" type="button" aria-label="Plumbing and gas" data-role="Qualified plumber"><svg viewBox="0 0 96 96" aria-hidden="true"><circle cx="48" cy="48" r="44" fill="#BDD2B4" opacity=".38"/><path d="M22 42h26a7 7 0 0 1 7 7v7" fill="none" stroke="#1D3B6D" stroke-width="5" stroke-linecap="round"/><path d="M32 42V30h12" fill="none" stroke="#1D3B6D" stroke-width="5" stroke-linecap="round"/><path d="M55 78c-6.6 0-11-4.4-11-10 0-4.6 11-14 11-14s11 9.4 11 14c0 5.6-4.4 10-11 10z" fill="#1D3B6D"/></svg><h4>Plumbing and gas</h4><ul class="fan-roles"><li>Qualified plumber</li><li>Gas fitter</li><li>Drainage and labourer</li></ul><span class="go">Apply</span></div>
+      <div class="fan-card" role="button" tabindex="0" type="button" aria-label="Air conditioning" data-role="Air conditioning technician"><svg viewBox="0 0 96 96" aria-hidden="true"><circle cx="48" cy="48" r="44" fill="#6BB2BC" opacity=".34"/><rect x="20" y="28" width="56" height="26" rx="9" fill="#fff" stroke="#1D3B6D" stroke-width="5"/><path d="M30 41h36" stroke="#1D3B6D" stroke-width="5" stroke-linecap="round"/><path d="M30 64q5-6 10 0t10 0" fill="none" stroke="#1D3B6D" stroke-width="5" stroke-linecap="round"/><path d="M30 76q5-6 10 0t10 0" fill="none" stroke="#1D3B6D" stroke-width="5" stroke-linecap="round"/></svg><h4>Air conditioning</h4><ul class="fan-roles"><li>Air conditioning technician</li><li>Air conditioner installer</li></ul><span class="go">View roles</span></div>
+      <div class="fan-card" role="button" tabindex="0" type="button" aria-label="Electrical" data-role="Licensed electrician"><svg viewBox="0 0 96 96" aria-hidden="true"><circle cx="48" cy="48" r="44" fill="#F8D0A7" opacity=".42"/><circle cx="48" cy="48" r="26" fill="#fff" stroke="#1D3B6D" stroke-width="5"/><path d="M52 26 38 52h10l-4 20 16-26H50z" fill="#1D3B6D"/></svg><h4>Electrical</h4><ul class="fan-roles"><li>Licensed electrician</li></ul><span class="go">View roles</span></div>
+      <div class="fan-card" role="button" tabindex="0" type="button" aria-label="Roofing" data-role="Roofer"><svg viewBox="0 0 96 96" aria-hidden="true"><circle cx="48" cy="48" r="44" fill="#B2BDE3" opacity=".42"/><path d="M20 54 48 28l28 26" fill="none" stroke="#1D3B6D" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><path d="M30 52v20h36V52" fill="#fff" stroke="#1D3B6D" stroke-width="5" stroke-linejoin="round"/><path d="M42 52v20M54 52v20" stroke="#1D3B6D" stroke-width="4" opacity=".5"/></svg><h4>Roofing</h4><ul class="fan-roles"><li>Roofer</li></ul><span class="go">View roles</span></div>
+      <div class="fan-card" role="button" tabindex="0" type="button" aria-label="Renovations" data-role="Carpenter"><svg viewBox="0 0 96 96" aria-hidden="true"><circle cx="48" cy="48" r="44" fill="#EFACAC" opacity=".4"/><rect x="20" y="28" width="46" height="16" rx="8" fill="#fff" stroke="#1D3B6D" stroke-width="5"/><path d="M66 36h4a6 6 0 0 1 6 6v8a6 6 0 0 1-6 6H44v6" fill="none" stroke="#1D3B6D" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><rect x="36" y="60" width="16" height="18" rx="5" fill="#fff" stroke="#1D3B6D" stroke-width="5"/></svg><h4>Renovations</h4><ul class="fan-roles"><li>Carpenter</li><li>Bathroom renovator</li></ul><span class="go">View roles</span></div>
+      <div class="fan-card" role="button" tabindex="0" type="button" aria-label="Office and operations" data-role="Customer service"><svg viewBox="0 0 96 96" aria-hidden="true"><circle cx="48" cy="48" r="44" fill="#C8DD8A" opacity=".45"/><path d="M26 50v-6a22 22 0 0 1 44 0v6" fill="none" stroke="#1D3B6D" stroke-width="5" stroke-linecap="round"/><rect x="18" y="46" width="15" height="20" rx="7" fill="#fff" stroke="#1D3B6D" stroke-width="5"/><rect x="63" y="46" width="15" height="20" rx="7" fill="#fff" stroke="#1D3B6D" stroke-width="5"/><path d="M70 66v6a9 9 0 0 1-9 9h-9" fill="none" stroke="#1D3B6D" stroke-width="5" stroke-linecap="round"/></svg><h4>Office and operations</h4><ul class="fan-roles"><li>Customer service</li><li>Scheduler and dispatch</li><li>Estimator</li><li>Warehouse storeperson</li></ul><span class="go">View roles</span></div>
     </div>
     <div class="fan-nav">
       <button class="fan-arrow" id="fanPrev" type="button" aria-label="Previous trade"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1D3B6D" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
