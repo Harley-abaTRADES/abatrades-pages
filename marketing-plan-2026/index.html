@@ -151,16 +151,23 @@ ul.points li span{color:#5B6880;display:block;font-size:.92em;margin-top:4px}
 @media (max-height:920px){.illo img{max-height:38vh}}
 
 
-/* corner illustration on every slide */
-.slide.has-illo .wrap{position:relative}
-figure.corner{position:absolute;top:-4px;right:0;width:190px;margin:0;z-index:2}
-figure.corner img{width:100%;height:auto;display:block}
-.slide.dark figure.corner{background:#fff;padding:7px;border-radius:8px}
-.slide.title-hero .eyebrow,.slide.title-hero h1{max-width:none}
-.slide.has-illo .eyebrow,.slide.has-illo h1,.slide.has-illo h2{max-width:calc(100% - 216px)}
-@media (max-width:1000px){
-  figure.corner{position:static;width:140px;margin:0 0 14px}
-  .slide.has-illo .eyebrow,.slide.has-illo h1,.slide.has-illo h2{max-width:100%}
+
+
+/* illustrations baked into the slide */
+.split{display:grid;grid-template-columns:minmax(0,1.62fr) minmax(0,1fr);gap:46px;align-items:center}
+.split .col-text{min-width:0}
+figure.illo-main{margin:0;align-self:center}
+figure.illo-main img{width:100%;height:auto;max-height:60vh;object-fit:contain;display:block}
+.slide.dark figure.illo-main{background:#fff;padding:12px;border-radius:14px}
+.split table{font-size:clamp(.78rem,1.02vw,.95rem)}
+.split th,.split td{padding-left:9px;padding-right:9px}
+.title-illo{margin-top:24px}
+.title-illo img{max-height:24vh}
+@media (max-width:1050px){
+  .split{grid-template-columns:1fr;gap:22px}
+  figure.illo-main{order:-1}
+  figure.illo-main img{max-height:30vh}
+  .title-illo img{max-height:26vh}
 }
 
 /* appendix */
@@ -193,8 +200,7 @@ figure.corner img{width:100%;height:auto;display:block}
 <!-- 1 -->
 <section class="slide has-illo dark title-hero">
   <div class="wrap">
-    <figure class="corner"><img src="illos/01-title.png" alt="Hand-drawn illustration for this slide"></figure>
-        <div class="title-grid">
+    <div class="title-grid">
       <div>
         <div class="eyebrow">Strategy session &middot; 2 November 2026</div>
         <h1>The marketing plan</h1>
@@ -203,6 +209,7 @@ figure.corner img{width:100%;height:auto;display:block}
       <div class="ask">
         <strong>The ask today</strong>
         <p>Endorse three moves and the direction.<br>Budget and sequencing follow once the direction is agreed.</p>
+        <figure class="illo-main title-illo"><img src="illos/01-title.png" alt="Hand-drawn illustration for this slide"></figure>
       </div>
     </div>
     <div class="meta">aba TRADES &middot; prepared for Paul by Josh and Harley</div>
@@ -212,9 +219,9 @@ figure.corner img{width:100%;height:auto;display:block}
 
 <!-- 2 -->
 <section class="slide has-illo light">
-  <div class="wrap">
-    <figure class="corner"><img src="illos/02-revenue-gp.png" alt="Hand-drawn illustration for this slide"></figure>
-        <div class="eyebrow">Where we stand</div>
+  <div class="wrap split">
+    <div class="col-text">
+    <div class="eyebrow">Where we stand</div>
     <h2>Our biggest brand and our most profitable brand are not the same brand</h2>
     <p class="lede">Trailing twelve months. Revenue says Plumbing. Gross profit says Air Con.</p>
     <table>
@@ -232,14 +239,16 @@ figure.corner img{width:100%;height:auto;display:block}
     </ul>
     <p class="src">Revenue: ServiceTitan report 295, invoiced, trailing 12 months to October 2026. Gross profit: job-level GP on completed jobs using Paul's method (revenue ex GST less labour at actual hours and burden rate, materials, subbies, recalls), trailing 12 months. Materials allocation is not fully audited, so GP is sound on labour and marginally generous on materials. It does not change the ranking.</p>
   </div>
+    <figure class="illo-main"><img src="illos/02-revenue-gp.png" alt="Hand-drawn illustration for this slide"></figure>
+  </div>
   <div class="brandmark">aba TRADES</div><div class="pagenum">02</div>
 </section>
 
 <!-- 3 -->
 <section class="slide has-illo alt">
-  <div class="wrap">
-    <figure class="corner"><img src="illos/03-positioning.png" alt="Hand-drawn illustration for this slide"></figure>
-        <div class="eyebrow">Positioning today</div>
+  <div class="wrap split">
+    <div class="col-text">
+    <div class="eyebrow">Positioning today</div>
     <h2>Five good local trades. Not yet one brand a homeowner chooses by name</h2>
     <p class="lede">Our read from the live sites and the competitor study. To be confirmed by Paul.</p>
     <div class="cols">
@@ -260,14 +269,16 @@ figure.corner img{width:100%;height:auto;display:block}
     </div>
     <p class="src">Source: live per-brand sites and abatrades.com.au (site switcher), reviewed October 2026. Competitive reference: internal competitor study dated December 2024, approximately 21 months old at the time of this session. Treat the competitor detail as indicative.</p>
   </div>
+    <figure class="illo-main"><img src="illos/03-positioning.png" alt="Hand-drawn illustration for this slide"></figure>
+  </div>
   <div class="brandmark">aba TRADES</div><div class="pagenum">03</div>
 </section>
 
 <!-- 4 -->
 <section class="slide has-illo light">
-  <div class="wrap">
-    <figure class="corner"><img src="illos/04-four-ps.png" alt="Hand-drawn illustration for this slide"></figure>
-        <div class="eyebrow">The four Ps as they stand</div>
+  <div class="wrap split">
+    <div class="col-text">
+    <div class="eyebrow">The four Ps as they stand</div>
     <h2>Four Ps, one lever in use</h2>
     <div class="ps">
       <div class="p"><div class="letter">Product</div><h3>Five trades, one promise</h3><p>The only productised offer is membership, Gold and Platinum. Everything else is sold as a job, not as an outcome.</p></div>
@@ -277,14 +288,16 @@ figure.corner img{width:100%;height:auto;display:block}
     </div>
     <p class="src">Paid channel split from the group performance feed: $191,015 spent in the 90 days to 27 October 2026, all Google. Meta, Bing and Axon at zero.</p>
   </div>
+    <figure class="illo-main"><img src="illos/04-four-ps.png" alt="Hand-drawn illustration for this slide"></figure>
+  </div>
   <div class="brandmark">aba TRADES</div><div class="pagenum">04</div>
 </section>
 
 <!-- 5 -->
 <section class="slide has-illo dark">
-  <div class="wrap">
-    <figure class="corner"><img src="illos/05-porter.png" alt="Hand-drawn illustration for this slide"></figure>
-        <div class="eyebrow">Michael Porter</div>
+  <div class="wrap split">
+    <div class="col-text">
+    <div class="eyebrow">Michael Porter</div>
     <div class="quote">If you are not different, you must be <em>cheapest</em>. Cheapest is not the business we want to be in.</div>
     <div class="cols" style="margin-top:44px">
       <div class="card"><div class="mini">Cost leadership</div><h3>Closed to us</h3><p>National franchises buy materials and media at a scale we cannot match. Competing on price means competing on their terms.</p></div>
@@ -292,14 +305,16 @@ figure.corner img{width:100%;height:auto;display:block}
     </div>
     <p class="src" style="margin-top:34px">Michael Porter, Competitive Strategy. Neither generic strategy is currently declared, which is why the market treats us as one of several interchangeable local trades.</p>
   </div>
+    <figure class="illo-main"><img src="illos/05-porter.png" alt="Hand-drawn illustration for this slide"></figure>
+  </div>
   <div class="brandmark">aba TRADES</div><div class="pagenum">05</div>
 </section>
 
 <!-- 6 -->
 <section class="slide has-illo light">
-  <div class="wrap">
-    <figure class="corner"><img src="illos/06-guarantee.png" alt="Hand-drawn illustration for this slide"></figure>
-        <div class="eyebrow">The strategy section &middot; Verne Harnish, Scaling Up</div>
+  <div class="wrap split">
+    <div class="col-text">
+    <div class="eyebrow">The strategy section &middot; Verne Harnish, Scaling Up</div>
     <h2>A brand promise is only a promise if something is at risk</h2>
     <p class="lede">Harnish's second and third strata of strategy: the one promise you make, and the guarantee that proves you mean it. Domino's did not say "fast pizza". It said thirty minutes or it is free.</p>
     <div class="cols three">
@@ -312,14 +327,16 @@ figure.corner img{width:100%;height:auto;display:block}
     </ul>
     <p class="src">Verne Harnish, Scaling Up, 7 Strata of Strategy: brand promise and brand promise guarantee, carried into the One Page Strategic Plan.</p>
   </div>
+    <figure class="illo-main"><img src="illos/06-guarantee.png" alt="Hand-drawn illustration for this slide"></figure>
+  </div>
   <div class="brandmark">aba TRADES</div><div class="pagenum">06</div>
 </section>
 
 <!-- 7 -->
 <section class="slide has-illo dark">
-  <div class="wrap">
-    <figure class="corner"><img src="illos/07-job-profit.png" alt="Hand-drawn illustration for this slide"></figure>
-        <div class="eyebrow">Who we actually make money from</div>
+  <div class="wrap split">
+    <div class="col-text">
+    <div class="eyebrow">Who we actually make money from</div>
     <h2>Ten percent of our jobs earn sixty percent of our gross profit</h2>
     <table>
       <thead><tr><th>Job type</th><th>Jobs</th><th>Gross profit</th><th>GP per job</th><th>GP %</th></tr></thead>
@@ -338,14 +355,16 @@ figure.corner img{width:100%;height:auto;display:block}
     </ul>
     <p class="src">Job-level gross profit on completed jobs, 1 July to 14 October 2026: 2,508 jobs, $3.22m revenue, 97 percent matched to a ServiceTitan job type. Same GP method as slide 2. Membership status is not populated on job records, so member share of these jobs cannot be measured from this data.</p>
   </div>
+    <figure class="illo-main"><img src="illos/07-job-profit.png" alt="Hand-drawn illustration for this slide"></figure>
+  </div>
   <div class="brandmark">aba TRADES</div><div class="pagenum">07</div>
 </section>
 
 <!-- 8 -->
 <section class="slide has-illo light">
-  <div class="wrap">
-    <figure class="corner"><img src="illos/08-door.png" alt="Hand-drawn illustration for this slide"></figure>
-        <div class="eyebrow">Who we need through the door</div>
+  <div class="wrap split">
+    <div class="col-text">
+    <div class="eyebrow">Who we need through the door</div>
     <h2>A homeowner replacing a ducted system they have already given up on</h2>
     <div class="cols">
       <div>
@@ -362,14 +381,16 @@ figure.corner img{width:100%;height:auto;display:block}
     </ul>
     <p class="src">Buyer profile modelled from job-level GP and job notes, 1 July to 14 October 2026, and the 3CX call sample of 21 to 25 September 2026. Source attribution: ServiceTitan job campaign, all 51 ducted installs tagged. Demographics and trigger timing are not yet measured; that is the jobs-to-be-done build awaiting sign-off.</p>
   </div>
+    <figure class="illo-main"><img src="illos/08-door.png" alt="Hand-drawn illustration for this slide"></figure>
+  </div>
   <div class="brandmark">aba TRADES</div><div class="pagenum">08</div>
 </section>
 
 <!-- 9 -->
 <section class="slide has-illo light">
-  <div class="wrap">
-    <figure class="corner"><img src="illos/09-tam.png" alt="Hand-drawn illustration for this slide"></figure>
-        <div class="eyebrow">Market size &middot; how each number is built</div>
+  <div class="wrap split">
+    <div class="col-text">
+    <div class="eyebrow">Market size &middot; how each number is built</div>
     <h2>A $1.09 billion market, a $941 million slice we can serve, and $13 million we can win</h2>
     <div class="tam">
       <div class="tier">
@@ -393,14 +414,16 @@ figure.corner img{width:100%;height:auto;display:block}
     </ul>
     <p class="src">All figures modelled from published penetration rates and replacement cycles, priced at current Adelaide market rates. Order of magnitude, not a forecast. ServiceTitan revenue for the "today" share: $9.26m, trailing 12 months. SOM is a capacity constraint, not a demand constraint: at 1.0 percent of SAM today, the market is not what limits us.</p>
   </div>
+    <figure class="illo-main"><img src="illos/09-tam.png" alt="Hand-drawn illustration for this slide"></figure>
+  </div>
   <div class="brandmark">aba TRADES</div><div class="pagenum">09</div>
 </section>
 
 <!-- 10 -->
 <section class="slide has-illo light">
-  <div class="wrap">
-    <figure class="corner"><img src="illos/10-buyer-bands.png" alt="Hand-drawn illustration for this slide"></figure>
-        <div class="eyebrow">Light, medium and heavy buyers</div>
+  <div class="wrap split">
+    <div class="col-text">
+    <div class="eyebrow">Light, medium and heavy buyers</div>
     <h2>Half our customers buy once. They are worth $315 each.</h2>
     <div class="bands">
       <div class="band">
@@ -431,6 +454,8 @@ figure.corner img{width:100%;height:auto;display:block}
     </ul>
     <p class="src">7,317 paying customers, November 2024 to October 2026, merged across business units. A further 2,730 customer records carried no revenue and are excluded. Band is a count of paid jobs in the window, so "one job" means one job in 24 months.</p>
   </div>
+    <figure class="illo-main"><img src="illos/10-buyer-bands.png" alt="Hand-drawn illustration for this slide"></figure>
+  </div>
   <div class="brandmark">aba TRADES</div><div class="pagenum">10</div>
 </section>
 
@@ -451,9 +476,9 @@ figure.corner img{width:100%;height:auto;display:block}
 
 <!-- 12 -->
 <section class="slide has-illo light">
-  <div class="wrap">
-    <figure class="corner"><img src="illos/12-journey.png" alt="Hand-drawn illustration for this slide"></figure>
-        <div class="eyebrow">The customer journey</div>
+  <div class="wrap split">
+    <div class="col-text">
+    <div class="eyebrow">The customer journey</div>
     <h2>Strong in the middle, absent at both ends</h2>
     <div class="journey5">
       <div class="j5 weak"><div class="n">01</div><h3>Awareness</h3><p>No brand media. We are not in the consideration set until the problem exists.</p><span class="st bad">Absent</span></div>
@@ -468,14 +493,16 @@ figure.corner img{width:100%;height:auto;display:block}
     </ul>
     <p class="src">Sources: ServiceTitan job and campaign attribution July to October 2026; CLV analysis November 2024 to October 2026; unsold estimate and cancellation figures from Paul's Low-Hanging Fruit pack, 22 October 2026.</p>
   </div>
+    <figure class="illo-main"><img src="illos/12-journey.png" alt="Hand-drawn illustration for this slide"></figure>
+  </div>
   <div class="brandmark">aba TRADES</div><div class="pagenum">12</div>
 </section>
 
 <!-- 13 -->
 <section class="slide has-illo alt">
-  <div class="wrap">
-    <figure class="corner"><img src="illos/13-channels.png" alt="Hand-drawn illustration for this slide"></figure>
-        <div class="eyebrow">Growth levers &middot; the channels we can pull</div>
+  <div class="wrap split">
+    <div class="col-text">
+    <div class="eyebrow">Growth levers &middot; the channels we can pull</div>
     <h2>More, better, new, and all of it is a channel decision</h2>
     <div class="cols three">
       <div class="card"><div class="mini">More &middot; scale paid where it still pays</div><h3>Air Con, Roofing, Renovations</h3><p>Marketing efficiency of 5.77 on Air Con, 4.92 on Roofing and 3.24 on Renovations. Fixed costs are already covered, so incremental revenue at these ratios still contributes. Plumbing at 8.92 is the one to hold, not grow.</p></div>
@@ -488,14 +515,16 @@ figure.corner img{width:100%;height:auto;display:block}
     </ul>
     <p class="src">Marketing efficiency ratio = revenue divided by ad spend, 90 days to 27 October 2026. Conversion opportunities from Paul's Low-Hanging Fruit pack, 22 October 2026: 1,113 unsold estimates worth $7,511,071 at middle option.</p>
   </div>
+    <figure class="illo-main"><img src="illos/13-channels.png" alt="Hand-drawn illustration for this slide"></figure>
+  </div>
   <div class="brandmark">aba TRADES</div><div class="pagenum">13</div>
 </section>
 
 <!-- 14 -->
 <section class="slide has-illo light">
-  <div class="wrap">
-    <figure class="corner"><img src="illos/14-always-on.png" alt="Hand-drawn illustration for this slide"></figure>
-        <div class="eyebrow">Always-on versus campaign</div>
+  <div class="wrap split">
+    <div class="col-text">
+    <div class="eyebrow">Always-on versus campaign</div>
     <h2>A system that runs, not spikes that stop</h2>
     <div class="cols">
       <div class="card"><div class="mini">Campaign</div><h3>Borrowed attention</h3><p>Spend goes up, enquiries follow, spend stops, silence. Cost per acquisition rises at every restart because the memory has decayed and the audience has to be bought again. Capacity planning is impossible.</p></div>
@@ -506,14 +535,16 @@ figure.corner img{width:100%;height:auto;display:block}
       <li><strong>Campaigns sit on top of the system.</strong><span>Peak season and offers get a push. They never replace the base.</span></li>
     </ul>
   </div>
+    <figure class="illo-main"><img src="illos/14-always-on.png" alt="Hand-drawn illustration for this slide"></figure>
+  </div>
   <div class="brandmark">aba TRADES</div><div class="pagenum">14</div>
 </section>
 
 <!-- 15 -->
 <section class="slide has-illo dark">
-  <div class="wrap">
-    <figure class="corner"><img src="illos/15-one-door.png" alt="Hand-drawn illustration for this slide"></figure>
-        <div class="eyebrow">Promotion &middot; channel concentration</div>
+  <div class="wrap split">
+    <div class="col-text">
+    <div class="eyebrow">Promotion &middot; channel concentration</div>
     <h2>We pay for one door. It is our best door, and it is the only one.</h2>
     <div class="stats">
       <div class="stat"><div class="k num">$191,015</div><div class="l">paid media, 90 days to 27 October 2026</div></div>
@@ -527,6 +558,8 @@ figure.corner img{width:100%;height:auto;display:block}
       <li><strong>Paid is the smallest door by volume and the best at converting.</strong><span>12.2 percent of calls, booking 28.1 percent. Cutting it would cost more than its share suggests. The answer is a second door, not a smaller first one.</span></li>
     </ul>
     <p class="src">Paid spend from the group performance feed. Marketing and advertising figure from the 2026-27 Strategy Session, Xero, 12 months to 30 September 2026. Booking rate from ServiceTitan telecom, 7,360 inbound calls July to September 2026.</p>
+  </div>
+    <figure class="illo-main"><img src="illos/15-one-door.png" alt="Hand-drawn illustration for this slide"></figure>
   </div>
   <div class="brandmark">aba TRADES</div><div class="pagenum">15</div>
 </section>
@@ -554,9 +587,9 @@ figure.corner img{width:100%;height:auto;display:block}
 
 <!-- 17 -->
 <section class="slide has-illo light">
-  <div class="wrap">
-    <figure class="corner"><img src="illos/17-plan.png" alt="Hand-drawn illustration for this slide"></figure>
-        <div class="eyebrow">Plan on a page</div>
+  <div class="wrap split">
+    <div class="col-text">
+    <div class="eyebrow">Plan on a page</div>
     <h2>Three moves, one decision each</h2>
     <div class="moves">
       <div class="move">
@@ -582,14 +615,16 @@ figure.corner img{width:100%;height:auto;display:block}
       <li><strong>Decisions needed from Paul:</strong> endorse the always-on system; approve the three channel tests in order; approve the replacement proposition and its price architecture.</li>
     </ul>
   </div>
+    <figure class="illo-main"><img src="illos/17-plan.png" alt="Hand-drawn illustration for this slide"></figure>
+  </div>
   <div class="brandmark">aba TRADES</div><div class="pagenum">17</div>
 </section>
 
 <!-- 18 Appendix -->
 <section class="slide has-illo light">
-  <div class="wrap">
-    <figure class="corner"><img src="illos/18-appendix.png" alt="Hand-drawn illustration for this slide"></figure>
-        <div class="eyebrow">Appendix</div>
+  <div class="wrap split">
+    <div class="col-text">
+    <div class="eyebrow">Appendix</div>
     <h2>Sources, windows and the arithmetic</h2>
     <div class="appx">
       <h3>Gross profit definitions in use</h3>
@@ -621,6 +656,8 @@ figure.corner img{width:100%;height:auto;display:block}
       <h3>Framework references</h3>
       <p>Michael Porter, Competitive Strategy. Verne Harnish, Scaling Up, 7 Strata of Strategy. Byron Sharp, How Brands Grow, and the Ehrenberg-Bass Institute. Binet and Field, The Long and the Short of It. Alex Hormozi's value equation informed the guarantee framing. Illustrations use the Ian Xiaohei style system (MIT, credited in the vault).</p>
     </div>
+  </div>
+    <figure class="illo-main"><img src="illos/18-appendix.png" alt="Hand-drawn illustration for this slide"></figure>
   </div>
   <div class="brandmark">aba TRADES</div><div class="pagenum">A1</div>
 </section>
