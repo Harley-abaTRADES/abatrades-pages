@@ -71,7 +71,26 @@ h3 small{font-weight:400;font-size:.78rem;color:var(--slate)}
 footer{background:var(--dark);color:rgba(255,255,255,.75);padding:34px 0;font-size:.86rem}
 footer b{color:#fff}
 @media(max-width:880px){.card{grid-template-columns:1fr}.unit{max-width:100%}.two{grid-template-columns:1fr;gap:20px}.barrow{grid-template-columns:120px 1fr 44px}}
+
+section{scroll-margin-top:84px}
+.seceyebrow{display:flex;align-items:baseline;gap:12px;margin-bottom:12px}
+.secnum{font-size:1.45rem;font-weight:700;color:var(--navy);opacity:.22;letter-spacing:0}
+.seclab{font-size:.74rem;font-weight:700;letter-spacing:.17em;text-transform:uppercase;color:var(--accent)}
+.progwrap{position:fixed;top:0;left:0;right:0;height:3px;z-index:60;background:rgba(29,59,109,.08)}
+#prog{height:100%;width:0;background:var(--accent);transition:width .1s linear}
+.rail{position:fixed;right:26px;top:50%;transform:translateY(-50%);width:190px;z-index:50;display:none}
+.railhead{font-size:.68rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--slate);padding-left:12px;margin-bottom:10px}
+.rail a{display:flex;gap:10px;align-items:baseline;padding:7px 0 7px 12px;
+ border-left:2px solid var(--border);text-decoration:none;color:var(--slate);
+ font-size:.83rem;line-height:1.25;transition:color .18s,border-color .18s}
+.rail a:hover{color:var(--navy)}
+.rail a.on{color:var(--navy);font-weight:700;border-left-color:var(--accent)}
+.rail a .rn{font-size:.7rem;font-weight:700;opacity:.55;flex-shrink:0}
+@media(min-width:1280px){.rail{display:block} section .wrap{padding-right:246px}}
+
 </style></head><body>
+<div class="progwrap"><div id="prog"></div></div>
+<nav class="rail" aria-label="Sections"><div class="railhead">Sections</div><a href="#s1" data-sec="s1"><span class="rn">01</span><span class="rl">Method</span></a><a href="#s2" data-sec="s2"><span class="rn">02</span><span class="rl">Sources</span></a><a href="#s3" data-sec="s3"><span class="rn">03</span><span class="rl">Video</span></a><a href="#s4" data-sec="s4"><span class="rn">04</span><span class="rl">Patterns</span></a><a href="#s5" data-sec="s5"><span class="rn">05</span><span class="rl">Concepts</span></a><a href="#s6" data-sec="s6"><span class="rn">06</span><span class="rl">The ads</span></a><a href="#s7" data-sec="s7"><span class="rn">07</span><span class="rl">The gaps</span></a><a href="#s8" data-sec="s8"><span class="rn">08</span><span class="rl">Next</span></a></nav>
 <header><div class="wrap">
   <img src="https://harley-abatrades.github.io/abatrades-pages/assets/brand/abatrades-logo-h.svg" alt="aba TRADES">
   <span class="pill">Phase 1 &middot; Research</span>
@@ -79,8 +98,8 @@ footer b{color:#fff}
   <p>A swipe file of live recruitment ads from the Meta Ad Library, shown as they appear in the feed so the words and the image can be judged together, ranked by how long they have been running. Prepared for review before we move to proposed content and then creative.</p>
 </div></header>
 
-<section><div class="wrap">
-  <h2>How this was built</h2>
+<section id="s1"><div class="wrap">
+  <div class="seceyebrow"><span class="secnum">01</span><span class="seclab">Method</span></div><h2>How this was built</h2>
   <p class="lead">Every ad here is live right now and was pulled from the public Meta Ad Library on 28 October 2026, filtered to Australia. Nothing comes from a third party list. The ranking signal is longevity, because Meta only shows active ads for ordinary commercial advertisers, so an ad still running is an ad earning its place.</p>
   <div class="stats">
     <div class="stat"><b>451</b><span>live ads scanned across keyword sweeps</span></div>
@@ -93,8 +112,8 @@ footer b{color:#fff}
 </div></section>
 
 
-<section><div class="wrap">
-  <h2>What the Ad Library can and cannot tell us</h2>
+<section id="s2"><div class="wrap">
+  <div class="seceyebrow"><span class="secnum">02</span><span class="seclab">Sources</span></div><h2>What the Ad Library can and cannot tell us</h2>
   <p class="lead">Worth stating plainly, because it explains why longevity is what we rank on rather than engagement.</p>
   <div class="two">
     <div><h3>Available</h3>
@@ -125,8 +144,8 @@ footer b{color:#fff}
   </div>
 </div></section>
 
-<section><div class="wrap">
-  <h2>What role video plays</h2>
+<section id="s3"><div class="wrap">
+  <div class="seceyebrow"><span class="secnum">03</span><span class="seclab">Video</span></div><h2>What role video plays</h2>
   <p class="lead">This is the question worth answering properly, because the instinct is that video wins and the data says something more specific than that.</p>
   <div class="stats">
     <div class="stat"><b>59%</b><span>of genuine recruitment ads are video</span></div>
@@ -254,15 +273,15 @@ footer b{color:#fff}
 </article>
 </div></section>
 
-<section><div class="wrap">
-  <h2>The patterns that repeat</h2>
+<section id="s4"><div class="wrap">
+  <div class="seceyebrow"><span class="secnum">04</span><span class="seclab">Patterns</span></div><h2>The patterns that repeat</h2>
   <p class="lead">What the long-running ads do in common. Not one of them is a clever visual trick.</p>
   <div class="pat"><b>Pay is stated outright</b><p>Five of the eleven statics name a number. $38 to $45 an hour, $110k to $135k a year, up to $65 an hour in Queensland. The ones that hide the rate are the ones that do not last.</p></div><div class="pat"><b>Perks are itemised, never summarised</b><p>The long-running ads list eight to ten single-line perks with ticks. Nobody writes generous package. They write the take-home ute, the fuel card, the birthday off, the Thursday finish.</p></div><div class="pat"><b>The take-home vehicle is the top currency</b><p>It is the perk that gets named first and described in most detail. Bice leads with the van and the tool kit; Activ8 leads with personal use on the fuel card.</p></div><div class="pat"><b>Time beats money as a differentiator</b><p>Five of eleven sell the schedule: four-day weeks, TOIL banking, RDOs, early Friday finishes, Monday to Thursday. At this pay level time is the thing competitors cannot easily match.</p></div><div class="pat"><b>The hook is your current employer, not us</b><p>The strongest copy names the reader's private frustration. Does your boss actually value your work. Ready to enjoy being a sparky again. It reads like a person, not a job spec.</p></div><div class="pat"><b>Location is named by suburb, not by state</b><p>Unley and the coastline south of the Adelaide CBD. Moreton Bay. Mount Gambier. Coffs Harbour. Specific geography signals a real local job to someone scrolling in that area.</p></div><div class="pat"><b>Non-negotiables are framed as integrity</b><p>We do follow the rules. Certificate III, sorry, non-negotiable. Stating the hard requirements plainly reads as a company that will not cut corners, which tradespeople screen for.</p></div><div class="pat"><b>The winning creative is real people</b><p>Uniforms, branded vans, real crews on real jobs, in both the statics and every video. Nobody in this sweep is running generated people, and in a trade selling a real team that is the right call.</p></div>
 </div></section>
 
 
-<section><div class="wrap">
-  <h2>The concept library</h2>
+<section id="s5"><div class="wrap">
+  <div class="seceyebrow"><span class="secnum">05</span><span class="seclab">Concepts</span></div><h2>The concept library</h2>
   <p class="lead">These same 27 ads, codified into structured fields rather than prose. Hook type, audience, which offers are present, the call to action and the proof. This is the bridge into phase 2: copy gets written by selecting from this table instead of starting from a blank page. Published as machine readable JSON alongside this page.</p>
 
   <div class="two">
@@ -289,8 +308,8 @@ footer b{color:#fff}
   </div>
 </div></section>
 
-<section><div class="wrap">
-  <h2>The static ads, longest running first</h2>
+<section id="s6"><div class="wrap">
+  <div class="seceyebrow"><span class="secnum">06</span><span class="seclab">The ads</span></div><h2>The static ads, longest running first</h2>
   <p class="lead">Each one is shown as it appears in the feed, copy and creative together, with the reason it is worth studying alongside.</p>
   <article class="card">
   <div class="col-ad"><div class="unit">
@@ -438,14 +457,14 @@ footer b{color:#fff}
 </article>
 </div></section>
 
-<section><div class="wrap">
-  <h2>Where aba TRADES can win</h2>
+<section id="s7"><div class="wrap">
+  <div class="seceyebrow"><span class="secnum">07</span><span class="seclab">The gaps</span></div><h2>Where aba TRADES can win</h2>
   <p class="lead">The gaps in the set. Every one of them is something we already hold the raw material for.</p>
   <div class="gap"><b>Nobody makes the vehicle the hero image</b><p>Bice names the van in copy but the creative is a group photo holding signs. A clean shot of a kitted-out take-home ute with the perk line on it is an unclaimed visual.</p></div><div class="gap"><b>Almost nobody shows real team photography well</b><p>Only two advertisers use real people, and neither puts genuine craft into it. Our SharePoint library holds 65 professional electrical on-site shots at up to 8192px.</p></div><div class="gap"><b>Only one apprentice creative in the whole sweep</b><p>Sorted Electrical is the single apprentice ad found, static or video. Apprentice recruitment on Meta is close to uncontested, and we have the training wall to back it.</p></div><div class="gap"><b>Training is treated as a perk, not a system</b><p>Everyone offers ongoing training. Nobody can point at a facility. Our 25 metre in-house training wall is a physical, photographable, uncopyable proof point.</p></div><div class="gap"><b>Nobody is running vertical video with real production value</b><p>Astills is the only advertiser buying a drone shot, and they are running 43 days. The bar for video production in this market is very low.</p></div>
 </div></section>
 
-<section><div class="wrap">
-  <h2>What comes next</h2>
+<section id="s8"><div class="wrap">
+  <div class="seceyebrow"><span class="secnum">08</span><span class="seclab">Next</span></div><h2>What comes next</h2>
   <div class="next">
     <div><b>Phase 2</b><p>Proposed content. Angles, hooks and exact copy per division, grounded in this research and in our own language, and codified as reusable concepts rather than one-off lines.</p></div>
     <div><b>Phase 3</b><p>The creative layer. Real photography from our library plus the RISE motion system, built per division in every placement size, video first in 9:16.</p></div>
@@ -458,4 +477,25 @@ footer b{color:#fff}
   <b>aba TRADES</b> &middot; internal marketing research &middot; prepared 28 October 2026 &middot; source: Meta Ad Library (AU)<br>
   Creative shown here is the property of the respective advertisers. Captured for competitive research only and not for reuse.
 </div></footer>
+
+<script>
+(function(){
+  var links=[].slice.call(document.querySelectorAll('.rail a'));
+  var secs=links.map(function(a){return document.getElementById(a.getAttribute('data-sec'))}).filter(Boolean);
+  var bar=document.getElementById('prog');
+  function upd(){
+    var probe=window.scrollY+Math.round(window.innerHeight*0.28), cur=secs.length?secs[0].id:'';
+    for(var i=0;i<secs.length;i++){ if(secs[i].offsetTop<=probe) cur=secs[i].id; }
+    if((window.innerHeight+window.scrollY)>=document.body.scrollHeight-4 && secs.length) cur=secs[secs.length-1].id;
+    links.forEach(function(a){ a.classList.toggle('on', a.getAttribute('data-sec')===cur); });
+    if(bar){ var h=document.documentElement.scrollHeight-window.innerHeight;
+      bar.style.width=(h>0?Math.min(100,Math.round(100*window.scrollY/h)):0)+'%'; }
+  }
+  addEventListener('scroll',upd,{passive:true});
+  addEventListener('resize',upd);
+  addEventListener('load',upd);
+  upd();
+})();
+</script>
+
 </body></html>
