@@ -5,15 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <link rel="icon" type="image/x-icon" href="../../assets/brand/favicon.ico">
 <link rel="apple-touch-icon" href="../../assets/brand/abatrades-favicon.png">
-<title>Spot the cooked breaker | aba ELECTRICAL</title>
-<meta name="description" content="Seven of these breakers are fine. One has had a shocker. Ten seconds, one tap, nothing to sign up to. Give it a crack.">
+<title>Pack the ute | aba ELECTRICAL</title>
+<meta name="description" content="Six tools, six spots in the box and two that belong to somebody else. Ten seconds, one thumb, then the actual job.">
 <link rel="stylesheet" href="https://use.typekit.net/aym5yls.css">
 <style>
 :root{
   --navy:#1D3B6D; --navy2:#2E528E; --slate:#7789A7; --dark:#0B1D3B; --foot:#172F57;
   --surface:#EBEDF2; --field:#F5F6F8; --border:#D3D4DA; --accent:#DC7E49;
   --ink:#0F2036; --good:#8FAE1B; --warn:#B81C23;
-  --soot:#3A332C; --smoke:#9A9A9A;
+  --steel:#8C98A8; --steel2:#C7CEDA;
   --font:'futura-pt','Futura PT','Century Gothic',Helvetica,Arial,sans-serif;
   --r-card:22px; --r-pill:100px; --shadow:0 10px 30px rgba(29,59,109,.09);
 }
@@ -28,99 +28,88 @@ h1{font-size:clamp(1.85rem,7vw,2.7rem)}
 h2{font-size:clamp(1.4rem,5vw,2rem)}
 p{max-width:62ch}
 .wrap{max-width:1000px;margin:0 auto;padding:0 18px}
-.eyebrow{display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.14em;
-  text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+.eyebrow{display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:10px}
 .lede{font-size:1.02rem;color:#3d527a}
 
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;
-  padding:15px 26px;border-radius:var(--r-pill);font:inherit;font-weight:700;font-size:16px;
-  line-height:1;text-decoration:none;border:1px solid var(--navy);background:var(--navy);color:#fff;
-  cursor:pointer;transition:background .2s ease,color .2s ease,border-color .2s ease;white-space:nowrap}
+  padding:15px 26px;border-radius:var(--r-pill);font:inherit;font-weight:700;font-size:16px;line-height:1;
+  text-decoration:none;border:1px solid var(--navy);background:var(--navy);color:#fff;cursor:pointer;
+  transition:background .2s ease,color .2s ease,border-color .2s ease;white-space:nowrap}
 .btn:hover{background:var(--navy2);border-color:var(--navy2);color:#fff}
 .btn-ghost{background:transparent;color:var(--navy)}
 .btn-ghost:hover{background:var(--navy2);border-color:var(--navy2);color:#fff}
 .btn-accent{background:var(--accent);border-color:var(--accent);color:var(--dark)}
 .btn-accent:hover{background:#c96c38;border-color:#c96c38;color:var(--dark)}
-.btn-wide{width:100%}
-.btn:focus-visible,.mcb:focus-visible,a:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.btn:focus-visible,.tool:focus-visible,a:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
 
-.reviewflag{background:#fdf2f2;border:3px solid var(--warn);border-radius:12px;margin:14px auto 0;
-  max-width:1000px;padding:12px 16px}
-.reviewflag strong{display:block;color:var(--warn);text-transform:uppercase;letter-spacing:.1em;
-  font-size:.72rem;margin-bottom:4px}
+.reviewflag{background:#fdf2f2;border:3px solid var(--warn);border-radius:12px;margin:14px auto 0;max-width:1000px;
+  padding:12px 16px}
+.reviewflag strong{display:block;color:var(--warn);text-transform:uppercase;letter-spacing:.1em;font-size:.72rem;
+  margin-bottom:4px}
 .reviewflag span{font-size:.86rem;color:#7d1418}
 
-.topbar{position:sticky;top:0;z-index:30;background:var(--navy);color:#fff;
-  border-bottom:1px solid rgba(255,255,255,.12)}
-.topbar .wrap{display:flex;align-items:center;gap:12px;justify-content:space-between;
-  min-height:58px;padding-top:6px;padding-bottom:6px}
+.topbar{position:sticky;top:0;z-index:30;background:var(--navy);color:#fff;border-bottom:1px solid rgba(255,255,255,.12)}
+.topbar .wrap{display:flex;align-items:center;gap:12px;justify-content:space-between;min-height:58px;
+  padding-top:6px;padding-bottom:6px}
 .topbar img{height:26px;width:auto}
-.topbar .skip{background:transparent;border:1px solid rgba(255,255,255,.5);color:#fff;min-height:44px;
-  padding:10px 16px;font-size:.82rem;border-radius:var(--r-pill);font-weight:700;text-decoration:none;
-  display:inline-flex;align-items:center;flex-shrink:0}
+.topbar .skip{background:transparent;border:1px solid rgba(255,255,255,.5);color:#fff;min-height:44px;padding:10px 16px;
+  font-size:.82rem;border-radius:var(--r-pill);font-weight:700;text-decoration:none;display:inline-flex;
+  align-items:center;flex-shrink:0}
 .topbar .skip:hover{background:#fff;color:var(--navy);border-color:#fff}
 
 .hero{background:var(--navy);color:#fff;padding:30px 0 36px}
-.hero h1{color:#fff;max-width:22ch}
+.hero h1{color:#fff;max-width:24ch}
 .hero p{color:rgba(255,255,255,.86);margin-top:12px;font-size:1rem}
 .hero .eyebrow{color:var(--accent)}
 
 .challenge{background:var(--field);padding:20px 0 46px}
-.card{background:#fff;border:1px solid var(--border);border-radius:var(--r-card);
-  box-shadow:var(--shadow);padding:20px 16px 22px;max-width:560px;margin:0 auto}
-.challengehead{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:44px}
-.clock{display:inline-flex;align-items:center;gap:7px;font-weight:700;font-size:.95rem;color:var(--dark);
+.card{background:#fff;border:1px solid var(--border);border-radius:var(--r-card);box-shadow:var(--shadow);
+  padding:20px 16px 22px;max-width:560px;margin:0 auto}
+.chead{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:44px}
+.counter{display:inline-flex;align-items:center;gap:7px;font-weight:700;font-size:.9rem;color:var(--dark);
   background:rgba(220,126,73,.16);border:1px solid rgba(220,126,73,.5);border-radius:var(--r-pill);
-  padding:7px 14px;min-height:40px;font-variant-numeric:tabular-nums;white-space:nowrap}
-.clock.stopped{background:rgba(143,174,27,.16);border-color:rgba(143,174,27,.55);color:#5d7208}
+  padding:7px 14px;min-height:40px;white-space:nowrap}
+.counter.clean{background:rgba(143,174,27,.16);border-color:rgba(143,174,27,.55);color:#5d7208}
 .card h2{margin:10px 0 8px}
-.roundtext{font-size:.98rem;color:#3d527a;max-width:44ch}
+.roundtext{font-size:.98rem;color:#3d527a;max-width:46ch}
+.jsnote{border:1px dashed var(--border);border-radius:14px;padding:16px;background:var(--field);font-size:.92rem;
+  color:#3d527a}
+.jsnote a{color:var(--navy);font-weight:700}
+html:not(.js) .needsjs{display:none}
+html.js .jsnote{display:none}
 
-.challenger{display:none;margin:0 0 14px;background:#fff6ec;border:1px solid rgba(220,126,73,.55);
-  border-radius:14px;padding:12px 14px;font-size:.9rem;color:#8a4a1d;font-weight:700}
-.challenger.on{display:block}
+/* ---------- the board ---------- */
+.boardwrap{margin:14px auto 0;max-width:430px}
+.board{position:relative;width:100%;aspect-ratio:33/42;touch-action:pan-y}
+.board .bg{position:absolute;inset:0;width:100%;height:100%}
+.board .bg text{font-family:var(--font)}
+.slot{position:absolute;min-width:48px;min-height:48px;border-radius:12px}
+.slot::after{content:'';position:absolute;inset:14%;border:2px dashed rgba(29,59,109,.25);border-radius:10px;
+  transition:border-color .2s ease,background .2s ease}
+.slot.hot::after{border-color:var(--accent);background:rgba(220,126,73,.14)}
+.slot.full::after{border:2px solid rgba(143,174,27,.75);background:rgba(143,174,27,.1)}
+.tool{position:absolute;min-width:48px;min-height:48px;width:22%;height:15.5%;border:0;background:none;padding:0;
+  cursor:grab;touch-action:none;transition:transform .18s ease;z-index:5}
+.tool svg{width:100%;height:100%;pointer-events:none}
+.tool.dragging{cursor:grabbing;z-index:20;transform:scale(1.14);
+  filter:drop-shadow(0 8px 12px rgba(11,29,59,.35))}
+.tool.sel{transform:translateY(-6px) scale(1.08);filter:drop-shadow(0 6px 10px rgba(220,126,73,.5))}
+.tool.placed{display:none}
+.tool.nope{animation:nudge .38s ease}
+@keyframes nudge{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px) rotate(-4deg)}75%{transform:translateX(6px) rotate(4deg)}}
 
-.boardwrap{margin:16px auto 0;max-width:430px}
-.board{width:100%;height:auto}
-.board text{font-family:var(--font)}
-.mcb{cursor:pointer}
-.mcb .hit{fill:transparent}
-.mcb .frame{fill:none;stroke:transparent;stroke-width:3}
-.mcb:hover .frame,.mcb:focus-visible .frame{stroke:var(--accent)}
-.mcb.nope .frame{stroke:var(--warn)}
-.mcb.yep .frame{stroke:var(--good)}
-.mcb .body{transition:transform .18s ease}
-.mcb.hmph .body{transform:translateY(-4px)}
-.mcb .lid{fill:#fff;stroke:#D3D4DA;stroke-width:2}
-.mcb .lever{fill:var(--navy)}
-.mcb .eye,.mcb .brow,.mcb .mouth{stroke:var(--ink);fill:none;stroke-width:3;stroke-linecap:round}
-.mcb .eyedot{fill:var(--ink);stroke:none}
-.mcb.bad .lid{fill:#EDE7E0;stroke:#8A7C70}
-.mcb.bad .lever{fill:#5C5148}
-.mcb.bad .eye,.mcb.bad .brow,.mcb.bad .mouth{stroke:var(--soot)}
-.mcb.bad .eyedot{fill:var(--soot)}
-.soot{fill:var(--soot);opacity:.45}
-.smoke{fill:none;stroke:var(--smoke);stroke-width:3;stroke-linecap:round;opacity:.7;
-  animation:rise 2.6s ease-in-out infinite}
-.smoke.s2{animation-delay:.7s}
-.smoke.s3{animation-delay:1.4s}
-@keyframes rise{0%{opacity:0;transform:translateY(6px)}35%{opacity:.8}100%{opacity:0;transform:translateY(-11px)}}
-.spark{fill:#F2C230;opacity:0}
-.mcb.yep .spark{animation:pop .55s ease-out 2}
-@keyframes pop{0%{opacity:1;transform:scale(.6)}100%{opacity:0;transform:scale(1.35)}}
-
-.caption{min-height:56px;margin-top:14px;border-top:1px solid var(--border);padding-top:12px}
+.caption{min-height:58px;margin-top:14px;border-top:1px solid var(--border);padding-top:12px}
 .caption p{font-size:.98rem;font-weight:700;color:var(--navy)}
 .caption p.sub{font-weight:400;color:#3d527a;margin-top:4px}
 .caption.good p{color:#5d7208}
 .caption.nah p{color:var(--warn)}
 
-.resultcard{display:none;margin-top:18px;background:var(--field);border:1px solid var(--border);
-  border-radius:18px;padding:18px 16px}
-.resultcard.on{display:block}
-.timebig{font-size:clamp(2.2rem,11vw,3.2rem);font-weight:700;color:var(--navy);line-height:1;
-  font-variant-numeric:tabular-nums}
-.resultcard p{font-size:.96rem;color:#3d527a;margin-top:8px}
+.verdict{display:none;margin-top:18px;background:var(--field);border:1px solid var(--border);border-radius:18px;
+  padding:18px 16px}
+.verdict.on{display:block}
+.verdict h3{margin-bottom:6px}
+.verdict p{font-size:.96rem;color:#3d527a;margin-top:6px}
 .actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
 .actions .btn{flex:1 1 auto}
 .shareline{margin-top:14px;font-size:.8rem;color:var(--slate);word-break:break-all}
@@ -128,13 +117,13 @@ p{max-width:62ch}
 .film{background:var(--dark);color:#fff;padding:44px 0}
 .film h2{color:#fff}
 .film p{color:rgba(255,255,255,.82)}
-.filmslot{margin-top:18px;border-radius:var(--r-card);overflow:hidden;position:relative;
-  background:#132a52;border:1px solid rgba(255,255,255,.14)}
+.filmslot{margin-top:18px;border-radius:var(--r-card);overflow:hidden;position:relative;background:#132a52;
+  border:1px solid rgba(255,255,255,.14)}
 .filmslot img{width:100%;height:auto;opacity:.72}
-.filmslot .play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
-  flex-direction:column;gap:10px;text-align:center;padding:20px}
-.filmslot .play .badge{width:60px;height:60px;border-radius:50%;background:rgba(255,255,255,.92);
-  color:var(--navy);display:flex;align-items:center;justify-content:center;font-size:1.3rem}
+.filmslot .play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;
+  gap:10px;text-align:center;padding:20px}
+.filmslot .play .badge{width:60px;height:60px;border-radius:50%;background:rgba(255,255,255,.92);color:var(--navy);
+  display:flex;align-items:center;justify-content:center;font-size:1.3rem}
 .filmslot .play strong{font-size:.85rem;color:#fff}
 .buildnote{margin-top:14px;border:3px solid var(--warn);background:rgba(184,28,35,.14);border-radius:12px;
   padding:12px 14px}
@@ -157,12 +146,6 @@ p{max-width:62ch}
 .foot a:hover{text-decoration:underline}
 .foot .small{margin-top:12px;font-size:.78rem;color:rgba(255,255,255,.6)}
 
-html:not(.js) .needsjs{display:none}
-html.js .jsnote{display:none}
-.jsnote{border:1px dashed var(--border);border-radius:14px;padding:16px;background:var(--field);
-  font-size:.92rem;color:#3d527a}
-.jsnote a{color:var(--navy);font-weight:700}
-
 @media (min-width:720px){
   .hero{padding:44px 0 48px}
   .card{padding:28px 26px 30px;max-width:640px}
@@ -175,7 +158,6 @@ html.js .jsnote{display:none}
 }
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none !important;transition:none !important}
-  .smoke{opacity:.5}
 }
 </style>
 </head>
@@ -184,13 +166,13 @@ html.js .jsnote{display:none}
 
 <div class="reviewflag" role="note">
   <strong>Review build, not live</strong>
-  <span>Built for review on 28 October 2026. No ad points at this page and nothing here is approved for use until Josh or Paul says so. The film slot below is a placeholder, and the job, the pay and the form all live on the join our team page so nothing is said twice.</span>
+  <span>Built for review on 28 October 2026. No ad points at this page and nothing here is approved for use until Josh or Paul says so. The film slot is a placeholder, and the job, the rate and the application all live on the join our team page so nothing is said twice.</span>
 </div>
 
 <header class="topbar">
   <div class="wrap">
     <img src="../../assets/brand/abatrades-logo-h.svg" alt="aba TRADES" width="215" height="70">
-    <a class="skip" href="#join">Skip to the jobs</a>
+    <a class="skip" href="#join">Skip to the job</a>
   </div>
 </header>
 
@@ -198,180 +180,151 @@ html.js .jsnote{display:none}
   <section class="hero">
     <div class="wrap">
       <span class="eyebrow">aba ELECTRICAL</span>
-      <h1>Seven of these are fine. One has had a shocker.</h1>
-      <p class="lede">One board, one tap, about ten seconds. No form, no email, nothing to sign up to. You will spot it.</p>
+      <h1>Six tools, six homes, and two that belong to somebody else.</h1>
+      <p class="lede">Ten seconds, one thumb. No form, no email, nothing to sign up for. Then the actual job, which is the point.</p>
     </div>
   </section>
 
   <section class="challenge" id="challenge">
     <div class="wrap">
       <div class="card" id="card">
-        <div class="challengehead">
+        <div class="chead">
           <span class="eyebrow" style="margin:0">The challenge</span>
-          <span class="clock" id="clock"><span id="clocktext">0.0s</span></span>
+          <span class="counter" id="counter"><span id="countertext">0 wrong tools</span></span>
         </div>
 
-        <p class="challenger" id="challenger"></p>
+        <h2 id="roundtitle">Pack the ute</h2>
+        <p class="roundtext" id="roundtext">Drag each tool into its home in the ute box, or tap a tool and then tap the spot. Two of these do not belong in an electrician's ute. You will know which.</p>
 
-        <h2 id="roundtitle">Spot the cooked breaker</h2>
-        <p class="roundtext" id="roundtext">One of these eight has been smoking since Tuesday. Tap it. There is no wrong answer expensive enough to matter, so have a crack.</p>
-
-        <p class="jsnote" id="jsnote">The board needs JavaScript to play. No worries, the jobs do not: <a href="#join">go straight to the jobs</a>.</p>
+        <p class="jsnote" id="jsnote">The ute box needs JavaScript to play. No worries, the job does not: <a href="#join">go straight to the job</a>.</p>
 
         <div class="boardwrap needsjs" id="boardwrap">
-          <svg id="board" class="board" viewBox="0 0 360 366" role="img" aria-label="Eight circuit breakers in a board, drawn as little characters. Seven look happy and healthy. One is grey, sooty and smoking. Tap the one that is smoking.">
-            <rect x="6" y="6" width="348" height="354" rx="18" fill="#EBEDF2" stroke="#D3D4DA" stroke-width="2"/>
-            <rect x="18" y="18" width="324" height="330" rx="14" fill="#F8F9FB" stroke="#D3D4DA"/>
-            <path d="M40 6 v20" stroke="#7A4A24" stroke-width="6" stroke-linecap="round"/>
-            <path d="M56 6 v20" stroke="#1E5AA8" stroke-width="6" stroke-linecap="round"/>
-            <path d="M72 6 v20" stroke="#2E8B2E" stroke-width="6" stroke-linecap="round"/>
-            <path d="M72 6 v20" stroke="#F2C230" stroke-width="6" stroke-linecap="round" stroke-dasharray="6 6"/>
-            <rect x="30" y="30" width="140" height="42" rx="10" fill="#1D3B6D"/>
-            <rect x="44" y="42" width="34" height="12" rx="6" fill="#ffffff" opacity=".9"/>
-            <text x="122" y="58" text-anchor="middle" font-size="12" font-weight="700" fill="#ffffff">MAIN SWITCH</text>
-            <rect x="196" y="30" width="134" height="42" rx="10" fill="#ffffff" stroke="#1D3B6D" stroke-width="2"/>
-            <circle cx="214" cy="51" r="6" fill="#EBEDF2" stroke="#1D3B6D" stroke-width="2"/>
-            <text x="278" y="56" text-anchor="middle" font-size="12" font-weight="700" fill="#1D3B6D">RCD</text>
-            <rect x="24" y="286" width="312" height="42" rx="10" fill="#ffffff" stroke="#D3D4DA"/>
-            <text x="180" y="312" text-anchor="middle" font-size="11" fill="#7789A7">Everything else in here is behaving itself.</text>
-
-            <g class="mcb" data-i="0" role="button" tabindex="0" aria-label="Breaker one, looks fine">
-              <rect class="hit" x="24" y="96" width="72" height="72"/>
-              <rect class="frame" x="24" y="96" width="72" height="72" rx="12"/>
-              <g class="body">
-                <rect class="lid" x="24" y="96" width="72" height="72" rx="12"/>
-                <rect class="lever" x="40" y="104" width="40" height="10" rx="5"/>
-                <circle class="eye" cx="47" cy="126" r="5"/>
-                <circle class="eyedot" cx="47" cy="126" r="2.2"/>
-                <circle class="eye" cx="73" cy="126" r="5"/>
-                <circle class="eyedot" cx="73" cy="126" r="2.2"/>
-                <path class="mouth" d="M49 144 q11 9 22 0"/>
+          <div class="board" id="board">
+            <svg class="bg" viewBox="0 0 330 420" preserveAspectRatio="xMidYMid meet" role="img" aria-label="An open aba TRADES toolbox with six empty foam cutouts, and a pile of eight tools below it waiting to be packed away.">
+              <rect x="15" y="20" width="300" height="44" rx="10" fill="#2E528E"/>
+              <circle cx="52" cy="42" r="13" fill="#ffffff"/>
+              <text x="52" y="47" text-anchor="middle" font-size="12" font-weight="700" fill="#1D3B6D">aba</text>
+              <text x="76" y="48" font-size="15" font-weight="700" fill="#ffffff">TRADES</text>
+              <text x="300" y="47" text-anchor="end" font-size="10" fill="rgba(255,255,255,.7)">fixed fast.</text>
+              <rect x="15" y="62" width="300" height="188" rx="12" fill="#1D3B6D"/>
+              <rect x="27" y="74" width="276" height="164" rx="9" fill="#26406F"/>
+              <rect x="40" y="86" width="76" height="62" rx="10" fill="#16294C" stroke="rgba(255,255,255,.28)" stroke-width="2" stroke-dasharray="7 6"/>
+              <rect x="127" y="86" width="76" height="62" rx="10" fill="#16294C" stroke="rgba(255,255,255,.28)" stroke-width="2" stroke-dasharray="7 6"/>
+              <rect x="214" y="86" width="76" height="62" rx="10" fill="#16294C" stroke="rgba(255,255,255,.28)" stroke-width="2" stroke-dasharray="7 6"/>
+              <rect x="40" y="160" width="76" height="62" rx="10" fill="#16294C" stroke="rgba(255,255,255,.28)" stroke-width="2" stroke-dasharray="7 6"/>
+              <rect x="127" y="160" width="76" height="62" rx="10" fill="#16294C" stroke="rgba(255,255,255,.28)" stroke-width="2" stroke-dasharray="7 6"/>
+              <rect x="214" y="160" width="76" height="62" rx="10" fill="#16294C" stroke="rgba(255,255,255,.28)" stroke-width="2" stroke-dasharray="7 6"/>
+              <g opacity=".5" fill="#ffffff">
+                <rect x="64" y="98" width="28" height="38" rx="6"/>
+                <path d="M150 100 l30 34 M180 100 l-30 34" fill="none" stroke="#ffffff" stroke-width="7" stroke-linecap="round"/>
+                <rect x="234" y="100" width="36" height="36" rx="8" fill="none" stroke="#ffffff" stroke-width="6"/>
+                <path d="M252 106 l-6 11 h12 z" fill="#26406F"/>
+                <circle cx="78" cy="191" r="15" fill="none" stroke="#ffffff" stroke-width="7"/>
+                <path d="M141 176 q14 14 26 0 q12 -14 22 2" fill="none" stroke="#ffffff" stroke-width="6"/>
+                <path d="M228 172 h22 v10 h6 v30 h-16 v-22 h-12 z"/>
               </g>
-            </g>
+              <text x="52" y="204" font-size="9" fill="rgba(255,255,255,.8)">METER</text>
+              <text x="139" y="204" font-size="9" fill="rgba(255,255,255,.8)">CUT, GRIP</text>
+              <text x="226" y="204" font-size="9" fill="rgba(255,255,255,.8)">GRIP</text>
+              <rect x="15" y="262" width="300" height="152" rx="12" fill="#EBEDF2" stroke="#D3D4DA"/>
+              <text x="27" y="278" font-size="9" fill="#7789A7">THE PILE</text>
+            </svg>
 
-            <g class="mcb" data-i="1" role="button" tabindex="0" aria-label="Breaker two, looks fine">
-              <rect class="hit" x="106" y="96" width="72" height="72"/>
-              <rect class="frame" x="106" y="96" width="72" height="72" rx="12"/>
-              <g class="body">
-                <rect class="lid" x="106" y="96" width="72" height="72" rx="12"/>
-                <rect class="lever" x="122" y="104" width="40" height="10" rx="5"/>
-                <circle class="eye" cx="129" cy="126" r="5"/>
-                <circle class="eyedot" cx="129" cy="126" r="2.2"/>
-                <circle class="eye" cx="155" cy="126" r="5"/>
-                <circle class="eyedot" cx="155" cy="126" r="2.2"/>
-                <path class="mouth" d="M131 144 q11 9 22 0"/>
-              </g>
-            </g>
+            <div class="slot" data-slot="meter" style="left:10.5%;top:19%;width:26%;height:18%"></div>
+            <div class="slot" data-slot="grip" style="left:36.9%;top:19%;width:26%;height:18%"></div>
+            <div class="slot" data-slot="cut" style="left:63.3%;top:19%;width:26%;height:18%"></div>
+            <div class="slot" data-slot="tape" style="left:10.5%;top:36.5%;width:26%;height:18%"></div>
+            <div class="slot" data-slot="ties" style="left:36.9%;top:36.5%;width:26%;height:18%"></div>
+            <div class="slot" data-slot="driver" style="left:63.3%;top:36.5%;width:26%;height:18%"></div>
 
-            <g class="mcb" data-i="2" role="button" tabindex="0" aria-label="Breaker three, looks fine">
-              <rect class="hit" x="188" y="96" width="72" height="72"/>
-              <rect class="frame" x="188" y="96" width="72" height="72" rx="12"/>
-              <g class="body">
-                <rect class="lid" x="188" y="96" width="72" height="72" rx="12"/>
-                <rect class="lever" x="204" y="104" width="40" height="10" rx="5"/>
-                <circle class="eye" cx="211" cy="126" r="5"/>
-                <circle class="eyedot" cx="211" cy="126" r="2.2"/>
-                <circle class="eye" cx="237" cy="126" r="5"/>
-                <circle class="eyedot" cx="237" cy="126" r="2.2"/>
-                <path class="mouth" d="M213 144 q11 9 22 0"/>
-              </g>
-            </g>
+            <button class="tool" data-tool="meter" data-for="meter" style="left:4.5%;top:64.8%" aria-label="A multimeter">
+              <svg viewBox="0 0 64 64" aria-hidden="true">
+                <path d="M7 13 l9 11" stroke="#B81C23" stroke-width="3" stroke-linecap="round"/>
+                <path d="M57 13 l-9 11" stroke="#0F2036" stroke-width="3" stroke-linecap="round"/>
+                <rect x="12" y="8" width="40" height="48" rx="7" fill="#DC7E49" stroke="#0F2036" stroke-width="2.5"/>
+                <rect x="19" y="14" width="26" height="12" rx="3" fill="#0F2036" opacity=".85"/>
+                <circle cx="32" cy="42" r="9" fill="#0F2036" opacity=".85"/>
+                <path d="M25 42 l5 -3 M39 42 l-5 -3" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
+              </svg>
+            </button>
 
-            <g class="mcb" data-i="3" role="button" tabindex="0" aria-label="Breaker four, looks fine">
-              <rect class="hit" x="270" y="96" width="72" height="72"/>
-              <rect class="frame" x="270" y="96" width="72" height="72" rx="12"/>
-              <g class="body">
-                <rect class="lid" x="270" y="96" width="72" height="72" rx="12"/>
-                <rect class="lever" x="286" y="104" width="40" height="10" rx="5"/>
-                <circle class="eye" cx="293" cy="126" r="5"/>
-                <circle class="eyedot" cx="293" cy="126" r="2.2"/>
-                <circle class="eye" cx="319" cy="126" r="5"/>
-                <circle class="eyedot" cx="319" cy="126" r="2.2"/>
-                <path class="mouth" d="M295 144 q11 9 22 0"/>
-              </g>
-            </g>
+            <button class="tool" data-tool="wrench" data-for="no" style="left:27.3%;top:64.8%" aria-label="A pipe wrench">
+              <svg viewBox="0 0 64 64" aria-hidden="true">
+                <rect x="27" y="18" width="9" height="40" rx="4.5" fill="#B81C23"/>
+                <path d="M18 8 h22 a6 6 0 0 1 6 6 v8 h-11 v-5 h-17 z" fill="#8C98A8" stroke="#0F2036" stroke-width="2"/>
+                <path d="M35 26 l12 5 -12 5 z" fill="#8C98A8" stroke="#0F2036" stroke-width="2"/>
+              </svg>
+            </button>
 
-            <g class="mcb" data-i="4" role="button" tabindex="0" aria-label="Breaker five, looks fine">
-              <rect class="hit" x="24" y="182" width="72" height="72"/>
-              <rect class="frame" x="24" y="182" width="72" height="72" rx="12"/>
-              <g class="body">
-                <rect class="lid" x="24" y="182" width="72" height="72" rx="12"/>
-                <rect class="lever" x="40" y="190" width="40" height="10" rx="5"/>
-                <circle class="eye" cx="47" cy="212" r="5"/>
-                <circle class="eyedot" cx="47" cy="212" r="2.2"/>
-                <circle class="eye" cx="73" cy="212" r="5"/>
-                <circle class="eyedot" cx="73" cy="212" r="2.2"/>
-                <path class="mouth" d="M49 230 q11 9 22 0"/>
-              </g>
-            </g>
+            <button class="tool" data-tool="grip" data-for="grip" style="left:50%;top:64.8%" aria-label="Linesman pliers">
+              <svg viewBox="0 0 64 64" aria-hidden="true">
+                <path d="M19 6 l9 20 M45 6 l-9 20" stroke="#8C98A8" stroke-width="7" stroke-linecap="round"/>
+                <path d="M28 26 l-13 32 M36 26 l13 32" stroke="#0F2036" stroke-width="8" stroke-linecap="round"/>
+                <circle cx="32" cy="26" r="5" fill="#C7CEDA" stroke="#0F2036" stroke-width="2"/>
+              </svg>
+            </button>
 
-            <g class="mcb bad" data-i="5" id="dodgy" role="button" tabindex="0" aria-label="Breaker six, grey, sooty and smoking">
-              <rect class="hit" x="106" y="182" width="72" height="72"/>
-              <rect class="frame" x="106" y="182" width="72" height="72" rx="12"/>
-              <g class="body">
-                <rect class="lid" x="106" y="182" width="72" height="72" rx="12"/>
-                <rect class="lever" x="122" y="192" width="40" height="10" rx="5" transform="rotate(-8 142 197)"/>
-                <ellipse class="soot" cx="138" cy="198" rx="28" ry="14"/>
-                <ellipse class="soot" cx="150" cy="206" rx="16" ry="9"/>
-                <path class="eye" d="M124 207 l10 10 M134 207 l-10 10"/>
-                <path class="eye" d="M150 207 l10 10 M160 207 l-10 10"/>
-                <path class="mouth" d="M131 234 q11 -10 22 0"/>
-                <circle class="spark" cx="142" cy="196" r="3.5"/>
-                <circle class="spark" cx="128" cy="190" r="2.5"/>
-                <circle class="spark" cx="156" cy="192" r="2.5"/>
-              </g>
-              <path class="smoke" d="M136 180 c-7 -9 7 -13 0 -24"/>
-              <path class="smoke s2" d="M146 180 c-7 -9 7 -13 0 -24"/>
-              <path class="smoke s3" d="M141 180 c-8 -10 8 -15 0 -27"/>
-            </g>
+            <button class="tool" data-tool="tape" data-for="tape" style="left:72.7%;top:64.8%" aria-label="A roll of insulation tape">
+              <svg viewBox="0 0 64 64" aria-hidden="true">
+                <circle cx="32" cy="33" r="21" fill="#1E5AA8" stroke="#0F2036" stroke-width="2.5"/>
+                <circle cx="32" cy="33" r="8.5" fill="#F5F6F8" stroke="#0F2036" stroke-width="2.5"/>
+                <path d="M50 42 l9 7" stroke="#1E5AA8" stroke-width="5" stroke-linecap="round"/>
+              </svg>
+            </button>
 
-            <g class="mcb" data-i="6" role="button" tabindex="0" aria-label="Breaker seven, looks fine">
-              <rect class="hit" x="188" y="182" width="72" height="72"/>
-              <rect class="frame" x="188" y="182" width="72" height="72" rx="12"/>
-              <g class="body">
-                <rect class="lid" x="188" y="182" width="72" height="72" rx="12"/>
-                <rect class="lever" x="204" y="190" width="40" height="10" rx="5"/>
-                <circle class="eye" cx="211" cy="212" r="5"/>
-                <circle class="eyedot" cx="211" cy="212" r="2.2"/>
-                <circle class="eye" cx="237" cy="212" r="5"/>
-                <circle class="eyedot" cx="237" cy="212" r="2.2"/>
-                <path class="mouth" d="M213 230 q11 9 22 0"/>
-              </g>
-            </g>
+            <button class="tool" data-tool="driver" data-for="driver" style="left:4.5%;top:81.4%" aria-label="An impact driver">
+              <svg viewBox="0 0 64 64" aria-hidden="true">
+                <rect x="14" y="16" width="30" height="18" rx="6" fill="#0F2036"/>
+                <rect x="43" y="20" width="14" height="10" rx="3" fill="#8C98A8"/>
+                <rect x="18" y="32" width="21" height="15" rx="5" fill="#DC7E49" stroke="#0F2036" stroke-width="2"/>
+                <rect x="21" y="45" width="16" height="13" rx="3" fill="#0F2036"/>
+              </svg>
+            </button>
 
-            <g class="mcb" data-i="7" role="button" tabindex="0" aria-label="Breaker eight, looks fine">
-              <rect class="hit" x="270" y="182" width="72" height="72"/>
-              <rect class="frame" x="270" y="182" width="72" height="72" rx="12"/>
-              <g class="body">
-                <rect class="lid" x="270" y="182" width="72" height="72" rx="12"/>
-                <rect class="lever" x="286" y="190" width="40" height="10" rx="5"/>
-                <circle class="eye" cx="293" cy="212" r="5"/>
-                <circle class="eyedot" cx="293" cy="212" r="2.2"/>
-                <circle class="eye" cx="319" cy="212" r="5"/>
-                <circle class="eyedot" cx="319" cy="212" r="2.2"/>
-                <path class="mouth" d="M295 230 q11 9 22 0"/>
-              </g>
-            </g>
+            <button class="tool" data-tool="roller" data-for="no" style="left:27.3%;top:81.4%" aria-label="A paint roller">
+              <svg viewBox="0 0 64 64" aria-hidden="true">
+                <rect x="8" y="10" width="34" height="13" rx="6.5" fill="#EFACAC" stroke="#0F2036" stroke-width="2"/>
+                <path d="M42 16 h7 v11 h-16" fill="none" stroke="#7789A7" stroke-width="5" stroke-linecap="round"/>
+                <rect x="28" y="30" width="8" height="28" rx="4" fill="#7789A7"/>
+              </svg>
+            </button>
 
-          </svg>
+            <button class="tool" data-tool="cut" data-for="cut" style="left:50%;top:81.4%" aria-label="Cable strippers">
+              <svg viewBox="0 0 64 64" aria-hidden="true">
+                <rect x="8" y="14" width="48" height="36" rx="9" fill="#2E528E" stroke="#0F2036" stroke-width="2.5"/>
+                <path d="M32 18 l-7 13 h14 z" fill="#F5F6F8"/>
+                <circle cx="32" cy="42" r="4.5" fill="#F5F6F8"/>
+              </svg>
+            </button>
+
+            <button class="tool" data-tool="ties" data-for="ties" style="left:72.7%;top:81.4%" aria-label="A bundle of cable ties">
+              <svg viewBox="0 0 64 64" aria-hidden="true">
+                <path d="M11 41 q21 -22 42 -9" fill="none" stroke="#0F2036" stroke-width="4.5" stroke-linecap="round"/>
+                <path d="M10 31 q23 -20 44 -7" fill="none" stroke="#7789A7" stroke-width="4.5" stroke-linecap="round"/>
+                <path d="M14 50 q19 -15 37 -4" fill="none" stroke="#0F2036" stroke-width="4.5" stroke-linecap="round"/>
+                <rect x="44" y="16" width="11" height="13" rx="3.5" fill="#DC7E49" stroke="#0F2036" stroke-width="2"/>
+              </svg>
+            </button>
+          </div>
         </div>
 
         <div class="caption" id="caption" aria-live="polite">
-          <p id="captitle">Eight breakers. One is not happy.</p>
-          <p class="sub" id="captext">Have a good hard look. The clock is only for bragging rights.</p>
+          <p id="captitle">Six homes in the foam. Two ring-ins in the pile.</p>
+          <p class="sub" id="captext">A sparky packs this without thinking about it. That is the whole challenge.</p>
         </div>
 
-        <div class="resultcard" id="resultcard">
-          <div class="timebig" id="timebig">0.0s</div>
-          <p id="resultcopy">That is a respectable set of eyes.</p>
+        <div class="verdict" id="verdict">
+          <h3 id="verdicttitle">Ute packed.</h3>
+          <p id="verdicttext"></p>
           <div class="actions">
-            <button class="btn btn-accent" id="sharebtn" type="button">Challenge a mate</button>
+            <a class="btn btn-accent" id="applybtn" href="https://abatrades.com.au/join-our-team/">Apply now, it takes a minute</a>
+            <button class="btn btn-ghost" id="againbtn" type="button">Have another crack</button>
+          </div>
+          <div class="actions">
+            <button class="btn btn-ghost" id="sharebtn" type="button">Challenge a mate</button>
             <button class="btn btn-ghost" id="copybtn" type="button">Copy the link</button>
           </div>
           <p class="shareline" id="shareline"></p>
-          <div class="actions">
-            <a class="btn" id="jobbtn" href="#join">Righto. Show me the actual job</a>
-          </div>
         </div>
       </div>
     </div>
@@ -391,7 +344,7 @@ html.js .jsnote{display:none}
       </div>
       <div class="buildnote" role="note">
         <strong>Build placeholder</strong>
-        <span>The film does not exist yet. Set the one FILM_SRC constant in the config block to drop the file in, and this slot becomes a player. Nothing else changes.</span>
+        <span>The film does not exist yet. Set the one FILM_SRC constant in the config block and this slot becomes a player. Nothing else changes.</span>
       </div>
     </div>
   </section>
@@ -399,13 +352,13 @@ html.js .jsnote{display:none}
   <section class="join" id="join">
     <div class="wrap">
       <span class="eyebrow">The job</span>
-      <h2>Good eyes. We are hiring people exactly like that.</h2>
-      <p>Pay, the ute, the training wall, the whole thing, all sits on one page and it is kept up to date there. No double handling, no stale numbers.</p>
+      <h2>Reckon you know your kit. We are hiring people like that.</h2>
+      <p>The rate, the ute, the training wall and the application form all sit on one page and are kept up to date there. No double handling and no stale numbers.</p>
       <div class="actions">
-        <a class="btn btn-accent" id="joinbtn" href="https://abatrades.com.au/join-our-team/">See the jobs at aba ELECTRICAL</a>
+        <a class="btn btn-accent" id="joinbtn" href="https://abatrades.com.au/join-our-team/">Go to the application</a>
         <a class="btn btn-ghost" href="tel:+61884629469">Or call 08 8462 9469</a>
       </div>
-      <p class="fineprint">Everything about the role, the rate and the application form lives on the join our team page.</p>
+      <p class="fineprint">Everything about the role, the rate and the application lives on the join our team page.</p>
     </div>
   </section>
 </main>
@@ -424,16 +377,16 @@ html.js .jsnote{display:none}
 'use strict';
 
 /* =======================================================================
-   THE CONFIG BLOCK. Everything an operator needs to change is here and
-   nowhere else. The job, the rate and the application form are NOT on this
-   page on purpose: they live on the join our team page, in one place.
+   THE CONFIG BLOCK. Everything an operator changes lives here, and the job,
+   the rate and the application form deliberately do NOT live on this page.
    ======================================================================= */
 var CFG = {
-  /* 1. Where the call to action sends people. One line, change it here only. */
+  /* 1. Where the call to action sends people. One line, change it here only.
+        The live join our team page today; switch it to the application page
+        the moment that page replaces it. */
   JOIN_URL: 'https://abatrades.com.au/join-our-team/',
 
-  /* 2. The culture film. Paste an mp4 path or an embed URL here and the
-        placeholder slot becomes a player. Empty keeps the placeholder. */
+  /* 2. The culture film. An mp4 path or an embed URL. Empty keeps the placeholder. */
   FILM_SRC: '',
 
   /* 3. The link the share button hands out. */
@@ -443,110 +396,206 @@ var CFG = {
 var $ = function(id){ return document.getElementById(id); };
 var reduce = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
 
-/* the one that is cooked, and it is deliberately obvious */
-var DODGY = 5;
+var GOOD = {
+  meter: 'Multimeter. The good one, not the dodgy one in the glovebox.',
+  grip: 'Linesman pliers. Now we are talking.',
+  cut: 'Strippers. Everyone loves them until somebody nicks the copper.',
+  tape: 'Tape. You carry two rolls because one roll is no rolls.',
+  ties: 'Cable ties. Never enough, never the length you want.',
+  driver: 'Impact driver. The apprentice will borrow that and never return it.'
+};
+var BAD = [
+  'Wrong home. Look at the shape, not the label.',
+  'That one lives somewhere else. Have another look.',
+  'Close, but no. The foam does not lie.',
+  'Not that spot. That would annoy a sparky.'
+];
+var RINGIN = {
+  wrench: 'Pipe wrench. That is the plumber\u2019s ute, mate.',
+  roller: 'Paint roller. Renovations are two utes down.'
+};
+var lastBad = '';
 
-var NO = [
-  'Nope. That one is fine, just old.',
-  'Not that one. That one has never given anybody trouble.',
-  'Nah. That one is doing its best.',
-  'Wrong. That one still works, which is more than we can say for the other one.',
-  'Not it. Have another look, you are better than this.',
-  'That one is as healthy as a horse.'
-];
-var QUICK = [
-  'That is quick. You have done this before.',
-  'Fast. You spotted that like a sparky.',
-  'Straight onto it. The board never stood a chance.'
-];
-var STEADY = [
-  'Respectable. Every second of that was well spent.',
-  'Good eyes. That is a tradesperson looking at a board.',
-  'On the money. Ten seconds is a normal human.'
-];
-var SLOW = [
-  'You got there, and that is what counts. Monday mornings are like this.',
-  'Took your time, and still beat the bloke who cut the cable.',
-  'Slow and sure. You would have found it on site too.'
-];
+var state = { placed:0, wrong:0, sel:null, done:false };
 
-var state = { started:false, t0:0, ms:0, s:0, done:false, wrong:0, last:'' };
-var tick = null;
-
-function pick(list){
-  var i = Math.floor(Math.random() * list.length);
-  if (list[i] === state.last && list.length > 1) i = (i + 1) % list.length;
-  state.last = list[i];
-  return list[i];
-}
 function caption(title, text, kind){
   $('captitle').textContent = title;
   $('captext').textContent = text || '';
   $('caption').className = 'caption' + (kind ? ' ' + kind : '');
 }
-
-/* ---------- the clock, which is only ever for bragging ---------- */
-function startClock(){
-  if (state.started || state.done) return;
-  state.started = true;
-  state.t0 = Date.now();
-  tick = setInterval(function(){
-    state.ms = Date.now() - state.t0;
-    $('clocktext').textContent = (state.ms / 1000).toFixed(1) + 's';
-  }, 100);
-}
-function stopClock(){
-  if (tick){ clearInterval(tick); tick = null; }
-  state.ms = state.started ? (Date.now() - state.t0) : 0;
-  state.s = state.ms / 1000;
-  $('clocktext').textContent = state.s.toFixed(1) + 's';
-  $('clock').className = 'clock stopped';
-}
-
-/* ---------- the one tap that matters ---------- */
-function tapMine(el){
-  var i = parseInt(el.dataset.i, 10);
-  if (state.done) return;
-  startClock();
-  if (i === DODGY){
-    win(el);
+function counter(){
+  var el = $('counter'), t = $('countertext');
+  if (state.wrong === 0){
+    t.textContent = state.placed ? 'no wrong tools' : '0 wrong tools';
+    el.className = 'counter' + (state.placed ? ' clean' : '');
   } else {
-    state.wrong++;
-    el.classList.add('nope');
-    if (!reduce){
-      el.classList.add('hmph');
-      setTimeout(function(){ el.classList.remove('hmph'); }, 220);
-    }
-    setTimeout(function(){ el.classList.remove('nope'); }, 900);
-    caption('Not that one', pick(NO), 'nah');
+    t.textContent = state.wrong === 1 ? '1 wrong tool' : state.wrong + ' wrong tools';
+    el.className = 'counter';
   }
 }
-function win(el){
+function pickBad(){
+  var i = Math.floor(Math.random() * BAD.length);
+  if (BAD[i] === lastBad) i = (i + 1) % BAD.length;
+  lastBad = BAD[i];
+  return lastBad;
+}
+function slotKey(el){ return el.getAttribute('data-slot'); }
+function toolFor(el){ return el.getAttribute('data-for'); }
+
+/* ---------- placing ---------- */
+function place(tool, slot){
+  var want = toolFor(tool), got = slotKey(slot);
+  if (want === 'no'){
+    state.wrong++; counter();
+    ringIn(tool);
+    return;
+  }
+  if (want === got){
+    var tb = tool.getBoundingClientRect(), sb = slot.getBoundingClientRect();
+    tool.classList.remove('sel');
+    state.sel = null;
+    slot.classList.add('full');
+    var finish = function(){
+      tool.classList.add('placed');
+      tool.style.transform = '';
+      state.placed++;
+      caption('In it goes', GOOD[want] || 'That is where it lives.', 'good');
+      counter();
+      if (state.placed === 6) done();
+    };
+    if (reduce){ finish(); return; }
+    tool.style.transition = 'transform .22s ease';
+    tool.style.transform = 'translate(' + Math.round(sb.left + sb.width/2 - (tb.left + tb.width/2)) + 'px,' +
+                            Math.round(sb.top + sb.height/2 - (tb.top + tb.height/2)) + 'px) scale(.7)';
+    setTimeout(finish, 220);
+  } else {
+    state.wrong++; counter();
+    wobble(tool);
+    caption('Not that home', pickBad() + ' That cutout belongs to something else.', 'nah');
+  }
+}
+function wobble(tool){
+  if (reduce) return;
+  tool.classList.add('nope');
+  setTimeout(function(){ tool.classList.remove('nope'); }, 400);
+}
+function ringIn(tool){
+  wobble(tool);
+  var line = RINGIN[tool.getAttribute('data-tool')] || 'That is somebody else\u2019s tool.';
+  caption('Ring-in', line, 'nah');
+}
+function done(){
   state.done = true;
-  stopClock();
-  el.classList.add('yep');
-  var s = state.s;
-  var line = s <= 5 ? pick(QUICK) : (s <= 12 ? pick(STEADY) : pick(SLOW));
-  caption('Found it. That is the one that has been smoking since Tuesday.', 'Grey as a dishcloth, soot everywhere, and that lever has given up. Every board has one.', 'good');
-  $('timebig').textContent = s.toFixed(1) + 's';
-  $('resultcopy').textContent = line + (state.wrong ? ' That is with ' + state.wrong + ' wrong tap' + (state.wrong === 1 ? '' : 's') + ', which we will not mention on site.' : '');
+  var t, line;
+  if (state.wrong === 0){
+    t = 'Ute packed. Not one wrong tool.';
+    line = 'You have done this before. The plumber\u2019s ute is safe and so is the renovations one.';
+  } else if (state.wrong <= 2){
+    t = 'Ute packed, with ' + state.wrong + ' wobble' + (state.wrong === 1 ? '' : 's') + '.';
+    line = 'We will put that down to a long week. The box is right and the job is not packed yet.';
+  } else {
+    t = 'Ute packed, eventually.';
+    line = 'The other trades got their tools back. Barely. Reckon you would still spot a cooked terminal.';
+  }
+  $('verdicttitle').textContent = t;
+  $('verdicttext').textContent = line;
   $('shareline').textContent = shareText();
-  $('resultcard').className = 'resultcard on';
+  $('verdict').className = 'verdict on';
+  caption('That is the ute packed', 'The easy part is done. The application takes about a minute.', 'good');
 }
-function shareText(){
-  var t = state.s ? state.s.toFixed(1) : '0';
-  return 'I picked the cooked breaker in ' + t + ' seconds. Beat it: ' + shareUrl();
-}
-function shareUrl(){
-  var t = state.s ? state.s.toFixed(1) : '';
-  return CFG.SHARE_URL + (t ? '?t=' + t : '');
+function reset(){
+  state = { placed:0, wrong:0, sel:null, done:false };
+  document.querySelectorAll('.tool').forEach(function(t){
+    t.classList.remove('placed','sel','nope');
+    t.style.transform = ''; t.style.transition = '';
+  });
+  document.querySelectorAll('.slot').forEach(function(s){ s.classList.remove('full','hot'); });
+  $('verdict').className = 'verdict';
+  counter();
+  caption('Six homes in the foam. Two ring-ins in the pile.', 'A sparky packs this without thinking about it. That is the whole challenge.');
 }
 
-/* ---------- challenge someone, which is the whole point ---------- */
-function copyText(t){
-  if (navigator.clipboard && navigator.clipboard.writeText){
-    return navigator.clipboard.writeText(t);
+/* ---------- tap to select, tap to place, and drag, all three ---------- */
+function select(tool){
+  document.querySelectorAll('.tool').forEach(function(t){ t.classList.remove('sel'); });
+  if (state.sel === tool){ state.sel = null; caption('Nothing in hand', 'Tap a tool, then tap its home.'); return; }
+  state.sel = tool;
+  tool.classList.add('sel');
+  caption('In hand', 'Now tap where it lives, or drag it in.');
+}
+function bindBoard(){
+  var board = $('board');
+  var doc = board.ownerDocument;
+  var drag = null;
+  function slotUnder(x, y){
+    var best = null;
+    document.querySelectorAll('.slot').forEach(function(s){
+      if (s.classList.contains('full')) return;
+      var r = s.getBoundingClientRect();
+      if (x >= r.left - 12 && x <= r.right + 12 && y >= r.top - 12 && y <= r.bottom + 12) best = s;
+      s.classList.remove('hot');
+    });
+    if (best) best.classList.add('hot');
+    return best;
   }
+  doc.addEventListener('pointermove', function(e){
+    if (!drag) return;
+    var dx = e.clientX - drag.x0, dy = e.clientY - drag.y0;
+    if (!drag.moved && Math.abs(dx) + Math.abs(dy) < 9) return;
+    drag.moved = true;
+    drag.el.classList.add('dragging');
+    drag.el.style.transform = 'translate(' + dx + 'px,' + dy + 'px) scale(1.14)';
+    slotUnder(e.clientX, e.clientY);
+  }, {passive:true});
+  doc.addEventListener('pointerup', function(e){
+    if (!drag) return;
+    var d = drag; drag = null;
+    d.el.classList.remove('dragging');
+    d.el.style.transform = '';
+    document.querySelectorAll('.slot').forEach(function(s){ s.classList.remove('hot'); });
+    if (!d.moved){ select(d.el); return; }
+    var slot = slotUnder(e.clientX, e.clientY);
+    if (slot) place(d.el, slot);
+    else caption('Dropped it', 'That is not a home. Try a cutout in the ute box.');
+  });
+  doc.addEventListener('pointercancel', function(){
+    if (!drag) return;
+    drag.el.classList.remove('dragging');
+    drag.el.style.transform = '';
+    drag = null;
+  });
+  document.querySelectorAll('.tool').forEach(function(t){
+    t.addEventListener('pointerdown', function(e){
+      if (t.classList.contains('placed')) return;
+      drag = { el:t, x0:e.clientX, y0:e.clientY, moved:false };
+      try { board.setPointerCapture(e.pointerId); } catch(err){}
+    });
+    t.addEventListener('keydown', function(e){
+      if (e.key === 'Enter' || e.key === ' '){ e.preventDefault(); select(t); }
+    });
+  });
+  document.querySelectorAll('.slot').forEach(function(s){
+    s.setAttribute('role', 'button');
+    s.setAttribute('tabindex', '0');
+    s.setAttribute('aria-label', 'Foam cutout, ' + slotKey(s));
+    s.addEventListener('click', function(){
+      if (state.sel){ place(state.sel, s); }
+      else { caption('Pick a tool first', 'Tap a tool from the pile, then tap its home.'); }
+    });
+    s.addEventListener('keydown', function(e){
+      if (e.key === 'Enter' || e.key === ' '){ e.preventDefault(); s.click(); }
+    });
+  });
+}
+
+/* ---------- the share ---------- */
+function shareText(){
+  var w = state.wrong;
+  var bit = w === 0 ? 'I packed the aba ute with no wrong tools.' : 'I packed the aba ute with ' + w + ' wrong tool' + (w === 1 ? '' : 's') + '.';
+  return bit + ' Reckon you know your kit? ' + CFG.SHARE_URL;
+}
+function copyText(t){
+  if (navigator.clipboard && navigator.clipboard.writeText) return navigator.clipboard.writeText(t);
   try {
     var ta = document.createElement('textarea');
     ta.value = t; document.body.appendChild(ta); ta.select();
@@ -557,34 +606,20 @@ function copyText(t){
 function say(msg){
   var b = $('copybtn');
   if (!b || b.dataset.busy) return;
-  b.dataset.busy = '1';
-  b.textContent = msg;
+  b.dataset.busy = '1'; b.textContent = msg;
   setTimeout(function(){ b.textContent = 'Copy the link'; delete b.dataset.busy; }, 2200);
 }
 function bindShare(){
   $('copybtn').addEventListener('click', function(){
     copyText(shareText()).then(function(){ say('Copied. Send it to your mate.'); },
-                               function(){ say('Select and copy it below'); });
+                               function(){ say('Select and copy below'); });
   });
   $('sharebtn').addEventListener('click', function(){
     var t = shareText();
-    if (navigator.share){
-      navigator.share({ title:'Spot the cooked breaker', text:t }).catch(function(){});
-    } else {
-      copyText(t).then(function(){ say('Copied. Send it to your mate.'); }, function(){ say('Select and copy it below'); });
-    }
+    if (navigator.share){ navigator.share({ title:'Pack the aba ute', text:t }).catch(function(){}); }
+    else { copyText(t).then(function(){ say('Copied. Send it to your mate.'); }, function(){ say('Select and copy below'); }); }
   });
-}
-
-/* ---------- a mate's time riding in on the link ---------- */
-function rival(){
-  var t = '';
-  try { t = new URLSearchParams(window.location.search).get('t') || ''; } catch(e){}
-  var n = parseFloat(t);
-  if (!isFinite(n) || n <= 0 || n > 600) return;
-  var el = $('challenger');
-  el.textContent = 'Someone reckons they picked it in ' + n.toFixed(1) + ' seconds. Beat it.';
-  el.className = 'challenger on';
+  $('againbtn').addEventListener('click', reset);
 }
 
 /* ---------- the film slot ---------- */
@@ -612,45 +647,25 @@ function film(){
 }
 
 /* ---------- wire it up ---------- */
-function bind(){
-  var board = $('board');
-  var mcs = board.querySelectorAll('.mcb');
-  for (var i = 0; i < mcs.length; i++){
-    (function(el){
-      el.addEventListener('click', function(){ tapMine(el); });
-      el.addEventListener('keydown', function(e){
-        if (e.key === 'Enter' || e.key === ' '){ e.preventDefault(); tapMine(el); }
-      });
-    })(mcs[i]);
-  }
-  /* the clock starts when the board is actually in front of them, not on load */
-  var wrap = $('boardwrap');
-  if ('IntersectionObserver' in window){
-    var io = new IntersectionObserver(function(entries){
-      entries.forEach(function(en){ if (en.isIntersecting){ startClock(); io.disconnect(); } });
-    }, {threshold:0.5});
-    io.observe(wrap);
-  } else {
-    board.addEventListener('click', startClock);
-  }
-  $('jobbtn').href = '#join';
-  $('joinbtn').href = CFG.JOIN_URL;
-  bindShare();
-  rival();
-  film();
-}
-
-bind();
+bindBoard();
+bindShare();
+counter();
+film();
+$('applybtn').href = CFG.JOIN_URL;
+$('joinbtn').href = CFG.JOIN_URL;
 
 /* testable handle, used by the build checks and by nothing else */
 window.__game = {
   cfg: CFG,
-  dodgy: DODGY,
-  state: function(){ return { started:state.started, done:state.done, wrong:state.wrong, seconds:+state.s.toFixed(2) }; },
-  tap: function(i){ var el = document.querySelector('.mcb[data-i="' + i + '"]'); if (el) tapMine(el); return !!el; },
-  startClock: startClock,
-  shareText: shareText,
-  rival: rival
+  state: function(){ return { placed:state.placed, wrong:state.wrong, done:state.done, selected: state.sel ? state.sel.getAttribute('data-tool') : null }; },
+  place: function(toolName, slotName){
+    var t = document.querySelector('.tool[data-tool="' + toolName + '"]');
+    var s = document.querySelector('.slot[data-slot="' + slotName + '"]');
+    if (!t || !s) return false;
+    place(t, s); return true;
+  },
+  reset: reset,
+  shareText: shareText
 };
 })();
 </script>
