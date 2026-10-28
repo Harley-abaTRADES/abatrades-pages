@@ -119,6 +119,37 @@ ul.points li span{color:#5B6880;display:block;font-size:.92em;margin-top:4px}
 .move dt{color:var(--brand-slate);font-weight:700}
 .move dd{color:var(--brand-primary)}
 
+
+/* tam ladder */
+.tam{display:grid;gap:14px;margin-top:28px}
+.tier{background:#fff;border:1px solid var(--brand-border);border-radius:10px;padding:18px 22px;display:grid;grid-template-columns:86px 1fr auto;gap:22px;align-items:center}
+.tier .lab{font-size:.66rem;font-weight:700;letter-spacing:.14em;color:var(--brand-slate)}
+.tier .bar{height:12px;border-radius:6px;margin-top:8px}
+.tier h3{font-size:1.02rem;font-weight:700;margin-bottom:5px}
+.tier p{font-size:.84rem;color:#5B6880;line-height:1.45;max-width:58ch}
+.tier .val{font-size:clamp(1.2rem,2.2vw,1.7rem);font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap}
+/* buyer bands */
+.bands{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--brand-border);border:1px solid var(--brand-border);border-radius:12px;overflow:hidden;margin-top:30px}
+.band{background:#fff;padding:24px}
+.band .cap{font-size:.66rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--brand-slate)}
+.band .big{font-size:clamp(1.6rem,2.8vw,2.2rem);font-weight:700;line-height:1;margin:10px 0 4px;font-variant-numeric:tabular-nums}
+.band .sub{font-size:.82rem;color:#5B6880}
+.band .row{display:flex;justify-content:space-between;font-size:.82rem;padding-top:8px;margin-top:8px;border-top:1px solid var(--brand-border)}
+.band .row b{font-variant-numeric:tabular-nums}
+/* 5-stage journey */
+.journey5{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--brand-border);border:1px solid var(--brand-border);border-radius:12px;overflow:hidden;margin-top:28px}
+.j5{background:#fff;padding:20px 18px}
+.j5 .n{font-size:.64rem;font-weight:700;letter-spacing:.12em;color:var(--brand-slate)}
+.j5 h3{font-size:.98rem;margin:7px 0 8px}
+.j5 p{font-size:.8rem;line-height:1.45;color:#5B6880}
+.j5 .st{font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-top:10px;display:block}
+.j5 .good{color:#4F7A3D}.j5 .mid{color:#9A6A16}.j5 .bad{color:#A8442B}
+.j5.weak{background:#FBF7F4}
+/* illustration */
+.illo{max-width:820px;margin:22px auto 0}
+.illo img{width:100%;height:auto;max-height:44vh;object-fit:contain;display:block}
+@media (max-height:920px){.illo img{max-height:38vh}}
+
 /* appendix */
 .appx{font-size:.86rem;color:#4A5772;line-height:1.65;max-width:78ch}
 .appx h3{font-size:1rem;color:var(--brand-primary);margin:26px 0 8px}
@@ -316,40 +347,66 @@ ul.points li span{color:#5B6880;display:block;font-size:.92em;margin-top:4px}
 <!-- 9 -->
 <section class="slide light">
   <div class="wrap">
-    <div class="eyebrow">Market size &middot; modelled estimate</div>
-    <h2>The market is not the constraint. Our share of it is.</h2>
-    <table>
-      <thead><tr><th>Category</th><th>Modelled market</th><th>Our revenue</th><th>Our share</th></tr></thead>
-      <tbody>
-        <tr><td>Air conditioning, replacement and service</td><td>$301m</td><td>$4.11m</td><td>1.4%</td></tr>
-        <tr><td>Plumbing, hot water and repairs</td><td>$186m</td><td>$4.40m</td><td>2.4%</td></tr>
-        <tr><td>Roofing, replacement and repair</td><td>$265m</td><td>$0.27m</td><td>0.1%</td></tr>
-        <tr><td>Electrical and solar</td><td>$189m</td><td>$0.10m</td><td>0.05%</td></tr>
-        <tr><td>Renovations, bathroom and kitchen</td><td>$152m</td><td>$0.38m</td><td>0.25%</td></tr>
-        <tr class="hero"><td>Total, Greater Adelaide</td><td>$1.09b</td><td>$9.26m</td><td>0.8%</td></tr>
-      </tbody>
-    </table>
+    <div class="eyebrow">Market size &middot; how each number is built</div>
+    <h2>A $1.09 billion market, a $941 million slice we can serve, and $13 million we can win</h2>
+    <div class="tam">
+      <div class="tier">
+        <div><div class="lab">TAM</div><div class="bar" style="background:var(--brand-primary);width:100%"></div></div>
+        <div><h3>Every residential dollar in the five categories, Greater Adelaide</h3><p>Air conditioning $301m, plumbing and hot water $186m, roofing $265m, electrical and solar $189m, renovations $152m. Includes repairs, service and replacement.</p></div>
+        <div class="val">$1.09b</div>
+      </div>
+      <div class="tier">
+        <div><div class="lab">SAM</div><div class="bar" style="background:var(--brand-secondary);width:86%"></div></div>
+        <div><h3>The part we can actually deliver</h3><p>Four service lines with a repeatable offer and the crew to scale them. Renovations excluded: it is project work we take opportunistically, not a service line we can flood.</p></div>
+        <div class="val">$941m</div>
+      </div>
+      <div class="tier">
+        <div><div class="lab">SOM</div><div class="bar" style="background:var(--acc-aircon);width:7%"></div></div>
+        <div><h3>What we can realistically win in FY27</h3><p>Anchored to the $13.0m target in the 2026-27 strategy session. That is 1.4 percent of SAM, against 1.0 percent on today's $9.26m.</p></div>
+        <div class="val">$13.0m</div>
+      </div>
+    </div>
     <ul class="points">
-      <li><strong>Two categories hold 82% of our profit and less than 2% of their own market.</strong><span>Roofing and electrical are barely entered at all. Growth does not require a bigger market, it requires a reason to be chosen inside the one we have.</span></li>
+      <li><strong>The method is one line: dwellings, times penetration, times replacement cycle, times price.</strong><span>630,000 dwellings in Greater Adelaide (593,881 at the 2021 census, grown 1.2 percent a year). Full arithmetic in the appendix.</span></li>
     </ul>
-    <p class="src">Modelled top-down, not measured. Base: 593,881 private dwellings in Greater Adelaide (ABS 2021), grown 1.2% a year to approximately 630,000. Each category applies a published penetration rate and replacement cycle, priced at current Adelaide market rates. Order of magnitude, not a forecast. Full arithmetic in the appendix.</p>
+    <p class="src">All figures modelled from published penetration rates and replacement cycles, priced at current Adelaide market rates. Order of magnitude, not a forecast. ServiceTitan revenue for the "today" share: $9.26m, trailing 12 months. SOM is a capacity constraint, not a demand constraint: at 1.0 percent of SAM today, the market is not what limits us.</p>
   </div>
   <div class="brandmark">aba TRADES</div><div class="pagenum">09</div>
 </section>
 
 <!-- 10 -->
-<section class="slide dark">
+<section class="slide light">
   <div class="wrap">
-    <div class="eyebrow">How brands grow &middot; Byron Sharp</div>
-    <div class="quote">We rent demand. We do not <em>create</em> it.</div>
-    <div class="cols">
-      <div class="card"><div class="mini">Mental availability</div><h3>We exist only at the moment of search</h3><p>Growth comes from being retrieved in more buying situations, by more people, including the ones not shopping today. We are filed under "plumber near me", so we are only thought of once the problem is already urgent.</p></div>
-      <div class="card"><div class="mini">Physical availability</div><h3>Easy to find, easy to buy</h3><p>Five sites, five phone numbers, one office hours window. No after-hours booking, no single front door, no reason to pick us over the next result when the customer is ready.</p></div>
+    <div class="eyebrow">Light, medium and heavy buyers</div>
+    <h2>Half our customers buy once. They are worth $315 each.</h2>
+    <div class="bands">
+      <div class="band">
+        <div class="cap">Light &middot; one job</div>
+        <div class="big">3,603</div>
+        <div class="sub">49.2% of customers</div>
+        <div class="row"><span>Revenue</span><b>$1.14m &middot; 5.2%</b></div>
+        <div class="row"><span>Per customer</span><b>$315</b></div>
+      </div>
+      <div class="band" style="background:rgba(88,164,174,.08)">
+        <div class="cap">Medium &middot; two to three jobs</div>
+        <div class="big">3,024</div>
+        <div class="sub">41.3% of customers</div>
+        <div class="row"><span>Revenue</span><b>$12.84m &middot; 59.2%</b></div>
+        <div class="row"><span>Per customer</span><b>$4,246</b></div>
+      </div>
+      <div class="band">
+        <div class="cap">Heavy &middot; four or more</div>
+        <div class="big">690</div>
+        <div class="sub">9.4% of customers</div>
+        <div class="row"><span>Revenue</span><b>$7.72m &middot; 35.6%</b></div>
+        <div class="row"><span>Per customer</span><b>$11,182</b></div>
+      </div>
     </div>
     <ul class="points">
-      <li><strong>Most growth comes from light, occasional buyers, not from our loyal few.</strong><span>Which means reach and memory matter more than another conversion tweak on the same keyword.</span></li>
+      <li><strong>The jump is from one job to two: $315 becomes $4,246, thirteen times more, for no extra acquisition cost.</strong><span>Converting 360 of the 3,603 one-off customers at 10 percent is about $1.4m of revenue. That is the same size as the whole FY27 revenue gap.</span></li>
+      <li><strong>Heavy buyers are only 9.4 percent of customers and already buy 5.4 times each.</strong><span>There is very little left to sell them. Growth comes from the light and medium bands, which is exactly what brand reach and a service cadence deliver.</span></li>
     </ul>
-    <p class="src">Byron Sharp, How Brands Grow. Ehrenberg-Bass Institute: growth is driven by penetration and mental availability, not by deepening loyalty among existing customers.</p>
+    <p class="src">7,317 paying customers, November 2024 to October 2026, merged across business units. A further 2,730 customer records carried no revenue and are excluded. Band is a count of paid jobs in the window, so "one job" means one job in 24 months.</p>
   </div>
   <div class="brandmark">aba TRADES</div><div class="pagenum">10</div>
 </section>
@@ -357,46 +414,59 @@ ul.points li span{color:#5B6880;display:block;font-size:.92em;margin-top:4px}
 <!-- 11 -->
 <section class="slide light">
   <div class="wrap">
-    <div class="eyebrow">The customer touchpoint journey</div>
-    <h2>We are a replacement business with no replacement reminder</h2>
-    <p class="lede">We appear once the problem is urgent, and disappear until the next one. The journey below is what the evidence shows, not what we would like it to be.</p>
-    <div class="journey">
-      <div class="stage gap"><div class="n">01</div><h3>The problem appears</h3><p>Nothing from us. No brand advertising, no seasonal reminder. Demand is already reactive here.</p><span class="st lost">Absent</span></div>
-      <div class="stage gap"><div class="n">02</div><h3>Asset nears end of life</h3><p>The moment a replacement decision forms, 12 to 15 years in. We hold no age data, so we cannot see it.</p><span class="st lost">Absent</span></div>
-      <div class="stage"><div class="n">03</div><h3>Research</h3><p>Organic website and reviews. 53 percent of ducted installs start here.</p><span class="st have">Present</span></div>
-      <div class="stage"><div class="n">04</div><h3>Shortlist</h3><p>Site, review count, price comparison. Reputation does the selling.</p><span class="st have">Present</span></div>
-      <div class="stage"><div class="n">05</div><h3>Site visit and quote</h3><p>The quote is where a $12k job is won or lost. 1,756 quote visits in the window.</p><span class="st have">Present</span></div>
-      <div class="stage"><div class="n">06</div><h3>Book and attend</h3><p>The job itself. This is where the promise is tested.</p><span class="st have">Present</span></div>
-      <div class="stage gap"><div class="n">07</div><h3>Pay and remember</h3><p>Invoice, then silence. No follow-up, no reason to recall us.</p><span class="st lost">Absent</span></div>
-      <div class="stage gap"><div class="n">08</div><h3>The next 15 years</h3><p>Nothing keeps us in mind until the next failure. Renovation is 2.6 percent of calls, moving 0.9 percent.</p><span class="st lost">Absent</span></div>
-    </div>
-    <ul class="points">
-      <li><strong>The gap is stage two, not stage one.</strong><span>We are not failing to reach renovators and new homeowners. We are failing to be present at the replacement decision that we already win once it reaches us.</span></li>
+    <div class="eyebrow">How brands grow &middot; the 95:5 rule</div>
+    <h2>Only five in a hundred are buying now. The other ninety five decide whether we exist.</h2>
+    <div class="illo"><img src="95-5-rule.png" alt="One hundred figures: five are orange and in market now, ninety five are outlines, and a small black creature paints another one orange."></div>
+    <ul class="points" style="margin-top:26px">
+      <li><strong>Five percent of 630,000 dwellings is about 31,500 buying moments a year.</strong><span>Paid search only meets the ones already searching. The other 95 percent are the reason to keep a brand in market.</span></li>
+      <li><strong>Mental availability is being the name that arrives when the need does. Physical availability is being easy to find and easy to buy.</strong><span>We rent the first and are thin on the second: five sites, five numbers, office hours only.</span></li>
     </ul>
-    <p class="src">Journey mapped from ServiceTitan job and campaign attribution, July to October 2026, and the 3CX transcript sample of 426 calls, 21 to 25 September 2026. Life-event mentions are keyword counts on auto-transcribed audio: directional, not exact.</p>
+    <p class="src">95:5 rule: at any moment roughly 5 percent of category buyers are in market, from Ehrenberg-Bass Institute research popularised by Google and Binet and Field. Dwelling base as per slide 9.</p>
   </div>
   <div class="brandmark">aba TRADES</div><div class="pagenum">11</div>
 </section>
 
 <!-- 12 -->
-<section class="slide alt">
+<section class="slide light">
   <div class="wrap">
-    <div class="eyebrow">Growth levers</div>
-    <h2>Better, then new. More spend is the most expensive lever we own.</h2>
-    <div class="cols three">
-      <div class="card"><div class="mini">Better &middot; replacement</div><h3>Own the decision before the system fails</h3><p>Installed-base records, an age-based reminder at year 12, and replacement content. One extra ducted install a month is $145k of gross profit a year.</p></div>
-      <div class="card"><div class="mini">Better &middot; conversion</div><h3>Lift quote conversion from 37.8% to 42%</h3><p>On 1,560 hot leads in the last 90 days, roughly 65 more jobs. At install margins a handful of those pays for the whole program.</p></div>
-      <div class="card"><div class="mini">New &middot; cross-sell</div><h3>One percent of 10,030 customers</h3><p>One hundred roofing or electrical jobs sold to people who already trust us, at a fraction of the cost of a new Google customer.</p></div>
+    <div class="eyebrow">The customer journey</div>
+    <h2>Strong in the middle, absent at both ends</h2>
+    <div class="journey5">
+      <div class="j5 weak"><div class="n">01</div><h3>Awareness</h3><p>No brand media. We are not in the consideration set until the problem exists.</p><span class="st bad">Absent</span></div>
+      <div class="j5"><div class="n">02</div><h3>Consideration</h3><p>Organic website and reviews. 53 percent of ducted installs start here.</p><span class="st good">Strong</span></div>
+      <div class="j5"><div class="n">03</div><h3>Purchase</h3><p>81.6 percent of genuine leads book, but $7.5m of estimates sit unsold and 6 percent are followed up.</p><span class="st mid">Half</span></div>
+      <div class="j5 weak"><div class="n">04</div><h3>Retention</h3><p>49 percent buy once. 4.2 percent of members start a fresh job each half year.</p><span class="st bad">Weak</span></div>
+      <div class="j5 weak"><div class="n">05</div><h3>Advocacy</h3><p>4.7 stars and 627 reviews, but no systematic ask, no referral offer, no tracking.</p><span class="st bad">Unmanaged</span></div>
     </div>
     <ul class="points">
-      <li><strong>"More" is last, not first.</strong><span>At a blended marketing efficiency ratio of 6.7, additional Google spend buys the most expensive customer we can acquire. Roofing at 0.1% share is the one place where more reach is genuinely under-used.</span></li>
+      <li><strong>The money leaks at the two ends, not in the middle.</strong><span>We convert a genuine enquiry well. We do not create the enquiry, and we do not bring the customer back.</span></li>
+      <li><strong>Every stage needs a number we manage weekly.</strong><span>Reach, sessions, quote conversion, second-job rate, reviews per job. Today we manage one of the five.</span></li>
     </ul>
-    <p class="src">Estimates modelled from current run rates, not forecasts. Conversion and lead figures: group conversion funnel, 90 days to 27 October 2026 (2,140 booked, 1,560 hot leads, 37.8% conversion). Customer count: 10,030 unique customers in the job data window. Costs on retention and cross-sell are to be scoped.</p>
+    <p class="src">Sources: ServiceTitan job and campaign attribution July to October 2026; CLV analysis November 2024 to October 2026; unsold estimate and cancellation figures from Paul's Low-Hanging Fruit pack, 22 October 2026.</p>
   </div>
   <div class="brandmark">aba TRADES</div><div class="pagenum">12</div>
 </section>
 
 <!-- 13 -->
+<section class="slide alt">
+  <div class="wrap">
+    <div class="eyebrow">Growth levers &middot; the channels we can pull</div>
+    <h2>More, better, new, and all of it is a channel decision</h2>
+    <div class="cols three">
+      <div class="card"><div class="mini">More &middot; scale paid where it still pays</div><h3>Air Con, Roofing, Renovations</h3><p>Marketing efficiency of 5.77 on Air Con, 4.92 on Roofing and 3.24 on Renovations. Fixed costs are already covered, so incremental revenue at these ratios still contributes. Plumbing at 8.92 is the one to hold, not grow.</p></div>
+      <div class="card"><div class="mini">Better &middot; convert what we already bought</div><h3>The leaky bucket</h3><p>$7.5m of unsold estimates, 300 after-hours leads a year, $620k sold then cancelled, and PMIs at five a month. No new media, just follow-up, availability and booking discipline.</p></div>
+      <div class="card"><div class="mini">New &middot; channels we do not use</div><h3>Meta, Reddit, radio, PR</h3><p>Demand creation above the search line, plus local PR and a referral offer. One channel at a time, 90 days, measured on incremental jobs and blended MER.</p></div>
+    </div>
+    <ul class="points">
+      <li><strong>Our channel set today:</strong> Google Search, Google Maps and the Business Profile, organic search and content, email and SMS, outbound calls, reviews and referral.<span>Everything above the search line is either unmanaged or absent. That is the gap this plan closes.</span></li>
+      <li><strong>Sequence matters: better before more, more before new.</strong><span>Patching the bucket pays back inside a quarter. A new channel takes two to three quarters to read.</span></li>
+    </ul>
+    <p class="src">Marketing efficiency ratio = revenue divided by ad spend, 90 days to 27 October 2026. Conversion opportunities from Paul's Low-Hanging Fruit pack, 22 October 2026: 1,113 unsold estimates worth $7,511,071 at middle option.</p>
+  </div>
+  <div class="brandmark">aba TRADES</div><div class="pagenum">13</div>
+</section>
+
+<!-- 14 -->
 <section class="slide light">
   <div class="wrap">
     <div class="eyebrow">Always-on versus campaign</div>
@@ -406,48 +476,30 @@ ul.points li span{color:#5B6880;display:block;font-size:.92em;margin-top:4px}
       <div class="card"><div class="mini">Always-on</div><h3>Compounding memory</h3><p>A steady calendar of seasonal service, reminders, reviews and local content that keeps us present in the buying situations we currently miss. Predictable flow, falling acquisition cost over time.</p></div>
     </div>
     <ul class="points">
-      <li><strong>What always-on looks like here:</strong> pre-summer air conditioning service, twelve-year hot water replacement reminders, autumn roof inspections, membership nurture, review generation after every job, suburb-level content, and a light brand presence all year.</li>
+      <li><strong>What always-on looks like here:</strong> pre-summer air conditioning service, twelve-year hot water replacement reminders, autumn roof inspections, member nurture, review generation after every job, suburb-level content, and a light brand presence all year.</li>
       <li><strong>Campaigns sit on top of the system.</strong><span>Peak season and offers get a push. They never replace the base.</span></li>
     </ul>
-  </div>
-  <div class="brandmark">aba TRADES</div><div class="pagenum">13</div>
-</section>
-
-<!-- 14 -->
-<section class="slide dark">
-  <div class="wrap">
-    <div class="eyebrow">Promotion &middot; channel concentration</div>
-    <h2>One discovery system, three doors. Paid is the smallest and the best.</h2>
-    <div class="stats">
-      <div class="stat"><div class="k num">50.2%</div><div class="l">of attributed calls come from the websites, booking 21.6%</div></div>
-      <div class="stat"><div class="k num">14.2%</div><div class="l">from Google Maps, booking 12.3%</div></div>
-      <div class="stat"><div class="k num">12.2%</div><div class="l">from paid digital ads, booking 28.1%, the highest yield</div></div>
-      <div class="stat"><div class="k num">17.3%</div><div class="l">of 7,360 inbound calls became a booking</div></div>
-    </div>
-    <ul class="points">
-      <li><strong>The risk is a discovery system, not one ad account.</strong><span>Websites, Maps and paid are all search. Losing any one of them hurts, and paid is the highest-converting door we have, so cutting it would cost more than its 12 percent share suggests.</span></li>
-      <li><strong>But 78 percent of inbound calls are not leads at all.</strong><span>39.1 percent classified not-lead and 39.5 percent excused, against 3.9 percent unbooked. Of genuinely new enquiries, 81.6 percent book. The front door leaks more than the channel mix does.</span></li>
-      <li><strong>De-risking still stands, but it is additive.</strong><span>Roughly 10 percent of spend, about $19k a quarter, into Meta for demand creation, owned email and SMS to the existing base, and local PR. Not a cut to Google.</span></li>
-    </ul>
-    <p class="src">ServiceTitan telecom calls, 1 July to 30 September 2026, 7,360 inbound records with campaign attribution. Paid spend split from the group performance feed: $191,015 over 90 days, all Google. Booking rate is booked calls over all inbound calls in the period.</p>
   </div>
   <div class="brandmark">aba TRADES</div><div class="pagenum">14</div>
 </section>
 
 <!-- 15 -->
-<section class="slide light">
+<section class="slide dark">
   <div class="wrap">
-    <div class="eyebrow">Top and bottom of funnel</div>
-    <h2>We pay for the five percent who are already looking</h2>
-    <div class="cols">
-      <div class="card"><div class="mini">Bottom of funnel</div><h3>Harvesting demand</h3><p>Google search captures the small share of the market with an active problem. It converts well because the intent is already there, and it gets more expensive every year as more trades bid on the same words. It builds no memory and no defence.</p></div>
-      <div class="card"><div class="mini">Top of funnel</div><h3>Creating demand</h3><p>Broad reach, local brand presence and useful content build the memory that decides who gets searched for next time. It is slower, cheaper per person reached, and it is the only way to stop competing on keyword price forever.</p></div>
+    <div class="eyebrow">Promotion &middot; channel concentration</div>
+    <h2>We pay for one door. It is our best door, and it is the only one.</h2>
+    <div class="stats">
+      <div class="stat"><div class="k num">$191,015</div><div class="l">paid media, 90 days to 27 October 2026</div></div>
+      <div class="stat"><div class="k num">$968k</div><div class="l">total marketing and advertising a year</div></div>
+      <div class="stat"><div class="k num">$0</div><div class="l">on every other paid channel</div></div>
+      <div class="stat"><div class="k num">28.1%</div><div class="l">of paid-search calls book, the best of any source</div></div>
     </div>
     <ul class="points">
-      <li><strong>Starting ratio: 70% activation, 30% brand for twelve months.</strong><span>The category benchmark is closer to 60:40, and we start from zero brand investment, so the first year leans to brand deliberately. Then measure and adjust.</span></li>
-      <li><strong>Every dollar at the bottom buys a customer someone else created.</strong><span>Every dollar at the top creates one for us to harvest later.</span></li>
+      <li><strong>This is not a weighting, it is a single door.</strong><span>Other channels are at zero, so we hold no owned audience and no second route to market if search costs rise or an account stops.</span></li>
+      <li><strong>More spend is still on the table, just not everywhere.</strong><span>Air Con at 5.77 and Renovations at 3.24 can absorb budget because the fixed cost is already covered. Plumbing at 8.92 is the one to hold. Scaling the others is how overheads fall as a share of revenue.</span></li>
+      <li><strong>Paid is the smallest door by volume and the best at converting.</strong><span>12.2 percent of calls, booking 28.1 percent. Cutting it would cost more than its share suggests. The answer is a second door, not a smaller first one.</span></li>
     </ul>
-    <p class="src">Benchmark: Binet and Field, The Long and the Short of It, roughly 60% brand to 40% activation for sustained growth. Our current split is effectively 100 to zero.</p>
+    <p class="src">Paid spend from the group performance feed. Marketing and advertising figure from the 2026-27 Strategy Session, Xero, 12 months to 30 September 2026. Booking rate from ServiceTitan telecom, 7,360 inbound calls July to September 2026.</p>
   </div>
   <div class="brandmark">aba TRADES</div><div class="pagenum">15</div>
 </section>
@@ -455,52 +507,69 @@ ul.points li span{color:#5B6880;display:block;font-size:.92em;margin-top:4px}
 <!-- 16 -->
 <section class="slide light">
   <div class="wrap">
+    <div class="eyebrow">Top of funnel, bottom of funnel, and the bucket underneath</div>
+    <h2>We pour demand into a bucket with three holes</h2>
+    <div class="illo"><img src="leaky-bucket.png" alt="A coin-fed tap pours water into a bucket held by a small black creature. The bucket has three holes and water sprays out."></div>
+    <div class="cols" style="margin-top:26px">
+      <div><ul class="points" style="margin-top:0">
+        <li><strong>Top of funnel:</strong> the 95 percent not buying yet. Reached by brand, PR, radio, Meta, Reddit and referral. Builds the memory that decides who gets searched for.</li>
+        <li><strong>Bottom of funnel:</strong> the 5 percent in market. Reached by search, Maps and the website. We are good at this and it gets more expensive every year.</li>
+      </ul></div>
+      <div><ul class="points" style="margin-top:0">
+        <li><strong>The bucket:</strong> $7.5m of unsold estimates with 6 percent followed up, 300 after-hours leads a year, $620k sold then cancelled, and 78 percent of inbound calls that never become leads.</li>
+        <li><strong>All of it already paid for.</strong><span>Patching the holes returns more per dollar than pouring harder.</span></li>
+      </ul></div>
+    </div>
+    <p class="src">Unsold estimates, cancellations, after-hours and PMI figures from Paul's Low-Hanging Fruit pack, 22 October 2026. Call classification from ServiceTitan telecom, July to September 2026.</p>
+  </div>
+  <div class="brandmark">aba TRADES</div><div class="pagenum">16</div>
+</section>
+
+<!-- 17 -->
+<section class="slide light">
+  <div class="wrap">
     <div class="eyebrow">Plan on a page</div>
     <h2>Three moves, one decision each</h2>
     <div class="moves">
       <div class="move">
         <div class="n">Move 01</div>
-        <h3>Own the replacement decision</h3>
-        <p>Installed-base records, an age-based reminder, replacement content, and a quote process built for a $14k decision. Member nurture runs underneath it.</p>
-        <dl><dt>Metric</dt><dd>Ducted installs per month and GP per install</dd><dt>Cost</dt><dd>To be scoped</dd></dl>
+        <h3>Build the always-on system</h3>
+        <p>Seasonal cadence, brand presence, owned email and SMS, review engine, suburb content, replacement reminders. A system, not a campaign.</p>
+        <dl><dt>Metric</dt><dd>Share of jobs from owned and organic, and re-engagement from 4.2% to 8%</dd><dt>Cost</dt><dd>To be scoped</dd></dl>
       </div>
       <div class="move">
         <div class="n">Move 02</div>
-        <h3>Build the always-on system</h3>
-        <p>Seasonal calendar, owned channels, review engine, suburb content. The gaps in the journey, closed one at a time.</p>
-        <dl><dt>Metric</dt><dd>Share of jobs from owned and organic channels</dd><dt>Cost</dt><dd>To be scoped</dd></dl>
+        <h3>De-risk promotion</h3>
+        <p>Add Meta, Reddit and radio alongside Google. One at a time, 90 days each, with a read before the next. Google is held, never cut.</p>
+        <dl><dt>Metric</dt><dd>Incremental jobs per channel and blended MER</dd><dt>Cost</dt><dd>Funded from within the existing $968k</dd></dl>
       </div>
       <div class="move">
         <div class="n">Move 03</div>
-        <h3>De-risk promotion</h3>
-        <p>Hold Google, move 10% of spend into Meta, owned and local PR for a 90-day test, with a read at the end.</p>
-        <dl><dt>Metric</dt><dd>Blended MER and new customer volume</dd><dt>Cost</dt><dd>Cost neutral</dd></dl>
+        <h3>Patch the bucket</h3>
+        <p>Follow up every unsold estimate, cover after hours, book installs within 24 hours, run PMI outbound to members.</p>
+        <dl><dt>Metric</dt><dd>Estimates followed up, after-hours leads recovered</dd><dt>Cost</dt><dd>Mostly no new media</dd></dl>
       </div>
     </div>
     <ul class="points">
-      <li><strong>Decisions needed from Paul:</strong> endorse the three moves and the direction; nominate the one brand promise we will guarantee; approve the 10% reallocation test.</li>
+      <li><strong>Decisions needed from Paul:</strong> endorse the always-on system; approve the three channel tests in order; agree owners for the three bucket fixes.</li>
     </ul>
   </div>
-  <div class="brandmark">aba TRADES</div><div class="pagenum">16</div>
+  <div class="brandmark">aba TRADES</div><div class="pagenum">17</div>
 </section>
 
-<!-- 17 Appendix -->
+<!-- 18 Appendix -->
 <section class="slide light">
   <div class="wrap">
     <div class="eyebrow">Appendix</div>
     <h2>Sources, windows and the arithmetic</h2>
     <div class="appx">
       <h3>Gross profit definitions in use</h3>
-      <p>Four definitions coexist and disagree by more than thirty points. This deck ranks on job-level GP, Paul's method: revenue ex GST less labour at actual working and driving hours at each technician's burden rate, less materials, subbies and recalls, on completed jobs. The monthly Xero view runs at 37 to 43 percent because it carries advertising, fleet, fuel and card fees below the gross profit line. The performance dashboard's growth matrix is a third, book-based view at roughly 37 percent of revenue. None of them is wrong; they answer different questions. The ranking is stable under all four.</p>
+      <p>Four definitions coexist and disagree by more than thirty points. This deck ranks on job-level GP, Paul's method: revenue ex GST less labour at actual working and driving hours at each technician's burden rate, less materials, subbies and recalls, on completed jobs. The monthly Xero view runs at 37 to 43 percent because it carries advertising, fleet, fuel and card fees below the gross profit line. The performance dashboard is a third, book-based view at roughly 37 percent of revenue. None of them is wrong, they answer different questions. The ranking is stable under all four.</p>
 
-      <h3>Data windows</h3>
-      <p>Revenue: invoiced, ServiceTitan report 295, trailing 12 months to October 2026. Job-level GP: completed jobs, trailing 12 months, allocation refreshed 14 October 2026. Member economics: live window November 2024 to October 2026, 1,316 active members against 8,714 non-members. Paid channel split: 90 days to 27 October 2026. Conversion funnel: 90 days to 27 October 2026.</p>
-
-      <h3>Job type profitability</h3>
-      <p>The job table on slide 7 covers completed jobs from 1 July to 14 October 2026: 2,508 jobs, $3.22m revenue, $2.42m gross profit, 97 percent matched to a ServiceTitan job type. It is a 15 week window, not a year, so treat per-job figures as current run rates rather than annual totals. Quote visits are booked as their own job types: 1,756 of them in the window carried a net cost of $62k. They are the cost of selling, not a loss-making service line, and they are excluded from the install table.</p>
-
-      <h3>Known data gaps</h3>
-      <p>Materials allocation is not fully audited, so job-level GP is sound on labour and marginally generous on materials. ServiceTitan job history begins at the November 2024 migration, so repeat and loyalty figures are a floor, not a full history. Meta has no daily spend feed wired for the service brands, so "zero" means zero in the tracked accounts, not proof of no activity elsewhere. The competitor study is dated December 2024.</p>
+      <h3>TAM, SAM and SOM definitions</h3>
+      <p><strong>TAM $1.09b.</strong> Total annual residential spend across the five categories in Greater Adelaide, including repair, service and replacement. Commercial and new-build work is excluded, so TAM is conservative.</p>
+      <p><strong>SAM $941m.</strong> TAM less renovations ($152m), which is project work we take opportunistically rather than a service line we can scale with the current crew mix.</p>
+      <p><strong>SOM $13.0m.</strong> The FY27 revenue target from the 2026-27 Strategy Session, 1.4 percent of SAM. It is a capacity and execution constraint, not a demand constraint: at 1.0 percent share today, the market is not what limits us.</p>
 
       <h3>Market size arithmetic</h3>
       <p>Dwellings: 593,881 private dwellings in Greater Adelaide at the 2021 census, grown 1.2 percent a year to approximately 630,000 in 2026.</p>
@@ -509,17 +578,25 @@ ul.points li span{color:#5B6880;display:block;font-size:.92em;margin-top:4px}
       <p><strong>Roofing:</strong> 70 percent of homes with a replaceable roof, 30 year cycle, 14,700 roofs at $18,000 = $265m.</p>
       <p><strong>Electrical and solar:</strong> 50 percent of SA houses with solar, 15 year replacement cycle, 21,000 systems at $9,000 = $189m.</p>
       <p><strong>Renovations:</strong> $677m of permit-approved SA renovations, 75 percent in Greater Adelaide, 30 percent bathroom and kitchen = $152m.</p>
-      <p>Each line is an order-of-magnitude estimate built to show scale and relative share, not a forecast. The penetration rates and cycles are the assumptions to challenge first.</p>
+      <p>Each line is an order-of-magnitude estimate built to show scale and relative share, not a forecast. The penetration rates and replacement cycles are the assumptions to challenge first.</p>
+
+      <h3>Buyer bands</h3>
+      <p>7,317 paying customers over 24 months, merged across business units. Light is one paid job in the window, medium is two to three, heavy is four or more. A further 2,730 customer records carried no revenue and are excluded, and ServiceTitan job history begins at the November 2024 migration, so the bands are a floor rather than a lifetime view.</p>
+
+      <h3>Job type profitability</h3>
+      <p>The job table on slide 7 covers completed jobs from 1 July to 14 October 2026: 2,508 jobs, $3.22m revenue, $2.42m gross profit, 97 percent matched to a ServiceTitan job type. It is a 15 week window, not a year, so treat per-job figures as current run rates rather than annual totals. Quote visits are booked as their own job types: 1,756 of them in the window carried a net cost of $62k. They are the cost of selling, not a loss-making service line, and they are excluded from the install table.</p>
+
+      <h3>Known data gaps</h3>
+      <p>Materials allocation is not fully audited, so job-level GP is sound on labour and marginally generous on materials. Membership status is not populated on job records. Meta has no daily spend feed wired for the service brands, so "zero" means zero in the tracked accounts. The competitor study is dated December 2024.</p>
 
       <h3>Framework references</h3>
-      <p>Michael Porter, Competitive Strategy. Verne Harnish, Scaling Up, 7 Strata of Strategy. Byron Sharp, How Brands Grow, and the Ehrenberg-Bass Institute. Binet and Field, The Long and the Short of It. Alex Hormozi's value equation informed the guarantee framing.</p>
+      <p>Michael Porter, Competitive Strategy. Verne Harnish, Scaling Up, 7 Strata of Strategy. Byron Sharp, How Brands Grow, and the Ehrenberg-Bass Institute. Binet and Field, The Long and the Short of It. Alex Hormozi's value equation informed the guarantee framing. Illustrations use the Ian Xiaohei style system (MIT, credited in the vault).</p>
     </div>
   </div>
   <div class="brandmark">aba TRADES</div><div class="pagenum">A1</div>
 </section>
 
 <script>
-// Keyboard navigation between slides. Explicit key press only, no scroll hijack.
 (function(){
   var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
   var i = 0;
