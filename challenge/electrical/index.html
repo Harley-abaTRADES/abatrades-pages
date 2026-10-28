@@ -161,23 +161,12 @@ body.modal-open .dock{transform:translateY(110%)}
  background:var(--accent);color:#2b1305;font-weight:700;text-decoration:none}
 .dock.hide{transform:translateY(110%)}
 .nojs .game{display:none}
-/* house review flag, the share row, and the film band */
+/* house review flag and the share row */
 .flagline{background:#fdf2f2;border:3px solid #B81C23;border-radius:10px;padding:9px 11px;margin:8px 0 2px}
 .flagline strong{display:block;color:#B81C23;text-transform:uppercase;letter-spacing:.1em;font-size:.6rem;margin-bottom:3px}
 .flagline span{font-size:.76rem;color:#7d1418;line-height:1.35;display:block}
 .modalfoot{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:2px}
-.film{margin-top:12px;background:var(--s2);border-radius:12px;padding:10px 10px 12px;color:var(--ink)}
-.film .filmcap{font-size:.84rem;color:#3d527a;margin-top:7px}
-.filmslot{position:relative;border-radius:12px;overflow:hidden;background:#132a52}
-.filmslot img{width:100%;height:auto;display:block;opacity:.78}
-.filmslot video,.filmslot iframe{width:100%;display:block;border:0;aspect-ratio:16/9}
-.filmslot .play{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;text-align:center;padding:16px}
-.filmslot .play .badge{width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,.92);color:var(--navy);
  display:flex;align-items:center;justify-content:center;font-size:1.05rem}
-.filmslot .play strong{font-size:.82rem;color:#fff}
-.buildnote{margin-top:10px;border:3px solid #B81C23;background:#fdf2f2;border-radius:10px;padding:9px 11px}
-.buildnote strong{display:block;color:#B81C23;text-transform:uppercase;letter-spacing:.1em;font-size:.6rem;margin-bottom:3px}
-.buildnote span{font-size:.76rem;color:#7d1418;display:block;line-height:1.35}
 @media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}
  .modal{transition:opacity .4s ease!important}.modal .card{transform:none}}
 @media (max-height:760px){
@@ -202,14 +191,10 @@ body.modal-open .dock{transform:translateY(110%)}
  .modal h2{font-size:1.25rem}.modal .sub{font-size:1rem}
  .modal .lede{font-size:.9rem;margin-top:8px}
  .deal li{padding:7px 0 7px 28px;font-size:.94rem}
- .filmslot{max-height:150px;overflow:hidden}
- .filmslot img{height:150px;object-fit:cover;width:100%}
 }
 @media (max-height:620px){
  .modal h2{font-size:1.15rem}.modal .sub{font-size:.94rem}
  .modal .lede{display:none}
- .film{margin-top:8px;padding:8px}
- .filmslot{max-height:112px}.filmslot img{height:112px}
  .deal li{padding:5px 0 5px 26px;font-size:.88rem}
  .deal li small{font-size:.78rem}
  .btn{min-height:50px;font-size:1rem;margin-top:10px}
@@ -231,7 +216,7 @@ body.modal-open .dock{transform:translateY(110%)}
 <div class="wrap">
   <div class="flagline" role="note">
     <strong>Review build, not live</strong>
-    <span>Nothing here goes near a candidate until Josh or Paul approves it. The four circuits carry the confirmed offer facts only, and the film slot is a placeholder.</span>
+    <span>Nothing here goes near a candidate until Josh or Paul approves it. The four circuits carry the confirmed offer facts and nothing else.</span>
   </div>
   <div class="top">
     <img src="../../assets/brand/abatrades-logo-h.svg" alt="aba TRADES" width="92" height="30">
@@ -289,20 +274,6 @@ body.modal-open .dock{transform:translateY(110%)}
     <h2 id="doneh">Board's back&nbsp;on.</h2>
     <p class="sub">Reckon you're the right person for the&nbsp;job.</p>
     <p class="lede" id="donel">Here's what aba ELECTRICAL puts on the&nbsp;table.</p>
-    <div class="film" id="film">
-      <div class="filmslot">
-        <img src="../../assets/recruit/team-wide.jpg" alt="The aba TRADES crew and utes at the Adelaide yard" width="1600" height="900" loading="eager">
-        <div class="play" id="filmplay">
-          <span class="badge" aria-hidden="true">&#9658;</span>
-          <strong>The crew film lands here</strong>
-        </div>
-      </div>
-      <p class="filmcap">Real crew, real yard, real 25 metre training wall. No stock footage and no actors.</p>
-      <div class="buildnote" role="note">
-        <strong>Build placeholder</strong>
-        <span>The film does not exist yet. Set FILM_SRC in the config block and this becomes a player.</span>
-      </div>
-    </div>
     <ul class="deal">
       <li>$60 an hour, flat<small>T&amp;Cs apply.</small></li>
       <li>Company ute and a fuel card<small>Take-home, and the card runs it.</small></li>
@@ -348,7 +319,6 @@ body.modal-open .dock{transform:translateY(110%)}
 /* ===================== CONFIG: change these only ===================== */
 var CFG = {
   JOIN_URL: 'https://abatrades.com.au/join-our-team/',   /* the application destination, one line */
-  FILM_SRC: '',                                          /* mp4 path or embed URL. Empty keeps the placeholder. */
   SHARE_URL: 'https://harley-abatrades.github.io/abatrades-pages/challenge/electrical/'
 };
 /* ==================================================================== */
@@ -526,28 +496,6 @@ function track(name, data){
   $('#snd').addEventListener('click', function(){
     soundOn = !soundOn; this.setAttribute('aria-pressed', soundOn); this.textContent = soundOn ? 'Sound on' : 'Sound off'; clunk();
   });
-
-  /* the film slot: one constant, no other change */
-  (function film(){
-    var src = CFG.FILM_SRC; if (!src) return;
-    var slot = $('.filmslot'), poster = slot.querySelector('img'), play = $('#filmplay');
-    if (poster) poster.style.display = 'none';
-    if (play) play.style.display = 'none';
-    var box;
-    if (/\.(mp4|webm|ogv|mov)(\?|$)/i.test(src)){
-      box = document.createElement('video');
-      box.controls = true; box.playsInline = true; box.preload = 'metadata';
-      if (poster) box.poster = poster.getAttribute('src');
-      box.src = src;
-    } else {
-      box = document.createElement('iframe');
-      box.src = src; box.title = 'The aba TRADES crew film';
-      box.setAttribute('allowfullscreen', '');
-    }
-    slot.appendChild(box);
-    var note = document.querySelector('.buildnote');
-    if (note) note.style.display = 'none';
-  })();
 
   /* share, kept subordinate to Apply: the mate gets the link and a reason to open it */
   function shareText(){
