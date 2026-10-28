@@ -282,6 +282,7 @@ input[type=file]{padding:14px 20px;height:auto;background:var(--field)}
 .formcard .btn{width:100%;justify-content:center;margin-top:8px}
 .mocknote{margin-top:16px;font-size:.83rem;color:var(--slate);text-align:center}
 .okbox{display:none;background:rgba(143,174,27,.12);border:1px solid var(--success);color:#4c5f06;border-radius:14px;padding:16px 18px;font-size:.95rem;margin-top:16px}
+.errbox{display:none;background:rgba(184,28,35,.08);border:1px solid var(--warn);color:#8c1a20;border-radius:14px;padding:16px 18px;font-size:.95rem;margin-top:16px}
 .applylist{list-style:none;margin-top:26px;display:flex;flex-direction:column;gap:14px}
 .applylist li{display:flex;gap:12px;align-items:flex-start;color:#3d527a;font-size:.95rem}
 .applylist svg{flex:none;margin-top:3px}
@@ -788,7 +789,8 @@ a:focus-visible,button:focus-visible,summary:focus-visible,.fan-card:focus-visib
       <div class="field"><label for="f-resume">Resume <span class="hint">(optional, PDF or Word)</span></label><input id="f-resume" name="resume" type="file" accept=".pdf,.doc,.docx"></div>
       <label class="consent"><input type="checkbox" name="consent" required> <span>I am happy for aba TRADES to contact me about roles and keep my details on file.</span></label>
       <button class="btn" type="submit" id="submitbtn" disabled>Send my application</button>
-      <div class="okbox" id="okbox"><b>Thanks, that is in.</b> This is a mock-up, so nothing was actually sent. On the live page this would email the team and store your application.</div>
+      <div class="okbox" id="okbox"><b>Thanks, that is in.</b> We will be in touch about the role shortly.</div>
+      <div class="errbox" id="errbox"><b>That did not send.</b> Please try again, or call the office and we will sort it.</div>
       <p class="mocknote">Mock-up only. This form is not connected yet.</p>
     </form>
   </div></div>
