@@ -198,6 +198,7 @@ section{scroll-margin-top:84px}
 .proven .pvimg{border-radius:var(--r-surface)}
 #prog{background:var(--success)}
 .pvtag,.phbadge.real{background:rgba(143,174,27,.92)}
+.phbadge.video{background:rgba(29,59,109,.92)}
 .ans.ok{background:rgba(143,174,27,.10);border-left-color:var(--success)}
 .ans.ok .anstag{color:#5d7208}
 .crow.dest{background:rgba(143,174,27,.12);border-left-color:var(--success)}
@@ -209,6 +210,16 @@ section{scroll-margin-top:84px}
 .rail a.on-dark .rn{opacity:.75}
 .rail a.on-dark.on{color:#fff;border-left-color:#fff}
 .railhead.on-dark,.railgroup.on-dark{color:rgba(255,255,255,.88)}
+.uimg video{display:block;width:100%;height:100%;object-fit:cover;background:#000}
+.uimg.frame-v video{width:100%;max-width:214px;aspect-ratio:9/16;height:auto;border-radius:8px;background:#000}
+.cuts{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px;margin-top:24px}
+.cut{margin:0}
+.cut video{display:block;width:100%;max-width:280px;aspect-ratio:9/16;object-fit:cover;border-radius:14px;
+ background:#000;border:1px solid var(--border);margin:0 auto}
+.cut figcaption{display:block;margin-top:12px;text-align:left}
+.cut figcaption b{display:block;font-size:.95rem;color:var(--navy);margin-bottom:5px}
+.cut figcaption span{font-size:.87rem;color:#3d527a;line-height:1.5}
+.crow.media{background:var(--tint);border-left:3px solid var(--navy);border-radius:8px;padding:12px 14px;margin-bottom:18px}
 
 </style></head><body>
 <div class="progwrap"><div id="prog"></div></div>
@@ -801,11 +812,11 @@ section{scroll-margin-top:84px}
           <span class="uname">aba TRADES<em>Sponsored &middot; proposed</em></span>
           <span class="utrade">Electrical</span></div>
         <div class="utext"><p>&quot;Family&quot; is what a boss calls a team he underpays.</p><p>We&#x27;re not a family. We&#x27;re a crew of Adelaide sparkies who do good work and go home.</p><p>aba ELECTRICAL.</p><p>$60 an hour, flat.</p><p>Company ute and fuel card.</p><p>Our own 25 metre training wall, running since 2015.</p><p>If that beats another free weekend at your cousin&#x27;s place, have a look.</p><p>T&amp;Cs apply.</p></div>
-        <div class="uimg frame-s">
-          <img src="../../assets/swipe/electrical/concepts/concept-F.jpg" alt="Real aba photo for concept E5" loading="eager">
-          <span class="phbadge real">Our photo</span>
+        <div class="uimg frame-v">
+          <video src="../../assets/swipe/electrical/video/preview-film.mp4" poster="../../assets/swipe/electrical/concepts/concept-F.jpg" controls playsinline preload="metadata"></video>
+          <span class="phbadge video">Video</span>
         </div>
-        <div class="uph-note">Real photo: our crew on the training wall, from our SharePoint library.</div>
+        <div class="uph-note">Real footage: the recommended cut, assembled from our own recruitment film and hero video.</div>
         <div class="ctabar"><div class="ctatxt">
           <span class="ctadom">ABATRADES.COM.AU</span>
           <span class="ctahead">Not a family. A crew. $60 an hour.</span></div>
@@ -842,6 +853,21 @@ section{scroll-margin-top:84px}
     <p><b>2. The cheapest leads on the account came from office roles, not trades.</b> CSR Hiring ($10.07) and Call Center Hiring ($6.53) are the lowest costs on record, but their creatives are no longer retrievable because the ads were retired. The lesson is the destination and the format, and we have already applied both below.</p>
   </div>
 
+  <h3>The one video, three ways to make it</h3>
+  <p class="lead">All three below are playable and all three are cut from footage we already own, so nothing here needs a shoot. <b>E5 is the concept that carries the video</b>; each of these is a candidate for it, not a video per concept. The first is the recommendation.</p>
+  <div class="cuts">
+  <figure class="cut">
+    <video src="../../assets/swipe/electrical/video/preview-film.mp4" poster="../../assets/swipe/electrical/concepts/concept-F.jpg" controls playsinline preload="metadata"></video>
+    <figcaption><b>Existing: the Why Join Us film</b><span>A 24 second crop from the recruitment film already on file. Hands-on work cutting to a person to camera. This is the recommended cut.</span></figcaption>
+  </figure>
+  <figure class="cut">
+    <video src="../../assets/swipe/electrical/video/preview-hiring.mp4" poster="../../assets/swipe/electrical/concepts/concept-F.jpg" controls playsinline preload="metadata"></video>
+    <figcaption><b>Existing: the We are Hiring vertical</b><span>The short vertical clip already on file. Faultless as a format, but it is branded aba PLUMBING + GAS, so it speaks to plumbers rather than electricians.</span></figcaption>
+  </figure>
+  <figure class="cut">
+    <video src="../../assets/swipe/electrical/video/preview-broll.mp4" poster="../../assets/swipe/electrical/concepts/concept-F.jpg" controls playsinline preload="metadata"></video>
+    <figcaption><b>New: a B-roll crop</b><span>A 24 second assembly from the electrical hero film. No dialogue, so it leans entirely on the burned-in captions and the end frame.</span></figcaption>
+  </figure></div>
   
   <h3>The instant form versus the landing page, as a real test</h3>
   <p class="lead">How the instant form works: the whole application happens <b>inside Facebook or Instagram</b>. There is no page load and nothing to leave the app for. The fields are prefilled with what Meta already knows, and the detail a candidate needs comes from the ad copy itself plus a short intro line on the form. That is exactly why it is so cheap: fewer steps, nothing to load, nothing to lose. What it gives up is depth, because a landing page can carry the full offer, the crew film and the wall, and the form cannot.</p>
