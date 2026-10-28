@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marketing Plan | aba TRADES</title>
+<link rel="icon" type="image/x-icon" href="../assets/brand/favicon.ico">
+<link rel="stylesheet" href="https://use.typekit.net/aym5yls.css">
+<style>
+:root{
+  --brand-primary:#1D3B6D;--brand-secondary:#2E528E;--brand-slate:#7789A7;
+  --brand-dark-navy:#0B1D3B;--brand-footer-navy:#172F57;--brand-surface:#EBEDF2;
+  --brand-field:#F5F6F8;--brand-border:#D3D4DA;--brand-bg:#FFFFFF;--brand-text:#1D3B6D;
+  --acc-aircon:#58A4AE;--acc-plumbing:#94BE8C;--acc-electrical:#DC7E49;--acc-roofing:#A0AFD9;--acc-reno:#E57D7D;
+  --font:'Futura PT','futura-pt',Helvetica,Arial,sans-serif;
+  --maxw:1180px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--font);color:var(--brand-text);background:var(--brand-bg);line-height:1.5;-webkit-font-smoothing:antialiased}
+.slide{min-height:100vh;display:flex;align-items:center;padding:72px 5vw 56px;position:relative;border-bottom:1px solid var(--brand-border)}
+.slide.light{background:var(--brand-bg)}
+.slide.alt{background:var(--brand-field)}
+.slide.dark{background:var(--brand-primary);color:#fff;border-bottom:0}
+.slide.dark .eyebrow{color:rgba(255,255,255,.6)}
+.slide.dark .src{color:rgba(255,255,255,.45)}
+.slide.dark .lede{color:rgba(255,255,255,.9)}
+.wrap{max-width:var(--maxw);width:100%;margin:0 auto}
+.eyebrow{font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--brand-slate);margin-bottom:14px}
+h1{font-size:clamp(2.1rem,5.4vw,4.2rem);line-height:1.04;font-weight:700;letter-spacing:-.015em;text-wrap:balance}
+h2{font-size:clamp(1.6rem,3.4vw,2.9rem);line-height:1.1;font-weight:700;letter-spacing:-.012em;margin-bottom:10px;text-wrap:balance}
+.lede{font-size:clamp(1rem,1.45vw,1.28rem);color:#4A5772;max-width:52ch;margin-top:10px;line-height:1.5}
+.dark .lede{color:rgba(255,255,255,.86)}
+.rule{width:64px;height:4px;background:var(--acc-aircon);margin:20px 0 0;border-radius:2px}
+.src{font-size:.72rem;color:var(--brand-slate);margin-top:26px;line-height:1.45;max-width:74ch}
+.num{font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.tag{display:inline-block;font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:6px 12px;border-radius:100px;background:var(--brand-surface);color:var(--brand-primary);margin-bottom:8px}
+.dark .tag{background:rgba(255,255,255,.14);color:#fff}
+
+/* slide 1 */
+.title-grid{display:grid;grid-template-columns:1.35fr .65fr;gap:48px;align-items:end}
+.ask{border-left:3px solid var(--acc-aircon);padding-left:22px}
+.ask p{font-size:.95rem;color:rgba(255,255,255,.9);line-height:1.6}
+.ask strong{display:block;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:10px;font-weight:700}
+.meta{font-size:.8rem;color:rgba(255,255,255,.55);margin-top:28px}
+
+/* stat grid */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--brand-border);margin-top:38px;border:1px solid var(--brand-border);border-radius:12px;overflow:hidden}
+.dark .stats{background:rgba(255,255,255,.16);border-color:rgba(255,255,255,.16)}
+.stat{background:var(--brand-bg);padding:26px 24px}
+.dark .stat{background:var(--brand-primary)}
+.slide.alt .stat{background:var(--brand-field)}
+.stat .k{font-size:clamp(1.7rem,3vw,2.5rem);font-weight:700;line-height:1;letter-spacing:-.03em}
+.stat .l{font-size:.78rem;color:var(--brand-slate);margin-top:9px;line-height:1.35}
+.dark .stat .l{color:rgba(255,255,255,.6)}
+
+/* tables */
+table{width:100%;border-collapse:collapse;font-size:clamp(.82rem,1.15vw,1rem);margin-top:30px}
+th{text-align:right;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--brand-slate);font-weight:700;padding:0 12px 12px;border-bottom:2px solid var(--brand-border)}
+th:first-child{text-align:left}
+td{text-align:right;padding:13px 12px;border-bottom:1px solid var(--brand-border);font-variant-numeric:tabular-nums}
+td:first-child{text-align:left;font-weight:700}
+tr.hero td{background:rgba(88,164,174,.1)}
+.dark th{color:rgba(255,255,255,.5);border-bottom-color:rgba(255,255,255,.25)}
+.dark td{border-bottom-color:rgba(255,255,255,.14)}
+.dark tr.hero td{background:rgba(88,164,174,.22)}
+.bar{display:inline-block;height:8px;border-radius:4px;background:var(--acc-aircon);vertical-align:middle;margin-right:8px}
+
+/* lists */
+ul.points{list-style:none;margin-top:30px;display:grid;gap:18px}
+ul.points li{padding-left:26px;position:relative;font-size:clamp(.92rem,1.2vw,1.06rem);line-height:1.5;max-width:72ch}
+ul.points li::before{content:"";position:absolute;left:0;top:.55em;width:9px;height:9px;border-radius:50%;background:var(--acc-aircon)}
+ul.points li strong{font-weight:700}
+ul.points li span{color:#5B6880;display:block;font-size:.92em;margin-top:4px}
+.dark ul.points li span{color:rgba(255,255,255,.62)}
+
+/* 2 col */
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:44px;margin-top:34px}
+.cols.three{grid-template-columns:repeat(3,1fr);gap:26px}
+.card{background:var(--brand-bg);border:1px solid var(--brand-border);border-radius:12px;padding:24px 26px}
+.slide.alt .card{background:#fff}
+.card h3{font-size:1.05rem;font-weight:700;margin-bottom:10px}
+.card p{font-size:.92rem;color:#4A5772;line-height:1.55}
+.card .mini{font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--brand-slate);font-weight:700;margin-bottom:8px}
+.dark .card{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.16)}
+.dark .card p{color:rgba(255,255,255,.78)}
+.dark .card .mini{color:rgba(255,255,255,.5)}
+
+/* pull quote */
+.quote{font-size:clamp(1.5rem,3.1vw,2.5rem);line-height:1.22;font-weight:700;max-width:24ch;letter-spacing:-.015em}
+.quote em{font-style:normal;color:var(--acc-aircon)}
+
+/* 4 Ps quadrants */
+.ps{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--brand-border);border:1px solid var(--brand-border);border-radius:12px;overflow:hidden;margin-top:34px}
+.p{background:#fff;padding:26px 28px}
+.p .letter{font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--acc-aircon);font-weight:700;margin-bottom:8px}
+.p h3{font-size:1.15rem;margin-bottom:8px}
+.p p{font-size:.92rem;color:#4A5772;line-height:1.55}
+
+/* journey */
+.journey{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--brand-border);border:1px solid var(--brand-border);border-radius:12px;overflow:hidden;margin-top:34px}
+.stage{background:#fff;padding:20px 22px;position:relative}
+.stage .n{font-size:.65rem;font-weight:700;color:var(--brand-slate);letter-spacing:.1em}
+.stage h3{font-size:.98rem;margin:6px 0 8px}
+.stage p{font-size:.82rem;line-height:1.45}
+.stage.gap{background:#FBF7F4}
+.stage.gap h3{color:#A8442B}
+.stage .st{font-size:.64rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-top:10px;display:block}
+.stage .have{color:#4F7A3D}
+.stage .lost{color:#A8442B}
+
+/* moves */
+.moves{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:34px}
+.move{background:#fff;border:1px solid var(--brand-border);border-top:4px solid var(--acc-aircon);border-radius:10px;padding:26px 24px;display:flex;flex-direction:column}
+.move .n{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--brand-slate);font-weight:700}
+.move h3{font-size:1.15rem;margin:8px 0 10px;line-height:1.25}
+.move p{font-size:.88rem;color:#4A5772;line-height:1.5}
+.move dl{margin-top:16px;font-size:.8rem;display:grid;grid-template-columns:auto 1fr;gap:6px 12px}
+.move dt{color:var(--brand-slate);font-weight:700}
+.move dd{color:var(--brand-primary)}
+
+/* appendix */
+.appx{font-size:.86rem;color:#4A5772;line-height:1.65;max-width:78ch}
+.appx h3{font-size:1rem;color:var(--brand-primary);margin:26px 0 8px}
+.appx p{margin-bottom:10px}
+.appx code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.85em;background:var(--brand-surface);padding:1px 5px;border-radius:3px}
+
+.pagenum{position:absolute;right:5vw;bottom:24px;font-size:.7rem;color:var(--brand-slate);letter-spacing:.08em;font-variant-numeric:tabular-nums}
+.dark .pagenum{color:rgba(255,255,255,.4)}
+.brandmark{position:absolute;left:5vw;bottom:22px;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--brand-slate);font-weight:700}
+.dark .brandmark{color:rgba(255,255,255,.45)}
+
+@media (max-width:900px){
+  .title-grid,.cols,.cols.three,.ps,.journey,.moves{grid-template-columns:1fr;gap:16px}
+  .stats{grid-template-columns:1fr 1fr}
+  .slide{padding:64px 20px 70px;min-height:auto}
+  table{font-size:.8rem}
+  td,th{padding:10px 7px}
+  .quote{max-width:100%}
+}
+@media print{
+  .slide{min-height:auto;page-break-after:always;padding:24mm 18mm;border:0}
+  .pagenum,.brandmark{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- 1 -->
+<section class="slide dark">
+  <div class="wrap">
+    <div class="title-grid">
+      <div>
+        <div class="eyebrow">Strategy session &middot; 2 November 2026</div>
+        <h1>The marketing plan</h1>
+        <div class="lede" style="margin-top:16px">First priority area. Where we stand, who we actually make money from, and the three moves worth committing to.</div>
+      </div>
+      <div class="ask">
+        <strong>The ask today</strong>
+        <p>Endorse three moves and the direction.<br>Budget and sequencing follow once the direction is agreed.</p>
+      </div>
+    </div>
+    <div class="meta">aba TRADES &middot; prepared for Paul by Josh and Harley</div>
+  </div>
+  <div class="pagenum">01</div>
+</section>
+
+<!-- 2 -->
+<section class="slide light">
+  <div class="wrap">
+    <div class="eyebrow">Where we stand</div>
+    <h2>Our biggest brand and our most profitable brand are not the same brand</h2>
+    <p class="lede">Trailing twelve months. Revenue says Plumbing. Gross profit says Air Con.</p>
+    <table>
+      <thead><tr><th>Business unit</th><th>Revenue</th><th>Gross profit</th><th>GP %</th></tr></thead>
+      <tbody>
+        <tr class="hero"><td>Air Conditioning</td><td>$4.11m</td><td><span class="bar" style="width:96px"></span>$3.04m</td><td>74.0%</td></tr>
+        <tr><td>Plumbing &amp; Gas</td><td>$4.40m</td><td><span class="bar" style="width:84px;background:var(--acc-plumbing)"></span>$2.65m</td><td>60.1%</td></tr>
+        <tr><td>Renovations</td><td>$0.38m</td><td>$0.14m</td><td>35.9%</td></tr>
+        <tr><td>Roofing</td><td>$0.27m</td><td>$0.10m</td><td>37.7%</td></tr>
+        <tr><td>Electrical + Solar</td><td>$0.10m</td><td>$0.07m</td><td>67.3%</td></tr>
+      </tbody>
+    </table>
+    <ul class="points">
+      <li><strong>Air Con earns $390k more gross profit on $293k less revenue.</strong><span>Fourteen margin points clear of Plumbing. That gap is the single most important fact in this deck.</span></li>
+    </ul>
+    <p class="src">Revenue: ServiceTitan report 295, invoiced, trailing 12 months to October 2026. Gross profit: job-level GP on completed jobs using Paul's method (revenue ex GST less labour at actual hours and burden rate, materials, subbies, recalls), trailing 12 months. Materials allocation is not fully audited, so GP is sound on labour and marginally generous on materials. It does not change the ranking.</p>
+  </div>
+  <div class="brandmark">aba TRADES</div><div class="pagenum">02</div>
+</section>
+
+<!-- 3 -->
+<section class="slide alt">
+  <div class="wrap">
+    <div class="eyebrow">Positioning today</div>
+    <h2>Five good local trades. Not yet one brand a homeowner chooses by name</h2>
+    <p class="lede">Our read from the live sites and the competitor study. To be confirmed by Paul.</p>
+    <div class="cols">
+      <div>
+        <ul class="points" style="margin-top:0">
+          <li><strong>Group promise: "fixed fast".</strong><span>Present on every brand site. It is a slogan with no consequence attached, which is why nobody repeats it back to us.</span></li>
+          <li><strong>Plumbing &amp; Gas:</strong> the broad, default local plumber. Competes in the most price-anchored category in the market.</li>
+          <li><strong>Air Conditioning:</strong> install-led, comfort and smart home. The least price-led brand we own.</li>
+        </ul>
+      </div>
+      <div>
+        <ul class="points" style="margin-top:0">
+          <li><strong>Electrical + Solar:</strong> smallest presence, largely invisible in market. 67% GP on very low volume.</li>
+          <li><strong>Roofing:</strong> repair-led. Not a considered replacement brand, despite a large replacement market.</li>
+          <li><strong>Renovations:</strong> premium bathrooms. Highest ticket, lowest volume, dependent on referral.</li>
+        </ul>
+      </div>
+    </div>
+    <p class="src">Source: live per-brand sites and abatrades.com.au (site switcher), reviewed October 2026. Competitive reference: internal competitor study dated December 2024, approximately 21 months old at the time of this session. Treat the competitor detail as indicative.</p>
+  </div>
+  <div class="brandmark">aba TRADES</div><div class="pagenum">03</div>
+</section>
+
+<!-- 4 -->
+<section class="slide light">
+  <div class="wrap">
+    <div class="eyebrow">The four Ps as they stand</div>
+    <h2>Four Ps, one lever in use</h2>
+    <div class="ps">
+      <div class="p"><div class="letter">Product</div><h3>Five trades, one promise</h3><p>The only productised offer is membership, Gold and Platinum. Everything else is sold as a job, not as an outcome.</p></div>
+      <div class="p"><div class="letter">Price</div><h3>No declared position</h3><p>We sit above the cheapest and below the premium franchises, without saying why. Membership is our only real price architecture. Discounting is ad hoc.</p></div>
+      <div class="p"><div class="letter">Place</div><h3>Where the search happens</h3><p>Five websites, Google and the Google Business Profile. Absent where homeowners plan work: moving in, renovating, replacing, extending.</p></div>
+      <div class="p"><div class="letter">Promotion</div><h3>One channel</h3><p>100% of tracked paid spend is Google search. Referrals and repeat work carry the rest, unmeasured and unmanaged.</p></div>
+    </div>
+    <p class="src">Paid channel split from the group performance feed: $191,015 spent in the 90 days to 27 October 2026, all Google. Meta, Bing and Axon at zero.</p>
+  </div>
+  <div class="brandmark">aba TRADES</div><div class="pagenum">04</div>
+</section>
+
+<!-- 5 -->
+<section class="slide dark">
+  <div class="wrap">
+    <div class="eyebrow">Michael Porter</div>
+    <div class="quote">If you are not different, you must be <em>cheapest</em>. Cheapest is not the business we want to be in.</div>
+    <div class="cols" style="margin-top:44px">
+      <div class="card"><div class="mini">Cost leadership</div><h3>Closed to us</h3><p>National franchises buy materials and media at a scale we cannot match. Competing on price means competing on their terms.</p></div>
+      <div class="card"><div class="mini">Differentiation</div><h3>The only durable road</h3><p>Being chosen for something specific, proved consistently, at a price the market accepts. This is where the brand promise does the work.</p></div>
+    </div>
+    <p class="src" style="margin-top:34px">Michael Porter, Competitive Strategy. Neither generic strategy is currently declared, which is why the market treats us as one of several interchangeable local trades.</p>
+  </div>
+  <div class="brandmark">aba TRADES</div><div class="pagenum">05</div>
+</section>
+
+<!-- 6 -->
+<section class="slide light">
+  <div class="wrap">
+    <div class="eyebrow">The strategy section &middot; Verne Harnish, Scaling Up</div>
+    <h2>A brand promise is only a promise if something is at risk</h2>
+    <p class="lede">Harnish's second and third strata of strategy: the one promise you make, and the guarantee that proves you mean it. Domino's did not say "fast pizza". It said thirty minutes or it is free.</p>
+    <div class="cols three">
+      <div class="card"><div class="mini">Where we are</div><h3>"Fixed fast"</h3><p>Accurate, memorable and completely unenforceable. No threshold, no clock, no remedy. If we fail it, nothing happens.</p></div>
+      <div class="card"><div class="mini">What it costs us</div><h3>No proof, no memory</h3><p>A promise with no guarantee cannot be verified, so it cannot be repeated, referred or defended. It behaves like decoration.</p></div>
+      <div class="card"><div class="mini">What we could guarantee</div><h3>One, measurable</h3><p>On time or a defined credit. Same-day attendance or the call-out is free. Fixed price quoted before work starts. Membership honoured without argument.</p></div>
+    </div>
+    <ul class="points">
+      <li><strong>The test for a real guarantee:</strong> cheap when we are good, expensive only when we are wrong, measured without a committee, and promised in public.<span>The decision we need from Paul is which single promise we are willing to be held to.</span></li>
+    </ul>
+    <p class="src">Verne Harnish, Scaling Up, 7 Strata of Strategy: brand promise and brand promise guarantee, carried into the One Page Strategic Plan.</p>
+  </div>
+  <div class="brandmark">aba TRADES</div><div class="pagenum">06</div>
+</section>
+
+<!-- 7 -->
+<section class="slide dark">
+  <div class="wrap">
+    <div class="eyebrow">Our most profitable customer</div>
+    <h2>The member is not a loyalty program. It is the best product we sell.</h2>
+    <div class="stats">
+      <div class="stat"><div class="k num">13%</div><div class="l">of customers, but 48% of revenue</div></div>
+      <div class="stat"><div class="k num">$5,699</div><div class="l">average member order, against $2,892 non-member</div></div>
+      <div class="stat"><div class="k num">$9.74m</div><div class="l">revenue from 1,316 active members</div></div>
+      <div class="stat"><div class="k num">1.31</div><div class="l">orders per member, against 1.14 non-member</div></div>
+    </div>
+    <ul class="points">
+      <li><strong>Air Con members alone are worth $4.68m from 701 people.</strong><span>Plumbing: $3.73m from 732. The member base is concentrated exactly where the margin is highest.</span></li>
+      <li><strong>Membership is also our cheapest acquisition.</strong><span>Every member job arrives without a Google click. At a blended marketing efficiency ratio of 6.7, that is the most valuable traffic we have.</span></li>
+    </ul>
+    <p class="src">ServiceTitan membership and job data, live window November 2024 to October 2026, 1,316 active Gold and Platinum members. Member revenue share is measured against all invoiced revenue in the same window.</p>
+  </div>
+  <div class="brandmark">aba TRADES</div><div class="pagenum">07</div>
+</section>
+
+<!-- 8 -->
+<section class="slide light">
+  <div class="wrap">
+    <div class="eyebrow">The retention hole</div>
+    <h2>We acquire members. We do not keep them working.</h2>
+    <div class="stats" style="margin-top:30px">
+      <div class="stat"><div class="k num">4.2%</div><div class="l">of members start a fresh job in any half year</div></div>
+      <div class="stat"><div class="k num">201</div><div class="l">days median gap between fresh engagements</div></div>
+      <div class="stat"><div class="k num">8</div><div class="l">members, of 1,316, who came back for a second fresh job since Nov 2024</div></div>
+      <div class="stat"><div class="k num">6.9%</div><div class="l">Air Con repeat rate, the lowest of our major brands</div></div>
+    </div>
+    <ul class="points">
+      <li><strong>The member is worth double, and we see them once.</strong><span>This is not a renewal problem: renewals look healthy. It is a fresh-engagement problem, measured on genuinely new work rather than the follow-on visit that quotes it.</span></li>
+      <li><strong>So the first fix is product and promise, not more advertising.</strong><span>A service cadence, a reason to call, and a guarantee that makes calling us the easy choice.</span></li>
+    </ul>
+    <p class="src">CLV analysis, November 2024 to October 2026. Fresh engagement excludes follow-on visits and quoted work on the same job. Repeat rate excludes jobs under $300.</p>
+  </div>
+  <div class="brandmark">aba TRADES</div><div class="pagenum">08</div>
+</section>
+
+<!-- 9 -->
+<section class="slide light">
+  <div class="wrap">
+    <div class="eyebrow">Market size &middot; modelled estimate</div>
+    <h2>The market is not the constraint. Our share of it is.</h2>
+    <table>
+      <thead><tr><th>Category</th><th>Modelled market</th><th>Our revenue</th><th>Our share</th></tr></thead>
+      <tbody>
+        <tr><td>Air conditioning, replacement and service</td><td>$301m</td><td>$4.11m</td><td>1.4%</td></tr>
+        <tr><td>Plumbing, hot water and repairs</td><td>$186m</td><td>$4.40m</td><td>2.4%</td></tr>
+        <tr><td>Roofing, replacement and repair</td><td>$265m</td><td>$0.27m</td><td>0.1%</td></tr>
+        <tr><td>Electrical and solar</td><td>$189m</td><td>$0.10m</td><td>0.05%</td></tr>
+        <tr><td>Renovations, bathroom and kitchen</td><td>$152m</td><td>$0.38m</td><td>0.25%</td></tr>
+        <tr class="hero"><td>Total, Greater Adelaide</td><td>$1.09b</td><td>$9.26m</td><td>0.8%</td></tr>
+      </tbody>
+    </table>
+    <ul class="points">
+      <li><strong>Two categories hold 82% of our profit and less than 2% of their own market.</strong><span>Roofing and electrical are barely entered at all. Growth does not require a bigger market, it requires a reason to be chosen inside the one we have.</span></li>
+    </ul>
+    <p class="src">Modelled top-down, not measured. Base: 593,881 private dwellings in Greater Adelaide (ABS 2021), grown 1.2% a year to approximately 630,000. Each category applies a published penetration rate and replacement cycle, priced at current Adelaide market rates. Order of magnitude, not a forecast. Full arithmetic in the appendix.</p>
+  </div>
+  <div class="brandmark">aba TRADES</div><div class="pagenum">09</div>
+</section>
+
+<!-- 10 -->
+<section class="slide dark">
+  <div class="wrap">
+    <div class="eyebrow">How brands grow &middot; Byron Sharp</div>
+    <div class="quote">We rent demand. We do not <em>create</em> it.</div>
+    <div class="cols">
+      <div class="card"><div class="mini">Mental availability</div><h3>We exist only at the moment of search</h3><p>Growth comes from being retrieved in more buying situations, by more people, including the ones not shopping today. We are filed under "plumber near me", so we are only thought of once the problem is already urgent.</p></div>
+      <div class="card"><div class="mini">Physical availability</div><h3>Easy to find, easy to buy</h3><p>Five sites, five phone numbers, one office hours window. No after-hours booking, no single front door, no reason to pick us over the next result when the customer is ready.</p></div>
+    </div>
+    <ul class="points">
+      <li><strong>Most growth comes from light, occasional buyers, not from our loyal few.</strong><span>Which means reach and memory matter more than another conversion tweak on the same keyword.</span></li>
+    </ul>
+    <p class="src">Byron Sharp, How Brands Grow. Ehrenberg-Bass Institute: growth is driven by penetration and mental availability, not by deepening loyalty among existing customers.</p>
+  </div>
+  <div class="brandmark">aba TRADES</div><div class="pagenum">10</div>
+</section>
+
+<!-- 11 -->
+<section class="slide light">
+  <div class="wrap">
+    <div class="eyebrow">The customer touchpoint journey</div>
+    <h2>We appear for four moments and vanish for four</h2>
+    <div class="journey">
+      <div class="stage gap"><div class="n">01</div><h3>Notice a problem</h3><p>Nothing from us. No brand advertising, no seasonal reminder.</p><span class="st lost">Absent</span></div>
+      <div class="stage"><div class="n">02</div><h3>Research</h3><p>Search and Google Business Profile. Reviews do the selling.</p><span class="st have">Present</span></div>
+      <div class="stage"><div class="n">03</div><h3>Shortlist</h3><p>Search result, site, review count. Price comparison starts.</p><span class="st have">Present</span></div>
+      <div class="stage"><div class="n">04</div><h3>Quote</h3><p>Booking form or phone. Speed of response decides.</p><span class="st have">Present</span></div>
+      <div class="stage"><div class="n">05</div><h3>Book and attend</h3><p>The job itself. This is where the promise is tested.</p><span class="st have">Present</span></div>
+      <div class="stage gap"><div class="n">06</div><h3>Pay and remember</h3><p>Invoice, then silence. No follow-up, no reason to recall us.</p><span class="st lost">Absent</span></div>
+      <div class="stage gap"><div class="n">07</div><h3>Between jobs</h3><p>Years pass. Nothing keeps us in mind until the next breakdown.</p><span class="st lost">Absent</span></div>
+      <div class="stage gap"><div class="n">08</div><h3>Life events</h3><p>Moving, renovating, extending, new baby. We are not there.</p><span class="st lost">Absent</span></div>
+    </div>
+    <ul class="points">
+      <li><strong>The four gaps are the always-on brief.</strong><span>Each one is a moment where a competitor can become the remembered name before the problem exists.</span></li>
+    </ul>
+  </div>
+  <div class="brandmark">aba TRADES</div><div class="pagenum">11</div>
+</section>
+
+<!-- 12 -->
+<section class="slide alt">
+  <div class="wrap">
+    <div class="eyebrow">Growth levers</div>
+    <h2>Better, then new. More spend is the most expensive lever we own.</h2>
+    <div class="cols three">
+      <div class="card"><div class="mini">Better &middot; retention</div><h3>Lift fresh re-engagement from 4.2% to 8%</h3><p>About 50 additional member jobs per half year, near $285k revenue and roughly $185k gross profit at member margins. No media cost.</p></div>
+      <div class="card"><div class="mini">Better &middot; conversion</div><h3>Lift quote conversion from 37.8% to 42%</h3><p>On 1,560 hot leads in the last 90 days, that is roughly 65 more jobs from the leads we already paid for.</p></div>
+      <div class="card"><div class="mini">New &middot; cross-sell</div><h3>One percent of 10,030 customers</h3><p>One hundred roofing or electrical jobs sold to people who already trust us, at a fraction of the cost of a new Google customer.</p></div>
+    </div>
+    <ul class="points">
+      <li><strong>"More" is last, not first.</strong><span>At a blended marketing efficiency ratio of 6.7, additional Google spend buys the most expensive customer we can acquire. Roofing at 0.1% share is the one place where more reach is genuinely under-used.</span></li>
+    </ul>
+    <p class="src">Estimates modelled from current run rates, not forecasts. Conversion and lead figures: group conversion funnel, 90 days to 27 October 2026 (2,140 booked, 1,560 hot leads, 37.8% conversion). Customer count: 10,030 unique customers in the job data window. Costs on retention and cross-sell are to be scoped.</p>
+  </div>
+  <div class="brandmark">aba TRADES</div><div class="pagenum">12</div>
+</section>
+
+<!-- 13 -->
+<section class="slide light">
+  <div class="wrap">
+    <div class="eyebrow">Always-on versus campaign</div>
+    <h2>A system that runs, not spikes that stop</h2>
+    <div class="cols">
+      <div class="card"><div class="mini">Campaign</div><h3>Borrowed attention</h3><p>Spend goes up, enquiries follow, spend stops, silence. Cost per acquisition rises at every restart because the memory has decayed and the audience has to be bought again. Capacity planning is impossible.</p></div>
+      <div class="card"><div class="mini">Always-on</div><h3>Compounding memory</h3><p>A steady calendar of seasonal service, reminders, reviews and local content that keeps us present in the buying situations we currently miss. Predictable flow, falling acquisition cost over time.</p></div>
+    </div>
+    <ul class="points">
+      <li><strong>What always-on looks like here:</strong> pre-summer air conditioning service, twelve-year hot water replacement reminders, autumn roof inspections, membership nurture, review generation after every job, suburb-level content, and a light brand presence all year.</li>
+      <li><strong>Campaigns sit on top of the system.</strong><span>Peak season and offers get a push. They never replace the base.</span></li>
+    </ul>
+  </div>
+  <div class="brandmark">aba TRADES</div><div class="pagenum">13</div>
+</section>
+
+<!-- 14 -->
+<section class="slide dark">
+  <div class="wrap">
+    <div class="eyebrow">Promotion &middot; channel concentration</div>
+    <h2>One channel is not a mix. It is a single point of failure.</h2>
+    <div class="stats">
+      <div class="stat"><div class="k num">$191,015</div><div class="l">tracked paid spend, 90 days to 27 Oct 2026</div></div>
+      <div class="stat"><div class="k num">100%</div><div class="l">of it on Google search</div></div>
+      <div class="stat"><div class="k num">$0</div><div class="l">Meta, Bing and Axon combined</div></div>
+      <div class="stat"><div class="k num">+70%</div><div class="l">Google cost per click rise on Electrical, 90 days</div></div>
+    </div>
+    <ul class="points">
+      <li><strong>The exposure is not theoretical.</strong><span>One algorithm change, one account suspension, one more price rise, and the enquiry flow stops the same day. We hold no owned audience to fall back on.</span></li>
+      <li><strong>De-risking costs nothing extra.</strong><span>Move roughly 10% of current spend, about $19k a quarter, into Meta for demand creation and retargeting, into email and SMS to the existing base, and into local PR and founder content. Hold Google, do not cut it.</span></li>
+    </ul>
+    <p class="src">Channel split from the group performance feed. Marketing efficiency ratio by business unit ranges from 2.34 on Roofing to 8.92 on Plumbing. Reallocation is a proposal for a 90-day test, not a committed budget.</p>
+  </div>
+  <div class="brandmark">aba TRADES</div><div class="pagenum">14</div>
+</section>
+
+<!-- 15 -->
+<section class="slide light">
+  <div class="wrap">
+    <div class="eyebrow">Top and bottom of funnel</div>
+    <h2>We pay for the five percent who are already looking</h2>
+    <div class="cols">
+      <div class="card"><div class="mini">Bottom of funnel</div><h3>Harvesting demand</h3><p>Google search captures the small share of the market with an active problem. It converts well because the intent is already there, and it gets more expensive every year as more trades bid on the same words. It builds no memory and no defence.</p></div>
+      <div class="card"><div class="mini">Top of funnel</div><h3>Creating demand</h3><p>Broad reach, local brand presence and useful content build the memory that decides who gets searched for next time. It is slower, cheaper per person reached, and it is the only way to stop competing on keyword price forever.</p></div>
+    </div>
+    <ul class="points">
+      <li><strong>Starting ratio: 70% activation, 30% brand for twelve months.</strong><span>The category benchmark is closer to 60:40, and we start from zero brand investment, so the first year leans to brand deliberately. Then measure and adjust.</span></li>
+      <li><strong>Every dollar at the bottom buys a customer someone else created.</strong><span>Every dollar at the top creates one for us to harvest later.</span></li>
+    </ul>
+    <p class="src">Benchmark: Binet and Field, The Long and the Short of It, roughly 60% brand to 40% activation for sustained growth. Our current split is effectively 100 to zero.</p>
+  </div>
+  <div class="brandmark">aba TRADES</div><div class="pagenum">15</div>
+</section>
+
+<!-- 16 -->
+<section class="slide light">
+  <div class="wrap">
+    <div class="eyebrow">Plan on a page</div>
+    <h2>Three moves, one decision each</h2>
+    <div class="moves">
+      <div class="move">
+        <div class="n">Move 01</div>
+        <h3>Make the member the product</h3>
+        <p>One guaranteed promise, a real service cadence, and nurture across email and SMS. Retention before acquisition.</p>
+        <dl><dt>Metric</dt><dd>Fresh re-engagement 4.2% to 8% within six months</dd><dt>Cost</dt><dd>To be scoped</dd></dl>
+      </div>
+      <div class="move">
+        <div class="n">Move 02</div>
+        <h3>Build the always-on system</h3>
+        <p>Seasonal calendar, owned channels, review engine, suburb content. The gaps in the journey, closed one at a time.</p>
+        <dl><dt>Metric</dt><dd>Share of jobs from owned and organic channels</dd><dt>Cost</dt><dd>To be scoped</dd></dl>
+      </div>
+      <div class="move">
+        <div class="n">Move 03</div>
+        <h3>De-risk promotion</h3>
+        <p>Hold Google, move 10% of spend into Meta, owned and local PR for a 90-day test, with a read at the end.</p>
+        <dl><dt>Metric</dt><dd>Blended MER and new customer volume</dd><dt>Cost</dt><dd>Cost neutral</dd></dl>
+      </div>
+    </div>
+    <ul class="points">
+      <li><strong>Decisions needed from Paul:</strong> endorse the three moves and the direction; nominate the one brand promise we will guarantee; approve the 10% reallocation test.</li>
+    </ul>
+  </div>
+  <div class="brandmark">aba TRADES</div><div class="pagenum">16</div>
+</section>
+
+<!-- 17 Appendix -->
+<section class="slide light">
+  <div class="wrap">
+    <div class="eyebrow">Appendix</div>
+    <h2>Sources, windows and the arithmetic</h2>
+    <div class="appx">
+      <h3>Gross profit definitions in use</h3>
+      <p>Four definitions coexist and disagree by more than thirty points. This deck ranks on job-level GP, Paul's method: revenue ex GST less labour at actual working and driving hours at each technician's burden rate, less materials, subbies and recalls, on completed jobs. The monthly Xero view runs at 37 to 43 percent because it carries advertising, fleet, fuel and card fees below the gross profit line. The performance dashboard's growth matrix is a third, book-based view at roughly 37 percent of revenue. None of them is wrong; they answer different questions. The ranking is stable under all four.</p>
+
+      <h3>Data windows</h3>
+      <p>Revenue: invoiced, ServiceTitan report 295, trailing 12 months to October 2026. Job-level GP: completed jobs, trailing 12 months, allocation refreshed 14 October 2026. Member economics: live window November 2024 to October 2026, 1,316 active members against 8,714 non-members. Paid channel split: 90 days to 27 October 2026. Conversion funnel: 90 days to 27 October 2026.</p>
+
+      <h3>Known data gaps</h3>
+      <p>Materials allocation is not fully audited, so job-level GP is sound on labour and marginally generous on materials. ServiceTitan job history begins at the November 2024 migration, so repeat and loyalty figures are a floor, not a full history. Meta has no daily spend feed wired for the service brands, so "zero" means zero in the tracked accounts, not proof of no activity elsewhere. The competitor study is dated December 2024.</p>
+
+      <h3>Market size arithmetic</h3>
+      <p>Dwellings: 593,881 private dwellings in Greater Adelaide at the 2021 census, grown 1.2 percent a year to approximately 630,000 in 2026.</p>
+      <p><strong>Air conditioning:</strong> 85 percent penetration, 536,000 homes, replacement cycle 15 years, 35,700 replacements a year at $6,700 = $239m. Service at $230 every two years = $62m. Total $301m.</p>
+      <p><strong>Plumbing and hot water:</strong> 75 percent of homes with a storage or heat pump system, replaced every 12 years, 39,400 units at $2,200 = $87m. Repairs: 35 percent of homes call a plumber each year at $450 = $99m. Total $186m.</p>
+      <p><strong>Roofing:</strong> 70 percent of homes with a replaceable roof, 30 year cycle, 14,700 roofs at $18,000 = $265m.</p>
+      <p><strong>Electrical and solar:</strong> 50 percent of SA houses with solar, 15 year replacement cycle, 21,000 systems at $9,000 = $189m.</p>
+      <p><strong>Renovations:</strong> $677m of permit-approved SA renovations, 75 percent in Greater Adelaide, 30 percent bathroom and kitchen = $152m.</p>
+      <p>Each line is an order-of-magnitude estimate built to show scale and relative share, not a forecast. The penetration rates and cycles are the assumptions to challenge first.</p>
+
+      <h3>Framework references</h3>
+      <p>Michael Porter, Competitive Strategy. Verne Harnish, Scaling Up, 7 Strata of Strategy. Byron Sharp, How Brands Grow, and the Ehrenberg-Bass Institute. Binet and Field, The Long and the Short of It. Alex Hormozi's value equation informed the guarantee framing.</p>
+    </div>
+  </div>
+  <div class="brandmark">aba TRADES</div><div class="pagenum">A1</div>
+</section>
+
+<script>
+// Keyboard navigation between slides. Explicit key press only, no scroll hijack.
+(function(){
+  var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+  var i = 0;
+  function go(n){
+    if(n < 0 || n >= slides.length) return;
+    i = n;
+    slides[i].scrollIntoView({behavior:'smooth', block:'start'});
+  }
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'ArrowDown' || e.key === 'ArrowRight' || e.key === 'PageDown'){ e.preventDefault(); go(i+1); }
+    if(e.key === 'ArrowUp' || e.key === 'ArrowLeft' || e.key === 'PageUp'){ e.preventDefault(); go(i-1); }
+  });
+  window.addEventListener('scroll', function(){
+    var best = 0, bestDist = Infinity;
+    slides.forEach(function(s, idx){
+      var d = Math.abs(s.getBoundingClientRect().top);
+      if(d < bestDist){ bestDist = d; best = idx; }
+    });
+    i = best;
+  }, {passive:true});
+})();
+</script>
+</body>
+</html>
