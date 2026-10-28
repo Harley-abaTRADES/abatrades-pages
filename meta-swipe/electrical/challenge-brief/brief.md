@@ -33,11 +33,11 @@ Counter-evidence worth knowing: our own account history shows **video of real pe
 
 Three rounds, under a minute, one thumb. **Round one is not there to test anybody, it is there to make a qualified electrician feel like one.** Round three is the one that gets screenshotted.
 
-**Round 1 — Wire it.** A simple switchboard. Drag the three wires into the correct terminals: active, neutral, earth, in the real Australian colour code (brown, blue, green with yellow stripe). Anyone qualified does this in four seconds. That is the point.
+**Round 1: Wire it.** A simple switchboard. Drag the three wires into the correct terminals: active, neutral, earth, in the real Australian colour code (brown, blue, green with yellow stripe). Anyone qualified does this in four seconds. That is the point.
 
-**Round 2 — Find the fault.** A switchboard with one visible thing wrong. Tap it. There is a real answer, not a trick. Wrong answers should teach, not punish.
+**Round 2: Find the fault.** A switchboard with one visible thing wrong. Tap it. There is a real answer, not a trick. Wrong answers should teach, not punish.
 
-**Round 3 — The clock.** The same board, three faults, sixty seconds. This is the round people talk about and the one worth screenshotting.
+**Round 3: The clock.** The same board, three faults, sixty seconds. This is the round people talk about and the one worth screenshotting.
 
 Rules that matter:
 - **Tap-to-place must work as well as drag.** Not everybody will drag confidently on a phone. Support both.
@@ -71,13 +71,13 @@ Use these facts, and only these. Do not invent benefits.
 
 ---
 
-## 6. Brand system — use exactly these
+## 6. Brand system: use exactly these
 
 **Colours**
 - Primary navy `#1D3B6D`, secondary `#2E528E`, slate `#7789A7`
 - Dark navy `#0B1D3B`, footer navy `#172F57`
 - Surfaces `#EBEDF2` and `#F5F6F8`, border `#D3D4DA`
-- **Electrical trade accent `#DC7E49`** — use it as the single accent, the active state, the timer, the wire highlights. Never scattered decoratively.
+- **Electrical trade accent `#DC7E49`**: use it as the single accent, the active state, the timer, the wire highlights. Never scattered decoratively.
 
 **Type**
 - **Futura PT** via `https://use.typekit.net/aym5yls.css`, stack `'futura-pt','Futura PT',Helvetica,Arial,sans-serif`
