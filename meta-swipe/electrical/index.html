@@ -35,8 +35,9 @@ h3{font-size:1.15rem;margin-top:34px}
  display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1.05rem}
 .uname{font-weight:700;font-size:.95rem;line-height:1.25;display:flex;flex-direction:column}
 .uname em{font-weight:400;font-style:normal;color:var(--slate);font-size:.79rem;margin-top:2px}
-.utext{padding:3px 15px 12px;font-size:.9rem;color:var(--ink);white-space:pre-wrap}
-.vidmeta{display:flex;gap:8px;flex-wrap:wrap;padding-bottom:10px}
+.utext{padding:3px 15px 12px;font-size:.9rem;color:var(--ink);line-height:1.5}
+.utext p{margin:0 0 10px} .utext p:last-child{margin-bottom:0}
+.vidmeta{display:flex;gap:8px;flex-wrap:wrap;padding:10px 15px;background:#F0F2F5;border-top:1px solid #E1E4EA}
 .vbadge{background:var(--navy);color:#fff;font-size:.74rem;font-weight:700;padding:4px 10px;border-radius:100px}
 .uimg{background:#000}
 .uimg img{width:100%;display:block}
@@ -91,6 +92,39 @@ footer b{color:#fff}
   <p class="lead" style="margin-top:22px"><b>The caveat:</b> the Ad Library shows active ads only, so this cannot tell us what historically worked and then stopped. It shows what is working now.</p>
 </div></section>
 
+
+<section><div class="wrap">
+  <h2>What the Ad Library can and cannot tell us</h2>
+  <p class="lead">Worth stating plainly, because it explains why longevity is what we rank on rather than engagement.</p>
+  <div class="two">
+    <div><h3>Available</h3>
+      <ul class="why" style="margin-left:18px">
+        <li>Whether the ad is currently active</li>
+        <li>The exact date it started running</li>
+        <li>Which platforms it appears on</li>
+        <li>The full creative and the full primary text</li>
+        <li>The advertiser's page, and its follower count</li>
+      </ul>
+    </div>
+    <div><h3>Not available</h3>
+      <ul class="why" style="margin-left:18px">
+        <li>Reactions, likes, comments or shares</li>
+        <li>Impressions or reach</li>
+        <li>Spend or cost per result</li>
+        <li>Click through rate or conversions</li>
+      </ul>
+    </div>
+  </div>
+  <p class="lead" style="margin-top:20px">I checked all of these directly rather than assuming. The details panel gives Library ID, start date and platforms. Impressions, reach and spend exist in the underlying schema but come back <b>blank for commercial advertisers</b>, because Meta restricts them to political and issue advertising. The public advertiser page is login gated, so post level reaction and comment counts are not readable either. The one reach proxy that does come through is the page follower count.</p>
+
+  <h3>Advertiser page size, to set the rest of the page in context</h3>
+  <div class="barrow"><span class="barlab">RESINC Solar &amp; Batteri</span><span class="bartrack"><span class="barfill" style="width:100%;background:var(--accent)"></span></span><span class="barpct">6.2K followers</span></div><div class="barrow"><span class="barlab">Sorted Electrical</span><span class="bartrack"><span class="barfill" style="width:44%;background:var(--accent)"></span></span><span class="barpct">2.7K followers</span></div><div class="barrow"><span class="barlab">DYFA Plumbing &amp; Electr</span><span class="bartrack"><span class="barfill" style="width:23%;background:var(--accent)"></span></span><span class="barpct">1.4K followers</span></div><div class="barrow"><span class="barlab">Activ8 Electrical Cont</span><span class="bartrack"><span class="barfill" style="width:21%;background:var(--accent)"></span></span><span class="barpct">1.3K followers</span></div><div class="barrow"><span class="barlab">NS Energy - Solahart T</span><span class="bartrack"><span class="barfill" style="width:16%;background:var(--accent)"></span></span><span class="barpct">989 followers</span></div><div class="barrow"><span class="barlab">RCBO Electrical</span><span class="bartrack"><span class="barfill" style="width:15%;background:var(--accent)"></span></span><span class="barpct">923 followers</span></div><div class="barrow"><span class="barlab">GBR 4x4 Pty Ltd</span><span class="bartrack"><span class="barfill" style="width:14%;background:var(--accent)"></span></span><span class="barpct">871 followers</span></div><div class="barrow"><span class="barlab">Bice Electrical</span><span class="bartrack"><span class="barfill" style="width:13%;background:var(--accent)"></span></span><span class="barpct">780 followers</span></div>
+  <div class="callout"><b>Bice Electrical has 780 followers and the best creative in the set</b>
+    <p>It is the second smallest page here, it is based in Adelaide, and it is running both the longest-lived static and the longest-lived video. RESINC has eight times the following and is running the same static four times over.</p>
+    <p>That is the argument for phase 3 in one line. This is not a budget competition, it is a craft competition, and craft is the side we can win.</p>
+  </div>
+</div></section>
+
 <section><div class="wrap">
   <h2>What role video plays</h2>
   <p class="lead">This is the question worth answering properly, because the instinct is that video wins and the data says something more specific than that.</p>
@@ -114,10 +148,11 @@ footer b{color:#fff}
     <div class="unit">
       <div class="uhead"><span class="av">B</span>
         <span class="uname">Bice Electrical<em>Sponsored &middot; 113 days running &middot; video</em></span></div>
-      <div class="utext vidmeta"><span class="vbadge">&#9654; 53.6s</span>
+      <div class="utext"><p>Sparkies in Unley or along the coastline south of Adelaide CBD!</p><p>Ready to actually enjoy being a sparky again?</p><p>Bice Electrical is hiring a fully qualified electrician.</p><p>And we look after our crew:<br>✅ Brand new 2025 Ford Transit Custom (take-home van, fully kitted with Milwaukee Packout)<br>✅ $1,000 sign-on bonus<br>✅ TOIL system. Bank your extra hours and choose when to take them off<br>✅ Earn more than just your hourly rate. Every job you do efficiently puts more in your pocket.</p><p>Join a team that values skill, not just speed.</p><p>Apply now and let&#x27;s get you behind the wheel of your new van.</p></div>
+      <div class="uimg vstrip"><img src="../../assets/swipe/electrical/video/1892369321439306_f0.jpg" alt="Bice Electrical video frame" loading="eager"><img src="../../assets/swipe/electrical/video/1892369321439306_f1.jpg" alt="Bice Electrical video frame" loading="eager"><img src="../../assets/swipe/electrical/video/1892369321439306_f2.jpg" alt="Bice Electrical video frame" loading="eager"></div>
+      <div class="vidmeta"><span class="vbadge">&#9654; 53.6s</span>
         <span class="vbadge">360x640</span>
         <span class="vbadge">vertical 9:16</span></div>
-      <div class="uimg vstrip"><img src="../../assets/swipe/electrical/video/1892369321439306_f0.jpg" alt="Bice Electrical video frame" loading="eager"><img src="../../assets/swipe/electrical/video/1892369321439306_f1.jpg" alt="Bice Electrical video frame" loading="eager"><img src="../../assets/swipe/electrical/video/1892369321439306_f2.jpg" alt="Bice Electrical video frame" loading="eager"></div>
       <div class="vfoot">Three frames from the video, at 15%, 50% and 85%</div>
     </div>
   </div>
@@ -131,10 +166,11 @@ footer b{color:#fff}
     <div class="unit">
       <div class="uhead"><span class="av">S</span>
         <span class="uname">Sorted Electrical<em>Sponsored &middot; 72 days running &middot; video</em></span></div>
-      <div class="utext vidmeta"><span class="vbadge">&#9654; 27.0s</span>
+      <div class="utext"><p>⚡️ WE’RE HIRING! ⚡️</p><p>Sorted Electrical is growing and we’re looking for a qualified electrician or 2nd–3rd year apprentice to join our Brisbane team.</p><p>We’re after someone who takes pride in their work, has a great attitude and wants to be part of a young, motivated crew that’s building something long-term.</p><p>What’s on offer?</p><p>🚗 Take-home work vehicle for suitable roles<br>💰 Great pay + bonuses<br>📈 Ongoing training and career development<br>👊 A team that actually backs each other<br>🎯 Pool table, darts + golf at the office<br>🏠 Quality residential work across Brisbane<br>📱 A modern, growing business with big plans</p><p>We’re not looking for someone who just wants to clock in and clock out.</p><p>We want someone reliable, switched on and keen to grow with the business.</p><p>Think that’s you?</p><p>👉 Check out our Instagram page and send us a message.</p><p>TAG YOUR SPARKY MATES! ⚡️👇</p><p>Or if you know someone who’d be a great fit, send this their way.</p><p>Licence Numbers<br>L159852<br>86636</p></div>
+      <div class="uimg vstrip"><img src="../../assets/swipe/electrical/video/1045722865110456_f0.jpg" alt="Sorted Electrical video frame" loading="eager"><img src="../../assets/swipe/electrical/video/1045722865110456_f1.jpg" alt="Sorted Electrical video frame" loading="eager"><img src="../../assets/swipe/electrical/video/1045722865110456_f2.jpg" alt="Sorted Electrical video frame" loading="eager"></div>
+      <div class="vidmeta"><span class="vbadge">&#9654; 27.0s</span>
         <span class="vbadge">360x640</span>
         <span class="vbadge">vertical 9:16</span></div>
-      <div class="uimg vstrip"><img src="../../assets/swipe/electrical/video/1045722865110456_f0.jpg" alt="Sorted Electrical video frame" loading="eager"><img src="../../assets/swipe/electrical/video/1045722865110456_f1.jpg" alt="Sorted Electrical video frame" loading="eager"><img src="../../assets/swipe/electrical/video/1045722865110456_f2.jpg" alt="Sorted Electrical video frame" loading="eager"></div>
       <div class="vfoot">Three frames from the video, at 15%, 50% and 85%</div>
     </div>
   </div>
@@ -148,10 +184,11 @@ footer b{color:#fff}
     <div class="unit">
       <div class="uhead"><span class="av">H</span>
         <span class="uname">Hoile electrical<em>Sponsored &middot; 55 days running &middot; video</em></span></div>
-      <div class="utext vidmeta"><span class="vbadge">&#9654; 11.6s</span>
+      <div class="utext"><p>⚡ Electrician Wanted – Adelaide ⚡<br>Want a career path with Unlimited potential?<br>We are looking for Sparkies!<br>✅ $40–$50/hr + uncapped bonuses<br>🚐 Company vehicle<br>📆 Monthly RDO<br>🏋️ Gym membership<br>💇 Monthly haircut<br>🤝 Supportive team culture (no egos, no drama)<br>We do a mix of renovations, rewires, installs, maintenance &amp; some air con work — and we’ll train you where needed.<br>Quick application – we’ll call you back fast.<br>👇 Apply now in under 1 minute.</p></div>
+      <div class="uimg vstrip"><img src="../../assets/swipe/electrical/video/1785529255808229_f0.jpg" alt="Hoile electrical video frame" loading="eager"><img src="../../assets/swipe/electrical/video/1785529255808229_f1.jpg" alt="Hoile electrical video frame" loading="eager"><img src="../../assets/swipe/electrical/video/1785529255808229_f2.jpg" alt="Hoile electrical video frame" loading="eager"></div>
+      <div class="vidmeta"><span class="vbadge">&#9654; 11.6s</span>
         <span class="vbadge">360x640</span>
         <span class="vbadge">vertical 9:16</span></div>
-      <div class="uimg vstrip"><img src="../../assets/swipe/electrical/video/1785529255808229_f0.jpg" alt="Hoile electrical video frame" loading="eager"><img src="../../assets/swipe/electrical/video/1785529255808229_f1.jpg" alt="Hoile electrical video frame" loading="eager"><img src="../../assets/swipe/electrical/video/1785529255808229_f2.jpg" alt="Hoile electrical video frame" loading="eager"></div>
       <div class="vfoot">Three frames from the video, at 15%, 50% and 85%</div>
     </div>
   </div>
@@ -165,10 +202,11 @@ footer b{color:#fff}
     <div class="unit">
       <div class="uhead"><span class="av">A</span>
         <span class="uname">Astill&#x27;s Electrical Services<em>Sponsored &middot; 43 days running &middot; video</em></span></div>
-      <div class="utext vidmeta"><span class="vbadge">&#9654; 13.6s</span>
+      <div class="utext"><p>BRISBANE ELECTRICIANS - WE’RE HIRING.</p><p>Astill’s Electrical is looking for a qualified electrician to join our Brisbane team in a full-time role.</p><p>We’re after someone who takes pride in their work, works well with others and wants to be part of a growing electrical company across South East Queensland.</p><p>Ready for your next move?</p><p>Send your resume to hr@astillselectrical.com.au or hit the button below to get in touch.<br>Chat on Messenger<br>Join the Astill’s Electrical team<br>Send Message</p></div>
+      <div class="uimg vstrip"><img src="../../assets/swipe/electrical/video/2361513434380886_f0.jpg" alt="Astill&#x27;s Electrical Services video frame" loading="eager"><img src="../../assets/swipe/electrical/video/2361513434380886_f1.jpg" alt="Astill&#x27;s Electrical Services video frame" loading="eager"><img src="../../assets/swipe/electrical/video/2361513434380886_f2.jpg" alt="Astill&#x27;s Electrical Services video frame" loading="eager"></div>
+      <div class="vidmeta"><span class="vbadge">&#9654; 13.6s</span>
         <span class="vbadge">360x640</span>
         <span class="vbadge">vertical 9:16</span></div>
-      <div class="uimg vstrip"><img src="../../assets/swipe/electrical/video/2361513434380886_f0.jpg" alt="Astill&#x27;s Electrical Services video frame" loading="eager"><img src="../../assets/swipe/electrical/video/2361513434380886_f1.jpg" alt="Astill&#x27;s Electrical Services video frame" loading="eager"><img src="../../assets/swipe/electrical/video/2361513434380886_f2.jpg" alt="Astill&#x27;s Electrical Services video frame" loading="eager"></div>
       <div class="vfoot">Three frames from the video, at 15%, 50% and 85%</div>
     </div>
   </div>
@@ -182,10 +220,11 @@ footer b{color:#fff}
     <div class="unit">
       <div class="uhead"><span class="av">E</span>
         <span class="uname">Elite-Projects, Electrical, Maintenance<em>Sponsored &middot; 33 days running &middot; video</em></span></div>
-      <div class="utext vidmeta"><span class="vbadge">&#9654; 121.1s</span>
+      <div class="utext"><p>Good people. Varied work. Room to grow. ⚡ Hear from the team about working at ElitePEM. We’re hiring Electricians and Senior Electricians for our award-winning Wyong team. ✓ Moving to a 4-day working week ✓ $2,000 sign-on bonus and take-home vehicle ✓ Paid birthday off and gym membership ✓ Varied commercial projects and room to step up Recently qualified or ready to lead? Explore the roles and apply. 0:00 / 2:01 Electricians, join the ElitePEM team Electrician and Senior Electrician roles Learn More</p></div>
+      <div class="uimg vstrip"><img src="../../assets/swipe/electrical/video/1428032052615024_f0.jpg" alt="Elite-Projects, Electrical, Maintenance video frame" loading="eager"><img src="../../assets/swipe/electrical/video/1428032052615024_f1.jpg" alt="Elite-Projects, Electrical, Maintenance video frame" loading="eager"><img src="../../assets/swipe/electrical/video/1428032052615024_f2.jpg" alt="Elite-Projects, Electrical, Maintenance video frame" loading="eager"></div>
+      <div class="vidmeta"><span class="vbadge">&#9654; 121.1s</span>
         <span class="vbadge">640x360</span>
         <span class="vbadge">landscape</span></div>
-      <div class="uimg vstrip"><img src="../../assets/swipe/electrical/video/1428032052615024_f0.jpg" alt="Elite-Projects, Electrical, Maintenance video frame" loading="eager"><img src="../../assets/swipe/electrical/video/1428032052615024_f1.jpg" alt="Elite-Projects, Electrical, Maintenance video frame" loading="eager"><img src="../../assets/swipe/electrical/video/1428032052615024_f2.jpg" alt="Elite-Projects, Electrical, Maintenance video frame" loading="eager"></div>
       <div class="vfoot">Three frames from the video, at 15%, 50% and 85%</div>
     </div>
   </div>
@@ -199,10 +238,11 @@ footer b{color:#fff}
     <div class="unit">
       <div class="uhead"><span class="av">B</span>
         <span class="uname">Booth Electrical Co.<em>Sponsored &middot; 32 days running &middot; video</em></span></div>
-      <div class="utext vidmeta"><span class="vbadge">&#9654; 5.2s</span>
+      <div class="utext"><p>Sparkies - Booth Electrical Co is hiring across North Brisbane. $50-$65/hr based on experience, plus a $1,500 sign-on bonus. Monday to Friday, no weekend work. Weekly pay, company vehicle and iPad. Service and maintenance, new builds, renos, solar and air-con across North Brisbane and Moreton Bay. Tap to apply - takes 30 seconds.</p></div>
+      <div class="uimg vstrip"><img src="../../assets/swipe/electrical/video/1391232149304904_f0.jpg" alt="Booth Electrical Co. video frame" loading="eager"><img src="../../assets/swipe/electrical/video/1391232149304904_f1.jpg" alt="Booth Electrical Co. video frame" loading="eager"><img src="../../assets/swipe/electrical/video/1391232149304904_f2.jpg" alt="Booth Electrical Co. video frame" loading="eager"></div>
+      <div class="vidmeta"><span class="vbadge">&#9654; 5.2s</span>
         <span class="vbadge">360x640</span>
         <span class="vbadge">vertical 9:16</span></div>
-      <div class="uimg vstrip"><img src="../../assets/swipe/electrical/video/1391232149304904_f0.jpg" alt="Booth Electrical Co. video frame" loading="eager"><img src="../../assets/swipe/electrical/video/1391232149304904_f1.jpg" alt="Booth Electrical Co. video frame" loading="eager"><img src="../../assets/swipe/electrical/video/1391232149304904_f2.jpg" alt="Booth Electrical Co. video frame" loading="eager"></div>
       <div class="vfoot">Three frames from the video, at 15%, 50% and 85%</div>
     </div>
   </div>
@@ -255,8 +295,8 @@ footer b{color:#fff}
   <article class="card">
   <div class="col-ad"><div class="unit">
   <div class="uhead"><span class="av">R</span>
-    <span class="uname">RESINC Solar &amp; Batteries<em>Sponsored &middot; 275 days running</em></span></div>
-  <div class="utext">⚡ Qualified Sparky? Let&#x27;s Chat. RESINC Solar &amp; Batteries is celebrating its 10th anniversary and is hiring experienced electricians to join our high-performing solar install teams. If you&#x27;re looking for full-ti<span class="more"> &hellip;<span class="rest">me, long-term work with a growing, award-winning business that genuinely looks after its people — we want to hear from you. Applicants must be qualified electricians. SAA accreditation (or willingness to obtain) for solar and battery systems required. Locations: Sydney Wollongong Canberra Central / North / Western Melbourne 📩 Apply now or reach out to our team directly via jobs@resinc.com.au or visit www.resinc.com.au/careers/ RESINC Solar &amp; Batteries Business Send message</span></span></div>
+    <span class="uname">RESINC Solar &amp; Batteries<em>Sponsored &middot; 275 days running &middot; 6.2K followers</em></span></div>
+  <div class="utext"><p>⚡ Qualified Sparky? Let&#x27;s Chat.</p><p>RESINC Solar &amp; Batteries is celebrating its 10th anniversary and is hiring experienced electricians to join our high-performing solar install teams.</p><p>If you&#x27;re looking for full-time, long-term work with a growing, award-winning business that genuinely looks after its people — we want to hear from you.</p><p>Applicants must be qualified electricians. SAA accreditation (or willingness to obtain) for solar and battery systems required.</p><p>Locations:<br>Sydney<br>Wollongong<br>Canberra<br>Central / North / Western Melbourne</p><p>📩 Apply now or reach out to our team directly via jobs@resinc.com.au or visit www.resinc.com.au/careers/<br>RESINC Solar &amp; Batteries<br>Business<br>Send message</p></div>
   <div class="uimg"><img src="../../assets/swipe/electrical/resinc-solar-batteries.jpg" alt="RESINC Solar &amp; Batteries creative" loading="eager"></div>
   
 </div></div>
@@ -268,8 +308,8 @@ footer b{color:#fff}
 </article><article class="card">
   <div class="col-ad"><div class="unit">
   <div class="uhead"><span class="av">A</span>
-    <span class="uname">Activ8 Electrical Contractors Mount Gambier<em>Sponsored &middot; 153 days running</em></span></div>
-  <div class="utext">Are you a top sparky looking for a workplace that actually values you? 💪 We’re on the hunt for a Qualified Electrician to join our growing team in Mount Gambier, SA — and we’ve packed this role with awesome per<span class="more"> &hellip;<span class="rest">ks to make it worth your while 👇 ✅ $38–$45/hr (based on experience) ✅ $1000 sign-on bonus (after probation period) ✅ Work vehicle + fuel card (with personal use — never pay for fuel again!) ✅ Early Friday finishes (yes, really!) ✅ Paid day off for your birthday 🥳 ✅ Bonus incentives $$$ ✅ Flexible hours to suit family life 👨‍👩‍👧‍👦 ✅ Flexible positions (full-time, part-time or casual) ✅ Monthly paid BBQ’s 🍔🔥 ✅ Assistance with a relocation allowance if you’re moving from out of town 🚚 ✅ Many opportunities for overtime when you want it 💰 🧰 What You’ll Need: ⚡ Certificate III in Electrotechnology – sorry, non-negotiable ⚡ SA Electrical License – we do follow the rules 🚗 Driver’s License (must be able to drive manual) 🗣️ Solid communication skills – we’re a service-based business, so this is a must 💪 Good attitude &amp; strong work ethic – if you’re allergic to hard work or team chats, we’re probably not for you If you’re looking for a fresh start and want to feel valued for your skills, we’d love to hear from you. 📩 Apply now by sending us an email with your resume — we’d love to chat! admin@activ8electrical.com</span></span></div>
+    <span class="uname">Activ8 Electrical Contractors Mount Gambier<em>Sponsored &middot; 153 days running &middot; 1.3K followers</em></span></div>
+  <div class="utext"><p>Are you a top sparky looking for a workplace that actually values you? 💪<br>We’re on the hunt for a Qualified Electrician to join our growing team in Mount Gambier, SA — and we’ve packed this role with awesome perks to make it worth your while 👇</p><p>✅ $38–$45/hr (based on experience)<br>✅ $1000 sign-on bonus (after probation period)<br>✅ Work vehicle + fuel card (with personal use — never pay for fuel again!)<br>✅ Early Friday finishes (yes, really!)<br>✅ Paid day off for your birthday 🥳<br>✅ Bonus incentives $$$<br>✅ Flexible hours to suit family life 👨‍👩‍👧‍👦<br>✅ Flexible positions (full-time, part-time or casual)<br>✅ Monthly paid BBQ’s 🍔🔥<br>✅ Assistance with a relocation allowance if you’re moving from out of town 🚚<br>✅ Many opportunities for overtime when you want it 💰</p><p>🧰 What You’ll Need:<br>⚡ Certificate III in Electrotechnology – sorry, non-negotiable<br>⚡ SA Electrical License – we do follow the rules<br>🚗 Driver’s License (must be able to drive manual)<br>🗣️ Solid communication skills – we’re a service-based business, so this is a must<br>💪 Good attitude &amp; strong work ethic – if you’re allergic to hard work or team chats, we’re probably not for you</p><p>If you’re looking for a fresh start and want to feel valued for your skills, we’d love to hear from you.</p><p>📩 Apply now by sending us an email with your resume — we’d love to chat!</p><p>admin@activ8electrical.com</p></div>
   <div class="uimg"><img src="../../assets/swipe/electrical/activ8-electrical-contractors-mount-gamb.jpg" alt="Activ8 Electrical Contractors Mount Gambier creative" loading="eager"></div>
   
 </div></div>
@@ -281,8 +321,8 @@ footer b{color:#fff}
 </article><article class="card">
   <div class="col-ad"><div class="unit">
   <div class="uhead"><span class="av">R</span>
-    <span class="uname">RCBO Electrical<em>Sponsored &middot; 148 days running</em></span></div>
-  <div class="utext">RCBO Electrical is Hiring, We’re looking for a Qualified Electrician to join our growing team. Contact Colin for more information ✉️ Info@rcboelectrical.net 📱 0418311557 We are Hiring! Electrician, Home &amp; Garde<span class="more"> &hellip;<span class="rest">n, Appliance Repair Send message</span></span></div>
+    <span class="uname">RCBO Electrical<em>Sponsored &middot; 148 days running &middot; 923 followers</em></span></div>
+  <div class="utext"><p>RCBO Electrical is Hiring, We’re looking for a Qualified Electrician to join our growing team. Contact Colin for more information<br>✉️ Info@rcboelectrical.net<br>📱 0418311557<br>We are Hiring!<br>Electrician, Home &amp; Garden, Appliance Repair<br>Send message</p></div>
   <div class="uimg"><img src="../../assets/swipe/electrical/rcbo-electrical.jpg" alt="RCBO Electrical creative" loading="eager"></div>
   
 </div></div>
@@ -295,9 +335,9 @@ footer b{color:#fff}
   <div class="col-ad"><div class="unit">
   <div class="uhead"><span class="av">A</span>
     <span class="uname">ABW Electrical and Air Conditioning<em>Sponsored &middot; 146 days running</em></span></div>
-  <div class="utext">Some things to look for when you’re hiring an electrician that you might find helpful. Contact us: ABW Electrical and Air Conditioning 📍 107 Almond Avenue Mildura 📞 (03) 5000 1791 ✉️ admin@abwelectrical.com.au <span class="more"> &hellip;<span class="rest">#trades #electrician #heatingandcooling #construction ABWGROUP.COM.AU Electrical &amp; Air Conditioning Mildura ABW Group Contact Us ABWGROUP.COM.AU Electrical &amp; Air Conditioning Mildura ABW Group Contact Us ABWGROUP.COM.AU Electrical &amp; Air Conditioning Mildura ABW Group Contact Us ABWGROUP.COM.AU Electrical &amp; Air Conditioning Mildura ABW Group Contact Us ABWGROUP.COM.AU Electrical &amp; Air Conditioning Mildura ABW Group Contact Us ABWGROUP.COM.AU Electrical &amp; Air Conditioning Mildura ABW Group Contact Us</span></span></div>
+  <div class="utext"><p>Some things to look for when you’re hiring an electrician that you might find helpful.</p><p>Contact us:<br>ABW Electrical and Air Conditioning<br>📍 107 Almond Avenue Mildura<br>📞 (03) 5000 1791<br>✉️ admin@abwelectrical.com.au</p><p>#trades #electrician #heatingandcooling #construction</p></div>
   <div class="uimg"><img src="../../assets/swipe/electrical/abw-electrical-and-air-conditioning.jpg" alt="ABW Electrical and Air Conditioning creative" loading="eager"></div>
-  
+  <div class="ctabar"><div class="ctatxt"><span class="ctadom">ABWGROUP.COM.AU</span><span class="ctahead">Electrical &amp; Air Conditioning Mildura | ABW Group</span></div><span class="ctabtn">Contact Us</span></div>
 </div></div>
   <div class="col-say">
     <p class="note">Included as a caution, not a model. The copy is written for CUSTOMERS, not candidates.</p>
@@ -307,10 +347,10 @@ footer b{color:#fff}
 </article><article class="card">
   <div class="col-ad"><div class="unit">
   <div class="uhead"><span class="av">D</span>
-    <span class="uname">DYFA Plumbing &amp; Electrical<em>Sponsored &middot; 119 days running</em></span></div>
-  <div class="utext">We are hiring a qualified electrician to join our Sunshine Coast team! We have built a strong reputation as trusted electricians across the Sunshine Coast. Key responsibilities for the role include: ✅ Experienc<span class="more"> &hellip;<span class="rest">e in new builds (essential) ✅ Ability to read and interpret electrical diagrams and schematics ✅ Strong understanding of construction plans ✅ Solid knowledge of AS3000 and relevant electrical standards ✅ Current QLD Electrical Licence Why Join DYFA Electrical? ✅ Competitive hourly rate ✅ Ongoing training and development opportunities ✅ Clear pathways for career progression within the company FB.ME WE&#x27;RE HIRING Sign up</span></span></div>
+    <span class="uname">DYFA Plumbing &amp; Electrical<em>Sponsored &middot; 119 days running &middot; 1.4K followers</em></span></div>
+  <div class="utext"><p>We are hiring a qualified electrician to join our Sunshine Coast team!</p><p>We have built a strong reputation as trusted electricians across the Sunshine Coast.</p><p>Key responsibilities for the role include:</p><p>✅ Experience in new builds (essential)<br>✅ Ability to read and interpret electrical diagrams and schematics<br>✅ Strong understanding of construction plans<br>✅ Solid knowledge of AS3000 and relevant electrical standards<br>✅ Current QLD Electrical Licence</p><p>Why Join DYFA Electrical?</p><p>✅ Competitive hourly rate<br>✅ Ongoing training and development opportunities<br>✅ Clear pathways for career progression within the company</p></div>
   <div class="uimg"><img src="../../assets/swipe/electrical/dyfa-plumbing-electrical.jpg" alt="DYFA Plumbing &amp; Electrical creative" loading="eager"></div>
-  
+  <div class="ctabar"><div class="ctatxt"><span class="ctadom">FB.ME</span><span class="ctahead">WE&#x27;RE HIRING</span></div><span class="ctabtn">Sign up</span></div>
 </div></div>
   <div class="col-say">
     <p class="note">Clean, credible, benefit-led. Separates what we need from what you get.</p>
@@ -320,8 +360,8 @@ footer b{color:#fff}
 </article><article class="card">
   <div class="col-ad"><div class="unit">
   <div class="uhead"><span class="av">B</span>
-    <span class="uname">Bice Electrical<em>Sponsored &middot; 113 days running</em></span></div>
-  <div class="utext">Sparkies in Unley or along the coastline south of Adelaide CBD! Ready to actually enjoy being a sparky again? Bice Electrical is hiring a fully qualified electrician. And we look after our crew: ✅ Brand new 202<span class="more"> &hellip;<span class="rest">5 Ford Transit Custom (take-home van, fully kitted with Milwaukee Packout) ✅ $1,000 sign-on bonus ✅ TOIL system. Bank your extra hours and choose when to take them off ✅ Earn more than just your hourly rate. Every job you do efficiently puts more in your pocket. Join a team that values skill, not just speed. Apply now and let&#x27;s get you behind the wheel of your new van.</span></span></div>
+    <span class="uname">Bice Electrical<em>Sponsored &middot; 113 days running &middot; 780 followers</em></span></div>
+  <div class="utext"><p>Sparkies in Unley or along the coastline south of Adelaide CBD!</p><p>Ready to actually enjoy being a sparky again?</p><p>Bice Electrical is hiring a fully qualified electrician.</p><p>And we look after our crew:<br>✅ Brand new 2025 Ford Transit Custom (take-home van, fully kitted with Milwaukee Packout)<br>✅ $1,000 sign-on bonus<br>✅ TOIL system. Bank your extra hours and choose when to take them off<br>✅ Earn more than just your hourly rate. Every job you do efficiently puts more in your pocket.</p><p>Join a team that values skill, not just speed.</p><p>Apply now and let&#x27;s get you behind the wheel of your new van.</p></div>
   <div class="uimg"><img src="../../assets/swipe/electrical/bice-electrical.jpg" alt="Bice Electrical creative" loading="eager"></div>
   
 </div></div>
@@ -333,8 +373,8 @@ footer b{color:#fff}
 </article><article class="card">
   <div class="col-ad"><div class="unit">
   <div class="uhead"><span class="av">G</span>
-    <span class="uname">GBR 4x4 Pty Ltd<em>Sponsored &middot; 85 days running</em></span></div>
-  <div class="utext">🚗 WE&#x27;RE HIRING – QUALIFIED AUTO ELECTRICIAN ⚡ GBR 4X4 is looking for a qualified Auto Electrician to join our busy, professional light vehicle mechanical workshop. If you&#x27;re passionate about automotive electric<span class="more"> &hellip;<span class="rest">al systems, enjoy diagnosing faults, and want to work with a supportive team, we&#x27;d love to hear from you. The Role: 🔧 Diagnose and repair electrical faults on light vehicles 🔧 Install and service automotive electrical systems and accessories 🔧 Repair charging, starting, and battery systems 🔧 Perform wiring repairs and fit aftermarket accessories 🔧 Air-conditioning diagnosis and repairs 🔧 Work alongside our experienced mechanical team to deliver quality workmanship What We&#x27;re Looking For: ✅ Qualified Auto Electrician ✅ Vehicle Air-Conditioning licenses (preferred but not essential) ✅ Experience working on light vehicles (4WD experience is an advantage) ✅ Strong diagnostic and fault-finding skills ✅ Current driver&#x27;s licence ✅ Reliable, motivated, and takes pride in producing high-quality work What We Offer: ✔ Competitive pay based on experience ✔ Full-time, secure position ✔ Modern, well-equipped workshop ✔ Friendly and supportive team environment If you&#x27;re looking for your next opportunity with a respected local workshop, we&#x27;d love to hear from you. 📩 Send your resume to info@gbr4x4.com.au. Join the team at GBR 4X4 and help keep our customers on th GBR 4x4 Pty Ltd Auto Service 871 people like this Like Page</span></span></div>
+    <span class="uname">GBR 4x4 Pty Ltd<em>Sponsored &middot; 85 days running &middot; 871 followers</em></span></div>
+  <div class="utext"><p>🚗 WE&#x27;RE HIRING – QUALIFIED AUTO ELECTRICIAN ⚡</p><p>GBR 4X4 is looking for a qualified Auto Electrician to join our busy, professional light vehicle mechanical workshop.</p><p>If you&#x27;re passionate about automotive electrical systems, enjoy diagnosing faults, and want to work with a supportive team, we&#x27;d love to hear from you.</p><p>The Role:<br>🔧 Diagnose and repair electrical faults on light vehicles<br>🔧 Install and service automotive electrical systems and accessories<br>🔧 Repair charging, starting, and battery systems<br>🔧 Perform wiring repairs and fit aftermarket accessories<br>🔧 Air-conditioning diagnosis and repairs<br>🔧 Work alongside our experienced mechanical team to deliver quality workmanship</p><p>What We&#x27;re Looking For:<br>✅ Qualified Auto Electrician<br>✅ Vehicle Air-Conditioning licenses (preferred but not essential)<br>✅ Experience working on light vehicles (4WD experience is an advantage)<br>✅ Strong diagnostic and fault-finding skills<br>✅ Current driver&#x27;s licence<br>✅ Reliable, motivated, and takes pride in producing high-quality work</p><p>What We Offer:<br>✔ Competitive pay based on experience<br>✔ Full-time, secure position<br>✔ Modern, well-equipped workshop<br>✔ Friendly and supportive team environment</p><p>If you&#x27;re looking for your next opportunity with a respected local workshop, we&#x27;d love to hear from you.</p><p>📩 Send your resume to info@gbr4x4.com.au.</p><p>Join the team at GBR 4X4 and help keep our customers on th<br>GBR 4x4 Pty Ltd</p></div>
   <div class="uimg"><img src="../../assets/swipe/electrical/gbr-4x4-pty-ltd.jpg" alt="GBR 4x4 Pty Ltd creative" loading="eager"></div>
   
 </div></div>
@@ -347,7 +387,7 @@ footer b{color:#fff}
   <div class="col-ad"><div class="unit">
   <div class="uhead"><span class="av">M</span>
     <span class="uname">Mezelecs Electrical Solutions<em>Sponsored &middot; 67 days running</em></span></div>
-  <div class="utext">We are hiring!🥳 Looking for a a local geelong electrician with aircon experience. Mezelecs Electrical Solutions Electrician, Business Send message</div>
+  <div class="utext"><p>We are hiring!🥳 Looking for a a local geelong electrician with aircon experience.<br>Mezelecs Electrical Solutions<br>Electrician, Business<br>Send message</p></div>
   <div class="uimg"><img src="../../assets/swipe/electrical/mezelecs-electrical-solutions.jpg" alt="Mezelecs Electrical Solutions creative" loading="eager"></div>
   
 </div></div>
@@ -359,10 +399,10 @@ footer b{color:#fff}
 </article><article class="card">
   <div class="col-ad"><div class="unit">
   <div class="uhead"><span class="av">N</span>
-    <span class="uname">NS Energy - Solahart Tamworth &amp; Districts<em>Sponsored &middot; 59 days running</em></span></div>
-  <div class="utext">⚡ LICENSED ELECTRICIAN WANTED COFFS HARBOUR Ready for a change? Join the growing team at NS Energy and build your career in the solar and battery industry. We’re looking for a licensed electrician to work acros<span class="more"> &hellip;<span class="rest">s Solar PV, inverters, switchboards, DC/AC cabling, battery connections, and more. Plus, enjoy a range of great perks: ☀️ Primarily Monday - Thursday 40 hour working week 💰 Attractive base salary + performance bonuses ⚡ Regular Friday overtime available 📱 Mobile phone allowance after probation 🔋 Solar &amp; battery accreditation desirable - training can be provided 🤝 Join an experienced, growing local team The role is full-time and based in Coffs Harbour, with occasional travel to Tamworth. If you’re a qualified sparky who takes pride in safe, quality work and wants to grow your skills in solar and battery installations, we want to hear from you. 👉 Apply below via SEEK. AU.SEEK.COM Licensed Electrician Wanted ⚡ Coffs Harbour 4-Day Week Great Pay + Bonuses Solar &amp; Battery See details</span></span></div>
+    <span class="uname">NS Energy - Solahart Tamworth &amp; Districts<em>Sponsored &middot; 59 days running &middot; 989 followers</em></span></div>
+  <div class="utext"><p>⚡ LICENSED ELECTRICIAN WANTED | COFFS HARBOUR</p><p>Ready for a change? Join the growing team at NS Energy and build your career in the solar and battery industry.</p><p>We’re looking for a licensed electrician to work across Solar PV, inverters, switchboards, DC/AC cabling, battery connections, and more.</p><p>Plus, enjoy a range of great perks:</p><p>☀️ Primarily Monday - Thursday 40 hour working week<br>💰 Attractive base salary + performance bonuses<br>⚡ Regular Friday overtime available<br>📱 Mobile phone allowance after probation<br>🔋 Solar &amp; battery accreditation desirable - training can be provided<br>🤝 Join an experienced, growing local team</p><p>The role is full-time and based in Coffs Harbour, with occasional travel to Tamworth.</p><p>If you’re a qualified sparky who takes pride in safe, quality work and wants to grow your skills in solar and battery installations, we want to hear from you.</p><p>👉 Apply below via SEEK.</p></div>
   <div class="uimg"><img src="../../assets/swipe/electrical/ns-energy-solahart-tamworth-districts.jpg" alt="NS Energy - Solahart Tamworth &amp; Districts creative" loading="eager"></div>
-  
+  <div class="ctabar"><div class="ctatxt"><span class="ctadom">AU.SEEK.COM</span><span class="ctahead">Licensed Electrician Wanted ⚡ Coffs Harbour</span></div><span class="ctabtn">Learn more</span></div>
 </div></div>
   <div class="col-say">
     <p class="note">Widens the pool instead of narrowing it. That is the move worth copying.</p>
@@ -373,7 +413,7 @@ footer b{color:#fff}
   <div class="col-ad"><div class="unit">
   <div class="uhead"><span class="av">Q</span>
     <span class="uname">QPES<em>Sponsored &middot; 56 days running</em></span></div>
-  <div class="utext">If you&#x27;re a qualified sparky in the Moreton Bay area working five days a week and wondering if your boss actually values your work, this is worth reading. Queensland Power &amp; Electrical Services is a growing ele<span class="more"> &hellip;<span class="rest">ctrical company based in the Moreton Bay area and we&#x27;re looking for a qualified electrician with solid domestic experience to join our team. Here&#x27;s what the role looks like. You&#x27;ll be doing domestic and commercial maintenance, minor projects, and there&#x27;s a real opportunity to get into high-voltage work. The pay sits between $110,000 and $135,000 a year depending on your experience. And you work four days a week. Not as a perk we&#x27;ll quietly take back after three months. That&#x27;s just how we run things. You&#x27;ll also have a company vehicle, flexible hours, an RDO and TOIL system, a bonus scheme, and overtime available when it suits you. We&#x27;re a small, tight-knit team. Young crew. We get along well and we actually look out for each other. If that sounds like the job you&#x27;ve been waiting for, click Apply Now. After you fill in the form, we will call you to walk through the next steps. Electrician Wanted. $110k - $135k/yr. 4-Day Work Week. Moreton Bay Area. Learn More</span></span></div>
+  <div class="utext"><p>If you&#x27;re a qualified sparky in the Moreton Bay area working five days a week and wondering if your boss actually values your work, this is worth reading.</p><p>Queensland Power &amp; Electrical Services is a growing electrical company based in the Moreton Bay area and we&#x27;re looking for a qualified electrician with solid domestic experience to join our team.<br>Here&#x27;s what the role looks like.</p><p>You&#x27;ll be doing domestic and commercial maintenance, minor projects, and there&#x27;s a real opportunity to get into high-voltage work. The pay sits between $110,000 and $135,000 a year depending on your experience.</p><p>And you work four days a week. Not as a perk we&#x27;ll quietly take back after three months.</p><p>That&#x27;s just how we run things.</p><p>You&#x27;ll also have a company vehicle, flexible hours, an RDO and TOIL system, a bonus scheme, and overtime available when it suits you.</p><p>We&#x27;re a small, tight-knit team. Young crew. We get along well and we actually look out for each other.</p><p>If that sounds like the job you&#x27;ve been waiting for, click Apply Now.</p><p>After you fill in the form, we will call you to walk through the next steps.<br>Electrician Wanted. $110k - $135k/yr. 4-Day Work Week. Moreton Bay Area.<br>Learn More</p></div>
   <div class="uimg"><img src="../../assets/swipe/electrical/qpes.jpg" alt="QPES creative" loading="eager"></div>
   
 </div></div>
@@ -385,10 +425,10 @@ footer b{color:#fff}
 </article><article class="card">
   <div class="col-ad"><div class="unit">
   <div class="uhead"><span class="av">S</span>
-    <span class="uname">Sorted Electrical<em>Sponsored &middot; 32 days running</em></span></div>
-  <div class="utext">We’re looking for a driven 2nd or 3rd year Electrical Apprentice to join Sorted Electrical in Brisbane. This isn’t for someone who wants to cruise through their apprenticeship. We want someone who: ⚡ Wants to b<span class="more"> &hellip;<span class="rest">ecome a seriously good electrician ⚡ Takes pride in clean, high-quality work ⚡ Communicates well with customers and the team ⚡ Wants more responsibility as they improve ⚡ Is hungry to learn residential electrical + air conditioning ⚡ Wants to work around other motivated tradespeople If you’re performing well but feel like you’re not getting the opportunities, training or progression you want, we’d like to hear from you. At Sorted, you’ll work across quality residential electrical and air-conditioning projects with a team that wants to keep improving. More opportunity. More responsibility. More room to grow. Based in Brisbane &amp; Bayside. SORTEDELECTRICAL.COM.AU Want More From Your Electrical Apprenticeship? Apply to join the Sorted Electrical team as a qualified residential electrician in Brisbane. Apply now</span></span></div>
+    <span class="uname">Sorted Electrical<em>Sponsored &middot; 32 days running &middot; 2.7K followers</em></span></div>
+  <div class="utext"><p>We’re looking for a driven 2nd or 3rd year Electrical Apprentice to join Sorted Electrical in Brisbane.</p><p>This isn’t for someone who wants to cruise through their apprenticeship.</p><p>We want someone who:</p><p>⚡ Wants to become a seriously good electrician<br>⚡ Takes pride in clean, high-quality work<br>⚡ Communicates well with customers and the team<br>⚡ Wants more responsibility as they improve<br>⚡ Is hungry to learn residential electrical + air conditioning<br>⚡ Wants to work around other motivated tradespeople</p><p>If you’re performing well but feel like you’re not getting the opportunities, training or progression you want, we’d like to hear from you.</p><p>At Sorted, you’ll work across quality residential electrical and air-conditioning projects with a team that wants to keep improving.</p><p>More opportunity. More responsibility. More room to grow.</p><p>Based in Brisbane &amp; Bayside.</p></div>
   <div class="uimg"><img src="../../assets/swipe/electrical/sorted-electrical.jpg" alt="Sorted Electrical creative" loading="eager"></div>
-  
+  <div class="ctabar"><div class="ctatxt"><span class="ctadom">SORTEDELECTRICAL.COM.AU</span><span class="ctahead">Want More From Your Electrical Apprenticeship?</span></div><span class="ctabtn">Apply now</span></div>
 </div></div>
   <div class="col-say">
     <p class="note">The only apprentice-specific creative in the sweep, and it now runs video too.</p>
