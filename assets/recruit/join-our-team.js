@@ -166,17 +166,77 @@ try{
 
   /* ---------- application form ---------- */
   var form = scope.querySelector('#applyform'), btn = scope.querySelector('#submitbtn');
+  var okbox = scope.querySelector('#okbox'), errbox = scope.querySelector('#errbox');
+  var endpoint = form ? (form.getAttribute('data-endpoint') || '') : '';
+
+  /* Turnstile is only loaded when the page carries a real site key, so the
+     form still works (less the bot check) before the widget is provisioned. */
+  try {
+    var tsBox = scope.querySelector('#turnstilebox');
+    var tsKey = tsBox ? (tsBox.getAttribute('data-sitekey') || '') : '';
+    if (tsKey) {
+      var ts = document.createElement('script');
+      ts.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js';
+      ts.async = true; ts.defer = true;
+      document.head.appendChild(ts);
+    }
+  } catch (e) {}
+
+  function param(name){
+    try { return new URLSearchParams(window.location.search).get(name) || ''; }
+    catch (e) { return ''; }
+  }
+  function gaClientId(){
+    try {
+      var m = document.cookie.match(/(?:^|;\s*)_ga=GA\d+\.\d+\.(\d+\.\d+)/);
+      return m ? m[1] : '';
+    } catch (e) { return ''; }
+  }
+
   function check(){
     var ok = form.checkValidity();
     btn.disabled = !ok;
     btn.textContent = ok ? 'Send my application' : 'Fill your name, phone, email and role to send';
   }
   form.addEventListener('input', check); form.addEventListener('change', check); check();
+
   form.addEventListener('submit', function(e){
     e.preventDefault();
-    var box = scope.querySelector('#okbox');
-    box.style.display = 'block';
-    box.scrollIntoView({behavior: reduce ? 'auto' : 'smooth', block:'center'});
+    if (!endpoint){
+      // No sink configured yet: do not pretend it was sent.
+      if (errbox) errbox.style.display = 'block';
+      return;
+    }
+    if (errbox) errbox.style.display = 'none';
+    var fd = new FormData(form);
+    // Source attribution, so the pipeline can report cost per applicant.
+    fd.set('page_url', window.location.href.slice(0, 500));
+    ['gclid','gbraid','utm_source','utm_medium','utm_campaign','utm_content','utm_term'].forEach(function(n){
+      var v = param(n); if (v) fd.set(n, v.slice(0, 200));
+    });
+    var cid = gaClientId(); if (cid) fd.set('ga_client_id', cid);
+
+    btn.disabled = true;
+    btn.textContent = 'Sending your application...';
+    fetch(endpoint, { method:'POST', body: fd })
+      .then(function(r){
+        return r.json().catch(function(){ return {}; }).then(function(j){
+          return { ok: r.ok, status: r.status, body: j };
+        });
+      })
+      .then(function(res){
+        if (!res.ok || !res.body || !res.body.ok){
+          throw new Error((res.body && res.body.error) || ('HTTP ' + res.status));
+        }
+        form.classList.add('sent');
+        okbox.style.display = 'block';
+        okbox.scrollIntoView({behavior: reduce ? 'auto' : 'smooth', block:'center'});
+      })
+      .catch(function(){
+        if (errbox) errbox.style.display = 'block';
+        btn.disabled = false;
+        btn.textContent = 'Send my application';
+      });
   });
 
 
