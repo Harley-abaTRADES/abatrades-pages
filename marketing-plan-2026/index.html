@@ -181,10 +181,45 @@ figure.illo-main img{width:100%;height:auto;max-height:60vh;object-fit:contain;d
 .tight8 .points{margin-top:18px;gap:10px}
 .tight8 .points li{font-size:.92rem}
 .tight8 .src{font-size:.68rem;margin-top:14px}
+.tight9 .tier{padding:14px 20px}
+.tight9 .tam{gap:11px;margin-top:22px}
+.tight9 .points{margin-top:16px}
 .pos-slide .defbox{font-size:.82rem;padding:12px 16px;margin:12px 0 2px}
 .pos-slide td{padding-top:9px;padding-bottom:9px}
 .pos-slide .src{font-size:.66rem;margin-top:16px}
 .pos-slide h2{margin-bottom:6px}
+
+
+/* ---- section navigation ---- */
+.progress{position:fixed;top:0;left:0;height:3px;width:100%;background:transparent;z-index:60}
+.progress i{display:block;height:100%;width:0;background:var(--acc-aircon);transition:width .1s linear}
+.rail{display:none}
+.mobnav{position:fixed;top:0;left:0;right:0;height:58px;background:rgba(255,255,255,.96);
+  backdrop-filter:blur(8px);border-bottom:1px solid var(--brand-border);z-index:55;
+  display:flex;gap:8px;align-items:center;overflow-x:auto;overflow-y:hidden;
+  padding:0 12px;scrollbar-width:none;overscroll-behavior-x:contain}
+.mobnav::-webkit-scrollbar{display:none}
+.mobnav a{flex:0 0 auto;height:44px;display:flex;align-items:center;gap:7px;padding:0 14px;
+  border-radius:100px;background:var(--brand-surface);color:var(--brand-primary);
+  text-decoration:none;font-size:.74rem;font-weight:700;white-space:nowrap}
+.mobnav a .n{opacity:.55;font-variant-numeric:tabular-nums}
+.mobnav a.on{background:var(--brand-primary);color:#fff}
+.slide{scroll-margin-top:62px}
+@media (min-width:1300px){
+  .mobnav{display:none}
+  .rail{display:block;position:fixed;right:16px;top:50%;transform:translateY(-50%);z-index:55;width:176px}
+  .rail a{display:grid;grid-template-columns:22px 1fr;gap:8px;align-items:center;
+    text-decoration:none;padding:5px 8px;border-left:2px solid transparent;
+    color:var(--brand-slate);font-size:.72rem;line-height:1.2;transition:color .15s,border-color .15s}
+  .rail a .n{font-variant-numeric:tabular-nums;opacity:.7;font-size:.66rem}
+  .rail a:hover{color:var(--brand-primary)}
+  .rail a.on{color:var(--brand-primary);font-weight:700;border-left-color:var(--acc-aircon)}
+  .rail.dark-on a{color:rgba(255,255,255,.55)}
+  .rail.dark-on a.on{color:#fff;border-left-color:var(--acc-aircon)}
+  .rail.dark-on a:hover{color:#fff}
+  .slide{padding-right:212px}
+  .pagenum{right:208px}
+}
 
 /* appendix */
 .appx{font-size:.86rem;color:#4A5772;line-height:1.65;max-width:78ch}
@@ -212,9 +247,50 @@ figure.illo-main img{width:100%;height:auto;max-height:60vh;object-fit:contain;d
 </style>
 </head>
 <body>
+<div class="progress"><i id="prog"></i></div>
+<nav class="rail" id="rail" aria-label="Sections">
+<a href="#s1"><span class="n">01</span><span>The plan</span></a>
+<a href="#s2"><span class="n">02</span><span>Where we stand</span></a>
+<a href="#s3"><span class="n">03</span><span>Positioning</span></a>
+<a href="#s4"><span class="n">04</span><span>The four Ps</span></a>
+<a href="#s5"><span class="n">05</span><span>Porter</span></a>
+<a href="#s6"><span class="n">06</span><span>Brand promise</span></a>
+<a href="#s7"><span class="n">07</span><span>The best job</span></a>
+<a href="#s8"><span class="n">08</span><span>Who buys it</span></a>
+<a href="#s9"><span class="n">09</span><span>Market size</span></a>
+<a href="#s10"><span class="n">10</span><span>Buyer bands</span></a>
+<a href="#s11"><span class="n">11</span><span>The 95:5 rule</span></a>
+<a href="#s12"><span class="n">12</span><span>The journey</span></a>
+<a href="#s13"><span class="n">13</span><span>Growth levers</span></a>
+<a href="#s14"><span class="n">14</span><span>Always-on</span></a>
+<a href="#s15"><span class="n">15</span><span>Channels</span></a>
+<a href="#s16"><span class="n">16</span><span>The bucket</span></a>
+<a href="#s17"><span class="n">17</span><span>Plan on a page</span></a>
+<a href="#s18"><span class="n">18</span><span>Appendix</span></a>
+</nav>
+<nav class="mobnav" id="mobnav" aria-label="Sections">
+<a href="#s1"><span class="n">01</span>The plan</a>
+<a href="#s2"><span class="n">02</span>Where we stand</a>
+<a href="#s3"><span class="n">03</span>Positioning</a>
+<a href="#s4"><span class="n">04</span>The four Ps</a>
+<a href="#s5"><span class="n">05</span>Porter</a>
+<a href="#s6"><span class="n">06</span>Brand promise</a>
+<a href="#s7"><span class="n">07</span>The best job</a>
+<a href="#s8"><span class="n">08</span>Who buys it</a>
+<a href="#s9"><span class="n">09</span>Market size</a>
+<a href="#s10"><span class="n">10</span>Buyer bands</a>
+<a href="#s11"><span class="n">11</span>The 95:5 rule</a>
+<a href="#s12"><span class="n">12</span>The journey</a>
+<a href="#s13"><span class="n">13</span>Growth levers</a>
+<a href="#s14"><span class="n">14</span>Always-on</a>
+<a href="#s15"><span class="n">15</span>Channels</a>
+<a href="#s16"><span class="n">16</span>The bucket</a>
+<a href="#s17"><span class="n">17</span>Plan on a page</a>
+<a href="#s18"><span class="n">18</span>Appendix</a>
+</nav>
 
 <!-- 1 -->
-<section class="slide has-illo dark title-hero">
+<section id="s1" class="slide has-illo dark title-hero">
   <div class="wrap">
     <div class="title-grid">
       <div>
@@ -234,7 +310,7 @@ figure.illo-main img{width:100%;height:auto;max-height:60vh;object-fit:contain;d
 </section>
 
 <!-- 2 -->
-<section class="slide has-illo light">
+<section id="s2" class="slide has-illo light">
   <div class="wrap split">
     <div class="col-text">
     <div class="eyebrow">Where we stand</div>
@@ -261,7 +337,7 @@ figure.illo-main img{width:100%;height:auto;max-height:60vh;object-fit:contain;d
 </section>
 
 <!-- 3 -->
-<section class="slide has-illo alt pos-slide">
+<section id="s3" class="slide has-illo alt pos-slide">
   <div class="wrap split">
     <div class="col-text">
     <div class="eyebrow">Positioning today</div>
@@ -290,7 +366,7 @@ figure.illo-main img{width:100%;height:auto;max-height:60vh;object-fit:contain;d
 </section>
 
 <!-- 4 -->
-<section class="slide has-illo light">
+<section id="s4" class="slide has-illo light">
   <div class="wrap split">
     <div class="col-text">
     <div class="eyebrow">The four Ps as they stand</div>
@@ -309,7 +385,7 @@ figure.illo-main img{width:100%;height:auto;max-height:60vh;object-fit:contain;d
 </section>
 
 <!-- 5 -->
-<section class="slide has-illo dark">
+<section id="s5" class="slide has-illo dark">
   <div class="wrap split">
     <div class="col-text">
     <div class="eyebrow">Michael Porter</div>
@@ -326,7 +402,7 @@ figure.illo-main img{width:100%;height:auto;max-height:60vh;object-fit:contain;d
 </section>
 
 <!-- 6 -->
-<section class="slide has-illo light">
+<section id="s6" class="slide has-illo light">
   <div class="wrap split">
     <div class="col-text">
     <div class="eyebrow">The strategy section &middot; Verne Harnish, Scaling Up</div>
@@ -348,7 +424,7 @@ figure.illo-main img{width:100%;height:auto;max-height:60vh;object-fit:contain;d
 </section>
 
 <!-- 7 -->
-<section class="slide has-illo dark">
+<section id="s7" class="slide has-illo dark">
   <div class="wrap split">
     <div class="col-text">
     <div class="eyebrow">Who we actually make money from</div>
@@ -376,7 +452,7 @@ figure.illo-main img{width:100%;height:auto;max-height:60vh;object-fit:contain;d
 </section>
 
 <!-- 8 -->
-<section class="slide has-illo light tight8">
+<section id="s8" class="slide has-illo light tight8">
   <div class="wrap split">
     <div class="col-text">
     <div class="eyebrow">Who we need through the door</div>
@@ -402,7 +478,7 @@ figure.illo-main img{width:100%;height:auto;max-height:60vh;object-fit:contain;d
 </section>
 
 <!-- 9 -->
-<section class="slide has-illo light">
+<section id="s9" class="slide has-illo light tight9">
   <div class="wrap split">
     <div class="col-text">
     <div class="eyebrow">Market size &middot; how each number is built</div>
@@ -435,7 +511,7 @@ figure.illo-main img{width:100%;height:auto;max-height:60vh;object-fit:contain;d
 </section>
 
 <!-- 10 -->
-<section class="slide has-illo light">
+<section id="s10" class="slide has-illo light">
   <div class="wrap split">
     <div class="col-text">
     <div class="eyebrow">Light, medium and heavy buyers</div>
@@ -475,7 +551,7 @@ figure.illo-main img{width:100%;height:auto;max-height:60vh;object-fit:contain;d
 </section>
 
 <!-- 11 -->
-<section class="slide light">
+<section id="s11" class="slide light">
   <div class="wrap">
     <div class="eyebrow">How brands grow &middot; the 95:5 rule</div>
     <h2>Only five in a hundred are buying now. The other ninety five decide whether we exist.</h2>
@@ -490,7 +566,7 @@ figure.illo-main img{width:100%;height:auto;max-height:60vh;object-fit:contain;d
 </section>
 
 <!-- 12 -->
-<section class="slide has-illo light">
+<section id="s12" class="slide has-illo light">
   <div class="wrap split">
     <div class="col-text">
     <div class="eyebrow">The customer journey</div>
@@ -514,7 +590,7 @@ figure.illo-main img{width:100%;height:auto;max-height:60vh;object-fit:contain;d
 </section>
 
 <!-- 13 -->
-<section class="slide has-illo alt">
+<section id="s13" class="slide has-illo alt">
   <div class="wrap split">
     <div class="col-text">
     <div class="eyebrow">Growth levers &middot; the channels we can pull</div>
@@ -536,7 +612,7 @@ figure.illo-main img{width:100%;height:auto;max-height:60vh;object-fit:contain;d
 </section>
 
 <!-- 14 -->
-<section class="slide has-illo light">
+<section id="s14" class="slide has-illo light">
   <div class="wrap split">
     <div class="col-text">
     <div class="eyebrow">Always-on versus campaign</div>
@@ -556,7 +632,7 @@ figure.illo-main img{width:100%;height:auto;max-height:60vh;object-fit:contain;d
 </section>
 
 <!-- 15 -->
-<section class="slide has-illo dark">
+<section id="s15" class="slide has-illo dark">
   <div class="wrap split">
     <div class="col-text">
     <div class="eyebrow">Promotion &middot; channel concentration</div>
@@ -580,7 +656,7 @@ figure.illo-main img{width:100%;height:auto;max-height:60vh;object-fit:contain;d
 </section>
 
 <!-- 16 -->
-<section class="slide light">
+<section id="s16" class="slide light">
   <div class="wrap">
     <div class="eyebrow">Top of funnel, bottom of funnel, and the bucket underneath</div>
     <h2>We pour demand into a bucket with three holes</h2>
@@ -601,7 +677,7 @@ figure.illo-main img{width:100%;height:auto;max-height:60vh;object-fit:contain;d
 </section>
 
 <!-- 17 -->
-<section class="slide has-illo light">
+<section id="s17" class="slide has-illo light">
   <div class="wrap split">
     <div class="col-text">
     <div class="eyebrow">Plan on a page</div>
@@ -636,7 +712,7 @@ figure.illo-main img{width:100%;height:auto;max-height:60vh;object-fit:contain;d
 </section>
 
 <!-- 18 Appendix -->
-<section class="slide has-illo light">
+<section id="s18" class="slide has-illo light">
   <div class="wrap split">
     <div class="col-text">
     <div class="eyebrow">Appendix</div>
@@ -698,6 +774,53 @@ figure.illo-main img{width:100%;height:auto;max-height:60vh;object-fit:contain;d
     });
     i = best;
   }, {passive:true});
+})();
+</script>
+<script>
+(function(){
+  var links = [].slice.call(document.querySelectorAll('.rail a, .mobnav a'));
+  var sections = [].slice.call(document.querySelectorAll('.slide'));
+  var rail = document.getElementById('rail');
+  var mob = document.getElementById('mobnav');
+  var prog = document.getElementById('prog');
+
+  function mark(id, dark){
+    links.forEach(function(a){
+      a.classList.toggle('on', a.getAttribute('href') === '#' + id);
+    });
+    if(rail) rail.classList.toggle('dark-on', !!dark);
+    var chip = mob && mob.querySelector('a.on');
+    if(chip) mob.scrollLeft = chip.offsetLeft - (mob.clientWidth - chip.offsetWidth) / 2;
+  }
+
+  function spy(){
+    var probe = window.scrollY + window.innerHeight * 0.35;
+    var best = sections[0], bestTop = -Infinity;
+    sections.forEach(function(s){
+      var top = s.offsetTop;
+      if(top <= probe && top > bestTop){ bestTop = top; best = s; }
+    });
+    if(window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4){
+      best = sections[sections.length - 1];
+    }
+    mark(best.id, best.classList.contains('dark'));
+    var denom = document.documentElement.scrollHeight - window.innerHeight;
+    if(prog) prog.style.width = (denom > 0 ? (window.scrollY / denom) * 100 : 0) + '%';
+  }
+
+  links.forEach(function(a){
+    a.addEventListener('click', function(e){
+      e.preventDefault();
+      var t = document.querySelector(a.getAttribute('href'));
+      if(!t) return;
+      var y = t.getBoundingClientRect().top + window.scrollY - (window.innerWidth < 1300 ? 56 : 0);
+      window.scrollTo({top: y, behavior: 'auto'});
+    });
+  });
+
+  window.addEventListener('scroll', spy, {passive:true});
+  window.addEventListener('resize', spy);
+  spy();
 })();
 </script>
 </body>
