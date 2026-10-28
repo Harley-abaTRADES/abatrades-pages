@@ -204,6 +204,11 @@ section{scroll-margin-top:84px}
 .crow.dest b{color:var(--navy)}
 .av.brand{background:#fff;border:1px solid var(--border)}
 .av img{width:100%;height:100%;object-fit:contain;border-radius:50%;display:block}
+.rail a.on-dark{color:rgba(255,255,255,.8);border-left-color:rgba(255,255,255,.34)}
+.rail a.on-dark:hover{color:#fff}
+.rail a.on-dark .rn{opacity:.75}
+.rail a.on-dark.on{color:#fff;border-left-color:#fff}
+.railhead.on-dark,.railgroup.on-dark{color:rgba(255,255,255,.88)}
 
 </style></head><body>
 <div class="progwrap"><div id="prog"></div></div>
@@ -1016,7 +1021,40 @@ section{scroll-margin-top:84px}
               .filter(function(e,i,arr){return e && arr.indexOf(e)===i});
   var bar=document.getElementById('prog');
   var mnav=document.querySelector('.mobnav');
+  var rail=document.querySelector('.rail');
   var last='';
+  /* The rail is fixed and vertically centred, so at the top of the page it sits
+     across the navy header and the light section below it. Sample what is actually
+     behind each link and flip that link to white when the backdrop is dark. */
+  function bgBehind(x,y){
+    if(typeof document.elementsFromPoint!=='function') return null;
+    var els=document.elementsFromPoint(x,y);
+    for(var i=0;i<els.length;i++){
+      if(els[i].closest('.rail,.mobnav,.progwrap')) continue;
+      var c=getComputedStyle(els[i]).backgroundColor;
+      if(c && c!=='rgba(0, 0, 0, 0)' && c!=='transparent'){
+        var m=c.match(/[\d.]+/g);
+        if(m && m.length>=3){ return (0.2126*(+m[0])+0.7152*(+m[1])+0.0722*(+m[2]))/255; }
+        return null;
+      }
+    }
+    return null;
+  }
+  function themed(el){
+    var r=el.getBoundingClientRect(), y=r.top+r.height/2;
+    if(y<2||y>window.innerHeight-2){ el.classList.remove('on-dark'); return; }
+    var lum=bgBehind(r.left+16,y);
+    el.classList.toggle('on-dark', lum!==null && lum<0.55);
+  }
+  function railTheme(){
+    if(!rail || getComputedStyle(rail).display==='none') return;
+    rail.querySelectorAll('a,.railgroup,.railhead').forEach(themed);
+  }
+  var rq=false;
+  function queue(){
+    if(rq) return; rq=true;
+    requestAnimationFrame(function(){ rq=false; railTheme(); });
+  }
   function upd(){
     if(!secs.length) return;
     var probe=window.scrollY+Math.round(window.innerHeight*0.28), cur=secs[0].id;
@@ -1031,6 +1069,7 @@ section{scroll-margin-top:84px}
       if(on){ var target=on.offsetLeft-(mnav.clientWidth-on.offsetWidth)/2;
         mnav.scrollTo({left:Math.max(0,target),behavior:'smooth'}); }
     }
+    queue();
   }
   addEventListener('scroll',upd,{passive:true});
   addEventListener('resize',upd);
