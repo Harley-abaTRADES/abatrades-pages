@@ -150,6 +150,19 @@ ul.points li span{color:#5B6880;display:block;font-size:.92em;margin-top:4px}
 .illo img{width:100%;height:auto;max-height:44vh;object-fit:contain;display:block}
 @media (max-height:920px){.illo img{max-height:38vh}}
 
+
+/* corner illustration on every slide */
+.slide.has-illo .wrap{position:relative}
+figure.corner{position:absolute;top:-4px;right:0;width:190px;margin:0;z-index:2}
+figure.corner img{width:100%;height:auto;display:block}
+.slide.dark figure.corner{background:#fff;padding:7px;border-radius:8px}
+.slide.title-hero .eyebrow,.slide.title-hero h1{max-width:none}
+.slide.has-illo .eyebrow,.slide.has-illo h1,.slide.has-illo h2{max-width:calc(100% - 216px)}
+@media (max-width:1000px){
+  figure.corner{position:static;width:140px;margin:0 0 14px}
+  .slide.has-illo .eyebrow,.slide.has-illo h1,.slide.has-illo h2{max-width:100%}
+}
+
 /* appendix */
 .appx{font-size:.86rem;color:#4A5772;line-height:1.65;max-width:78ch}
 .appx h3{font-size:1rem;color:var(--brand-primary);margin:26px 0 8px}
@@ -178,9 +191,10 @@ ul.points li span{color:#5B6880;display:block;font-size:.92em;margin-top:4px}
 <body>
 
 <!-- 1 -->
-<section class="slide dark">
+<section class="slide has-illo dark title-hero">
   <div class="wrap">
-    <div class="title-grid">
+    <figure class="corner"><img src="illos/01-title.png" alt="Hand-drawn illustration for this slide"></figure>
+        <div class="title-grid">
       <div>
         <div class="eyebrow">Strategy session &middot; 2 November 2026</div>
         <h1>The marketing plan</h1>
@@ -197,9 +211,10 @@ ul.points li span{color:#5B6880;display:block;font-size:.92em;margin-top:4px}
 </section>
 
 <!-- 2 -->
-<section class="slide light">
+<section class="slide has-illo light">
   <div class="wrap">
-    <div class="eyebrow">Where we stand</div>
+    <figure class="corner"><img src="illos/02-revenue-gp.png" alt="Hand-drawn illustration for this slide"></figure>
+        <div class="eyebrow">Where we stand</div>
     <h2>Our biggest brand and our most profitable brand are not the same brand</h2>
     <p class="lede">Trailing twelve months. Revenue says Plumbing. Gross profit says Air Con.</p>
     <table>
@@ -221,9 +236,10 @@ ul.points li span{color:#5B6880;display:block;font-size:.92em;margin-top:4px}
 </section>
 
 <!-- 3 -->
-<section class="slide alt">
+<section class="slide has-illo alt">
   <div class="wrap">
-    <div class="eyebrow">Positioning today</div>
+    <figure class="corner"><img src="illos/03-positioning.png" alt="Hand-drawn illustration for this slide"></figure>
+        <div class="eyebrow">Positioning today</div>
     <h2>Five good local trades. Not yet one brand a homeowner chooses by name</h2>
     <p class="lede">Our read from the live sites and the competitor study. To be confirmed by Paul.</p>
     <div class="cols">
@@ -248,9 +264,10 @@ ul.points li span{color:#5B6880;display:block;font-size:.92em;margin-top:4px}
 </section>
 
 <!-- 4 -->
-<section class="slide light">
+<section class="slide has-illo light">
   <div class="wrap">
-    <div class="eyebrow">The four Ps as they stand</div>
+    <figure class="corner"><img src="illos/04-four-ps.png" alt="Hand-drawn illustration for this slide"></figure>
+        <div class="eyebrow">The four Ps as they stand</div>
     <h2>Four Ps, one lever in use</h2>
     <div class="ps">
       <div class="p"><div class="letter">Product</div><h3>Five trades, one promise</h3><p>The only productised offer is membership, Gold and Platinum. Everything else is sold as a job, not as an outcome.</p></div>
@@ -264,9 +281,10 @@ ul.points li span{color:#5B6880;display:block;font-size:.92em;margin-top:4px}
 </section>
 
 <!-- 5 -->
-<section class="slide dark">
+<section class="slide has-illo dark">
   <div class="wrap">
-    <div class="eyebrow">Michael Porter</div>
+    <figure class="corner"><img src="illos/05-porter.png" alt="Hand-drawn illustration for this slide"></figure>
+        <div class="eyebrow">Michael Porter</div>
     <div class="quote">If you are not different, you must be <em>cheapest</em>. Cheapest is not the business we want to be in.</div>
     <div class="cols" style="margin-top:44px">
       <div class="card"><div class="mini">Cost leadership</div><h3>Closed to us</h3><p>National franchises buy materials and media at a scale we cannot match. Competing on price means competing on their terms.</p></div>
@@ -278,9 +296,10 @@ ul.points li span{color:#5B6880;display:block;font-size:.92em;margin-top:4px}
 </section>
 
 <!-- 6 -->
-<section class="slide light">
+<section class="slide has-illo light">
   <div class="wrap">
-    <div class="eyebrow">The strategy section &middot; Verne Harnish, Scaling Up</div>
+    <figure class="corner"><img src="illos/06-guarantee.png" alt="Hand-drawn illustration for this slide"></figure>
+        <div class="eyebrow">The strategy section &middot; Verne Harnish, Scaling Up</div>
     <h2>A brand promise is only a promise if something is at risk</h2>
     <p class="lede">Harnish's second and third strata of strategy: the one promise you make, and the guarantee that proves you mean it. Domino's did not say "fast pizza". It said thirty minutes or it is free.</p>
     <div class="cols three">
@@ -297,9 +316,10 @@ ul.points li span{color:#5B6880;display:block;font-size:.92em;margin-top:4px}
 </section>
 
 <!-- 7 -->
-<section class="slide dark">
+<section class="slide has-illo dark">
   <div class="wrap">
-    <div class="eyebrow">Who we actually make money from</div>
+    <figure class="corner"><img src="illos/07-job-profit.png" alt="Hand-drawn illustration for this slide"></figure>
+        <div class="eyebrow">Who we actually make money from</div>
     <h2>Ten percent of our jobs earn sixty percent of our gross profit</h2>
     <table>
       <thead><tr><th>Job type</th><th>Jobs</th><th>Gross profit</th><th>GP per job</th><th>GP %</th></tr></thead>
@@ -322,9 +342,10 @@ ul.points li span{color:#5B6880;display:block;font-size:.92em;margin-top:4px}
 </section>
 
 <!-- 8 -->
-<section class="slide light">
+<section class="slide has-illo light">
   <div class="wrap">
-    <div class="eyebrow">Who we need through the door</div>
+    <figure class="corner"><img src="illos/08-door.png" alt="Hand-drawn illustration for this slide"></figure>
+        <div class="eyebrow">Who we need through the door</div>
     <h2>A homeowner replacing a ducted system they have already given up on</h2>
     <div class="cols">
       <div>
@@ -345,9 +366,10 @@ ul.points li span{color:#5B6880;display:block;font-size:.92em;margin-top:4px}
 </section>
 
 <!-- 9 -->
-<section class="slide light">
+<section class="slide has-illo light">
   <div class="wrap">
-    <div class="eyebrow">Market size &middot; how each number is built</div>
+    <figure class="corner"><img src="illos/09-tam.png" alt="Hand-drawn illustration for this slide"></figure>
+        <div class="eyebrow">Market size &middot; how each number is built</div>
     <h2>A $1.09 billion market, a $941 million slice we can serve, and $13 million we can win</h2>
     <div class="tam">
       <div class="tier">
@@ -375,9 +397,10 @@ ul.points li span{color:#5B6880;display:block;font-size:.92em;margin-top:4px}
 </section>
 
 <!-- 10 -->
-<section class="slide light">
+<section class="slide has-illo light">
   <div class="wrap">
-    <div class="eyebrow">Light, medium and heavy buyers</div>
+    <figure class="corner"><img src="illos/10-buyer-bands.png" alt="Hand-drawn illustration for this slide"></figure>
+        <div class="eyebrow">Light, medium and heavy buyers</div>
     <h2>Half our customers buy once. They are worth $315 each.</h2>
     <div class="bands">
       <div class="band">
@@ -427,9 +450,10 @@ ul.points li span{color:#5B6880;display:block;font-size:.92em;margin-top:4px}
 </section>
 
 <!-- 12 -->
-<section class="slide light">
+<section class="slide has-illo light">
   <div class="wrap">
-    <div class="eyebrow">The customer journey</div>
+    <figure class="corner"><img src="illos/12-journey.png" alt="Hand-drawn illustration for this slide"></figure>
+        <div class="eyebrow">The customer journey</div>
     <h2>Strong in the middle, absent at both ends</h2>
     <div class="journey5">
       <div class="j5 weak"><div class="n">01</div><h3>Awareness</h3><p>No brand media. We are not in the consideration set until the problem exists.</p><span class="st bad">Absent</span></div>
@@ -448,9 +472,10 @@ ul.points li span{color:#5B6880;display:block;font-size:.92em;margin-top:4px}
 </section>
 
 <!-- 13 -->
-<section class="slide alt">
+<section class="slide has-illo alt">
   <div class="wrap">
-    <div class="eyebrow">Growth levers &middot; the channels we can pull</div>
+    <figure class="corner"><img src="illos/13-channels.png" alt="Hand-drawn illustration for this slide"></figure>
+        <div class="eyebrow">Growth levers &middot; the channels we can pull</div>
     <h2>More, better, new, and all of it is a channel decision</h2>
     <div class="cols three">
       <div class="card"><div class="mini">More &middot; scale paid where it still pays</div><h3>Air Con, Roofing, Renovations</h3><p>Marketing efficiency of 5.77 on Air Con, 4.92 on Roofing and 3.24 on Renovations. Fixed costs are already covered, so incremental revenue at these ratios still contributes. Plumbing at 8.92 is the one to hold, not grow.</p></div>
@@ -467,9 +492,10 @@ ul.points li span{color:#5B6880;display:block;font-size:.92em;margin-top:4px}
 </section>
 
 <!-- 14 -->
-<section class="slide light">
+<section class="slide has-illo light">
   <div class="wrap">
-    <div class="eyebrow">Always-on versus campaign</div>
+    <figure class="corner"><img src="illos/14-always-on.png" alt="Hand-drawn illustration for this slide"></figure>
+        <div class="eyebrow">Always-on versus campaign</div>
     <h2>A system that runs, not spikes that stop</h2>
     <div class="cols">
       <div class="card"><div class="mini">Campaign</div><h3>Borrowed attention</h3><p>Spend goes up, enquiries follow, spend stops, silence. Cost per acquisition rises at every restart because the memory has decayed and the audience has to be bought again. Capacity planning is impossible.</p></div>
@@ -484,9 +510,10 @@ ul.points li span{color:#5B6880;display:block;font-size:.92em;margin-top:4px}
 </section>
 
 <!-- 15 -->
-<section class="slide dark">
+<section class="slide has-illo dark">
   <div class="wrap">
-    <div class="eyebrow">Promotion &middot; channel concentration</div>
+    <figure class="corner"><img src="illos/15-one-door.png" alt="Hand-drawn illustration for this slide"></figure>
+        <div class="eyebrow">Promotion &middot; channel concentration</div>
     <h2>We pay for one door. It is our best door, and it is the only one.</h2>
     <div class="stats">
       <div class="stat"><div class="k num">$191,015</div><div class="l">paid media, 90 days to 27 October 2026</div></div>
@@ -526,9 +553,10 @@ ul.points li span{color:#5B6880;display:block;font-size:.92em;margin-top:4px}
 </section>
 
 <!-- 17 -->
-<section class="slide light">
+<section class="slide has-illo light">
   <div class="wrap">
-    <div class="eyebrow">Plan on a page</div>
+    <figure class="corner"><img src="illos/17-plan.png" alt="Hand-drawn illustration for this slide"></figure>
+        <div class="eyebrow">Plan on a page</div>
     <h2>Three moves, one decision each</h2>
     <div class="moves">
       <div class="move">
@@ -545,22 +573,23 @@ ul.points li span{color:#5B6880;display:block;font-size:.92em;margin-top:4px}
       </div>
       <div class="move">
         <div class="n">Move 03</div>
-        <h3>Patch the bucket</h3>
-        <p>Follow up every unsold estimate, cover after hours, book installs within 24 hours, run PMI outbound to members.</p>
-        <dl><dt>Metric</dt><dd>Estimates followed up, after-hours leads recovered</dd><dt>Cost</dt><dd>Mostly no new media</dd></dl>
+        <h3>Productise the replacement decision</h3>
+        <p>A fixed-price ducted and hot water replacement offer with finance, a stated install window and the brand guarantee, backed by comparison content.</p>
+        <dl><dt>Metric</dt><dd>Install quote conversion and average install value</dd><dt>Cost</dt><dd>To be scoped</dd></dl>
       </div>
     </div>
     <ul class="points">
-      <li><strong>Decisions needed from Paul:</strong> endorse the always-on system; approve the three channel tests in order; agree owners for the three bucket fixes.</li>
+      <li><strong>Decisions needed from Paul:</strong> endorse the always-on system; approve the three channel tests in order; approve the replacement proposition and its price architecture.</li>
     </ul>
   </div>
   <div class="brandmark">aba TRADES</div><div class="pagenum">17</div>
 </section>
 
 <!-- 18 Appendix -->
-<section class="slide light">
+<section class="slide has-illo light">
   <div class="wrap">
-    <div class="eyebrow">Appendix</div>
+    <figure class="corner"><img src="illos/18-appendix.png" alt="Hand-drawn illustration for this slide"></figure>
+        <div class="eyebrow">Appendix</div>
     <h2>Sources, windows and the arithmetic</h2>
     <div class="appx">
       <h3>Gross profit definitions in use</h3>
