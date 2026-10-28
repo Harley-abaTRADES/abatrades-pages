@@ -5,261 +5,177 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <link rel="icon" type="image/x-icon" href="../../assets/brand/favicon.ico">
 <link rel="apple-touch-icon" href="../../assets/brand/abatrades-favicon.png">
-<title>The switchboard challenge | aba ELECTRICAL</title>
-<meta name="description" content="Three rounds, one switchboard, sixty seconds. Play the aba ELECTRICAL trade challenge on your phone, then see what we offer the sparkies who pass it.">
+<title>Spot the cooked breaker | aba ELECTRICAL</title>
+<meta name="description" content="Seven of these breakers are fine. One has had a shocker. Ten seconds, one tap, nothing to sign up to. Give it a crack.">
 <link rel="stylesheet" href="https://use.typekit.net/aym5yls.css">
 <style>
 :root{
   --navy:#1D3B6D; --navy2:#2E528E; --slate:#7789A7; --dark:#0B1D3B; --foot:#172F57;
   --surface:#EBEDF2; --field:#F5F6F8; --border:#D3D4DA; --accent:#DC7E49;
   --ink:#0F2036; --good:#8FAE1B; --warn:#B81C23;
-  --brown:#7A4A24; --blue:#1E5AA8; --green:#2E8B2E; --yellow:#F2C230;
+  --soot:#3A332C; --smoke:#9A9A9A;
   --font:'futura-pt','Futura PT','Century Gothic',Helvetica,Arial,sans-serif;
-  --r-card:20px; --r-pill:100px; --shadow:0 10px 30px rgba(29,59,109,.08);
+  --r-card:22px; --r-pill:100px; --shadow:0 10px 30px rgba(29,59,109,.09);
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{-webkit-text-size-adjust:100%}
-body{
-  font-family:var(--font);color:var(--ink);background:#fff;line-height:1.55;
-  font-size:16px;-webkit-font-smoothing:antialiased;overflow-x:hidden;
-}
+body{font-family:var(--font);color:var(--ink);background:#fff;line-height:1.55;font-size:16px;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden}
 img,svg{display:block;max-width:100%}
 a{color:inherit}
-h1,h2,h3,h4{font-weight:700;line-height:1.15;text-wrap:balance;color:var(--navy)}
-h1{font-size:clamp(1.7rem,6vw,2.5rem)}
-h2{font-size:clamp(1.35rem,4.6vw,2rem)}
-h3{font-size:clamp(1.05rem,3.4vw,1.3rem)}
-p{max-width:64ch}
+h1,h2,h3{font-weight:700;line-height:1.15;text-wrap:balance;color:var(--navy)}
+h1{font-size:clamp(1.85rem,7vw,2.7rem)}
+h2{font-size:clamp(1.4rem,5vw,2rem)}
+p{max-width:62ch}
 .wrap{max-width:1000px;margin:0 auto;padding:0 18px}
-.narrow{max-width:760px;margin:0 auto;padding:0 18px}
-.section{padding:54px 0}
 .eyebrow{display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.14em;
   text-transform:uppercase;color:var(--accent);margin-bottom:10px}
 .lede{font-size:1.02rem;color:#3d527a}
 
-/* ---------- buttons ---------- */
-.btn{
-  display:inline-flex;align-items:center;justify-content:center;gap:10px;
-  min-height:48px;padding:14px 24px;border-radius:var(--r-pill);
-  font:inherit;font-weight:700;font-size:16px;line-height:1;text-decoration:none;
-  border:1px solid var(--navy);background:var(--navy);color:#fff;cursor:pointer;
-  transition:background .2s ease,color .2s ease,border-color .2s ease,transform .2s ease;
-  white-space:nowrap;
-}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;
+  padding:15px 26px;border-radius:var(--r-pill);font:inherit;font-weight:700;font-size:16px;
+  line-height:1;text-decoration:none;border:1px solid var(--navy);background:var(--navy);color:#fff;
+  cursor:pointer;transition:background .2s ease,color .2s ease,border-color .2s ease;white-space:nowrap}
 .btn:hover{background:var(--navy2);border-color:var(--navy2);color:#fff}
 .btn-ghost{background:transparent;color:var(--navy)}
 .btn-ghost:hover{background:var(--navy2);border-color:var(--navy2);color:#fff}
 .btn-accent{background:var(--accent);border-color:var(--accent);color:var(--dark)}
 .btn-accent:hover{background:#c96c38;border-color:#c96c38;color:var(--dark)}
-.btn[disabled],.btn[aria-disabled="true"]{opacity:.45;cursor:not-allowed}
-.btn[disabled]:hover{background:var(--navy);border-color:var(--navy)}
-.btn-sm{padding:11px 18px;font-size:.9rem;min-height:44px}
-.btn:focus-visible,.wire:focus-visible,.terminal:focus-visible,.zone:focus-visible,
-.sharelink:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{
-  outline:3px solid var(--accent);outline-offset:2px
-}
+.btn-wide{width:100%}
+.btn:focus-visible,.mcb:focus-visible,a:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
 
-/* ---------- review flag (remove before this page goes anywhere near a customer) ---------- */
-.reviewflag{
-  background:#fdf2f2;border:3px solid var(--warn);border-radius:12px;
-  margin:14px auto 0;max-width:1000px;padding:12px 16px;
-}
-.reviewflag strong{display:block;color:var(--warn);text-transform:uppercase;
-  letter-spacing:.1em;font-size:.72rem;margin-bottom:4px}
+.reviewflag{background:#fdf2f2;border:3px solid var(--warn);border-radius:12px;margin:14px auto 0;
+  max-width:1000px;padding:12px 16px}
+.reviewflag strong{display:block;color:var(--warn);text-transform:uppercase;letter-spacing:.1em;
+  font-size:.72rem;margin-bottom:4px}
 .reviewflag span{font-size:.86rem;color:#7d1418}
 
-/* ---------- top bar ---------- */
 .topbar{position:sticky;top:0;z-index:30;background:var(--navy);color:#fff;
   border-bottom:1px solid rgba(255,255,255,.12)}
 .topbar .wrap{display:flex;align-items:center;gap:12px;justify-content:space-between;
   min-height:58px;padding-top:6px;padding-bottom:6px}
 .topbar img{height:26px;width:auto}
-.topbar .skip{background:transparent;border:1px solid rgba(255,255,255,.5);color:#fff;
-  min-height:44px;padding:10px 16px;font-size:.82rem;border-radius:var(--r-pill);
-  font-weight:700;text-decoration:none;display:inline-flex;align-items:center;flex-shrink:0}
+.topbar .skip{background:transparent;border:1px solid rgba(255,255,255,.5);color:#fff;min-height:44px;
+  padding:10px 16px;font-size:.82rem;border-radius:var(--r-pill);font-weight:700;text-decoration:none;
+  display:inline-flex;align-items:center;flex-shrink:0}
 .topbar .skip:hover{background:#fff;color:var(--navy);border-color:#fff}
 
-/* ---------- hero ---------- */
-.hero{background:var(--navy);color:#fff;padding:30px 0 34px}
-.hero h1{color:#fff;max-width:20ch}
-.hero p{color:rgba(255,255,255,.85);margin-top:12px;font-size:1rem}
+.hero{background:var(--navy);color:#fff;padding:30px 0 36px}
+.hero h1{color:#fff;max-width:22ch}
+.hero p{color:rgba(255,255,255,.86);margin-top:12px;font-size:1rem}
 .hero .eyebrow{color:var(--accent)}
-.hero .facts{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px;list-style:none}
-.hero .facts li{font-size:.78rem;font-weight:700;letter-spacing:.04em;
-  border:1px solid rgba(255,255,255,.28);border-radius:var(--r-pill);padding:7px 13px}
 
-/* ---------- game ---------- */
-.game{background:var(--field);padding:22px 0 46px}
-.gamecard{background:#fff;border:1px solid var(--border);border-radius:var(--r-card);
-  box-shadow:var(--shadow);padding:20px 16px 22px;max-width:520px;margin:0 auto}
-.roundbar{display:flex;align-items:center;justify-content:space-between;gap:12px;
-  margin-bottom:14px;min-height:44px}
-.roundlabel{font-size:.76rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
-  color:var(--slate)}
-.dots{display:flex;gap:7px;align-items:center}
-.dots i{width:11px;height:11px;border-radius:50%;background:var(--border);display:block}
-.dots i.on{background:var(--accent)}
-.dots i.done{background:var(--navy)}
-.timer{display:none;align-items:center;gap:7px;font-weight:700;font-size:.95rem;
-  color:var(--dark);background:rgba(220,126,73,.16);border:1px solid rgba(220,126,73,.5);
-  border-radius:var(--r-pill);padding:7px 14px;min-height:40px;font-variant-numeric:tabular-nums}
-.timer.on{display:inline-flex}
-.timer.low{background:rgba(184,28,35,.1);border-color:rgba(184,28,35,.45);color:var(--warn)}
-.gamecard h2{margin-bottom:8px}
-.roundtext{font-size:.95rem;color:#3d527a;max-width:46ch}
-.boardwrap{margin:16px auto 0;max-width:420px}
+.challenge{background:var(--field);padding:20px 0 46px}
+.card{background:#fff;border:1px solid var(--border);border-radius:var(--r-card);
+  box-shadow:var(--shadow);padding:20px 16px 22px;max-width:560px;margin:0 auto}
+.challengehead{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:44px}
+.clock{display:inline-flex;align-items:center;gap:7px;font-weight:700;font-size:.95rem;color:var(--dark);
+  background:rgba(220,126,73,.16);border:1px solid rgba(220,126,73,.5);border-radius:var(--r-pill);
+  padding:7px 14px;min-height:40px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.clock.stopped{background:rgba(143,174,27,.16);border-color:rgba(143,174,27,.55);color:#5d7208}
+.card h2{margin:10px 0 8px}
+.roundtext{font-size:.98rem;color:#3d527a;max-width:44ch}
+
+.challenger{display:none;margin:0 0 14px;background:#fff6ec;border:1px solid rgba(220,126,73,.55);
+  border-radius:14px;padding:12px 14px;font-size:.9rem;color:#8a4a1d;font-weight:700}
+.challenger.on{display:block}
+
+.boardwrap{margin:16px auto 0;max-width:430px}
 .board{width:100%;height:auto}
-.board.muted{opacity:.35}
-.feedback{min-height:62px;margin-top:14px;border-top:1px solid var(--border);padding-top:12px}
-.feedback p{font-size:.92rem;color:var(--navy);font-weight:700}
-.feedback p.sub{font-weight:400;color:#3d527a;margin-top:4px}
-.feedback.ok p{color:#5d7208}
-.feedback.no p{color:var(--warn)}
-.gameactions{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
-.gameactions .btn{flex:1 1 auto}
-.gameactions .btn-ghost{flex:0 1 auto}
-.skipnote{margin-top:14px;font-size:.82rem;color:var(--slate)}
-.skipnote a{color:var(--navy2);font-weight:700}
-.hintring{animation:pulse 1.1s ease-in-out infinite}
-@keyframes pulse{0%,100%{opacity:.35}50%{opacity:1}}
-.foundring{fill:none;stroke:var(--good);stroke-width:3}
-.shake{animation:shake .32s ease}
-@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
-
-/* wires, terminals and fault zones inside the board SVG */
 .board text{font-family:var(--font)}
-.wire{cursor:pointer;transition:transform .3s ease;touch-action:none}
-.wire.dragging{pointer-events:none;cursor:grabbing}
-.wire .ferrule{transition:transform .28s ease}
-.wire.sel .ferrule{stroke:var(--accent);stroke-width:4}
-.wire.sel .lead{opacity:1}
-.wire.placed{pointer-events:none}
-.wire.placed .lead{opacity:.0}
-.wire.placed .hit{cursor:default}
-.terminal{cursor:pointer}
-.terminal .hit{fill:transparent}
-.wire .hit{fill:transparent}
-.terminal .pad{fill:#fff;stroke:var(--navy);stroke-width:2}
-.terminal .chiplabel{font:700 12px var(--font);fill:#fff}
-.terminal.done .pad{fill:var(--navy)}
-.terminal.hint .pad{stroke:var(--accent);stroke-width:3}
-.zone{cursor:pointer}
-.zone .hit{fill:transparent}
-.zone .frame{fill:none;stroke:transparent;stroke-width:2}
-.zone.sel .frame,.zone:hover .frame{stroke:var(--accent)}
-.faultmark{display:none}
-.faultmark.on{display:block}
+.mcb{cursor:pointer}
+.mcb .hit{fill:transparent}
+.mcb .frame{fill:none;stroke:transparent;stroke-width:3}
+.mcb:hover .frame,.mcb:focus-visible .frame{stroke:var(--accent)}
+.mcb.nope .frame{stroke:var(--warn)}
+.mcb.yep .frame{stroke:var(--good)}
+.mcb .body{transition:transform .18s ease}
+.mcb.hmph .body{transform:translateY(-4px)}
+.mcb .lid{fill:#fff;stroke:#D3D4DA;stroke-width:2}
+.mcb .lever{fill:var(--navy)}
+.mcb .eye,.mcb .brow,.mcb .mouth{stroke:var(--ink);fill:none;stroke-width:3;stroke-linecap:round}
+.mcb .eyedot{fill:var(--ink);stroke:none}
+.mcb.bad .lid{fill:#EDE7E0;stroke:#8A7C70}
+.mcb.bad .lever{fill:#5C5148}
+.mcb.bad .eye,.mcb.bad .brow,.mcb.bad .mouth{stroke:var(--soot)}
+.mcb.bad .eyedot{fill:var(--soot)}
+.soot{fill:var(--soot);opacity:.45}
+.smoke{fill:none;stroke:var(--smoke);stroke-width:3;stroke-linecap:round;opacity:.7;
+  animation:rise 2.6s ease-in-out infinite}
+.smoke.s2{animation-delay:.7s}
+.smoke.s3{animation-delay:1.4s}
+@keyframes rise{0%{opacity:0;transform:translateY(6px)}35%{opacity:.8}100%{opacity:0;transform:translateY(-11px)}}
+.spark{fill:#F2C230;opacity:0}
+.mcb.yep .spark{animation:pop .55s ease-out 2}
+@keyframes pop{0%{opacity:1;transform:scale(.6)}100%{opacity:0;transform:scale(1.35)}}
 
-/* ---------- film ---------- */
-.film{background:var(--dark);color:#fff;padding:50px 0}
+.caption{min-height:56px;margin-top:14px;border-top:1px solid var(--border);padding-top:12px}
+.caption p{font-size:.98rem;font-weight:700;color:var(--navy)}
+.caption p.sub{font-weight:400;color:#3d527a;margin-top:4px}
+.caption.good p{color:#5d7208}
+.caption.nah p{color:var(--warn)}
+
+.resultcard{display:none;margin-top:18px;background:var(--field);border:1px solid var(--border);
+  border-radius:18px;padding:18px 16px}
+.resultcard.on{display:block}
+.timebig{font-size:clamp(2.2rem,11vw,3.2rem);font-weight:700;color:var(--navy);line-height:1;
+  font-variant-numeric:tabular-nums}
+.resultcard p{font-size:.96rem;color:#3d527a;margin-top:8px}
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.actions .btn{flex:1 1 auto}
+.shareline{margin-top:14px;font-size:.8rem;color:var(--slate);word-break:break-all}
+
+.film{background:var(--dark);color:#fff;padding:44px 0}
 .film h2{color:#fff}
 .film p{color:rgba(255,255,255,.82)}
-.filmslot{margin-top:20px;border-radius:var(--r-card);overflow:hidden;position:relative;
+.filmslot{margin-top:18px;border-radius:var(--r-card);overflow:hidden;position:relative;
   background:#132a52;border:1px solid rgba(255,255,255,.14)}
 .filmslot img{width:100%;height:auto;opacity:.72}
 .filmslot .play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
   flex-direction:column;gap:10px;text-align:center;padding:20px}
-.filmslot .play span.badge{width:64px;height:64px;border-radius:50%;background:rgba(255,255,255,.92);
-  color:var(--navy);display:flex;align-items:center;justify-content:center;font-size:1.4rem}
-.filmslot .play strong{font-size:.86rem;letter-spacing:.02em;color:#fff;font-weight:700}
-.filmslot video{width:100%;height:auto}
-.buildnote{margin-top:16px;border:3px solid var(--warn);background:rgba(184,28,35,.14);
-  border-radius:12px;padding:12px 14px}
-.buildnote strong{display:block;color:#ffd7d7;text-transform:uppercase;letter-spacing:.1em;
-  font-size:.7rem;margin-bottom:4px}
+.filmslot .play .badge{width:60px;height:60px;border-radius:50%;background:rgba(255,255,255,.92);
+  color:var(--navy);display:flex;align-items:center;justify-content:center;font-size:1.3rem}
+.filmslot .play strong{font-size:.85rem;color:#fff}
+.buildnote{margin-top:14px;border:3px solid var(--warn);background:rgba(184,28,35,.14);border-radius:12px;
+  padding:12px 14px}
+.buildnote strong{display:block;color:#ffd7d7;text-transform:uppercase;letter-spacing:.1em;font-size:.7rem;
+  margin-bottom:4px}
 .buildnote span{font-size:.85rem;color:rgba(255,255,255,.85)}
 
-/* ---------- offer ---------- */
-.offer{padding:56px 0}
-.offer .grid{display:grid;gap:14px;margin-top:24px}
-.fact{background:var(--field);border:1px solid var(--border);border-radius:var(--r-card);
-  padding:20px 18px}
-.fact h3{margin-bottom:6px}
-.fact p{font-size:.92rem;color:#3d527a}
-.fact .big{font-size:1.9rem;font-weight:700;color:var(--navy);line-height:1;margin-bottom:8px}
-.fact .big small{font-size:.8rem;font-weight:700;color:var(--slate);letter-spacing:.06em;
-  text-transform:uppercase;display:block;margin-top:7px}
-.offercta{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px;align-items:center}
-.offercta .call{font-weight:700;color:var(--navy);text-decoration:none;
-  display:inline-flex;align-items:center;min-height:44px}
-.offercta .call:hover{color:var(--navy2);text-decoration:underline}
+.join{background:var(--navy);color:#fff;padding:46px 0 50px;text-align:center}
+.join h2{color:#fff}
+.join p{color:rgba(255,255,255,.88);margin:12px auto 0}
+.join .actions{justify-content:center;max-width:560px;margin-left:auto;margin-right:auto}
+.join .btn-accent:hover{background:#fff;border-color:#fff;color:var(--navy)}
+.join .btn-ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.6)}
+.join .btn-ghost:hover{background:#fff;border-color:#fff;color:var(--navy)}
+.join .fineprint{margin-top:18px;font-size:.82rem;color:rgba(255,255,255,.68)}
 
-/* ---------- apply ---------- */
-.apply{background:var(--surface);padding:50px 0 56px}
-.formcard{background:#fff;border:1px solid var(--border);border-radius:var(--r-card);
-  padding:22px 18px;margin-top:22px;box-shadow:var(--shadow)}
-.formcard .field{margin-bottom:14px}
-.formcard .btn{white-space:normal;text-align:center;height:auto}
-.formcard label{display:block;font-size:.82rem;font-weight:700;color:var(--navy);margin-bottom:6px}
-.formcard label .req{color:var(--accent)}
-.formcard input,.formcard select{
-  width:100%;height:56px;border:1px solid var(--border);border-radius:30px;
-  background:var(--field);color:var(--navy);font:inherit;font-size:16px;padding:0 22px;
-}
-.formcard select{appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--navy) 50%),linear-gradient(135deg,var(--navy) 50%,transparent 50%);
-  background-position:calc(100% - 24px) 24px,calc(100% - 17px) 24px;background-size:7px 7px,7px 7px;background-repeat:no-repeat}
-.formcard input:hover,.formcard select:hover{border-color:var(--slate)}
-.formcard .twoup{display:grid;gap:14px}
-.submitrow{margin-top:20px}
-.formnote{font-size:.8rem;color:var(--slate);margin-top:12px}
-.result{margin-top:16px;border-radius:14px;padding:14px 16px;font-size:.9rem;display:none}
-.result.show{display:block}
-.okbox{background:rgba(143,174,27,.16);border:1px solid rgba(143,174,27,.5);color:#4d6007}
-.errbox{background:rgba(184,28,35,.08);border:1px solid rgba(184,28,35,.4);color:#7d1418}
-.formcard.sent input,.formcard.sent select,.formcard.sent .submitrow{display:none}
-.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
-
-/* ---------- share ---------- */
-.share{background:var(--navy);color:#fff;padding:50px 0}
-.share h2{color:#fff}
-.share p{color:rgba(255,255,255,.85)}
-.share .row{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px;align-items:center}
-.share .btn-accent:hover{background:#fff;border-color:#fff;color:var(--navy)}
-.share .btn-ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.6)}
-.share .btn-ghost:hover{background:#fff;border-color:#fff;color:var(--navy)}
-.resultline{font-size:1.35rem;font-weight:700;color:var(--accent);margin-top:6px;
-  font-variant-numeric:tabular-nums}
-.sharelink{margin-top:16px;display:inline-block;font-size:.84rem;color:rgba(255,255,255,.75);
-  word-break:break-all}
-
-/* ---------- footer ---------- */
-.foot{background:var(--foot);color:rgba(255,255,255,.8);padding:34px 0 40px;font-size:.86rem}
-.foot img{height:28px;margin-bottom:14px}
+.foot{background:var(--foot);color:rgba(255,255,255,.8);padding:32px 0 38px;font-size:.86rem}
+.foot img{height:28px;margin-bottom:12px}
 .foot a{color:#fff;font-weight:700;text-decoration:none}
 .foot a:hover{text-decoration:underline}
-.foot .small{margin-top:14px;font-size:.78rem;color:rgba(255,255,255,.6)}
-.foot .small p{max-width:70ch}
+.foot .small{margin-top:12px;font-size:.78rem;color:rgba(255,255,255,.6)}
 
-/* ---------- no-JS ---------- */
 html:not(.js) .needsjs{display:none}
 html.js .jsnote{display:none}
-.jsnote{border:1px dashed var(--border);border-radius:14px;padding:16px;
-  background:var(--field);font-size:.92rem;color:#3d527a}
+.jsnote{border:1px dashed var(--border);border-radius:14px;padding:16px;background:var(--field);
+  font-size:.92rem;color:#3d527a}
 .jsnote a{color:var(--navy);font-weight:700}
 
-/* ---------- wider screens ---------- */
 @media (min-width:720px){
-  .section{padding:70px 0}
   .hero{padding:44px 0 48px}
-  .gamecard{padding:28px 26px 30px;max-width:620px}
-  .offer .grid{grid-template-columns:1fr 1fr}
-  .formcard{padding:30px 26px}
-  .formcard .twoup{grid-template-columns:1fr 1fr}
+  .card{padding:28px 26px 30px;max-width:640px}
   .filmslot{max-width:760px}
 }
-@media (min-width:1080px){
-  .offer .grid{grid-template-columns:repeat(4,1fr)}
-}
-
 @media (max-width:359px){
-  .wrap,.narrow{padding:0 12px}
-  .gamecard{padding:18px 12px 20px}
-  .formcard{padding:18px 14px}
+  .wrap{padding:0 12px}
+  .card{padding:18px 12px 20px}
   .topbar .skip{padding:10px 12px}
 }
-
 @media (prefers-reduced-motion:reduce){
-  *,*::before,*::after{animation:none !important;transition:none !important;scroll-behavior:auto !important}
+  *,*::before,*::after{animation:none !important;transition:none !important}
+  .smoke{opacity:.5}
 }
 </style>
 </head>
@@ -268,13 +184,13 @@ html.js .jsnote{display:none}
 
 <div class="reviewflag" role="note">
   <strong>Review build, not live</strong>
-  <span>Built for review on 28 October 2026. No ad points at this page, and nothing here is approved for customer or candidate use until Josh or Paul says so. The film slot is a placeholder and the offer copy is the confirmed copy only.</span>
+  <span>Built for review on 28 October 2026. No ad points at this page and nothing here is approved for use until Josh or Paul says so. The film slot below is a placeholder, and the job, the pay and the form all live on the join our team page so nothing is said twice.</span>
 </div>
 
 <header class="topbar">
   <div class="wrap">
     <img src="../../assets/brand/abatrades-logo-h.svg" alt="aba TRADES" width="215" height="70">
-    <a class="skip" href="#offer">Skip to the offer</a>
+    <a class="skip" href="#join">Skip to the jobs</a>
   </div>
 </header>
 
@@ -282,296 +198,188 @@ html.js .jsnote{display:none}
   <section class="hero">
     <div class="wrap">
       <span class="eyebrow">aba ELECTRICAL</span>
-      <h1>Three rounds. One switchboard. Sixty seconds.</h1>
-      <p class="lede">A challenge for the trade, not a job ad. No form, no email, nothing to sign up to. Just the board you already know.</p>
-      <ul class="facts">
-        <li>Three rounds</li>
-        <li>Under a minute</li>
-        <li>One thumb</li>
-      </ul>
+      <h1>Seven of these are fine. One has had a shocker.</h1>
+      <p class="lede">One board, one tap, about ten seconds. No form, no email, nothing to sign up to. You will spot it.</p>
     </div>
   </section>
 
-  <section class="game" id="game">
+  <section class="challenge" id="challenge">
     <div class="wrap">
-      <div class="gamecard" id="gamecard">
-        <div class="roundbar">
-          <span class="roundlabel" id="roundlabel">Round 1 of 3</span>
-          <div class="dots" id="dots" aria-hidden="true"><i class="on"></i><i></i><i></i></div>
-          <span class="timer" id="timer" aria-label="Time remaining"><span id="timertext">60s</span></span>
+      <div class="card" id="card">
+        <div class="challengehead">
+          <span class="eyebrow" style="margin:0">The challenge</span>
+          <span class="clock" id="clock"><span id="clocktext">0.0s</span></span>
         </div>
-        <h2 id="roundtitle">Wire it</h2>
-        <p class="roundtext" id="roundtext">Three conductors, three terminals. Brown is active, blue is neutral, and green with a yellow stripe is earth. Drag a conductor in, or tap it and then tap the terminal.</p>
 
-        <p class="jsnote" id="jsnote">This round needs JavaScript switched on. Here is the rest of the page, and the offer, without it: <a href="#offer">go to the offer</a>.</p>
+        <p class="challenger" id="challenger"></p>
+
+        <h2 id="roundtitle">Spot the cooked breaker</h2>
+        <p class="roundtext" id="roundtext">One of these eight has been smoking since Tuesday. Tap it. There is no wrong answer expensive enough to matter, so have a crack.</p>
+
+        <p class="jsnote" id="jsnote">The board needs JavaScript to play. No worries, the jobs do not: <a href="#join">go straight to the jobs</a>.</p>
 
         <div class="boardwrap needsjs" id="boardwrap">
+          <svg id="board" class="board" viewBox="0 0 360 366" role="img" aria-label="Eight circuit breakers in a board, drawn as little characters. Seven look happy and healthy. One is grey, sooty and smoking. Tap the one that is smoking.">
+            <rect x="6" y="6" width="348" height="354" rx="18" fill="#EBEDF2" stroke="#D3D4DA" stroke-width="2"/>
+            <rect x="18" y="18" width="324" height="330" rx="14" fill="#F8F9FB" stroke="#D3D4DA"/>
+            <path d="M40 6 v20" stroke="#7A4A24" stroke-width="6" stroke-linecap="round"/>
+            <path d="M56 6 v20" stroke="#1E5AA8" stroke-width="6" stroke-linecap="round"/>
+            <path d="M72 6 v20" stroke="#2E8B2E" stroke-width="6" stroke-linecap="round"/>
+            <path d="M72 6 v20" stroke="#F2C230" stroke-width="6" stroke-linecap="round" stroke-dasharray="6 6"/>
+            <rect x="30" y="30" width="140" height="42" rx="10" fill="#1D3B6D"/>
+            <rect x="44" y="42" width="34" height="12" rx="6" fill="#ffffff" opacity=".9"/>
+            <text x="122" y="58" text-anchor="middle" font-size="12" font-weight="700" fill="#ffffff">MAIN SWITCH</text>
+            <rect x="196" y="30" width="134" height="42" rx="10" fill="#ffffff" stroke="#1D3B6D" stroke-width="2"/>
+            <circle cx="214" cy="51" r="6" fill="#EBEDF2" stroke="#1D3B6D" stroke-width="2"/>
+            <text x="278" y="56" text-anchor="middle" font-size="12" font-weight="700" fill="#1D3B6D">RCD</text>
+            <rect x="24" y="286" width="312" height="42" rx="10" fill="#ffffff" stroke="#D3D4DA"/>
+            <text x="180" y="312" text-anchor="middle" font-size="11" fill="#7789A7">Everything else in here is behaving itself.</text>
 
-          <svg id="board1" class="board" viewBox="0 0 360 440" role="img" aria-label="Switchboard, round one. Three spare conductors sit in the tray: an active, a neutral and an earth. Three terminals are waiting: A on the main switch, N on the neutral bar, E on the earth bar.">
-            <rect x="8" y="8" width="344" height="424" rx="14" fill="#EBEDF2" stroke="#D3D4DA" stroke-width="2"/>
-            <rect x="20" y="20" width="320" height="400" rx="10" fill="#F5F6F8" stroke="#D3D4DA"/>
-            <rect x="38" y="46" width="104" height="58" rx="6" fill="#ffffff" stroke="#1D3B6D" stroke-width="2"/>
-            <rect x="52" y="60" width="30" height="10" rx="5" fill="#1D3B6D"/>
-            <text x="90" y="88" text-anchor="middle" font-size="12" font-weight="700" fill="#1D3B6D">MAIN</text>
-            <text x="90" y="100" text-anchor="middle" font-size="9" fill="#7789A7">SWITCH</text>
-            <rect x="150" y="46" width="104" height="58" rx="6" fill="#ffffff" stroke="#1D3B6D" stroke-width="2"/>
-            <rect x="164" y="60" width="30" height="10" rx="5" fill="#1D3B6D"/>
-            <circle cx="238" cy="64" r="6" fill="#EBEDF2" stroke="#1D3B6D"/>
-            <text x="202" y="88" text-anchor="middle" font-size="12" font-weight="700" fill="#1D3B6D">RCD</text>
-            <text x="202" y="100" text-anchor="middle" font-size="9" fill="#7789A7">30mA</text>
-            <g>
-              <rect x="38" y="126" width="70" height="76" rx="6" fill="#ffffff" stroke="#1D3B6D" stroke-width="2"/>
-              <rect x="57" y="136" width="32" height="12" rx="6" fill="#1D3B6D"/>
-              <text x="73" y="192" text-anchor="middle" font-size="11" font-weight="700" fill="#1D3B6D">1</text>
-              <rect x="108" y="126" width="70" height="76" rx="6" fill="#ffffff" stroke="#1D3B6D" stroke-width="2"/>
-              <rect x="127" y="136" width="32" height="12" rx="6" fill="#1D3B6D"/>
-              <text x="143" y="192" text-anchor="middle" font-size="11" font-weight="700" fill="#1D3B6D">2</text>
-              <rect x="178" y="126" width="70" height="76" rx="6" fill="#ffffff" stroke="#1D3B6D" stroke-width="2"/>
-              <rect x="197" y="136" width="32" height="12" rx="6" fill="#1D3B6D"/>
-              <text x="213" y="192" text-anchor="middle" font-size="11" font-weight="700" fill="#1D3B6D">3</text>
-              <rect x="248" y="126" width="70" height="76" rx="6" fill="#ffffff" stroke="#1D3B6D" stroke-width="2"/>
-              <rect x="267" y="136" width="32" height="12" rx="6" fill="#1D3B6D"/>
-              <text x="283" y="192" text-anchor="middle" font-size="11" font-weight="700" fill="#1D3B6D">4</text>
-            </g>
-            <rect x="38" y="262" width="280" height="16" rx="8" fill="#C7D0E0" stroke="#7789A7" stroke-width="1.5"/>
-            <circle cx="70" cy="270" r="3" fill="#7789A7"/><circle cx="130" cy="270" r="3" fill="#7789A7"/>
-            <circle cx="190" cy="270" r="3" fill="#7789A7"/><circle cx="250" cy="270" r="3" fill="#7789A7"/>
-            <rect x="38" y="240" width="26" height="20" rx="6" fill="#2E528E"/>
-            <text x="51" y="254" text-anchor="middle" font-size="12" font-weight="700" fill="#ffffff">N</text>
-            <text x="72" y="253" font-size="9" fill="#7789A7">NEUTRAL BAR</text>
-            <rect x="38" y="312" width="280" height="16" rx="8" fill="#D7E3C0" stroke="#8FAE1B" stroke-width="1.5"/>
-            <circle cx="70" cy="320" r="3" fill="#8FAE1B"/><circle cx="130" cy="320" r="3" fill="#8FAE1B"/>
-            <circle cx="190" cy="320" r="3" fill="#8FAE1B"/><circle cx="250" cy="320" r="3" fill="#8FAE1B"/>
-            <rect x="38" y="290" width="26" height="20" rx="6" fill="#8FAE1B"/>
-            <text x="51" y="304" text-anchor="middle" font-size="12" font-weight="700" fill="#ffffff">E</text>
-            <text x="72" y="303" font-size="9" fill="#7789A7">EARTH BAR</text>
-            <rect x="38" y="352" width="280" height="68" rx="10" fill="#ffffff" stroke="#D3D4DA"/>
-            <text x="46" y="368" font-size="9" fill="#7789A7">SPARE CONDUCTORS</text>
-
-            <g id="termA" class="terminal" data-term="A" role="button" tabindex="0" aria-label="Terminal A, active, on the main switch">
-              <circle class="hit" cx="90" cy="34" r="34"/>
-              <circle class="pad" cx="90" cy="34" r="13"/>
-              <rect x="110" y="24" width="24" height="20" rx="6" fill="#1D3B6D"/>
-              <text x="122" y="38" text-anchor="middle" font-size="12" font-weight="700" fill="#ffffff">A</text>
-            </g>
-            <g id="termN" class="terminal" data-term="N" role="button" tabindex="0" aria-label="Terminal N, neutral bar">
-              <circle class="hit" cx="100" cy="270" r="34"/>
-              <circle class="pad" cx="100" cy="270" r="13"/>
-            </g>
-            <g id="termE" class="terminal" data-term="E" role="button" tabindex="0" aria-label="Terminal E, earth bar">
-              <circle class="hit" cx="250" cy="320" r="34"/>
-              <circle class="pad" cx="250" cy="320" r="13"/>
+            <g class="mcb" data-i="0" role="button" tabindex="0" aria-label="Breaker one, looks fine">
+              <rect class="hit" x="24" y="96" width="72" height="72"/>
+              <rect class="frame" x="24" y="96" width="72" height="72" rx="12"/>
+              <g class="body">
+                <rect class="lid" x="24" y="96" width="72" height="72" rx="12"/>
+                <rect class="lever" x="40" y="104" width="40" height="10" rx="5"/>
+                <circle class="eye" cx="47" cy="126" r="5"/>
+                <circle class="eyedot" cx="47" cy="126" r="2.2"/>
+                <circle class="eye" cx="73" cy="126" r="5"/>
+                <circle class="eyedot" cx="73" cy="126" r="2.2"/>
+                <path class="mouth" d="M49 144 q11 9 22 0"/>
+              </g>
             </g>
 
-            <g id="leadBrown" class="wire" data-wire="A" role="button" tabindex="0" aria-label="Active conductor, brown">
-              <path class="lead" d="M64 408 C 70 396, 78 392, 84 390" fill="none" stroke="#7A4A24" stroke-width="6" stroke-linecap="round"/>
-              <circle class="hit" cx="92" cy="390" r="34"/>
-              <circle class="ferrule" cx="92" cy="390" r="11" fill="#7A4A24" stroke="#ffffff" stroke-width="2"/>
+            <g class="mcb" data-i="1" role="button" tabindex="0" aria-label="Breaker two, looks fine">
+              <rect class="hit" x="106" y="96" width="72" height="72"/>
+              <rect class="frame" x="106" y="96" width="72" height="72" rx="12"/>
+              <g class="body">
+                <rect class="lid" x="106" y="96" width="72" height="72" rx="12"/>
+                <rect class="lever" x="122" y="104" width="40" height="10" rx="5"/>
+                <circle class="eye" cx="129" cy="126" r="5"/>
+                <circle class="eyedot" cx="129" cy="126" r="2.2"/>
+                <circle class="eye" cx="155" cy="126" r="5"/>
+                <circle class="eyedot" cx="155" cy="126" r="2.2"/>
+                <path class="mouth" d="M131 144 q11 9 22 0"/>
+              </g>
             </g>
-            <g id="leadBlue" class="wire" data-wire="N" role="button" tabindex="0" aria-label="Neutral conductor, blue">
-              <path class="lead" d="M150 408 C 156 396, 164 392, 170 390" fill="none" stroke="#1E5AA8" stroke-width="6" stroke-linecap="round"/>
-              <circle class="hit" cx="178" cy="390" r="34"/>
-              <circle class="ferrule" cx="178" cy="390" r="11" fill="#1E5AA8" stroke="#ffffff" stroke-width="2"/>
+
+            <g class="mcb" data-i="2" role="button" tabindex="0" aria-label="Breaker three, looks fine">
+              <rect class="hit" x="188" y="96" width="72" height="72"/>
+              <rect class="frame" x="188" y="96" width="72" height="72" rx="12"/>
+              <g class="body">
+                <rect class="lid" x="188" y="96" width="72" height="72" rx="12"/>
+                <rect class="lever" x="204" y="104" width="40" height="10" rx="5"/>
+                <circle class="eye" cx="211" cy="126" r="5"/>
+                <circle class="eyedot" cx="211" cy="126" r="2.2"/>
+                <circle class="eye" cx="237" cy="126" r="5"/>
+                <circle class="eyedot" cx="237" cy="126" r="2.2"/>
+                <path class="mouth" d="M213 144 q11 9 22 0"/>
+              </g>
             </g>
-            <g id="leadEarth" class="wire" data-wire="E" role="button" tabindex="0" aria-label="Earth conductor, green with a yellow stripe">
-              <path class="lead" d="M236 408 C 242 396, 250 392, 256 390" fill="none" stroke="#2E8B2E" stroke-width="6" stroke-linecap="round"/>
-              <path class="lead" d="M236 408 C 242 396, 250 392, 256 390" fill="none" stroke="#F2C230" stroke-width="6" stroke-linecap="round" stroke-dasharray="7 7"/>
-              <circle class="hit" cx="264" cy="390" r="34"/>
-              <circle class="ferrule" cx="264" cy="390" r="11" fill="#2E8B2E" stroke="#ffffff" stroke-width="2"/>
-              <circle class="ferrule" cx="264" cy="390" r="6" fill="#F2C230"/>
+
+            <g class="mcb" data-i="3" role="button" tabindex="0" aria-label="Breaker four, looks fine">
+              <rect class="hit" x="270" y="96" width="72" height="72"/>
+              <rect class="frame" x="270" y="96" width="72" height="72" rx="12"/>
+              <g class="body">
+                <rect class="lid" x="270" y="96" width="72" height="72" rx="12"/>
+                <rect class="lever" x="286" y="104" width="40" height="10" rx="5"/>
+                <circle class="eye" cx="293" cy="126" r="5"/>
+                <circle class="eyedot" cx="293" cy="126" r="2.2"/>
+                <circle class="eye" cx="319" cy="126" r="5"/>
+                <circle class="eyedot" cx="319" cy="126" r="2.2"/>
+                <path class="mouth" d="M295 144 q11 9 22 0"/>
+              </g>
             </g>
+
+            <g class="mcb" data-i="4" role="button" tabindex="0" aria-label="Breaker five, looks fine">
+              <rect class="hit" x="24" y="182" width="72" height="72"/>
+              <rect class="frame" x="24" y="182" width="72" height="72" rx="12"/>
+              <g class="body">
+                <rect class="lid" x="24" y="182" width="72" height="72" rx="12"/>
+                <rect class="lever" x="40" y="190" width="40" height="10" rx="5"/>
+                <circle class="eye" cx="47" cy="212" r="5"/>
+                <circle class="eyedot" cx="47" cy="212" r="2.2"/>
+                <circle class="eye" cx="73" cy="212" r="5"/>
+                <circle class="eyedot" cx="73" cy="212" r="2.2"/>
+                <path class="mouth" d="M49 230 q11 9 22 0"/>
+              </g>
+            </g>
+
+            <g class="mcb bad" data-i="5" id="dodgy" role="button" tabindex="0" aria-label="Breaker six, grey, sooty and smoking">
+              <rect class="hit" x="106" y="182" width="72" height="72"/>
+              <rect class="frame" x="106" y="182" width="72" height="72" rx="12"/>
+              <g class="body">
+                <rect class="lid" x="106" y="182" width="72" height="72" rx="12"/>
+                <rect class="lever" x="122" y="192" width="40" height="10" rx="5" transform="rotate(-8 142 197)"/>
+                <ellipse class="soot" cx="138" cy="198" rx="28" ry="14"/>
+                <ellipse class="soot" cx="150" cy="206" rx="16" ry="9"/>
+                <path class="eye" d="M124 207 l10 10 M134 207 l-10 10"/>
+                <path class="eye" d="M150 207 l10 10 M160 207 l-10 10"/>
+                <path class="mouth" d="M131 234 q11 -10 22 0"/>
+                <circle class="spark" cx="142" cy="196" r="3.5"/>
+                <circle class="spark" cx="128" cy="190" r="2.5"/>
+                <circle class="spark" cx="156" cy="192" r="2.5"/>
+              </g>
+              <path class="smoke" d="M136 180 c-7 -9 7 -13 0 -24"/>
+              <path class="smoke s2" d="M146 180 c-7 -9 7 -13 0 -24"/>
+              <path class="smoke s3" d="M141 180 c-8 -10 8 -15 0 -27"/>
+            </g>
+
+            <g class="mcb" data-i="6" role="button" tabindex="0" aria-label="Breaker seven, looks fine">
+              <rect class="hit" x="188" y="182" width="72" height="72"/>
+              <rect class="frame" x="188" y="182" width="72" height="72" rx="12"/>
+              <g class="body">
+                <rect class="lid" x="188" y="182" width="72" height="72" rx="12"/>
+                <rect class="lever" x="204" y="190" width="40" height="10" rx="5"/>
+                <circle class="eye" cx="211" cy="212" r="5"/>
+                <circle class="eyedot" cx="211" cy="212" r="2.2"/>
+                <circle class="eye" cx="237" cy="212" r="5"/>
+                <circle class="eyedot" cx="237" cy="212" r="2.2"/>
+                <path class="mouth" d="M213 230 q11 9 22 0"/>
+              </g>
+            </g>
+
+            <g class="mcb" data-i="7" role="button" tabindex="0" aria-label="Breaker eight, looks fine">
+              <rect class="hit" x="270" y="182" width="72" height="72"/>
+              <rect class="frame" x="270" y="182" width="72" height="72" rx="12"/>
+              <g class="body">
+                <rect class="lid" x="270" y="182" width="72" height="72" rx="12"/>
+                <rect class="lever" x="286" y="190" width="40" height="10" rx="5"/>
+                <circle class="eye" cx="293" cy="212" r="5"/>
+                <circle class="eyedot" cx="293" cy="212" r="2.2"/>
+                <circle class="eye" cx="319" cy="212" r="5"/>
+                <circle class="eyedot" cx="319" cy="212" r="2.2"/>
+                <path class="mouth" d="M295 230 q11 9 22 0"/>
+              </g>
+            </g>
+
           </svg>
-
-          <svg id="board2" class="board" viewBox="0 0 360 440" role="img" aria-label="Switchboard, round two. A working board with one fault. Tap the thing that is wrong." style="display:none">
-            <rect x="8" y="8" width="344" height="424" rx="14" fill="#EBEDF2" stroke="#D3D4DA" stroke-width="2"/>
-            <rect x="20" y="20" width="320" height="400" rx="10" fill="#F5F6F8" stroke="#D3D4DA"/>
-            <path d="M73 202 V 406" stroke="#7A4A24" stroke-width="5"/>
-            <path d="M143 202 V 232" stroke="#4A3A2E" stroke-width="5"/>
-            <path d="M143 232 V 406" stroke="#3B2F26" stroke-width="5"/>
-            <path d="M213 202 V 406" stroke="#7A4A24" stroke-width="5"/>
-            <path d="M283 202 V 406" stroke="#7A4A24" stroke-width="5"/>
-            <path d="M22 75 H 38" fill="none" stroke="#7A4A24" stroke-width="4" opacity=".9"/>
-            <path d="M38 270 H 22" fill="none" stroke="#1E5AA8" stroke-width="4" opacity=".9"/>
-            <path d="M38 320 H 22" fill="none" stroke="#2E8B2E" stroke-width="4" opacity=".9"/>
-            <rect x="38" y="46" width="104" height="58" rx="6" fill="#ffffff" stroke="#1D3B6D" stroke-width="2"/>
-            <rect x="52" y="60" width="30" height="10" rx="5" fill="#1D3B6D"/>
-            <text x="90" y="88" text-anchor="middle" font-size="12" font-weight="700" fill="#1D3B6D">MAIN</text>
-            <text x="90" y="100" text-anchor="middle" font-size="9" fill="#7789A7">SWITCH</text>
-            <rect x="150" y="46" width="104" height="58" rx="6" fill="#ffffff" stroke="#1D3B6D" stroke-width="2"/>
-            <rect x="164" y="60" width="30" height="10" rx="5" fill="#1D3B6D"/>
-            <circle cx="238" cy="64" r="6" fill="#EBEDF2" stroke="#1D3B6D"/>
-            <text x="202" y="88" text-anchor="middle" font-size="12" font-weight="700" fill="#1D3B6D">RCD</text>
-            <text x="202" y="100" text-anchor="middle" font-size="9" fill="#7789A7">30mA</text>
-            <rect x="90" y="114" width="200" height="8" rx="4" fill="#1D3B6D"/>
-            <path d="M100 104 V 114 M73 114 V 126 M143 114 V 126 M213 114 V 126 M283 114 V 126" stroke="#1D3B6D" stroke-width="4"/>
-            <rect x="38" y="126" width="70" height="76" rx="6" fill="#ffffff" stroke="#1D3B6D" stroke-width="2"/>
-            <rect x="57" y="136" width="32" height="12" rx="6" fill="#1D3B6D"/>
-            <text x="73" y="192" text-anchor="middle" font-size="11" font-weight="700" fill="#1D3B6D">1</text>
-            <rect x="108" y="126" width="70" height="76" rx="6" fill="#ffffff" stroke="#1D3B6D" stroke-width="2"/>
-            <rect x="127" y="136" width="32" height="12" rx="6" fill="#1D3B6D"/>
-            <text x="143" y="192" text-anchor="middle" font-size="11" font-weight="700" fill="#1D3B6D">2</text>
-            <rect x="178" y="126" width="70" height="76" rx="6" fill="#ffffff" stroke="#1D3B6D" stroke-width="2"/>
-            <rect x="197" y="136" width="32" height="12" rx="6" fill="#1D3B6D"/>
-            <text x="213" y="192" text-anchor="middle" font-size="11" font-weight="700" fill="#1D3B6D">3</text>
-            <rect x="248" y="126" width="70" height="76" rx="6" fill="#ffffff" stroke="#1D3B6D" stroke-width="2"/>
-            <rect x="267" y="136" width="32" height="12" rx="6" fill="#1D3B6D"/>
-            <text x="283" y="192" text-anchor="middle" font-size="11" font-weight="700" fill="#1D3B6D">4</text>
-            <ellipse cx="143" cy="206" rx="13" ry="9" fill="#2B211A" opacity=".8"/>
-            <ellipse cx="143" cy="188" rx="20" ry="26" fill="#DED8D0" opacity=".55"/>
-            <rect x="38" y="262" width="280" height="16" rx="8" fill="#C7D0E0" stroke="#7789A7" stroke-width="1.5"/>
-            <circle cx="70" cy="270" r="3" fill="#7789A7"/><circle cx="130" cy="270" r="3" fill="#7789A7"/>
-            <circle cx="190" cy="270" r="3" fill="#7789A7"/><circle cx="250" cy="270" r="3" fill="#7789A7"/>
-            <rect x="38" y="240" width="26" height="20" rx="6" fill="#2E528E"/>
-            <text x="51" y="254" text-anchor="middle" font-size="12" font-weight="700" fill="#ffffff">N</text>
-            <rect x="38" y="312" width="280" height="16" rx="8" fill="#D7E3C0" stroke="#8FAE1B" stroke-width="1.5"/>
-            <circle cx="70" cy="320" r="3" fill="#8FAE1B"/><circle cx="130" cy="320" r="3" fill="#8FAE1B"/>
-            <circle cx="190" cy="320" r="3" fill="#8FAE1B"/><circle cx="250" cy="320" r="3" fill="#8FAE1B"/>
-            <rect x="38" y="290" width="26" height="20" rx="6" fill="#8FAE1B"/>
-            <text x="51" y="304" text-anchor="middle" font-size="12" font-weight="700" fill="#ffffff">E</text>
-            <rect x="38" y="366" width="280" height="54" rx="10" fill="#ffffff" stroke="#D3D4DA"/>
-            <text x="46" y="382" font-size="9" fill="#7789A7">OUTGOING CIRCUITS</text>
-
-            <g class="zone" data-id="main" role="button" tabindex="0" aria-label="Main switch">
-              <rect class="frame" x="34" y="42" width="116" height="68" rx="8"/>
-              <rect class="hit" x="34" y="42" width="116" height="68"/>
-            </g>
-            <g class="zone" data-id="rcd" role="button" tabindex="0" aria-label="RCD">
-              <rect class="frame" x="146" y="42" width="116" height="68" rx="8"/>
-              <rect class="hit" x="146" y="42" width="116" height="68"/>
-            </g>
-            <g class="zone" data-id="mcb1" role="button" tabindex="0" aria-label="Circuit breaker 1">
-              <rect class="frame" x="34" y="122" width="78" height="86" rx="8"/>
-              <rect class="hit" x="34" y="122" width="78" height="86"/>
-            </g>
-            <g class="zone" data-id="mcb2" role="button" tabindex="0" aria-label="Circuit breaker 2">
-              <rect class="frame" x="104" y="122" width="78" height="86" rx="8"/>
-              <rect class="hit" x="104" y="122" width="78" height="86"/>
-            </g>
-            <g class="zone" data-id="mcb3" role="button" tabindex="0" aria-label="Circuit breaker 3">
-              <rect class="frame" x="174" y="122" width="78" height="86" rx="8"/>
-              <rect class="hit" x="174" y="122" width="78" height="86"/>
-            </g>
-            <g class="zone" data-id="mcb4" role="button" tabindex="0" aria-label="Circuit breaker 4">
-              <rect class="frame" x="244" y="122" width="78" height="86" rx="8"/>
-              <rect class="hit" x="244" y="122" width="78" height="86"/>
-            </g>
-            <g class="zone" data-id="nbar" role="button" tabindex="0" aria-label="Neutral bar">
-              <rect class="frame" x="34" y="234" width="292" height="50" rx="8"/>
-              <rect class="hit" x="34" y="234" width="292" height="50"/>
-            </g>
-            <g class="zone" data-id="ebar" role="button" tabindex="0" aria-label="Earth bar">
-              <rect class="frame" x="34" y="284" width="292" height="50" rx="8"/>
-              <rect class="hit" x="34" y="284" width="292" height="50"/>
-            </g>
-          </svg>
-
-          <svg id="board3" class="board" viewBox="0 0 360 440" role="img" aria-label="Switchboard, round three. The same board, now with three faults. Find all three before the clock runs out." style="display:none">
-            <rect x="8" y="8" width="344" height="424" rx="14" fill="#EBEDF2" stroke="#D3D4DA" stroke-width="2"/>
-            <rect x="20" y="20" width="320" height="400" rx="10" fill="#F5F6F8" stroke="#D3D4DA"/>
-            <path d="M73 202 V 406" stroke="#7A4A24" stroke-width="5"/>
-            <path d="M143 202 V 232" stroke="#4A3A2E" stroke-width="5"/>
-            <path d="M143 232 V 406" stroke="#3B2F26" stroke-width="5"/>
-            <path d="M213 202 V 406" stroke="#7A4A24" stroke-width="5"/>
-            <path d="M283 202 V 216 H 268 V 406" fill="none" stroke="#7A4A24" stroke-width="5"/>
-            <path d="M283 202 V 224 H 298 V 406" fill="none" stroke="#7A4A24" stroke-width="5"/>
-            <path d="M22 75 H 38" fill="none" stroke="#7A4A24" stroke-width="4" opacity=".9"/>
-            <path d="M38 270 H 22" fill="none" stroke="#1E5AA8" stroke-width="4" opacity=".9"/>
-            <path d="M38 320 H 22" fill="none" stroke="#2E8B2E" stroke-width="4" opacity=".9"/>
-            <rect x="38" y="46" width="104" height="58" rx="6" fill="#ffffff" stroke="#1D3B6D" stroke-width="2"/>
-            <rect x="52" y="60" width="30" height="10" rx="5" fill="#1D3B6D"/>
-            <text x="90" y="88" text-anchor="middle" font-size="12" font-weight="700" fill="#1D3B6D">MAIN</text>
-            <text x="90" y="100" text-anchor="middle" font-size="9" fill="#7789A7">SWITCH</text>
-            <rect x="150" y="46" width="104" height="58" rx="6" fill="#ffffff" stroke="#1D3B6D" stroke-width="2"/>
-            <rect x="164" y="60" width="30" height="10" rx="5" fill="#1D3B6D"/>
-            <circle cx="238" cy="64" r="6" fill="#EBEDF2" stroke="#1D3B6D"/>
-            <text x="202" y="88" text-anchor="middle" font-size="12" font-weight="700" fill="#1D3B6D">RCD</text>
-            <text x="202" y="100" text-anchor="middle" font-size="9" fill="#7789A7">30mA</text>
-            <rect x="90" y="114" width="200" height="8" rx="4" fill="#1D3B6D"/>
-            <path d="M100 104 V 114 M73 114 V 126 M143 114 V 126 M213 114 V 126 M283 114 V 126" stroke="#1D3B6D" stroke-width="4"/>
-            <rect x="38" y="126" width="70" height="76" rx="6" fill="#ffffff" stroke="#1D3B6D" stroke-width="2"/>
-            <rect x="57" y="136" width="32" height="12" rx="6" fill="#1D3B6D"/>
-            <text x="73" y="192" text-anchor="middle" font-size="11" font-weight="700" fill="#1D3B6D">1</text>
-            <rect x="108" y="126" width="70" height="76" rx="6" fill="#ffffff" stroke="#1D3B6D" stroke-width="2"/>
-            <rect x="127" y="136" width="32" height="12" rx="6" fill="#1D3B6D"/>
-            <text x="143" y="192" text-anchor="middle" font-size="11" font-weight="700" fill="#1D3B6D">2</text>
-            <rect x="178" y="126" width="70" height="76" rx="6" fill="#ffffff" stroke="#1D3B6D" stroke-width="2"/>
-            <rect x="197" y="136" width="32" height="12" rx="6" fill="#1D3B6D"/>
-            <text x="213" y="192" text-anchor="middle" font-size="11" font-weight="700" fill="#1D3B6D">3</text>
-            <rect x="248" y="126" width="70" height="76" rx="6" fill="#ffffff" stroke="#1D3B6D" stroke-width="2"/>
-            <rect x="267" y="136" width="32" height="12" rx="6" fill="#1D3B6D"/>
-            <text x="283" y="192" text-anchor="middle" font-size="11" font-weight="700" fill="#1D3B6D">4</text>
-            <ellipse cx="143" cy="206" rx="13" ry="9" fill="#2B211A" opacity=".8"/>
-            <ellipse cx="143" cy="188" rx="20" ry="26" fill="#DED8D0" opacity=".55"/>
-            <rect x="210" y="200" width="7" height="11" rx="2" fill="#C9A227"/>
-            <rect x="38" y="262" width="280" height="16" rx="8" fill="#C7D0E0" stroke="#7789A7" stroke-width="1.5"/>
-            <circle cx="70" cy="270" r="3" fill="#7789A7"/><circle cx="130" cy="270" r="3" fill="#7789A7"/>
-            <circle cx="190" cy="270" r="3" fill="#7789A7"/><circle cx="250" cy="270" r="3" fill="#7789A7"/>
-            <rect x="38" y="240" width="26" height="20" rx="6" fill="#2E528E"/>
-            <text x="51" y="254" text-anchor="middle" font-size="12" font-weight="700" fill="#ffffff">N</text>
-            <rect x="38" y="312" width="280" height="16" rx="8" fill="#D7E3C0" stroke="#8FAE1B" stroke-width="1.5"/>
-            <circle cx="70" cy="320" r="3" fill="#8FAE1B"/><circle cx="130" cy="320" r="3" fill="#8FAE1B"/>
-            <circle cx="190" cy="320" r="3" fill="#8FAE1B"/><circle cx="250" cy="320" r="3" fill="#8FAE1B"/>
-            <rect x="38" y="290" width="26" height="20" rx="6" fill="#8FAE1B"/>
-            <text x="51" y="304" text-anchor="middle" font-size="12" font-weight="700" fill="#ffffff">E</text>
-            <rect x="38" y="366" width="280" height="54" rx="10" fill="#ffffff" stroke="#D3D4DA"/>
-            <text x="46" y="382" font-size="9" fill="#7789A7">OUTGOING CIRCUITS</text>
-            <rect class="faultmark" id="mark2" x="108" y="196" width="70" height="18" rx="9" fill="none" stroke="#8FAE1B" stroke-width="3"/>
-            <rect class="faultmark" id="mark3" x="178" y="196" width="70" height="18" rx="9" fill="none" stroke="#8FAE1B" stroke-width="3"/>
-            <rect class="faultmark" id="mark4" x="248" y="196" width="70" height="18" rx="9" fill="none" stroke="#8FAE1B" stroke-width="3"/>
-
-            <g class="zone" data-id="main" role="button" tabindex="0" aria-label="Main switch">
-              <rect class="frame" x="34" y="42" width="116" height="68" rx="8"/>
-              <rect class="hit" x="34" y="42" width="116" height="68"/>
-            </g>
-            <g class="zone" data-id="rcd" role="button" tabindex="0" aria-label="RCD">
-              <rect class="frame" x="146" y="42" width="116" height="68" rx="8"/>
-              <rect class="hit" x="146" y="42" width="116" height="68"/>
-            </g>
-            <g class="zone" data-id="mcb1" role="button" tabindex="0" aria-label="Circuit breaker 1">
-              <rect class="frame" x="34" y="122" width="78" height="86" rx="8"/>
-              <rect class="hit" x="34" y="122" width="78" height="86"/>
-            </g>
-            <g class="zone" data-id="mcb2" role="button" tabindex="0" aria-label="Circuit breaker 2">
-              <rect class="frame" x="104" y="122" width="78" height="86" rx="8"/>
-              <rect class="hit" x="104" y="122" width="78" height="86"/>
-            </g>
-            <g class="zone" data-id="mcb3" role="button" tabindex="0" aria-label="Circuit breaker 3">
-              <rect class="frame" x="174" y="122" width="78" height="86" rx="8"/>
-              <rect class="hit" x="174" y="122" width="78" height="86"/>
-            </g>
-            <g class="zone" data-id="mcb4" role="button" tabindex="0" aria-label="Circuit breaker 4">
-              <rect class="frame" x="244" y="122" width="78" height="86" rx="8"/>
-              <rect class="hit" x="244" y="122" width="78" height="86"/>
-            </g>
-            <g class="zone" data-id="nbar" role="button" tabindex="0" aria-label="Neutral bar">
-              <rect class="frame" x="34" y="234" width="292" height="50" rx="8"/>
-              <rect class="hit" x="34" y="234" width="292" height="50"/>
-            </g>
-            <g class="zone" data-id="ebar" role="button" tabindex="0" aria-label="Earth bar">
-              <rect class="frame" x="34" y="284" width="292" height="50" rx="8"/>
-              <rect class="hit" x="34" y="284" width="292" height="50"/>
-            </g>
-          </svg>
-
         </div>
 
-        <div class="feedback" id="feedback" aria-live="polite">
-          <p id="feedtitle">Round one: wire it.</p>
-          <p class="sub" id="feedtext">Anyone who has done this for a living is finished in a few seconds. That is the point.</p>
+        <div class="caption" id="caption" aria-live="polite">
+          <p id="captitle">Eight breakers. One is not happy.</p>
+          <p class="sub" id="captext">Have a good hard look. The clock is only for bragging rights.</p>
         </div>
 
-        <div class="gameactions">
-          <button class="btn" id="act1" type="button" disabled>Waiting on the conductors</button>
-          <a class="btn btn-ghost" id="act2" href="#offer">Skip to the offer</a>
+        <div class="resultcard" id="resultcard">
+          <div class="timebig" id="timebig">0.0s</div>
+          <p id="resultcopy">That is a respectable set of eyes.</p>
+          <div class="actions">
+            <button class="btn btn-accent" id="sharebtn" type="button">Challenge a mate</button>
+            <button class="btn btn-ghost" id="copybtn" type="button">Copy the link</button>
+          </div>
+          <p class="shareline" id="shareline"></p>
+          <div class="actions">
+            <a class="btn" id="jobbtn" href="#join">Righto. Show me the actual job</a>
+          </div>
         </div>
-        <p class="skipnote">Not here to play? <a href="#offer">Go straight to what we are offering</a>.</p>
       </div>
     </div>
   </section>
 
   <section class="film" id="film">
     <div class="wrap">
-      <span class="eyebrow">Round three, done</span>
+      <span class="eyebrow">While you are here</span>
       <h2>See what it is actually like here</h2>
       <p>Real crew, real yard, real 25 metre training wall. No stock footage and no actors.</p>
       <div class="filmslot" id="filmslot">
@@ -583,100 +391,21 @@ html.js .jsnote{display:none}
       </div>
       <div class="buildnote" role="note">
         <strong>Build placeholder</strong>
-        <span>The film does not exist yet. Set the one FILM_SRC constant in the config block to drop the file in, and this slot becomes a player. Nothing else needs to change.</span>
+        <span>The film does not exist yet. Set the one FILM_SRC constant in the config block to drop the file in, and this slot becomes a player. Nothing else changes.</span>
       </div>
     </div>
   </section>
 
-  <section class="offer" id="offer">
+  <section class="join" id="join">
     <div class="wrap">
-      <span class="eyebrow">The offer</span>
-      <h2>What the job actually pays and what comes with it</h2>
-      <p class="lede">Written down, not hinted at. These are the terms we hold to, and everything below is confirmed with Paul.</p>
-      <div class="grid">
-        <div class="fact">
-          <div class="big">$60<small>an hour, T&amp;Cs apply</small></div>
-          <p>A flat figure, in writing, with the terms attached before you sign anything.</p>
-        </div>
-        <div class="fact">
-          <h3>Company ute and fuel card</h3>
-          <p>Take-home ute and a fuel card for the job. Not for personal use, and we would rather say that up front.</p>
-        </div>
-        <div class="fact">
-          <h3>A 25 metre training wall</h3>
-          <p>In house, on site, and we have been developing tradespeople since 2015.</p>
-        </div>
-        <div class="fact">
-          <h3>Work close to home</h3>
-          <p>Across Adelaide, so the day does not disappear in traffic.</p>
-        </div>
+      <span class="eyebrow">The job</span>
+      <h2>Good eyes. We are hiring people exactly like that.</h2>
+      <p>Pay, the ute, the training wall, the whole thing, all sits on one page and it is kept up to date there. No double handling, no stale numbers.</p>
+      <div class="actions">
+        <a class="btn btn-accent" id="joinbtn" href="https://abatrades.com.au/join-our-team/">See the jobs at aba ELECTRICAL</a>
+        <a class="btn btn-ghost" href="tel:+61884629469">Or call 08 8462 9469</a>
       </div>
-      <div class="offercta">
-        <a class="btn" href="#apply">Put your name in</a>
-        <a class="call" href="tel:+61884629469">Or call the team on 08 8462 9469</a>
-      </div>
-    </div>
-  </section>
-
-  <section class="apply" id="apply">
-    <div class="wrap">
-      <span class="eyebrow">Apply</span>
-      <h2>Five fields, about a minute</h2>
-      <p class="lede">One of our team reads every one of these. No account, no job board, no long form.</p>
-      <form class="formcard" id="applyform" novalidate action="https://forms-sink.harley-7d4.workers.dev" method="post">
-        <div class="twoup">
-          <div class="field">
-            <label for="f-name">Your name <span class="req">*</span></label>
-            <input id="f-name" name="name" type="text" autocomplete="name" required>
-          </div>
-          <div class="field">
-            <label for="f-phone">Phone <span class="req">*</span></label>
-            <input id="f-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" required>
-          </div>
-        </div>
-        <div class="twoup">
-          <div class="field">
-            <label for="f-email">Email <span class="req">*</span></label>
-            <input id="f-email" name="email" type="email" inputmode="email" autocomplete="email" required>
-          </div>
-          <div class="field">
-            <label for="f-suburb">Suburb</label>
-            <input id="f-suburb" name="suburb" type="text" autocomplete="address-level2">
-          </div>
-        </div>
-        <div class="field">
-          <label for="f-ticket">Your electrical ticket <span class="req">*</span></label>
-          <select id="f-ticket" name="ticket" required>
-            <option value="">Select where you are at</option>
-            <option value="A-grade licence">A grade licence</option>
-            <option value="Restricted licence">Restricted licence</option>
-            <option value="Overseas qualification">Overseas qualification</option>
-            <option value="Studying or apprenticeship">Studying or apprenticeship</option>
-            <option value="Not qualified yet">Not qualified yet</option>
-          </select>
-        </div>
-        <input class="hp" type="text" name="company_website" tabindex="-1" autocomplete="off" aria-hidden="true">
-        <div class="submitrow">
-          <button class="btn" id="submitbtn" type="submit" disabled>Add your name, phone, email and ticket to send</button>
-        </div>
-        <p class="formnote">We use this to talk to you about work at aba TRADES. Nothing else, and no lists.</p>
-        <div class="result okbox" id="okbox" role="status">That is in. One of the team will be in touch. If you would rather talk now, call 08 8462 9469.</div>
-        <div class="result errbox" id="errbox" role="alert">That did not send. Try once more, or call 08 8462 9469 and we will take it down by hand.</div>
-      </form>
-    </div>
-  </section>
-
-  <section class="share" id="share">
-    <div class="wrap">
-      <span class="eyebrow">Share</span>
-      <h2>Challenge a mate</h2>
-      <p class="resultline" id="resultline"></p>
-      <p>Send the link. Whoever finds all three fastest is buying the first round.</p>
-      <div class="row">
-        <button class="btn btn-accent" id="sharebtn" type="button">Share the challenge</button>
-        <button class="btn btn-ghost" id="copybtn" type="button">Copy the link</button>
-      </div>
-      <a class="sharelink" id="sharelink" href="#game">Play the switchboard challenge</a>
+      <p class="fineprint">Everything about the role, the rate and the application form lives on the join our team page.</p>
     </div>
   </section>
 </main>
@@ -686,7 +415,7 @@ html.js .jsnote{display:none}
     <img src="../../assets/brand/abatrades-logo-h.svg" alt="aba TRADES" width="215" height="70">
     <p>aba ELECTRICAL is one of the trades under aba TRADES. <a href="tel:+61884629469">08 8462 9469</a></p>
     <div class="small">
-      <p>The $60 an hour offer is subject to terms and conditions and to holding a current electrical licence. Ute and fuel card are for company use. This page is a build preview and is not linked from any active advertising.</p>
+      <p>A bit of fun for the trade, no more than that. The pay, the terms and the application all live on the join our team page. This page is a build preview and is not linked from any active advertising.</p>
     </div>
   </div>
 </footer>
@@ -695,15 +424,16 @@ html.js .jsnote{display:none}
 'use strict';
 
 /* =======================================================================
-   THE CONFIG BLOCK. Everything an operator needs to change lives here,
-   and nowhere else on the page.
+   THE CONFIG BLOCK. Everything an operator needs to change is here and
+   nowhere else. The job, the rate and the application form are NOT on this
+   page on purpose: they live on the join our team page, in one place.
    ======================================================================= */
 var CFG = {
-  /* 1. Where an application is posted. One line, change it here only. */
-  APPLY_ENDPOINT: 'https://forms-sink.harley-7d4.workers.dev',
+  /* 1. Where the call to action sends people. One line, change it here only. */
+  JOIN_URL: 'https://abatrades.com.au/join-our-team/',
 
-  /* 2. The culture film. Paste an mp4 file path or an embed URL here and the
-        placeholder slot becomes a player. Empty means the placeholder stays. */
+  /* 2. The culture film. Paste an mp4 path or an embed URL here and the
+        placeholder slot becomes a player. Empty keeps the placeholder. */
   FILM_SRC: '',
 
   /* 3. The link the share button hands out. */
@@ -712,490 +442,215 @@ var CFG = {
 
 var $ = function(id){ return document.getElementById(id); };
 var reduce = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
-var NS = 'http://www.w3.org/2000/svg';
 
-/* ---------------- game state ---------------- */
-var round = 1;
-var R1 = { placed:{A:false,N:false,E:false}, sel:null, count:0 };
-var R2 = { solved:false, wrong:0 };
-var R3 = { found:{mcb2:false,mcb3:false,mcb4:false}, count:0, wrong:0, left:60, tick:null, done:false };
+/* the one that is cooked, and it is deliberately obvious */
+var DODGY = 5;
 
-/* geometry, in board units, so a tap-to-place and a drag both land the same */
-var WIRE_AT = { A:{x:92,y:390}, N:{x:178,y:390}, E:{x:264,y:390} };
-var TERM_AT = { A:{x:90,y:34},  N:{x:100,y:270}, E:{x:250,y:320} };
-var WIRE_WORD = { A:'the brown active', N:'the blue neutral', E:'the green and yellow earth' };
+var NO = [
+  'Nope. That one is fine, just old.',
+  'Not that one. That one has never given anybody trouble.',
+  'Nah. That one is doing its best.',
+  'Wrong. That one still works, which is more than we can say for the other one.',
+  'Not it. Have another look, you are better than this.',
+  'That one is as healthy as a horse.'
+];
+var QUICK = [
+  'That is quick. You have done this before.',
+  'Fast. You spotted that like a sparky.',
+  'Straight onto it. The board never stood a chance.'
+];
+var STEADY = [
+  'Respectable. Every second of that was well spent.',
+  'Good eyes. That is a tradesperson looking at a board.',
+  'On the money. Ten seconds is a normal human.'
+];
+var SLOW = [
+  'You got there, and that is what counts. Monday mornings are like this.',
+  'Took your time, and still beat the bloke who cut the cable.',
+  'Slow and sure. You would have found it on site too.'
+];
 
-var F1_WRONG = {
-  'A>N':'Brown is the active, not the neutral. It lands on the main switch, up the top.',
-  'A>E':'Brown never goes to earth. The active lands on the main switch, up the top.',
-  'N>A':'Blue is the neutral. It lands on the neutral bar, not the main switch.',
-  'N>E':'Blue is the neutral. Green with a yellow stripe is the earth.',
-  'E>A':'Earth is never the active. Green with a yellow stripe lands on the earth bar.',
-  'E>N':'That is the neutral bar. The earth bar is the one below it.'
-};
-var F2_WRONG = {
-  main:'Main switch is doing its job. Look at how the conductors are landed further down.',
-  rcd:'The RCD is fine. 30mA, and it still trips.',
-  mcb1:'Breaker 1 is neat. One conductor, one terminal.',
-  mcb3:'Breaker 3 looks sound. Compare it with the others.',
-  mcb4:'Breaker 4 is fine, one conductor per terminal.',
-  nbar:'Neutral bar is tidy. Every neutral where it should be.',
-  ebar:'Earth bar is clear. Nothing wrong down there.'
-};
-var F3_WRONG = {
-  main:'Main switch is fine. The faults are further down.',
-  rcd:'RCD is fine.',
-  mcb1:'Breaker 1 is sound.',
-  nbar:'Neutral bar is tidy.',
-  ebar:'Earth bar is clear.'
-};
-var FOUND = {
-  mcb2:'Found it. That terminal has heat damage, and the insulation has gone brittle.',
-  mcb3:'Found it. The conductor is stripped too far back, copper showing past the terminal.',
-  mcb4:'Found it. Two actives under the one terminal. One conductor per terminal, always.'
-};
+var state = { started:false, t0:0, ms:0, s:0, done:false, wrong:0, last:'' };
+var tick = null;
 
-/* ---------------- small helpers ---------------- */
-function feed(title, text, kind){
-  $('feedtitle').textContent = title;
-  var ft = $('feedtext');
-  if (text){ ft.textContent = text; ft.style.display = 'block'; } else { ft.style.display = 'none'; }
-  var box = $('feedback');
-  box.className = 'feedback' + (kind ? ' ' + kind : '');
+function pick(list){
+  var i = Math.floor(Math.random() * list.length);
+  if (list[i] === state.last && list.length > 1) i = (i + 1) % list.length;
+  state.last = list[i];
+  return list[i];
 }
-function dots(n, allDone){
-  var d = $('dots').children;
-  for (var i=0;i<d.length;i++){
-    d[i].className = (i < n-1) ? 'done' : (i === n-1 ? (allDone ? 'done' : 'on') : '');
-  }
-}
-function boardShow(n){
-  $('board1').style.display = (n===1) ? '' : 'none';
-  $('board2').style.display = (n===2) ? '' : 'none';
-  $('board3').style.display = (n===3) ? '' : 'none';
-}
-function scrollToEl(el){
-  try { el.scrollIntoView({behavior: reduce ? 'auto' : 'smooth', block:'start'}); } catch(e){ el.scrollIntoView(); }
-}
-function bob(el){ if (reduce) return; el.classList.add('shake'); setTimeout(function(){ el.classList.remove('shake'); }, 340); }
-
-/* ---------------- round one: wire it ---------------- */
-function selectWire(w){
-  var all = document.querySelectorAll('#board1 .wire');
-  for (var i=0;i<all.length;i++){ all[i].classList.remove('sel'); }
-  R1.sel = w;
-  if (w){
-    w.classList.add('sel');
-    feed('Conductor in hand', 'That is ' + WIRE_WORD[w.dataset.wire] + '. Now tap where it goes, or drag it in.');
-  } else {
-    feed('Round one: wire it', 'Tap a conductor, then tap its terminal.');
-  }
-}
-function placeOne(w, t){
-  if (!w || !t || R1.placed[w.dataset.wire]) return;
-  var want = w.dataset.wire, got = t.dataset.term;
-  if (want === got){
-    var o = WIRE_AT[want], d = TERM_AT[got];
-    w.style.transform = 'translate(' + (d.x - o.x) + 'px,' + (d.y - o.y) + 'px)';
-    w.classList.add('placed');
-    w.classList.remove('sel');
-    t.classList.add('done');
-    t.classList.remove('hint');
-    R1.placed[want] = true; R1.count++; R1.sel = null;
-    if (R1.count < 3){
-      feed('That one is home', 'Correct. ' + (3 - R1.count) + ' to go.', 'ok');
-    } else {
-      feed('Board is live', 'All three conductors landed, in the right places. That is four seconds of work for anyone who does this for a living.', 'ok');
-      $('act1').disabled = false;
-      $('act1').textContent = 'Round two: find the fault';
-      $('act1').dataset.go = '2';
-      dots(1, true);
-    }
-  } else {
-    var correct = document.querySelector('#board1 .terminal[data-term="' + want + '"]');
-    document.querySelectorAll('#board1 .terminal').forEach(function(el){ el.classList.remove('hint'); });
-    if (correct) correct.classList.add('hint');
-    bob(w);
-    feed('Not that one', F1_WRONG[want + '>' + got] + ' The right terminal is lit up.', 'no');
-  }
-}
-function wireTap(w){
-  if (R1.placed[w.dataset.wire]) return;
-  if (R1.sel === w){ selectWire(null); return; }
-  selectWire(w);
-}
-function terminalTap(t){ placeOne(R1.sel || null, t); }
-
-/* drag support, so a phone can drag or tap.
-   Pointer moves are watched on the DOCUMENT, not the conductor: once a capture is
-   set the events retarget to the svg and never reach a child listener, which is how
-   a drag silently dies on a real phone. The drop is hit tested twice, first with
-   elementFromPoint and then against each terminal's box, because elementFromPoint
-   returns null for a point outside the visible viewport. */
-function wireDragSet(svg){
-  var doc = svg.ownerDocument;
-  var drag = null;
-  function scale(){ var r = svg.getBoundingClientRect(); return r.width ? 360 / r.width : 1; }
-  function terminalUnder(x, y){
-    var under = null;
-    try { under = doc.elementFromPoint(x, y); } catch(e){}
-    if (under && under.closest){
-      var t = under.closest('.terminal');
-      if (t) return t;
-    }
-    var list = svg.querySelectorAll('.terminal');
-    for (var i=0;i<list.length;i++){
-      var r = list[i].getBoundingClientRect();
-      if (x >= r.left - 8 && x <= r.right + 8 && y >= r.top - 8 && y <= r.bottom + 8) return list[i];
-    }
-    return null;
-  }
-  function endDrag(e){
-    if (!drag) return;
-    var d = drag; drag = null;
-    d.w.classList.remove('dragging');
-    d.w.style.transition = '';
-    if (!d.moved){ d.w.style.transform = ''; wireTap(d.w); return; }
-    var term = terminalUnder(e.clientX, e.clientY);
-    d.w.style.transform = '';
-    if (term){ placeOne(d.w, term); } else { selectWire(d.w); }
-  }
-  doc.addEventListener('pointermove', function(e){
-    if (!drag) return;
-    var dx = e.clientX - drag.x0, dy = e.clientY - drag.y0;
-    if (!drag.moved && Math.abs(dx) + Math.abs(dy) < 9) return;
-    drag.moved = true;
-    drag.w.classList.add('dragging');
-    var k = scale();
-    drag.w.style.transition = 'none';
-    drag.w.style.transform = 'translate(' + (dx * k) + 'px,' + (dy * k) + 'px)';
-  }, {passive:true});
-  doc.addEventListener('pointerup', endDrag);
-  doc.addEventListener('pointercancel', function(){
-    if (!drag) return;
-    var d = drag; drag = null;
-    d.w.classList.remove('dragging');
-    d.w.style.transition = '';
-    d.w.style.transform = '';
-  });
-  svg.querySelectorAll('.wire').forEach(function(w){
-    if (w.dataset.dragBound) return;
-    w.dataset.dragBound = '1';
-    w.addEventListener('pointerdown', function(e){
-      if (R1.placed[w.dataset.wire]) return;
-      drag = { w:w, x0:e.clientX, y0:e.clientY, moved:false, id:e.pointerId };
-      try { svg.setPointerCapture(e.pointerId); } catch(err){}
-    });
-    w.addEventListener('keydown', function(e){
-      if (e.key === 'Enter' || e.key === ' '){ e.preventDefault(); wireTap(w); }
-    });
-  });
-  svg.querySelectorAll('.terminal').forEach(function(t){
-    if (t.dataset.clickBound) return;
-    t.dataset.clickBound = '1';
-    t.addEventListener('click', function(){ terminalTap(t); });
-    t.addEventListener('keydown', function(e){
-      if (e.key === 'Enter' || e.key === ' '){ e.preventDefault(); terminalTap(t); }
-    });
-  });
+function caption(title, text, kind){
+  $('captitle').textContent = title;
+  $('captext').textContent = text || '';
+  $('caption').className = 'caption' + (kind ? ' ' + kind : '');
 }
 
-/* ---------------- rounds two and three: find the fault ---------------- */
-function markFault(board, id){
-  var at = { mcb2:108, mcb3:178, mcb4:248 };
-  var el = document.getElementById('mark' + id.slice(3));
-  if (el && board === 'board3'){ el.classList.add('on'); return; }
-  var svg = $(board);
-  if (!svg || !at[id]) return;
-  if (svg.querySelector('.foundring[data-for="' + id + '"]')) return;
-  var r = document.createElementNS(NS, 'rect');
-  r.setAttribute('class', 'foundring');
-  r.setAttribute('data-for', id);
-  r.setAttribute('x', at[id]); r.setAttribute('y', 196);
-  r.setAttribute('width', 70); r.setAttribute('height', 18); r.setAttribute('rx', 9);
-  svg.appendChild(r);
-}
-function zoneTap(el, board){
-  var id = el.dataset.id;
-  if (board === 2){
-    if (R2.solved) return;
-    if (id === 'mcb2'){
-      R2.solved = true;
-      markFault('board2', id);
-      feed(FOUND.mcb2, 'Round two solved. One more round, and this is the one people talk about.', 'ok');
-      $('act1').disabled = false;
-      $('act1').textContent = 'Round three: the clock';
-      $('act1').dataset.go = '3';
-      dots(2, true);
-    } else {
-      R2.wrong++;
-      var extra = R2.wrong >= 3 ? ' Hint: look at where each conductor meets its breaker.' : '';
-      feed('Nothing wrong there', (F2_WRONG[id] || 'Not that one.') + extra, 'no');
-    }
-  } else if (board === 3){
-    if (R3.done) return;
-    if (R3.found.hasOwnProperty(id)){
-      if (R3.found[id]) return;
-      R3.found[id] = true; R3.count++;
-      markFault('board3', id);
-      if (R3.count < 3){
-        feed(FOUND[id], (3 - R3.count) + ' to find, and the clock is running.', 'ok');
-      } else {
-        finish(true);
-      }
-    } else {
-      R3.wrong++;
-      R3.left = Math.max(0, R3.left - 3);
-      feed('Nothing wrong there', 'Three seconds gone. ' + (F3_WRONG[id] || ''), 'no');
-      tick(true);
-    }
-  }
-}
-function bindZones(){
-  [['board2',2],['board3',3]].forEach(function(pair){
-    $(pair[0]).querySelectorAll('.zone').forEach(function(z){
-      if (z.dataset.clickBound) return;
-      z.dataset.clickBound = '1';
-      z.addEventListener('click', function(){ zoneTap(z, pair[1]); });
-      z.addEventListener('keydown', function(e){
-        if (e.key === 'Enter' || e.key === ' '){ e.preventDefault(); zoneTap(z, pair[1]); }
-      });
-    });
-  });
-}
-
-/* ---------------- the clock, round three only ---------------- */
-function tick(force){
-  var t = $('timer'), txt = $('timertext');
-  var s = Math.max(0, R3.left);
-  txt.textContent = (s >= 10 ? Math.ceil(s) : s.toFixed(1)) + 's';
-  t.classList.toggle('low', s <= 15);
-  if (s <= 0 && !R3.done) finish(false);
-}
-function clearMarks(){
-  ['mark2','mark3','mark4'].forEach(function(id){
-    var el = document.getElementById(id);
-    if (el) el.classList.remove('on');
-  });
-  document.querySelectorAll('.foundring').forEach(function(el){ el.remove(); });
-}
+/* ---------- the clock, which is only ever for bragging ---------- */
 function startClock(){
-  R3.left = 60; R3.done = false;
-  R3.found = {mcb2:false,mcb3:false,mcb4:false}; R3.count = 0; R3.wrong = 0;
-  clearMarks();
-  $('timer').classList.add('on');
-  tick(true);
-  if (R3.tick) clearInterval(R3.tick);
-  R3.tick = setInterval(function(){
-    if (R3.done) return;
-    R3.left = Math.max(0, R3.left - 0.1);
-    tick(true);
+  if (state.started || state.done) return;
+  state.started = true;
+  state.t0 = Date.now();
+  tick = setInterval(function(){
+    state.ms = Date.now() - state.t0;
+    $('clocktext').textContent = (state.ms / 1000).toFixed(1) + 's';
   }, 100);
 }
-function finish(won){
-  if (R3.done) return;
-  R3.done = true;
-  if (R3.tick){ clearInterval(R3.tick); R3.tick = null; }
-  var used = Math.max(0, 60 - R3.left);
-  var line = won
-    ? 'Three of three in ' + used.toFixed(1) + ' seconds.'
-    : R3.count + ' of three when the clock ran out, in sixty seconds.';
-  if (won){
-    feed(line, 'That is the round people screenshot. The crews who do this for a living get all three, every time.', 'ok');
-  } else {
-    feed(line, 'The three faults were the heat damage on breaker 2, the copper showing past the terminal on breaker 3, and the two actives in one terminal on breaker 4. Have another go, or come and see the offer.', 'no');
-    markFault('board3','mcb2'); markFault('board3','mcb3'); markFault('board3','mcb4');
-  }
-  $('resultline').textContent = won
-    ? 'Three faults in ' + used.toFixed(1) + ' seconds.'
-    : 'Three faults, sixty seconds, and it beat me.';
-  $('act1').disabled = false;
-  $('act1').textContent = won ? 'See the film and the offer' : 'Round three again';
-  $('act1').dataset.go = won ? 'film' : '3';
-  dots(3, true);
+function stopClock(){
+  if (tick){ clearInterval(tick); tick = null; }
+  state.ms = state.started ? (Date.now() - state.t0) : 0;
+  state.s = state.ms / 1000;
+  $('clocktext').textContent = state.s.toFixed(1) + 's';
+  $('clock').className = 'clock stopped';
 }
 
-/* ---------------- round switching ---------------- */
-function goRound(n){
-  round = n;
-  boardShow(n);
-  $('roundlabel').textContent = 'Round ' + n + ' of 3';
-  if (n === 1){
-    $('roundtitle').textContent = 'Wire it';
-    $('roundtext').textContent = 'Three conductors, three terminals. Brown is active, blue is neutral, and green with a yellow stripe is earth. Drag a conductor in, or tap it and then tap the terminal.';
-    $('timer').classList.remove('on');
-    feed('Round one: wire it', 'Anyone who has done this for a living is finished in a few seconds. That is the point.');
-    dots(1);
-  } else if (n === 2){
-    $('roundtitle').textContent = 'Find the fault';
-    $('roundtext').textContent = 'Same board, and one thing is wrong with it. Tap the thing that is wrong. There is a real answer, not a trick, and a wrong tap costs you nothing.';
-    $('timer').classList.remove('on');
-    feed('Round two: find the fault', 'One fault on this board. Tap it.');
-    dots(2);
+/* ---------- the one tap that matters ---------- */
+function tapMine(el){
+  var i = parseInt(el.dataset.i, 10);
+  if (state.done) return;
+  startClock();
+  if (i === DODGY){
+    win(el);
   } else {
-    $('roundtitle').textContent = 'The clock';
-    $('roundtext').textContent = 'Same board, three faults, sixty seconds. A wrong tap costs three seconds. No timer on the first two rounds, only this one.';
-    feed('Round three: the clock', 'Three faults. Sixty seconds. Go.');
-    dots(3);
-    startClock();
-    $('act1').disabled = true;
-    $('act1').textContent = 'Clock running';
-    delete $('act1').dataset.go;
+    state.wrong++;
+    el.classList.add('nope');
+    if (!reduce){
+      el.classList.add('hmph');
+      setTimeout(function(){ el.classList.remove('hmph'); }, 220);
+    }
+    setTimeout(function(){ el.classList.remove('nope'); }, 900);
+    caption('Not that one', pick(NO), 'nah');
   }
 }
+function win(el){
+  state.done = true;
+  stopClock();
+  el.classList.add('yep');
+  var s = state.s;
+  var line = s <= 5 ? pick(QUICK) : (s <= 12 ? pick(STEADY) : pick(SLOW));
+  caption('Found it. That is the one that has been smoking since Tuesday.', 'Grey as a dishcloth, soot everywhere, and that lever has given up. Every board has one.', 'good');
+  $('timebig').textContent = s.toFixed(1) + 's';
+  $('resultcopy').textContent = line + (state.wrong ? ' That is with ' + state.wrong + ' wrong tap' + (state.wrong === 1 ? '' : 's') + ', which we will not mention on site.' : '');
+  $('shareline').textContent = shareText();
+  $('resultcard').className = 'resultcard on';
+}
+function shareText(){
+  var t = state.s ? state.s.toFixed(1) : '0';
+  return 'I picked the cooked breaker in ' + t + ' seconds. Beat it: ' + shareUrl();
+}
+function shareUrl(){
+  var t = state.s ? state.s.toFixed(1) : '';
+  return CFG.SHARE_URL + (t ? '?t=' + t : '');
+}
 
-/* ---------------- the film slot ---------------- */
+/* ---------- challenge someone, which is the whole point ---------- */
+function copyText(t){
+  if (navigator.clipboard && navigator.clipboard.writeText){
+    return navigator.clipboard.writeText(t);
+  }
+  try {
+    var ta = document.createElement('textarea');
+    ta.value = t; document.body.appendChild(ta); ta.select();
+    document.execCommand('copy'); document.body.removeChild(ta);
+    return Promise.resolve();
+  } catch(e){ return Promise.reject(e); }
+}
+function say(msg){
+  var b = $('copybtn');
+  if (!b || b.dataset.busy) return;
+  b.dataset.busy = '1';
+  b.textContent = msg;
+  setTimeout(function(){ b.textContent = 'Copy the link'; delete b.dataset.busy; }, 2200);
+}
+function bindShare(){
+  $('copybtn').addEventListener('click', function(){
+    copyText(shareText()).then(function(){ say('Copied. Send it to your mate.'); },
+                               function(){ say('Select and copy it below'); });
+  });
+  $('sharebtn').addEventListener('click', function(){
+    var t = shareText();
+    if (navigator.share){
+      navigator.share({ title:'Spot the cooked breaker', text:t }).catch(function(){});
+    } else {
+      copyText(t).then(function(){ say('Copied. Send it to your mate.'); }, function(){ say('Select and copy it below'); });
+    }
+  });
+}
+
+/* ---------- a mate's time riding in on the link ---------- */
+function rival(){
+  var t = '';
+  try { t = new URLSearchParams(window.location.search).get('t') || ''; } catch(e){}
+  var n = parseFloat(t);
+  if (!isFinite(n) || n <= 0 || n > 600) return;
+  var el = $('challenger');
+  el.textContent = 'Someone reckons they picked it in ' + n.toFixed(1) + ' seconds. Beat it.';
+  el.className = 'challenger on';
+}
+
+/* ---------- the film slot ---------- */
 function film(){
   var src = CFG.FILM_SRC;
   if (!src) return;
-  var slot = $('filmslot');
-  var poster = slot.querySelector('img');
-  var play = $('filmplay');
-  var isFile = /\.(mp4|webm|ogv|mov)(\?|$)/i.test(src);
+  var slot = $('filmslot'), poster = slot.querySelector('img'), play = $('filmplay');
+  if (poster) poster.style.display = 'none';
+  if (play) play.style.display = 'none';
   var box;
-  if (isFile){
+  if (/\.(mp4|webm|ogv|mov)(\?|$)/i.test(src)){
     box = document.createElement('video');
     box.controls = true; box.playsInline = true; box.preload = 'metadata';
     if (poster) box.poster = poster.getAttribute('src');
     box.src = src;
-    if (poster) poster.style.display = 'none';
-    if (play) play.style.display = 'none';
-    slot.appendChild(box);
   } else {
-    if (poster) poster.style.display = 'none';
-    if (play) play.style.display = 'none';
     box = document.createElement('iframe');
     box.src = src; box.title = 'The aba TRADES crew film';
-    box.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; picture-in-picture');
     box.setAttribute('allowfullscreen', '');
     box.style.cssText = 'width:100%;aspect-ratio:16/9;border:0;display:block';
-    slot.appendChild(box);
   }
+  slot.appendChild(box);
   var note = document.querySelector('.buildnote');
   if (note) note.style.display = 'none';
 }
 
-/* ---------------- the application form ---------------- */
-function initForm(){
-  var form = $('applyform'), btn = $('submitbtn'), ok = $('okbox'), err = $('errbox');
-  if (!form || !btn) return;
-  var endpoint = CFG.APPLY_ENDPOINT || form.getAttribute('action') || '';
-  form.setAttribute('action', endpoint);
-  function sync(){
-    var good = form.checkValidity();
-    btn.disabled = !good;
-    btn.textContent = good ? 'Send my application' : 'Add your name, phone and email to send';
+/* ---------- wire it up ---------- */
+function bind(){
+  var board = $('board');
+  var mcs = board.querySelectorAll('.mcb');
+  for (var i = 0; i < mcs.length; i++){
+    (function(el){
+      el.addEventListener('click', function(){ tapMine(el); });
+      el.addEventListener('keydown', function(e){
+        if (e.key === 'Enter' || e.key === ' '){ e.preventDefault(); tapMine(el); }
+      });
+    })(mcs[i]);
   }
-  form.addEventListener('input', sync);
-  form.addEventListener('change', sync);
-  sync();
-  function param(n){
-    try { return new URLSearchParams(window.location.search).get(n) || ''; } catch(e){ return ''; }
+  /* the clock starts when the board is actually in front of them, not on load */
+  var wrap = $('boardwrap');
+  if ('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){ if (en.isIntersecting){ startClock(); io.disconnect(); } });
+    }, {threshold:0.5});
+    io.observe(wrap);
+  } else {
+    board.addEventListener('click', startClock);
   }
-  function gaClientId(){
-    try { var m = document.cookie.match(/(?:^|;\s*)_ga=GA\d+\.\d+\.(\d+\.\d+)/); return m ? m[1] : ''; } catch(e){ return ''; }
-  }
-  form.addEventListener('submit', function(e){
-    var honey = form.querySelector('.hp');
-    if (honey && honey.value){ e.preventDefault(); return; }
-    if (!form.checkValidity()){ e.preventDefault(); if (form.reportValidity) form.reportValidity(); return; }
-    e.preventDefault();
-    if (!endpoint){
-      err.classList.add('show');
-      return;
-    }
-    err.classList.remove('show');
-    var fd = new FormData(form);
-    fd.set('source', 'challenge-electrical');
-    fd.set('page_url', window.location.href.slice(0, 500));
-    ['gclid','gbraid','wbraid','utm_source','utm_medium','utm_campaign','utm_content','utm_term'].forEach(function(n){
-      var v = param(n); if (v) fd.set(n, v.slice(0, 200));
-    });
-    var cid = gaClientId(); if (cid) fd.set('ga_client_id', cid);
-    fd.set('rounds_completed', String(round === 3 ? 3 : (round - 1)));
-    if (R3.done) fd.set('round3', ($('resultline').textContent || '').slice(0, 120));
-    btn.disabled = true;
-    btn.textContent = 'Sending';
-    fetch(endpoint, { method:'POST', body: fd })
-      .then(function(r){
-        return r.json().catch(function(){ return {}; }).then(function(j){ return { ok:r.ok, status:r.status, body:j }; });
-      })
-      .then(function(res){
-        if (!res.ok || !res.body || !res.body.ok){ throw new Error((res.body && res.body.error) || ('HTTP ' + res.status)); }
-        form.classList.add('sent');
-        ok.classList.add('show');
-      })
-      .catch(function(){ err.classList.add('show'); btn.disabled = false; sync(); });
-  });
+  $('jobbtn').href = '#join';
+  $('joinbtn').href = CFG.JOIN_URL;
+  bindShare();
+  rival();
+  film();
 }
 
-/* ---------------- the share ---------------- */
-function initShare(){
-  var shareBtn = $('sharebtn'), copyBtn = $('copybtn'), link = $('sharelink'), line = $('resultline');
-  var url = CFG.SHARE_URL;
-  if (link){ link.href = url; link.textContent = url; }
-  function text(){
-    var done = R3.done && $('resultline').textContent;
-    return (done && done.indexOf('Three faults in') === 0
-      ? 'I found all three faults on the aba ELECTRICAL switchboard in ' + (60 - R3.left).toFixed(1) + ' seconds. Beat that: ' + url
-      : 'Three rounds, one switchboard, sixty seconds. Have a go: ' + url);
-  }
-  function say(msg){
-    if (!copyBtn) return;
-    copyBtn.textContent = msg;
-    setTimeout(function(){ copyBtn.textContent = 'Copy the link'; }, 2400);
-  }
-  function copy(){
-    var t = text();
-    if (navigator.clipboard && navigator.clipboard.writeText){
-      navigator.clipboard.writeText(t).then(function(){ say('Link copied'); }, function(){ say('Copy by hand'); });
-    } else {
-      try {
-        var ta = document.createElement('textarea');
-        ta.value = t; document.body.appendChild(ta); ta.select();
-        document.execCommand('copy'); document.body.removeChild(ta);
-        say('Link copied');
-      } catch(e){ say('Copy by hand'); }
-    }
-  }
-  if (copyBtn) copyBtn.addEventListener('click', function(e){ e.preventDefault(); copy(); });
-  if (shareBtn) shareBtn.addEventListener('click', function(){
-    var t = text();
-    if (navigator.share){ navigator.share({ title:'The aba ELECTRICAL switchboard challenge', text:t }).catch(function(){}); }
-    else { copy(); }
-  });
-  if (link) link.addEventListener('click', function(e){ e.preventDefault(); scrollToEl($('game')); });
-}
-
-/* ---------------- wiring it all up ---------------- */
-wireDragSet($('board1'));
-bindZones();
-initForm();
-film();
-initShare();
-dots(1);
-goRound(1);
-
-$('act1').addEventListener('click', function(){
-  var go = this.dataset.go;
-  if (go === 'film'){ scrollToEl($('film')); return; }
-  if (go) goRound(parseInt(go, 10));
-});
+bind();
 
 /* testable handle, used by the build checks and by nothing else */
-window.__challenge = {
+window.__game = {
   cfg: CFG,
-  state: function(){
-    return {
-      round: round,
-      r1: { placed: { A:R1.placed.A, N:R1.placed.N, E:R1.placed.E }, selected: R1.sel ? R1.sel.dataset.wire : null, count: R1.count },
-      r2: { solved: R2.solved, wrong: R2.wrong },
-      r3: { found: { mcb2:R3.found.mcb2, mcb3:R3.found.mcb3, mcb4:R3.found.mcb4 }, count: R3.count, wrong: R3.wrong, left: R3.left, done: R3.done }
-    };
-  },
-  place: placeOne, wireTap: wireTap, zoneTap: zoneTap, goRound: goRound,
-  finish: finish, startClock: startClock, film: film,
-  setLeft: function(v){ R3.left = v; }
+  dodgy: DODGY,
+  state: function(){ return { started:state.started, done:state.done, wrong:state.wrong, seconds:+state.s.toFixed(2) }; },
+  tap: function(i){ var el = document.querySelector('.mcb[data-i="' + i + '"]'); if (el) tapMine(el); return !!el; },
+  startClock: startClock,
+  shareText: shareText,
+  rival: rival
 };
 })();
 </script>
