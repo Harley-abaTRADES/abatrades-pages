@@ -87,10 +87,29 @@ section{scroll-margin-top:84px}
 .rail a.on{color:var(--navy);font-weight:700;border-left-color:var(--accent)}
 .rail a .rn{font-size:.7rem;font-weight:700;opacity:.55;flex-shrink:0}
 @media(min-width:1280px){.rail{display:block} section .wrap{padding-right:246px}}
+.mobnav{display:none;position:fixed;top:3px;left:0;right:0;z-index:55;
+ background:rgba(255,255,255,.96);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
+ border-bottom:1px solid var(--border);overflow-x:auto;overflow-y:hidden;
+ -webkit-overflow-scrolling:touch;scrollbar-width:none;overscroll-behavior-x:contain}
+.mobnav::-webkit-scrollbar{display:none}
+.mobnav .inner{display:flex;gap:8px;padding:7px 14px;width:max-content}
+.mobnav a{display:inline-flex;align-items:center;gap:7px;height:44px;padding:0 15px;flex-shrink:0;
+ border:1px solid var(--border);border-radius:100px;text-decoration:none;color:var(--navy);
+ background:#fff;font-size:.84rem;font-weight:700;white-space:nowrap;
+ transition:background .18s,color .18s,border-color .18s}
+.mobnav a .rn{font-size:.72rem;font-weight:700;opacity:.55}
+.mobnav a.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+.mobnav a.on .rn{opacity:.8}
+@media(max-width:1279px){
+ .mobnav{display:block}
+ section{scroll-margin-top:76px}
+ header{padding-top:78px}
+}
 
 </style></head><body>
 <div class="progwrap"><div id="prog"></div></div>
 <nav class="rail" aria-label="Sections"><div class="railhead">Sections</div><a href="#s1" data-sec="s1"><span class="rn">01</span><span class="rl">Method</span></a><a href="#s2" data-sec="s2"><span class="rn">02</span><span class="rl">Sources</span></a><a href="#s3" data-sec="s3"><span class="rn">03</span><span class="rl">Video</span></a><a href="#s4" data-sec="s4"><span class="rn">04</span><span class="rl">Patterns</span></a><a href="#s5" data-sec="s5"><span class="rn">05</span><span class="rl">Concepts</span></a><a href="#s6" data-sec="s6"><span class="rn">06</span><span class="rl">The ads</span></a><a href="#s7" data-sec="s7"><span class="rn">07</span><span class="rl">The gaps</span></a><a href="#s8" data-sec="s8"><span class="rn">08</span><span class="rl">Next</span></a></nav>
+<nav class="mobnav" aria-label="Sections"><div class="inner"><a href="#s1" data-sec="s1"><span class="rn">01</span><span class="rl">Method</span></a><a href="#s2" data-sec="s2"><span class="rn">02</span><span class="rl">Sources</span></a><a href="#s3" data-sec="s3"><span class="rn">03</span><span class="rl">Video</span></a><a href="#s4" data-sec="s4"><span class="rn">04</span><span class="rl">Patterns</span></a><a href="#s5" data-sec="s5"><span class="rn">05</span><span class="rl">Concepts</span></a><a href="#s6" data-sec="s6"><span class="rn">06</span><span class="rl">The ads</span></a><a href="#s7" data-sec="s7"><span class="rn">07</span><span class="rl">The gaps</span></a><a href="#s8" data-sec="s8"><span class="rn">08</span><span class="rl">Next</span></a></div></nav>
 <header><div class="wrap">
   <img src="https://harley-abatrades.github.io/abatrades-pages/assets/brand/abatrades-logo-h.svg" alt="aba TRADES">
   <span class="pill">Phase 1 &middot; Research</span>
@@ -480,21 +499,41 @@ section{scroll-margin-top:84px}
 
 <script>
 (function(){
-  var links=[].slice.call(document.querySelectorAll('.rail a'));
-  var secs=links.map(function(a){return document.getElementById(a.getAttribute('data-sec'))}).filter(Boolean);
+  var all=[].slice.call(document.querySelectorAll('.rail a, .mobnav a'));
+  var secs=all.map(function(a){return document.getElementById(a.getAttribute('data-sec'))})
+              .filter(function(e,i,arr){return e && arr.indexOf(e)===i});
   var bar=document.getElementById('prog');
+  var mnav=document.querySelector('.mobnav');
+  var last='';
   function upd(){
-    var probe=window.scrollY+Math.round(window.innerHeight*0.28), cur=secs.length?secs[0].id:'';
+    if(!secs.length) return;
+    var probe=window.scrollY+Math.round(window.innerHeight*0.28), cur=secs[0].id;
     for(var i=0;i<secs.length;i++){ if(secs[i].offsetTop<=probe) cur=secs[i].id; }
-    if((window.innerHeight+window.scrollY)>=document.body.scrollHeight-4 && secs.length) cur=secs[secs.length-1].id;
-    links.forEach(function(a){ a.classList.toggle('on', a.getAttribute('data-sec')===cur); });
+    if((window.innerHeight+window.scrollY)>=(document.documentElement.scrollHeight-6)) cur=secs[secs.length-1].id;
+    all.forEach(function(a){ a.classList.toggle('on', a.getAttribute('data-sec')===cur); });
     if(bar){ var h=document.documentElement.scrollHeight-window.innerHeight;
       bar.style.width=(h>0?Math.min(100,Math.round(100*window.scrollY/h)):0)+'%'; }
+    if(mnav && cur!==last){
+      last=cur;
+      var on=mnav.querySelector('a.on');
+      if(on){ var target=on.offsetLeft-(mnav.clientWidth-on.offsetWidth)/2;
+        mnav.scrollTo({left:Math.max(0,target),behavior:'smooth'}); }
+    }
   }
   addEventListener('scroll',upd,{passive:true});
   addEventListener('resize',upd);
   addEventListener('load',upd);
   upd();
+  /* close-up jump offset so a tapped chip does not land under the bar */
+  all.forEach(function(a){
+    a.addEventListener('click',function(e){
+      var t=document.getElementById(a.getAttribute('data-sec'));
+      if(!t) return;
+      e.preventDefault();
+      var off=t.getBoundingClientRect().top+window.scrollY-72;
+      window.scrollTo({top:Math.max(0,off),behavior:'smooth'});
+    });
+  });
 })();
 </script>
 
