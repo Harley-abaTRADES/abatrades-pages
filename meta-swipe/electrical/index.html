@@ -130,6 +130,7 @@ section{scroll-margin-top:84px}
 .frame-v img{width:100%;max-width:214px;aspect-ratio:9/16;border-radius:8px}
 .phbadge{position:absolute;top:10px;left:10px;z-index:2;background:rgba(184,28,35,.95);color:#fff;
  font-size:.66rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;padding:5px 9px;border-radius:6px}
+.phbadge.real{background:rgba(63,115,67,.95)}
 .uph-note{padding:8px 15px;font-size:.73rem;color:var(--slate);border-top:1px solid #E7E9EE}
 .ph{display:inline-block;background:#FDF1F2;border:1px dashed var(--warn);color:var(--warn);
  font-weight:700;font-size:.76rem;letter-spacing:.04em;padding:4px 9px;border-radius:6px;line-height:1.35}
@@ -153,10 +154,18 @@ section{scroll-margin-top:84px}
 @media(max-width:880px){.cgrid{grid-template-columns:1fr}}
 @media(max-width:560px){.ccode{width:44px;height:44px;font-size:1.25rem}.concept{padding:18px}}
 
+
+.proven{display:grid;grid-template-columns:360px 1fr;gap:30px;margin-top:24px;align-items:start}
+.pvimg{position:relative;border-radius:14px;overflow:hidden;border:1px solid var(--border)}
+.pvimg img{display:block;width:100%}
+.pvtag{position:absolute;top:10px;left:10px;background:rgba(63,115,67,.95);color:#fff;
+ font-size:.66rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;padding:5px 9px;border-radius:6px}
+@media(max-width:880px){.proven{grid-template-columns:1fr}}
+
 </style></head><body>
 <div class="progwrap"><div id="prog"></div></div>
-<nav class="rail" aria-label="Sections"><div class="railhead">Sections</div><a href="#s1" data-sec="s1"><span class="rn">01</span><span class="rl">Method</span></a><a href="#s2" data-sec="s2"><span class="rn">02</span><span class="rl">Sources</span></a><a href="#s3" data-sec="s3"><span class="rn">03</span><span class="rl">Video</span></a><a href="#s4" data-sec="s4"><span class="rn">04</span><span class="rl">Patterns</span></a><a href="#s5" data-sec="s5"><span class="rn">05</span><span class="rl">Library</span></a><a href="#s6" data-sec="s6"><span class="rn">06</span><span class="rl">The ads</span></a><a href="#s7" data-sec="s7"><span class="rn">07</span><span class="rl">The gaps</span></a><a href="#s8" data-sec="s8"><span class="rn">08</span><span class="rl">Our ads</span></a><a href="#s9" data-sec="s9"><span class="rn">09</span><span class="rl">Proposed</span></a><a href="#s10" data-sec="s10"><span class="rn">10</span><span class="rl">Challenge</span></a><a href="#s11" data-sec="s11"><span class="rn">11</span><span class="rl">Plan</span></a><a href="#s12" data-sec="s12"><span class="rn">12</span><span class="rl">Answers</span></a></nav>
-<nav class="mobnav" aria-label="Sections"><div class="inner"><a href="#s1" data-sec="s1"><span class="rn">01</span><span class="rl">Method</span></a><a href="#s2" data-sec="s2"><span class="rn">02</span><span class="rl">Sources</span></a><a href="#s3" data-sec="s3"><span class="rn">03</span><span class="rl">Video</span></a><a href="#s4" data-sec="s4"><span class="rn">04</span><span class="rl">Patterns</span></a><a href="#s5" data-sec="s5"><span class="rn">05</span><span class="rl">Library</span></a><a href="#s6" data-sec="s6"><span class="rn">06</span><span class="rl">The ads</span></a><a href="#s7" data-sec="s7"><span class="rn">07</span><span class="rl">The gaps</span></a><a href="#s8" data-sec="s8"><span class="rn">08</span><span class="rl">Our ads</span></a><a href="#s9" data-sec="s9"><span class="rn">09</span><span class="rl">Proposed</span></a><a href="#s10" data-sec="s10"><span class="rn">10</span><span class="rl">Challenge</span></a><a href="#s11" data-sec="s11"><span class="rn">11</span><span class="rl">Plan</span></a><a href="#s12" data-sec="s12"><span class="rn">12</span><span class="rl">Answers</span></a></div></nav>
+<nav class="rail" aria-label="Sections"><div class="railhead">Sections</div><a href="#s1" data-sec="s1"><span class="rn">01</span><span class="rl">Method</span></a><a href="#s2" data-sec="s2"><span class="rn">02</span><span class="rl">Sources</span></a><a href="#s3" data-sec="s3"><span class="rn">03</span><span class="rl">Video</span></a><a href="#s4" data-sec="s4"><span class="rn">04</span><span class="rl">Patterns</span></a><a href="#s5" data-sec="s5"><span class="rn">05</span><span class="rl">Library</span></a><a href="#s6" data-sec="s6"><span class="rn">06</span><span class="rl">The ads</span></a><a href="#s7" data-sec="s7"><span class="rn">07</span><span class="rl">The gaps</span></a><a href="#s8" data-sec="s8"><span class="rn">08</span><span class="rl">Our ads</span></a><a href="#s9" data-sec="s9"><span class="rn">09</span><span class="rl">Proposed</span></a><a href="#s10" data-sec="s10"><span class="rn">10</span><span class="rl">Plumbing</span></a><a href="#s11" data-sec="s11"><span class="rn">11</span><span class="rl">Challenge</span></a><a href="#s12" data-sec="s12"><span class="rn">12</span><span class="rl">Plan</span></a><a href="#s13" data-sec="s13"><span class="rn">13</span><span class="rl">Answers</span></a></nav>
+<nav class="mobnav" aria-label="Sections"><div class="inner"><a href="#s1" data-sec="s1"><span class="rn">01</span><span class="rl">Method</span></a><a href="#s2" data-sec="s2"><span class="rn">02</span><span class="rl">Sources</span></a><a href="#s3" data-sec="s3"><span class="rn">03</span><span class="rl">Video</span></a><a href="#s4" data-sec="s4"><span class="rn">04</span><span class="rl">Patterns</span></a><a href="#s5" data-sec="s5"><span class="rn">05</span><span class="rl">Library</span></a><a href="#s6" data-sec="s6"><span class="rn">06</span><span class="rl">The ads</span></a><a href="#s7" data-sec="s7"><span class="rn">07</span><span class="rl">The gaps</span></a><a href="#s8" data-sec="s8"><span class="rn">08</span><span class="rl">Our ads</span></a><a href="#s9" data-sec="s9"><span class="rn">09</span><span class="rl">Proposed</span></a><a href="#s10" data-sec="s10"><span class="rn">10</span><span class="rl">Plumbing</span></a><a href="#s11" data-sec="s11"><span class="rn">11</span><span class="rl">Challenge</span></a><a href="#s12" data-sec="s12"><span class="rn">12</span><span class="rl">Plan</span></a><a href="#s13" data-sec="s13"><span class="rn">13</span><span class="rl">Answers</span></a></div></nav>
 <header><div class="wrap">
   <img src="https://harley-abatrades.github.io/abatrades-pages/assets/brand/abatrades-logo-h.svg" alt="aba TRADES">
   <span class="pill">Research &amp; proposal</span>
@@ -580,7 +589,7 @@ section{scroll-margin-top:84px}
   <div class="seceyebrow"><span class="secnum">09</span><span class="seclab">Proposed</span></div><h2>Proposed content for aba ELECTRICAL</h2>
   <p class="lead">Six angles with the copy fully written, each traced to a pattern measured above. Shown as feed units so the wording can be judged in context. Red dashed blocks are decisions still owed to us.</p>
   <p class="lead"><b>Every concept runs to a Meta instant form, optimised for leads.</b> Our own account is blunt about why: over the same period, leads collected on an instant form cost <b>$15.95</b> against <b>$329.32</b> through our own website, and every ad we ever optimised for clicks or engagement produced <b>zero</b> leads. That is a bigger lever than any creative choice on this page, so it is the default for all six. Each concept card states its destination explicitly.</p>
-  <p class="lead"><b>On the images:</b> every creative below is an <b>AI generated placeholder</b>, marked as such, there purely to show the art direction and framing we have in mind. They are not finished assets and they are not our crew. Phase 3 replaces every one of them with real photography of the actual aba team, the real ute and the real training wall.</p>
+  <p class="lead"><b>On the images:</b> every creative below now uses <b>real aba photography</b> pulled from our own SharePoint library, so it is our technicians, our ute and our real training wall, not stock and not generated. Concept E is the one exception: the game does not exist yet, so that slot is a concept mock of the format. Phase 3 crops these to the exact ad sizes and sets the type.</p>
   
 <article class="concept" id="cA">
   <div class="chead">
@@ -592,15 +601,15 @@ section{scroll-margin-top:84px}
       <div class="unit">
         <div class="uhead"><span class="av">A</span>
           <span class="uname">aba ELECTRICAL<em>Sponsored &middot; proposed</em></span></div>
-        <div class="utext"><p>Reckon your boss has no idea what you&#x27;re worth?</p><p>Most sparkies who start looking aren&#x27;t chasing more money. They&#x27;re chasing a boss who notices.</p><p>We&#x27;re aba ELECTRICAL, Adelaide based. We&#x27;ve been developing tradespeople since 2015 and we run our own 25 metre training wall in-house.</p><p>$60 an hour. T&amp;Cs apply.<br>Company ute and fuel card.<br>Work close to home.</p></div>
-        <div class="uimg frame-v">
-          <img src="../../assets/swipe/electrical/concepts/concept-A.jpg" alt="AI placeholder creative for concept A" loading="eager">
-          <span class="phbadge">AI placeholder</span>
+        <div class="utext"><p>Reckon your boss has no idea what you&#x27;re worth?</p><p>aba ELECTRICAL pays $60 an hour, flat.</p><p>Company ute and fuel card, take-home but not for personal use.</p><p>Local work.</p><p>Our own 25 metre in-house training wall, running since 2015.</p><p>Qualified and local? Come and be worth what you&#x27;re worth.</p><p>T&amp;Cs apply.</p></div>
+        <div class="uimg frame-s">
+          <img src="../../assets/swipe/electrical/concepts/concept-A.jpg" alt="Real aba photo for concept A" loading="eager">
+          <span class="phbadge real">Our photo</span>
         </div>
-        <div class="uph-note">placeholder, framed 9:16 for video</div>
+        <div class="uph-note">Real photo: an aba technician at a local job, from our SharePoint library.</div>
         <div class="ctabar"><div class="ctatxt">
           <span class="ctadom">ABATRADES.COM.AU</span>
-          <span class="ctahead">Electricians, $60 an hour</span></div>
+          <span class="ctahead">A boss who notices. $60 an hour.</span></div>
           <span class="ctabtn">Apply now</span></div>
       </div>
     </div>
@@ -623,12 +632,12 @@ section{scroll-margin-top:84px}
       <div class="unit">
         <div class="uhead"><span class="av">A</span>
           <span class="uname">aba ELECTRICAL<em>Sponsored &middot; proposed</em></span></div>
-        <div class="utext"><p>Most electrician ads say &quot;competitive salary&quot;.</p><p>That&#x27;s not a number.</p><p>We&#x27;re paying $60 an hour. T&amp;Cs apply.</p><p>aba ELECTRICAL, Adelaide, part of aba TRADES. Developing tradespeople since 2015.</p><p>Company ute and fuel card.<br>Our own 25 metre training wall, in-house.</p><p>If you&#x27;re qualified and you&#x27;re sick of guessing what a job actually pays, apply.</p></div>
+        <div class="utext"><p>$60 an hour. Flat.</p><p>No &quot;based on experience&quot;. No range, no guessing.</p><p>aba ELECTRICAL, Adelaide.</p><p>Company ute and fuel card, take-home but not for personal use.</p><p>Our own 25 metre training wall, running since 2015.</p><p>If you&#x27;re a qualified electrician tired of working out what a job actually pays, apply.</p><p>T&amp;Cs apply.</p></div>
         <div class="uimg frame-s">
-          <img src="../../assets/swipe/electrical/concepts/concept-B.jpg" alt="AI placeholder creative for concept B" loading="eager">
-          <span class="phbadge">AI placeholder</span>
+          <img src="../../assets/swipe/electrical/concepts/concept-B.jpg" alt="Real aba photo for concept B" loading="eager">
+          <span class="phbadge real">Our photo</span>
         </div>
-        <div class="uph-note">placeholder, framed 4:3 for feed</div>
+        <div class="uph-note">Real photo: an aba technician with the branded ute, from our SharePoint library.</div>
         <div class="ctabar"><div class="ctatxt">
           <span class="ctadom">ABATRADES.COM.AU</span>
           <span class="ctahead">$60 an hour. Not a range.</span></div>
@@ -654,15 +663,15 @@ section{scroll-margin-top:84px}
       <div class="unit">
         <div class="uhead"><span class="av">A</span>
           <span class="uname">aba ELECTRICAL<em>Sponsored &middot; proposed</em></span></div>
-        <div class="utext"><p>Most electrical companies say they invest in their people.</p><p>We built a wall.</p><p>25 metres, in-house, and it&#x27;s where our people learn the trade properly. We&#x27;ve been doing this since 2015.</p><p>aba ELECTRICAL is hiring qualified electricians across Adelaide.</p><p>$60 an hour. T&amp;Cs apply.<br>Company ute and fuel card.</p><p>Ask us about the wall.</p></div>
-        <div class="uimg frame-v">
-          <img src="../../assets/swipe/electrical/concepts/concept-C.jpg" alt="AI placeholder creative for concept C" loading="eager">
-          <span class="phbadge">AI placeholder</span>
+        <div class="utext"><p>Ever seen a 25 metre training wall inside an electrical contractor&#x27;s shed?</p><p>Ours has been running since 2015, and it&#x27;s where our tradespeople get better at the trade.</p><p>Ask another contractor to show you theirs.</p><p>aba ELECTRICAL pays $60 an hour, flat.</p><p>Company ute and fuel card, take-home but not for personal use.</p><p>Ask us about the wall.</p><p>T&amp;Cs apply.</p></div>
+        <div class="uimg frame-s">
+          <img src="../../assets/swipe/electrical/concepts/concept-C.jpg" alt="Real aba photo for concept C" loading="eager">
+          <span class="phbadge real">Our photo</span>
         </div>
-        <div class="uph-note">placeholder, framed 9:16 for video</div>
+        <div class="uph-note">Real photo: our own 25 metre training wall, from our SharePoint library.</div>
         <div class="ctabar"><div class="ctatxt">
           <span class="ctadom">ABATRADES.COM.AU</span>
-          <span class="ctahead">We built a wall for this</span></div>
+          <span class="ctahead">Adelaide sparkies: the 25 metre wall</span></div>
           <span class="ctabtn">Learn more</span></div>
       </div>
     </div>
@@ -678,31 +687,31 @@ section{scroll-margin-top:84px}
 <article class="concept" id="cD">
   <div class="chead">
     <span class="ccode">D</span>
-    <div><h3>Your suburb</h3><span class="chook">Local honesty</span></div>
+    <div><h3>Local</h3><span class="chook">Local honesty</span></div>
   </div>
   <div class="cgrid">
     <div class="col-ad">
       <div class="unit">
         <div class="uhead"><span class="av">A</span>
           <span class="uname">aba ELECTRICAL<em>Sponsored &middot; proposed</em></span></div>
-        <div class="utext"><p>South of the city and sick of the drive north?</p><p>aba ELECTRICAL is Adelaide based and most of our work is in the suburbs people actually live in.</p><p>$60 an hour. T&amp;Cs apply.<br>Company ute and fuel card.</p><p>Tell us your suburb and we&#x27;ll tell you honestly how close the work is. If it&#x27;s a long drive, we&#x27;ll say so.</p><p>We&#x27;ve been developing tradespeople since 2015.</p></div>
-        <div class="uimg frame-v">
-          <img src="../../assets/swipe/electrical/concepts/concept-D.jpg" alt="AI placeholder creative for concept D" loading="eager">
-          <span class="phbadge">AI placeholder</span>
+        <div class="utext"><p>Sick of a long drive to work every day?</p><p>aba ELECTRICAL is Adelaide owned, and the work is local.</p><p>$60 an hour, flat.</p><p>Company ute and fuel card, take-home but not for personal use.</p><p>Our own 25 metre training wall, running since 2015.</p><p>Qualified? Ask us how local the work really is. We&#x27;ll tell you straight.</p><p>T&amp;Cs apply.</p></div>
+        <div class="uimg frame-s">
+          <img src="../../assets/swipe/electrical/concepts/concept-D.jpg" alt="Real aba photo for concept D" loading="eager">
+          <span class="phbadge real">Our photo</span>
         </div>
-        <div class="uph-note">placeholder, framed 9:16 for video</div>
+        <div class="uph-note">Real photo: our ute working a local street, from our SharePoint library.</div>
         <div class="ctabar"><div class="ctatxt">
           <span class="ctadom">ABATRADES.COM.AU</span>
-          <span class="ctahead">Work near home</span></div>
+          <span class="ctahead">Local work. $60 an hour.</span></div>
           <span class="ctabtn">Apply now</span></div>
       </div>
     </div>
     <div class="col-say">
-      <div class="crow"><b>Why this angle</b><p>Winners name suburbs, not states. Bice opens with Unley and the southern coastline. Our sweep found <b>no</b> Adelaide advertiser naming its actual service area beyond the word Adelaide.</p></div>
+      <div class="crow"><b>Why this angle</b><p>Winners name places: Bice opens with Unley and the southern coastline. But our ad runs across the metro area, so naming one suburb narrows it for no reason and promises nothing to a reader three suburbs away. The honest move, and the one Josh confirmed, is to say the work is local and stand behind it, not to list suburbs.</p></div>
       <div class="crow"><b>Audience</b><p>Qualified electricians</p></div>
-      <div class="crow"><b>Creative direction</b><p>A real map of our actual service area, or a shot of the ute on a suburban street. The suburb goes in the first line of the headline.</p></div>
+      <div class="crow"><b>Creative direction</b><p>A real shot of the ute on a suburban street on the way to a job, or a plain Adelaide metro map. Local in feel, never pinned to one postcode.</p></div>
       <div class="crow dest"><b>Destination and objective</b><p>Meta instant form, optimised for leads.</p></div>
-      <div class="crow"><b>What it tests</b><p>Whether honesty about distance converts better than a vague local claim.</p></div>
+      <div class="crow"><b>What it tests</b><p>Whether an honest local promise converts better than a suburb list nobody can honour across a whole city-wide run.</p></div>
     </div>
   </div>
 </article>
@@ -716,15 +725,15 @@ section{scroll-margin-top:84px}
       <div class="unit">
         <div class="uhead"><span class="av">A</span>
           <span class="uname">aba ELECTRICAL<em>Sponsored &middot; proposed</em></span></div>
-        <div class="utext"><p>Top-notch sparky? We&#x27;ve got a challenge for you.</p><p>Three switchboards. One fault each. Sixty seconds.</p><p>Most people don&#x27;t get through all three.</p><p>Think you will?</p><p>Take the challenge. Link below.</p></div>
+        <div class="utext"><p>Three switchboards. One fault each. Sixty seconds.</p><p>Think you&#x27;ll find all three?</p><p>Play it and see.</p><p>Qualified electrician who backs yourself? aba ELECTRICAL pays $60 an hour, flat.</p><p>Company ute and fuel card, take-home but not for personal use.</p><p>Our own 25 metre training wall, running since 2015.</p><p>T&amp;Cs apply.</p></div>
         <div class="uimg frame-v">
-          <img src="../../assets/swipe/electrical/concepts/concept-E.jpg" alt="AI placeholder creative for concept E" loading="eager">
-          <span class="phbadge">AI placeholder</span>
+          <img src="../../assets/swipe/electrical/concepts/concept-E.jpg" alt="AI concept mock for concept E" loading="eager">
+          <span class="phbadge ai">AI concept</span>
         </div>
-        <div class="uph-note">placeholder, framed 9:16 for video</div>
+        <div class="uph-note">Concept mock of the game. The microsite is not built yet, so this shows the format only, not a finished asset.</div>
         <div class="ctabar"><div class="ctatxt">
           <span class="ctadom">ABATRADES.COM.AU</span>
-          <span class="ctahead">The 60 second sparky test</span></div>
+          <span class="ctahead">Find all three faults in 60 seconds</span></div>
           <span class="ctabtn">Take the challenge</span></div>
       </div>
     </div>
@@ -747,15 +756,15 @@ section{scroll-margin-top:84px}
       <div class="unit">
         <div class="uhead"><span class="av">A</span>
           <span class="uname">aba ELECTRICAL<em>Sponsored &middot; proposed</em></span></div>
-        <div class="utext"><p>We&#x27;re not going to tell you we&#x27;re a family.</p><p>You&#x27;ve got a family. We&#x27;re a bunch of sparkies who do good work and go home.</p><p>aba ELECTRICAL. Adelaide. Developing tradespeople since 2015.</p><p>$60 an hour. T&amp;Cs apply.<br>Company ute and fuel card.<br>A 25 metre training wall out the back.</p><p>If that sounds like your kind of crew, have a look.</p></div>
-        <div class="uimg frame-v">
-          <img src="../../assets/swipe/electrical/concepts/concept-F.jpg" alt="AI placeholder creative for concept F" loading="eager">
-          <span class="phbadge">AI placeholder</span>
+        <div class="utext"><p>Your boss keeps calling you family. Family doesn&#x27;t pay $60 an hour.</p><p>We&#x27;re a bunch of Adelaide sparkies who do good work and go home. No family speeches.</p><p>aba ELECTRICAL.</p><p>$60 an hour, flat.</p><p>Company ute and fuel card, take-home but not for personal use.</p><p>Our own 25 metre training wall, running since 2015.</p><p>If that sounds like a better deal than another free weekend at your cousin&#x27;s place, have a look.</p><p>T&amp;Cs apply.</p></div>
+        <div class="uimg frame-s">
+          <img src="../../assets/swipe/electrical/concepts/concept-F.jpg" alt="Real aba photo for concept F" loading="eager">
+          <span class="phbadge real">Our photo</span>
         </div>
-        <div class="uph-note">placeholder, framed 9:16 for video</div>
+        <div class="uph-note">Real photo: our crew on the training wall, from our SharePoint library.</div>
         <div class="ctabar"><div class="ctatxt">
           <span class="ctadom">ABATRADES.COM.AU</span>
-          <span class="ctahead">Not a family. A crew.</span></div>
+          <span class="ctahead">Not a family. A crew. $60 an hour.</span></div>
           <span class="ctabtn">Learn more</span></div>
       </div>
     </div>
@@ -768,10 +777,100 @@ section{scroll-margin-top:84px}
     </div>
   </div>
 </article>
+  
+  <h3>Recommended: the pattern that already works on our account</h3>
+  <p class="lead">Before anything new, copy what has already paid. Two recruitment ads on our own account did the heavy lifting, and the best single creative on record is a static.</p>
+  <div class="proven">
+    <div class="pvimg">
+      <img src="../../assets/swipe/electrical/own/single-image-winner.jpg"
+           alt="The best performing aba recruitment ad: a real aba plumber with WE ARE HIRING burned into the image" loading="lazy">
+      <span class="pvtag">Our best static</span>
+    </div>
+    <div class="pvsay">
+      <div class="crow"><b>What it is</b><p>A real aba plumber in a branded aba PLUMBING + GAS polo, holding his tools in a modern kitchen, with <b>WE&#39;RE HIRING</b> burned straight into the image, run to a Meta instant form.</p></div>
+      <div class="crow"><b>What it returned</b><p><b>$35.01 a lead</b>, and $29.37 on its sibling. Every one of our website-destination ads cost $193 to $638 for the same job.</p></div>
+      <div class="crow"><b>Why it is the recommendation</b><p>Real person, real brand, one clear line, right door. It is the cheapest thing we can build and it beat the $2,970 video. The three electrical concepts that are statics (A, C, D) are built on exactly this frame.</p></div>
+    </div>
+  </div>
+  <div class="callout"><b>Two things to carry into every electrical ad</b>
+    <p><b>1. Put the hiring line in the image.</b> The winning static says it in the picture as well as the copy, so it lands even on someone scrolling fast with the sound off.</p>
+    <p><b>2. The cheapest leads on the account came from office roles, not trades.</b> CSR Hiring ($10.07) and Call Center Hiring ($6.53) are the lowest costs on record, but their creatives are no longer retrievable because the ads were retired. The lesson is the destination and the format, and we have already applied both below.</p>
+  </div>
+
 </div></section>
 
 <section id="s10"><div class="wrap">
-  <div class="seceyebrow"><span class="secnum">10</span><span class="seclab">Challenge</span></div><h2>The challenge: a playable ad funnel</h2>
+  <div class="seceyebrow"><span class="secnum">10</span><span class="seclab">Plumbing</span></div><h2>Recommended for the plumbing division</h2>
+  <p class="lead">The same research, pointed at the other trade. Plumbing holds two offers electrical cannot use, and they are the two best in the whole plan: the <b>four day week</b> and <b>dual trade upskilling</b>. Both are plumbers only, confirmed by Paul, and both are on this page because the electrical campaign cannot touch them.</p>
+  <p class="lead">Same rules as the electrical set: real crew, the flat rate standing alone, T&amp;Cs as a footnote, and a Meta instant form on leads.</p>
+  
+<article class="concept" id="p1">
+  <div class="chead">
+    <span class="ccode">1</span>
+    <div><h3>Four days on</h3><span class="chook">Time as the hero offer</span></div>
+  </div>
+  <div class="cgrid">
+    <div class="col-ad">
+      <div class="unit">
+        <div class="uhead"><span class="av">A</span>
+          <span class="uname">aba PLUMBING + GAS<em>Sponsored &middot; proposed</em></span></div>
+        <div class="utext"><p>Four days on. Three off. Every week.</p><p>Not a trial, not a one-off. It is the roster.</p><p>aba PLUMBING + GAS is hiring qualified plumbers across Adelaide.</p><p>$60 an hour, flat.</p><p>Company ute and fuel card, take-home but not for personal use.</p><p>Our own 25 metre training wall, running since 2015.</p><p>T&amp;Cs apply.</p></div>
+      </div>
+    </div>
+    <div class="col-say">
+      <div class="crow"><b>Why this angle</b><p><b>Four days on, three off is plumbers only</b>, which makes it the single strongest uncopyable offer in the whole plan. No electrical concept can use it, and the market sweep found time perks in the ads that last. This is the plumbing campaign the electrical one cannot have.</p></div>
+      <div class="crow"><b>Audience</b><p>Qualified plumbers and gas fitters, Adelaide</p></div>
+      <div class="crow"><b>Creative direction</b><p>A real aba plumber to camera on a Friday, tradesman in daylight, or a simple calendar graphic. The roster is the whole ad, so keep the frame calm and let the number of days sit in the image.</p></div>
+      <div class="crow dest"><b>Destination and objective</b><p>Meta instant form, optimised for leads.</p></div>
+    </div>
+  </div>
+</article>
+<article class="concept" id="p2">
+  <div class="chead">
+    <span class="ccode">2</span>
+    <div><h3>Add a second trade</h3><span class="chook">Upskilling, plumbing only</span></div>
+  </div>
+  <div class="cgrid">
+    <div class="col-ad">
+      <div class="unit">
+        <div class="uhead"><span class="av">A</span>
+          <span class="uname">aba PLUMBING + GAS<em>Sponsored &middot; proposed</em></span></div>
+        <div class="utext"><p>Qualified plumber? Add gas and you are never short of work.</p><p>aba PLUMBING + GAS trains plumbers into a second trade, and we have been doing it since 2015 on our own 25 metre training wall.</p><p>$60 an hour, flat.</p><p>Company ute and fuel card, take-home but not for personal use.</p><p>Four days on, three off.</p><p>T&amp;Cs apply.</p></div>
+      </div>
+    </div>
+    <div class="col-say">
+      <div class="crow"><b>Why this angle</b><p>The dual-trade upskilling angle is a plumbing hook, not an electrical one. It turns the training wall into a career promise rather than a facility, and it speaks to the plumber who is worried about staying busy through the winter.</p></div>
+      <div class="crow"><b>Audience</b><p>Qualified plumbers and gas fitters, Adelaide</p></div>
+      <div class="crow"><b>Creative direction</b><p>Two real aba tradespeople on the wall, one teaching the other, shot on a phone. Real footage of our own people, never actors.</p></div>
+      <div class="crow dest"><b>Destination and objective</b><p>Meta instant form, optimised for leads.</p></div>
+    </div>
+  </div>
+</article>
+<article class="concept" id="p3">
+  <div class="chead">
+    <span class="ccode">3</span>
+    <div><h3>Local, proven format</h3><span class="chook">Reuse the winner</span></div>
+  </div>
+  <div class="cgrid">
+    <div class="col-ad">
+      <div class="unit">
+        <div class="uhead"><span class="av">A</span>
+          <span class="uname">aba PLUMBING + GAS<em>Sponsored &middot; proposed</em></span></div>
+        <div class="utext"><p>Sick of the drive and the early starts for someone else?</p><p>aba PLUMBING + GAS is Adelaide owned, and the work is local.</p><p>$60 an hour, flat.</p><p>Company ute and fuel card, take-home but not for personal use.</p><p>Four days on, three off.</p><p>Our own 25 metre training wall, running since 2015.</p><p>T&amp;Cs apply.</p></div>
+      </div>
+    </div>
+    <div class="col-say">
+      <div class="crow"><b>Why this angle</b><p>A straight port of the electrical winner: a real plumber on a static, the hiring line in the image, the flat rate standing alone, run to a Meta instant form. It takes the one format that has already worked on our account and points it at plumbing.</p></div>
+      <div class="crow"><b>Audience</b><p>Qualified plumbers and gas fitters, Adelaide</p></div>
+      <div class="crow"><b>Creative direction</b><p>The plumber static we already hold, re-shot for the new rate and the four day roster. Real crew, branded polo, clean setting, hiring line burned in.</p></div>
+      <div class="crow dest"><b>Destination and objective</b><p>Meta instant form, optimised for leads.</p></div>
+    </div>
+  </div>
+</article>
+</div></section>
+
+<section id="s11"><div class="wrap">
+  <div class="seceyebrow"><span class="secnum">11</span><span class="seclab">Challenge</span></div><h2>The challenge: a playable ad funnel</h2>
   
   <p class="lead">A short playable electrician challenge on its own microsite. The ad sells curiosity rather than the job. The game qualifies the player, then introduces the offer to somebody who has already proven they know the trade.</p>
   <h3>Why it should work</h3>
@@ -790,8 +889,8 @@ section{scroll-margin-top:84px}
 
 </div></section>
 
-<section id="s11"><div class="wrap">
-  <div class="seceyebrow"><span class="secnum">11</span><span class="seclab">Plan</span></div><h2>How we would run them</h2>
+<section id="s12"><div class="wrap">
+  <div class="seceyebrow"><span class="secnum">12</span><span class="seclab">Plan</span></div><h2>How we would run them</h2>
   <p class="lead">One always-on campaign for the offer ads, one for the challenge, and one for tone. The challenge runs against the same target but through a different door, so the two can be compared on cost per qualified applicant.</p>
   <div class="next">
     <div><b>Campaign 1 &middot; The offer</b><p>Concepts A, B, C and D together in one always-on ad set. Let the platform allocate. Four creatives is enough to learn which angle carries without starving any of them.</p></div>
@@ -807,10 +906,10 @@ section{scroll-margin-top:84px}
   </div>
 </div></section>
 
-<section id="s12"><div class="wrap">
-  <div class="seceyebrow"><span class="secnum">12</span><span class="seclab">Answers</span></div><h2>Answers, and what is still open</h2>
+<section id="s13"><div class="wrap">
+  <div class="seceyebrow"><span class="secnum">13</span><span class="seclab">Answers</span></div><h2>Answers, and what is still open</h2>
   <p class="lead">What Paul has settled, what it changed in the concepts, and the three things still blocking final copy.</p>
-  <div class="ans ok"><div class="anshead"><span class="anstag">CONFIRMED</span><b>Pay</b></div><p><b>$60 an hour</b>, with terms and conditions. This is the single strongest line we now hold. Almost every competitor writes a range, so a flat number is ours to own.</p></div><div class="ans ok"><div class="anshead"><span class="anstag">CONFIRMED</span><b>Vehicle</b></div><p>Company vehicle plus fuel card. Take-home, but <b>not for personal use</b>. This matters: Activ8 advertises personal use on the fuel card, so we cannot match that claim. We lead on the rate instead.</p></div><div class="ans ok"><div class="anshead"><span class="anstag">CONFIRMED</span><b>Sign-on bonus</b></div><p>Not for now. Left out of every concept, and easy to add later.</p></div><div class="ans ok"><div class="anshead"><span class="anstag">CONFIRMED</span><b>Apprentices</b></div><p>Not taking any, so the apprentice concept is dropped. That leaves Sorted Electrical holding the only apprentice ad in the market.</p></div><div class="ans note"><div class="anshead"><span class="anstag">NOT FOR ELECTRICAL</span><b>Four days on, three off</b></div><p>Real, but <b>plumbers only</b>. So the time based hook is dead for electrical, and its strongest version belongs in the plumbing campaign instead.</p></div><div class="ans note"><div class="anshead"><span class="anstag">PLUMBING ONLY</span><b>Dual trade upskilling</b></div><p>Upskilling into a second trade is a plumbing hook rather than an electrical one. It is a genuinely good angle and we should run it in that division.</p></div><div class="ans warn"><div class="anshead"><span class="anstag">STILL OPEN</span><b>Service area</b></div><p>Which suburbs and towns we would honestly call local. The work close to home line and concept D both depend on it.</p></div><div class="ans ok"><div class="anshead"><span class="anstag">CONFIRMED</span><b>Meta access</b></div><p>Read-only access to both ad accounts is live, so the historical audit is done and is in the section above. Our own account history is now the strongest evidence on this page, and it is why every concept below names its destination.</p></div><div class="ans warn"><div class="anshead"><span class="anstag">STILL OPEN</span><b>Destination URL</b></div><p>The new page is still in draft against the live one. This now matters less for the ads, since every concept runs to an instant form, but it still matters for the challenge microsite and for anything that is not an instant form.</p></div><div class="ans warn"><div class="anshead"><span class="anstag">REQUESTED</span><b>Shoot time</b></div><p>One shoot covers every concept: crew to camera, the wall in use, the ute, and Paul talking over B roll. That is the whole production list.</p></div>
+  <div class="ans ok"><div class="anshead"><span class="anstag">CONFIRMED</span><b>Pay</b></div><p><b>$60 an hour</b>, with terms and conditions. This is the single strongest line we now hold. Almost every competitor writes a range, so a flat number is ours to own.</p></div><div class="ans ok"><div class="anshead"><span class="anstag">CONFIRMED</span><b>Vehicle</b></div><p>Company vehicle plus fuel card. Take-home, but <b>not for personal use</b>. This matters: Activ8 advertises personal use on the fuel card, so we cannot match that claim. We lead on the rate instead.</p></div><div class="ans ok"><div class="anshead"><span class="anstag">CONFIRMED</span><b>Sign-on bonus</b></div><p>Not for now. Left out of every concept, and easy to add later.</p></div><div class="ans ok"><div class="anshead"><span class="anstag">CONFIRMED</span><b>Apprentices</b></div><p>Not taking any, so the apprentice concept is dropped. That leaves Sorted Electrical holding the only apprentice ad in the market.</p></div><div class="ans note"><div class="anshead"><span class="anstag">NOT FOR ELECTRICAL</span><b>Four days on, three off</b></div><p>Real, but <b>plumbers only</b>. So the time based hook is dead for electrical, and its strongest version belongs in the plumbing campaign instead.</p></div><div class="ans note"><div class="anshead"><span class="anstag">PLUMBING ONLY</span><b>Dual trade upskilling</b></div><p>Upskilling into a second trade is a plumbing hook rather than an electrical one. It is a genuinely good angle and we should run it in that division.</p></div><div class="ans ok"><div class="anshead"><span class="anstag">CONFIRMED</span><b>Service area</b></div><p>The ad runs city wide and we say the work is <b>local</b>. Naming suburbs narrows it for no reason and promises nothing to a reader three suburbs away, so concept D now leads on local work and honesty about it rather than a suburb list.</p></div><div class="ans ok"><div class="anshead"><span class="anstag">CONFIRMED</span><b>Meta access</b></div><p>Read-only access to both ad accounts is live, so the historical audit is done and is in the section above. Our own account history is now the strongest evidence on this page, and it is why every concept below names its destination.</p></div><div class="ans warn"><div class="anshead"><span class="anstag">STILL OPEN</span><b>Destination URL</b></div><p>The new page is still in draft against the live one. This now matters less for the ads, since every concept runs to an instant form, but it still matters for the challenge microsite and for anything that is not an instant form.</p></div><div class="ans warn"><div class="anshead"><span class="anstag">REQUESTED</span><b>Shoot time</b></div><p>One shoot covers every concept: crew to camera, the wall in use, the ute, and Paul talking over B roll. That is the whole production list.</p></div>
 </div></section>
 
 <footer><div class="wrap">
