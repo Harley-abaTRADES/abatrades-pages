@@ -49,7 +49,9 @@ h3{font-size:1.15rem;margin-top:34px}
 .vstrip img{width:100%;height:230px;object-fit:cover;display:block}
 .vfoot{padding:8px 15px;font-size:.74rem;color:var(--slate);border-top:1px solid #E7E9EE}
 .ctabar{display:flex;align-items:center;justify-content:space-between;gap:12px;
- background:#F0F2F5;padding:11px 15px;border-top:1px solid #E1E4EA}
+ background:#F0F2F5;padding:11px 15px;border-top:1px solid #E1E4EA;
+ text-decoration:none;color:inherit}
+.ctabar:hover .ctahead{text-decoration:underline}
 .ctatxt{display:flex;flex-direction:column;min-width:0}
 .ctadom{font-size:.71rem;color:var(--slate);text-transform:uppercase;letter-spacing:.05em}
 .ctahead{font-weight:700;font-size:.9rem}
@@ -131,6 +133,9 @@ section{scroll-margin-top:84px}
  header{padding-top:78px}
 }
 .adtable{width:100%;border-collapse:collapse;margin-top:20px;font-size:.9rem}
+/* a wide data table must scroll inside its own box, or it widens the whole document
+   and the page scrolls sideways on a phone */
+.tscroll{overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%}
 .adtable th{text-align:left;font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
  color:var(--slate);padding:10px 12px;border-bottom:2px solid var(--border)}
 .adtable td{padding:11px 12px;border-bottom:1px solid var(--border);vertical-align:top}
@@ -635,7 +640,7 @@ section{scroll-margin-top:84px}
 
   <h3>Finding 1: the destination decided the cost, by about twenty times</h3>
   <p class="lead">Split the recruitment ads by where the click actually landed. Ads that collected the lead inside Meta, on an instant form, produced leads at <b>$15.95</b>. The same business, running to its own website instead, produced them at <b>$329.32</b>. Same platform, same audience, same crew being advertised.</p>
-  <table class="adtable"><thead><tr><th>Ad</th><th>Destination</th><th>Objective</th><th>Spend</th><th>Leads</th><th>Cost each</th></tr></thead><tbody><tr class="good"><td>Ads#1 - Call Center Hiring</td><td>Instant form</td><td><span class="rt">Outcome Leads</span></td><td>$366</td><td>56</td><td><b>$6.53</b></td></tr><tr class="good"><td>CSR Hiring</td><td>Instant form</td><td><span class="rt">Outcome Leads</span></td><td>$674</td><td>67</td><td><b>$10.07</b></td></tr><tr class="good"><td>Ads#1 - Single Image Ad</td><td>Instant form</td><td><span class="rt">Lead Generation</span></td><td>$88</td><td>3</td><td><b>$29.37</b></td></tr><tr class="good"><td>Ads#1 - Single Image Ad</td><td>Instant form</td><td><span class="rt">Lead Generation</span></td><td>$315</td><td>9</td><td><b>$35.01</b></td></tr><tr class="good"><td>Ad - Electrician Single Image Ad - Stock</td><td>Instant form</td><td><span class="rt">Outcome Leads</span></td><td>$392</td><td>3</td><td><b>$130.50</b></td></tr><tr class="bad"><td>Ads#1 - Video Ad (Team Interviews) - Copy</td><td>Website</td><td><span class="rt">Conversions</span></td><td>$387</td><td>2</td><td><b>$193.62</b></td></tr><tr class="bad"><td>Ads#1 - Call Center Hiring - Updated Sept 2024</td><td>Website</td><td><span class="rt">Outcome Leads</span></td><td>$221</td><td>1</td><td><b>$220.81</b></td></tr><tr class="bad"><td>Ads#1 - Video Ad (Team Interviews) March 2025</td><td>Website</td><td><span class="rt">Conversions</span></td><td>$2,970</td><td>10</td><td><b>$297.01</b></td></tr><tr class="good"><td>Ad - Electrician Single Image Ad - Stock</td><td>Instant form</td><td><span class="rt">Outcome Leads</span></td><td>$382</td><td>1</td><td><b>$382.11</b></td></tr><tr class="bad"><td>Ad - Plumber Hiring</td><td>Website</td><td><span class="rt">Outcome Leads</span></td><td>$1,053</td><td>2</td><td><b>$526.32</b></td></tr><tr class="bad"><td>Ads#1 - Call Center Hiring</td><td>Website</td><td><span class="rt">Outcome Leads</span></td><td>$638</td><td>1</td><td><b>$638.43</b></td></tr></tbody></table>
+  <div class="tscroll"><table class="adtable"><thead><tr><th>Ad</th><th>Destination</th><th>Objective</th><th>Spend</th><th>Leads</th><th>Cost each</th></tr></thead><tbody><tr class="good"><td>Ads#1 - Call Center Hiring</td><td>Instant form</td><td><span class="rt">Outcome Leads</span></td><td>$366</td><td>56</td><td><b>$6.53</b></td></tr><tr class="good"><td>CSR Hiring</td><td>Instant form</td><td><span class="rt">Outcome Leads</span></td><td>$674</td><td>67</td><td><b>$10.07</b></td></tr><tr class="good"><td>Ads#1 - Single Image Ad</td><td>Instant form</td><td><span class="rt">Lead Generation</span></td><td>$88</td><td>3</td><td><b>$29.37</b></td></tr><tr class="good"><td>Ads#1 - Single Image Ad</td><td>Instant form</td><td><span class="rt">Lead Generation</span></td><td>$315</td><td>9</td><td><b>$35.01</b></td></tr><tr class="good"><td>Ad - Electrician Single Image Ad - Stock</td><td>Instant form</td><td><span class="rt">Outcome Leads</span></td><td>$392</td><td>3</td><td><b>$130.50</b></td></tr><tr class="bad"><td>Ads#1 - Video Ad (Team Interviews) - Copy</td><td>Website</td><td><span class="rt">Conversions</span></td><td>$387</td><td>2</td><td><b>$193.62</b></td></tr><tr class="bad"><td>Ads#1 - Call Center Hiring - Updated Sept 2024</td><td>Website</td><td><span class="rt">Outcome Leads</span></td><td>$221</td><td>1</td><td><b>$220.81</b></td></tr><tr class="bad"><td>Ads#1 - Video Ad (Team Interviews) March 2025</td><td>Website</td><td><span class="rt">Conversions</span></td><td>$2,970</td><td>10</td><td><b>$297.01</b></td></tr><tr class="good"><td>Ad - Electrician Single Image Ad - Stock</td><td>Instant form</td><td><span class="rt">Outcome Leads</span></td><td>$382</td><td>1</td><td><b>$382.11</b></td></tr><tr class="bad"><td>Ad - Plumber Hiring</td><td>Website</td><td><span class="rt">Outcome Leads</span></td><td>$1,053</td><td>2</td><td><b>$526.32</b></td></tr><tr class="bad"><td>Ads#1 - Call Center Hiring</td><td>Website</td><td><span class="rt">Outcome Leads</span></td><td>$638</td><td>1</td><td><b>$638.43</b></td></tr></tbody></table></div>
   <div class="barrow"><span class="barlab">Instant form (139 leads)</span><span class="bartrack"><span class="barfill" style="width:6%;background:#4F8A52"></span></span><span class="barpct">$15.95</span></div>
   <div class="barrow"><span class="barlab">Website (16 leads)</span><span class="bartrack"><span class="barfill" style="width:100%;background:#B81C23"></span></span><span class="barpct">$329.32</span></div>
   <p class="lead">It gets sharper at the individual level. Our two best assets, the <b>CSR Hiring</b> and <b>Call Center Hiring</b> ads, produced leads at <b>$10.07</b> and <b>$6.53</b> on an instant form. The <b>Team Interviews</b> video, the highest-volume recruitment asset we have ever run, produced its leads at $297 because it sent everyone to a website instead. <b>The video was not the problem. The door was.</b></p>
@@ -649,7 +654,7 @@ section{scroll-margin-top:84px}
 
   <h3>Finding 2: buying clicks bought nothing</h3>
   <p class="lead">Every recruitment ad optimised for link clicks, reach or engagement produced <b>zero</b> leads. $593 across 4 ads, tens of thousands of impressions, not one applicant. The clearest case is <b>We're Hiring Jan 2026</b>: $206 for 142,880 impressions and no leads at all. Reach is not applicants, and the platform will happily sell you reach.</p>
-  <table class="adtable"><thead><tr><th>Ad</th><th>Objective</th><th>Optimised for</th><th>Spend</th><th>Impressions</th><th>Leads</th></tr></thead><tbody><tr class="bad"><td>We&#x27;re Hiring Jan 2026</td><td><span class="rt">Link Clicks</span></td><td><span class="rt">Reach</span></td><td>$206</td><td>142,880</td><td><b>0</b></td></tr><tr class="bad"><td>Electrician #1</td><td><span class="rt">Outcome Engagement</span></td><td><span class="rt">Offsite Conversions</span></td><td>$143</td><td>15,615</td><td><b>0</b></td></tr><tr class="bad"><td>All Trades Hiring</td><td><span class="rt">Link Clicks</span></td><td><span class="rt">Link Clicks</span></td><td>$140</td><td>7,929</td><td><b>0</b></td></tr><tr class="bad"><td>Service Technician Ad with recommended settings</td><td><span class="rt">Link Clicks</span></td><td><span class="rt">Link Clicks</span></td><td>$104</td><td>21,422</td><td><b>0</b></td></tr></tbody></table>
+  <div class="tscroll"><table class="adtable"><thead><tr><th>Ad</th><th>Objective</th><th>Optimised for</th><th>Spend</th><th>Impressions</th><th>Leads</th></tr></thead><tbody><tr class="bad"><td>We&#x27;re Hiring Jan 2026</td><td><span class="rt">Link Clicks</span></td><td><span class="rt">Reach</span></td><td>$206</td><td>142,880</td><td><b>0</b></td></tr><tr class="bad"><td>Electrician #1</td><td><span class="rt">Outcome Engagement</span></td><td><span class="rt">Offsite Conversions</span></td><td>$143</td><td>15,615</td><td><b>0</b></td></tr><tr class="bad"><td>All Trades Hiring</td><td><span class="rt">Link Clicks</span></td><td><span class="rt">Link Clicks</span></td><td>$140</td><td>7,929</td><td><b>0</b></td></tr><tr class="bad"><td>Service Technician Ad with recommended settings</td><td><span class="rt">Link Clicks</span></td><td><span class="rt">Link Clicks</span></td><td>$104</td><td>21,422</td><td><b>0</b></td></tr></tbody></table></div>
 
   <h3>The best asset on record, and it is a static</h3>
   <p class="lead">The cheapest lead on the whole account came from <b>Ads#1 Single Image Ad</b> at <b>$35.01</b>: a real photo of an aba plumber in a branded polo holding a pipe fitting, <b>WE'RE HIRING burned into the image</b>, shot in a clean modern kitchen, collected on a Meta instant form. A real person, a real brand, one clear line, and the right door.</p>
@@ -714,10 +719,10 @@ section{scroll-margin-top:84px}
           <span class="phbadge real">Our photo</span>
         </div>
         <div class="uph-note">Real photo: an aba technician at a local job, from our SharePoint library.</div>
-        <div class="ctabar"><div class="ctatxt">
+        <a class="ctabar" href="https://abatrades.com.au/" target="_blank" rel="noopener"><div class="ctatxt">
           <span class="ctadom">ABATRADES.COM.AU</span>
           <span class="ctahead">A boss who notices. $60 an hour.</span></div>
-          <span class="ctabtn">Apply now</span></div>
+          <span class="ctabtn">Apply now</span></a>
       </div>
     </div>
     <div class="col-say">
@@ -749,10 +754,10 @@ section{scroll-margin-top:84px}
           <span class="phbadge real">Our photo</span>
         </div>
         <div class="uph-note">Real photo: an aba technician with the branded ute, from our SharePoint library.</div>
-        <div class="ctabar"><div class="ctatxt">
+        <a class="ctabar" href="https://abatrades.com.au/" target="_blank" rel="noopener"><div class="ctatxt">
           <span class="ctadom">ABATRADES.COM.AU</span>
           <span class="ctahead">$60 an hour. Flat.</span></div>
-          <span class="ctabtn">Apply now</span></div>
+          <span class="ctabtn">Apply now</span></a>
       </div>
     </div>
     <div class="col-say">
@@ -784,10 +789,10 @@ section{scroll-margin-top:84px}
           <span class="phbadge real">Our photo</span>
         </div>
         <div class="uph-note">Real photo: our own 25 metre training wall, from our SharePoint library.</div>
-        <div class="ctabar"><div class="ctatxt">
+        <a class="ctabar" href="https://abatrades.com.au/" target="_blank" rel="noopener"><div class="ctatxt">
           <span class="ctadom">ABATRADES.COM.AU</span>
           <span class="ctahead">Adelaide sparkies: the 25 metre wall</span></div>
-          <span class="ctabtn">Learn more</span></div>
+          <span class="ctabtn">Learn more</span></a>
       </div>
     </div>
     <div class="col-say">
@@ -819,10 +824,10 @@ section{scroll-margin-top:84px}
           <span class="phbadge real">Our photo</span>
         </div>
         <div class="uph-note">Real photo: our ute working a local street, from our SharePoint library.</div>
-        <div class="ctabar"><div class="ctatxt">
+        <a class="ctabar" href="https://abatrades.com.au/" target="_blank" rel="noopener"><div class="ctatxt">
           <span class="ctadom">ABATRADES.COM.AU</span>
           <span class="ctahead">Local work. $60 an hour.</span></div>
-          <span class="ctabtn">Apply now</span></div>
+          <span class="ctabtn">Apply now</span></a>
       </div>
     </div>
     <div class="col-say">
@@ -854,10 +859,10 @@ section{scroll-margin-top:84px}
           <span class="phbadge video">Video</span>
         </div>
         <div class="uph-note">Real footage: the recommended cut, assembled from our own recruitment film and hero video.</div>
-        <div class="ctabar"><div class="ctatxt">
+        <a class="ctabar" href="https://abatrades.com.au/" target="_blank" rel="noopener"><div class="ctatxt">
           <span class="ctadom">ABATRADES.COM.AU</span>
           <span class="ctahead">A real crew, and $60 an hour.</span></div>
-          <span class="ctabtn">Learn more</span></div>
+          <span class="ctabtn">Learn more</span></a>
       </div>
     </div>
     <div class="col-say">
@@ -896,19 +901,19 @@ section{scroll-margin-top:84px}
           <img src="../../assets/swipe/electrical/concepts/concept-E.jpg" alt="Real aba photo for concept E6" loading="eager">
           <span class="phbadge game">Real game</span>
         </div>
-        <div class="uph-note">Real screenshot of the game as built. It is a review build, not live yet.</div>
-        <div class="ctabar"><div class="ctatxt">
+        <div class="uph-note">Real screenshot of the game as built, from the live challenge page.</div>
+        <a class="ctabar" href="https://abatrades.com.au/the-electrical-challenge/" target="_blank" rel="noopener"><div class="ctatxt">
           <span class="ctadom">ABATRADES.COM.AU</span>
           <span class="ctahead">Four circuits tripped. Can you get it going?</span></div>
-          <span class="ctabtn">Take the challenge</span></div>
+          <span class="ctabtn">Take the challenge</span></a>
       </div>
     </div>
     <div class="col-say">
       <div class="crow"><b>Why this angle</b><p>No advertiser in the entire sweep runs anything interactive. Every ad is a picture, a video or a wall of text. A playable challenge is the only genuinely unoccupied format in this market.</p></div>
       <div class="crow"><b>Audience</b><p>Qualified electricians who back themselves</p></div>
-      <div class="crow media"><b>Media</b><p>Screen recording of the board being played, captured once the build is signed off. It is a recording of the real thing, not a shoot.</p></div>
+      <div class="crow media"><b>Media</b><p>Screen recording of the board being played on the live page, abatrades.com.au/the-electrical-challenge/. A recording of the real thing, not a shoot.</p></div>
       <div class="crow"><b>Creative direction</b><p>The card shows the real game screen. The ad itself is a 9:16 screen recording of the board being played on a phone: four RCBOs flicking up one at a time, each circuit lighting up its part of the offer, then the Apply button. No shoot and no actors, because the asset is the build itself.</p></div>
-      <div class="crow dest"><b>Destination and objective</b><p>Its own microsite, the board itself, bought and optimised for leads. The funnel is set out in the mini game section.</p></div>
+      <div class="crow dest"><b>Destination and objective</b><p>Its own page, abatrades.com.au/the-electrical-challenge/, bought and optimised for leads. The funnel is set out in the mini game section.</p></div>
       <div class="crow runs2"><b>Runs twice</b><p><b>Variant A, the web form CTA.</b> The lead form opens inside Facebook or Instagram. <b>Variant B, the landing page CTA.</b> This one sends the click to the board itself rather than the careers page, because the game is the whole point of the ad. That reads the game against the form.</p></div>
       <div class="crow"><b>What it tests</b><p>Whether a self-selecting board brings in better candidates than a straight offer ad. It is also the only format here no competitor can copy in a week. Full funnel in the mini game section.</p></div>
     </div>
@@ -1038,8 +1043,8 @@ section{scroll-margin-top:84px}
 
 <section id="s11"><div class="wrap">
   <div class="seceyebrow"><span class="secnum">11</span><span class="seclab">Mini game</span></div><h2>The mini game: a playable ad funnel</h2>
-  <p class="lead">The board is built and playable. Open it on a phone: <a href="https://harley-abatrades.github.io/abatrades-pages/challenge/electrical/" target="_blank" rel="noopener">harley-abatrades.github.io/abatrades-pages/challenge/electrical/</a>. It is running as a <b>review build, not live</b>, and it carries its own review flag.</p>
-  <p class="lead">The ad itself is <b>E6</b> in the electrical set above. This section is the reasoning behind it: why the format is worth owning, how the funnel runs, what it takes to build and how we judge it.</p>
+  <p class="lead">The game is live at <a href="https://abatrades.com.au/the-electrical-challenge/" target="_blank" rel="noopener">abatrades.com.au/the-electrical-challenge/</a>. Open it on a phone: a switchboard with four tripped circuits, one benefit behind each. The ad's CTA points at that page, not at the careers page.</p>
+  <p class="lead">The ad itself is <b>E6</b> in the electrical set above, and its CTA is wired to the same address. This section is the reasoning behind it: why the format is worth owning, how the funnel runs, what it takes to build and how we judge it.</p>
   
   <p class="lead">A short playable switchboard challenge on its own microsite. The ad sells curiosity rather than the job. The board is built from the offer itself: each of the four circuits is one thing the job gives you, so the player assembles the offer by playing instead of being shouted at.</p>
   <h3>Why it should work</h3>
@@ -1050,7 +1055,7 @@ section{scroll-margin-top:84px}
   <h3>The funnel, step by step</h3>
   <div class="gap"><b>1. The ad</b><p>Vertical screen recording of the board being played, fast, the RCBOs flicking up. Short copy and no offer in it. The only promise is that there is a board worth getting going.</p></div><div class="gap"><b>2. The microsite</b><p>Loads straight onto the board. No form, no email, no gate before playing. One screen, works with one thumb, no loading state.</p></div><div class="gap"><b>3. The reveal</b><p>As each circuit goes on its line appears: the flat rate, the ute and card, the 25 metre training wall, work close to home. The offer arrives as the reward for playing.</p></div><div class="gap"><b>4. The offer</b><p>The four lines are the offer: $60 an hour flat with T&Cs, a company ute and a fuel card, the 25 metre in-house training wall since 2015, and work close to home.</p></div><div class="gap"><b>5. The ask</b><p>Apply sits on the board the whole time, with a skip that reads "Keen already? No need to play.", so nobody is ever forced through the game. The application itself is the five fields on the careers page.</p></div><div class="gap"><b>6. The share</b><p>A "Challenge a mate" button. It costs us nothing and it circulates inside the trade, which is where electricians actually talk to each other.</p></div>
   <h3>What it takes to build</h3>
-  <div class="gap"><b>What it is</b><p>One page. SVG and plain JavaScript, no game engine, no framework and no third party script, so it runs on our own host and can move to the client site later.</p></div><div class="gap"><b>Where it stands</b><p>Built and playable, running as a review build with its own review flag rather than live. harley-abatrades.github.io/abatrades-pages/challenge/electrical/</p></div><div class="gap"><b>What it still needs</b><p>The screen recording for the ad cut, and the Apply button pointed at the live application form. Nothing else on the build is outstanding.</p></div><div class="gap"><b>Effort</b><p>The build is done. What is left is the ad cut, and that is a screen recording rather than a shoot.</p></div>
+  <div class="gap"><b>What it is</b><p>One page. SVG and plain JavaScript, no game engine, no framework and no third party script, which is why it moved onto the client domain without a rebuild.</p></div><div class="gap"><b>Where it stands</b><p>Live at abatrades.com.au/the-electrical-challenge/, on the client domain rather than our own review host. The ad CTA points at it.</p></div><div class="gap"><b>What it still needs</b><p>The screen recording for the ad cut, and the Apply button pointed at the live application form. Nothing else on the build is outstanding.</p></div><div class="gap"><b>Effort</b><p>The build is done. What is left is the ad cut, and that is a screen recording rather than a shoot.</p></div>
   <h3>Risks, and how we handle them</h3>
   <div class="gap"><b>More friction than a form</b><p>A game is a bigger ask than a click to a form, so click through may look worse on paper. Judge it on applications and on cost per qualified applicant. Never on click rate.</p></div><div class="gap"><b>It has to be good, or it is worse than nothing</b><p>A clunky quiz damages the brand more than a plain ad ever could. One thumb, one screen, no loading, no dead ends, and genuinely enjoyable within the first three seconds.</p></div><div class="gap"><b>Do not gate the offer behind the game</b><p>The build already carries the skip, reading &quot;Keen already? No need to play.&quot; next to the Apply button, so nobody is ever forced through it. Keep it that way.</p></div><div class="gap"><b>Mobile first, or it fails</b><p>It will be played on a phone, one handed, probably on site. Test at 390px before anything else.</p></div><div class="gap"><b>No data collection before the end</b><p>Nothing tracked, no email harvesting, no cookie wall. Play for free, share details only when they choose to apply.</p></div>
   <h3>How we judge it</h3>
