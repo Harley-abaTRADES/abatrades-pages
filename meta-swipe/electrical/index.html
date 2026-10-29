@@ -28,7 +28,7 @@ h3{font-size:1.15rem;margin-top:34px}
 .stat b{display:block;font-size:1.7rem;line-height:1.15}
 .stat span{color:var(--slate);font-size:.86rem;display:block;margin-top:4px}
 .pat{border-left:4px solid var(--accent);padding:4px 0 4px 20px;margin-top:24px}
-.pat b{font-size:1.08rem} .pat p{color:#3d527a;margin-top:5px}
+.pat > b{font-size:1.08rem} .pat p{color:#3d527a;margin-top:5px}
 .card{display:grid;grid-template-columns:400px 1fr;gap:34px;margin-top:30px;align-items:start}
 .unit{background:#fff;border:1px solid #DADDE3;border-radius:12px;overflow:hidden;
  box-shadow:0 2px 10px rgba(15,32,54,.07);max-width:400px}
@@ -59,12 +59,15 @@ h3{font-size:1.15rem;margin-top:34px}
 .why li{margin-top:7px}
 .lib{display:inline-block;margin-top:16px;color:var(--navy2);font-weight:700;font-size:.85rem;text-decoration:none}
 .gap{background:var(--field);border-radius:14px;padding:20px;margin-top:15px}
-.gap b{font-size:1.03rem} .gap p{color:#3d527a;margin-top:5px}
+.gap > b{font-size:1.03rem} .gap p{color:#3d527a;margin-top:5px}
 .next{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;margin-top:24px}
 .next div{border:1px solid var(--border);border-radius:16px;padding:22px}
-.next b{color:var(--accent)}
+.next > b{color:var(--accent)}
 .callout{background:var(--navy);color:#fff;border-radius:18px;padding:28px;margin-top:30px}
-.callout b{font-size:1.2rem} .callout p{color:rgba(255,255,255,.88);margin-top:8px}
+.callout > b{font-size:1.2rem} .callout p{color:rgba(255,255,255,.88);margin-top:8px}
+/* label rules above are scoped with > so they cannot reach an inline bold inside the
+   body copy. Belt and braces: force any bold inside a paragraph back to inline. */
+.pat p b,.pat p strong,.gap p b,.gap p strong,.next p b,.next p strong,.callout p b,.callout p strong,.ans p b,.ans p strong{display:inline;color:inherit;font-size:inherit;letter-spacing:normal;text-transform:none;margin:0;font-weight:700}
 .two{display:grid;grid-template-columns:1fr 1fr;gap:34px;margin-top:22px}
 h3 small{font-weight:400;font-size:.78rem;color:var(--slate)}
 .barrow{display:grid;grid-template-columns:150px 1fr 48px;gap:12px;align-items:center;margin-top:11px}
@@ -160,13 +163,16 @@ section{scroll-margin-top:84px}
  font-weight:700;font-size:.76rem;letter-spacing:.04em;padding:4px 9px;border-radius:6px;line-height:1.35}
 .crow{margin-bottom:18px}
 .crow.dest{background:#F1F7F1;border-left:3px solid #4F8A52;border-radius:8px;padding:12px 14px;margin-bottom:18px}
-.crow.dest b{color:#3F7343}
+.crow.dest > b{color:#3F7343}
 .crow.runs2{background:#F2F4FA;border-left:3px solid var(--navy2);border-radius:8px;padding:12px 14px;margin-bottom:18px}
-.crow.runs2 b{color:var(--navy2)}
+.crow.runs2 > b{color:var(--navy2)}
 .cuts.incard{margin-top:26px;padding-top:22px;border-top:1px solid var(--border)}
 .cutslab{margin-bottom:18px;font-size:.9rem;color:#3d527a}
-.crow b{display:block;font-size:.76rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--accent);margin-bottom:5px}
+.crow > b{display:block;font-size:.76rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--accent);margin-bottom:5px}
 .crow p{color:#3d527a;font-size:.93rem}
+/* an inline bold inside the body text must stay inline: the label rules above are
+   descendant selectors on purpose scoped with > so they cannot reach in here */
+.crow p b,.crow p strong{display:inline;color:inherit;font-size:inherit;letter-spacing:normal;text-transform:none;margin:0;font-weight:700}
 .ans{border-radius:14px;padding:18px 20px;margin-top:14px;border-left:4px solid var(--border)}
 .ans.ok{background:#F1F7F1;border-left-color:#4F8A52}
 .ans.warn{background:#FDF1F2;border-left-color:var(--warn)}
@@ -197,7 +203,7 @@ section{scroll-margin-top:84px}
 .railgroup,.mobgroup{color:var(--navy)}
 .pk{color:var(--navy);background:var(--tint);border-color:transparent}
 .utrade{color:var(--navy);background:var(--tint);border-color:transparent}
-.crow b,.chook,.next b{color:var(--navy)}
+.crow > b,.chook,.next > b{color:var(--navy)}
 .pathcard{border-radius:var(--r-surface);box-shadow:var(--shadow)}
 .stat{border-radius:var(--r-surface)}
 .concept,.next div,.callout{border-radius:var(--r-surface)}
