@@ -192,6 +192,13 @@ try{
       return m ? m[1] : '';
     } catch (e) { return ''; }
   }
+  function cookieVal(name){
+    try {
+      var esc = name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      var m = document.cookie.match(new RegExp('(?:^|;\\s*)' + esc + '=([^;]*)'));
+      return m ? decodeURIComponent(m[1]) : '';
+    } catch (e) { return ''; }
+  }
 
   function check(){
     var ok = form.checkValidity();
@@ -215,6 +222,16 @@ try{
       var v = param(n); if (v) fd.set(n, v.slice(0, 200));
     });
     var cid = gaClientId(); if (cid) fd.set('ga_client_id', cid);
+    // Meta match signals. fbclid comes from the click; _fbp/_fbc are Meta's own
+    // cookies. If the click carried fbclid but the _fbc cookie was never set
+    // (no browser pixel on this site), build fbc in Meta's expected format so
+    // the server-side event still carries the click.
+    var fbclid = param('fbclid').slice(0, 300);
+    if (fbclid) fd.set('fbclid', fbclid);
+    var fbp = cookieVal('_fbp'); if (fbp) fd.set('fbp', fbp.slice(0, 200));
+    var fbc = cookieVal('_fbc');
+    if (!fbc && fbclid) fbc = 'fb.1.' + Date.now() + '.' + fbclid;
+    if (fbc) fd.set('fbc', fbc.slice(0, 300));
 
     btn.disabled = true;
     btn.textContent = 'Sending your application...';
