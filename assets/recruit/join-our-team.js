@@ -168,6 +168,7 @@ try{
   var form = scope.querySelector('#applyform'), btn = scope.querySelector('#submitbtn');
   var okbox = scope.querySelector('#okbox'), errbox = scope.querySelector('#errbox');
   var endpoint = form ? (form.getAttribute('data-endpoint') || '') : '';
+  var sent = false;
 
   /* Turnstile is only loaded when the page carries a real site key, so the
      form still works (less the bot check) before the widget is provisioned. */
@@ -201,6 +202,7 @@ try{
   }
 
   function check(){
+    if (sent) return; /* once it is away, the button state is final */
     var ok = form.checkValidity();
     btn.disabled = !ok;
     btn.textContent = ok ? 'Send my application' : 'Fill your name, phone, email and role to send';
@@ -245,9 +247,17 @@ try{
         if (!res.ok || !res.body || !res.body.ok){
           throw new Error((res.body && res.body.error) || ('HTTP ' + res.status));
         }
+        sent = true;
         form.classList.add('sent');
         okbox.style.display = 'block';
         okbox.scrollIntoView({behavior: reduce ? 'auto' : 'smooth', block:'center'});
+        /* the button reflects the finished state: a submission that landed
+           must never keep reading as still in flight. */
+        btn.disabled = true;
+        btn.textContent = 'Application sent';
+        btn.style.background = 'var(--success)';
+        btn.style.borderColor = 'var(--success)';
+        btn.style.cursor = 'default';
       })
       .catch(function(){
         if (errbox) errbox.style.display = 'block';
