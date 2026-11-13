@@ -205,7 +205,7 @@ try{
     if (sent) return; /* once it is away, the button state is final */
     var ok = form.checkValidity();
     btn.disabled = !ok;
-    btn.textContent = ok ? 'Send my application' : 'Fill your details and attach a resume to send';
+    btn.textContent = ok ? 'Send my application' : 'Fill in your details to send';
   }
   form.addEventListener('input', check); form.addEventListener('change', check); check();
 
