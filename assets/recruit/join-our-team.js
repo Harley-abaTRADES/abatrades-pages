@@ -201,6 +201,24 @@ try{
     } catch (e) { return ''; }
   }
 
+  /* Meta's _fbc cookie is only ever written by its browser pixel, and this site has no
+     pixel, so build it from the landing URL and KEEP it. The timestamp in fbc belongs to
+     the CLICK, not to the submit: stamping it at submit time asserts the click happened
+     minutes or hours later than it did, which is not the format Meta expects and is a
+     needless risk to the match. First touch wins, so a later visit with no click id
+     cannot overwrite the original. */
+  function rememberClick(){
+    try {
+      if (cookieVal('_fbc')) return;
+      var f = param('fbclid');
+      if (!f) return;
+      var exp = new Date(Date.now() + 90 * 24 * 60 * 60 * 1000).toUTCString();
+      document.cookie = '_fbc=' + encodeURIComponent('fb.1.' + Date.now() + '.' + f) +
+        '; expires=' + exp + '; path=/; SameSite=Lax';
+    } catch (e) {}
+  }
+  rememberClick();
+
   function check(){
     if (sent) return; /* once it is away, the button state is final */
     var ok = form.checkValidity();
